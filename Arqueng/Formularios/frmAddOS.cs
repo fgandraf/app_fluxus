@@ -59,6 +59,37 @@ namespace Arqueng.Formularios
             }
         }
 
+        public void BuscarNomeProfissional()
+        {
+            try
+            {
+                My.conexaoDB = new MySqlConnection(My.dadosdb);
+                My.comando = new MySqlCommand("SELECT nome FROM tb_profissionais WHERE codigo = @codigo", My.conexaoDB);
+                My.comando.Parameters.AddWithValue("@codigo", cboProfissional.Text);
+                My.conexaoDB.Open();
+                My.dr = My.comando.ExecuteReader();
+                if (My.dr.HasRows == false)
+                {
+                    MessageBox.Show("Profissional não cadastrado!", "Não encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    while (My.dr.Read())
+                    {
+                        txtNomeProfissional.Text = Convert.ToString(My.dr["nome"]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                My.conexaoDB.Close();
+                My.conexaoDB = null;
+            }
+        }
         public frmAddOS()
         {
             InitializeComponent();
@@ -117,6 +148,7 @@ namespace Arqueng.Formularios
             dtpDataConcluida.Text = DataConcluida;
             txtOBS.Text = OBS;
             txtCodFatura.Text = CodFatura;
+            BuscarNomeProfissional();
         }
 
 
@@ -187,7 +219,7 @@ namespace Arqueng.Formularios
                      My.conexaoDB = new MySqlConnection(My.dadosdb);
                      My.comando = new MySqlCommand("UPDATE tb_os SET data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, status = @status, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs, fatura_cod = @fatura_cod WHERE referencia = @referencia", My.conexaoDB);
 
-                     My.comando.Parameters.AddWithValue("@referencia", txtReferencia.Text);
+                         My.comando.Parameters.AddWithValue("@referencia", txtReferencia.Text);
                          My.comando.Parameters.AddWithValue("@data_ordem", dtpDataOrdem.Value);
                          My.comando.Parameters.AddWithValue("@prazo_execucao", dtpDataExecucao.Value);
                          My.comando.Parameters.AddWithValue("@profissional_cod", cboProfissional.Text);
@@ -244,10 +276,20 @@ namespace Arqueng.Formularios
             }
             else
             {
-                cboProfissional.Text = "";
+                cboProfissional.SelectedItem = null;
                 cboAtividade.Text = "";
             }
                 
+        }
+
+        private void cboProfissional_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            BuscarNomeProfissional();
+        }
+
+        private void btnAddProfissional_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

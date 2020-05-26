@@ -50,7 +50,6 @@
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.lblCliente = new System.Windows.Forms.Label();
-            this.cboProfissional = new System.Windows.Forms.ComboBox();
             this.lblProfissional = new System.Windows.Forms.Label();
             this.chkSiopi = new System.Windows.Forms.CheckBox();
             this.cboAtividade = new System.Windows.Forms.ComboBox();
@@ -82,6 +81,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.txtCodFatura = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cboProfissional = new System.Windows.Forms.ComboBox();
+            this.btnAddProfissional = new System.Windows.Forms.Button();
+            this.btnAddAtividade = new System.Windows.Forms.Button();
+            this.txtNomeAtividade = new System.Windows.Forms.TextBox();
             this.pnlOS.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -89,6 +93,7 @@
             this.panel10.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -125,6 +130,10 @@
             // 
             this.pnlOS.BackColor = System.Drawing.SystemColors.Window;
             this.pnlOS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlOS.Controls.Add(this.btnAddAtividade);
+            this.pnlOS.Controls.Add(this.txtNomeAtividade);
+            this.pnlOS.Controls.Add(this.btnAddProfissional);
+            this.pnlOS.Controls.Add(this.panel2);
             this.pnlOS.Controls.Add(this.txtNomeProfissional);
             this.pnlOS.Controls.Add(this.panel6);
             this.pnlOS.Controls.Add(this.panel3);
@@ -136,7 +145,6 @@
             this.pnlOS.Controls.Add(this.txtCidade);
             this.pnlOS.Controls.Add(this.txtNomeCliente);
             this.pnlOS.Controls.Add(this.lblCliente);
-            this.pnlOS.Controls.Add(this.cboProfissional);
             this.pnlOS.Controls.Add(this.lblProfissional);
             this.pnlOS.Controls.Add(this.chkSiopi);
             this.pnlOS.Controls.Add(this.cboAtividade);
@@ -155,14 +163,15 @@
             // txtNomeProfissional
             // 
             this.txtNomeProfissional.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtNomeProfissional.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNomeProfissional.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomeProfissional.Enabled = false;
-            this.txtNomeProfissional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeProfissional.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeProfissional.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtNomeProfissional.Location = new System.Drawing.Point(130, 226);
+            this.txtNomeProfissional.Location = new System.Drawing.Point(158, 230);
             this.txtNomeProfissional.MaxLength = 100;
             this.txtNomeProfissional.Name = "txtNomeProfissional";
-            this.txtNomeProfissional.Size = new System.Drawing.Size(216, 23);
+            this.txtNomeProfissional.Size = new System.Drawing.Size(188, 15);
             this.txtNomeProfissional.TabIndex = 366;
             // 
             // panel6
@@ -367,19 +376,6 @@
             this.lblCliente.TabIndex = 358;
             this.lblCliente.Text = "Nome do Cliente";
             // 
-            // cboProfissional
-            // 
-            this.cboProfissional.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.cboProfissional.DisplayMember = "codigo";
-            this.cboProfissional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboProfissional.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cboProfissional.FormattingEnabled = true;
-            this.cboProfissional.Location = new System.Drawing.Point(28, 226);
-            this.cboProfissional.MaxLength = 3;
-            this.cboProfissional.Name = "cboProfissional";
-            this.cboProfissional.Size = new System.Drawing.Size(96, 23);
-            this.cboProfissional.TabIndex = 3;
-            // 
             // lblProfissional
             // 
             this.lblProfissional.AutoSize = true;
@@ -399,7 +395,7 @@
             this.chkSiopi.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkSiopi.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.chkSiopi.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.chkSiopi.Location = new System.Drawing.Point(293, 255);
+            this.chkSiopi.Location = new System.Drawing.Point(311, 37);
             this.chkSiopi.Name = "chkSiopi";
             this.chkSiopi.Size = new System.Drawing.Size(35, 35);
             this.chkSiopi.TabIndex = 5;
@@ -445,7 +441,7 @@
             this.cboAtividade.Location = new System.Drawing.Point(28, 268);
             this.cboAtividade.MaxLength = 10;
             this.cboAtividade.Name = "cboAtividade";
-            this.cboAtividade.Size = new System.Drawing.Size(242, 23);
+            this.cboAtividade.Size = new System.Drawing.Size(100, 23);
             this.cboAtividade.TabIndex = 4;
             // 
             // lblAtividade
@@ -455,9 +451,9 @@
             this.lblAtividade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblAtividade.Location = new System.Drawing.Point(25, 252);
             this.lblAtividade.Name = "lblAtividade";
-            this.lblAtividade.Size = new System.Drawing.Size(107, 13);
+            this.lblAtividade.Size = new System.Drawing.Size(55, 13);
             this.lblAtividade.TabIndex = 350;
-            this.lblAtividade.Text = "Assunto / Atividade";
+            this.lblAtividade.Text = "Atividade";
             // 
             // txtReferencia
             // 
@@ -467,7 +463,7 @@
             this.txtReferencia.Location = new System.Drawing.Point(28, 53);
             this.txtReferencia.Mask = "0000,0000,000000000/0000,00,00,00";
             this.txtReferencia.Name = "txtReferencia";
-            this.txtReferencia.Size = new System.Drawing.Size(318, 23);
+            this.txtReferencia.Size = new System.Drawing.Size(260, 23);
             this.txtReferencia.TabIndex = 0;
             // 
             // dtpDataExecucao
@@ -780,6 +776,66 @@
             this.txtCodFatura.TabIndex = 405;
             this.txtCodFatura.Visible = false;
             // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.cboProfissional);
+            this.panel2.Location = new System.Drawing.Point(28, 226);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(100, 23);
+            this.panel2.TabIndex = 3;
+            // 
+            // cboProfissional
+            // 
+            this.cboProfissional.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cboProfissional.DisplayMember = "codigo";
+            this.cboProfissional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProfissional.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cboProfissional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboProfissional.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cboProfissional.FormattingEnabled = true;
+            this.cboProfissional.Location = new System.Drawing.Point(-1, -1);
+            this.cboProfissional.MaxLength = 3;
+            this.cboProfissional.Name = "cboProfissional";
+            this.cboProfissional.Size = new System.Drawing.Size(100, 23);
+            this.cboProfissional.TabIndex = 0;
+            this.cboProfissional.SelectionChangeCommitted += new System.EventHandler(this.cboProfissional_SelectionChangeCommitted);
+            // 
+            // btnAddProfissional
+            // 
+            this.btnAddProfissional.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddProfissional.Location = new System.Drawing.Point(127, 226);
+            this.btnAddProfissional.Name = "btnAddProfissional";
+            this.btnAddProfissional.Size = new System.Drawing.Size(23, 23);
+            this.btnAddProfissional.TabIndex = 367;
+            this.btnAddProfissional.Text = "+";
+            this.btnAddProfissional.UseVisualStyleBackColor = true;
+            this.btnAddProfissional.Click += new System.EventHandler(this.btnAddProfissional_Click);
+            // 
+            // btnAddAtividade
+            // 
+            this.btnAddAtividade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAtividade.Location = new System.Drawing.Point(127, 268);
+            this.btnAddAtividade.Name = "btnAddAtividade";
+            this.btnAddAtividade.Size = new System.Drawing.Size(23, 23);
+            this.btnAddAtividade.TabIndex = 369;
+            this.btnAddAtividade.Text = "+";
+            this.btnAddAtividade.UseVisualStyleBackColor = true;
+            // 
+            // txtNomeAtividade
+            // 
+            this.txtNomeAtividade.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtNomeAtividade.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtNomeAtividade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNomeAtividade.Enabled = false;
+            this.txtNomeAtividade.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeAtividade.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtNomeAtividade.Location = new System.Drawing.Point(158, 272);
+            this.txtNomeAtividade.MaxLength = 100;
+            this.txtNomeAtividade.Name = "txtNomeAtividade";
+            this.txtNomeAtividade.Size = new System.Drawing.Size(188, 15);
+            this.txtNomeAtividade.TabIndex = 368;
+            // 
             // frmAddOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -826,6 +882,7 @@
             this.panel10.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -835,7 +892,6 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAddSave;
         private System.Windows.Forms.Panel pnlOS;
-        private System.Windows.Forms.ComboBox cboProfissional;
         private System.Windows.Forms.Label lblProfissional;
         private System.Windows.Forms.CheckBox chkSiopi;
         private System.Windows.Forms.ComboBox cboAtividade;
@@ -884,5 +940,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txtCodFatura;
         private System.Windows.Forms.TextBox txtNomeProfissional;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox cboProfissional;
+        private System.Windows.Forms.Button btnAddProfissional;
+        private System.Windows.Forms.Button btnAddAtividade;
+        private System.Windows.Forms.TextBox txtNomeAtividade;
     }
 }
