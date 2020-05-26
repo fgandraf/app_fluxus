@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using Arqueng.Entidades;
 using MySql.Data.MySqlClient;
 
+
 namespace Arqueng.Formularios
 {
     public partial class frmAddOS : Form
@@ -65,6 +66,7 @@ namespace Arqueng.Formularios
             BuscarAtividades();
         }
 
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -116,7 +118,6 @@ namespace Arqueng.Formularios
             txtOBS.Text = OBS;
             txtCodFatura.Text = CodFatura;
         }
-
 
 
         private void btnAddSave_Click(object sender, EventArgs e)
@@ -229,8 +230,8 @@ namespace Arqueng.Formularios
                     My.conexaoDB.Close();
                     My.conexaoDB = null;
                     My.comando = null;
+                    this.Close();
                 }
-                this.Close();
             }
         }
 

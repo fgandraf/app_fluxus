@@ -72,7 +72,7 @@
             // 
             this.lblDeslocamento.AutoSize = true;
             this.lblDeslocamento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeslocamento.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblDeslocamento.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblDeslocamento.Location = new System.Drawing.Point(209, 107);
             this.lblDeslocamento.Name = "lblDeslocamento";
             this.lblDeslocamento.Size = new System.Drawing.Size(126, 13);
@@ -95,7 +95,7 @@
             // 
             this.lblValor.AutoSize = true;
             this.lblValor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValor.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblValor.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblValor.Location = new System.Drawing.Point(22, 107);
             this.lblValor.Name = "lblValor";
             this.lblValor.Size = new System.Drawing.Size(100, 13);
@@ -118,7 +118,7 @@
             // 
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblCodigo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblCodigo.Location = new System.Drawing.Point(22, 23);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(53, 13);
@@ -141,7 +141,7 @@
             // 
             this.lblDescricao.AutoSize = true;
             this.lblDescricao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescricao.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblDescricao.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblDescricao.Location = new System.Drawing.Point(22, 65);
             this.lblDescricao.Name = "lblDescricao";
             this.lblDescricao.Size = new System.Drawing.Size(56, 13);

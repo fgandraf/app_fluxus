@@ -14,6 +14,5 @@ namespace Arqueng.Entidades
         public static MySqlDataAdapter da;
         public static MySqlDataReader dr;
         public static string dadosdb = "SERVER=localhost; DATABASE=cef_db; UID=root; PWD=;";
-
     }
 }

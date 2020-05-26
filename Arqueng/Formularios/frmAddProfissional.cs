@@ -14,10 +14,12 @@ namespace Arqueng.Formularios
 {
     public partial class frmAddProfissional : Form
     {
+
         public frmAddProfissional()
         {
             InitializeComponent();
         }
+
 
         public frmAddProfissional(string Codigo, string Nome, string CPF, string Nascimento, string Profissao, string Carteira, string Entidade, string Telefone1, string Telefone2, string Email)
         {
@@ -35,9 +37,6 @@ namespace Arqueng.Formularios
         }
 
 
-
-
-
         private void frmAddProfissional_Load(object sender, EventArgs e)
         {
             if (this.Text == "Alterar")
@@ -46,6 +45,7 @@ namespace Arqueng.Formularios
                 txtCodigo.Enabled = false;
             } 
         }
+
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
@@ -117,8 +117,8 @@ namespace Arqueng.Formularios
                         My.conexaoDB.Close();
                         My.conexaoDB = null;
                         My.comando = null;
+                        this.Close();
                     }
-                    this.Close();
                 } 
         }
     }

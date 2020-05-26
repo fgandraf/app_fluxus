@@ -12,13 +12,14 @@ using Arqueng.Entidades;
 
 namespace Arqueng
 {
+
+
     public partial class frmDadosCadastrais : Form
     {
         public frmDadosCadastrais()
         {
             InitializeComponent();
         }
-
 
 
         private void frmDadosCadastrais_Load(object sender, EventArgs e)
@@ -89,8 +90,6 @@ namespace Arqueng
                 My.conexaoDB = null;
             }
         }
-
-
 
 
         private void btnCadastrarSalvar_Click(object sender, EventArgs e)
@@ -206,8 +205,6 @@ namespace Arqueng
                     My.comando.ExecuteNonQuery();
 
                     MessageBox.Show("Dados atualizados com sucesso!");
-
-
                 }
                 catch (Exception ex)
                 {

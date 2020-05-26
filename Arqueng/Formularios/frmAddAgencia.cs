@@ -36,9 +36,6 @@ namespace Arqueng.Formularios
             txtEmail.Text = Email;
         }
 
-
-
-
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             if (btnAddSave.Text == "&Adicionar")
@@ -111,10 +108,11 @@ namespace Arqueng.Formularios
                     My.conexaoDB.Close();
                     My.conexaoDB = null;
                     My.comando = null;
+                    this.Close();
                 }
-                this.Close();
             }
         }
+
 
         private void frmAddAgencia_Load(object sender, EventArgs e)
         {

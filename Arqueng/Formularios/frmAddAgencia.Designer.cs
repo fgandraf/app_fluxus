@@ -82,7 +82,7 @@
             // 
             this.lblTelefone2.AutoSize = true;
             this.lblTelefone2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefone2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblTelefone2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblTelefone2.Location = new System.Drawing.Point(333, 191);
             this.lblTelefone2.Name = "lblTelefone2";
             this.lblTelefone2.Size = new System.Drawing.Size(60, 13);
@@ -93,7 +93,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblEmail.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblEmail.Location = new System.Drawing.Point(22, 233);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(34, 13);
@@ -104,7 +104,7 @@
             // 
             this.lblTelefone1.AutoSize = true;
             this.lblTelefone1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefone1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblTelefone1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblTelefone1.Location = new System.Drawing.Point(178, 190);
             this.lblTelefone1.Name = "lblTelefone1";
             this.lblTelefone1.Size = new System.Drawing.Size(60, 13);
@@ -127,7 +127,7 @@
             // 
             this.lblContato.AutoSize = true;
             this.lblContato.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContato.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblContato.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblContato.Location = new System.Drawing.Point(22, 191);
             this.lblContato.Name = "lblContato";
             this.lblContato.Size = new System.Drawing.Size(49, 13);
@@ -162,7 +162,7 @@
             // 
             this.lblEndereco.AutoSize = true;
             this.lblEndereco.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEndereco.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblEndereco.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblEndereco.Location = new System.Drawing.Point(22, 107);
             this.lblEndereco.Name = "lblEndereco";
             this.lblEndereco.Size = new System.Drawing.Size(55, 13);
@@ -213,7 +213,7 @@
             // 
             this.lblUF.AutoSize = true;
             this.lblUF.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUF.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblUF.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblUF.Location = new System.Drawing.Point(433, 149);
             this.lblUF.Name = "lblUF";
             this.lblUF.Size = new System.Drawing.Size(21, 13);
@@ -224,7 +224,7 @@
             // 
             this.lblCEP.AutoSize = true;
             this.lblCEP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCEP.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblCEP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblCEP.Location = new System.Drawing.Point(334, 148);
             this.lblCEP.Name = "lblCEP";
             this.lblCEP.Size = new System.Drawing.Size(26, 13);
@@ -235,7 +235,7 @@
             // 
             this.lblCidade.AutoSize = true;
             this.lblCidade.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCidade.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblCidade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblCidade.Location = new System.Drawing.Point(177, 148);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(43, 13);
@@ -246,7 +246,7 @@
             // 
             this.lblBairro.AutoSize = true;
             this.lblBairro.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBairro.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblBairro.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblBairro.Location = new System.Drawing.Point(20, 149);
             this.lblBairro.Name = "lblBairro";
             this.lblBairro.Size = new System.Drawing.Size(37, 13);
@@ -304,7 +304,7 @@
             // 
             this.lblComplemento.AutoSize = true;
             this.lblComplemento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComplemento.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblComplemento.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblComplemento.Location = new System.Drawing.Point(335, 107);
             this.lblComplemento.Name = "lblComplemento";
             this.lblComplemento.Size = new System.Drawing.Size(79, 13);
@@ -336,7 +336,7 @@
             // 
             this.lblAgencia.AutoSize = true;
             this.lblAgencia.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAgencia.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblAgencia.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblAgencia.Location = new System.Drawing.Point(22, 23);
             this.lblAgencia.Name = "lblAgencia";
             this.lblAgencia.Size = new System.Drawing.Size(56, 13);
@@ -358,12 +358,12 @@
             // 
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblNome.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblNome.Location = new System.Drawing.Point(22, 65);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(45, 13);
+            this.lblNome.Size = new System.Drawing.Size(37, 13);
             this.lblNome.TabIndex = 245;
-            this.lblNome.Text = "* Nome";
+            this.lblNome.Text = "Nome";
             // 
             // pnlLinha2
             // 

@@ -17,7 +17,6 @@ namespace Arqueng
     {
 
 
-
         public void  AtualizarDGAtividades()
         {
             try
@@ -51,9 +50,6 @@ namespace Arqueng
                 My.conexaoDB = null;
             }
         }
-
-
-
 
 
         public frmAtividades()
@@ -91,20 +87,11 @@ namespace Arqueng
         }
 
 
-
-
-
-
         private void frmAtividades_Load(object sender, EventArgs e)
         {
             AtualizarDGAtividades();
             txtPesquisar.Focus();
         }
-
-
-
-
-
 
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -123,9 +110,4 @@ namespace Arqueng
             AtualizarDGAtividades();
         }
     }
-
-
-
-
-
 }

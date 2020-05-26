@@ -80,7 +80,7 @@
             // 
             this.lblDataNascimento.AutoSize = true;
             this.lblDataNascimento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataNascimento.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblDataNascimento.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblDataNascimento.Location = new System.Drawing.Point(178, 107);
             this.lblDataNascimento.Name = "lblDataNascimento";
             this.lblDataNascimento.Size = new System.Drawing.Size(94, 13);
@@ -111,7 +111,7 @@
             // 
             this.lblTelefone2.AutoSize = true;
             this.lblTelefone2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefone2.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblTelefone2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblTelefone2.Location = new System.Drawing.Point(178, 237);
             this.lblTelefone2.Name = "lblTelefone2";
             this.lblTelefone2.Size = new System.Drawing.Size(60, 13);
@@ -122,7 +122,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblEmail.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblEmail.Location = new System.Drawing.Point(22, 279);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(34, 13);
@@ -133,7 +133,7 @@
             // 
             this.lblTelefone1.AutoSize = true;
             this.lblTelefone1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefone1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblTelefone1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblTelefone1.Location = new System.Drawing.Point(22, 236);
             this.lblTelefone1.Name = "lblTelefone1";
             this.lblTelefone1.Size = new System.Drawing.Size(60, 13);
@@ -156,7 +156,7 @@
             // 
             this.lblCPF.AutoSize = true;
             this.lblCPF.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCPF.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblCPF.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblCPF.Location = new System.Drawing.Point(22, 107);
             this.lblCPF.Name = "lblCPF";
             this.lblCPF.Size = new System.Drawing.Size(26, 13);
@@ -179,7 +179,7 @@
             // 
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblNome.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblNome.Location = new System.Drawing.Point(22, 65);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(37, 13);
@@ -190,7 +190,7 @@
             // 
             this.lblCarteiraProfissional.AutoSize = true;
             this.lblCarteiraProfissional.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCarteiraProfissional.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblCarteiraProfissional.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblCarteiraProfissional.Location = new System.Drawing.Point(176, 152);
             this.lblCarteiraProfissional.Name = "lblCarteiraProfissional";
             this.lblCarteiraProfissional.Size = new System.Drawing.Size(110, 13);
@@ -225,7 +225,7 @@
             // 
             this.lblEntidadedeClasse.AutoSize = true;
             this.lblEntidadedeClasse.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEntidadedeClasse.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblEntidadedeClasse.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblEntidadedeClasse.Location = new System.Drawing.Point(22, 194);
             this.lblEntidadedeClasse.Name = "lblEntidadedeClasse";
             this.lblEntidadedeClasse.Size = new System.Drawing.Size(104, 13);
@@ -258,7 +258,7 @@
             // 
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblCodigo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblCodigo.Location = new System.Drawing.Point(22, 23);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(53, 13);
@@ -281,7 +281,7 @@
             // 
             this.lblProfissao.AutoSize = true;
             this.lblProfissao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProfissao.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblProfissao.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.lblProfissao.Location = new System.Drawing.Point(22, 152);
             this.lblProfissao.Name = "lblProfissao";
             this.lblProfissao.Size = new System.Drawing.Size(54, 13);

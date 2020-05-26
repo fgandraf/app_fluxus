@@ -15,17 +15,12 @@ namespace Arqueng
 {
     public partial class frmAddAtividade : Form
     {
- 
 
 
         public frmAddAtividade()
         {
             InitializeComponent();
         }
-
-
-
-
 
 
         public frmAddAtividade(string Codigo, string Descricao, string Valor, string Deslocamento)
@@ -39,11 +34,6 @@ namespace Arqueng
         }
 
 
-
-
-
-
-
         private void frmAddAtividade_Load(object sender, EventArgs e)
         {
             if (this.Text == "Alterar")
@@ -52,12 +42,6 @@ namespace Arqueng
                 txtCodigo.Enabled = false;
             }
         }
-
-
-
-
-
-
 
 
         private void btnAddSave_Click(object sender, EventArgs e)
@@ -117,8 +101,8 @@ namespace Arqueng
                     My.conexaoDB.Close();
                     My.conexaoDB = null;
                     My.comando = null;
+                    this.Close();
                 }
-                this.Close();
             }
         }
     }

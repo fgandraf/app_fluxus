@@ -15,10 +15,12 @@ namespace Arqueng
 {
     public partial class frmAgencias : Form
     {
+
         public frmAgencias()
         {
             InitializeComponent();
         }
+
 
         public void AtualizarDGAgencias()
         {
@@ -54,6 +56,7 @@ namespace Arqueng
             }
         }
 
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddAgencia form = new frmAddAgencia();
@@ -61,6 +64,7 @@ namespace Arqueng
             form.ShowDialog();
             AtualizarDGAgencias();
         }
+
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -82,8 +86,8 @@ namespace Arqueng
             form.Text = "Alterar";
             form.ShowDialog();
             AtualizarDGAgencias();
-
         }
+
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {

@@ -13,12 +13,17 @@ using MySql.Data.MySqlClient;
 
 namespace Arqueng
 {
+
+
     public partial class frmProfissionais : Form
     {
+
+
         public frmProfissionais()
         {
             InitializeComponent();
         }
+
 
         public void AtualizarDGProfissionais()
         {
@@ -53,11 +58,13 @@ namespace Arqueng
             }
         }
 
+
         private void frmProfissionais_Load(object sender, EventArgs e)
         {
             AtualizarDGProfissionais();
             txtPesquisar.Focus();
         }
+
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
@@ -66,6 +73,7 @@ namespace Arqueng
             form.ShowDialog();
             AtualizarDGProfissionais();
         }
+
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -86,6 +94,7 @@ namespace Arqueng
             form.ShowDialog();
             AtualizarDGProfissionais();
         }
+
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {

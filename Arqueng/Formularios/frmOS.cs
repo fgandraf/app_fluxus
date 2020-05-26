@@ -13,12 +13,17 @@ using MySql.Data.MySqlClient;
 
 namespace Arqueng
 {
+
+
     public partial class frmOS : Form
     {
+     
+        
         public frmOS()
         {
             InitializeComponent();
         }
+
 
         public void AtualizarDGOS()
         {
@@ -53,11 +58,13 @@ namespace Arqueng
             }
         }
 
+
         private void frmOS_Load(object sender, EventArgs e)
         {
             AtualizarDGOS();
             txtPesquisar.Focus();
         }
+
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
@@ -92,6 +99,7 @@ namespace Arqueng
             AtualizarDGOS();
         }
 
+
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -117,11 +125,6 @@ namespace Arqueng
                 }
                 AtualizarDGOS();
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

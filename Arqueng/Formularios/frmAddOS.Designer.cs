@@ -33,6 +33,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAddSave = new System.Windows.Forms.Button();
             this.pnlOS = new System.Windows.Forms.Panel();
+            this.txtNomeProfissional = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txtAtividadeDeslocamento = new System.Windows.Forms.TextBox();
             this.txtAtividadeValor = new System.Windows.Forms.TextBox();
@@ -81,7 +82,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.txtCodFatura = new System.Windows.Forms.TextBox();
-            this.txtNomeProfissional = new System.Windows.Forms.TextBox();
             this.pnlOS.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -151,6 +151,19 @@
             this.pnlOS.Name = "pnlOS";
             this.pnlOS.Size = new System.Drawing.Size(375, 526);
             this.pnlOS.TabIndex = 0;
+            // 
+            // txtNomeProfissional
+            // 
+            this.txtNomeProfissional.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtNomeProfissional.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNomeProfissional.Enabled = false;
+            this.txtNomeProfissional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeProfissional.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtNomeProfissional.Location = new System.Drawing.Point(130, 226);
+            this.txtNomeProfissional.MaxLength = 100;
+            this.txtNomeProfissional.Name = "txtNomeProfissional";
+            this.txtNomeProfissional.Size = new System.Drawing.Size(216, 23);
+            this.txtNomeProfissional.TabIndex = 366;
             // 
             // panel6
             // 
@@ -765,19 +778,7 @@
             this.txtCodFatura.Name = "txtCodFatura";
             this.txtCodFatura.Size = new System.Drawing.Size(192, 23);
             this.txtCodFatura.TabIndex = 405;
-            // 
-            // txtNomeProfissional
-            // 
-            this.txtNomeProfissional.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtNomeProfissional.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNomeProfissional.Enabled = false;
-            this.txtNomeProfissional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeProfissional.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtNomeProfissional.Location = new System.Drawing.Point(130, 226);
-            this.txtNomeProfissional.MaxLength = 100;
-            this.txtNomeProfissional.Name = "txtNomeProfissional";
-            this.txtNomeProfissional.Size = new System.Drawing.Size(216, 23);
-            this.txtNomeProfissional.TabIndex = 366;
+            this.txtCodFatura.Visible = false;
             // 
             // frmAddOS
             // 
