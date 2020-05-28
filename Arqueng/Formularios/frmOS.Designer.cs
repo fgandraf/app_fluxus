@@ -77,7 +77,7 @@
             // 
             this.pnlLinha2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pnlLinha2.BackColor = System.Drawing.Color.SteelBlue;
-            this.pnlLinha2.Location = new System.Drawing.Point(410, 54);
+            this.pnlLinha2.Location = new System.Drawing.Point(590, 54);
             this.pnlLinha2.Name = "pnlLinha2";
             this.pnlLinha2.Size = new System.Drawing.Size(280, 1);
             this.pnlLinha2.TabIndex = 224;
@@ -86,7 +86,7 @@
             // 
             this.pctLupa.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pctLupa.Image = ((System.Drawing.Image)(resources.GetObject("pctLupa.Image")));
-            this.pctLupa.Location = new System.Drawing.Point(410, 32);
+            this.pctLupa.Location = new System.Drawing.Point(590, 32);
             this.pctLupa.Name = "pctLupa";
             this.pctLupa.Size = new System.Drawing.Size(20, 20);
             this.pctLupa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -99,7 +99,7 @@
             this.txtPesquisar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisar.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.txtPesquisar.Location = new System.Drawing.Point(433, 33);
+            this.txtPesquisar.Location = new System.Drawing.Point(613, 33);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(0);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(257, 18);
@@ -116,7 +116,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
-            this.btnEditar.Location = new System.Drawing.Point(68, 25);
+            this.btnEditar.Location = new System.Drawing.Point(88, 25);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(35, 35);
             this.btnEditar.TabIndex = 219;
@@ -135,7 +135,7 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
-            this.btnExcluir.Location = new System.Drawing.Point(109, 25);
+            this.btnExcluir.Location = new System.Drawing.Point(129, 25);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(35, 35);
             this.btnExcluir.TabIndex = 220;
@@ -154,7 +154,7 @@
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
-            this.btnAdicionar.Location = new System.Drawing.Point(30, 25);
+            this.btnAdicionar.Location = new System.Drawing.Point(50, 25);
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(35, 35);
@@ -196,7 +196,7 @@
             this.obs,
             this.fatura_cod});
             this.dgvOS.GridColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dgvOS.Location = new System.Drawing.Point(30, 78);
+            this.dgvOS.Location = new System.Drawing.Point(50, 85);
             this.dgvOS.MultiSelect = false;
             this.dgvOS.Name = "dgvOS";
             this.dgvOS.ReadOnly = true;
@@ -214,7 +214,7 @@
             this.dgvOS.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOS.ShowEditingIcon = false;
-            this.dgvOS.Size = new System.Drawing.Size(660, 440);
+            this.dgvOS.Size = new System.Drawing.Size(820, 445);
             this.dgvOS.TabIndex = 221;
             // 
             // status
@@ -413,7 +413,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(720, 550);
+            this.ClientSize = new System.Drawing.Size(920, 580);
             this.Controls.Add(this.pnlLinha2);
             this.Controls.Add(this.pctLupa);
             this.Controls.Add(this.txtPesquisar);

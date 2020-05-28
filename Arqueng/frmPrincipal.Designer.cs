@@ -47,6 +47,11 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.ttpMenu = new System.Windows.Forms.ToolTip(this.components);
             this.ttpSempre = new System.Windows.Forms.ToolTip(this.components);
+            this.pnlCtrlProfissionais = new System.Windows.Forms.Panel();
+            this.pnlCtrlAtividades = new System.Windows.Forms.Panel();
+            this.pnlCtrlAgencias = new System.Windows.Forms.Panel();
+            this.pnlCtrlOS = new System.Windows.Forms.Panel();
+            this.pnlCtrlDashboard = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
@@ -56,6 +61,11 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.pnlMenu.Controls.Add(this.pnlCtrlDashboard);
+            this.pnlMenu.Controls.Add(this.pnlCtrlOS);
+            this.pnlMenu.Controls.Add(this.pnlCtrlAgencias);
+            this.pnlMenu.Controls.Add(this.pnlCtrlAtividades);
+            this.pnlMenu.Controls.Add(this.pnlCtrlProfissionais);
             this.pnlMenu.Controls.Add(this.btnSlide);
             this.pnlMenu.Controls.Add(this.btnDadosCadastrais);
             this.pnlMenu.Controls.Add(this.button1);
@@ -68,7 +78,7 @@
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(180, 600);
+            this.pnlMenu.Size = new System.Drawing.Size(200, 630);
             this.pnlMenu.TabIndex = 160;
             // 
             // btnSlide
@@ -76,7 +86,7 @@
             this.btnSlide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSlide.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSlide.Image = ((System.Drawing.Image)(resources.GetObject("btnSlide.Image")));
-            this.btnSlide.Location = new System.Drawing.Point(146, 13);
+            this.btnSlide.Location = new System.Drawing.Point(166, 13);
             this.btnSlide.Name = "btnSlide";
             this.btnSlide.Size = new System.Drawing.Size(20, 20);
             this.btnSlide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -98,7 +108,7 @@
             this.btnDadosCadastrais.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnDadosCadastrais.Image = ((System.Drawing.Image)(resources.GetObject("btnDadosCadastrais.Image")));
             this.btnDadosCadastrais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDadosCadastrais.Location = new System.Drawing.Point(0, 550);
+            this.btnDadosCadastrais.Location = new System.Drawing.Point(0, 580);
             this.btnDadosCadastrais.Name = "btnDadosCadastrais";
             this.btnDadosCadastrais.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnDadosCadastrais.Size = new System.Drawing.Size(50, 50);
@@ -123,8 +133,8 @@
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.Location = new System.Drawing.Point(0, 175);
             this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(180, 50);
+            this.button1.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(200, 50);
             this.button1.TabIndex = 18;
             this.button1.Text = "    Dashboard";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -137,7 +147,7 @@
             // 
             this.imgLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.imgLogo.Image = ((System.Drawing.Image)(resources.GetObject("imgLogo.Image")));
-            this.imgLogo.Location = new System.Drawing.Point(40, 50);
+            this.imgLogo.Location = new System.Drawing.Point(50, 50);
             this.imgLogo.Name = "imgLogo";
             this.imgLogo.Size = new System.Drawing.Size(100, 100);
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -146,10 +156,9 @@
             // 
             // btnSobre
             // 
-            this.btnSobre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSobre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSobre.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btnSobre.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSobre.Enabled = false;
             this.btnSobre.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
             this.btnSobre.FlatAppearance.BorderSize = 0;
             this.btnSobre.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
@@ -158,7 +167,7 @@
             this.btnSobre.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSobre.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnSobre.Image = ((System.Drawing.Image)(resources.GetObject("btnSobre.Image")));
-            this.btnSobre.Location = new System.Drawing.Point(130, 550);
+            this.btnSobre.Location = new System.Drawing.Point(150, 580);
             this.btnSobre.Margin = new System.Windows.Forms.Padding(0);
             this.btnSobre.Name = "btnSobre";
             this.btnSobre.Size = new System.Drawing.Size(50, 50);
@@ -183,8 +192,8 @@
             this.btnProfissionais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProfissionais.Location = new System.Drawing.Point(0, 375);
             this.btnProfissionais.Name = "btnProfissionais";
-            this.btnProfissionais.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnProfissionais.Size = new System.Drawing.Size(180, 50);
+            this.btnProfissionais.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnProfissionais.Size = new System.Drawing.Size(200, 50);
             this.btnProfissionais.TabIndex = 5;
             this.btnProfissionais.Text = "    Profissionais";
             this.btnProfissionais.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -207,8 +216,8 @@
             this.btnAtividades.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAtividades.Location = new System.Drawing.Point(0, 325);
             this.btnAtividades.Name = "btnAtividades";
-            this.btnAtividades.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnAtividades.Size = new System.Drawing.Size(180, 50);
+            this.btnAtividades.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnAtividades.Size = new System.Drawing.Size(200, 50);
             this.btnAtividades.TabIndex = 4;
             this.btnAtividades.Text = "    Atividades";
             this.btnAtividades.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -231,8 +240,8 @@
             this.btnAgencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgencias.Location = new System.Drawing.Point(0, 275);
             this.btnAgencias.Name = "btnAgencias";
-            this.btnAgencias.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnAgencias.Size = new System.Drawing.Size(180, 50);
+            this.btnAgencias.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnAgencias.Size = new System.Drawing.Size(200, 50);
             this.btnAgencias.TabIndex = 3;
             this.btnAgencias.Text = "    Agências";
             this.btnAgencias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -255,8 +264,8 @@
             this.btnNovaOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNovaOS.Location = new System.Drawing.Point(0, 225);
             this.btnNovaOS.Name = "btnNovaOS";
-            this.btnNovaOS.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnNovaOS.Size = new System.Drawing.Size(180, 50);
+            this.btnNovaOS.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnNovaOS.Size = new System.Drawing.Size(200, 50);
             this.btnNovaOS.TabIndex = 2;
             this.btnNovaOS.Text = "    Ordens de Serviços";
             this.btnNovaOS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -272,9 +281,9 @@
             this.pnlTitulo.Controls.Add(this.lblTitulo);
             this.pnlTitulo.Controls.Add(this.btnAppClose);
             this.pnlTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitulo.Location = new System.Drawing.Point(180, 0);
+            this.pnlTitulo.Location = new System.Drawing.Point(200, 0);
             this.pnlTitulo.Name = "pnlTitulo";
-            this.pnlTitulo.Size = new System.Drawing.Size(720, 50);
+            this.pnlTitulo.Size = new System.Drawing.Size(920, 50);
             this.pnlTitulo.TabIndex = 2;
             this.pnlTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitulo_MouseDown);
             // 
@@ -291,7 +300,7 @@
             this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsuario.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuario.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnUsuario.Location = new System.Drawing.Point(542, 27);
+            this.btnUsuario.Location = new System.Drawing.Point(742, 27);
             this.btnUsuario.Margin = new System.Windows.Forms.Padding(0);
             this.btnUsuario.Name = "btnUsuario";
             this.btnUsuario.Size = new System.Drawing.Size(175, 20);
@@ -320,7 +329,7 @@
             this.btnAppClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAppClose.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppClose.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnAppClose.Location = new System.Drawing.Point(693, 1);
+            this.btnAppClose.Location = new System.Drawing.Point(893, 1);
             this.btnAppClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppClose.Name = "btnAppClose";
             this.btnAppClose.Size = new System.Drawing.Size(25, 25);
@@ -333,10 +342,10 @@
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.Window;
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(180, 50);
+            this.pnlMain.Location = new System.Drawing.Point(200, 50);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(720, 550);
+            this.pnlMain.Size = new System.Drawing.Size(920, 580);
             this.pnlMain.TabIndex = 161;
             // 
             // ttpMenu
@@ -354,12 +363,56 @@
             this.ttpSempre.InitialDelay = 50;
             this.ttpSempre.ReshowDelay = 10;
             // 
+            // pnlCtrlProfissionais
+            // 
+            this.pnlCtrlProfissionais.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlProfissionais.Location = new System.Drawing.Point(0, 380);
+            this.pnlCtrlProfissionais.Name = "pnlCtrlProfissionais";
+            this.pnlCtrlProfissionais.Size = new System.Drawing.Size(6, 40);
+            this.pnlCtrlProfissionais.TabIndex = 123;
+            this.pnlCtrlProfissionais.Visible = false;
+            // 
+            // pnlCtrlAtividades
+            // 
+            this.pnlCtrlAtividades.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlAtividades.Location = new System.Drawing.Point(0, 330);
+            this.pnlCtrlAtividades.Name = "pnlCtrlAtividades";
+            this.pnlCtrlAtividades.Size = new System.Drawing.Size(6, 40);
+            this.pnlCtrlAtividades.TabIndex = 124;
+            this.pnlCtrlAtividades.Visible = false;
+            // 
+            // pnlCtrlAgencias
+            // 
+            this.pnlCtrlAgencias.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlAgencias.Location = new System.Drawing.Point(0, 280);
+            this.pnlCtrlAgencias.Name = "pnlCtrlAgencias";
+            this.pnlCtrlAgencias.Size = new System.Drawing.Size(6, 40);
+            this.pnlCtrlAgencias.TabIndex = 125;
+            this.pnlCtrlAgencias.Visible = false;
+            // 
+            // pnlCtrlOS
+            // 
+            this.pnlCtrlOS.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlOS.Location = new System.Drawing.Point(0, 230);
+            this.pnlCtrlOS.Name = "pnlCtrlOS";
+            this.pnlCtrlOS.Size = new System.Drawing.Size(6, 40);
+            this.pnlCtrlOS.TabIndex = 126;
+            this.pnlCtrlOS.Visible = false;
+            // 
+            // pnlCtrlDashboard
+            // 
+            this.pnlCtrlDashboard.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlDashboard.Location = new System.Drawing.Point(0, 180);
+            this.pnlCtrlDashboard.Name = "pnlCtrlDashboard";
+            this.pnlCtrlDashboard.Size = new System.Drawing.Size(6, 40);
+            this.pnlCtrlDashboard.TabIndex = 127;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(900, 600);
+            this.ClientSize = new System.Drawing.Size(1120, 630);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlTitulo);
             this.Controls.Add(this.pnlMenu);
@@ -397,6 +450,11 @@
         private System.Windows.Forms.Button btnDadosCadastrais;
         private System.Windows.Forms.ToolTip ttpMenu;
         private System.Windows.Forms.ToolTip ttpSempre;
+        private System.Windows.Forms.Panel pnlCtrlDashboard;
+        private System.Windows.Forms.Panel pnlCtrlOS;
+        private System.Windows.Forms.Panel pnlCtrlAgencias;
+        private System.Windows.Forms.Panel pnlCtrlAtividades;
+        private System.Windows.Forms.Panel pnlCtrlProfissionais;
     }
 }
 

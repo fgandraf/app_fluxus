@@ -42,6 +42,14 @@ namespace Arqueng
             fh.Show();
         }
         
+        private void OcultaControles()
+        {
+            pnlCtrlDashboard.Visible = false;
+            pnlCtrlOS.Visible = false;
+            pnlCtrlAgencias.Visible = false;
+            pnlCtrlAtividades.Visible = false;
+            pnlCtrlProfissionais.Visible = false;
+        }
 
         private void pnlTitulo_MouseDown(object sender, MouseEventArgs e)
         {
@@ -52,6 +60,8 @@ namespace Arqueng
 
         private void btnNovaOS_Click(object sender, EventArgs e)
         {
+            OcultaControles();
+            pnlCtrlOS.Visible = true;
             lblTitulo.Text = "Ordens de Serviços";
             AbrirFormInPanel(new frmOS());
         }
@@ -59,6 +69,7 @@ namespace Arqueng
 
         private void btnSobre_Click(object sender, EventArgs e)
         {
+            OcultaControles();
             lblTitulo.Text = "Sobre";
             AbrirFormInPanel(new frmSobre());
         }
@@ -66,6 +77,8 @@ namespace Arqueng
 
         private void btnProfissionais_Click(object sender, EventArgs e)
         {
+            OcultaControles();
+            pnlCtrlProfissionais.Visible = true;
             lblTitulo.Text = "Profissionais";
             AbrirFormInPanel(new frmProfissionais());
         }
@@ -73,6 +86,8 @@ namespace Arqueng
 
         private void btnAtividades_Click(object sender, EventArgs e)
         {
+            OcultaControles();
+            pnlCtrlAtividades.Visible = true;
             lblTitulo.Text = "Atividades";
             AbrirFormInPanel(new frmAtividades());
         }
@@ -80,6 +95,8 @@ namespace Arqueng
 
         private void btnAgencias_Click(object sender, EventArgs e)
         {
+            OcultaControles();
+            pnlCtrlAgencias.Visible = true;
             lblTitulo.Text = "Agências Demandantes";
             AbrirFormInPanel(new frmAgencias());
         }
@@ -93,14 +110,14 @@ namespace Arqueng
 
         private void btnSlide_Click(object sender, EventArgs e)
         {
-            if (pnlMenu.Width == 180)
+            if (pnlMenu.Width == 200)
             {
                 pnlMenu.Width = 50;
                 ttpMenu.Active = true;
             }
             else
             {
-                pnlMenu.Width = 180;
+                pnlMenu.Width = 200;
                 ttpMenu.Active = false;
             }    
         }
@@ -108,6 +125,7 @@ namespace Arqueng
 
         private void btnDadosCadastrais_Click(object sender, EventArgs e)
         {
+            OcultaControles();
             lblTitulo.Text = "Dados Cadastrais";
             AbrirFormInPanel(new frmDadosCadastrais());
         }
@@ -115,6 +133,8 @@ namespace Arqueng
 
         private void button1_Click(object sender, EventArgs e)
         {
+            OcultaControles();
+            pnlCtrlDashboard.Visible = true;
             lblTitulo.Text = "Dashboard";
             AbrirFormInPanel(new frmDashboard());
         }
