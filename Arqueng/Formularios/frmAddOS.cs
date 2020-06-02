@@ -110,8 +110,8 @@ namespace Arqueng.Formularios
                     while (My.dr.Read())
                     {
                         lblAtividadeNome.Text = Convert.ToString(My.dr["descricao"]);
-                        lblAtividadeValor.Text = "R$ " + Convert.ToString(My.dr["valor_atividade"]);
-                        lblAtividadeDeslocamento.Text = "R$ " + Convert.ToString(My.dr["valor_deslocamento"]);
+                        lblAtividadeValor.Text = "Valor: R$ " + Convert.ToString(My.dr["valor_atividade"]);
+                        lblAtividadeDeslocamento.Text = "Desloc: R$ " + Convert.ToString(My.dr["valor_deslocamento"]);
                     }
                 }
             }
@@ -314,8 +314,6 @@ namespace Arqueng.Formularios
             {
                 cboProfissional.SelectedItem = null;
                 cboAtividade.SelectedItem = null;
-                lblTitAtividadeValor.Text = null;
-                lblTitAtividadeDeslocamento.Text = null;
             }
                 
         }
@@ -328,8 +326,6 @@ namespace Arqueng.Formularios
         private void cboAtividade_SelectionChangeCommitted(object sender, EventArgs e)
         {
             BuscarNomeAtividade();
-            lblTitAtividadeValor.Text = "Valor OS";
-            lblTitAtividadeDeslocamento.Text = "Deslocamento";
         }
     }
 }
