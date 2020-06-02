@@ -29,11 +29,13 @@ namespace Arqueng
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        
+        /*
+         
         private void AbrirFormInPanel(object Formfilho)
         {
             if (this.pnlMain.Controls.Count > 0)
                 this.pnlMain.Controls.RemoveAt(0);
+            
             Form fh = Formfilho as Form;
             fh.TopLevel = false;
             fh.Dock = DockStyle.Fill;
@@ -41,6 +43,8 @@ namespace Arqueng
             this.pnlMain.Tag = fh;
             fh.Show();
         }
+
+        */
         
         private void OcultaControles()
         {
@@ -63,7 +67,11 @@ namespace Arqueng
             OcultaControles();
             pnlCtrlOS.Visible = true;
             lblTitulo.Text = "Ordens de Serviços";
-            AbrirFormInPanel(new frmOS());
+
+            frmOS frm = new frmOS { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
         }
 
 
@@ -71,7 +79,11 @@ namespace Arqueng
         {
             OcultaControles();
             lblTitulo.Text = "Sobre";
-            AbrirFormInPanel(new frmSobre());
+            
+            frmSobre frm = new frmSobre { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
         }
 
 
@@ -80,7 +92,11 @@ namespace Arqueng
             OcultaControles();
             pnlCtrlProfissionais.Visible = true;
             lblTitulo.Text = "Profissionais";
-            AbrirFormInPanel(new frmProfissionais());
+            
+            frmProfissionais frm = new frmProfissionais { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
         }
 
 
@@ -89,16 +105,25 @@ namespace Arqueng
             OcultaControles();
             pnlCtrlAtividades.Visible = true;
             lblTitulo.Text = "Atividades";
-            AbrirFormInPanel(new frmAtividades());
+
+            frmAtividades frm = new frmAtividades { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
         }
 
 
         private void btnAgencias_Click(object sender, EventArgs e)
         {
-            OcultaControles();
-            pnlCtrlAgencias.Visible = true;
-            lblTitulo.Text = "Agências Demandantes";
-            AbrirFormInPanel(new frmAgencias());
+             OcultaControles();
+             pnlCtrlAgencias.Visible = true;
+             lblTitulo.Text = "Agências Demandantes";
+            
+            frmAgencias frm = new frmAgencias { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
+
         }
 
 
@@ -127,7 +152,11 @@ namespace Arqueng
         {
             OcultaControles();
             lblTitulo.Text = "Dados Cadastrais";
-            AbrirFormInPanel(new frmDadosCadastrais());
+            
+            frmDadosCadastrais frm = new frmDadosCadastrais { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
         }
 
 
@@ -136,13 +165,25 @@ namespace Arqueng
             OcultaControles();
             pnlCtrlDashboard.Visible = true;
             lblTitulo.Text = "Dashboard";
-            AbrirFormInPanel(new frmDashboard());
+
+            frmDashboard frm = new frmDashboard { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
         }
 
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new frmDashboard());
+            frmDashboard frm = new frmDashboard { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
+        }
+
+        private void pnlTitulo_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

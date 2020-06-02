@@ -38,12 +38,13 @@ namespace Arqueng.Formularios
             }
         }
 
+
         public void BuscarAtividades()
         {
             try
             {
                 My.conexaoDB = new MySqlConnection(My.dadosdb);
-                My.da = new MySqlDataAdapter("SELECT * FROM tb_atividades order by codigo", My.conexaoDB);
+                My.da = new MySqlDataAdapter("SELECT codigo, descricao FROM tb_atividades order by codigo", My.conexaoDB);
                 DataTable dt = new DataTable();
                 My.da.Fill(dt);
                 cboAtividade.DataSource = dt;
@@ -76,7 +77,41 @@ namespace Arqueng.Formularios
                 {
                     while (My.dr.Read())
                     {
-                        txtNomeProfissional.Text = Convert.ToString(My.dr["nome"]);
+                        lblNomeProfissional.Text = Convert.ToString(My.dr["nome"]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                My.conexaoDB.Close();
+                My.conexaoDB = null;
+            }
+        }
+
+        public void BuscarNomeAtividade()
+        {
+            try
+            {
+                My.conexaoDB = new MySqlConnection(My.dadosdb);
+                My.comando = new MySqlCommand("SELECT descricao, valor_atividade, valor_deslocamento FROM tb_atividades WHERE codigo = @codigo", My.conexaoDB);
+                My.comando.Parameters.AddWithValue("@codigo", cboAtividade.Text);
+                My.conexaoDB.Open();
+                My.dr = My.comando.ExecuteReader();
+                if (My.dr.HasRows == false)
+                {
+                    MessageBox.Show("Atividade não cadastrado!", "Não encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    while (My.dr.Read())
+                    {
+                        lblAtividadeNome.Text = Convert.ToString(My.dr["descricao"]);
+                        lblAtividadeValor.Text = "R$ " + Convert.ToString(My.dr["valor_atividade"]);
+                        lblAtividadeDeslocamento.Text = "R$ " + Convert.ToString(My.dr["valor_deslocamento"]);
                     }
                 }
             }
@@ -149,6 +184,7 @@ namespace Arqueng.Formularios
             txtOBS.Text = OBS;
             txtCodFatura.Text = CodFatura;
             BuscarNomeProfissional();
+            BuscarNomeAtividade();
         }
 
 
@@ -277,7 +313,9 @@ namespace Arqueng.Formularios
             else
             {
                 cboProfissional.SelectedItem = null;
-                cboAtividade.Text = "";
+                cboAtividade.SelectedItem = null;
+                lblTitAtividadeValor.Text = null;
+                lblTitAtividadeDeslocamento.Text = null;
             }
                 
         }
@@ -287,9 +325,11 @@ namespace Arqueng.Formularios
             BuscarNomeProfissional();
         }
 
-        private void btnAddProfissional_Click(object sender, EventArgs e)
+        private void cboAtividade_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            
+            BuscarNomeAtividade();
+            lblTitAtividadeValor.Text = "Valor OS";
+            lblTitAtividadeDeslocamento.Text = "Deslocamento";
         }
     }
 }

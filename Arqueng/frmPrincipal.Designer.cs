@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.pnlCtrlDashboard = new System.Windows.Forms.Panel();
+            this.pnlCtrlOS = new System.Windows.Forms.Panel();
+            this.pnlCtrlAgencias = new System.Windows.Forms.Panel();
+            this.pnlCtrlAtividades = new System.Windows.Forms.Panel();
+            this.pnlCtrlProfissionais = new System.Windows.Forms.Panel();
             this.btnSlide = new System.Windows.Forms.PictureBox();
             this.btnDadosCadastrais = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -47,11 +52,6 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.ttpMenu = new System.Windows.Forms.ToolTip(this.components);
             this.ttpSempre = new System.Windows.Forms.ToolTip(this.components);
-            this.pnlCtrlProfissionais = new System.Windows.Forms.Panel();
-            this.pnlCtrlAtividades = new System.Windows.Forms.Panel();
-            this.pnlCtrlAgencias = new System.Windows.Forms.Panel();
-            this.pnlCtrlOS = new System.Windows.Forms.Panel();
-            this.pnlCtrlDashboard = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
@@ -80,6 +80,50 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(200, 630);
             this.pnlMenu.TabIndex = 160;
+            // 
+            // pnlCtrlDashboard
+            // 
+            this.pnlCtrlDashboard.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlDashboard.Location = new System.Drawing.Point(0, 200);
+            this.pnlCtrlDashboard.Name = "pnlCtrlDashboard";
+            this.pnlCtrlDashboard.Size = new System.Drawing.Size(5, 40);
+            this.pnlCtrlDashboard.TabIndex = 127;
+            // 
+            // pnlCtrlOS
+            // 
+            this.pnlCtrlOS.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlOS.Location = new System.Drawing.Point(0, 250);
+            this.pnlCtrlOS.Name = "pnlCtrlOS";
+            this.pnlCtrlOS.Size = new System.Drawing.Size(5, 40);
+            this.pnlCtrlOS.TabIndex = 126;
+            this.pnlCtrlOS.Visible = false;
+            // 
+            // pnlCtrlAgencias
+            // 
+            this.pnlCtrlAgencias.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlAgencias.Location = new System.Drawing.Point(0, 300);
+            this.pnlCtrlAgencias.Name = "pnlCtrlAgencias";
+            this.pnlCtrlAgencias.Size = new System.Drawing.Size(5, 40);
+            this.pnlCtrlAgencias.TabIndex = 125;
+            this.pnlCtrlAgencias.Visible = false;
+            // 
+            // pnlCtrlAtividades
+            // 
+            this.pnlCtrlAtividades.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlAtividades.Location = new System.Drawing.Point(0, 350);
+            this.pnlCtrlAtividades.Name = "pnlCtrlAtividades";
+            this.pnlCtrlAtividades.Size = new System.Drawing.Size(5, 40);
+            this.pnlCtrlAtividades.TabIndex = 124;
+            this.pnlCtrlAtividades.Visible = false;
+            // 
+            // pnlCtrlProfissionais
+            // 
+            this.pnlCtrlProfissionais.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlProfissionais.Location = new System.Drawing.Point(0, 400);
+            this.pnlCtrlProfissionais.Name = "pnlCtrlProfissionais";
+            this.pnlCtrlProfissionais.Size = new System.Drawing.Size(5, 40);
+            this.pnlCtrlProfissionais.TabIndex = 123;
+            this.pnlCtrlProfissionais.Visible = false;
             // 
             // btnSlide
             // 
@@ -131,7 +175,7 @@
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 175);
+            this.button1.Location = new System.Drawing.Point(0, 195);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(200, 50);
@@ -147,7 +191,7 @@
             // 
             this.imgLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.imgLogo.Image = ((System.Drawing.Image)(resources.GetObject("imgLogo.Image")));
-            this.imgLogo.Location = new System.Drawing.Point(50, 50);
+            this.imgLogo.Location = new System.Drawing.Point(50, 55);
             this.imgLogo.Name = "imgLogo";
             this.imgLogo.Size = new System.Drawing.Size(100, 100);
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -190,7 +234,7 @@
             this.btnProfissionais.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnProfissionais.Image = ((System.Drawing.Image)(resources.GetObject("btnProfissionais.Image")));
             this.btnProfissionais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProfissionais.Location = new System.Drawing.Point(0, 375);
+            this.btnProfissionais.Location = new System.Drawing.Point(0, 395);
             this.btnProfissionais.Name = "btnProfissionais";
             this.btnProfissionais.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnProfissionais.Size = new System.Drawing.Size(200, 50);
@@ -214,7 +258,7 @@
             this.btnAtividades.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAtividades.Image = ((System.Drawing.Image)(resources.GetObject("btnAtividades.Image")));
             this.btnAtividades.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAtividades.Location = new System.Drawing.Point(0, 325);
+            this.btnAtividades.Location = new System.Drawing.Point(0, 345);
             this.btnAtividades.Name = "btnAtividades";
             this.btnAtividades.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnAtividades.Size = new System.Drawing.Size(200, 50);
@@ -238,7 +282,7 @@
             this.btnAgencias.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAgencias.Image = ((System.Drawing.Image)(resources.GetObject("btnAgencias.Image")));
             this.btnAgencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgencias.Location = new System.Drawing.Point(0, 275);
+            this.btnAgencias.Location = new System.Drawing.Point(0, 295);
             this.btnAgencias.Name = "btnAgencias";
             this.btnAgencias.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnAgencias.Size = new System.Drawing.Size(200, 50);
@@ -262,7 +306,7 @@
             this.btnNovaOS.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnNovaOS.Image = ((System.Drawing.Image)(resources.GetObject("btnNovaOS.Image")));
             this.btnNovaOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNovaOS.Location = new System.Drawing.Point(0, 225);
+            this.btnNovaOS.Location = new System.Drawing.Point(0, 245);
             this.btnNovaOS.Name = "btnNovaOS";
             this.btnNovaOS.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnNovaOS.Size = new System.Drawing.Size(200, 50);
@@ -285,6 +329,7 @@
             this.pnlTitulo.Name = "pnlTitulo";
             this.pnlTitulo.Size = new System.Drawing.Size(920, 50);
             this.pnlTitulo.TabIndex = 2;
+            this.pnlTitulo.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlTitulo_Paint);
             this.pnlTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitulo_MouseDown);
             // 
             // btnUsuario
@@ -362,50 +407,6 @@
             this.ttpSempre.AutoPopDelay = 5000;
             this.ttpSempre.InitialDelay = 50;
             this.ttpSempre.ReshowDelay = 10;
-            // 
-            // pnlCtrlProfissionais
-            // 
-            this.pnlCtrlProfissionais.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlProfissionais.Location = new System.Drawing.Point(0, 380);
-            this.pnlCtrlProfissionais.Name = "pnlCtrlProfissionais";
-            this.pnlCtrlProfissionais.Size = new System.Drawing.Size(6, 40);
-            this.pnlCtrlProfissionais.TabIndex = 123;
-            this.pnlCtrlProfissionais.Visible = false;
-            // 
-            // pnlCtrlAtividades
-            // 
-            this.pnlCtrlAtividades.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlAtividades.Location = new System.Drawing.Point(0, 330);
-            this.pnlCtrlAtividades.Name = "pnlCtrlAtividades";
-            this.pnlCtrlAtividades.Size = new System.Drawing.Size(6, 40);
-            this.pnlCtrlAtividades.TabIndex = 124;
-            this.pnlCtrlAtividades.Visible = false;
-            // 
-            // pnlCtrlAgencias
-            // 
-            this.pnlCtrlAgencias.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlAgencias.Location = new System.Drawing.Point(0, 280);
-            this.pnlCtrlAgencias.Name = "pnlCtrlAgencias";
-            this.pnlCtrlAgencias.Size = new System.Drawing.Size(6, 40);
-            this.pnlCtrlAgencias.TabIndex = 125;
-            this.pnlCtrlAgencias.Visible = false;
-            // 
-            // pnlCtrlOS
-            // 
-            this.pnlCtrlOS.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlOS.Location = new System.Drawing.Point(0, 230);
-            this.pnlCtrlOS.Name = "pnlCtrlOS";
-            this.pnlCtrlOS.Size = new System.Drawing.Size(6, 40);
-            this.pnlCtrlOS.TabIndex = 126;
-            this.pnlCtrlOS.Visible = false;
-            // 
-            // pnlCtrlDashboard
-            // 
-            this.pnlCtrlDashboard.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlDashboard.Location = new System.Drawing.Point(0, 180);
-            this.pnlCtrlDashboard.Name = "pnlCtrlDashboard";
-            this.pnlCtrlDashboard.Size = new System.Drawing.Size(6, 40);
-            this.pnlCtrlDashboard.TabIndex = 127;
             // 
             // frmPrincipal
             // 

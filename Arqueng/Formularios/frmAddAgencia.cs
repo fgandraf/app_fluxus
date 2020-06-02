@@ -19,6 +19,7 @@ namespace Arqueng.Formularios
             InitializeComponent();
         }
 
+
         public frmAddAgencia (string Agencia, string Nome, string Endereco, string Complemento, string Bairro, string Cidade, string CEP, string UF, string Contato, string Telefone1, string Telefone2, string Email)
         {
             InitializeComponent();
@@ -121,6 +122,16 @@ namespace Arqueng.Formularios
                 btnAddSave.Text = "&Salvar";
                 txtAgencia.Enabled = false;
             }
+        }
+
+        private void frmAddAgencia_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void frmAddAgencia_Leave(object sender, EventArgs e)
+        {
+          
         }
     }
 }

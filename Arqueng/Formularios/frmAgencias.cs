@@ -21,6 +21,7 @@ namespace Arqueng
             InitializeComponent();
         }
 
+        
 
         public void AtualizarDGAgencias()
         {
@@ -63,6 +64,28 @@ namespace Arqueng
             form.Text = "Adicionar";
             form.ShowDialog();
             AtualizarDGAgencias();
+
+
+
+            //Formulário Neto em desenvolvimento
+
+            //frmAddAgencia frm = new frmAddAgencia
+            //{
+            //    TopLevel = false,
+            //    Dock = DockStyle.Fill 
+            //};
+
+            //var Principal = this.ParentForm;
+            //var pnlContentPrincipal = Controls.Find("pnlMain", true).FirstOrDefault();
+            //pnlContentPrincipal.Controls.Clear();
+            //pnlContentPrincipal.Refresh();
+            //pnlContentPrincipal.Controls.Add(frm);
+            ////pnlMain.Visible = true;
+            //frm.Show();
+
+            //Principal.Refresh();
+            //this.Close();
+
         }
 
 
@@ -113,13 +136,18 @@ namespace Arqueng
                     My.comando = null;
                 }
                 AtualizarDGAgencias();
-            } 
+            }
         }
 
         private void frmAgencias_Load(object sender, EventArgs e)
         {
             AtualizarDGAgencias();
             txtPesquisar.Focus();
+        }
+
+        private void frmAgencias_MouseDown(object sender, MouseEventArgs e)
+        {
+            
         }
     }
 }

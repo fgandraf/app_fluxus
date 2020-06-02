@@ -29,42 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddOS));
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAddSave = new System.Windows.Forms.Button();
-            this.pnlOS = new System.Windows.Forms.Panel();
-            this.btnAddAtividade = new System.Windows.Forms.Button();
-            this.txtNomeAtividade = new System.Windows.Forms.TextBox();
-            this.btnAddProfissional = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cboProfissional = new System.Windows.Forms.ComboBox();
-            this.txtNomeProfissional = new System.Windows.Forms.TextBox();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.txtAtividadeDeslocamento = new System.Windows.Forms.TextBox();
-            this.txtAtividadeValor = new System.Windows.Forms.TextBox();
-            this.txtAtividadeNome = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txtAgenciaEmail = new System.Windows.Forms.TextBox();
-            this.txtAgenciaTelefone = new System.Windows.Forms.TextBox();
-            this.txtAgenciaNome = new System.Windows.Forms.TextBox();
-            this.txtTelefoneContato = new System.Windows.Forms.MaskedTextBox();
-            this.lblTelefoneContato = new System.Windows.Forms.Label();
-            this.txtNomeContato = new System.Windows.Forms.TextBox();
-            this.lblNomeContato = new System.Windows.Forms.Label();
-            this.lblCidade = new System.Windows.Forms.Label();
-            this.txtCidade = new System.Windows.Forms.TextBox();
-            this.txtNomeCliente = new System.Windows.Forms.TextBox();
-            this.lblCliente = new System.Windows.Forms.Label();
-            this.lblProfissional = new System.Windows.Forms.Label();
-            this.chkSiopi = new System.Windows.Forms.CheckBox();
-            this.cboAtividade = new System.Windows.Forms.ComboBox();
-            this.lblAtividade = new System.Windows.Forms.Label();
-            this.txtReferencia = new System.Windows.Forms.MaskedTextBox();
-            this.dtpDataExecucao = new System.Windows.Forms.DateTimePicker();
-            this.lblDataExecucao = new System.Windows.Forms.Label();
-            this.dtpDataOrdem = new System.Windows.Forms.DateTimePicker();
-            this.lblDataOrdem = new System.Windows.Forms.Label();
-            this.lblReferencia = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.rbtRecebida = new System.Windows.Forms.RadioButton();
@@ -79,21 +45,52 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.ttpAddOS = new System.Windows.Forms.ToolTip(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.txtCodFatura = new System.Windows.Forms.TextBox();
-            this.pnlOS.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.lblReferencia = new System.Windows.Forms.Label();
+            this.lblDataOrdem = new System.Windows.Forms.Label();
+            this.dtpDataOrdem = new System.Windows.Forms.DateTimePicker();
+            this.lblDataExecucao = new System.Windows.Forms.Label();
+            this.txtReferencia = new System.Windows.Forms.MaskedTextBox();
+            this.lblAtividade = new System.Windows.Forms.Label();
+            this.cboAtividade = new System.Windows.Forms.ComboBox();
+            this.chkSiopi = new System.Windows.Forms.CheckBox();
+            this.lblProfissional = new System.Windows.Forms.Label();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.txtNomeCliente = new System.Windows.Forms.TextBox();
+            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.lblCidade = new System.Windows.Forms.Label();
+            this.lblNomeContato = new System.Windows.Forms.Label();
+            this.txtNomeContato = new System.Windows.Forms.TextBox();
+            this.lblTelefoneContato = new System.Windows.Forms.Label();
+            this.txtTelefoneContato = new System.Windows.Forms.MaskedTextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtAgenciaNome = new System.Windows.Forms.TextBox();
+            this.txtAgenciaTelefone = new System.Windows.Forms.TextBox();
+            this.txtAgenciaEmail = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.cboProfissional = new System.Windows.Forms.ComboBox();
+            this.btnAddProfissional = new System.Windows.Forms.Button();
+            this.btnAddAtividade = new System.Windows.Forms.Button();
+            this.dtpDataExecucao = new System.Windows.Forms.DateTimePicker();
+            this.pnlOS = new System.Windows.Forms.Panel();
+            this.lblTitAtividadeValor = new System.Windows.Forms.Label();
+            this.lblTitAtividadeDeslocamento = new System.Windows.Forms.Label();
+            this.lblAtividadeNome = new System.Windows.Forms.Label();
+            this.lblAtividadeDeslocamento = new System.Windows.Forms.Label();
+            this.lblAtividadeValor = new System.Windows.Forms.Label();
+            this.lblNomeProfissional = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.panel4.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.pnlOS.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -104,7 +101,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnCancelar.Location = new System.Drawing.Point(376, 587);
+            this.btnCancelar.Location = new System.Drawing.Point(422, 520);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(125, 25);
             this.btnCancelar.TabIndex = 18;
@@ -118,474 +115,13 @@
             this.btnAddSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddSave.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSave.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAddSave.Location = new System.Drawing.Point(507, 587);
+            this.btnAddSave.Location = new System.Drawing.Point(553, 520);
             this.btnAddSave.Name = "btnAddSave";
             this.btnAddSave.Size = new System.Drawing.Size(125, 25);
             this.btnAddSave.TabIndex = 17;
             this.btnAddSave.Text = "&Adicionar";
             this.btnAddSave.UseVisualStyleBackColor = false;
             this.btnAddSave.Click += new System.EventHandler(this.btnAddSave_Click);
-            // 
-            // pnlOS
-            // 
-            this.pnlOS.BackColor = System.Drawing.SystemColors.Window;
-            this.pnlOS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlOS.Controls.Add(this.dtpDataExecucao);
-            this.pnlOS.Controls.Add(this.btnAddAtividade);
-            this.pnlOS.Controls.Add(this.txtNomeAtividade);
-            this.pnlOS.Controls.Add(this.btnAddProfissional);
-            this.pnlOS.Controls.Add(this.panel2);
-            this.pnlOS.Controls.Add(this.txtNomeProfissional);
-            this.pnlOS.Controls.Add(this.panel6);
-            this.pnlOS.Controls.Add(this.panel3);
-            this.pnlOS.Controls.Add(this.txtTelefoneContato);
-            this.pnlOS.Controls.Add(this.lblTelefoneContato);
-            this.pnlOS.Controls.Add(this.txtNomeContato);
-            this.pnlOS.Controls.Add(this.lblNomeContato);
-            this.pnlOS.Controls.Add(this.lblCidade);
-            this.pnlOS.Controls.Add(this.txtCidade);
-            this.pnlOS.Controls.Add(this.txtNomeCliente);
-            this.pnlOS.Controls.Add(this.lblCliente);
-            this.pnlOS.Controls.Add(this.lblProfissional);
-            this.pnlOS.Controls.Add(this.chkSiopi);
-            this.pnlOS.Controls.Add(this.cboAtividade);
-            this.pnlOS.Controls.Add(this.lblAtividade);
-            this.pnlOS.Controls.Add(this.txtReferencia);
-            this.pnlOS.Controls.Add(this.lblDataExecucao);
-            this.pnlOS.Controls.Add(this.dtpDataOrdem);
-            this.pnlOS.Controls.Add(this.lblDataOrdem);
-            this.pnlOS.Controls.Add(this.lblReferencia);
-            this.pnlOS.Location = new System.Drawing.Point(15, 19);
-            this.pnlOS.Name = "pnlOS";
-            this.pnlOS.Size = new System.Drawing.Size(375, 526);
-            this.pnlOS.TabIndex = 0;
-            // 
-            // btnAddAtividade
-            // 
-            this.btnAddAtividade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddAtividade.Location = new System.Drawing.Point(117, 268);
-            this.btnAddAtividade.Name = "btnAddAtividade";
-            this.btnAddAtividade.Size = new System.Drawing.Size(23, 23);
-            this.btnAddAtividade.TabIndex = 369;
-            this.btnAddAtividade.Text = "+";
-            this.btnAddAtividade.UseVisualStyleBackColor = true;
-            // 
-            // txtNomeAtividade
-            // 
-            this.txtNomeAtividade.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txtNomeAtividade.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNomeAtividade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNomeAtividade.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeAtividade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtNomeAtividade.Location = new System.Drawing.Point(146, 268);
-            this.txtNomeAtividade.MaxLength = 100;
-            this.txtNomeAtividade.Multiline = true;
-            this.txtNomeAtividade.Name = "txtNomeAtividade";
-            this.txtNomeAtividade.Size = new System.Drawing.Size(200, 23);
-            this.txtNomeAtividade.TabIndex = 368;
-            this.txtNomeAtividade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtNomeAtividade.WordWrap = false;
-            // 
-            // btnAddProfissional
-            // 
-            this.btnAddProfissional.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddProfissional.Location = new System.Drawing.Point(117, 226);
-            this.btnAddProfissional.Name = "btnAddProfissional";
-            this.btnAddProfissional.Size = new System.Drawing.Size(23, 23);
-            this.btnAddProfissional.TabIndex = 367;
-            this.btnAddProfissional.Text = "+";
-            this.btnAddProfissional.UseVisualStyleBackColor = true;
-            this.btnAddProfissional.Click += new System.EventHandler(this.btnAddProfissional_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.cboProfissional);
-            this.panel2.Location = new System.Drawing.Point(28, 226);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(90, 23);
-            this.panel2.TabIndex = 3;
-            // 
-            // cboProfissional
-            // 
-            this.cboProfissional.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.cboProfissional.DisplayMember = "codigo";
-            this.cboProfissional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboProfissional.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cboProfissional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboProfissional.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cboProfissional.FormattingEnabled = true;
-            this.cboProfissional.Location = new System.Drawing.Point(-1, -1);
-            this.cboProfissional.MaxLength = 3;
-            this.cboProfissional.Name = "cboProfissional";
-            this.cboProfissional.Size = new System.Drawing.Size(90, 23);
-            this.cboProfissional.TabIndex = 0;
-            this.cboProfissional.SelectionChangeCommitted += new System.EventHandler(this.cboProfissional_SelectionChangeCommitted);
-            // 
-            // txtNomeProfissional
-            // 
-            this.txtNomeProfissional.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txtNomeProfissional.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNomeProfissional.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNomeProfissional.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeProfissional.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtNomeProfissional.Location = new System.Drawing.Point(146, 226);
-            this.txtNomeProfissional.Margin = new System.Windows.Forms.Padding(0);
-            this.txtNomeProfissional.MaxLength = 100;
-            this.txtNomeProfissional.Multiline = true;
-            this.txtNomeProfissional.Name = "txtNomeProfissional";
-            this.txtNomeProfissional.ReadOnly = true;
-            this.txtNomeProfissional.Size = new System.Drawing.Size(200, 23);
-            this.txtNomeProfissional.TabIndex = 366;
-            this.txtNomeProfissional.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtNomeProfissional.WordWrap = false;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel6.Controls.Add(this.txtAtividadeDeslocamento);
-            this.panel6.Controls.Add(this.txtAtividadeValor);
-            this.panel6.Controls.Add(this.txtAtividadeNome);
-            this.panel6.Location = new System.Drawing.Point(95, 312);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(251, 60);
-            this.panel6.TabIndex = 365;
-            // 
-            // txtAtividadeDeslocamento
-            // 
-            this.txtAtividadeDeslocamento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAtividadeDeslocamento.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txtAtividadeDeslocamento.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAtividadeDeslocamento.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAtividadeDeslocamento.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAtividadeDeslocamento.Location = new System.Drawing.Point(3, 38);
-            this.txtAtividadeDeslocamento.MaxLength = 100;
-            this.txtAtividadeDeslocamento.Name = "txtAtividadeDeslocamento";
-            this.txtAtividadeDeslocamento.Size = new System.Drawing.Size(240, 15);
-            this.txtAtividadeDeslocamento.TabIndex = 373;
-            this.txtAtividadeDeslocamento.Text = "Valor Deslocamento: R$ 00,00";
-            this.txtAtividadeDeslocamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtAtividadeValor
-            // 
-            this.txtAtividadeValor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAtividadeValor.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txtAtividadeValor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAtividadeValor.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAtividadeValor.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAtividadeValor.Location = new System.Drawing.Point(3, 23);
-            this.txtAtividadeValor.MaxLength = 100;
-            this.txtAtividadeValor.Name = "txtAtividadeValor";
-            this.txtAtividadeValor.Size = new System.Drawing.Size(240, 15);
-            this.txtAtividadeValor.TabIndex = 372;
-            this.txtAtividadeValor.Text = "Valor Serviço: R$ 000,00";
-            this.txtAtividadeValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtAtividadeNome
-            // 
-            this.txtAtividadeNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAtividadeNome.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txtAtividadeNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAtividadeNome.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAtividadeNome.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAtividadeNome.Location = new System.Drawing.Point(3, 5);
-            this.txtAtividadeNome.MaxLength = 100;
-            this.txtAtividadeNome.Name = "txtAtividadeNome";
-            this.txtAtividadeNome.Size = new System.Drawing.Size(240, 15);
-            this.txtAtividadeNome.TabIndex = 371;
-            this.txtAtividadeNome.Text = "Nome da Atividade";
-            this.txtAtividadeNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel3.Controls.Add(this.txtAgenciaEmail);
-            this.panel3.Controls.Add(this.txtAgenciaTelefone);
-            this.panel3.Controls.Add(this.txtAgenciaNome);
-            this.panel3.Location = new System.Drawing.Point(95, 93);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(251, 60);
-            this.panel3.TabIndex = 358;
-            // 
-            // txtAgenciaEmail
-            // 
-            this.txtAgenciaEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAgenciaEmail.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txtAgenciaEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAgenciaEmail.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAgenciaEmail.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAgenciaEmail.Location = new System.Drawing.Point(3, 42);
-            this.txtAgenciaEmail.MaxLength = 100;
-            this.txtAgenciaEmail.Name = "txtAgenciaEmail";
-            this.txtAgenciaEmail.Size = new System.Drawing.Size(240, 15);
-            this.txtAgenciaEmail.TabIndex = 373;
-            this.txtAgenciaEmail.Text = "Email da agência";
-            this.txtAgenciaEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtAgenciaTelefone
-            // 
-            this.txtAgenciaTelefone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAgenciaTelefone.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txtAgenciaTelefone.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAgenciaTelefone.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAgenciaTelefone.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAgenciaTelefone.Location = new System.Drawing.Point(3, 23);
-            this.txtAgenciaTelefone.MaxLength = 100;
-            this.txtAgenciaTelefone.Name = "txtAgenciaTelefone";
-            this.txtAgenciaTelefone.Size = new System.Drawing.Size(240, 15);
-            this.txtAgenciaTelefone.TabIndex = 372;
-            this.txtAgenciaTelefone.Text = "Telefone da agência";
-            this.txtAgenciaTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtAgenciaNome
-            // 
-            this.txtAgenciaNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAgenciaNome.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txtAgenciaNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtAgenciaNome.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAgenciaNome.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAgenciaNome.Location = new System.Drawing.Point(3, 5);
-            this.txtAgenciaNome.MaxLength = 100;
-            this.txtAgenciaNome.Name = "txtAgenciaNome";
-            this.txtAgenciaNome.Size = new System.Drawing.Size(240, 15);
-            this.txtAgenciaNome.TabIndex = 371;
-            this.txtAgenciaNome.Text = "Nome da agência";
-            this.txtAgenciaNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTelefoneContato
-            // 
-            this.txtTelefoneContato.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtTelefoneContato.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefoneContato.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtTelefoneContato.Location = new System.Drawing.Point(226, 486);
-            this.txtTelefoneContato.Name = "txtTelefoneContato";
-            this.txtTelefoneContato.Size = new System.Drawing.Size(120, 23);
-            this.txtTelefoneContato.TabIndex = 9;
-            // 
-            // lblTelefoneContato
-            // 
-            this.lblTelefoneContato.AutoSize = true;
-            this.lblTelefoneContato.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTelefoneContato.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTelefoneContato.Location = new System.Drawing.Point(223, 469);
-            this.lblTelefoneContato.Name = "lblTelefoneContato";
-            this.lblTelefoneContato.Size = new System.Drawing.Size(113, 13);
-            this.lblTelefoneContato.TabIndex = 364;
-            this.lblTelefoneContato.Text = "Telefone do Contato";
-            // 
-            // txtNomeContato
-            // 
-            this.txtNomeContato.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtNomeContato.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNomeContato.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeContato.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtNomeContato.Location = new System.Drawing.Point(28, 486);
-            this.txtNomeContato.MaxLength = 100;
-            this.txtNomeContato.Name = "txtNomeContato";
-            this.txtNomeContato.Size = new System.Drawing.Size(192, 23);
-            this.txtNomeContato.TabIndex = 8;
-            // 
-            // lblNomeContato
-            // 
-            this.lblNomeContato.AutoSize = true;
-            this.lblNomeContato.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomeContato.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblNomeContato.Location = new System.Drawing.Point(25, 470);
-            this.lblNomeContato.Name = "lblNomeContato";
-            this.lblNomeContato.Size = new System.Drawing.Size(99, 13);
-            this.lblNomeContato.TabIndex = 362;
-            this.lblNomeContato.Text = "Nome do Contato";
-            // 
-            // lblCidade
-            // 
-            this.lblCidade.AutoSize = true;
-            this.lblCidade.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCidade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblCidade.Location = new System.Drawing.Point(25, 427);
-            this.lblCidade.Name = "lblCidade";
-            this.lblCidade.Size = new System.Drawing.Size(43, 13);
-            this.lblCidade.TabIndex = 360;
-            this.lblCidade.Text = "Cidade";
-            // 
-            // txtCidade
-            // 
-            this.txtCidade.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCidade.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCidade.Location = new System.Drawing.Point(28, 443);
-            this.txtCidade.MaxLength = 100;
-            this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(318, 23);
-            this.txtCidade.TabIndex = 7;
-            // 
-            // txtNomeCliente
-            // 
-            this.txtNomeCliente.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtNomeCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNomeCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeCliente.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtNomeCliente.Location = new System.Drawing.Point(28, 401);
-            this.txtNomeCliente.MaxLength = 100;
-            this.txtNomeCliente.Name = "txtNomeCliente";
-            this.txtNomeCliente.Size = new System.Drawing.Size(318, 23);
-            this.txtNomeCliente.TabIndex = 6;
-            // 
-            // lblCliente
-            // 
-            this.lblCliente.AutoSize = true;
-            this.lblCliente.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCliente.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblCliente.Location = new System.Drawing.Point(25, 385);
-            this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(93, 13);
-            this.lblCliente.TabIndex = 358;
-            this.lblCliente.Text = "Nome do Cliente";
-            // 
-            // lblProfissional
-            // 
-            this.lblProfissional.AutoSize = true;
-            this.lblProfissional.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProfissional.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblProfissional.Location = new System.Drawing.Point(25, 210);
-            this.lblProfissional.Name = "lblProfissional";
-            this.lblProfissional.Size = new System.Drawing.Size(67, 13);
-            this.lblProfissional.TabIndex = 355;
-            this.lblProfissional.Text = "Profissional";
-            // 
-            // chkSiopi
-            // 
-            this.chkSiopi.AutoSize = true;
-            this.chkSiopi.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.chkSiopi.Checked = true;
-            this.chkSiopi.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSiopi.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.chkSiopi.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.chkSiopi.Location = new System.Drawing.Point(311, 37);
-            this.chkSiopi.Name = "chkSiopi";
-            this.chkSiopi.Size = new System.Drawing.Size(35, 35);
-            this.chkSiopi.TabIndex = 5;
-            this.chkSiopi.Text = "SIOPI";
-            this.chkSiopi.UseCompatibleTextRendering = true;
-            this.chkSiopi.UseVisualStyleBackColor = true;
-            // 
-            // cboAtividade
-            // 
-            this.cboAtividade.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.cboAtividade.DisplayMember = "codigo";
-            this.cboAtividade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboAtividade.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cboAtividade.FormattingEnabled = true;
-            this.cboAtividade.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AP",
-            "AM",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MT",
-            "MS",
-            "MG",
-            "PA",
-            "PB",
-            "PR",
-            "PE",
-            "PI",
-            "RJ",
-            "RN",
-            "RS",
-            "RO",
-            "RR",
-            "SC",
-            "SP",
-            "SE",
-            "TO"});
-            this.cboAtividade.Location = new System.Drawing.Point(28, 268);
-            this.cboAtividade.MaxLength = 10;
-            this.cboAtividade.Name = "cboAtividade";
-            this.cboAtividade.Size = new System.Drawing.Size(90, 23);
-            this.cboAtividade.TabIndex = 4;
-            // 
-            // lblAtividade
-            // 
-            this.lblAtividade.AutoSize = true;
-            this.lblAtividade.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAtividade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblAtividade.Location = new System.Drawing.Point(25, 252);
-            this.lblAtividade.Name = "lblAtividade";
-            this.lblAtividade.Size = new System.Drawing.Size(55, 13);
-            this.lblAtividade.TabIndex = 350;
-            this.lblAtividade.Text = "Atividade";
-            // 
-            // txtReferencia
-            // 
-            this.txtReferencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtReferencia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReferencia.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtReferencia.Location = new System.Drawing.Point(28, 53);
-            this.txtReferencia.Mask = "0000,0000,000000000/0000,00,00,00";
-            this.txtReferencia.Name = "txtReferencia";
-            this.txtReferencia.Size = new System.Drawing.Size(260, 23);
-            this.txtReferencia.TabIndex = 0;
-            // 
-            // dtpDataExecucao
-            // 
-            this.dtpDataExecucao.CalendarForeColor = System.Drawing.SystemColors.ControlLight;
-            this.dtpDataExecucao.CustomFormat = "";
-            this.dtpDataExecucao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDataExecucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataExecucao.Location = new System.Drawing.Point(206, 184);
-            this.dtpDataExecucao.Name = "dtpDataExecucao";
-            this.dtpDataExecucao.Size = new System.Drawing.Size(140, 23);
-            this.dtpDataExecucao.TabIndex = 2;
-            // 
-            // lblDataExecucao
-            // 
-            this.lblDataExecucao.AutoSize = true;
-            this.lblDataExecucao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataExecucao.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblDataExecucao.Location = new System.Drawing.Point(229, 168);
-            this.lblDataExecucao.Name = "lblDataExecucao";
-            this.lblDataExecucao.Size = new System.Drawing.Size(85, 13);
-            this.lblDataExecucao.TabIndex = 347;
-            this.lblDataExecucao.Text = "Prazo Execução";
-            // 
-            // dtpDataOrdem
-            // 
-            this.dtpDataOrdem.CalendarForeColor = System.Drawing.SystemColors.ControlLight;
-            this.dtpDataOrdem.CustomFormat = "";
-            this.dtpDataOrdem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDataOrdem.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataOrdem.Location = new System.Drawing.Point(28, 184);
-            this.dtpDataOrdem.Name = "dtpDataOrdem";
-            this.dtpDataOrdem.Size = new System.Drawing.Size(140, 23);
-            this.dtpDataOrdem.TabIndex = 1;
-            // 
-            // lblDataOrdem
-            // 
-            this.lblDataOrdem.AutoSize = true;
-            this.lblDataOrdem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataOrdem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblDataOrdem.Location = new System.Drawing.Point(25, 168);
-            this.lblDataOrdem.Name = "lblDataOrdem";
-            this.lblDataOrdem.Size = new System.Drawing.Size(85, 13);
-            this.lblDataOrdem.TabIndex = 345;
-            this.lblDataOrdem.Text = "Data da Ordem";
-            // 
-            // lblReferencia
-            // 
-            this.lblReferencia.AutoSize = true;
-            this.lblReferencia.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReferencia.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblReferencia.Location = new System.Drawing.Point(25, 37);
-            this.lblReferencia.Name = "lblReferencia";
-            this.lblReferencia.Size = new System.Drawing.Size(69, 13);
-            this.lblReferencia.TabIndex = 0;
-            this.lblReferencia.Text = "* Referência";
             // 
             // panel4
             // 
@@ -697,7 +233,7 @@
             this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel10.Controls.Add(this.txtOBS);
             this.panel10.Controls.Add(this.label1);
-            this.panel10.Location = new System.Drawing.Point(422, 377);
+            this.panel10.Location = new System.Drawing.Point(422, 230);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(210, 147);
             this.panel10.TabIndex = 394;
@@ -745,78 +281,12 @@
             this.panel13.Size = new System.Drawing.Size(318, 1);
             this.panel13.TabIndex = 386;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 6.5F);
-            this.button1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(422, 242);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(65, 70);
-            this.button1.TabIndex = 399;
-            this.button1.Text = "Convocação";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ttpAddOS.SetToolTip(this.button1, "Importar Convocação.txt");
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 6.5F);
-            this.button2.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(494, 242);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(65, 70);
-            this.button2.TabIndex = 401;
-            this.button2.Text = "PFUI";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ttpAddOS.SetToolTip(this.button2, "Importar PFUI");
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 6.5F);
-            this.button3.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(567, 242);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(65, 70);
-            this.button3.TabIndex = 404;
-            this.button3.Text = "Última RAE";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ttpAddOS.SetToolTip(this.button3, "Importar RAE - Última Medição");
-            this.button3.UseVisualStyleBackColor = false;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.panel9);
-            this.panel1.Location = new System.Drawing.Point(408, 348);
+            this.panel1.Location = new System.Drawing.Point(409, 417);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(220, 1);
             this.panel1.TabIndex = 400;
@@ -836,11 +306,436 @@
             this.txtCodFatura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodFatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodFatura.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCodFatura.Location = new System.Drawing.Point(44, 586);
+            this.txtCodFatura.Location = new System.Drawing.Point(553, 28);
             this.txtCodFatura.Name = "txtCodFatura";
             this.txtCodFatura.Size = new System.Drawing.Size(192, 23);
             this.txtCodFatura.TabIndex = 405;
             this.txtCodFatura.Visible = false;
+            // 
+            // lblReferencia
+            // 
+            this.lblReferencia.AutoSize = true;
+            this.lblReferencia.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReferencia.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblReferencia.Location = new System.Drawing.Point(25, 37);
+            this.lblReferencia.Name = "lblReferencia";
+            this.lblReferencia.Size = new System.Drawing.Size(69, 13);
+            this.lblReferencia.TabIndex = 0;
+            this.lblReferencia.Text = "* Referência";
+            // 
+            // lblDataOrdem
+            // 
+            this.lblDataOrdem.AutoSize = true;
+            this.lblDataOrdem.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataOrdem.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblDataOrdem.Location = new System.Drawing.Point(25, 168);
+            this.lblDataOrdem.Name = "lblDataOrdem";
+            this.lblDataOrdem.Size = new System.Drawing.Size(85, 13);
+            this.lblDataOrdem.TabIndex = 345;
+            this.lblDataOrdem.Text = "Data da Ordem";
+            // 
+            // dtpDataOrdem
+            // 
+            this.dtpDataOrdem.CalendarForeColor = System.Drawing.SystemColors.ControlLight;
+            this.dtpDataOrdem.CustomFormat = "";
+            this.dtpDataOrdem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDataOrdem.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataOrdem.Location = new System.Drawing.Point(28, 184);
+            this.dtpDataOrdem.Name = "dtpDataOrdem";
+            this.dtpDataOrdem.Size = new System.Drawing.Size(140, 23);
+            this.dtpDataOrdem.TabIndex = 1;
+            // 
+            // lblDataExecucao
+            // 
+            this.lblDataExecucao.AutoSize = true;
+            this.lblDataExecucao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataExecucao.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblDataExecucao.Location = new System.Drawing.Point(229, 168);
+            this.lblDataExecucao.Name = "lblDataExecucao";
+            this.lblDataExecucao.Size = new System.Drawing.Size(85, 13);
+            this.lblDataExecucao.TabIndex = 347;
+            this.lblDataExecucao.Text = "Prazo Execução";
+            // 
+            // txtReferencia
+            // 
+            this.txtReferencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtReferencia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReferencia.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtReferencia.Location = new System.Drawing.Point(28, 53);
+            this.txtReferencia.Mask = "0000,0000,000000000/0000,00,00,00";
+            this.txtReferencia.Name = "txtReferencia";
+            this.txtReferencia.Size = new System.Drawing.Size(260, 23);
+            this.txtReferencia.TabIndex = 0;
+            // 
+            // lblAtividade
+            // 
+            this.lblAtividade.AutoSize = true;
+            this.lblAtividade.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAtividade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblAtividade.Location = new System.Drawing.Point(25, 252);
+            this.lblAtividade.Name = "lblAtividade";
+            this.lblAtividade.Size = new System.Drawing.Size(55, 13);
+            this.lblAtividade.TabIndex = 350;
+            this.lblAtividade.Text = "Atividade";
+            // 
+            // cboAtividade
+            // 
+            this.cboAtividade.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cboAtividade.DisplayMember = "codigo";
+            this.cboAtividade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAtividade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cboAtividade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboAtividade.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cboAtividade.FormattingEnabled = true;
+            this.cboAtividade.Location = new System.Drawing.Point(-1, -1);
+            this.cboAtividade.MaxLength = 10;
+            this.cboAtividade.Name = "cboAtividade";
+            this.cboAtividade.Size = new System.Drawing.Size(90, 23);
+            this.cboAtividade.TabIndex = 4;
+            this.cboAtividade.SelectionChangeCommitted += new System.EventHandler(this.cboAtividade_SelectionChangeCommitted);
+            // 
+            // chkSiopi
+            // 
+            this.chkSiopi.AutoSize = true;
+            this.chkSiopi.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.chkSiopi.Checked = true;
+            this.chkSiopi.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkSiopi.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.chkSiopi.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.chkSiopi.Location = new System.Drawing.Point(311, 37);
+            this.chkSiopi.Name = "chkSiopi";
+            this.chkSiopi.Size = new System.Drawing.Size(35, 35);
+            this.chkSiopi.TabIndex = 5;
+            this.chkSiopi.Text = "SIOPI";
+            this.chkSiopi.UseCompatibleTextRendering = true;
+            this.chkSiopi.UseVisualStyleBackColor = true;
+            // 
+            // lblProfissional
+            // 
+            this.lblProfissional.AutoSize = true;
+            this.lblProfissional.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProfissional.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblProfissional.Location = new System.Drawing.Point(25, 210);
+            this.lblProfissional.Name = "lblProfissional";
+            this.lblProfissional.Size = new System.Drawing.Size(67, 13);
+            this.lblProfissional.TabIndex = 355;
+            this.lblProfissional.Text = "Profissional";
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCliente.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblCliente.Location = new System.Drawing.Point(25, 385);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(93, 13);
+            this.lblCliente.TabIndex = 358;
+            this.lblCliente.Text = "Nome do Cliente";
+            // 
+            // txtNomeCliente
+            // 
+            this.txtNomeCliente.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtNomeCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNomeCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeCliente.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtNomeCliente.Location = new System.Drawing.Point(28, 401);
+            this.txtNomeCliente.MaxLength = 100;
+            this.txtNomeCliente.Name = "txtNomeCliente";
+            this.txtNomeCliente.Size = new System.Drawing.Size(318, 23);
+            this.txtNomeCliente.TabIndex = 6;
+            // 
+            // txtCidade
+            // 
+            this.txtCidade.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCidade.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtCidade.Location = new System.Drawing.Point(28, 443);
+            this.txtCidade.MaxLength = 100;
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(318, 23);
+            this.txtCidade.TabIndex = 7;
+            // 
+            // lblCidade
+            // 
+            this.lblCidade.AutoSize = true;
+            this.lblCidade.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCidade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblCidade.Location = new System.Drawing.Point(25, 427);
+            this.lblCidade.Name = "lblCidade";
+            this.lblCidade.Size = new System.Drawing.Size(43, 13);
+            this.lblCidade.TabIndex = 360;
+            this.lblCidade.Text = "Cidade";
+            // 
+            // lblNomeContato
+            // 
+            this.lblNomeContato.AutoSize = true;
+            this.lblNomeContato.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomeContato.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblNomeContato.Location = new System.Drawing.Point(25, 470);
+            this.lblNomeContato.Name = "lblNomeContato";
+            this.lblNomeContato.Size = new System.Drawing.Size(99, 13);
+            this.lblNomeContato.TabIndex = 362;
+            this.lblNomeContato.Text = "Nome do Contato";
+            // 
+            // txtNomeContato
+            // 
+            this.txtNomeContato.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtNomeContato.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNomeContato.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeContato.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtNomeContato.Location = new System.Drawing.Point(28, 486);
+            this.txtNomeContato.MaxLength = 100;
+            this.txtNomeContato.Name = "txtNomeContato";
+            this.txtNomeContato.Size = new System.Drawing.Size(192, 23);
+            this.txtNomeContato.TabIndex = 8;
+            // 
+            // lblTelefoneContato
+            // 
+            this.lblTelefoneContato.AutoSize = true;
+            this.lblTelefoneContato.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefoneContato.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblTelefoneContato.Location = new System.Drawing.Point(223, 469);
+            this.lblTelefoneContato.Name = "lblTelefoneContato";
+            this.lblTelefoneContato.Size = new System.Drawing.Size(113, 13);
+            this.lblTelefoneContato.TabIndex = 364;
+            this.lblTelefoneContato.Text = "Telefone do Contato";
+            // 
+            // txtTelefoneContato
+            // 
+            this.txtTelefoneContato.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtTelefoneContato.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefoneContato.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtTelefoneContato.Location = new System.Drawing.Point(226, 486);
+            this.txtTelefoneContato.Name = "txtTelefoneContato";
+            this.txtTelefoneContato.Size = new System.Drawing.Size(120, 23);
+            this.txtTelefoneContato.TabIndex = 9;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel3.Controls.Add(this.txtAgenciaEmail);
+            this.panel3.Controls.Add(this.txtAgenciaTelefone);
+            this.panel3.Controls.Add(this.txtAgenciaNome);
+            this.panel3.Location = new System.Drawing.Point(95, 93);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(251, 60);
+            this.panel3.TabIndex = 358;
+            // 
+            // txtAgenciaNome
+            // 
+            this.txtAgenciaNome.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAgenciaNome.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtAgenciaNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAgenciaNome.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgenciaNome.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtAgenciaNome.Location = new System.Drawing.Point(3, 5);
+            this.txtAgenciaNome.MaxLength = 100;
+            this.txtAgenciaNome.Name = "txtAgenciaNome";
+            this.txtAgenciaNome.Size = new System.Drawing.Size(240, 15);
+            this.txtAgenciaNome.TabIndex = 371;
+            this.txtAgenciaNome.Text = "Nome da agência";
+            this.txtAgenciaNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtAgenciaTelefone
+            // 
+            this.txtAgenciaTelefone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAgenciaTelefone.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtAgenciaTelefone.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAgenciaTelefone.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgenciaTelefone.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtAgenciaTelefone.Location = new System.Drawing.Point(3, 23);
+            this.txtAgenciaTelefone.MaxLength = 100;
+            this.txtAgenciaTelefone.Name = "txtAgenciaTelefone";
+            this.txtAgenciaTelefone.Size = new System.Drawing.Size(240, 15);
+            this.txtAgenciaTelefone.TabIndex = 372;
+            this.txtAgenciaTelefone.Text = "Telefone da agência";
+            this.txtAgenciaTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtAgenciaEmail
+            // 
+            this.txtAgenciaEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtAgenciaEmail.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtAgenciaEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAgenciaEmail.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgenciaEmail.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.txtAgenciaEmail.Location = new System.Drawing.Point(3, 42);
+            this.txtAgenciaEmail.MaxLength = 100;
+            this.txtAgenciaEmail.Name = "txtAgenciaEmail";
+            this.txtAgenciaEmail.Size = new System.Drawing.Size(240, 15);
+            this.txtAgenciaEmail.TabIndex = 373;
+            this.txtAgenciaEmail.Text = "Email da agência";
+            this.txtAgenciaEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.cboProfissional);
+            this.panel2.Location = new System.Drawing.Point(28, 226);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(90, 23);
+            this.panel2.TabIndex = 3;
+            // 
+            // cboProfissional
+            // 
+            this.cboProfissional.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cboProfissional.DisplayMember = "codigo";
+            this.cboProfissional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProfissional.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cboProfissional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboProfissional.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cboProfissional.FormattingEnabled = true;
+            this.cboProfissional.Location = new System.Drawing.Point(-1, -1);
+            this.cboProfissional.MaxLength = 3;
+            this.cboProfissional.Name = "cboProfissional";
+            this.cboProfissional.Size = new System.Drawing.Size(90, 23);
+            this.cboProfissional.TabIndex = 0;
+            this.cboProfissional.SelectionChangeCommitted += new System.EventHandler(this.cboProfissional_SelectionChangeCommitted);
+            // 
+            // btnAddProfissional
+            // 
+            this.btnAddProfissional.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddProfissional.Location = new System.Drawing.Point(117, 226);
+            this.btnAddProfissional.Name = "btnAddProfissional";
+            this.btnAddProfissional.Size = new System.Drawing.Size(23, 23);
+            this.btnAddProfissional.TabIndex = 367;
+            this.btnAddProfissional.Text = "+";
+            this.btnAddProfissional.UseVisualStyleBackColor = true;
+            // 
+            // btnAddAtividade
+            // 
+            this.btnAddAtividade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAtividade.Location = new System.Drawing.Point(117, 268);
+            this.btnAddAtividade.Name = "btnAddAtividade";
+            this.btnAddAtividade.Size = new System.Drawing.Size(23, 23);
+            this.btnAddAtividade.TabIndex = 369;
+            this.btnAddAtividade.Text = "+";
+            this.btnAddAtividade.UseVisualStyleBackColor = true;
+            // 
+            // dtpDataExecucao
+            // 
+            this.dtpDataExecucao.CalendarForeColor = System.Drawing.SystemColors.ControlLight;
+            this.dtpDataExecucao.CustomFormat = "";
+            this.dtpDataExecucao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDataExecucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataExecucao.Location = new System.Drawing.Point(206, 184);
+            this.dtpDataExecucao.Name = "dtpDataExecucao";
+            this.dtpDataExecucao.Size = new System.Drawing.Size(140, 23);
+            this.dtpDataExecucao.TabIndex = 2;
+            // 
+            // pnlOS
+            // 
+            this.pnlOS.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlOS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlOS.Controls.Add(this.panel11);
+            this.pnlOS.Controls.Add(this.lblNomeProfissional);
+            this.pnlOS.Controls.Add(this.lblAtividadeDeslocamento);
+            this.pnlOS.Controls.Add(this.lblAtividadeValor);
+            this.pnlOS.Controls.Add(this.lblAtividadeNome);
+            this.pnlOS.Controls.Add(this.lblTitAtividadeDeslocamento);
+            this.pnlOS.Controls.Add(this.lblTitAtividadeValor);
+            this.pnlOS.Controls.Add(this.dtpDataExecucao);
+            this.pnlOS.Controls.Add(this.btnAddAtividade);
+            this.pnlOS.Controls.Add(this.btnAddProfissional);
+            this.pnlOS.Controls.Add(this.panel2);
+            this.pnlOS.Controls.Add(this.panel3);
+            this.pnlOS.Controls.Add(this.txtTelefoneContato);
+            this.pnlOS.Controls.Add(this.lblTelefoneContato);
+            this.pnlOS.Controls.Add(this.txtNomeContato);
+            this.pnlOS.Controls.Add(this.lblNomeContato);
+            this.pnlOS.Controls.Add(this.lblCidade);
+            this.pnlOS.Controls.Add(this.txtCidade);
+            this.pnlOS.Controls.Add(this.txtNomeCliente);
+            this.pnlOS.Controls.Add(this.lblCliente);
+            this.pnlOS.Controls.Add(this.lblProfissional);
+            this.pnlOS.Controls.Add(this.chkSiopi);
+            this.pnlOS.Controls.Add(this.lblAtividade);
+            this.pnlOS.Controls.Add(this.txtReferencia);
+            this.pnlOS.Controls.Add(this.lblDataExecucao);
+            this.pnlOS.Controls.Add(this.dtpDataOrdem);
+            this.pnlOS.Controls.Add(this.lblDataOrdem);
+            this.pnlOS.Controls.Add(this.lblReferencia);
+            this.pnlOS.Location = new System.Drawing.Point(15, 19);
+            this.pnlOS.Name = "pnlOS";
+            this.pnlOS.Size = new System.Drawing.Size(375, 526);
+            this.pnlOS.TabIndex = 0;
+            // 
+            // lblTitAtividadeValor
+            // 
+            this.lblTitAtividadeValor.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblTitAtividadeValor.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitAtividadeValor.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblTitAtividadeValor.Location = new System.Drawing.Point(146, 268);
+            this.lblTitAtividadeValor.Name = "lblTitAtividadeValor";
+            this.lblTitAtividadeValor.Size = new System.Drawing.Size(100, 13);
+            this.lblTitAtividadeValor.TabIndex = 375;
+            this.lblTitAtividadeValor.Text = "Valor OS";
+            this.lblTitAtividadeValor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTitAtividadeDeslocamento
+            // 
+            this.lblTitAtividadeDeslocamento.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblTitAtividadeDeslocamento.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitAtividadeDeslocamento.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblTitAtividadeDeslocamento.Location = new System.Drawing.Point(246, 268);
+            this.lblTitAtividadeDeslocamento.Name = "lblTitAtividadeDeslocamento";
+            this.lblTitAtividadeDeslocamento.Size = new System.Drawing.Size(100, 13);
+            this.lblTitAtividadeDeslocamento.TabIndex = 376;
+            this.lblTitAtividadeDeslocamento.Text = "Deslocamento";
+            this.lblTitAtividadeDeslocamento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAtividadeNome
+            // 
+            this.lblAtividadeNome.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblAtividadeNome.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAtividadeNome.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblAtividadeNome.Location = new System.Drawing.Point(28, 294);
+            this.lblAtividadeNome.Name = "lblAtividadeNome";
+            this.lblAtividadeNome.Size = new System.Drawing.Size(318, 23);
+            this.lblAtividadeNome.TabIndex = 377;
+            this.lblAtividadeNome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAtividadeDeslocamento
+            // 
+            this.lblAtividadeDeslocamento.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblAtividadeDeslocamento.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAtividadeDeslocamento.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblAtividadeDeslocamento.Location = new System.Drawing.Point(246, 281);
+            this.lblAtividadeDeslocamento.Name = "lblAtividadeDeslocamento";
+            this.lblAtividadeDeslocamento.Size = new System.Drawing.Size(100, 13);
+            this.lblAtividadeDeslocamento.TabIndex = 379;
+            this.lblAtividadeDeslocamento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblAtividadeValor
+            // 
+            this.lblAtividadeValor.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblAtividadeValor.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAtividadeValor.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblAtividadeValor.Location = new System.Drawing.Point(146, 281);
+            this.lblAtividadeValor.Name = "lblAtividadeValor";
+            this.lblAtividadeValor.Size = new System.Drawing.Size(100, 13);
+            this.lblAtividadeValor.TabIndex = 378;
+            this.lblAtividadeValor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblNomeProfissional
+            // 
+            this.lblNomeProfissional.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.lblNomeProfissional.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomeProfissional.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblNomeProfissional.Location = new System.Drawing.Point(146, 226);
+            this.lblNomeProfissional.Name = "lblNomeProfissional";
+            this.lblNomeProfissional.Size = new System.Drawing.Size(200, 23);
+            this.lblNomeProfissional.TabIndex = 380;
+            this.lblNomeProfissional.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel11
+            // 
+            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel11.Controls.Add(this.cboAtividade);
+            this.panel11.Location = new System.Drawing.Point(28, 268);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(90, 23);
+            this.panel11.TabIndex = 382;
             // 
             // frmAddOS
             // 
@@ -848,12 +743,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(617, 638);
+            this.ClientSize = new System.Drawing.Size(920, 580);
             this.Controls.Add(this.txtCodFatura);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel8);
@@ -871,24 +763,21 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddOS";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar";
             this.Load += new System.EventHandler(this.frmAddOS_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmAddOS_MouseDown);
-            this.pnlOS.ResumeLayout(false);
-            this.pnlOS.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.pnlOS.ResumeLayout(false);
+            this.pnlOS.PerformLayout();
+            this.panel11.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -897,33 +786,6 @@
         #endregion
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAddSave;
-        private System.Windows.Forms.Panel pnlOS;
-        private System.Windows.Forms.Label lblProfissional;
-        private System.Windows.Forms.CheckBox chkSiopi;
-        private System.Windows.Forms.ComboBox cboAtividade;
-        private System.Windows.Forms.Label lblAtividade;
-        private System.Windows.Forms.MaskedTextBox txtReferencia;
-        private System.Windows.Forms.DateTimePicker dtpDataExecucao;
-        private System.Windows.Forms.Label lblDataExecucao;
-        private System.Windows.Forms.DateTimePicker dtpDataOrdem;
-        private System.Windows.Forms.Label lblDataOrdem;
-        private System.Windows.Forms.Label lblReferencia;
-        private System.Windows.Forms.MaskedTextBox txtTelefoneContato;
-        private System.Windows.Forms.Label lblTelefoneContato;
-        private System.Windows.Forms.TextBox txtNomeContato;
-        private System.Windows.Forms.Label lblNomeContato;
-        private System.Windows.Forms.Label lblCidade;
-        private System.Windows.Forms.TextBox txtCidade;
-        private System.Windows.Forms.TextBox txtNomeCliente;
-        private System.Windows.Forms.Label lblCliente;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtAgenciaEmail;
-        private System.Windows.Forms.TextBox txtAgenciaTelefone;
-        private System.Windows.Forms.TextBox txtAgenciaNome;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox txtAtividadeDeslocamento;
-        private System.Windows.Forms.TextBox txtAtividadeValor;
-        private System.Windows.Forms.TextBox txtAtividadeNome;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.RadioButton rbtRecebida;
@@ -938,18 +800,43 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolTip ttpAddOS;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txtCodFatura;
-        private System.Windows.Forms.TextBox txtNomeProfissional;
+        private System.Windows.Forms.Label lblReferencia;
+        private System.Windows.Forms.Label lblDataOrdem;
+        private System.Windows.Forms.DateTimePicker dtpDataOrdem;
+        private System.Windows.Forms.Label lblDataExecucao;
+        private System.Windows.Forms.MaskedTextBox txtReferencia;
+        private System.Windows.Forms.Label lblAtividade;
+        private System.Windows.Forms.ComboBox cboAtividade;
+        private System.Windows.Forms.CheckBox chkSiopi;
+        private System.Windows.Forms.Label lblProfissional;
+        private System.Windows.Forms.Label lblCliente;
+        private System.Windows.Forms.TextBox txtNomeCliente;
+        private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.Label lblCidade;
+        private System.Windows.Forms.Label lblNomeContato;
+        private System.Windows.Forms.TextBox txtNomeContato;
+        private System.Windows.Forms.Label lblTelefoneContato;
+        private System.Windows.Forms.MaskedTextBox txtTelefoneContato;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txtAgenciaEmail;
+        private System.Windows.Forms.TextBox txtAgenciaTelefone;
+        private System.Windows.Forms.TextBox txtAgenciaNome;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ComboBox cboProfissional;
         private System.Windows.Forms.Button btnAddProfissional;
         private System.Windows.Forms.Button btnAddAtividade;
-        private System.Windows.Forms.TextBox txtNomeAtividade;
+        private System.Windows.Forms.DateTimePicker dtpDataExecucao;
+        private System.Windows.Forms.Panel pnlOS;
+        private System.Windows.Forms.Label lblTitAtividadeDeslocamento;
+        private System.Windows.Forms.Label lblTitAtividadeValor;
+        private System.Windows.Forms.Label lblAtividadeNome;
+        private System.Windows.Forms.Label lblAtividadeDeslocamento;
+        private System.Windows.Forms.Label lblAtividadeValor;
+        private System.Windows.Forms.Label lblNomeProfissional;
+        private System.Windows.Forms.Panel panel11;
     }
 }
