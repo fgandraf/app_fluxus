@@ -300,6 +300,11 @@ namespace Arqueng.Formularios
                 btnAddSave.Text = "&Salvar";
                 txtReferencia.Enabled = false;
             }
+            else
+            {
+                cboAtividade.Text = null;
+                cboProfissional.Text = null;
+            }
         }
 
         private void cboProfissional_SelectionChangeCommitted(object sender, EventArgs e)
