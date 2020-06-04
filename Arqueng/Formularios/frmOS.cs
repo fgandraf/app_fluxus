@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+//using System.Collections.Generic;
+//using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
 using Arqueng.Formularios;
 using Arqueng.Entidades;
@@ -92,7 +92,8 @@ namespace Arqueng
         dgvOS.CurrentRow.Cells[11].Value.ToString(),
         dgvOS.CurrentRow.Cells[12].Value.ToString(),
         dgvOS.CurrentRow.Cells[13].Value.ToString(),
-        dgvOS.CurrentRow.Cells[14].Value.ToString()
+        dgvOS.CurrentRow.Cells[14].Value.ToString(),
+        dgvOS.CurrentRow.Cells[15].Value.ToString()
         ) ;
             form.Text = "Alterar";
             form.ShowDialog();

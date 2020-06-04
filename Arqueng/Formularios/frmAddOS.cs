@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+//using System.Collections.Generic;
+//using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using Arqueng.Entidades;
 using MySql.Data.MySqlClient;
 
@@ -133,19 +132,7 @@ namespace Arqueng.Formularios
         }
 
 
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-
-        private void frmAddOS_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-
-        public frmAddOS(string Referencia, string DataOrdem, string DataExecucao, string Profissional, string Atividade, string Siopi, string NomeCliente, string Cidade, string NomeContato, string TelefoneContato, string Status, string DataVistoria, string DataConcluida, string OBS, string CodFatura)
+        public frmAddOS(string Referencia, string DataOrdem, string DataExecucao, string Profissional, string Atividade, string Siopi, string NomeCliente, string Cidade, string NomeContato, string TelefoneContato, string Status, string DataPendente, string DataVistoria, string DataConcluida, string OBS, string CodFatura)
         {
             InitializeComponent();
             BuscarProfissionais();
@@ -179,6 +166,7 @@ namespace Arqueng.Formularios
             {
                 rbtConcluida.Checked = true;
             }
+            dtpDataPendente.Text = DataPendente;
             dtpDataVistoria.Text = DataVistoria;
             dtpDataConcluida.Text = DataConcluida;
             txtOBS.Text = OBS;
@@ -199,7 +187,7 @@ namespace Arqueng.Formularios
                     try
                     {
                         My.conexaoDB = new MySqlConnection(My.dadosdb);
-                        My.comando = new MySqlCommand("INSERT INTO tb_os(referencia, data_ordem, prazo_execucao, profissional_cod, atividade_cod, siopi, nome_cliente, cidade, nome_contato, telefone_contato, status, data_vistoria, data_concluida, obs, fatura_cod) VALUES (@referencia, @data_ordem, @prazo_execucao, @profissional_cod, @atividade_cod, @siopi, @nome_cliente, @cidade, @nome_contato, @telefone_contato, @status, @data_vistoria, @data_concluida, @obs, @fatura_cod)", My.conexaoDB);
+                        My.comando = new MySqlCommand("INSERT INTO tb_os(referencia, data_ordem, prazo_execucao, profissional_cod, atividade_cod, siopi, nome_cliente, cidade, nome_contato, telefone_contato, status, data_pendente, data_vistoria, data_concluida, obs, fatura_cod) VALUES (@referencia, @data_ordem, @prazo_execucao, @profissional_cod, @atividade_cod, @siopi, @nome_cliente, @cidade, @nome_contato, @telefone_contato, @status, @data_pendente, @data_vistoria, @data_concluida, @obs, @fatura_cod)", My.conexaoDB);
 
                         My.comando.Parameters.AddWithValue("@referencia", txtReferencia.Text);
                         My.comando.Parameters.AddWithValue("@data_ordem", dtpDataOrdem.Value);
@@ -227,6 +215,7 @@ namespace Arqueng.Formularios
                         {
                             My.comando.Parameters.AddWithValue("@status", "CONCLUÍDA");
                         }
+                        My.comando.Parameters.AddWithValue("@data_pendente", dtpDataPendente.Value);
                         My.comando.Parameters.AddWithValue("@data_vistoria", dtpDataVistoria.Value);
                         My.comando.Parameters.AddWithValue("@data_concluida", dtpDataConcluida.Value);
                         My.comando.Parameters.AddWithValue("@obs", txtOBS.Text);
@@ -253,7 +242,7 @@ namespace Arqueng.Formularios
                 try
                 {
                      My.conexaoDB = new MySqlConnection(My.dadosdb);
-                     My.comando = new MySqlCommand("UPDATE tb_os SET data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, status = @status, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs, fatura_cod = @fatura_cod WHERE referencia = @referencia", My.conexaoDB);
+                     My.comando = new MySqlCommand("UPDATE tb_os SET data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, status = @status, data_pendente = @data_pendente, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs, fatura_cod = @fatura_cod WHERE referencia = @referencia", My.conexaoDB);
 
                          My.comando.Parameters.AddWithValue("@referencia", txtReferencia.Text);
                          My.comando.Parameters.AddWithValue("@data_ordem", dtpDataOrdem.Value);
@@ -281,6 +270,7 @@ namespace Arqueng.Formularios
                          {
                              My.comando.Parameters.AddWithValue("@status", "CONCLUÍDA");
                          }
+                         My.comando.Parameters.AddWithValue("@data_pendente", dtpDataPendente.Value);
                          My.comando.Parameters.AddWithValue("@data_vistoria", dtpDataVistoria.Value);
                          My.comando.Parameters.AddWithValue("@data_concluida", dtpDataConcluida.Value);
                          My.comando.Parameters.AddWithValue("@obs", txtOBS.Text);
@@ -305,17 +295,7 @@ namespace Arqueng.Formularios
 
         private void frmAddOS_Load(object sender, EventArgs e)
         {
-            if (this.Text == "Alterar")
-            {
-                btnAddSave.Text = "&Salvar";
-                txtReferencia.Enabled = false;
-            }
-            else
-            {
-                cboProfissional.SelectedItem = null;
-                cboAtividade.SelectedItem = null;
-            }
-                
+
         }
 
         private void cboProfissional_SelectionChangeCommitted(object sender, EventArgs e)
@@ -326,6 +306,34 @@ namespace Arqueng.Formularios
         private void cboAtividade_SelectionChangeCommitted(object sender, EventArgs e)
         {
             BuscarNomeAtividade();
+        }
+
+        private void rbtVistoriada_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDataVistoria.Visible = true;
+            dtpDataPendente.Hide();
+            dtpDataConcluida.Hide();
+        }
+
+        private void rbtConcluida_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDataConcluida.Visible = true;
+            dtpDataVistoria.Visible = true;
+            dtpDataPendente.Hide();
+        }
+
+        private void rbtRecebida_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDataPendente.Hide();
+            dtpDataVistoria.Hide();
+            dtpDataConcluida.Hide();
+        }
+
+        private void rbtPendente_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDataPendente.Visible = true;
+            dtpDataVistoria.Hide();
+            dtpDataConcluida.Hide();
         }
     }
 }

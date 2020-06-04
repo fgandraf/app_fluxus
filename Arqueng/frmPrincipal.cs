@@ -1,14 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Collections.Generic;
+//using System.ComponentModel;
+//using System.Data;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using MySql.Data.MySqlClient;
 
 namespace Arqueng
 {
@@ -79,7 +78,7 @@ namespace Arqueng
         {
             OcultaControles();
             lblTitulo.Text = "Sobre";
-            
+
             frmSobre frm = new frmSobre { TopLevel = false, Dock = DockStyle.Fill };
             this.pnlMain.Controls.Clear();
             this.pnlMain.Controls.Add(frm);
@@ -179,11 +178,6 @@ namespace Arqueng
             this.pnlMain.Controls.Clear();
             this.pnlMain.Controls.Add(frm);
             frm.Show();
-        }
-
-        private void pnlTitulo_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+//using System.Collections.Generic;
+//using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
 using Arqueng.Formularios;
 using MySql.Data.MySqlClient;
@@ -65,27 +65,18 @@ namespace Arqueng
             form.ShowDialog();
             AtualizarDGAgencias();
 
-
-
-            //Formulário Neto em desenvolvimento
-
-            //frmAddAgencia frm = new frmAddAgencia
-            //{
-            //    TopLevel = false,
-            //    Dock = DockStyle.Fill 
-            //};
-
-            //var Principal = this.ParentForm;
-            //var pnlContentPrincipal = Controls.Find("pnlMain", true).FirstOrDefault();
-            //pnlContentPrincipal.Controls.Clear();
-            //pnlContentPrincipal.Refresh();
-            //pnlContentPrincipal.Controls.Add(frm);
-            ////pnlMain.Visible = true;
-            //frm.Show();
-
-            //Principal.Refresh();
-            //this.Close();
-
+            //-----Formulário Neto em desenvolvimento-----//
+            /*
+            frmPrincipal formprincipal = new frmPrincipal();
+            var painelprincipal = formprincipal.Controls.Find("pnlMain", true).FirstOrDefault();
+            frmAddAgencia formneto = new frmAddAgencia { TopLevel = false, Dock = DockStyle.Fill };
+            painelprincipal.Controls.Clear();
+            painelprincipal.Refresh();
+            painelprincipal.Controls.Add(formneto);
+            formneto.Show();
+            this.Hide();
+            */
+            //----- ------------------------------- -----//
         }
 
 
