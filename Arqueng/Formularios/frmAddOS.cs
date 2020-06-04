@@ -295,7 +295,11 @@ namespace Arqueng.Formularios
 
         private void frmAddOS_Load(object sender, EventArgs e)
         {
-
+            if (this.Text == "Alterar")
+            {
+                btnAddSave.Text = "&Salvar";
+                txtReferencia.Enabled = false;
+            }
         }
 
         private void cboProfissional_SelectionChangeCommitted(object sender, EventArgs e)

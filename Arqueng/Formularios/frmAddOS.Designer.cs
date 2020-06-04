@@ -68,6 +68,7 @@
             this.lblAtividadeNome = new System.Windows.Forms.Label();
             this.pnlLinhaStatus = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dtpDataPendente = new System.Windows.Forms.DateTimePicker();
             this.lblTitulo2 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlLinhaDados = new System.Windows.Forms.Panel();
@@ -79,7 +80,6 @@
             this.pnlLinhaOBS = new System.Windows.Forms.Panel();
             this.pnlBotton = new System.Windows.Forms.Panel();
             this.pnlDados = new System.Windows.Forms.Panel();
-            this.dtpDataPendente = new System.Windows.Forms.DateTimePicker();
             this.pnlMolduraProfissional.SuspendLayout();
             this.pnlMolduraAtividade.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -587,6 +587,18 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(480, 55);
             this.tableLayoutPanel1.TabIndex = 410;
             // 
+            // dtpDataPendente
+            // 
+            this.dtpDataPendente.CalendarForeColor = System.Drawing.SystemColors.ControlLight;
+            this.dtpDataPendente.CustomFormat = "";
+            this.dtpDataPendente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDataPendente.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataPendente.Location = new System.Drawing.Point(123, 28);
+            this.dtpDataPendente.Name = "dtpDataPendente";
+            this.dtpDataPendente.Size = new System.Drawing.Size(110, 23);
+            this.dtpDataPendente.TabIndex = 16;
+            this.dtpDataPendente.Visible = false;
+            // 
             // lblTitulo2
             // 
             this.lblTitulo2.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -740,18 +752,6 @@
             this.pnlDados.Name = "pnlDados";
             this.pnlDados.Size = new System.Drawing.Size(903, 550);
             this.pnlDados.TabIndex = 423;
-            // 
-            // dtpDataPendente
-            // 
-            this.dtpDataPendente.CalendarForeColor = System.Drawing.SystemColors.ControlLight;
-            this.dtpDataPendente.CustomFormat = "";
-            this.dtpDataPendente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpDataPendente.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataPendente.Location = new System.Drawing.Point(123, 28);
-            this.dtpDataPendente.Name = "dtpDataPendente";
-            this.dtpDataPendente.Size = new System.Drawing.Size(110, 23);
-            this.dtpDataPendente.TabIndex = 16;
-            this.dtpDataPendente.Visible = false;
             // 
             // frmAddOS
             // 
