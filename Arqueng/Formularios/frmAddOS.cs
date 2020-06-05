@@ -15,7 +15,7 @@ namespace Arqueng.Formularios
 {
     public partial class frmAddOS : Form
     {
-        
+
         public void BuscarProfissionais()
         {
             try
@@ -207,17 +207,26 @@ namespace Arqueng.Formularios
             dtpDataConcluida.Text = DataConcluida;
             txtOBS.Text = OBS;
 
-            if (Faturada == "1")
-            {
-                lblFaturada.Show();
-                lblCodFatura.Text = "Fatura n°: " + CodFatura;
-                lblCodFatura.Show();
-                //Desabilitar todos os controles - Não é permitido a edição
-            }
-
             BuscarNomeProfissional();
             BuscarNomeAtividade();
             BuscarAgencia();
+
+            if (Faturada == "1")
+            {
+                lblFaturada.Show();
+                txtCodFatura.Text = "Fatura n°: " + CodFatura;
+                txtCodFatura.Show();
+                foreach (Control c in this.pnlDados.Controls)
+                {
+                    if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker)
+                        c.Enabled = false;
+                }
+                cboAtividade.Enabled = false;
+                cboProfissional.Enabled = false;
+                txtOBS.Enabled = false;
+                btnAddSave.Enabled = false;
+                tlpStatus.Enabled = false;
+            }
         }
 
 

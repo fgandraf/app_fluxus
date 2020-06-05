@@ -66,25 +66,25 @@
             this.lblAtividadeValor = new System.Windows.Forms.Label();
             this.lblAtividadeNome = new System.Windows.Forms.Label();
             this.pnlLinhaStatus = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpStatus = new System.Windows.Forms.TableLayoutPanel();
             this.dtpDataPendente = new System.Windows.Forms.DateTimePicker();
             this.lblTitulo2 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlLinhaDados = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlStatus = new System.Windows.Forms.Panel();
+            this.lblFaturada = new System.Windows.Forms.Label();
+            this.chkFaturada = new System.Windows.Forms.CheckBox();
             this.pnlOBS = new System.Windows.Forms.Panel();
             this.txtOBS = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pnlLinhaOBS = new System.Windows.Forms.Panel();
             this.pnlBotton = new System.Windows.Forms.Panel();
             this.pnlDados = new System.Windows.Forms.Panel();
-            this.chkFaturada = new System.Windows.Forms.CheckBox();
-            this.lblFaturada = new System.Windows.Forms.Label();
-            this.lblCodFatura = new System.Windows.Forms.Label();
+            this.txtCodFatura = new System.Windows.Forms.TextBox();
             this.pnlMolduraProfissional.SuspendLayout();
             this.pnlMolduraAtividade.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tlpStatus.SuspendLayout();
             this.pnlStatus.SuspendLayout();
             this.pnlOBS.SuspendLayout();
             this.pnlBotton.SuspendLayout();
@@ -558,29 +558,29 @@
             this.pnlLinhaStatus.Size = new System.Drawing.Size(520, 1);
             this.pnlLinhaStatus.TabIndex = 407;
             // 
-            // tableLayoutPanel1
+            // tlpStatus
             // 
-            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel1.Controls.Add(this.dtpDataPendente, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.rbtRecebida, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.rbtPendente, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.rbtVistoriada, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.rbtConcluida, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dtpDataVistoria, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dtpDataConcluida, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dtpDataOrdem, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(229, 89);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(480, 55);
-            this.tableLayoutPanel1.TabIndex = 410;
+            this.tlpStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.tlpStatus.ColumnCount = 4;
+            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlpStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tlpStatus.Controls.Add(this.dtpDataPendente, 0, 1);
+            this.tlpStatus.Controls.Add(this.rbtRecebida, 0, 0);
+            this.tlpStatus.Controls.Add(this.rbtPendente, 1, 0);
+            this.tlpStatus.Controls.Add(this.rbtVistoriada, 2, 0);
+            this.tlpStatus.Controls.Add(this.rbtConcluida, 3, 0);
+            this.tlpStatus.Controls.Add(this.dtpDataVistoria, 2, 1);
+            this.tlpStatus.Controls.Add(this.dtpDataConcluida, 3, 1);
+            this.tlpStatus.Controls.Add(this.dtpDataOrdem, 0, 1);
+            this.tlpStatus.Location = new System.Drawing.Point(229, 89);
+            this.tlpStatus.Name = "tlpStatus";
+            this.tlpStatus.RowCount = 2;
+            this.tlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tlpStatus.Size = new System.Drawing.Size(480, 55);
+            this.tlpStatus.TabIndex = 410;
             // 
             // dtpDataPendente
             // 
@@ -644,10 +644,10 @@
             // pnlStatus
             // 
             this.pnlStatus.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlStatus.Controls.Add(this.lblCodFatura);
+            this.pnlStatus.Controls.Add(this.txtCodFatura);
             this.pnlStatus.Controls.Add(this.lblFaturada);
             this.pnlStatus.Controls.Add(this.chkFaturada);
-            this.pnlStatus.Controls.Add(this.tableLayoutPanel1);
+            this.pnlStatus.Controls.Add(this.tlpStatus);
             this.pnlStatus.Controls.Add(this.pnlLinhaStatus);
             this.pnlStatus.Controls.Add(this.lblTitulo2);
             this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Top;
@@ -655,6 +655,30 @@
             this.pnlStatus.Name = "pnlStatus";
             this.pnlStatus.Size = new System.Drawing.Size(920, 200);
             this.pnlStatus.TabIndex = 420;
+            // 
+            // lblFaturada
+            // 
+            this.lblFaturada.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblFaturada.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFaturada.ForeColor = System.Drawing.Color.Red;
+            this.lblFaturada.Location = new System.Drawing.Point(579, 9);
+            this.lblFaturada.Name = "lblFaturada";
+            this.lblFaturada.Size = new System.Drawing.Size(150, 20);
+            this.lblFaturada.TabIndex = 412;
+            this.lblFaturada.Text = "OS FATURADA";
+            this.lblFaturada.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblFaturada.Visible = false;
+            // 
+            // chkFaturada
+            // 
+            this.chkFaturada.AutoSize = true;
+            this.chkFaturada.Location = new System.Drawing.Point(723, 120);
+            this.chkFaturada.Name = "chkFaturada";
+            this.chkFaturada.Size = new System.Drawing.Size(68, 17);
+            this.chkFaturada.TabIndex = 406;
+            this.chkFaturada.Text = "Faturada";
+            this.chkFaturada.UseVisualStyleBackColor = true;
+            this.chkFaturada.Visible = false;
             // 
             // pnlOBS
             // 
@@ -750,42 +774,20 @@
             this.pnlDados.Size = new System.Drawing.Size(920, 550);
             this.pnlDados.TabIndex = 423;
             // 
-            // chkFaturada
+            // txtCodFatura
             // 
-            this.chkFaturada.AutoSize = true;
-            this.chkFaturada.Location = new System.Drawing.Point(723, 120);
-            this.chkFaturada.Name = "chkFaturada";
-            this.chkFaturada.Size = new System.Drawing.Size(68, 17);
-            this.chkFaturada.TabIndex = 406;
-            this.chkFaturada.Text = "Faturada";
-            this.chkFaturada.UseVisualStyleBackColor = true;
-            this.chkFaturada.Visible = false;
-            // 
-            // lblFaturada
-            // 
-            this.lblFaturada.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblFaturada.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFaturada.ForeColor = System.Drawing.Color.Red;
-            this.lblFaturada.Location = new System.Drawing.Point(579, 9);
-            this.lblFaturada.Name = "lblFaturada";
-            this.lblFaturada.Size = new System.Drawing.Size(150, 20);
-            this.lblFaturada.TabIndex = 412;
-            this.lblFaturada.Text = "OS FATURADA";
-            this.lblFaturada.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.lblFaturada.Visible = false;
-            // 
-            // lblCodFatura
-            // 
-            this.lblCodFatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblCodFatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodFatura.ForeColor = System.Drawing.Color.Red;
-            this.lblCodFatura.Location = new System.Drawing.Point(579, 29);
-            this.lblCodFatura.Name = "lblCodFatura";
-            this.lblCodFatura.Size = new System.Drawing.Size(150, 20);
-            this.lblCodFatura.TabIndex = 413;
-            this.lblCodFatura.Text = "Fatura n°:";
-            this.lblCodFatura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblCodFatura.Visible = false;
+            this.txtCodFatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtCodFatura.BackColor = System.Drawing.Color.LightBlue;
+            this.txtCodFatura.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCodFatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodFatura.ForeColor = System.Drawing.Color.Red;
+            this.txtCodFatura.Location = new System.Drawing.Point(583, 35);
+            this.txtCodFatura.MaxLength = 100;
+            this.txtCodFatura.Name = "txtCodFatura";
+            this.txtCodFatura.ReadOnly = true;
+            this.txtCodFatura.Size = new System.Drawing.Size(146, 16);
+            this.txtCodFatura.TabIndex = 414;
+            this.txtCodFatura.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmAddOS
             // 
@@ -808,8 +810,8 @@
             this.Load += new System.EventHandler(this.frmAddOS_Load);
             this.pnlMolduraProfissional.ResumeLayout(false);
             this.pnlMolduraAtividade.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tlpStatus.ResumeLayout(false);
+            this.tlpStatus.PerformLayout();
             this.pnlStatus.ResumeLayout(false);
             this.pnlStatus.PerformLayout();
             this.pnlOBS.ResumeLayout(false);
@@ -859,7 +861,7 @@
         private System.Windows.Forms.Label lblNomeProfissional;
         private System.Windows.Forms.Panel pnlMolduraAtividade;
         private System.Windows.Forms.Panel pnlLinhaStatus;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tlpStatus;
         private System.Windows.Forms.Label lblTitulo2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlLinhaDados;
@@ -874,6 +876,6 @@
         private System.Windows.Forms.DateTimePicker dtpDataPendente;
         private System.Windows.Forms.CheckBox chkFaturada;
         private System.Windows.Forms.Label lblFaturada;
-        private System.Windows.Forms.Label lblCodFatura;
+        private System.Windows.Forms.TextBox txtCodFatura;
     }
 }
