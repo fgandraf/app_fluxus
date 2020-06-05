@@ -30,10 +30,20 @@ namespace Arqueng
             try
             {
                 My.conexaoDB = new MySqlConnection(My.dadosdb);
-                My.da = new MySqlDataAdapter("SELECT * FROM tb_os order by data_ordem", My.conexaoDB);
                 DataTable dt = new DataTable();
+
+                if (cboFaturadas.Text == "Não faturadas")
+                My.da = new MySqlDataAdapter("SELECT * FROM tb_os WHERE faturada is null order by data_ordem", My.conexaoDB);
+
+                if (cboFaturadas.Text == "Faturadas")
+                    My.da = new MySqlDataAdapter("SELECT * FROM tb_os WHERE faturada is not null order by data_ordem", My.conexaoDB);
+                
+                if (cboFaturadas.Text == "Todas")
+                    My.da = new MySqlDataAdapter("SELECT * FROM tb_os order by data_ordem", My.conexaoDB);
+
                 My.da.Fill(dt);
                 dgvOS.DataSource = dt;
+
                 if (dgvOS.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -61,6 +71,7 @@ namespace Arqueng
 
         private void frmOS_Load(object sender, EventArgs e)
         {
+            cboFaturadas.Text = "Não Faturadas";
             AtualizarDGOS();
             txtPesquisar.Focus();
         }
@@ -93,8 +104,9 @@ namespace Arqueng
         dgvOS.CurrentRow.Cells[12].Value.ToString(),
         dgvOS.CurrentRow.Cells[13].Value.ToString(),
         dgvOS.CurrentRow.Cells[14].Value.ToString(),
-        dgvOS.CurrentRow.Cells[15].Value.ToString()
-        ) ;
+        dgvOS.CurrentRow.Cells[15].Value.ToString(),
+        dgvOS.CurrentRow.Cells[16].Value.ToString()
+        );
             form.Text = "Alterar";
             form.ShowDialog();
             AtualizarDGOS();
@@ -126,6 +138,16 @@ namespace Arqueng
                 }
                 AtualizarDGOS();
             }
+        }
+
+        private void cboFaturadas_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            AtualizarDGOS();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -38,7 +38,6 @@
             this.dtpDataConcluida = new System.Windows.Forms.DateTimePicker();
             this.rbtVistoriada = new System.Windows.Forms.RadioButton();
             this.ttpAddOS = new System.Windows.Forms.ToolTip(this.components);
-            this.txtCodFatura = new System.Windows.Forms.TextBox();
             this.lblReferencia = new System.Windows.Forms.Label();
             this.dtpDataOrdem = new System.Windows.Forms.DateTimePicker();
             this.lblDataExecucao = new System.Windows.Forms.Label();
@@ -80,6 +79,9 @@
             this.pnlLinhaOBS = new System.Windows.Forms.Panel();
             this.pnlBotton = new System.Windows.Forms.Panel();
             this.pnlDados = new System.Windows.Forms.Panel();
+            this.chkFaturada = new System.Windows.Forms.CheckBox();
+            this.lblFaturada = new System.Windows.Forms.Label();
+            this.lblCodFatura = new System.Windows.Forms.Label();
             this.pnlMolduraProfissional.SuspendLayout();
             this.pnlMolduraAtividade.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -201,18 +203,6 @@
             this.rbtVistoriada.Text = "Vistoriada";
             this.rbtVistoriada.UseVisualStyleBackColor = true;
             this.rbtVistoriada.CheckedChanged += new System.EventHandler(this.rbtVistoriada_CheckedChanged);
-            // 
-            // txtCodFatura
-            // 
-            this.txtCodFatura.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtCodFatura.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCodFatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodFatura.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCodFatura.Location = new System.Drawing.Point(203, 48);
-            this.txtCodFatura.Name = "txtCodFatura";
-            this.txtCodFatura.Size = new System.Drawing.Size(88, 23);
-            this.txtCodFatura.TabIndex = 405;
-            this.txtCodFatura.Visible = false;
             // 
             // lblReferencia
             // 
@@ -654,6 +644,9 @@
             // pnlStatus
             // 
             this.pnlStatus.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlStatus.Controls.Add(this.lblCodFatura);
+            this.pnlStatus.Controls.Add(this.lblFaturada);
+            this.pnlStatus.Controls.Add(this.chkFaturada);
             this.pnlStatus.Controls.Add(this.tableLayoutPanel1);
             this.pnlStatus.Controls.Add(this.pnlLinhaStatus);
             this.pnlStatus.Controls.Add(this.lblTitulo2);
@@ -715,7 +708,6 @@
             this.pnlBotton.BackColor = System.Drawing.SystemColors.Window;
             this.pnlBotton.Controls.Add(this.btnAddSave);
             this.pnlBotton.Controls.Add(this.btnCancelar);
-            this.pnlBotton.Controls.Add(this.txtCodFatura);
             this.pnlBotton.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlBotton.Location = new System.Drawing.Point(0, 950);
             this.pnlBotton.Name = "pnlBotton";
@@ -758,6 +750,43 @@
             this.pnlDados.Size = new System.Drawing.Size(920, 550);
             this.pnlDados.TabIndex = 423;
             // 
+            // chkFaturada
+            // 
+            this.chkFaturada.AutoSize = true;
+            this.chkFaturada.Location = new System.Drawing.Point(723, 120);
+            this.chkFaturada.Name = "chkFaturada";
+            this.chkFaturada.Size = new System.Drawing.Size(68, 17);
+            this.chkFaturada.TabIndex = 406;
+            this.chkFaturada.Text = "Faturada";
+            this.chkFaturada.UseVisualStyleBackColor = true;
+            this.chkFaturada.Visible = false;
+            // 
+            // lblFaturada
+            // 
+            this.lblFaturada.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblFaturada.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFaturada.ForeColor = System.Drawing.Color.Red;
+            this.lblFaturada.Location = new System.Drawing.Point(579, 9);
+            this.lblFaturada.Name = "lblFaturada";
+            this.lblFaturada.Size = new System.Drawing.Size(150, 20);
+            this.lblFaturada.TabIndex = 412;
+            this.lblFaturada.Text = "OS FATURADA";
+            this.lblFaturada.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblFaturada.Visible = false;
+            // 
+            // lblCodFatura
+            // 
+            this.lblCodFatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblCodFatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodFatura.ForeColor = System.Drawing.Color.Red;
+            this.lblCodFatura.Location = new System.Drawing.Point(579, 29);
+            this.lblCodFatura.Name = "lblCodFatura";
+            this.lblCodFatura.Size = new System.Drawing.Size(150, 20);
+            this.lblCodFatura.TabIndex = 413;
+            this.lblCodFatura.Text = "Fatura n°:";
+            this.lblCodFatura.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCodFatura.Visible = false;
+            // 
             // frmAddOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -786,7 +815,6 @@
             this.pnlOBS.ResumeLayout(false);
             this.pnlOBS.PerformLayout();
             this.pnlBotton.ResumeLayout(false);
-            this.pnlBotton.PerformLayout();
             this.pnlDados.ResumeLayout(false);
             this.pnlDados.PerformLayout();
             this.ResumeLayout(false);
@@ -803,7 +831,6 @@
         private System.Windows.Forms.DateTimePicker dtpDataConcluida;
         private System.Windows.Forms.RadioButton rbtVistoriada;
         private System.Windows.Forms.ToolTip ttpAddOS;
-        private System.Windows.Forms.TextBox txtCodFatura;
         private System.Windows.Forms.Label lblReferencia;
         private System.Windows.Forms.DateTimePicker dtpDataOrdem;
         private System.Windows.Forms.Label lblDataExecucao;
@@ -845,5 +872,8 @@
         private System.Windows.Forms.Panel pnlBotton;
         private System.Windows.Forms.Panel pnlDados;
         private System.Windows.Forms.DateTimePicker dtpDataPendente;
+        private System.Windows.Forms.CheckBox chkFaturada;
+        private System.Windows.Forms.Label lblFaturada;
+        private System.Windows.Forms.Label lblCodFatura;
     }
 }

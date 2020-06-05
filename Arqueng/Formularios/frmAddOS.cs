@@ -168,7 +168,7 @@ namespace Arqueng.Formularios
         }
 
 
-        public frmAddOS(string Referencia, string DataOrdem, string DataExecucao, string Profissional, string Atividade, string Siopi, string NomeCliente, string Cidade, string NomeContato, string TelefoneContato, string Status, string DataPendente, string DataVistoria, string DataConcluida, string OBS, string CodFatura)
+        public frmAddOS(string Referencia, string DataOrdem, string DataExecucao, string Profissional, string Atividade, string Siopi, string NomeCliente, string Cidade, string NomeContato, string TelefoneContato, string Status, string DataPendente, string DataVistoria, string DataConcluida, string OBS, string Faturada, string CodFatura)
         {
             InitializeComponent();
             BuscarProfissionais();
@@ -206,7 +206,15 @@ namespace Arqueng.Formularios
             dtpDataVistoria.Text = DataVistoria;
             dtpDataConcluida.Text = DataConcluida;
             txtOBS.Text = OBS;
-            txtCodFatura.Text = CodFatura;
+
+            if (Faturada == "1")
+            {
+                lblFaturada.Show();
+                lblCodFatura.Text = "Fatura n°: " + CodFatura;
+                lblCodFatura.Show();
+                //Desabilitar todos os controles - Não é permitido a edição
+            }
+
             BuscarNomeProfissional();
             BuscarNomeAtividade();
             BuscarAgencia();
@@ -224,7 +232,7 @@ namespace Arqueng.Formularios
                     try
                     {
                         My.conexaoDB = new MySqlConnection(My.dadosdb);
-                        My.comando = new MySqlCommand("INSERT INTO tb_os(referencia, data_ordem, prazo_execucao, profissional_cod, atividade_cod, siopi, nome_cliente, cidade, nome_contato, telefone_contato, status, data_pendente, data_vistoria, data_concluida, obs, fatura_cod) VALUES (@referencia, @data_ordem, @prazo_execucao, @profissional_cod, @atividade_cod, @siopi, @nome_cliente, @cidade, @nome_contato, @telefone_contato, @status, @data_pendente, @data_vistoria, @data_concluida, @obs, @fatura_cod)", My.conexaoDB);
+                        My.comando = new MySqlCommand("INSERT INTO tb_os(referencia, data_ordem, prazo_execucao, profissional_cod, atividade_cod, siopi, nome_cliente, cidade, nome_contato, telefone_contato, status, data_pendente, data_vistoria, data_concluida, obs) VALUES (@referencia, @data_ordem, @prazo_execucao, @profissional_cod, @atividade_cod, @siopi, @nome_cliente, @cidade, @nome_contato, @telefone_contato, @status, @data_pendente, @data_vistoria, @data_concluida, @obs)", My.conexaoDB);
 
                         My.comando.Parameters.AddWithValue("@referencia", txtReferencia.Text);
                         My.comando.Parameters.AddWithValue("@data_ordem", dtpDataOrdem.Value);
@@ -256,7 +264,6 @@ namespace Arqueng.Formularios
                         My.comando.Parameters.AddWithValue("@data_vistoria", dtpDataVistoria.Value);
                         My.comando.Parameters.AddWithValue("@data_concluida", dtpDataConcluida.Value);
                         My.comando.Parameters.AddWithValue("@obs", txtOBS.Text);
-                        My.comando.Parameters.AddWithValue("@fatura_cod", txtCodFatura.Text);
                         
                         My.conexaoDB.Open();
                         My.comando.ExecuteNonQuery();
@@ -279,7 +286,7 @@ namespace Arqueng.Formularios
                 try
                 {
                      My.conexaoDB = new MySqlConnection(My.dadosdb);
-                     My.comando = new MySqlCommand("UPDATE tb_os SET data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, status = @status, data_pendente = @data_pendente, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs, fatura_cod = @fatura_cod WHERE referencia = @referencia", My.conexaoDB);
+                     My.comando = new MySqlCommand("UPDATE tb_os SET data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, status = @status, data_pendente = @data_pendente, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs WHERE referencia = @referencia", My.conexaoDB);
 
                          My.comando.Parameters.AddWithValue("@referencia", txtReferencia.Text);
                          My.comando.Parameters.AddWithValue("@data_ordem", dtpDataOrdem.Value);
@@ -311,7 +318,7 @@ namespace Arqueng.Formularios
                          My.comando.Parameters.AddWithValue("@data_vistoria", dtpDataVistoria.Value);
                          My.comando.Parameters.AddWithValue("@data_concluida", dtpDataConcluida.Value);
                          My.comando.Parameters.AddWithValue("@obs", txtOBS.Text);
-                         My.comando.Parameters.AddWithValue("@fatura_cod", txtCodFatura.Text);
+                         
 
                      My.conexaoDB.Open();
                      My.comando.ExecuteNonQuery();
