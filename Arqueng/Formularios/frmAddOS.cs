@@ -59,7 +59,43 @@ namespace Arqueng.Formularios
             }
         }
 
-        public void BuscarNomeProfissional()
+        public void BuscarAgencia()
+        {
+            try
+            {
+                My.conexaoDB = new MySqlConnection(My.dadosdb);
+                My.comando = new MySqlCommand("SELECT nome, telefone1, email FROM tb_agencias WHERE agencia = @agencia", My.conexaoDB);
+                My.comando.Parameters.AddWithValue("@agencia", txtReferencia.Text.Substring(5, 4));
+                My.conexaoDB.Open();
+                My.dr = My.comando.ExecuteReader();
+                if (My.dr.HasRows == false)
+                {
+                    txtAgenciaNome.Text = "Agência não cadastrado!";
+                    txtAgenciaTelefone.Text = "";
+                    txtAgenciaEmail.Text = "";
+                }
+                else
+                {
+                    while (My.dr.Read())
+                    {
+                        txtAgenciaNome.Text = Convert.ToString(My.dr["nome"]);
+                        txtAgenciaTelefone.Text = Convert.ToString(My.dr["telefone1"]);
+                        txtAgenciaEmail.Text = Convert.ToString(My.dr["email"]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                My.conexaoDB.Close();
+                My.conexaoDB = null;
+            }
+        }
+
+            public void BuscarNomeProfissional()
         {
             try
             {
@@ -173,6 +209,7 @@ namespace Arqueng.Formularios
             txtCodFatura.Text = CodFatura;
             BuscarNomeProfissional();
             BuscarNomeAtividade();
+            BuscarAgencia();
         }
 
 
@@ -304,6 +341,7 @@ namespace Arqueng.Formularios
             {
                 cboAtividade.Text = null;
                 cboProfissional.Text = null;
+                dtpDataExecucao.Value = dtpDataExecucao.Value.AddDays(5);
             }
         }
 
@@ -343,6 +381,16 @@ namespace Arqueng.Formularios
             dtpDataPendente.Visible = true;
             dtpDataVistoria.Hide();
             dtpDataConcluida.Hide();
+        }
+
+        private void txtReferencia_Validated(object sender, EventArgs e)
+            {
+                BuscarAgencia();
+            }
+
+        private void dtpDataOrdem_Validated(object sender, EventArgs e)
+        {
+            dtpDataExecucao.Value = dtpDataOrdem.Value.AddDays(5);
         }
     }
 }

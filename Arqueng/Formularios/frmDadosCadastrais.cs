@@ -21,6 +21,7 @@ namespace Arqueng
             InitializeComponent();
         }
 
+        public static bool alterado = false;
 
         private void frmDadosCadastrais_Load(object sender, EventArgs e)
         {
@@ -143,6 +144,7 @@ namespace Arqueng
                     My.conexaoDB.Open();
                     My.comando.ExecuteNonQuery();
 
+                    alterado = true;
                     MessageBox.Show("Dados cadastrados com sucesso!");
                 }
                 catch (Exception ex)
@@ -204,6 +206,8 @@ namespace Arqueng
                     My.conexaoDB.Open();
                     My.comando.ExecuteNonQuery();
 
+                    alterado = true;
+                    //frmPrincipal
                     MessageBox.Show("Dados atualizados com sucesso!");
                 }
                 catch (Exception ex)

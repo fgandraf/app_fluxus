@@ -8,15 +8,13 @@
 //using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using MySql.Data.MySqlClient;
+using Arqueng.Entidades;
 
 namespace Arqueng
 {
-
-
     public partial class frmPrincipal : Form
     {
-
-
         public frmPrincipal()
         {
             InitializeComponent();
@@ -47,11 +45,46 @@ namespace Arqueng
         
         private void OcultaControles()
         {
-            pnlCtrlDashboard.Visible = false;
-            pnlCtrlOS.Visible = false;
-            pnlCtrlAgencias.Visible = false;
-            pnlCtrlAtividades.Visible = false;
-            pnlCtrlProfissionais.Visible = false;
+            pnlCtrlDashboard.Hide();
+            pnlCtrlOS.Hide();
+            pnlCtrlAgencias.Hide();
+            pnlCtrlAtividades.Hide();
+            pnlCtrlProfissionais.Hide();
+            pnlCtrlDadosCadastrais.Hide();
+        }
+
+        public void BuscarNomeFantasia()
+        {
+            try
+            {
+                My.conexaoDB = new MySqlConnection(My.dadosdb);
+                My.comando = new MySqlCommand("SELECT fantasia FROM tb_dadoscadastrais", My.conexaoDB);
+                My.conexaoDB.Open();
+                My.dr = My.comando.ExecuteReader();
+
+                if (My.dr.HasRows == true)
+                {
+                    while (My.dr.Read())
+                    {
+                        btnDadosCadastrais.Text = Convert.ToString(My.dr["fantasia"]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                My.conexaoDB.Close();
+                My.conexaoDB = null;
+            }
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            BuscarNomeFantasia();
+            btnDashBoard.PerformClick();
         }
 
         private void pnlTitulo_MouseDown(object sender, MouseEventArgs e)
@@ -138,11 +171,16 @@ namespace Arqueng
             {
                 pnlMenu.Width = 50;
                 ttpMenu.Active = true;
+                btnDadosCadastrais.Hide();
+                if (pnlCtrlDadosCadastrais.Visible == true)
+                    pnlCtrlDadosCadastrais.Width = 20;
             }
             else
             {
                 pnlMenu.Width = 200;
                 ttpMenu.Active = false;
+                btnDadosCadastrais.Show();
+                pnlCtrlDadosCadastrais.Width = 150;
             }    
         }
 
@@ -150,7 +188,7 @@ namespace Arqueng
         private void btnDadosCadastrais_Click(object sender, EventArgs e)
         {
             OcultaControles();
-            lblTitulo.Text = "Dados Cadastrais";
+            pnlCtrlDadosCadastrais.Show();
             
             frmDadosCadastrais frm = new frmDadosCadastrais { TopLevel = false, Dock = DockStyle.Fill };
             this.pnlMain.Controls.Clear();
@@ -159,21 +197,12 @@ namespace Arqueng
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnDashBoard_Click(object sender, EventArgs e)
         {
             OcultaControles();
             pnlCtrlDashboard.Visible = true;
             lblTitulo.Text = "Dashboard";
 
-            frmDashboard frm = new frmDashboard { TopLevel = false, Dock = DockStyle.Fill };
-            this.pnlMain.Controls.Clear();
-            this.pnlMain.Controls.Add(frm);
-            frm.Show();
-        }
-
-
-        private void frmPrincipal_Load(object sender, EventArgs e)
-        {
             frmDashboard frm = new frmDashboard { TopLevel = false, Dock = DockStyle.Fill };
             this.pnlMain.Controls.Clear();
             this.pnlMain.Controls.Add(frm);

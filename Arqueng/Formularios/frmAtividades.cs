@@ -9,6 +9,7 @@ using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Arqueng.Entidades;
+using System.Linq;
 //using MySqlX.XDevAPI.Relational;
 
 namespace Arqueng
@@ -104,34 +105,10 @@ namespace Arqueng
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            frmAddAtividade form = new frmAddAtividade();
-            form.Text = "Adicionar";
-            form.ShowDialog();
-            AtualizarDGAtividades();
-
-
-            //Formulário Neto em desenvolvimento
-            /*
-            frmAddAtividades frm = new frmAddAtividades 
-            {
-                TopLevel = false,
-                Dock = DockStyle.Fill 
-            };
-
-            var Principal = this.ParentForm;
-            var pnlContentPrincipal = Controls.Find("pnlMain", true).FirstOrDefault();
-            pnlContentPrincipal.Controls.Clear();
-            pnlContentPrincipal.Refresh();
-            pnlContentPrincipal.Controls.Add(frm);
-            frm.Show();
-            
-            //Principal.Refresh();
-            //pnlMain.Refresh();
-            //this.Close();
-
-            */
-
-
+             frmAddAtividade form = new frmAddAtividade();
+             form.Text = "Adicionar";
+             form.ShowDialog();
+             AtualizarDGAtividades();
         }
     }
 }

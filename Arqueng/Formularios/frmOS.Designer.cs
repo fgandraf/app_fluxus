@@ -219,6 +219,7 @@
             this.dgvOS.ShowEditingIcon = false;
             this.dgvOS.Size = new System.Drawing.Size(820, 445);
             this.dgvOS.TabIndex = 221;
+            this.dgvOS.DoubleClick += new System.EventHandler(this.btnEditar_Click);
             // 
             // status
             // 
