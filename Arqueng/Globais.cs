@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace Arqueng.Entidades
+namespace Arqueng.Globais
 {
     public class My
     {

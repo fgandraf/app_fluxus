@@ -9,7 +9,8 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using MySql.Data.MySqlClient;
-using Arqueng.Entidades;
+using Arqueng.Globais;
+using Arqueng.Formularios;
 
 namespace Arqueng
 {
@@ -51,6 +52,7 @@ namespace Arqueng
             pnlCtrlAtividades.Hide();
             pnlCtrlProfissionais.Hide();
             pnlCtrlDadosCadastrais.Hide();
+            pnlCtrlRelatorios.Hide();
         }
 
         public void BuscarNomeFantasia()
@@ -204,6 +206,18 @@ namespace Arqueng
             lblTitulo.Text = "Dashboard";
 
             frmDashboard frm = new frmDashboard { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
+        }
+
+        private void btnRelatorios_Click(object sender, EventArgs e)
+        {
+            OcultaControles();
+            pnlCtrlRelatorios.Visible = true;
+            lblTitulo.Text = "Relatórios";
+
+            frmRelatorios frm = new frmRelatorios { TopLevel = false, Dock = DockStyle.Fill };
             this.pnlMain.Controls.Clear();
             this.pnlMain.Controls.Add(frm);
             frm.Show();

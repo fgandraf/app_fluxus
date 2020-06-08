@@ -9,7 +9,7 @@ using System.Data;
 using System.Windows.Forms;
 using Arqueng.Formularios;
 using MySql.Data.MySqlClient;
-using Arqueng.Entidades;
+using Arqueng.Globais;
 
 namespace Arqueng
 {

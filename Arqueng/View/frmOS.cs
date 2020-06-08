@@ -8,7 +8,7 @@ using System.Data;
 //using System.Threading.Tasks;
 using System.Windows.Forms;
 using Arqueng.Formularios;
-using Arqueng.Entidades;
+using Arqueng.Globais;
 using MySql.Data.MySqlClient;
 
 namespace Arqueng

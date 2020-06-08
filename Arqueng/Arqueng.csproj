@@ -47,59 +47,69 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formularios\frmAddAgencia.cs">
+    <Compile Include="Conexao.cs" />
+    <Compile Include="DAO\AtividadesDAO.cs" />
+    <Compile Include="Entidades\Atividades.cs" />
+    <Compile Include="Model\AtividadesModel.cs" />
+    <Compile Include="View\frmAddAgencia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmAddAgencia.Designer.cs">
+    <Compile Include="View\frmAddAgencia.Designer.cs">
       <DependentUpon>frmAddAgencia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmAddOS.cs">
+    <Compile Include="View\frmAddOS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmAddOS.Designer.cs">
+    <Compile Include="View\frmAddOS.Designer.cs">
       <DependentUpon>frmAddOS.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmAddProfissional.cs">
+    <Compile Include="View\frmAddProfissional.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmAddProfissional.Designer.cs">
+    <Compile Include="View\frmAddProfissional.Designer.cs">
       <DependentUpon>frmAddProfissional.cs</DependentUpon>
     </Compile>
-    <Compile Include="Globais.cs" />
-    <Compile Include="Formularios\frmAddAtividade.cs">
+    <Compile Include="View\frmRelatorios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmAddAtividade.Designer.cs">
+    <Compile Include="View\frmRelatorios.Designer.cs">
+      <DependentUpon>frmRelatorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Globais.cs" />
+    <Compile Include="View\frmAddAtividade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmAddAtividade.Designer.cs">
       <DependentUpon>frmAddAtividade.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmDashboard.cs">
+    <Compile Include="View\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmDashboard.Designer.cs">
+    <Compile Include="View\frmDashboard.Designer.cs">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmOS.cs">
+    <Compile Include="View\frmOS.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmOS.Designer.cs">
+    <Compile Include="View\frmOS.Designer.cs">
       <DependentUpon>frmOS.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmAgencias.cs">
+    <Compile Include="View\frmAgencias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmAgencias.Designer.cs">
+    <Compile Include="View\frmAgencias.Designer.cs">
       <DependentUpon>frmAgencias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmAtividades.cs">
+    <Compile Include="View\frmAtividades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmAtividades.Designer.cs">
+    <Compile Include="View\frmAtividades.Designer.cs">
       <DependentUpon>frmAtividades.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmDadosCadastrais.cs">
+    <Compile Include="View\frmDadosCadastrais.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmDadosCadastrais.Designer.cs">
+    <Compile Include="View\frmDadosCadastrais.Designer.cs">
       <DependentUpon>frmDadosCadastrais.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
@@ -108,54 +118,57 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmProfissionais.cs">
+    <Compile Include="View\frmProfissionais.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmProfissionais.Designer.cs">
+    <Compile Include="View\frmProfissionais.Designer.cs">
       <DependentUpon>frmProfissionais.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmSobre.cs">
+    <Compile Include="View\frmSobre.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmSobre.Designer.cs">
+    <Compile Include="View\frmSobre.Designer.cs">
       <DependentUpon>frmSobre.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formularios\frmAddAgencia.resx">
+    <EmbeddedResource Include="View\frmAddAgencia.resx">
       <DependentUpon>frmAddAgencia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAddAtividade.resx">
+    <EmbeddedResource Include="View\frmAddAtividade.resx">
       <DependentUpon>frmAddAtividade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAddOS.resx">
+    <EmbeddedResource Include="View\frmAddOS.resx">
       <DependentUpon>frmAddOS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAddProfissional.resx">
+    <EmbeddedResource Include="View\frmAddProfissional.resx">
       <DependentUpon>frmAddProfissional.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmDashboard.resx">
+    <EmbeddedResource Include="View\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmOS.resx">
+    <EmbeddedResource Include="View\frmOS.resx">
       <DependentUpon>frmOS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAgencias.resx">
+    <EmbeddedResource Include="View\frmAgencias.resx">
       <DependentUpon>frmAgencias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAtividades.resx">
+    <EmbeddedResource Include="View\frmAtividades.resx">
       <DependentUpon>frmAtividades.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmDadosCadastrais.resx">
+    <EmbeddedResource Include="View\frmDadosCadastrais.resx">
       <DependentUpon>frmDadosCadastrais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmRelatorios.resx">
+      <DependentUpon>frmRelatorios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmProfissionais.resx">
+    <EmbeddedResource Include="View\frmProfissionais.resx">
       <DependentUpon>frmProfissionais.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmSobre.resx">
+    <EmbeddedResource Include="View\frmSobre.resx">
       <DependentUpon>frmSobre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

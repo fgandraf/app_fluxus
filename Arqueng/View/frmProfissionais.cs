@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Arqueng.Entidades;
+using Arqueng.Globais;
 using Arqueng.Formularios;
 using MySql.Data.MySqlClient;
 

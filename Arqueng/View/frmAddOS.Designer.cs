@@ -73,6 +73,7 @@
             this.pnlLinhaDados = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlStatus = new System.Windows.Forms.Panel();
+            this.txtCodFatura = new System.Windows.Forms.TextBox();
             this.lblFaturada = new System.Windows.Forms.Label();
             this.chkFaturada = new System.Windows.Forms.CheckBox();
             this.pnlOBS = new System.Windows.Forms.Panel();
@@ -81,7 +82,6 @@
             this.pnlLinhaOBS = new System.Windows.Forms.Panel();
             this.pnlBotton = new System.Windows.Forms.Panel();
             this.pnlDados = new System.Windows.Forms.Panel();
-            this.txtCodFatura = new System.Windows.Forms.TextBox();
             this.pnlMolduraProfissional.SuspendLayout();
             this.pnlMolduraAtividade.SuspendLayout();
             this.tlpStatus.SuspendLayout();
@@ -656,6 +656,21 @@
             this.pnlStatus.Size = new System.Drawing.Size(920, 200);
             this.pnlStatus.TabIndex = 420;
             // 
+            // txtCodFatura
+            // 
+            this.txtCodFatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtCodFatura.BackColor = System.Drawing.Color.LightBlue;
+            this.txtCodFatura.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCodFatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodFatura.ForeColor = System.Drawing.Color.Red;
+            this.txtCodFatura.Location = new System.Drawing.Point(583, 35);
+            this.txtCodFatura.MaxLength = 100;
+            this.txtCodFatura.Name = "txtCodFatura";
+            this.txtCodFatura.ReadOnly = true;
+            this.txtCodFatura.Size = new System.Drawing.Size(146, 16);
+            this.txtCodFatura.TabIndex = 414;
+            this.txtCodFatura.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // lblFaturada
             // 
             this.lblFaturada.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -773,21 +788,6 @@
             this.pnlDados.Name = "pnlDados";
             this.pnlDados.Size = new System.Drawing.Size(920, 550);
             this.pnlDados.TabIndex = 423;
-            // 
-            // txtCodFatura
-            // 
-            this.txtCodFatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtCodFatura.BackColor = System.Drawing.Color.LightBlue;
-            this.txtCodFatura.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCodFatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodFatura.ForeColor = System.Drawing.Color.Red;
-            this.txtCodFatura.Location = new System.Drawing.Point(583, 35);
-            this.txtCodFatura.MaxLength = 100;
-            this.txtCodFatura.Name = "txtCodFatura";
-            this.txtCodFatura.ReadOnly = true;
-            this.txtCodFatura.Size = new System.Drawing.Size(146, 16);
-            this.txtCodFatura.TabIndex = 414;
-            this.txtCodFatura.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // frmAddOS
             // 
