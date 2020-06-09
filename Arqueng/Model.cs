@@ -112,4 +112,58 @@ namespace Arqueng.Model
         }
     }
 
+
+    public class Profissionais_Model
+    {
+
+        DAO.Profissionais_DAO dao = new DAO.Profissionais_DAO();
+
+        public DataTable ListarProfissionaisModel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.ListarProfissionaisDAO();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void InsertProfissionalModel(ENT.Profissionais_ENT dado)
+        {
+            try
+            {
+                dao.InsertProfissionalDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void UpdateProfissionalModel(ENT.Profissionais_ENT dado)
+        {
+            try
+            {
+                dao.UpdateProfissionalDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public void DeleteProfissionalModel(ENT.Profissionais_ENT dado)
+        {
+            try
+            {
+                dao.DeleteProfissionalDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+    }
+
 }

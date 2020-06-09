@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 
+// Essa classe será excluída assim que todo o software estiver estruturado em modelo MVC-DAO
+
 namespace Arqueng.Globais
 {
     public class My

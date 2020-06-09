@@ -1,19 +1,13 @@
 ﻿using System;
-//using System.Collections.Generic;
-//using System.ComponentModel;
-//using System.Data;
-//using System.Drawing;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
 using System.Windows.Forms;
-using Arqueng.Globais;
-using MySql.Data.MySqlClient;
+using Arqueng.Model;
 
 namespace Arqueng.Formularios
 {
     public partial class frmAddProfissional : Form
     {
+
+        Profissionais_Model model = new Profissionais_Model();
 
         public frmAddProfissional()
         {
@@ -57,22 +51,18 @@ namespace Arqueng.Formularios
                     {
                         try
                         {
-                            My.conexaoDB = new MySqlConnection(My.dadosdb);
-                            My.comando = new MySqlCommand("INSERT INTO tb_profissionais(codigo, nome, cpf, nascimento, profissao, carteira, entidade, telefone1, telefone2, email) VALUES (@codigo, @nome, @cpf, @nascimento, @profissao, @carteira, @entidade, @telefone1, @telefone2, @email)", My.conexaoDB);
-                            
-                            My.comando.Parameters.AddWithValue("@codigo", txtCodigo.Text);
-                            My.comando.Parameters.AddWithValue("@nome", txtNome.Text);
-                            My.comando.Parameters.AddWithValue("@cpf", txtCPF.Text);
-                            My.comando.Parameters.AddWithValue("@nascimento", dtpNascimento.Value);
-                            My.comando.Parameters.AddWithValue("@profissao", txtProfissao.Text);
-                            My.comando.Parameters.AddWithValue("@carteira", txtCarteira.Text);
-                            My.comando.Parameters.AddWithValue("@entidade", txtEntidade.Text);
-                            My.comando.Parameters.AddWithValue("@telefone1", txtTelefone1.Text);
-                            My.comando.Parameters.AddWithValue("@telefone2", txtTelefone2.Text);
-                            My.comando.Parameters.AddWithValue("@email", txtEmail.Text);
-                            
-                            My.conexaoDB.Open();
-                            My.comando.ExecuteNonQuery();
+                            ENT.Profissionais_ENT dado = new ENT.Profissionais_ENT();
+                            dado.Codigo = txtCodigo.Text;
+                            dado.Nome = txtNome.Text;
+                            dado.Cpf = txtCPF.Text;
+                            dado.Nascimento = Convert.ToDateTime(dtpNascimento.Value);
+                            dado.Profissao = txtProfissao.Text;
+                            dado.Carteira = txtCarteira.Text;
+                            dado.Entidade = txtEntidade.Text;
+                            dado.Telefone1 = txtTelefone1.Text;
+                            dado.Telefone2 = txtTelefone2.Text;
+                            dado.Email = txtEmail.Text;
+                            model.InsertProfissionalModel(dado);
                         }
                         catch (Exception ex)
                         {  
@@ -80,9 +70,6 @@ namespace Arqueng.Formularios
                         }    
                         finally
                         {
-                            My.conexaoDB.Close();
-                            My.conexaoDB = null;
-                            My.comando = null;
                             this.Close();
                         }
                     }
@@ -91,32 +78,25 @@ namespace Arqueng.Formularios
                 {
                     try
                     {
-                        My.conexaoDB = new MySqlConnection(My.dadosdb);
-                        My.comando = new MySqlCommand("UPDATE tb_profissionais SET nome = @nome, cpf = @cpf, nascimento = @nascimento, profissao = @profissao, carteira = @carteira, entidade = @entidade, telefone1 = @telefone1, telefone2 = @telefone2, email = @email WHERE codigo = @codigo", My.conexaoDB);
-                       
-                        My.comando.Parameters.AddWithValue("@codigo", txtCodigo.Text);
-                        My.comando.Parameters.AddWithValue("@nome", txtNome.Text);
-                        My.comando.Parameters.AddWithValue("@cpf", txtCPF.Text);
-                        My.comando.Parameters.AddWithValue("@nascimento", dtpNascimento.Value);
-                        My.comando.Parameters.AddWithValue("@profissao", txtProfissao.Text);
-                        My.comando.Parameters.AddWithValue("@carteira", txtCarteira.Text);
-                        My.comando.Parameters.AddWithValue("@entidade", txtEntidade.Text);
-                        My.comando.Parameters.AddWithValue("@telefone1", txtTelefone1.Text);
-                        My.comando.Parameters.AddWithValue("@telefone2", txtTelefone2.Text);
-                        My.comando.Parameters.AddWithValue("@email", txtEmail.Text);
-
-                        My.conexaoDB.Open();
-                        My.comando.ExecuteNonQuery();
-                    }
+                        ENT.Profissionais_ENT dado = new ENT.Profissionais_ENT();
+                        dado.Codigo = txtCodigo.Text;
+                        dado.Nome = txtNome.Text;
+                        dado.Cpf = txtCPF.Text;
+                        dado.Nascimento = Convert.ToDateTime(dtpNascimento.Value);
+                        dado.Profissao = txtProfissao.Text;
+                        dado.Carteira = txtCarteira.Text;
+                        dado.Entidade = txtEntidade.Text;
+                        dado.Telefone1 = txtTelefone1.Text;
+                        dado.Telefone2 = txtTelefone2.Text;
+                        dado.Email = txtEmail.Text;
+                        model.UpdateProfissionalModel(dado);
+                }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
                     finally
                     {
-                        My.conexaoDB.Close();
-                        My.conexaoDB = null;
-                        My.comando = null;
                         this.Close();
                     }
                 } 
