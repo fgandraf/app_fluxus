@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using Arqueng.Entidades;
 using Arqueng.Model;
 
 namespace Arqueng
@@ -8,7 +7,7 @@ namespace Arqueng
     public partial class frmAddAtividade : Form
     {
 
-        AtividadesModel model = new AtividadesModel();
+        Atividades_Model model = new Atividades_Model();
 
         public frmAddAtividade()
         {
@@ -49,7 +48,7 @@ namespace Arqueng
                     
                     try
                     {
-                        Atividades dado = new Atividades();
+                        ENT.Atividades_ENT dado = new ENT.Atividades_ENT();
                         dado.Codigo = txtCodigo.Text;
                         dado.Descricao = txtDescricao.Text;
                         dado.Valor_atividade = txtValor.Text.Replace(',', '.');
@@ -70,7 +69,7 @@ namespace Arqueng
             {
                 try
                 {
-                    Atividades dado = new Atividades();
+                    ENT.Atividades_ENT dado = new ENT.Atividades_ENT();
                     dado.Codigo = txtCodigo.Text;
                     dado.Descricao = txtDescricao.Text;
                     dado.Valor_atividade = txtValor.Text.Replace(',', '.');

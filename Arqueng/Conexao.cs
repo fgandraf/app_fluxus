@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace Arqueng
 {
-    class Conexao
+    class CONEXAO
     {
 
 

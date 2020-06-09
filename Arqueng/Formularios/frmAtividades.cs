@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
 using Arqueng.Model;
-using Arqueng.Entidades;
 
 namespace Arqueng
 {
     public partial class frmAtividades : Form
     {
-        AtividadesModel model = new AtividadesModel();
+        Atividades_Model model = new Atividades_Model();
         public void ListarAtividades()
         {
             try
@@ -44,7 +43,7 @@ namespace Arqueng
             {
                 try
                 {
-                    Atividades dado = new Atividades();
+                    ENT.Atividades_ENT dado = new ENT.Atividades_ENT();
                     dado.Codigo = dgvAtividades.CurrentRow.Cells[0].Value.ToString();
                     model.DeleteAtividadeModel(dado);
                     ListarAtividades();

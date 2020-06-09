@@ -473,9 +473,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Agência";
             this.Load += new System.EventHandler(this.frmAddAgencia_Load);
-            this.Leave += new System.EventHandler(this.frmAddAgencia_Leave);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmAddAgencia_MouseDown);
-            this.ResumeLayout(false);
+                        this.ResumeLayout(false);
             this.PerformLayout();
 
         }

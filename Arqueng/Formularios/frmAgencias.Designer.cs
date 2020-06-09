@@ -341,8 +341,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agências Demandantes";
             this.Load += new System.EventHandler(this.frmAgencias_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmAgencias_MouseDown);
-            ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).EndInit();
+                        ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgencias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
