@@ -82,7 +82,6 @@
             this.pnlLinhaOBS = new System.Windows.Forms.Panel();
             this.pnlBotton = new System.Windows.Forms.Panel();
             this.pnlDados = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlMolduraProfissional.SuspendLayout();
             this.pnlMolduraAtividade.SuspendLayout();
             this.tlpStatus.SuspendLayout();
@@ -415,7 +414,7 @@
             this.txtAgenciaEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAgenciaEmail.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAgenciaEmail.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAgenciaEmail.Location = new System.Drawing.Point(416, 162);
+            this.txtAgenciaEmail.Location = new System.Drawing.Point(416, 160);
             this.txtAgenciaEmail.MaxLength = 100;
             this.txtAgenciaEmail.Name = "txtAgenciaEmail";
             this.txtAgenciaEmail.ReadOnly = true;
@@ -430,7 +429,7 @@
             this.txtAgenciaTelefone.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAgenciaTelefone.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAgenciaTelefone.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAgenciaTelefone.Location = new System.Drawing.Point(274, 162);
+            this.txtAgenciaTelefone.Location = new System.Drawing.Point(274, 160);
             this.txtAgenciaTelefone.MaxLength = 100;
             this.txtAgenciaTelefone.Name = "txtAgenciaTelefone";
             this.txtAgenciaTelefone.ReadOnly = true;
@@ -759,7 +758,6 @@
             // pnlDados
             // 
             this.pnlDados.BackColor = System.Drawing.SystemColors.Window;
-            this.pnlDados.Controls.Add(this.button1);
             this.pnlDados.Controls.Add(this.txtNomeContato);
             this.pnlDados.Controls.Add(this.lblAtividade);
             this.pnlDados.Controls.Add(this.lblCliente);
@@ -792,15 +790,6 @@
             this.pnlDados.Name = "pnlDados";
             this.pnlDados.Size = new System.Drawing.Size(920, 550);
             this.pnlDados.TabIndex = 423;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(689, 338);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 417;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmAddOS
             // 
@@ -890,6 +879,5 @@
         private System.Windows.Forms.CheckBox chkFaturada;
         private System.Windows.Forms.Label lblFaturada;
         private System.Windows.Forms.TextBox txtCodFatura;
-        private System.Windows.Forms.Button button1;
     }
 }

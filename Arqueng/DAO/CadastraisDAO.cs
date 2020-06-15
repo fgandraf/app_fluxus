@@ -10,23 +10,101 @@ namespace Arqueng.DAO
         MySqlCommand sql;
         CONEXAO con = new CONEXAO();
 
-        public DataTable ListarCadastraisDAO()
+        public void BuscarCadastraisDAO(CadastraisENT dado)
         {
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_dadoscadastrais", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
+                sql = new MySqlCommand("SELECT * FROM tb_dadoscadastrais WHERE codigo = @codigo", con.con);
+                sql.Parameters.AddWithValue("@codigo", "1");
+                MySqlDataReader dr = sql.ExecuteReader();
+
+                if (dr.HasRows == false)
+                {
+                    dado.Cnpj = null;
+                    return;
+                }
+                else
+                {
+                    while (dr.Read())
+                    {
+                        dado.Cnpj = Convert.ToString(dr["cnpj"]);
+                        dado.Fantasia = Convert.ToString(dr["fantasia"]);
+                        dado.Razao = Convert.ToString(dr["razao"]);
+                        dado.Ie = Convert.ToString(dr["ie"]);
+                        dado.Im = Convert.ToString(dr["im"]);
+                        dado.Endereco = Convert.ToString(dr["endereco"]);
+                        dado.Complemento = Convert.ToString(dr["complemento"]);
+                        dado.Bairro = Convert.ToString(dr["bairro"]);
+                        dado.Cidade = Convert.ToString(dr["cidade"]);
+                        dado.Cep = Convert.ToString(dr["cep"]);
+                        dado.Uf = Convert.ToString(dr["uf"]);
+                        dado.Constituicao = Convert.ToDateTime(dr["constituicao"]);
+                        dado.Representante = Convert.ToString(dr["representante"]);
+                        dado.Telefone = Convert.ToString(dr["telefone"]);
+                        dado.Email = Convert.ToString(dr["email"]);
+                        dado.Db_banco = Convert.ToString(dr["db_banco"]);
+                        dado.Db_tipo = Convert.ToString(dr["db_tipo"]);
+                        dado.Db_agencia = Convert.ToString(dr["db_agencia"]);
+                        dado.Db_operador = Convert.ToString(dr["db_operador"]);
+                        dado.Db_conta = Convert.ToString(dr["db_conta"]);
+                        dado.Ec_cnpj = Convert.ToString(dr["ec_cnpj"]);
+                        dado.Ec_fantasia = Convert.ToString(dr["ec_fantasia"]);
+                        dado.Ec_razao = Convert.ToString(dr["ec_razao"]);
+                        dado.Ec_endereco = Convert.ToString(dr["ec_endereco"]);
+                        dado.Ec_complemento = Convert.ToString(dr["ec_complemento"]);
+                        dado.Ec_bairro = Convert.ToString(dr["ec_bairro"]);
+                        dado.Ec_cidade = Convert.ToString(dr["ec_cidade"]);
+                        dado.Ec_cep = Convert.ToString(dr["ec_cep"]);
+                        dado.Ec_uf = Convert.ToString(dr["ec_uf"]);
+                        dado.Ec_contato1 = Convert.ToString(dr["ec_contato1"]);
+                        dado.Ec_cargo1 = Convert.ToString(dr["ec_cargo1"]);
+                        dado.Ec_telefone1 = Convert.ToString(dr["ec_telefone1"]);
+                        dado.Ec_email1 = Convert.ToString(dr["ec_email1"]);
+                        dado.Ec_contato2 = Convert.ToString(dr["ec_contato2"]);
+                        dado.Ec_cargo2 = Convert.ToString(dr["ec_cargo2"]);
+                        dado.Ec_telefone2 = Convert.ToString(dr["ec_telefone2"]);
+                        dado.Ec_email2 = Convert.ToString(dr["ec_email2"]);
+                    }
+                }
+
+                con.FecharConexao();
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
+
+        public void BuscarFantasiaDAO(CadastraisENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT fantasia FROM tb_dadoscadastrais", con.con);
+                MySqlDataReader dr = sql.ExecuteReader();
+
+                if (dr.HasRows == false)
+                {
+                    dado.Fantasia = null;
+                    return;
+                }                    
+                else
+                {
+                    while (dr.Read())
+                    {
+                        dado.Fantasia =Convert.ToString(dr["fantasia"]);
+                    }
+                }
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public void InsertCadastraisDAO(CadastraisENT dado)
         {
             try

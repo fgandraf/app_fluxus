@@ -28,41 +28,41 @@ namespace Arqueng.DAO
             }
         }
 
-        public DataTable ListarOsNaoFatDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_os WHERE faturada is null order by data_ordem", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        //public DataTable ListarOsNaoFatDAO()
+        //{
+        //    try
+        //    {
+        //        con.AbrirConexao();
+        //        sql = new MySqlCommand("SELECT * FROM tb_os WHERE faturada is null order by data_ordem", con.con);
+        //        MySqlDataAdapter da = new MySqlDataAdapter();
+        //        da.SelectCommand = sql;
+        //        DataTable dt = new DataTable();
+        //        da.Fill(dt);
+        //        return dt;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
 
-        public DataTable ListarOsFatDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_os WHERE faturada is not null order by data_ordem", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        //public DataTable ListarOsFatDAO()
+        //{
+        //    try
+        //    {
+        //        con.AbrirConexao();
+        //        sql = new MySqlCommand("SELECT * FROM tb_os WHERE faturada is not null order by data_ordem", con.con);
+        //        MySqlDataAdapter da = new MySqlDataAdapter();
+        //        da.SelectCommand = sql;
+        //        DataTable dt = new DataTable();
+        //        da.Fill(dt);
+        //        return dt;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
 
 
         public void InsertOsDAO(OsENT dado)

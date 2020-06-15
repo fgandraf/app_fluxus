@@ -56,8 +56,6 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.dgvOS = new System.Windows.Forms.DataGridView();
-            this.cboFaturadas = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,13 +73,15 @@
             this.obs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.faturada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.fatura_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboFaturadas = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlLinha2
             // 
-            this.pnlLinha2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pnlLinha2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLinha2.BackColor = System.Drawing.Color.SteelBlue;
             this.pnlLinha2.Location = new System.Drawing.Point(590, 54);
             this.pnlLinha2.Name = "pnlLinha2";
@@ -90,7 +90,7 @@
             // 
             // pctLupa
             // 
-            this.pctLupa.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pctLupa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctLupa.Image = ((System.Drawing.Image)(resources.GetObject("pctLupa.Image")));
             this.pctLupa.Location = new System.Drawing.Point(590, 32);
             this.pctLupa.Name = "pctLupa";
@@ -101,7 +101,7 @@
             // 
             // txtPesquisar
             // 
-            this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtPesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPesquisar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisar.ForeColor = System.Drawing.SystemColors.GrayText;
@@ -113,7 +113,6 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnEditar.BackColor = System.Drawing.SystemColors.Window;
             this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -132,7 +131,6 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnExcluir.BackColor = System.Drawing.SystemColors.Window;
             this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExcluir.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -151,7 +149,6 @@
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnAdicionar.BackColor = System.Drawing.SystemColors.Window;
             this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdicionar.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -174,7 +171,8 @@
             this.dgvOS.AllowUserToAddRows = false;
             this.dgvOS.AllowUserToDeleteRows = false;
             this.dgvOS.AllowUserToOrderColumns = true;
-            this.dgvOS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvOS.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvOS.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvOS.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -225,29 +223,6 @@
             this.dgvOS.Size = new System.Drawing.Size(820, 445);
             this.dgvOS.TabIndex = 221;
             this.dgvOS.DoubleClick += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // cboFaturadas
-            // 
-            this.cboFaturadas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFaturadas.FormattingEnabled = true;
-            this.cboFaturadas.Items.AddRange(new object[] {
-            "Não faturadas",
-            "Faturadas",
-            "Todas"});
-            this.cboFaturadas.Location = new System.Drawing.Point(770, 536);
-            this.cboFaturadas.Name = "cboFaturadas";
-            this.cboFaturadas.Size = new System.Drawing.Size(100, 21);
-            this.cboFaturadas.TabIndex = 226;
-            this.cboFaturadas.SelectionChangeCommitted += new System.EventHandler(this.cboFaturadas_SelectionChangeCommitted);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(732, 539);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 227;
-            this.label1.Text = "Filtro:";
             // 
             // status
             // 
@@ -472,6 +447,31 @@
             this.fatura_cod.ReadOnly = true;
             this.fatura_cod.Visible = false;
             this.fatura_cod.Width = 138;
+            // 
+            // cboFaturadas
+            // 
+            this.cboFaturadas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFaturadas.FormattingEnabled = true;
+            this.cboFaturadas.Items.AddRange(new object[] {
+            "Não faturadas",
+            "Faturadas",
+            "Todas"});
+            this.cboFaturadas.Location = new System.Drawing.Point(770, 536);
+            this.cboFaturadas.Name = "cboFaturadas";
+            this.cboFaturadas.Size = new System.Drawing.Size(100, 21);
+            this.cboFaturadas.TabIndex = 226;
+            this.cboFaturadas.Visible = false;
+            this.cboFaturadas.SelectionChangeCommitted += new System.EventHandler(this.cboFaturadas_SelectionChangeCommitted);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(732, 539);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 227;
+            this.label1.Text = "Filtro:";
+            this.label1.Visible = false;
             // 
             // frmOS
             // 

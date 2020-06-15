@@ -15,13 +15,13 @@ namespace Arqueng.VIEW
         {
             try
             {
-                if (cboFaturadas.Text == "Não faturadas")
-                    dgvOS.DataSource = model.ListarOsNaoFatModel();
+                //if (cboFaturadas.Text == "Não faturadas")
+                //    dgvOS.DataSource = model.ListarOsNaoFatModel();
 
-                if (cboFaturadas.Text == "Faturadas")
-                    dgvOS.DataSource = model.ListarOsFatModel();
+                //if (cboFaturadas.Text == "Faturadas")
+                //    dgvOS.DataSource = model.ListarOsFatModel();
 
-                if (cboFaturadas.Text == "Todas")
+                //if (cboFaturadas.Text == "Todas")
                     dgvOS.DataSource = model.ListarOsModel();
                 
                 

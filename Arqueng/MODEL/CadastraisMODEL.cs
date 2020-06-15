@@ -9,19 +9,30 @@ namespace Arqueng.MODEL
     {
         CadastraisDAO dao = new CadastraisDAO();
 
-        public DataTable ListarCadastraisModel()
+        public void BuscarCadastraisModel(CadastraisENT dado)
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt = dao.ListarCadastraisDAO();
-                return dt;
+                dao.BuscarCadastraisDAO(dado);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+        public void BuscarFantasiaModel(CadastraisENT dado)
+        {
+            try
+            {
+                dao.BuscarFantasiaDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void InsertCadastraisModel(CadastraisENT dado)
         {
             try

@@ -61,7 +61,7 @@
             // 
             // pnlLinha2
             // 
-            this.pnlLinha2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pnlLinha2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLinha2.BackColor = System.Drawing.Color.SteelBlue;
             this.pnlLinha2.Location = new System.Drawing.Point(590, 54);
             this.pnlLinha2.Name = "pnlLinha2";
@@ -71,7 +71,6 @@
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnAdicionar.BackColor = System.Drawing.SystemColors.Window;
             this.btnAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdicionar.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -91,7 +90,6 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnExcluir.BackColor = System.Drawing.SystemColors.Window;
             this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExcluir.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -110,7 +108,6 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnEditar.BackColor = System.Drawing.SystemColors.Window;
             this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -129,7 +126,7 @@
             // 
             // txtPesquisar
             // 
-            this.txtPesquisar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtPesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPesquisar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisar.ForeColor = System.Drawing.SystemColors.GrayText;
@@ -142,7 +139,7 @@
             // 
             // pctLupa
             // 
-            this.pctLupa.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pctLupa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctLupa.Image = ((System.Drawing.Image)(resources.GetObject("pctLupa.Image")));
             this.pctLupa.Location = new System.Drawing.Point(590, 32);
             this.pctLupa.Name = "pctLupa";
@@ -157,7 +154,8 @@
             this.dgvAgencias.AllowUserToAddRows = false;
             this.dgvAgencias.AllowUserToDeleteRows = false;
             this.dgvAgencias.AllowUserToOrderColumns = true;
-            this.dgvAgencias.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvAgencias.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAgencias.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvAgencias.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -341,7 +339,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agências Demandantes";
             this.Load += new System.EventHandler(this.frmAgencias_Load);
-                        ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgencias)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

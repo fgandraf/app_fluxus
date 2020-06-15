@@ -87,7 +87,6 @@
     <Compile Include="VIEW\frmRelatorios.Designer.cs">
       <DependentUpon>frmRelatorios.cs</DependentUpon>
     </Compile>
-    <Compile Include="GLOBAIS.cs" />
     <Compile Include="VIEW\frmAddAtividade.cs">
       <SubType>Form</SubType>
     </Compile>

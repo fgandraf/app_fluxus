@@ -20,8 +20,6 @@ namespace Arqueng.VIEW
             try
             {
                 cboProfissional.DataSource = profmodel.ListarCodNomeProModel();
-                cboProfissional.ValueMember = "codigo";
-                cboProfissional.DisplayMember = "codigo";
             }
             catch (Exception ex)
             {
@@ -50,7 +48,7 @@ namespace Arqueng.VIEW
                 ativmodel.BuscarAtividadesModel(dado);
 
                 if (dado.Descricao == null)
-                    MessageBox.Show("Atividade não cadastrado!", "Não encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    lblAtividadeNome.Text = "Atividade não cadastrado!";
                 else
                 {
                     lblAtividadeNome.Text = dado.Descricao;
@@ -73,7 +71,7 @@ namespace Arqueng.VIEW
                 profmodel.BuscarProfissionalModel(dado);
 
                 if (dado.Nome == null)
-                    MessageBox.Show("Profissional não cadastrado!", "Não encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    lblNomeProfissional.Text = "Profissional não cadastrado!";
                 else
                     lblNomeProfissional.Text = dado.Nome;
             }
@@ -207,6 +205,8 @@ namespace Arqueng.VIEW
             dado.Data_ordem = dtpDataOrdem.Value;
             dado.Prazo_execucao = dtpDataExecucao.Value;
             dado.Profissional_cod = cboProfissional.Text;
+            //CASO O DisplayMember FOR DIFERENTE DO ValueMember:
+            //dado.Profissional_cod = Convert.ToString(cboProfissional.SelectedValue);
             dado.Atividade_cod = cboAtividade.Text;
             dado.Siopi = chkSiopi.Checked;
             dado.Nome_cliente = txtNomeCliente.Text;
@@ -307,6 +307,5 @@ namespace Arqueng.VIEW
         {
             BuscarAgencia();
         }
-
     }
 }

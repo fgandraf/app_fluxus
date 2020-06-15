@@ -24,33 +24,33 @@ namespace Arqueng.MODEL
             }
         }
        
-        public DataTable ListarOsNaoFatModel()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.ListarOsNaoFatDAO();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public DataTable ListarOsNaoFatModel()
+        //{
+        //    try
+        //    {
+        //        DataTable dt = new DataTable();
+        //        dt = dao.ListarOsNaoFatDAO();
+        //        return dt;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
-        public DataTable ListarOsFatModel()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.ListarOsFatDAO();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        //public DataTable ListarOsFatModel()
+        //{
+        //    try
+        //    {
+        //        DataTable dt = new DataTable();
+        //        dt = dao.ListarOsFatDAO();
+        //        return dt;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
 
         public void InsertOsModel(OsENT dado)
         {

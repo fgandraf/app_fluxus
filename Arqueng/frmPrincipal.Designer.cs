@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.pnlCtrlRelatorios = new System.Windows.Forms.Panel();
+            this.btnRelatorios = new System.Windows.Forms.Button();
             this.pnlCtrlDadosCadastrais = new System.Windows.Forms.Panel();
             this.btnDadosCadastrais = new System.Windows.Forms.Button();
             this.pnlCtrlDashboard = new System.Windows.Forms.Panel();
@@ -47,14 +49,15 @@
             this.btnAgencias = new System.Windows.Forms.Button();
             this.btnNovaOS = new System.Windows.Forms.Button();
             this.pnlTitulo = new System.Windows.Forms.Panel();
+            this.btnAppMinimizar = new System.Windows.Forms.Button();
+            this.btnAppMaximizar = new System.Windows.Forms.Button();
             this.btnUsuario = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnAppClose = new System.Windows.Forms.Button();
+            this.btnAppFechar = new System.Windows.Forms.Button();
+            this.btnAppRestaurar = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.ttpMenu = new System.Windows.Forms.ToolTip(this.components);
             this.ttpSempre = new System.Windows.Forms.ToolTip(this.components);
-            this.pnlCtrlRelatorios = new System.Windows.Forms.Panel();
-            this.btnRelatorios = new System.Windows.Forms.Button();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
@@ -86,6 +89,42 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(200, 630);
             this.pnlMenu.TabIndex = 160;
+            // 
+            // pnlCtrlRelatorios
+            // 
+            this.pnlCtrlRelatorios.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnlCtrlRelatorios.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlRelatorios.Location = new System.Drawing.Point(0, 450);
+            this.pnlCtrlRelatorios.Name = "pnlCtrlRelatorios";
+            this.pnlCtrlRelatorios.Size = new System.Drawing.Size(5, 40);
+            this.pnlCtrlRelatorios.TabIndex = 131;
+            this.pnlCtrlRelatorios.Visible = false;
+            // 
+            // btnRelatorios
+            // 
+            this.btnRelatorios.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnRelatorios.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnRelatorios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRelatorios.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnRelatorios.FlatAppearance.BorderSize = 0;
+            this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorios.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRelatorios.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRelatorios.Image = ((System.Drawing.Image)(resources.GetObject("btnRelatorios.Image")));
+            this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRelatorios.Location = new System.Drawing.Point(0, 445);
+            this.btnRelatorios.Name = "btnRelatorios";
+            this.btnRelatorios.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnRelatorios.Size = new System.Drawing.Size(200, 50);
+            this.btnRelatorios.TabIndex = 130;
+            this.btnRelatorios.Text = "    Relatórios";
+            this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRelatorios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnRelatorios, "Relatórios");
+            this.btnRelatorios.UseVisualStyleBackColor = false;
+            this.btnRelatorios.Visible = false;
+            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
             // 
             // pnlCtrlDadosCadastrais
             // 
@@ -120,6 +159,7 @@
             // 
             // pnlCtrlDashboard
             // 
+            this.pnlCtrlDashboard.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pnlCtrlDashboard.BackColor = System.Drawing.Color.LightBlue;
             this.pnlCtrlDashboard.Location = new System.Drawing.Point(0, 200);
             this.pnlCtrlDashboard.Name = "pnlCtrlDashboard";
@@ -128,6 +168,7 @@
             // 
             // pnlCtrlOS
             // 
+            this.pnlCtrlOS.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pnlCtrlOS.BackColor = System.Drawing.Color.LightBlue;
             this.pnlCtrlOS.Location = new System.Drawing.Point(0, 250);
             this.pnlCtrlOS.Name = "pnlCtrlOS";
@@ -137,6 +178,7 @@
             // 
             // pnlCtrlAgencias
             // 
+            this.pnlCtrlAgencias.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pnlCtrlAgencias.BackColor = System.Drawing.Color.LightBlue;
             this.pnlCtrlAgencias.Location = new System.Drawing.Point(0, 300);
             this.pnlCtrlAgencias.Name = "pnlCtrlAgencias";
@@ -146,6 +188,7 @@
             // 
             // pnlCtrlAtividades
             // 
+            this.pnlCtrlAtividades.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pnlCtrlAtividades.BackColor = System.Drawing.Color.LightBlue;
             this.pnlCtrlAtividades.Location = new System.Drawing.Point(0, 350);
             this.pnlCtrlAtividades.Name = "pnlCtrlAtividades";
@@ -155,6 +198,7 @@
             // 
             // pnlCtrlProfissionais
             // 
+            this.pnlCtrlProfissionais.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pnlCtrlProfissionais.BackColor = System.Drawing.Color.LightBlue;
             this.pnlCtrlProfissionais.Location = new System.Drawing.Point(0, 400);
             this.pnlCtrlProfissionais.Name = "pnlCtrlProfissionais";
@@ -178,6 +222,7 @@
             // 
             // btnDashBoard
             // 
+            this.btnDashBoard.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnDashBoard.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btnDashBoard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDashBoard.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
@@ -238,6 +283,7 @@
             // 
             // btnProfissionais
             // 
+            this.btnProfissionais.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnProfissionais.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btnProfissionais.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnProfissionais.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
@@ -262,6 +308,7 @@
             // 
             // btnAtividades
             // 
+            this.btnAtividades.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnAtividades.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btnAtividades.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAtividades.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
@@ -286,6 +333,7 @@
             // 
             // btnAgencias
             // 
+            this.btnAgencias.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnAgencias.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btnAgencias.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgencias.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
@@ -310,6 +358,7 @@
             // 
             // btnNovaOS
             // 
+            this.btnNovaOS.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnNovaOS.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btnNovaOS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNovaOS.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
@@ -335,15 +384,54 @@
             // pnlTitulo
             // 
             this.pnlTitulo.BackColor = System.Drawing.Color.SteelBlue;
+            this.pnlTitulo.Controls.Add(this.btnAppMinimizar);
+            this.pnlTitulo.Controls.Add(this.btnAppMaximizar);
             this.pnlTitulo.Controls.Add(this.btnUsuario);
             this.pnlTitulo.Controls.Add(this.lblTitulo);
-            this.pnlTitulo.Controls.Add(this.btnAppClose);
+            this.pnlTitulo.Controls.Add(this.btnAppFechar);
+            this.pnlTitulo.Controls.Add(this.btnAppRestaurar);
             this.pnlTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitulo.Location = new System.Drawing.Point(200, 0);
             this.pnlTitulo.Name = "pnlTitulo";
             this.pnlTitulo.Size = new System.Drawing.Size(920, 50);
             this.pnlTitulo.TabIndex = 2;
             this.pnlTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitulo_MouseDown);
+            // 
+            // btnAppMinimizar
+            // 
+            this.btnAppMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAppMinimizar.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnAppMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnAppMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAppMinimizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppMinimizar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnAppMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMinimizar.Image")));
+            this.btnAppMinimizar.Location = new System.Drawing.Point(786, -1);
+            this.btnAppMinimizar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAppMinimizar.Name = "btnAppMinimizar";
+            this.btnAppMinimizar.Size = new System.Drawing.Size(45, 30);
+            this.btnAppMinimizar.TabIndex = 123;
+            this.ttpSempre.SetToolTip(this.btnAppMinimizar, "Minimizar");
+            this.btnAppMinimizar.UseVisualStyleBackColor = false;
+            this.btnAppMinimizar.Click += new System.EventHandler(this.btnAppMinimizar_Click);
+            // 
+            // btnAppMaximizar
+            // 
+            this.btnAppMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAppMaximizar.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnAppMaximizar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnAppMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAppMaximizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppMaximizar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnAppMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMaximizar.Image")));
+            this.btnAppMaximizar.Location = new System.Drawing.Point(831, -1);
+            this.btnAppMaximizar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAppMaximizar.Name = "btnAppMaximizar";
+            this.btnAppMaximizar.Size = new System.Drawing.Size(45, 30);
+            this.btnAppMaximizar.TabIndex = 122;
+            this.ttpSempre.SetToolTip(this.btnAppMaximizar, "Maximizar");
+            this.btnAppMaximizar.UseVisualStyleBackColor = false;
+            this.btnAppMaximizar.Click += new System.EventHandler(this.btnAppMaximizar_Click);
             // 
             // btnUsuario
             // 
@@ -358,10 +446,10 @@
             this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsuario.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUsuario.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnUsuario.Location = new System.Drawing.Point(742, 27);
+            this.btnUsuario.Location = new System.Drawing.Point(745, 29);
             this.btnUsuario.Margin = new System.Windows.Forms.Padding(0);
             this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(175, 20);
+            this.btnUsuario.Size = new System.Drawing.Size(175, 21);
             this.btnUsuario.TabIndex = 121;
             this.btnUsuario.Text = "Nome do Usuário  ▼";
             this.btnUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -379,22 +467,42 @@
             this.lblTitulo.TabIndex = 120;
             this.lblTitulo.Text = "Dashboard";
             // 
-            // btnAppClose
+            // btnAppFechar
             // 
-            this.btnAppClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAppClose.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnAppClose.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.btnAppClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAppClose.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAppClose.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnAppClose.Location = new System.Drawing.Point(893, 1);
-            this.btnAppClose.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAppClose.Name = "btnAppClose";
-            this.btnAppClose.Size = new System.Drawing.Size(25, 25);
-            this.btnAppClose.TabIndex = 114;
-            this.btnAppClose.Text = "X";
-            this.btnAppClose.UseVisualStyleBackColor = false;
-            this.btnAppClose.Click += new System.EventHandler(this.btnAppClose_Click);
+            this.btnAppFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAppFechar.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnAppFechar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnAppFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAppFechar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppFechar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnAppFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppFechar.Image")));
+            this.btnAppFechar.Location = new System.Drawing.Point(876, -1);
+            this.btnAppFechar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAppFechar.Name = "btnAppFechar";
+            this.btnAppFechar.Size = new System.Drawing.Size(45, 30);
+            this.btnAppFechar.TabIndex = 114;
+            this.ttpSempre.SetToolTip(this.btnAppFechar, "Fechar");
+            this.btnAppFechar.UseVisualStyleBackColor = false;
+            this.btnAppFechar.Click += new System.EventHandler(this.btnAppFechar_Click);
+            // 
+            // btnAppRestaurar
+            // 
+            this.btnAppRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAppRestaurar.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnAppRestaurar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnAppRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAppRestaurar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppRestaurar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnAppRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppRestaurar.Image")));
+            this.btnAppRestaurar.Location = new System.Drawing.Point(831, -1);
+            this.btnAppRestaurar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAppRestaurar.Name = "btnAppRestaurar";
+            this.btnAppRestaurar.Size = new System.Drawing.Size(45, 30);
+            this.btnAppRestaurar.TabIndex = 124;
+            this.ttpSempre.SetToolTip(this.btnAppRestaurar, "Restaurar");
+            this.btnAppRestaurar.UseVisualStyleBackColor = false;
+            this.btnAppRestaurar.Visible = false;
+            this.btnAppRestaurar.Click += new System.EventHandler(this.btnAppRestaurar_Click);
             // 
             // pnlMain
             // 
@@ -420,40 +528,6 @@
             this.ttpSempre.AutoPopDelay = 5000;
             this.ttpSempre.InitialDelay = 50;
             this.ttpSempre.ReshowDelay = 10;
-            // 
-            // pnlCtrlRelatorios
-            // 
-            this.pnlCtrlRelatorios.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlRelatorios.Location = new System.Drawing.Point(0, 450);
-            this.pnlCtrlRelatorios.Name = "pnlCtrlRelatorios";
-            this.pnlCtrlRelatorios.Size = new System.Drawing.Size(5, 40);
-            this.pnlCtrlRelatorios.TabIndex = 131;
-            this.pnlCtrlRelatorios.Visible = false;
-            // 
-            // btnRelatorios
-            // 
-            this.btnRelatorios.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnRelatorios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRelatorios.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnRelatorios.FlatAppearance.BorderSize = 0;
-            this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRelatorios.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRelatorios.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRelatorios.Image = ((System.Drawing.Image)(resources.GetObject("btnRelatorios.Image")));
-            this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRelatorios.Location = new System.Drawing.Point(0, 445);
-            this.btnRelatorios.Name = "btnRelatorios";
-            this.btnRelatorios.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnRelatorios.Size = new System.Drawing.Size(200, 50);
-            this.btnRelatorios.TabIndex = 130;
-            this.btnRelatorios.Text = "    Relatórios";
-            this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRelatorios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnRelatorios, "Relatórios");
-            this.btnRelatorios.UseVisualStyleBackColor = false;
-            this.btnRelatorios.Visible = false;
-            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
             // 
             // frmPrincipal
             // 
@@ -488,7 +562,7 @@
         private System.Windows.Forms.Button btnNovaOS;
         private System.Windows.Forms.Button btnSobre;
         private System.Windows.Forms.Panel pnlTitulo;
-        private System.Windows.Forms.Button btnAppClose;
+        private System.Windows.Forms.Button btnAppFechar;
         private System.Windows.Forms.Button btnUsuario;
         private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox btnSlide;
@@ -506,6 +580,9 @@
         private System.Windows.Forms.Button btnDadosCadastrais;
         private System.Windows.Forms.Panel pnlCtrlRelatorios;
         private System.Windows.Forms.Button btnRelatorios;
+        private System.Windows.Forms.Button btnAppMaximizar;
+        private System.Windows.Forms.Button btnAppMinimizar;
+        private System.Windows.Forms.Button btnAppRestaurar;
     }
 }
 

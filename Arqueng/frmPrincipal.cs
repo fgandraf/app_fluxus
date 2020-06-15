@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using MySql.Data.MySqlClient;
-using Arqueng.Globais;
 using Arqueng.VIEW;
+using Arqueng.MODEL;
 
 namespace Arqueng
 {
     public partial class frmPrincipal : Form
     {
+
+        CadastraisMODEL cadmodel = new CadastraisMODEL();
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -48,31 +50,20 @@ namespace Arqueng
             pnlCtrlRelatorios.Hide();
         }
 
+        
         public void BuscarNomeFantasia()
         {
             try
             {
-                My.conexaoDB = new MySqlConnection(My.dadosdb);
-                My.comando = new MySqlCommand("SELECT fantasia FROM tb_dadoscadastrais", My.conexaoDB);
-                My.conexaoDB.Open();
-                My.dr = My.comando.ExecuteReader();
+                ENTIDADES.CadastraisENT dado = new ENTIDADES.CadastraisENT();
+                cadmodel.BuscarFantasiaModel(dado);
 
-                if (My.dr.HasRows == true)
-                {
-                    while (My.dr.Read())
-                    {
-                        btnDadosCadastrais.Text = Convert.ToString(My.dr["fantasia"]);
-                    }
-                }
+                if (dado.Fantasia != null)
+                    btnDadosCadastrais.Text = dado.Fantasia;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                My.conexaoDB.Close();
-                My.conexaoDB = null;
             }
         }
 
@@ -154,11 +145,6 @@ namespace Arqueng
         }
 
 
-        private void btnAppClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
 
         private void btnSlide_Click(object sender, EventArgs e)
         {
@@ -214,6 +200,30 @@ namespace Arqueng
             this.pnlMain.Controls.Clear();
             this.pnlMain.Controls.Add(frm);
             frm.Show();
+        }
+
+        private void btnAppFechar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnAppMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnAppMaximizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            btnAppMaximizar.Hide();
+            btnAppRestaurar.Show();
+        }
+
+        private void btnAppRestaurar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            btnAppMaximizar.Show();
+            btnAppRestaurar.Hide();
         }
     }
 }
