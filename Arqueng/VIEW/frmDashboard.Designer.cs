@@ -94,6 +94,8 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDashboard";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "frmDashboard";
             this.ResumeLayout(false);
 

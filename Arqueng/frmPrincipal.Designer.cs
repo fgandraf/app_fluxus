@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.btnSlide = new System.Windows.Forms.Button();
             this.tblMenu = new System.Windows.Forms.TableLayoutPanel();
             this.pnlCtrlDashboard = new System.Windows.Forms.Panel();
             this.btnDashBoard = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@
             this.pnlCtrlLista = new System.Windows.Forms.Panel();
             this.pnlCtrlDadosCadastrais = new System.Windows.Forms.Panel();
             this.btnDadosCadastrais = new System.Windows.Forms.Button();
-            this.btnSlide = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.btnAppMinimizar = new System.Windows.Forms.Button();
@@ -65,7 +65,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pnlMenu.SuspendLayout();
             this.tblMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnSlide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.pnlTitulo.SuspendLayout();
             this.SuspendLayout();
@@ -73,16 +72,34 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.pnlMenu.Controls.Add(this.btnSlide);
             this.pnlMenu.Controls.Add(this.tblMenu);
             this.pnlMenu.Controls.Add(this.pnlCtrlDadosCadastrais);
             this.pnlMenu.Controls.Add(this.btnDadosCadastrais);
-            this.pnlMenu.Controls.Add(this.btnSlide);
             this.pnlMenu.Controls.Add(this.imgLogo);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(200, 630);
             this.pnlMenu.TabIndex = 160;
+            // 
+            // btnSlide
+            // 
+            this.btnSlide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSlide.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSlide.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnSlide.FlatAppearance.BorderSize = 0;
+            this.btnSlide.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnSlide.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnSlide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSlide.Image = ((System.Drawing.Image)(resources.GetObject("btnSlide.Image")));
+            this.btnSlide.Location = new System.Drawing.Point(166, 13);
+            this.btnSlide.Name = "btnSlide";
+            this.btnSlide.Size = new System.Drawing.Size(20, 20);
+            this.btnSlide.TabIndex = 133;
+            this.ttpSempre.SetToolTip(this.btnSlide, "Recolher/Expandir Menu");
+            this.btnSlide.UseVisualStyleBackColor = true;
+            this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
             // 
             // tblMenu
             // 
@@ -406,7 +423,6 @@
             this.pnlCtrlFluxo.Name = "pnlCtrlFluxo";
             this.pnlCtrlFluxo.Size = new System.Drawing.Size(145, 2);
             this.pnlCtrlFluxo.TabIndex = 134;
-            this.pnlCtrlFluxo.Visible = false;
             // 
             // pnlCtrlLista
             // 
@@ -416,7 +432,6 @@
             this.pnlCtrlLista.Name = "pnlCtrlLista";
             this.pnlCtrlLista.Size = new System.Drawing.Size(145, 2);
             this.pnlCtrlLista.TabIndex = 135;
-            this.pnlCtrlLista.Visible = false;
             // 
             // pnlCtrlDadosCadastrais
             // 
@@ -448,20 +463,6 @@
             this.ttpSempre.SetToolTip(this.btnDadosCadastrais, "Dados Cadastrais");
             this.btnDadosCadastrais.UseVisualStyleBackColor = false;
             this.btnDadosCadastrais.Click += new System.EventHandler(this.btnDadosCadastrais_Click);
-            // 
-            // btnSlide
-            // 
-            this.btnSlide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSlide.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSlide.Image = ((System.Drawing.Image)(resources.GetObject("btnSlide.Image")));
-            this.btnSlide.Location = new System.Drawing.Point(166, 13);
-            this.btnSlide.Name = "btnSlide";
-            this.btnSlide.Size = new System.Drawing.Size(20, 20);
-            this.btnSlide.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnSlide.TabIndex = 122;
-            this.btnSlide.TabStop = false;
-            this.ttpSempre.SetToolTip(this.btnSlide, "Recolher/Expandir Menu");
-            this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
             // 
             // imgLogo
             // 
@@ -645,7 +646,6 @@
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
             this.tblMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btnSlide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.pnlTitulo.ResumeLayout(false);
             this.pnlTitulo.PerformLayout();
@@ -664,7 +664,6 @@
         private System.Windows.Forms.Button btnAppFechar;
         private System.Windows.Forms.Button btnUsuario;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.PictureBox btnSlide;
         private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.ToolTip ttpMenu;
         private System.Windows.Forms.ToolTip ttpSempre;
@@ -688,6 +687,7 @@
         private System.Windows.Forms.Button btnOSLista;
         private System.Windows.Forms.Panel pnlCtrlFluxo;
         private System.Windows.Forms.Panel pnlCtrlLista;
+        private System.Windows.Forms.Button btnSlide;
     }
 }
 

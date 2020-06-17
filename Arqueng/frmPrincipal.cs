@@ -68,8 +68,8 @@ namespace Arqueng
             pnlCtrlProfissionais.Hide();
             pnlCtrlDadosCadastrais.Hide();
             pnlCtrlRelatorios.Hide();
-            pnlCtrlFluxo.Hide();
-            pnlCtrlLista.Hide();
+            tblMenu.RowStyles[3].Height = 0;
+            tblMenu.RowStyles[5].Height = 0;
         }
 
         private void ExpandSubMenuOS()
@@ -113,12 +113,6 @@ namespace Arqueng
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-
-
-        private void btnSobre_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void btnProfissionais_Click(object sender, EventArgs e)
@@ -173,8 +167,8 @@ namespace Arqueng
                 ttpMenu.Active = true;
                 btnDadosCadastrais.Hide();
                 RecolheSubMenuOS();
-                pnlCtrlFluxo.Hide();
-                pnlCtrlLista.Hide();
+                tblMenu.RowStyles[3].Height = 0;
+                tblMenu.RowStyles[5].Height = 0;
 
                 if (pnlCtrlDadosCadastrais.Visible == true)
                     pnlCtrlDadosCadastrais.Width = 20;
@@ -188,12 +182,12 @@ namespace Arqueng
                 if (lblTitulo.Text == "Ordens de Serviços - Em lista")
                 {
                     ExpandSubMenuOS();
-                    pnlCtrlLista.Show();
+                    tblMenu.RowStyles[5].Height = 2;
                 }
                 else if (lblTitulo.Text == "Ordens de Serviços - Em fluxo")
                 {
                     ExpandSubMenuOS();
-                    pnlCtrlFluxo.Show();
+                    tblMenu.RowStyles[3].Height = 2;
                 }
             }
             
@@ -206,7 +200,6 @@ namespace Arqueng
             OcultaControles();
             lblTitulo.Text = "Dados Cadastrais";
             RecolheSubMenuOS();
-            //            SubMenuOS();
             pnlCtrlDadosCadastrais.Show();
             
             frmDadosCadastrais frm = new frmDadosCadastrais { TopLevel = false, Dock = DockStyle.Fill };
@@ -270,8 +263,8 @@ namespace Arqueng
         {
             OcultaControles();
             pnlCtrlOS.Visible = true;
-            pnlCtrlFluxo.Hide();
-            pnlCtrlLista.Show();
+            tblMenu.RowStyles[3].Height = 0;
+            tblMenu.RowStyles[5].Height = 2;
             lblTitulo.Text = "Ordens de Serviços - Em lista";
 
             frmOSLista frm = new frmOSLista { TopLevel = false, Dock = DockStyle.Fill };
@@ -282,34 +275,38 @@ namespace Arqueng
 
         private void btnOS_Click(object sender, EventArgs e)
         {
+            
             if (tblMenu.RowStyles[2].Height == 0)
             {
                 ExpandSubMenuOS();
 
                 if (lblTitulo.Text == "Ordens de Serviços - Em lista")
-                    pnlCtrlLista.Show();
+                    tblMenu.RowStyles[5].Height = 2;
                 else if (lblTitulo.Text == "Ordens de Serviços - Em fluxo")
-                    pnlCtrlFluxo.Show();
+                    tblMenu.RowStyles[3].Height = 2;
                 else
                 {
-                    pnlCtrlFluxo.Hide();
-                    pnlCtrlLista.Hide();
+                    tblMenu.RowStyles[3].Height = 0;
+                    tblMenu.RowStyles[5].Height = 0;
                 }
             }
             else
             {
                 RecolheSubMenuOS();
-                pnlCtrlFluxo.Hide();
-                pnlCtrlLista.Hide();
+                tblMenu.RowStyles[3].Height = 0;
+                tblMenu.RowStyles[5].Height = 0;
             }
+            if (pnlMenu.Width == 50)
+                btnSlide.PerformClick();
         }
 
         private void btnOSFluxo_Click(object sender, EventArgs e)
         {
             OcultaControles();
             pnlCtrlOS.Visible = true;
-            pnlCtrlLista.Hide();
-            pnlCtrlFluxo.Show();
+            tblMenu.RowStyles[3].Height = 2;
+            tblMenu.RowStyles[5].Height = 0;
+
             lblTitulo.Text = "Ordens de Serviços - Em fluxo";
 
             frmOSFluxo frm = new frmOSFluxo { TopLevel = false, Dock = DockStyle.Fill };
