@@ -141,12 +141,6 @@
     <Compile Include="VIEW\frmProfissionais.Designer.cs">
       <DependentUpon>frmProfissionais.cs</DependentUpon>
     </Compile>
-    <Compile Include="VIEW\frmSobre.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\frmSobre.Designer.cs">
-      <DependentUpon>frmSobre.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="VIEW\frmAddAgencia.resx">
@@ -187,9 +181,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmProfissionais.resx">
       <DependentUpon>frmProfissionais.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\frmSobre.resx">
-      <DependentUpon>frmSobre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

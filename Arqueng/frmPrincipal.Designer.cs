@@ -31,21 +31,27 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.tblMenu = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlCtrlDashboard = new System.Windows.Forms.Panel();
+            this.btnDashBoard = new System.Windows.Forms.Button();
+            this.pnlCtrlOS = new System.Windows.Forms.Panel();
+            this.btnOS = new System.Windows.Forms.Button();
+            this.btnOSFluxo = new System.Windows.Forms.Button();
             this.pnlCtrlRelatorios = new System.Windows.Forms.Panel();
             this.btnRelatorios = new System.Windows.Forms.Button();
+            this.pnlCtrlProfissionais = new System.Windows.Forms.Panel();
+            this.btnProfissionais = new System.Windows.Forms.Button();
+            this.pnlCtrlAtividades = new System.Windows.Forms.Panel();
+            this.btnAtividades = new System.Windows.Forms.Button();
+            this.pnlCtrlAgencias = new System.Windows.Forms.Panel();
+            this.btnAgencias = new System.Windows.Forms.Button();
+            this.btnOSLista = new System.Windows.Forms.Button();
+            this.pnlCtrlFluxo = new System.Windows.Forms.Panel();
+            this.pnlCtrlLista = new System.Windows.Forms.Panel();
             this.pnlCtrlDadosCadastrais = new System.Windows.Forms.Panel();
             this.btnDadosCadastrais = new System.Windows.Forms.Button();
-            this.pnlCtrlOS = new System.Windows.Forms.Panel();
-            this.pnlCtrlAgencias = new System.Windows.Forms.Panel();
-            this.pnlCtrlAtividades = new System.Windows.Forms.Panel();
-            this.pnlCtrlProfissionais = new System.Windows.Forms.Panel();
             this.btnSlide = new System.Windows.Forms.PictureBox();
             this.imgLogo = new System.Windows.Forms.PictureBox();
-            this.btnSobre = new System.Windows.Forms.Button();
-            this.btnProfissionais = new System.Windows.Forms.Button();
-            this.btnAtividades = new System.Windows.Forms.Button();
-            this.btnAgencias = new System.Windows.Forms.Button();
-            this.btnOS = new System.Windows.Forms.Button();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.btnAppMinimizar = new System.Windows.Forms.Button();
             this.btnAppMaximizar = new System.Windows.Forms.Button();
@@ -57,18 +63,11 @@
             this.ttpMenu = new System.Windows.Forms.ToolTip(this.components);
             this.ttpSempre = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tblMenu = new System.Windows.Forms.TableLayoutPanel();
-            this.pnlCtrlDashboard = new System.Windows.Forms.Panel();
-            this.btnDashBoard = new System.Windows.Forms.Button();
-            this.btnOSFluxo = new System.Windows.Forms.Button();
-            this.btnOSLista = new System.Windows.Forms.Button();
-            this.pnlCtrlFluxo = new System.Windows.Forms.Panel();
-            this.pnlCtrlLista = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
+            this.tblMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSlide)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.pnlTitulo.SuspendLayout();
-            this.tblMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -79,12 +78,149 @@
             this.pnlMenu.Controls.Add(this.btnDadosCadastrais);
             this.pnlMenu.Controls.Add(this.btnSlide);
             this.pnlMenu.Controls.Add(this.imgLogo);
-            this.pnlMenu.Controls.Add(this.btnSobre);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(200, 630);
             this.pnlMenu.TabIndex = 160;
+            // 
+            // tblMenu
+            // 
+            this.tblMenu.AutoSize = true;
+            this.tblMenu.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tblMenu.ColumnCount = 2;
+            this.tblMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tblMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 195F));
+            this.tblMenu.Controls.Add(this.pnlCtrlDashboard, 0, 0);
+            this.tblMenu.Controls.Add(this.btnDashBoard, 1, 0);
+            this.tblMenu.Controls.Add(this.pnlCtrlOS, 0, 1);
+            this.tblMenu.Controls.Add(this.btnOS, 1, 1);
+            this.tblMenu.Controls.Add(this.btnOSFluxo, 1, 2);
+            this.tblMenu.Controls.Add(this.pnlCtrlRelatorios, 0, 9);
+            this.tblMenu.Controls.Add(this.btnRelatorios, 1, 9);
+            this.tblMenu.Controls.Add(this.pnlCtrlProfissionais, 0, 8);
+            this.tblMenu.Controls.Add(this.btnProfissionais, 1, 8);
+            this.tblMenu.Controls.Add(this.pnlCtrlAtividades, 0, 7);
+            this.tblMenu.Controls.Add(this.btnAtividades, 1, 7);
+            this.tblMenu.Controls.Add(this.pnlCtrlAgencias, 0, 6);
+            this.tblMenu.Controls.Add(this.btnAgencias, 1, 6);
+            this.tblMenu.Controls.Add(this.btnOSLista, 1, 4);
+            this.tblMenu.Controls.Add(this.pnlCtrlFluxo, 1, 3);
+            this.tblMenu.Controls.Add(this.pnlCtrlLista, 1, 5);
+            this.tblMenu.Location = new System.Drawing.Point(0, 190);
+            this.tblMenu.Name = "tblMenu";
+            this.tblMenu.RowCount = 10;
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tblMenu.Size = new System.Drawing.Size(200, 354);
+            this.tblMenu.TabIndex = 132;
+            // 
+            // pnlCtrlDashboard
+            // 
+            this.pnlCtrlDashboard.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCtrlDashboard.Location = new System.Drawing.Point(0, 0);
+            this.pnlCtrlDashboard.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlCtrlDashboard.Name = "pnlCtrlDashboard";
+            this.pnlCtrlDashboard.Size = new System.Drawing.Size(5, 50);
+            this.pnlCtrlDashboard.TabIndex = 128;
+            // 
+            // btnDashBoard
+            // 
+            this.btnDashBoard.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnDashBoard.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDashBoard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDashBoard.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnDashBoard.FlatAppearance.BorderSize = 0;
+            this.btnDashBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDashBoard.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashBoard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDashBoard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashBoard.Image")));
+            this.btnDashBoard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDashBoard.Location = new System.Drawing.Point(5, 0);
+            this.btnDashBoard.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDashBoard.Name = "btnDashBoard";
+            this.btnDashBoard.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnDashBoard.Size = new System.Drawing.Size(195, 50);
+            this.btnDashBoard.TabIndex = 18;
+            this.btnDashBoard.Text = "    Dashboard";
+            this.btnDashBoard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDashBoard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnDashBoard, "Dashboard");
+            this.btnDashBoard.UseVisualStyleBackColor = false;
+            this.btnDashBoard.Click += new System.EventHandler(this.btnDashBoard_Click);
+            // 
+            // pnlCtrlOS
+            // 
+            this.pnlCtrlOS.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlOS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCtrlOS.Location = new System.Drawing.Point(0, 50);
+            this.pnlCtrlOS.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlCtrlOS.Name = "pnlCtrlOS";
+            this.pnlCtrlOS.Size = new System.Drawing.Size(5, 50);
+            this.pnlCtrlOS.TabIndex = 126;
+            this.pnlCtrlOS.Visible = false;
+            // 
+            // btnOS
+            // 
+            this.btnOS.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOS.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOS.FlatAppearance.BorderSize = 0;
+            this.btnOS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOS.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOS.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnOS.Image = ((System.Drawing.Image)(resources.GetObject("btnOS.Image")));
+            this.btnOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOS.Location = new System.Drawing.Point(5, 50);
+            this.btnOS.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOS.Name = "btnOS";
+            this.btnOS.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnOS.Size = new System.Drawing.Size(195, 50);
+            this.btnOS.TabIndex = 2;
+            this.btnOS.Text = "    Ordens de Serviços";
+            this.btnOS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnOS, "Ordens de Serviço");
+            this.btnOS.UseVisualStyleBackColor = false;
+            this.btnOS.Click += new System.EventHandler(this.btnOS_Click);
+            // 
+            // btnOSFluxo
+            // 
+            this.btnOSFluxo.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOSFluxo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOSFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOSFluxo.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOSFluxo.FlatAppearance.BorderSize = 0;
+            this.btnOSFluxo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOSFluxo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOSFluxo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOSFluxo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOSFluxo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnOSFluxo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOSFluxo.Location = new System.Drawing.Point(5, 100);
+            this.btnOSFluxo.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOSFluxo.Name = "btnOSFluxo";
+            this.btnOSFluxo.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
+            this.btnOSFluxo.Size = new System.Drawing.Size(195, 25);
+            this.btnOSFluxo.TabIndex = 132;
+            this.btnOSFluxo.Text = "-- fluxo";
+            this.btnOSFluxo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOSFluxo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnOSFluxo, "Ordens de Serviço");
+            this.btnOSFluxo.UseVisualStyleBackColor = false;
+            this.btnOSFluxo.Click += new System.EventHandler(this.btnOSFluxo_Click);
             // 
             // pnlCtrlRelatorios
             // 
@@ -124,6 +260,164 @@
             this.btnRelatorios.Visible = false;
             this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
             // 
+            // pnlCtrlProfissionais
+            // 
+            this.pnlCtrlProfissionais.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlProfissionais.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCtrlProfissionais.Location = new System.Drawing.Point(0, 254);
+            this.pnlCtrlProfissionais.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlCtrlProfissionais.Name = "pnlCtrlProfissionais";
+            this.pnlCtrlProfissionais.Size = new System.Drawing.Size(5, 50);
+            this.pnlCtrlProfissionais.TabIndex = 123;
+            this.pnlCtrlProfissionais.Visible = false;
+            // 
+            // btnProfissionais
+            // 
+            this.btnProfissionais.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnProfissionais.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProfissionais.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnProfissionais.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnProfissionais.FlatAppearance.BorderSize = 0;
+            this.btnProfissionais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnProfissionais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProfissionais.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProfissionais.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnProfissionais.Image = ((System.Drawing.Image)(resources.GetObject("btnProfissionais.Image")));
+            this.btnProfissionais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProfissionais.Location = new System.Drawing.Point(5, 254);
+            this.btnProfissionais.Margin = new System.Windows.Forms.Padding(0);
+            this.btnProfissionais.Name = "btnProfissionais";
+            this.btnProfissionais.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnProfissionais.Size = new System.Drawing.Size(195, 50);
+            this.btnProfissionais.TabIndex = 5;
+            this.btnProfissionais.Text = "    Profissionais";
+            this.btnProfissionais.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProfissionais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnProfissionais, "Profissionais");
+            this.btnProfissionais.UseVisualStyleBackColor = false;
+            this.btnProfissionais.Click += new System.EventHandler(this.btnProfissionais_Click);
+            // 
+            // pnlCtrlAtividades
+            // 
+            this.pnlCtrlAtividades.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlAtividades.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCtrlAtividades.Location = new System.Drawing.Point(0, 204);
+            this.pnlCtrlAtividades.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlCtrlAtividades.Name = "pnlCtrlAtividades";
+            this.pnlCtrlAtividades.Size = new System.Drawing.Size(5, 50);
+            this.pnlCtrlAtividades.TabIndex = 124;
+            this.pnlCtrlAtividades.Visible = false;
+            // 
+            // btnAtividades
+            // 
+            this.btnAtividades.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAtividades.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAtividades.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAtividades.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAtividades.FlatAppearance.BorderSize = 0;
+            this.btnAtividades.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnAtividades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAtividades.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtividades.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtividades.Image = ((System.Drawing.Image)(resources.GetObject("btnAtividades.Image")));
+            this.btnAtividades.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAtividades.Location = new System.Drawing.Point(5, 204);
+            this.btnAtividades.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAtividades.Name = "btnAtividades";
+            this.btnAtividades.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnAtividades.Size = new System.Drawing.Size(195, 50);
+            this.btnAtividades.TabIndex = 4;
+            this.btnAtividades.Text = "    Atividades";
+            this.btnAtividades.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAtividades.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnAtividades, "Atividades");
+            this.btnAtividades.UseVisualStyleBackColor = false;
+            this.btnAtividades.Click += new System.EventHandler(this.btnAtividades_Click);
+            // 
+            // pnlCtrlAgencias
+            // 
+            this.pnlCtrlAgencias.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlAgencias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCtrlAgencias.Location = new System.Drawing.Point(0, 154);
+            this.pnlCtrlAgencias.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlCtrlAgencias.Name = "pnlCtrlAgencias";
+            this.pnlCtrlAgencias.Size = new System.Drawing.Size(5, 50);
+            this.pnlCtrlAgencias.TabIndex = 125;
+            this.pnlCtrlAgencias.Visible = false;
+            // 
+            // btnAgencias
+            // 
+            this.btnAgencias.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAgencias.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgencias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAgencias.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAgencias.FlatAppearance.BorderSize = 0;
+            this.btnAgencias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnAgencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgencias.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgencias.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAgencias.Image = ((System.Drawing.Image)(resources.GetObject("btnAgencias.Image")));
+            this.btnAgencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgencias.Location = new System.Drawing.Point(5, 154);
+            this.btnAgencias.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAgencias.Name = "btnAgencias";
+            this.btnAgencias.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnAgencias.Size = new System.Drawing.Size(195, 50);
+            this.btnAgencias.TabIndex = 3;
+            this.btnAgencias.Text = "    Agências";
+            this.btnAgencias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgencias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnAgencias, "Agências");
+            this.btnAgencias.UseVisualStyleBackColor = false;
+            this.btnAgencias.Click += new System.EventHandler(this.btnAgencias_Click);
+            // 
+            // btnOSLista
+            // 
+            this.btnOSLista.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOSLista.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOSLista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOSLista.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOSLista.FlatAppearance.BorderSize = 0;
+            this.btnOSLista.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOSLista.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOSLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOSLista.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOSLista.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnOSLista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOSLista.Location = new System.Drawing.Point(5, 127);
+            this.btnOSLista.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOSLista.Name = "btnOSLista";
+            this.btnOSLista.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
+            this.btnOSLista.Size = new System.Drawing.Size(195, 25);
+            this.btnOSLista.TabIndex = 133;
+            this.btnOSLista.Text = "-- lista";
+            this.btnOSLista.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOSLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnOSLista, "Ordens de Serviço");
+            this.btnOSLista.UseVisualStyleBackColor = false;
+            this.btnOSLista.Click += new System.EventHandler(this.btnOSLista_Click);
+            // 
+            // pnlCtrlFluxo
+            // 
+            this.pnlCtrlFluxo.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCtrlFluxo.Location = new System.Drawing.Point(55, 125);
+            this.pnlCtrlFluxo.Margin = new System.Windows.Forms.Padding(50, 0, 0, 0);
+            this.pnlCtrlFluxo.Name = "pnlCtrlFluxo";
+            this.pnlCtrlFluxo.Size = new System.Drawing.Size(145, 2);
+            this.pnlCtrlFluxo.TabIndex = 134;
+            this.pnlCtrlFluxo.Visible = false;
+            // 
+            // pnlCtrlLista
+            // 
+            this.pnlCtrlLista.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlLista.Location = new System.Drawing.Point(55, 152);
+            this.pnlCtrlLista.Margin = new System.Windows.Forms.Padding(50, 0, 0, 0);
+            this.pnlCtrlLista.Name = "pnlCtrlLista";
+            this.pnlCtrlLista.Size = new System.Drawing.Size(145, 2);
+            this.pnlCtrlLista.TabIndex = 135;
+            this.pnlCtrlLista.Visible = false;
+            // 
             // pnlCtrlDadosCadastrais
             // 
             this.pnlCtrlDadosCadastrais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -155,50 +449,6 @@
             this.btnDadosCadastrais.UseVisualStyleBackColor = false;
             this.btnDadosCadastrais.Click += new System.EventHandler(this.btnDadosCadastrais_Click);
             // 
-            // pnlCtrlOS
-            // 
-            this.pnlCtrlOS.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlOS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCtrlOS.Location = new System.Drawing.Point(0, 50);
-            this.pnlCtrlOS.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlCtrlOS.Name = "pnlCtrlOS";
-            this.pnlCtrlOS.Size = new System.Drawing.Size(5, 50);
-            this.pnlCtrlOS.TabIndex = 126;
-            this.pnlCtrlOS.Visible = false;
-            // 
-            // pnlCtrlAgencias
-            // 
-            this.pnlCtrlAgencias.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlAgencias.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCtrlAgencias.Location = new System.Drawing.Point(0, 154);
-            this.pnlCtrlAgencias.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlCtrlAgencias.Name = "pnlCtrlAgencias";
-            this.pnlCtrlAgencias.Size = new System.Drawing.Size(5, 50);
-            this.pnlCtrlAgencias.TabIndex = 125;
-            this.pnlCtrlAgencias.Visible = false;
-            // 
-            // pnlCtrlAtividades
-            // 
-            this.pnlCtrlAtividades.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlAtividades.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCtrlAtividades.Location = new System.Drawing.Point(0, 204);
-            this.pnlCtrlAtividades.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlCtrlAtividades.Name = "pnlCtrlAtividades";
-            this.pnlCtrlAtividades.Size = new System.Drawing.Size(5, 50);
-            this.pnlCtrlAtividades.TabIndex = 124;
-            this.pnlCtrlAtividades.Visible = false;
-            // 
-            // pnlCtrlProfissionais
-            // 
-            this.pnlCtrlProfissionais.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlProfissionais.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCtrlProfissionais.Location = new System.Drawing.Point(0, 254);
-            this.pnlCtrlProfissionais.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlCtrlProfissionais.Name = "pnlCtrlProfissionais";
-            this.pnlCtrlProfissionais.Size = new System.Drawing.Size(5, 50);
-            this.pnlCtrlProfissionais.TabIndex = 123;
-            this.pnlCtrlProfissionais.Visible = false;
-            // 
             // btnSlide
             // 
             this.btnSlide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -211,7 +461,6 @@
             this.btnSlide.TabIndex = 122;
             this.btnSlide.TabStop = false;
             this.ttpSempre.SetToolTip(this.btnSlide, "Recolher/Expandir Menu");
-            this.btnSlide.Visible = false;
             this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
             // 
             // imgLogo
@@ -224,135 +473,6 @@
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgLogo.TabIndex = 17;
             this.imgLogo.TabStop = false;
-            // 
-            // btnSobre
-            // 
-            this.btnSobre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSobre.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnSobre.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSobre.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnSobre.FlatAppearance.BorderSize = 0;
-            this.btnSobre.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnSobre.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnSobre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSobre.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSobre.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSobre.Image = ((System.Drawing.Image)(resources.GetObject("btnSobre.Image")));
-            this.btnSobre.Location = new System.Drawing.Point(150, 580);
-            this.btnSobre.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSobre.Name = "btnSobre";
-            this.btnSobre.Size = new System.Drawing.Size(50, 50);
-            this.btnSobre.TabIndex = 9;
-            this.btnSobre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSobre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpSempre.SetToolTip(this.btnSobre, "Sobre");
-            this.btnSobre.UseVisualStyleBackColor = false;
-            this.btnSobre.Visible = false;
-            this.btnSobre.Click += new System.EventHandler(this.btnSobre_Click);
-            // 
-            // btnProfissionais
-            // 
-            this.btnProfissionais.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnProfissionais.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnProfissionais.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnProfissionais.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnProfissionais.FlatAppearance.BorderSize = 0;
-            this.btnProfissionais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnProfissionais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProfissionais.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProfissionais.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnProfissionais.Image = ((System.Drawing.Image)(resources.GetObject("btnProfissionais.Image")));
-            this.btnProfissionais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProfissionais.Location = new System.Drawing.Point(5, 254);
-            this.btnProfissionais.Margin = new System.Windows.Forms.Padding(0);
-            this.btnProfissionais.Name = "btnProfissionais";
-            this.btnProfissionais.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnProfissionais.Size = new System.Drawing.Size(195, 50);
-            this.btnProfissionais.TabIndex = 5;
-            this.btnProfissionais.Text = "    Profissionais";
-            this.btnProfissionais.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProfissionais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnProfissionais, "Profissionais");
-            this.btnProfissionais.UseVisualStyleBackColor = false;
-            this.btnProfissionais.Click += new System.EventHandler(this.btnProfissionais_Click);
-            // 
-            // btnAtividades
-            // 
-            this.btnAtividades.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnAtividades.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAtividades.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAtividades.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnAtividades.FlatAppearance.BorderSize = 0;
-            this.btnAtividades.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnAtividades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAtividades.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtividades.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAtividades.Image = ((System.Drawing.Image)(resources.GetObject("btnAtividades.Image")));
-            this.btnAtividades.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAtividades.Location = new System.Drawing.Point(5, 204);
-            this.btnAtividades.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAtividades.Name = "btnAtividades";
-            this.btnAtividades.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnAtividades.Size = new System.Drawing.Size(195, 50);
-            this.btnAtividades.TabIndex = 4;
-            this.btnAtividades.Text = "    Atividades";
-            this.btnAtividades.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAtividades.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnAtividades, "Atividades");
-            this.btnAtividades.UseVisualStyleBackColor = false;
-            this.btnAtividades.Click += new System.EventHandler(this.btnAtividades_Click);
-            // 
-            // btnAgencias
-            // 
-            this.btnAgencias.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnAgencias.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgencias.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAgencias.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnAgencias.FlatAppearance.BorderSize = 0;
-            this.btnAgencias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnAgencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgencias.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgencias.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAgencias.Image = ((System.Drawing.Image)(resources.GetObject("btnAgencias.Image")));
-            this.btnAgencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgencias.Location = new System.Drawing.Point(5, 154);
-            this.btnAgencias.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAgencias.Name = "btnAgencias";
-            this.btnAgencias.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnAgencias.Size = new System.Drawing.Size(195, 50);
-            this.btnAgencias.TabIndex = 3;
-            this.btnAgencias.Text = "    Agências";
-            this.btnAgencias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgencias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnAgencias, "Agências");
-            this.btnAgencias.UseVisualStyleBackColor = false;
-            this.btnAgencias.Click += new System.EventHandler(this.btnAgencias_Click);
-            // 
-            // btnOS
-            // 
-            this.btnOS.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnOS.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOS.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnOS.FlatAppearance.BorderSize = 0;
-            this.btnOS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOS.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOS.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnOS.Image = ((System.Drawing.Image)(resources.GetObject("btnOS.Image")));
-            this.btnOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOS.Location = new System.Drawing.Point(5, 50);
-            this.btnOS.Margin = new System.Windows.Forms.Padding(0);
-            this.btnOS.Name = "btnOS";
-            this.btnOS.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnOS.Size = new System.Drawing.Size(195, 50);
-            this.btnOS.TabIndex = 2;
-            this.btnOS.Text = "    Ordens de Serviços";
-            this.btnOS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnOS, "Ordens de Serviço");
-            this.btnOS.UseVisualStyleBackColor = false;
-            this.btnOS.Click += new System.EventHandler(this.btnOS_Click);
             // 
             // pnlTitulo
             // 
@@ -507,154 +627,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // tblMenu
-            // 
-            this.tblMenu.AutoSize = true;
-            this.tblMenu.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tblMenu.ColumnCount = 2;
-            this.tblMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tblMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 195F));
-            this.tblMenu.Controls.Add(this.pnlCtrlDashboard, 0, 0);
-            this.tblMenu.Controls.Add(this.btnDashBoard, 1, 0);
-            this.tblMenu.Controls.Add(this.pnlCtrlOS, 0, 1);
-            this.tblMenu.Controls.Add(this.btnOS, 1, 1);
-            this.tblMenu.Controls.Add(this.btnOSFluxo, 1, 2);
-            this.tblMenu.Controls.Add(this.pnlCtrlRelatorios, 0, 9);
-            this.tblMenu.Controls.Add(this.btnRelatorios, 1, 9);
-            this.tblMenu.Controls.Add(this.pnlCtrlProfissionais, 0, 8);
-            this.tblMenu.Controls.Add(this.btnProfissionais, 1, 8);
-            this.tblMenu.Controls.Add(this.pnlCtrlAtividades, 0, 7);
-            this.tblMenu.Controls.Add(this.btnAtividades, 1, 7);
-            this.tblMenu.Controls.Add(this.pnlCtrlAgencias, 0, 6);
-            this.tblMenu.Controls.Add(this.btnAgencias, 1, 6);
-            this.tblMenu.Controls.Add(this.btnOSLista, 1, 4);
-            this.tblMenu.Controls.Add(this.pnlCtrlFluxo, 1, 3);
-            this.tblMenu.Controls.Add(this.pnlCtrlLista, 1, 5);
-            this.tblMenu.Location = new System.Drawing.Point(0, 190);
-            this.tblMenu.Name = "tblMenu";
-            this.tblMenu.RowCount = 10;
-            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
-            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
-            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tblMenu.Size = new System.Drawing.Size(200, 354);
-            this.tblMenu.TabIndex = 132;
-            // 
-            // pnlCtrlDashboard
-            // 
-            this.pnlCtrlDashboard.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCtrlDashboard.Location = new System.Drawing.Point(0, 0);
-            this.pnlCtrlDashboard.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlCtrlDashboard.Name = "pnlCtrlDashboard";
-            this.pnlCtrlDashboard.Size = new System.Drawing.Size(5, 50);
-            this.pnlCtrlDashboard.TabIndex = 128;
-            // 
-            // btnDashBoard
-            // 
-            this.btnDashBoard.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnDashBoard.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDashBoard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDashBoard.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnDashBoard.FlatAppearance.BorderSize = 0;
-            this.btnDashBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashBoard.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDashBoard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDashBoard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashBoard.Image")));
-            this.btnDashBoard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashBoard.Location = new System.Drawing.Point(5, 0);
-            this.btnDashBoard.Margin = new System.Windows.Forms.Padding(0);
-            this.btnDashBoard.Name = "btnDashBoard";
-            this.btnDashBoard.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnDashBoard.Size = new System.Drawing.Size(195, 50);
-            this.btnDashBoard.TabIndex = 18;
-            this.btnDashBoard.Text = "    Dashboard";
-            this.btnDashBoard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashBoard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnDashBoard, "Dashboard");
-            this.btnDashBoard.UseVisualStyleBackColor = false;
-            this.btnDashBoard.Click += new System.EventHandler(this.btnDashBoard_Click);
-            // 
-            // btnOSFluxo
-            // 
-            this.btnOSFluxo.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnOSFluxo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOSFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOSFluxo.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnOSFluxo.FlatAppearance.BorderSize = 0;
-            this.btnOSFluxo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnOSFluxo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnOSFluxo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOSFluxo.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOSFluxo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnOSFluxo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOSFluxo.Location = new System.Drawing.Point(5, 100);
-            this.btnOSFluxo.Margin = new System.Windows.Forms.Padding(0);
-            this.btnOSFluxo.Name = "btnOSFluxo";
-            this.btnOSFluxo.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.btnOSFluxo.Size = new System.Drawing.Size(195, 25);
-            this.btnOSFluxo.TabIndex = 132;
-            this.btnOSFluxo.Text = "-- fluxo";
-            this.btnOSFluxo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOSFluxo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnOSFluxo, "Ordens de Serviço");
-            this.btnOSFluxo.UseVisualStyleBackColor = false;
-            this.btnOSFluxo.Click += new System.EventHandler(this.btnOSFluxo_Click);
-            // 
-            // btnOSLista
-            // 
-            this.btnOSLista.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnOSLista.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOSLista.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOSLista.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnOSLista.FlatAppearance.BorderSize = 0;
-            this.btnOSLista.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnOSLista.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnOSLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOSLista.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOSLista.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnOSLista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOSLista.Location = new System.Drawing.Point(5, 127);
-            this.btnOSLista.Margin = new System.Windows.Forms.Padding(0);
-            this.btnOSLista.Name = "btnOSLista";
-            this.btnOSLista.Padding = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.btnOSLista.Size = new System.Drawing.Size(195, 25);
-            this.btnOSLista.TabIndex = 133;
-            this.btnOSLista.Text = "-- lista";
-            this.btnOSLista.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOSLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnOSLista, "Ordens de Serviço");
-            this.btnOSLista.UseVisualStyleBackColor = false;
-            this.btnOSLista.Click += new System.EventHandler(this.btnOSLista_Click);
-            // 
-            // pnlCtrlFluxo
-            // 
-            this.pnlCtrlFluxo.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCtrlFluxo.Location = new System.Drawing.Point(55, 125);
-            this.pnlCtrlFluxo.Margin = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.pnlCtrlFluxo.Name = "pnlCtrlFluxo";
-            this.pnlCtrlFluxo.Size = new System.Drawing.Size(145, 2);
-            this.pnlCtrlFluxo.TabIndex = 134;
-            this.pnlCtrlFluxo.Visible = false;
-            // 
-            // pnlCtrlLista
-            // 
-            this.pnlCtrlLista.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlCtrlLista.Location = new System.Drawing.Point(55, 152);
-            this.pnlCtrlLista.Margin = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.pnlCtrlLista.Name = "pnlCtrlLista";
-            this.pnlCtrlLista.Size = new System.Drawing.Size(145, 2);
-            this.pnlCtrlLista.TabIndex = 135;
-            this.pnlCtrlLista.Visible = false;
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -672,11 +644,11 @@
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
+            this.tblMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnSlide)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.pnlTitulo.ResumeLayout(false);
             this.pnlTitulo.PerformLayout();
-            this.tblMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -688,7 +660,6 @@
         private System.Windows.Forms.Button btnAtividades;
         private System.Windows.Forms.Button btnAgencias;
         private System.Windows.Forms.Button btnOS;
-        private System.Windows.Forms.Button btnSobre;
         private System.Windows.Forms.Panel pnlTitulo;
         private System.Windows.Forms.Button btnAppFechar;
         private System.Windows.Forms.Button btnUsuario;
