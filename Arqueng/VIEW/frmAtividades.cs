@@ -7,6 +7,18 @@ namespace Arqueng.VIEW
     public partial class frmAtividades : Form
     {
         AtividadesMODEL model = new AtividadesMODEL();
+
+        //public delegate void NextFormEventHandler(object source, string name);
+        //public event NextFormEventHandler NextForm;
+        
+
+
+        //public virtual void OnNextForm(string name)
+        //{
+        //    if (NextForm != null)
+        //        NextForm(this, name);
+        //}
+
         public void ListarAtividades()
         {
             try
@@ -72,10 +84,14 @@ namespace Arqueng.VIEW
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-             frmAddAtividade form = new frmAddAtividade();
-             form.Text = "Adicionar";
-             form.ShowDialog();
-             ListarAtividades();
+
+            //OnNextForm("frmAddAtividade");
+
+            frmAddAtividade form = new frmAddAtividade();
+            form.Text = "Adicionar";
+            form.ShowDialog();
+            ListarAtividades();
+
         }
     }
 }

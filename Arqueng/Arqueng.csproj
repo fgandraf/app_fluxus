@@ -81,6 +81,12 @@
     <Compile Include="VIEW\frmAddProfissional.Designer.cs">
       <DependentUpon>frmAddProfissional.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\frmOSFluxo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\frmOSFluxo.Designer.cs">
+      <DependentUpon>frmOSFluxo.cs</DependentUpon>
+    </Compile>
     <Compile Include="VIEW\frmRelatorios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,11 +105,11 @@
     <Compile Include="VIEW\frmDashboard.Designer.cs">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="VIEW\frmOS.cs">
+    <Compile Include="VIEW\frmOSLista.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VIEW\frmOS.Designer.cs">
-      <DependentUpon>frmOS.cs</DependentUpon>
+    <Compile Include="VIEW\frmOSLista.Designer.cs">
+      <DependentUpon>frmOSLista.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\frmAgencias.cs">
       <SubType>Form</SubType>
@@ -158,8 +164,11 @@
     <EmbeddedResource Include="VIEW\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\frmOS.resx">
-      <DependentUpon>frmOS.cs</DependentUpon>
+    <EmbeddedResource Include="VIEW\frmOSFluxo.resx">
+      <DependentUpon>frmOSFluxo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\frmOSLista.resx">
+      <DependentUpon>frmOSLista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmAgencias.resx">
       <DependentUpon>frmAgencias.cs</DependentUpon>

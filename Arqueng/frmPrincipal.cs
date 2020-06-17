@@ -6,14 +6,17 @@ using Arqueng.MODEL;
 
 namespace Arqueng
 {
+
     public partial class frmPrincipal : Form
     {
+
 
         CadastraisMODEL cadmodel = new CadastraisMODEL();
 
         public frmPrincipal()
         {
             InitializeComponent();
+            
         }
 
 
@@ -21,6 +24,23 @@ namespace Arqueng
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+
+
+        //private void formulario_NextForm(object source, string name)
+        //{
+        //    ((Form)source).Close();
+        //    if (name == "frmAddAtividade")
+        //    {
+        //        frmAddAtividade formulario = new frmAddAtividade();
+        //        formulario.TopLevel = false;
+        //        formulario.AutoScroll = true;
+        //        this.pnlMain.Controls.Clear();
+        //        this.pnlMain.Controls.Add(formulario);
+        //        formulario.Show();
+        //    }
+        //}
+
+
 
         /*
          
@@ -50,7 +70,32 @@ namespace Arqueng
             pnlCtrlRelatorios.Hide();
         }
 
-        
+        private void SubMenuOS()
+        {
+            if (tblMenu.RowStyles[2].Height == 0)
+            {
+                tblMenu.RowStyles[2].Height = 25;
+                tblMenu.RowStyles[4].Height = 25;
+                if (lblTitulo.Text == "Ordens de Serviços - Em lista")
+                    pnlCtrlLista.Show();
+                else if (lblTitulo.Text == "Ordens de Serviços - Em fluxo")
+                    pnlCtrlFluxo.Show();
+                else
+                {
+                    pnlCtrlFluxo.Hide();
+                    pnlCtrlLista.Hide();
+                }
+            }
+            else
+            {
+                tblMenu.RowStyles[2].Height = 0;
+                tblMenu.RowStyles[4].Height = 0;
+                pnlCtrlFluxo.Hide();
+                pnlCtrlLista.Hide();
+            }
+        }
+
+
         public void BuscarNomeFantasia()
         {
             try
@@ -71,6 +116,7 @@ namespace Arqueng
         {
             BuscarNomeFantasia();
             btnDashBoard.PerformClick();
+            SubMenuOS();
         }
 
         private void pnlTitulo_MouseDown(object sender, MouseEventArgs e)
@@ -79,18 +125,6 @@ namespace Arqueng
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-
-        private void btnNovaOS_Click(object sender, EventArgs e)
-        {
-            OcultaControles();
-            pnlCtrlOS.Visible = true;
-            lblTitulo.Text = "Ordens de Serviços";
-
-            frmOS frm = new frmOS { TopLevel = false, Dock = DockStyle.Fill };
-            this.pnlMain.Controls.Clear();
-            this.pnlMain.Controls.Add(frm);
-            frm.Show();
-        }
 
 
         private void btnSobre_Click(object sender, EventArgs e)
@@ -169,6 +203,8 @@ namespace Arqueng
         private void btnDadosCadastrais_Click(object sender, EventArgs e)
         {
             OcultaControles();
+            lblTitulo.Text = "Dados Cadastrais";
+            SubMenuOS();
             pnlCtrlDadosCadastrais.Show();
             
             frmDadosCadastrais frm = new frmDadosCadastrais { TopLevel = false, Dock = DockStyle.Fill };
@@ -225,5 +261,40 @@ namespace Arqueng
             btnAppMaximizar.Show();
             btnAppRestaurar.Hide();
         }
+
+        private void btnOSLista_Click(object sender, EventArgs e)
+        {
+            OcultaControles();
+            pnlCtrlOS.Visible = true;
+            pnlCtrlFluxo.Hide();
+            pnlCtrlLista.Show();
+            lblTitulo.Text = "Ordens de Serviços - Em lista";
+
+            frmOSLista frm = new frmOSLista { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
+        }
+
+        private void btnOS_Click(object sender, EventArgs e)
+        {
+            SubMenuOS();
+           
+        }
+
+        private void btnOSFluxo_Click(object sender, EventArgs e)
+        {
+            OcultaControles();
+            pnlCtrlOS.Visible = true;
+            pnlCtrlLista.Hide();
+            pnlCtrlFluxo.Show();
+            lblTitulo.Text = "Ordens de Serviços - Em fluxo";
+
+            frmOSFluxo frm = new frmOSFluxo { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
+        }
+
     }
 }

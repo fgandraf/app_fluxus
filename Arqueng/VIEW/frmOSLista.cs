@@ -5,7 +5,7 @@ using Arqueng.MODEL;
 namespace Arqueng.VIEW
 {
 
-    public partial class frmOS : Form
+    public partial class frmOSLista : Form
     {
 
         OsMODEL model = new OsMODEL();
@@ -46,7 +46,7 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmOS()
+        public frmOSLista()
         {
             InitializeComponent();
         }

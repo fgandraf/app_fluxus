@@ -7,6 +7,8 @@ namespace Arqueng.VIEW
         public frmDashboard()
         {
             InitializeComponent();
+
         }
+
     }
 }
