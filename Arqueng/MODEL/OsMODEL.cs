@@ -10,6 +10,17 @@ namespace Arqueng.MODEL
 
         OsDAO dao = new OsDAO();
 
+        public void BuscarOsModel(OsENT dado)
+        {
+            try
+            {
+                dao.BuscarOSDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public DataTable ListarOsModel()
         {
             try
@@ -23,7 +34,21 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
-       
+
+        public DataTable ListarOsStatusModel(OsENT dado)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.ListarOsStatusDAO(dado);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         //public DataTable ListarOsNaoFatModel()
         //{
         //    try

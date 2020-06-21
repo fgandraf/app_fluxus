@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Arqueng.MODEL;
+using Arqueng.ENTIDADES;
 
 namespace Arqueng.VIEW
 {
@@ -9,23 +10,15 @@ namespace Arqueng.VIEW
     {
 
         OsMODEL model = new OsMODEL();
-
+        OsENT dado = new OsENT();
 
         public void ListarOS()
         {
             try
             {
-                //if (cboFaturadas.Text == "Não faturadas")
-                //    dgvOS.DataSource = model.ListarOsNaoFatModel();
+                dado.Status = null;
+                dgvOS.DataSource = model.ListarOsStatusModel(dado);
 
-                //if (cboFaturadas.Text == "Faturadas")
-                //    dgvOS.DataSource = model.ListarOsFatModel();
-
-                //if (cboFaturadas.Text == "Todas")
-                    dgvOS.DataSource = model.ListarOsModel();
-                
-                
-                
                 if (dgvOS.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -68,7 +61,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
-                    dado.Referencia = dgvOS.CurrentRow.Cells[0].Value.ToString();
+                    dado.Id = dgvOS.CurrentRow.Cells[0].Value.ToString();
                     model.DeleteOsModel(dado);
                     ListarOS();
                 }
@@ -100,7 +93,9 @@ namespace Arqueng.VIEW
                 dgvOS.CurrentRow.Cells[13].Value.ToString(),
                 dgvOS.CurrentRow.Cells[14].Value.ToString(),
                 dgvOS.CurrentRow.Cells[15].Value.ToString(),
-                dgvOS.CurrentRow.Cells[16].Value.ToString()
+                dgvOS.CurrentRow.Cells[16].Value.ToString(),
+                dgvOS.CurrentRow.Cells[17].Value.ToString(),
+                dgvOS.CurrentRow.Cells[18].Value.ToString()
             );
             form.Text = "Alterar";
             form.ShowDialog();
@@ -122,6 +117,9 @@ namespace Arqueng.VIEW
             ListarOS();
         }
 
- 
+        private void dgvOS_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

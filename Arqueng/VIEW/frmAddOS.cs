@@ -115,12 +115,14 @@ namespace Arqueng.VIEW
             ListarAtividades();
         }
 
-        public frmAddOS(string Referencia, string DataOrdem, string DataExecucao, string Profissional, string Atividade, string Siopi, string NomeCliente, string Cidade, string NomeContato, string TelefoneContato, string Status, string DataPendente, string DataVistoria, string DataConcluida, string OBS, string Faturada, string CodFatura)
+        public frmAddOS(string Id, string Titulo, string Referencia, string DataOrdem, string DataExecucao, string Profissional, string Atividade, string Siopi, string NomeCliente, string Cidade, string NomeContato, string TelefoneContato, string Status, string DataPendente, string DataVistoria, string DataConcluida, string OBS, string Faturada, string CodFatura)
         {
             InitializeComponent();
             ListarProfissionais();
             ListarAtividades();
 
+            dado.Id = Id;
+            dado.Titulo = Titulo;
             txtReferencia.Text = Referencia;
             dtpDataOrdem.Text = DataOrdem;
             dtpDataExecucao.Text = DataExecucao;
@@ -201,6 +203,8 @@ namespace Arqueng.VIEW
             }
 
             //POPULATE
+            int refe = Convert.ToInt32(txtReferencia.Text.Substring(10, 9));
+            dado.Titulo = txtCidade.Text + "-" + Convert.ToString(refe);
             dado.Referencia = txtReferencia.Text;
             dado.Data_ordem = dtpDataOrdem.Value;
             dado.Prazo_execucao = dtpDataExecucao.Value;
@@ -306,6 +310,11 @@ namespace Arqueng.VIEW
         private void txtReferencia_Validated(object sender, EventArgs e)
         {
             BuscarAgencia();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOSLista));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -49,6 +49,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlLinha2 = new System.Windows.Forms.Panel();
             this.pctLupa = new System.Windows.Forms.PictureBox();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
@@ -58,7 +59,9 @@
             this.dgvOS = new System.Windows.Forms.DataGridView();
             this.cboFaturadas = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -184,7 +187,9 @@
             this.dgvOS.ColumnHeadersHeight = 35;
             this.dgvOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvOS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
             this.status,
+            this.titulo,
             this.referencia,
             this.data_ordem,
             this.nome_cliente,
@@ -206,14 +211,14 @@
             this.dgvOS.Name = "dgvOS";
             this.dgvOS.ReadOnly = true;
             this.dgvOS.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOS.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOS.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgvOS.RowHeadersVisible = false;
             this.dgvOS.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            this.dgvOS.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            this.dgvOS.RowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvOS.RowTemplate.Height = 40;
             this.dgvOS.RowTemplate.ReadOnly = true;
             this.dgvOS.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -221,6 +226,7 @@
             this.dgvOS.ShowEditingIcon = false;
             this.dgvOS.Size = new System.Drawing.Size(820, 445);
             this.dgvOS.TabIndex = 221;
+            this.dgvOS.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOS_CellContentClick);
             this.dgvOS.DoubleClick += new System.EventHandler(this.btnEditar_Click);
             // 
             // cboFaturadas
@@ -248,6 +254,14 @@
             this.label1.Text = "Filtro:";
             this.label1.Visible = false;
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
             // status
             // 
             this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -262,14 +276,27 @@
             this.status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.status.Width = 71;
             // 
+            // titulo
+            // 
+            this.titulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.titulo.DataPropertyName = "titulo";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.titulo.DefaultCellStyle = dataGridViewCellStyle3;
+            this.titulo.HeaderText = "Título";
+            this.titulo.Name = "titulo";
+            this.titulo.ReadOnly = true;
+            this.titulo.Visible = false;
+            this.titulo.Width = 5;
+            // 
             // referencia
             // 
             this.referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.referencia.DataPropertyName = "referencia";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.referencia.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.referencia.DefaultCellStyle = dataGridViewCellStyle4;
             this.referencia.HeaderText = "Referência";
             this.referencia.Name = "referencia";
             this.referencia.ReadOnly = true;
@@ -278,11 +305,11 @@
             // 
             this.data_ordem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.data_ordem.DataPropertyName = "data_ordem";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_ordem.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.data_ordem.DefaultCellStyle = dataGridViewCellStyle5;
             this.data_ordem.HeaderText = "Data Ordem";
             this.data_ordem.MinimumWidth = 90;
             this.data_ordem.Name = "data_ordem";
@@ -294,10 +321,10 @@
             // 
             this.nome_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.nome_cliente.DataPropertyName = "nome_cliente";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.nome_cliente.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.nome_cliente.DefaultCellStyle = dataGridViewCellStyle6;
             this.nome_cliente.HeaderText = "Nome do Cliente";
             this.nome_cliente.Name = "nome_cliente";
             this.nome_cliente.ReadOnly = true;
@@ -307,9 +334,9 @@
             // 
             this.prazo_execucao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.prazo_execucao.DataPropertyName = "prazo_execucao";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.prazo_execucao.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.prazo_execucao.DefaultCellStyle = dataGridViewCellStyle7;
             this.prazo_execucao.HeaderText = "Prazo Execução";
             this.prazo_execucao.Name = "prazo_execucao";
             this.prazo_execucao.ReadOnly = true;
@@ -320,8 +347,8 @@
             // 
             this.Profissional.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
             this.Profissional.DataPropertyName = "profissional_cod";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Profissional.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Profissional.DefaultCellStyle = dataGridViewCellStyle8;
             this.Profissional.HeaderText = "Profissional";
             this.Profissional.MinimumWidth = 90;
             this.Profissional.Name = "Profissional";
@@ -333,10 +360,10 @@
             // 
             this.atividade_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
             this.atividade_cod.DataPropertyName = "atividade_cod";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.atividade_cod.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.atividade_cod.DefaultCellStyle = dataGridViewCellStyle9;
             this.atividade_cod.HeaderText = "Tipo";
             this.atividade_cod.MinimumWidth = 45;
             this.atividade_cod.Name = "atividade_cod";
@@ -347,9 +374,9 @@
             // 
             this.siopi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.siopi.DataPropertyName = "siopi";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.NullValue = false;
-            this.siopi.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.NullValue = false;
+            this.siopi.DefaultCellStyle = dataGridViewCellStyle10;
             this.siopi.HeaderText = "Siopi";
             this.siopi.Name = "siopi";
             this.siopi.ReadOnly = true;
@@ -362,10 +389,10 @@
             // 
             this.cidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.cidade.DataPropertyName = "cidade";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.cidade.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.cidade.DefaultCellStyle = dataGridViewCellStyle11;
             this.cidade.HeaderText = "Cidade";
             this.cidade.MinimumWidth = 60;
             this.cidade.Name = "cidade";
@@ -376,8 +403,8 @@
             // 
             this.nome_contato.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.nome_contato.DataPropertyName = "nome_contato";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.nome_contato.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.nome_contato.DefaultCellStyle = dataGridViewCellStyle12;
             this.nome_contato.HeaderText = "Nome do Contato";
             this.nome_contato.Name = "nome_contato";
             this.nome_contato.ReadOnly = true;
@@ -388,9 +415,9 @@
             // 
             this.telefone_contato.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.telefone_contato.DataPropertyName = "telefone_contato";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.telefone_contato.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.telefone_contato.DefaultCellStyle = dataGridViewCellStyle13;
             this.telefone_contato.HeaderText = "Telefone do Contato";
             this.telefone_contato.Name = "telefone_contato";
             this.telefone_contato.ReadOnly = true;
@@ -400,9 +427,9 @@
             // data_pendente
             // 
             this.data_pendente.DataPropertyName = "data_pendente";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.data_pendente.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.data_pendente.DefaultCellStyle = dataGridViewCellStyle14;
             this.data_pendente.HeaderText = "Data Pendente";
             this.data_pendente.Name = "data_pendente";
             this.data_pendente.ReadOnly = true;
@@ -412,9 +439,9 @@
             // 
             this.data_vistoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.data_vistoria.DataPropertyName = "data_vistoria";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.data_vistoria.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.data_vistoria.DefaultCellStyle = dataGridViewCellStyle15;
             this.data_vistoria.HeaderText = "Data da Vistoria";
             this.data_vistoria.Name = "data_vistoria";
             this.data_vistoria.ReadOnly = true;
@@ -425,9 +452,9 @@
             // 
             this.data_concluída.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.data_concluída.DataPropertyName = "data_concluida";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.data_concluída.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.data_concluída.DefaultCellStyle = dataGridViewCellStyle16;
             this.data_concluída.HeaderText = "Data da Conclusão";
             this.data_concluída.Name = "data_concluída";
             this.data_concluída.ReadOnly = true;
@@ -438,9 +465,9 @@
             // 
             this.obs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.obs.DataPropertyName = "obs";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.obs.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.obs.DefaultCellStyle = dataGridViewCellStyle17;
             this.obs.HeaderText = "Observações";
             this.obs.Name = "obs";
             this.obs.ReadOnly = true;
@@ -451,10 +478,10 @@
             // 
             this.faturada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.faturada.DataPropertyName = "faturada";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            dataGridViewCellStyle17.NullValue = false;
-            this.faturada.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle18.NullValue = false;
+            this.faturada.DefaultCellStyle = dataGridViewCellStyle18;
             this.faturada.HeaderText = "Faturada";
             this.faturada.Name = "faturada";
             this.faturada.ReadOnly = true;
@@ -464,9 +491,9 @@
             // 
             this.fatura_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fatura_cod.DataPropertyName = "fatura_cod";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 11.25F);
-            this.fatura_cod.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 11.25F);
+            this.fatura_cod.DefaultCellStyle = dataGridViewCellStyle19;
             this.fatura_cod.HeaderText = "Código da Fatura";
             this.fatura_cod.Name = "fatura_cod";
             this.fatura_cod.ReadOnly = true;
@@ -514,7 +541,9 @@
         private System.Windows.Forms.DataGridView dgvOS;
         private System.Windows.Forms.ComboBox cboFaturadas;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_ordem;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome_cliente;

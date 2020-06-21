@@ -103,7 +103,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(273, 46);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(125, 25);
-            this.btnCancelar.TabIndex = 18;
+            this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
@@ -118,7 +118,7 @@
             this.btnAddSave.Location = new System.Drawing.Point(404, 46);
             this.btnAddSave.Name = "btnAddSave";
             this.btnAddSave.Size = new System.Drawing.Size(150, 25);
-            this.btnAddSave.TabIndex = 17;
+            this.btnAddSave.TabIndex = 0;
             this.btnAddSave.Text = "&Adicionar";
             this.btnAddSave.UseVisualStyleBackColor = false;
             this.btnAddSave.Click += new System.EventHandler(this.btnAddSave_Click);
@@ -132,7 +132,7 @@
             this.rbtRecebida.Location = new System.Drawing.Point(3, 3);
             this.rbtRecebida.Name = "rbtRecebida";
             this.rbtRecebida.Size = new System.Drawing.Size(72, 17);
-            this.rbtRecebida.TabIndex = 10;
+            this.rbtRecebida.TabIndex = 1;
             this.rbtRecebida.TabStop = true;
             this.rbtRecebida.Text = "Recebida";
             this.rbtRecebida.UseVisualStyleBackColor = true;
@@ -146,7 +146,7 @@
             this.rbtPendente.Location = new System.Drawing.Point(123, 3);
             this.rbtPendente.Name = "rbtPendente";
             this.rbtPendente.Size = new System.Drawing.Size(74, 17);
-            this.rbtPendente.TabIndex = 11;
+            this.rbtPendente.TabIndex = 3;
             this.rbtPendente.TabStop = true;
             this.rbtPendente.Text = "Pendente";
             this.rbtPendente.UseVisualStyleBackColor = true;
@@ -160,7 +160,7 @@
             this.rbtConcluida.Location = new System.Drawing.Point(363, 3);
             this.rbtConcluida.Name = "rbtConcluida";
             this.rbtConcluida.Size = new System.Drawing.Size(77, 17);
-            this.rbtConcluida.TabIndex = 14;
+            this.rbtConcluida.TabIndex = 7;
             this.rbtConcluida.TabStop = true;
             this.rbtConcluida.Text = "Concluída";
             this.rbtConcluida.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@
             this.dtpDataVistoria.Location = new System.Drawing.Point(243, 28);
             this.dtpDataVistoria.Name = "dtpDataVistoria";
             this.dtpDataVistoria.Size = new System.Drawing.Size(110, 23);
-            this.dtpDataVistoria.TabIndex = 13;
+            this.dtpDataVistoria.TabIndex = 6;
             this.dtpDataVistoria.Visible = false;
             // 
             // dtpDataConcluida
@@ -187,7 +187,7 @@
             this.dtpDataConcluida.Location = new System.Drawing.Point(363, 28);
             this.dtpDataConcluida.Name = "dtpDataConcluida";
             this.dtpDataConcluida.Size = new System.Drawing.Size(110, 23);
-            this.dtpDataConcluida.TabIndex = 15;
+            this.dtpDataConcluida.TabIndex = 8;
             this.dtpDataConcluida.Visible = false;
             // 
             // rbtVistoriada
@@ -198,7 +198,7 @@
             this.rbtVistoriada.Location = new System.Drawing.Point(243, 3);
             this.rbtVistoriada.Name = "rbtVistoriada";
             this.rbtVistoriada.Size = new System.Drawing.Size(77, 17);
-            this.rbtVistoriada.TabIndex = 12;
+            this.rbtVistoriada.TabIndex = 5;
             this.rbtVistoriada.TabStop = true;
             this.rbtVistoriada.Text = "Vistoriada";
             this.rbtVistoriada.UseVisualStyleBackColor = true;
@@ -225,7 +225,7 @@
             this.dtpDataOrdem.Location = new System.Drawing.Point(3, 28);
             this.dtpDataOrdem.Name = "dtpDataOrdem";
             this.dtpDataOrdem.Size = new System.Drawing.Size(110, 23);
-            this.dtpDataOrdem.TabIndex = 1;
+            this.dtpDataOrdem.TabIndex = 2;
             this.dtpDataOrdem.Validated += new System.EventHandler(this.dtpDataOrdem_Validated);
             // 
             // lblDataExecucao
@@ -278,7 +278,7 @@
             this.cboAtividade.MaxLength = 10;
             this.cboAtividade.Name = "cboAtividade";
             this.cboAtividade.Size = new System.Drawing.Size(108, 23);
-            this.cboAtividade.TabIndex = 4;
+            this.cboAtividade.TabIndex = 0;
             this.cboAtividade.ValueMember = "codigo";
             this.cboAtividade.SelectionChangeCommitted += new System.EventHandler(this.cboAtividade_SelectionChangeCommitted);
             // 
@@ -293,7 +293,7 @@
             this.chkSiopi.Location = new System.Drawing.Point(445, 124);
             this.chkSiopi.Name = "chkSiopi";
             this.chkSiopi.Size = new System.Drawing.Size(44, 15);
-            this.chkSiopi.TabIndex = 5;
+            this.chkSiopi.TabIndex = 1;
             this.chkSiopi.UseCompatibleTextRendering = true;
             this.chkSiopi.UseVisualStyleBackColor = true;
             // 
@@ -342,10 +342,10 @@
             this.txtCidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCidade.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtCidade.Location = new System.Drawing.Point(99, 222);
-            this.txtCidade.MaxLength = 100;
+            this.txtCidade.MaxLength = 50;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(274, 23);
-            this.txtCidade.TabIndex = 7;
+            this.txtCidade.TabIndex = 2;
             // 
             // lblCidade
             // 
@@ -382,7 +382,7 @@
             this.txtNomeContato.MaxLength = 100;
             this.txtNomeContato.Name = "txtNomeContato";
             this.txtNomeContato.Size = new System.Drawing.Size(264, 23);
-            this.txtNomeContato.TabIndex = 8;
+            this.txtNomeContato.TabIndex = 7;
             // 
             // lblTelefoneContato
             // 
@@ -405,7 +405,7 @@
             this.txtTelefoneContato.Location = new System.Drawing.Point(369, 463);
             this.txtTelefoneContato.Name = "txtTelefoneContato";
             this.txtTelefoneContato.Size = new System.Drawing.Size(120, 23);
-            this.txtTelefoneContato.TabIndex = 9;
+            this.txtTelefoneContato.TabIndex = 8;
             // 
             // txtAgenciaEmail
             // 
@@ -419,7 +419,7 @@
             this.txtAgenciaEmail.Name = "txtAgenciaEmail";
             this.txtAgenciaEmail.ReadOnly = true;
             this.txtAgenciaEmail.Size = new System.Drawing.Size(248, 15);
-            this.txtAgenciaEmail.TabIndex = 373;
+            this.txtAgenciaEmail.TabIndex = 402;
             this.txtAgenciaEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAgenciaTelefone
@@ -434,7 +434,7 @@
             this.txtAgenciaTelefone.Name = "txtAgenciaTelefone";
             this.txtAgenciaTelefone.ReadOnly = true;
             this.txtAgenciaTelefone.Size = new System.Drawing.Size(142, 15);
-            this.txtAgenciaTelefone.TabIndex = 372;
+            this.txtAgenciaTelefone.TabIndex = 401;
             this.txtAgenciaTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAgenciaNome
@@ -449,7 +449,7 @@
             this.txtAgenciaNome.Name = "txtAgenciaNome";
             this.txtAgenciaNome.ReadOnly = true;
             this.txtAgenciaNome.Size = new System.Drawing.Size(390, 15);
-            this.txtAgenciaNome.TabIndex = 371;
+            this.txtAgenciaNome.TabIndex = 400;
             this.txtAgenciaNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pnlMolduraProfissional
@@ -460,7 +460,7 @@
             this.pnlMolduraProfissional.Location = new System.Drawing.Point(100, 279);
             this.pnlMolduraProfissional.Name = "pnlMolduraProfissional";
             this.pnlMolduraProfissional.Size = new System.Drawing.Size(110, 26);
-            this.pnlMolduraProfissional.TabIndex = 3;
+            this.pnlMolduraProfissional.TabIndex = 4;
             // 
             // cboProfissional
             // 
@@ -489,7 +489,7 @@
             this.dtpDataExecucao.Location = new System.Drawing.Point(379, 222);
             this.dtpDataExecucao.Name = "dtpDataExecucao";
             this.dtpDataExecucao.Size = new System.Drawing.Size(110, 23);
-            this.dtpDataExecucao.TabIndex = 2;
+            this.dtpDataExecucao.TabIndex = 3;
             // 
             // pnlMolduraAtividade
             // 
@@ -499,7 +499,7 @@
             this.pnlMolduraAtividade.Location = new System.Drawing.Point(99, 336);
             this.pnlMolduraAtividade.Name = "pnlMolduraAtividade";
             this.pnlMolduraAtividade.Size = new System.Drawing.Size(110, 26);
-            this.pnlMolduraAtividade.TabIndex = 382;
+            this.pnlMolduraAtividade.TabIndex = 5;
             // 
             // lblNomeProfissional
             // 
@@ -510,7 +510,7 @@
             this.lblNomeProfissional.Location = new System.Drawing.Point(219, 279);
             this.lblNomeProfissional.Name = "lblNomeProfissional";
             this.lblNomeProfissional.Size = new System.Drawing.Size(270, 26);
-            this.lblNomeProfissional.TabIndex = 380;
+            this.lblNomeProfissional.TabIndex = 403;
             this.lblNomeProfissional.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblAtividadeDeslocamento
@@ -522,7 +522,7 @@
             this.lblAtividadeDeslocamento.Location = new System.Drawing.Point(354, 349);
             this.lblAtividadeDeslocamento.Name = "lblAtividadeDeslocamento";
             this.lblAtividadeDeslocamento.Size = new System.Drawing.Size(135, 13);
-            this.lblAtividadeDeslocamento.TabIndex = 379;
+            this.lblAtividadeDeslocamento.TabIndex = 406;
             this.lblAtividadeDeslocamento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblAtividadeValor
@@ -534,7 +534,7 @@
             this.lblAtividadeValor.Location = new System.Drawing.Point(219, 349);
             this.lblAtividadeValor.Name = "lblAtividadeValor";
             this.lblAtividadeValor.Size = new System.Drawing.Size(135, 13);
-            this.lblAtividadeValor.TabIndex = 378;
+            this.lblAtividadeValor.TabIndex = 405;
             this.lblAtividadeValor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblAtividadeNome
@@ -546,7 +546,7 @@
             this.lblAtividadeNome.Location = new System.Drawing.Point(219, 336);
             this.lblAtividadeNome.Name = "lblAtividadeNome";
             this.lblAtividadeNome.Size = new System.Drawing.Size(270, 13);
-            this.lblAtividadeNome.TabIndex = 377;
+            this.lblAtividadeNome.TabIndex = 404;
             this.lblAtividadeNome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlLinhaStatus
@@ -593,7 +593,7 @@
             this.dtpDataPendente.Location = new System.Drawing.Point(123, 28);
             this.dtpDataPendente.Name = "dtpDataPendente";
             this.dtpDataPendente.Size = new System.Drawing.Size(110, 23);
-            this.dtpDataPendente.TabIndex = 16;
+            this.dtpDataPendente.TabIndex = 4;
             this.dtpDataPendente.Visible = false;
             // 
             // lblTitulo2
@@ -656,7 +656,7 @@
             this.pnlStatus.Location = new System.Drawing.Point(0, 0);
             this.pnlStatus.Name = "pnlStatus";
             this.pnlStatus.Size = new System.Drawing.Size(589, 200);
-            this.pnlStatus.TabIndex = 420;
+            this.pnlStatus.TabIndex = 0;
             // 
             // txtCodFatura
             // 
@@ -672,6 +672,7 @@
             this.txtCodFatura.Size = new System.Drawing.Size(146, 16);
             this.txtCodFatura.TabIndex = 414;
             this.txtCodFatura.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCodFatura.Visible = false;
             // 
             // lblFaturada
             // 
@@ -707,7 +708,7 @@
             this.pnlOBS.Location = new System.Drawing.Point(0, 750);
             this.pnlOBS.Name = "pnlOBS";
             this.pnlOBS.Size = new System.Drawing.Size(589, 200);
-            this.pnlOBS.TabIndex = 421;
+            this.pnlOBS.TabIndex = 2;
             // 
             // txtOBS
             // 
@@ -719,7 +720,7 @@
             this.txtOBS.Multiline = true;
             this.txtOBS.Name = "txtOBS";
             this.txtOBS.Size = new System.Drawing.Size(480, 74);
-            this.txtOBS.TabIndex = 420;
+            this.txtOBS.TabIndex = 0;
             // 
             // label4
             // 
@@ -753,7 +754,7 @@
             this.pnlBotton.Location = new System.Drawing.Point(0, 950);
             this.pnlBotton.Name = "pnlBotton";
             this.pnlBotton.Size = new System.Drawing.Size(589, 100);
-            this.pnlBotton.TabIndex = 422;
+            this.pnlBotton.TabIndex = 3;
             // 
             // pnlDados
             // 
@@ -789,7 +790,7 @@
             this.pnlDados.Location = new System.Drawing.Point(0, 200);
             this.pnlDados.Name = "pnlDados";
             this.pnlDados.Size = new System.Drawing.Size(589, 550);
-            this.pnlDados.TabIndex = 423;
+            this.pnlDados.TabIndex = 1;
             // 
             // frmAddOS
             // 
