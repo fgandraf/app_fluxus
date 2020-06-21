@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOSFluxo));
             this.panel1 = new System.Windows.Forms.Panel();
             this.linhaRecebidas = new System.Windows.Forms.Panel();
@@ -57,9 +57,6 @@
             this.dgvRecebidas = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuRecebida = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuEditarRecebida = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExcluirRecebida = new System.Windows.Forms.ToolStripMenuItem();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dgvVistoriadas = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,15 +71,10 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.menuPendente = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuEditarPendente = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExcluirPendente = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVistoriada = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuEditarVistoriada = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExcluirVistoriada = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuConcluida = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuEditarConcluida = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuExcluirConcluida = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.menuContext = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuEditar = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExcluir = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -92,16 +84,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPendentes)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecebidas)).BeginInit();
-            this.menuRecebida.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVistoriadas)).BeginInit();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcluidas)).BeginInit();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
-            this.menuPendente.SuspendLayout();
-            this.menuVistoriada.SuspendLayout();
-            this.menuConcluida.SuspendLayout();
+            this.menuContext.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -266,6 +255,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label5, 7, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel10, 7, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel12, 7, 3);
+            this.tableLayoutPanel1.Controls.Add(this.textBox1, 5, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -317,17 +307,16 @@
             this.dgvPendentes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn4});
-            this.dgvPendentes.ContextMenuStrip = this.menuPendente;
             this.dgvPendentes.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPendentes.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPendentes.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPendentes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPendentes.EnableHeadersVisualStyles = false;
             this.dgvPendentes.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -349,6 +338,7 @@
             this.dgvPendentes.TabIndex = 223;
             this.dgvPendentes.DoubleClick += new System.EventHandler(this.dgvPendentes_DoubleClick);
             this.dgvPendentes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvPendentes_KeyDown);
+            this.dgvPendentes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvPendentes_MouseClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -389,24 +379,23 @@
             this.dgvRecebidas.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvRecebidas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRecebidas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvRecebidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvRecebidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvRecebidas.ColumnHeadersHeight = 35;
             this.dgvRecebidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRecebidas.ColumnHeadersVisible = false;
             this.dgvRecebidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.titulo});
-            this.dgvRecebidas.ContextMenuStrip = this.menuRecebida;
             this.dgvRecebidas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRecebidas.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRecebidas.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvRecebidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRecebidas.EnableHeadersVisualStyles = false;
             this.dgvRecebidas.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -428,6 +417,7 @@
             this.dgvRecebidas.TabIndex = 222;
             this.dgvRecebidas.DoubleClick += new System.EventHandler(this.dgvRecebidas_DoubleClick);
             this.dgvRecebidas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvRecebidas_KeyDown);
+            this.dgvRecebidas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvRecebidas_MouseClick);
             // 
             // id
             // 
@@ -445,28 +435,6 @@
             this.titulo.MinimumWidth = 50;
             this.titulo.Name = "titulo";
             this.titulo.ReadOnly = true;
-            // 
-            // menuRecebida
-            // 
-            this.menuRecebida.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditarRecebida,
-            this.mnuExcluirRecebida});
-            this.menuRecebida.Name = "menuRecebida";
-            this.menuRecebida.Size = new System.Drawing.Size(110, 48);
-            // 
-            // mnuEditarRecebida
-            // 
-            this.mnuEditarRecebida.Name = "mnuEditarRecebida";
-            this.mnuEditarRecebida.Size = new System.Drawing.Size(109, 22);
-            this.mnuEditarRecebida.Text = "Editar";
-            this.mnuEditarRecebida.Click += new System.EventHandler(this.mnuEditarRecebida_Click);
-            // 
-            // mnuExcluirRecebida
-            // 
-            this.mnuExcluirRecebida.Name = "mnuExcluirRecebida";
-            this.mnuExcluirRecebida.Size = new System.Drawing.Size(109, 22);
-            this.mnuExcluirRecebida.Text = "Excluir";
-            this.mnuExcluirRecebida.Click += new System.EventHandler(this.mnuExcluirRecebida_Click);
             // 
             // panel7
             // 
@@ -495,17 +463,16 @@
             this.dgvVistoriadas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn5});
-            this.dgvVistoriadas.ContextMenuStrip = this.menuVistoriada;
             this.dgvVistoriadas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVistoriadas.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvVistoriadas.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvVistoriadas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVistoriadas.EnableHeadersVisualStyles = false;
             this.dgvVistoriadas.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -527,6 +494,7 @@
             this.dgvVistoriadas.TabIndex = 223;
             this.dgvVistoriadas.DoubleClick += new System.EventHandler(this.dgvVistoriadas_DoubleClick);
             this.dgvVistoriadas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvVistoriadas_KeyDown);
+            this.dgvVistoriadas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvVistoriadas_MouseClick);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -572,17 +540,16 @@
             this.dgvConcluidas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn6});
-            this.dgvConcluidas.ContextMenuStrip = this.menuConcluida;
             this.dgvConcluidas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvConcluidas.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvConcluidas.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvConcluidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvConcluidas.EnableHeadersVisualStyles = false;
             this.dgvConcluidas.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -604,6 +571,7 @@
             this.dgvConcluidas.TabIndex = 223;
             this.dgvConcluidas.DoubleClick += new System.EventHandler(this.dgvConcluidas_DoubleClick);
             this.dgvConcluidas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvConcluidas_KeyDown);
+            this.dgvConcluidas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvConcluidas_MouseClick);
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -714,71 +682,34 @@
             this.panel12.Size = new System.Drawing.Size(201, 1);
             this.panel12.TabIndex = 1;
             // 
-            // menuPendente
+            // textBox1
             // 
-            this.menuPendente.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditarPendente,
-            this.mnuExcluirPendente});
-            this.menuPendente.Name = "menuConcluida";
-            this.menuPendente.Size = new System.Drawing.Size(110, 48);
+            this.textBox1.Location = new System.Drawing.Point(470, 488);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 17;
             // 
-            // mnuEditarPendente
+            // menuContext
             // 
-            this.mnuEditarPendente.Name = "mnuEditarPendente";
-            this.mnuEditarPendente.Size = new System.Drawing.Size(109, 22);
-            this.mnuEditarPendente.Text = "Editar";
-            this.mnuEditarPendente.Click += new System.EventHandler(this.mnuEditarPendente_Click);
+            this.menuContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuEditar,
+            this.mnuExcluir});
+            this.menuContext.Name = "menuConcluida";
+            this.menuContext.Size = new System.Drawing.Size(181, 70);
             // 
-            // mnuExcluirPendente
+            // mnuEditar
             // 
-            this.mnuExcluirPendente.Name = "mnuExcluirPendente";
-            this.mnuExcluirPendente.Size = new System.Drawing.Size(109, 22);
-            this.mnuExcluirPendente.Text = "Excluir";
-            this.mnuExcluirPendente.Click += new System.EventHandler(this.mnuExcluirPendente_Click);
+            this.mnuEditar.Name = "mnuEditar";
+            this.mnuEditar.Size = new System.Drawing.Size(109, 22);
+            this.mnuEditar.Text = "Editar";
+            this.mnuEditar.Click += new System.EventHandler(this.mnuEditar_Click);
             // 
-            // menuVistoriada
+            // mnuExcluir
             // 
-            this.menuVistoriada.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditarVistoriada,
-            this.mnuExcluirVistoriada});
-            this.menuVistoriada.Name = "menuConcluida";
-            this.menuVistoriada.Size = new System.Drawing.Size(110, 48);
-            // 
-            // mnuEditarVistoriada
-            // 
-            this.mnuEditarVistoriada.Name = "mnuEditarVistoriada";
-            this.mnuEditarVistoriada.Size = new System.Drawing.Size(109, 22);
-            this.mnuEditarVistoriada.Text = "Editar";
-            this.mnuEditarVistoriada.Click += new System.EventHandler(this.mnuEditarVistoriada_Click);
-            // 
-            // mnuExcluirVistoriada
-            // 
-            this.mnuExcluirVistoriada.Name = "mnuExcluirVistoriada";
-            this.mnuExcluirVistoriada.Size = new System.Drawing.Size(109, 22);
-            this.mnuExcluirVistoriada.Text = "Excluir";
-            this.mnuExcluirVistoriada.Click += new System.EventHandler(this.mnuExcluirVistoriada_Click);
-            // 
-            // menuConcluida
-            // 
-            this.menuConcluida.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditarConcluida,
-            this.mnuExcluirConcluida});
-            this.menuConcluida.Name = "menuConcluida";
-            this.menuConcluida.Size = new System.Drawing.Size(110, 48);
-            // 
-            // mnuEditarConcluida
-            // 
-            this.mnuEditarConcluida.Name = "mnuEditarConcluida";
-            this.mnuEditarConcluida.Size = new System.Drawing.Size(109, 22);
-            this.mnuEditarConcluida.Text = "Editar";
-            this.mnuEditarConcluida.Click += new System.EventHandler(this.mnuEditarConcluida_Click);
-            // 
-            // mnuExcluirConcluida
-            // 
-            this.mnuExcluirConcluida.Name = "mnuExcluirConcluida";
-            this.mnuExcluirConcluida.Size = new System.Drawing.Size(109, 22);
-            this.mnuExcluirConcluida.Text = "Excluir";
-            this.mnuExcluirConcluida.Click += new System.EventHandler(this.mnuExcluirConcluida_Click);
+            this.mnuExcluir.Name = "mnuExcluir";
+            this.mnuExcluir.Size = new System.Drawing.Size(180, 22);
+            this.mnuExcluir.Text = "Excluir";
+            this.mnuExcluir.Click += new System.EventHandler(this.mnuExcluir_Click);
             // 
             // frmOSFluxo
             // 
@@ -802,16 +733,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPendentes)).EndInit();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecebidas)).EndInit();
-            this.menuRecebida.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVistoriadas)).EndInit();
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcluidas)).EndInit();
             this.panel9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
-            this.menuPendente.ResumeLayout(false);
-            this.menuVistoriada.ResumeLayout(false);
-            this.menuConcluida.ResumeLayout(false);
+            this.menuContext.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -855,17 +783,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.ContextMenuStrip menuRecebida;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditarRecebida;
-        private System.Windows.Forms.ToolStripMenuItem mnuExcluirRecebida;
-        private System.Windows.Forms.ContextMenuStrip menuPendente;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditarPendente;
-        private System.Windows.Forms.ToolStripMenuItem mnuExcluirPendente;
-        private System.Windows.Forms.ContextMenuStrip menuVistoriada;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditarVistoriada;
-        private System.Windows.Forms.ToolStripMenuItem mnuExcluirVistoriada;
-        private System.Windows.Forms.ContextMenuStrip menuConcluida;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditarConcluida;
-        private System.Windows.Forms.ToolStripMenuItem mnuExcluirConcluida;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ContextMenuStrip menuContext;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditar;
+        private System.Windows.Forms.ToolStripMenuItem mnuExcluir;
     }
 }

@@ -7,15 +7,23 @@ namespace Arqueng.VIEW
 {
     public partial class frmOSFluxo : Form
     {
+
+
         OsMODEL model = new OsMODEL();
         OsENT dado = new OsENT();
+        Control _lastEnteredControl;
 
-        public void ListarOSRecebidas()
+
+
+
+        //========================LISTAR OS========================//
+        //=========================================================//
+        public void ListarOS(DataGridView dgv, string status)
         {
             try
             {
-                dado.Status = "RECEBIDA";
-                dgvRecebidas.DataSource = model.ListarOsStatusModel(dado);
+                dado.Status = status;
+                dgv.DataSource = model.ListarOsStatusModel(dado);
 
             }
             catch (Exception ex)
@@ -24,324 +32,255 @@ namespace Arqueng.VIEW
             }
         }
 
-        public void ListarOSVistoriadas()
-        {
-            try
-            {
-                dado.Status = "VISTORIADA";
-                dgvVistoriadas.DataSource = model.ListarOsStatusModel(dado);
 
-            }
-            catch (Exception ex)
+
+
+
+        //========================EDITAR OS========================//
+        //=========================================================//
+        public void EditarOS(DataGridView dgv)
+        {
+            dado.Id = dgv.CurrentRow.Cells[0].Value.ToString();
+            model.BuscarOsModel(dado);
+            frmAddOS form = new frmAddOS
+            (
+                dado.Id,
+                dado.Titulo,
+                dado.Referencia,
+                Convert.ToString(dado.Data_ordem),
+                Convert.ToString(dado.Prazo_execucao),
+                dado.Profissional_cod,
+                dado.Atividade_cod,
+                Convert.ToString(dado.Siopi),
+                dado.Nome_cliente,
+                dado.Cidade,
+                dado.Nome_contato,
+                dado.Telefone_contato,
+                dado.Status,
+                Convert.ToString(dado.Data_pendente),
+                Convert.ToString(dado.Data_vistoria),
+                Convert.ToString(dado.Data_concluida),
+                dado.Obs,
+                Convert.ToString(dado.Faturada),
+                dado.Fatura_cod
+            );
+            form.Text = "Alterar";
+            form.ShowDialog();
+            ListarOS(dgvRecebidas, "RECEBIDA");
+            ListarOS(dgvPendentes, "PENDENTE");
+            ListarOS(dgvVistoriadas, "VISTORIADA");
+            ListarOS(dgvConcluidas, "CONCLUÍDA");
+        }
+
+
+
+
+        //=======================EXCLUIR OS=======================//
+        //========================================================//
+        public void ExcluirOS(DataGridView dgv, string sta)
+        {
+            var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.Yes)
             {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
+                    dado.Id = dgv.CurrentRow.Cells[0].Value.ToString();
+                    model.DeleteOsModel(dado);
+                    ListarOS(dgv, sta);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
-        public void ListarOSPendentes()
-        {
-            try
-            {
-                dado.Status = "PENDENTE";
-                dgvPendentes.DataSource = model.ListarOsStatusModel(dado);
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        public void ListarOSConcluidas()
-        {
-            try
-            {
-                dado.Status = "CONCLUÍDA";
-                dgvConcluidas.DataSource = model.ListarOsStatusModel(dado);
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
+        //==============INICIALIZAÇÃO DO FORMULÁRIO==============//
+        //=======================================================//
         public frmOSFluxo()
         {
             InitializeComponent();
-            ListarOSRecebidas();
-            ListarOSPendentes();
-            ListarOSVistoriadas();
-            ListarOSConcluidas();
+
+            foreach (Control ctrl in Controls)
+            {
+                if (ctrl is DataGridView)
+                {
+                    ctrl.Enter += delegate (object sender, EventArgs e)
+                    {
+                        _lastEnteredControl = (Control)sender;
+                    };
+                }
+            }
+
+            ListarOS(dgvRecebidas, "RECEBIDA");
+            ListarOS(dgvPendentes, "PENDENTE");
+            ListarOS(dgvVistoriadas, "VISTORIADA");
+            ListarOS(dgvConcluidas, "CONCLUÍDA");
+
         }
 
+
+
+
+        //===============CLIQUE DIREITO NOS GRIDS===============//
+        //======================================================//
+        private void dgvRecebidas_MouseClick(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    _lastEnteredControl = (Control)sender;
+                    menuContext.Show(Cursor.Position);
+                    break;
+            }
+        }
+
+        private void dgvPendentes_MouseClick(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    _lastEnteredControl = (Control)sender;
+                    menuContext.Show(Cursor.Position);
+                    break;
+            }
+        }
+
+        private void dgvVistoriadas_MouseClick(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    _lastEnteredControl = (Control)sender;
+                    menuContext.Show(Cursor.Position);
+                    break;
+            }
+        }
+
+        private void dgvConcluidas_MouseClick(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right:
+                    _lastEnteredControl = (Control)sender;
+                    menuContext.Show(Cursor.Position);
+                    break;
+            }
+        }
+
+
+
+
+        //===============DUPLO CLIQUE NOS GRIDS===============//
+        //====================================================//
+
+        private void dgvRecebidas_DoubleClick(object sender, EventArgs e)
+        {
+            EditarOS(dgvRecebidas);
+        }
+
+        private void dgvPendentes_DoubleClick(object sender, EventArgs e)
+        {
+            EditarOS(dgvPendentes);
+        }
+
+        private void dgvVistoriadas_DoubleClick(object sender, EventArgs e)
+        {
+            EditarOS(dgvVistoriadas);
+        }
+
+        private void dgvConcluidas_DoubleClick(object sender, EventArgs e)
+        {
+            EditarOS(dgvConcluidas);
+        }
+
+
+
+
+
+
+        //===================BOTÃO ADICIONAR OS===============//
+        //====================================================//
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddOS form = new frmAddOS();
             form.Text = "Adicionar";
             form.ShowDialog();
-            ListarOSRecebidas();
-            ListarOSPendentes();
-            ListarOSVistoriadas();
-            ListarOSConcluidas();
+            ListarOS(dgvRecebidas, "RECEBIDA");
+            ListarOS(dgvPendentes, "PENDENTE");
+            ListarOS(dgvVistoriadas, "VISTORIADA");
+            ListarOS(dgvConcluidas, "CONCLUÍDA");
         }
 
-        private void dgvRecebidas_DoubleClick(object sender, EventArgs e)
-        {
-            mnuEditarRecebida.PerformClick();
-        }
 
-        private void dgvPendentes_DoubleClick(object sender, EventArgs e)
-        {
-            mnuEditarPendente.PerformClick();
-        }
 
-        private void dgvVistoriadas_DoubleClick(object sender, EventArgs e)
-        {
-            mnuEditarVistoriada.PerformClick();
-        }
-
-        private void dgvConcluidas_DoubleClick(object sender, EventArgs e)
-        {
-            mnuEditarConcluida.PerformClick();
-        }
-
+        //=================TECLA DELETE PRESSIONADA=============//
+        //======================================================//
         private void dgvRecebidas_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && dgvRecebidas.CurrentCell.Selected)
-                mnuExcluirRecebida.PerformClick();
+                ExcluirOS(dgvRecebidas, "RECEBIDA");
         }
 
         private void dgvPendentes_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && dgvPendentes.CurrentCell.Selected)
-                mnuExcluirPendente.PerformClick();
+                ExcluirOS(dgvPendentes, "PENDENTE");
         }
 
         private void dgvVistoriadas_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && dgvVistoriadas.CurrentCell.Selected)
-                mnuExcluirVistoriada.PerformClick();
+                ExcluirOS(dgvVistoriadas, "VISTORIADA");
         }
 
         private void dgvConcluidas_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && dgvConcluidas.CurrentCell.Selected)
-                mnuExcluirRecebida.PerformClick();
+                ExcluirOS(dgvConcluidas, "CONCLUÍDA");
         }
 
-        private void mnuEditarRecebida_Click(object sender, EventArgs e)
+
+
+        //====================MENU EDITAR CLICK================//
+        //=====================================================//
+        private void mnuEditar_Click(object sender, EventArgs e)
         {
-            dado.Id = dgvRecebidas.CurrentRow.Cells[0].Value.ToString();
-            model.BuscarOsModel(dado);
-            frmAddOS form = new frmAddOS
-            (
-                dado.Id,
-                dado.Titulo,
-                dado.Referencia,
-                Convert.ToString(dado.Data_ordem),
-                Convert.ToString(dado.Prazo_execucao),
-                dado.Profissional_cod,
-                dado.Atividade_cod,
-                Convert.ToString(dado.Siopi),
-                dado.Nome_cliente,
-                dado.Cidade,
-                dado.Nome_contato,
-                dado.Telefone_contato,
-                dado.Status,
-                Convert.ToString(dado.Data_pendente),
-                Convert.ToString(dado.Data_vistoria),
-                Convert.ToString(dado.Data_concluida),
-                dado.Obs,
-                Convert.ToString(dado.Faturada),
-                dado.Fatura_cod
-            );
-            form.Text = "Alterar";
-            form.ShowDialog();
-            ListarOSRecebidas();
-            ListarOSPendentes();
-            ListarOSVistoriadas();
-            ListarOSConcluidas();
+            if (_lastEnteredControl == dgvRecebidas)
+            EditarOS(dgvRecebidas);
+
+            if (_lastEnteredControl == dgvPendentes)
+                EditarOS(dgvPendentes);
+
+            if (_lastEnteredControl == dgvVistoriadas)
+                EditarOS(dgvVistoriadas);
+
+            if (_lastEnteredControl == dgvConcluidas)
+                EditarOS(dgvConcluidas);
+
         }
 
-        private void mnuExcluirRecebida_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
-                    dado.Id = dgvRecebidas.CurrentRow.Cells[0].Value.ToString();
-                    model.DeleteOsModel(dado);
-                    ListarOSRecebidas();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
 
-        private void mnuExcluirVistoriada_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
-                    dado.Id = dgvVistoriadas.CurrentRow.Cells[0].Value.ToString();
-                    model.DeleteOsModel(dado);
-                    ListarOSVistoriadas();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
 
-        private void mnuEditarPendente_Click(object sender, EventArgs e)
+        //====================MENU EXCLUIR CLICK================//
+        //=====================================================//
+        private void mnuExcluir_Click(object sender, EventArgs e)
         {
-            dado.Id = dgvPendentes.CurrentRow.Cells[0].Value.ToString();
-            model.BuscarOsModel(dado);
-            frmAddOS form = new frmAddOS
-            (
-                dado.Id,
-                dado.Titulo,
-                dado.Referencia,
-                Convert.ToString(dado.Data_ordem),
-                Convert.ToString(dado.Prazo_execucao),
-                dado.Profissional_cod,
-                dado.Atividade_cod,
-                Convert.ToString(dado.Siopi),
-                dado.Nome_cliente,
-                dado.Cidade,
-                dado.Nome_contato,
-                dado.Telefone_contato,
-                dado.Status,
-                Convert.ToString(dado.Data_pendente),
-                Convert.ToString(dado.Data_vistoria),
-                Convert.ToString(dado.Data_concluida),
-                dado.Obs,
-                Convert.ToString(dado.Faturada),
-                dado.Fatura_cod
-            );
-            form.Text = "Alterar";
-            form.ShowDialog();
-            ListarOSRecebidas();
-            ListarOSPendentes();
-            ListarOSVistoriadas();
-            ListarOSConcluidas();
-        }
+            if (_lastEnteredControl == dgvRecebidas)
+                ExcluirOS(dgvRecebidas, "RECEBIDA");
 
-        private void mnuExcluirPendente_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
-                    dado.Id = dgvPendentes.CurrentRow.Cells[0].Value.ToString();
-                    model.DeleteOsModel(dado);
-                    ListarOSPendentes();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
+            if (_lastEnteredControl == dgvPendentes)
+                ExcluirOS(dgvPendentes, "PENDENTE");
 
-        private void mnuExcluirConcluida_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
-                    dado.Id = dgvConcluidas.CurrentRow.Cells[0].Value.ToString();
-                    model.DeleteOsModel(dado);
-                    ListarOSConcluidas();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
+            if (_lastEnteredControl == dgvVistoriadas)
+                ExcluirOS(dgvVistoriadas, "VISTORIADA");
 
-        private void mnuEditarConcluida_Click(object sender, EventArgs e)
-        {
-            dado.Id = dgvConcluidas.CurrentRow.Cells[0].Value.ToString();
-            model.BuscarOsModel(dado);
-            frmAddOS form = new frmAddOS
-            (
-                dado.Id,
-                dado.Titulo,
-                dado.Referencia,
-                Convert.ToString(dado.Data_ordem),
-                Convert.ToString(dado.Prazo_execucao),
-                dado.Profissional_cod,
-                dado.Atividade_cod,
-                Convert.ToString(dado.Siopi),
-                dado.Nome_cliente,
-                dado.Cidade,
-                dado.Nome_contato,
-                dado.Telefone_contato,
-                dado.Status,
-                Convert.ToString(dado.Data_pendente),
-                Convert.ToString(dado.Data_vistoria),
-                Convert.ToString(dado.Data_concluida),
-                dado.Obs,
-                Convert.ToString(dado.Faturada),
-                dado.Fatura_cod
-            );
-            form.Text = "Alterar";
-            form.ShowDialog();
-            ListarOSRecebidas();
-            ListarOSPendentes();
-            ListarOSVistoriadas();
-            ListarOSConcluidas();
-        }
-
-        private void mnuEditarVistoriada_Click(object sender, EventArgs e)
-        {
-            dado.Id = dgvVistoriadas.CurrentRow.Cells[0].Value.ToString();
-            model.BuscarOsModel(dado);
-            frmAddOS form = new frmAddOS
-            (
-                dado.Id,
-                dado.Titulo,
-                dado.Referencia,
-                Convert.ToString(dado.Data_ordem),
-                Convert.ToString(dado.Prazo_execucao),
-                dado.Profissional_cod,
-                dado.Atividade_cod,
-                Convert.ToString(dado.Siopi),
-                dado.Nome_cliente,
-                dado.Cidade,
-                dado.Nome_contato,
-                dado.Telefone_contato,
-                dado.Status,
-                Convert.ToString(dado.Data_pendente),
-                Convert.ToString(dado.Data_vistoria),
-                Convert.ToString(dado.Data_concluida),
-                dado.Obs,
-                Convert.ToString(dado.Faturada),
-                dado.Fatura_cod
-            );
-            form.Text = "Alterar";
-            form.ShowDialog();
-            ListarOSRecebidas();
-            ListarOSPendentes();
-            ListarOSVistoriadas();
-            ListarOSConcluidas();
+            if (_lastEnteredControl == dgvConcluidas)
+                ExcluirOS(dgvConcluidas, "CONCLUÍDA");
         }
     }
-
-
-
-    }
+}
