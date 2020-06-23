@@ -24,6 +24,14 @@ namespace Arqueng.VIEW
             {
                 dado.Status = status;
                 dgv.DataSource = model.ListarOsStatusModel(dado);
+                if (dgv.Rows.Count == 0)
+                {
+                    dgv.Enabled = false;
+                }
+                else
+                {
+                    dgv.Enabled = true;
+                }
 
             }
             catch (Exception ex)
@@ -125,59 +133,63 @@ namespace Arqueng.VIEW
 
 
 
-
         //===============CLIQUE DIREITO NOS GRIDS===============//
         //======================================================//
-        private void dgvRecebidas_MouseClick(object sender, MouseEventArgs e)
+        private void dgvRecebidas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            switch (e.Button)
+            var dataGrid = (DataGridView)sender;
+            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
             {
-                case MouseButtons.Right:
-                    _lastEnteredControl = (Control)sender;
-                    menuContext.Show(Cursor.Position);
-                    break;
+                _lastEnteredControl = (Control)sender;
+                var row = dataGrid.Rows[e.RowIndex];
+                dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
+                row.Selected = true;
+                dataGrid.Focus();
             }
         }
 
-        private void dgvPendentes_MouseClick(object sender, MouseEventArgs e)
+        private void dgvPendentes_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            switch (e.Button)
+            var dataGrid = (DataGridView)sender;
+            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
             {
-                case MouseButtons.Right:
-                    _lastEnteredControl = (Control)sender;
-                    menuContext.Show(Cursor.Position);
-                    break;
+                _lastEnteredControl = (Control)sender;
+                var row = dataGrid.Rows[e.RowIndex];
+                dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
+                row.Selected = true;
+                dataGrid.Focus();
             }
         }
 
-        private void dgvVistoriadas_MouseClick(object sender, MouseEventArgs e)
+        private void dgvVistoriadas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            switch (e.Button)
+            var dataGrid = (DataGridView)sender;
+            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
             {
-                case MouseButtons.Right:
-                    _lastEnteredControl = (Control)sender;
-                    menuContext.Show(Cursor.Position);
-                    break;
+                _lastEnteredControl = (Control)sender;
+                var row = dataGrid.Rows[e.RowIndex];
+                dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
+                row.Selected = true;
+                dataGrid.Focus();
             }
         }
 
-        private void dgvConcluidas_MouseClick(object sender, MouseEventArgs e)
+        private void dgvConcluidas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            switch (e.Button)
+            var dataGrid = (DataGridView)sender;
+            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
             {
-                case MouseButtons.Right:
-                    _lastEnteredControl = (Control)sender;
-                    menuContext.Show(Cursor.Position);
-                    break;
+                _lastEnteredControl = (Control)sender;
+                var row = dataGrid.Rows[e.RowIndex];
+                dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
+                row.Selected = true;
+                dataGrid.Focus();
             }
         }
-
-
 
 
         //===============DUPLO CLIQUE NOS GRIDS===============//
         //====================================================//
-
         private void dgvRecebidas_DoubleClick(object sender, EventArgs e)
         {
             EditarOS(dgvRecebidas);
@@ -197,9 +209,6 @@ namespace Arqueng.VIEW
         {
             EditarOS(dgvConcluidas);
         }
-
-
-
 
 
 
@@ -251,7 +260,7 @@ namespace Arqueng.VIEW
         private void mnuEditar_Click(object sender, EventArgs e)
         {
             if (_lastEnteredControl == dgvRecebidas)
-            EditarOS(dgvRecebidas);
+                EditarOS(dgvRecebidas);
 
             if (_lastEnteredControl == dgvPendentes)
                 EditarOS(dgvPendentes);
@@ -282,5 +291,7 @@ namespace Arqueng.VIEW
             if (_lastEnteredControl == dgvConcluidas)
                 ExcluirOS(dgvConcluidas, "CONCLUÍDA");
         }
+
+
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddOS));
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAddSave = new System.Windows.Forms.Button();
             this.rbtRecebida = new System.Windows.Forms.RadioButton();
@@ -82,6 +83,7 @@
             this.pnlLinhaOBS = new System.Windows.Forms.Panel();
             this.pnlBotton = new System.Windows.Forms.Panel();
             this.pnlDados = new System.Windows.Forms.Panel();
+            this.btnAddAgencia = new System.Windows.Forms.Button();
             this.pnlMolduraProfissional.SuspendLayout();
             this.pnlMolduraAtividade.SuspendLayout();
             this.tlpStatus.SuspendLayout();
@@ -759,6 +761,7 @@
             // pnlDados
             // 
             this.pnlDados.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlDados.Controls.Add(this.btnAddAgencia);
             this.pnlDados.Controls.Add(this.txtNomeContato);
             this.pnlDados.Controls.Add(this.lblAtividade);
             this.pnlDados.Controls.Add(this.lblCliente);
@@ -791,6 +794,21 @@
             this.pnlDados.Name = "pnlDados";
             this.pnlDados.Size = new System.Drawing.Size(589, 550);
             this.pnlDados.TabIndex = 1;
+            // 
+            // btnAddAgencia
+            // 
+            this.btnAddAgencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAgencia.Image = ((System.Drawing.Image)(resources.GetObject("btnAddAgencia.Image")));
+            this.btnAddAgencia.Location = new System.Drawing.Point(339, 177);
+            this.btnAddAgencia.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAddAgencia.Name = "btnAddAgencia";
+            this.btnAddAgencia.Size = new System.Drawing.Size(150, 25);
+            this.btnAddAgencia.TabIndex = 417;
+            this.btnAddAgencia.Text = "Adicionar agência";
+            this.btnAddAgencia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAddAgencia.UseVisualStyleBackColor = true;
+            this.btnAddAgencia.Visible = false;
+            this.btnAddAgencia.Click += new System.EventHandler(this.btnAddAgencia_Click);
             // 
             // frmAddOS
             // 
@@ -881,5 +899,6 @@
         private System.Windows.Forms.CheckBox chkFaturada;
         private System.Windows.Forms.Label lblFaturada;
         private System.Windows.Forms.TextBox txtCodFatura;
+        private System.Windows.Forms.Button btnAddAgencia;
     }
 }

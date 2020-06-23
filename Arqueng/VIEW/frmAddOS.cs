@@ -94,12 +94,14 @@ namespace Arqueng.VIEW
                     txtAgenciaNome.Text = "Agência não cadastrado!";
                     txtAgenciaTelefone.Text = "";
                     txtAgenciaEmail.Text = "";
+                    btnAddAgencia.Show();
                 }
                 else
                 {
                     txtAgenciaNome.Text = dado.Nome;
                     txtAgenciaTelefone.Text = dado.Telefone1;
                     txtAgenciaEmail.Text = dado.Email;
+                    btnAddAgencia.Hide();
                 }
             }
             catch (Exception ex)
@@ -312,9 +314,15 @@ namespace Arqueng.VIEW
             BuscarAgencia();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAddAgencia_Click(object sender, EventArgs e)
         {
-
+            AgenciasENT dado = new AgenciasENT();
+            dado.Agencia = txtReferencia.Text.Substring(5, 4);
+            frmAddAgencia form = new frmAddAgencia();
+            form.Text = "Adicionar";
+            form.ShowDialog();
+            BuscarAgencia();
+            txtCidade.Focus();
         }
     }
 }
