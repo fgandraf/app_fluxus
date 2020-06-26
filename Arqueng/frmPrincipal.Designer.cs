@@ -148,7 +148,7 @@
             // 
             // pnlCtrlDashboard
             // 
-            this.pnlCtrlDashboard.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlDashboard.BackColor = System.Drawing.Color.LimeGreen;
             this.pnlCtrlDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCtrlDashboard.Location = new System.Drawing.Point(0, 0);
             this.pnlCtrlDashboard.Margin = new System.Windows.Forms.Padding(0);
@@ -184,7 +184,7 @@
             // 
             // pnlCtrlOS
             // 
-            this.pnlCtrlOS.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlOS.BackColor = System.Drawing.Color.LimeGreen;
             this.pnlCtrlOS.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCtrlOS.Location = new System.Drawing.Point(0, 50);
             this.pnlCtrlOS.Margin = new System.Windows.Forms.Padding(0);
@@ -273,7 +273,7 @@
             // 
             // pnlCtrlFluxo
             // 
-            this.pnlCtrlFluxo.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlFluxo.BackColor = System.Drawing.Color.LimeGreen;
             this.pnlCtrlFluxo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCtrlFluxo.Location = new System.Drawing.Point(55, 125);
             this.pnlCtrlFluxo.Margin = new System.Windows.Forms.Padding(50, 0, 0, 0);
@@ -284,7 +284,7 @@
             // 
             // pnlCtrlLista
             // 
-            this.pnlCtrlLista.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlLista.BackColor = System.Drawing.Color.LimeGreen;
             this.pnlCtrlLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCtrlLista.Location = new System.Drawing.Point(55, 152);
             this.pnlCtrlLista.Margin = new System.Windows.Forms.Padding(50, 0, 0, 0);
@@ -322,7 +322,7 @@
             // 
             // pnlCtrlRelatorios
             // 
-            this.pnlCtrlRelatorios.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlRelatorios.BackColor = System.Drawing.Color.LimeGreen;
             this.pnlCtrlRelatorios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCtrlRelatorios.Location = new System.Drawing.Point(0, 354);
             this.pnlCtrlRelatorios.Margin = new System.Windows.Forms.Padding(0);
@@ -411,7 +411,7 @@
             // 
             // pnlCtrlProfissionais
             // 
-            this.pnlCtrlProfissionais.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlProfissionais.BackColor = System.Drawing.Color.LimeGreen;
             this.pnlCtrlProfissionais.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCtrlProfissionais.Location = new System.Drawing.Point(0, 304);
             this.pnlCtrlProfissionais.Margin = new System.Windows.Forms.Padding(0);
@@ -422,7 +422,7 @@
             // 
             // pnlCtrlAtividades
             // 
-            this.pnlCtrlAtividades.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlAtividades.BackColor = System.Drawing.Color.LimeGreen;
             this.pnlCtrlAtividades.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCtrlAtividades.Location = new System.Drawing.Point(0, 254);
             this.pnlCtrlAtividades.Margin = new System.Windows.Forms.Padding(0);
@@ -433,7 +433,8 @@
             // 
             // pnlCtrlAgencias
             // 
-            this.pnlCtrlAgencias.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlAgencias.BackColor = System.Drawing.Color.LimeGreen;
+            this.pnlCtrlAgencias.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCtrlAgencias.Location = new System.Drawing.Point(0, 204);
             this.pnlCtrlAgencias.Margin = new System.Windows.Forms.Padding(0);
             this.pnlCtrlAgencias.Name = "pnlCtrlAgencias";
@@ -470,7 +471,7 @@
             // pnlCtrlDadosCadastrais
             // 
             this.pnlCtrlDadosCadastrais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlCtrlDadosCadastrais.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlDadosCadastrais.BackColor = System.Drawing.Color.LimeGreen;
             this.pnlCtrlDadosCadastrais.Location = new System.Drawing.Point(25, 156);
             this.pnlCtrlDadosCadastrais.Name = "pnlCtrlDadosCadastrais";
             this.pnlCtrlDadosCadastrais.Size = new System.Drawing.Size(150, 2);
@@ -664,7 +665,7 @@
             // 
             // pnlCtrlFaturas
             // 
-            this.pnlCtrlFaturas.BackColor = System.Drawing.Color.LightBlue;
+            this.pnlCtrlFaturas.BackColor = System.Drawing.Color.LimeGreen;
             this.pnlCtrlFaturas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCtrlFaturas.Location = new System.Drawing.Point(0, 155);
             this.pnlCtrlFaturas.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
