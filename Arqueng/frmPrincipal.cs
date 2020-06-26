@@ -68,20 +68,25 @@ namespace Arqueng
             pnlCtrlProfissionais.Hide();
             pnlCtrlDadosCadastrais.Hide();
             pnlCtrlRelatorios.Hide();
-            tblMenu.RowStyles[3].Height = 0;
-            tblMenu.RowStyles[5].Height = 0;
+            pnlCtrlFaturas.Hide();
+            pnlCtrlFluxo.Hide();
+            pnlCtrlLista.Hide();
         }
 
         private void ExpandSubMenuOS()
         {
             tblMenu.RowStyles[2].Height = 25;
+            tblMenu.RowStyles[3].Height = 2;
             tblMenu.RowStyles[4].Height = 25;
+            tblMenu.RowStyles[5].Height = 2;
         }
 
         private void RecolheSubMenuOS()
         {
             tblMenu.RowStyles[2].Height = 0;
+            tblMenu.RowStyles[3].Height = 0;
             tblMenu.RowStyles[4].Height = 0;
+            tblMenu.RowStyles[5].Height = 0;
         }
 
 
@@ -169,6 +174,8 @@ namespace Arqueng
                 RecolheSubMenuOS();
                 tblMenu.RowStyles[3].Height = 0;
                 tblMenu.RowStyles[5].Height = 0;
+                pnlCtrlFluxo.Hide();
+                pnlCtrlLista.Hide();
 
                 if (pnlCtrlDadosCadastrais.Visible == true)
                     pnlCtrlDadosCadastrais.Width = 20;
@@ -182,12 +189,16 @@ namespace Arqueng
                 if (lblTitulo.Text == "Ordens de Serviços - Em lista")
                 {
                     ExpandSubMenuOS();
+                    tblMenu.RowStyles[3].Height = 2;
                     tblMenu.RowStyles[5].Height = 2;
+                    pnlCtrlLista.Show();
                 }
                 else if (lblTitulo.Text == "Ordens de Serviços - Em fluxo")
                 {
                     ExpandSubMenuOS();
                     tblMenu.RowStyles[3].Height = 2;
+                    tblMenu.RowStyles[5].Height = 2;
+                    pnlCtrlFluxo.Show();
                 }
             }
             
@@ -263,8 +274,8 @@ namespace Arqueng
         {
             OcultaControles();
             pnlCtrlOS.Visible = true;
-            tblMenu.RowStyles[3].Height = 0;
-            tblMenu.RowStyles[5].Height = 2;
+            pnlCtrlFluxo.Hide();
+            pnlCtrlLista.Show();
             lblTitulo.Text = "Ordens de Serviços - Em lista";
 
             frmOSLista frm = new frmOSLista { TopLevel = false, Dock = DockStyle.Fill };
@@ -281,20 +292,20 @@ namespace Arqueng
                 ExpandSubMenuOS();
 
                 if (lblTitulo.Text == "Ordens de Serviços - Em lista")
-                    tblMenu.RowStyles[5].Height = 2;
+                    pnlCtrlLista.Show();
                 else if (lblTitulo.Text == "Ordens de Serviços - Em fluxo")
-                    tblMenu.RowStyles[3].Height = 2;
+                    pnlCtrlFluxo.Show();
                 else
                 {
-                    tblMenu.RowStyles[3].Height = 0;
-                    tblMenu.RowStyles[5].Height = 0;
+                    pnlCtrlFluxo.Hide();
+                    pnlCtrlLista.Hide();
                 }
             }
             else
             {
                 RecolheSubMenuOS();
-                tblMenu.RowStyles[3].Height = 0;
-                tblMenu.RowStyles[5].Height = 0;
+                pnlCtrlFluxo.Hide();
+                pnlCtrlLista.Hide();
             }
             if (pnlMenu.Width == 50)
                 btnSlide.PerformClick();
@@ -304,8 +315,9 @@ namespace Arqueng
         {
             OcultaControles();
             pnlCtrlOS.Visible = true;
-            tblMenu.RowStyles[3].Height = 2;
-            tblMenu.RowStyles[5].Height = 0;
+
+            pnlCtrlFluxo.Show();
+            pnlCtrlLista.Hide();
 
             lblTitulo.Text = "Ordens de Serviços - Em fluxo";
 
@@ -315,5 +327,17 @@ namespace Arqueng
             frm.Show();
         }
 
+        private void btnFaturas_Click(object sender, EventArgs e)
+        {
+            OcultaControles();
+            RecolheSubMenuOS();
+            pnlCtrlFaturas.Visible = true;
+            lblTitulo.Text = "Faturas";
+
+            frmFaturas frm = new frmFaturas { TopLevel = false, Dock = DockStyle.Fill };
+            this.pnlMain.Controls.Clear();
+            this.pnlMain.Controls.Add(frm);
+            frm.Show();
+        }
     }
 }

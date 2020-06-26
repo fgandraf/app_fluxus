@@ -81,6 +81,12 @@
     <Compile Include="VIEW\frmAddProfissional.Designer.cs">
       <DependentUpon>frmAddProfissional.cs</DependentUpon>
     </Compile>
+    <Compile Include="VIEW\frmFaturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\frmFaturas.Designer.cs">
+      <DependentUpon>frmFaturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="VIEW\frmOSFluxo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\frmFaturas.resx">
+      <DependentUpon>frmFaturas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmOSFluxo.resx">
       <DependentUpon>frmOSFluxo.cs</DependentUpon>

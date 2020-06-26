@@ -37,8 +37,21 @@ namespace Arqueng.DAO
                     sql = new MySqlCommand("SELECT * FROM tb_os order by data_ordem", con.con);
                 else
                 {
-                    sql = new MySqlCommand("SELECT id, titulo FROM tb_os WHERE status = @status AND faturada = 0 order by data_ordem", con.con);
-                    sql.Parameters.AddWithValue("@status", dado.Status);
+                    if (dado.Status == "RECEBIDA")
+                        sql = new MySqlCommand("SELECT id, titulo FROM tb_os WHERE status = 'RECEBIDA' AND faturada = 0 order by data_ordem", con.con);
+
+
+                    if (dado.Status == "PENDENTE")
+                        sql = new MySqlCommand("SELECT id, titulo FROM tb_os WHERE status = 'PENDENTE' AND faturada = 0 order by data_pendente", con.con);
+
+
+                    if (dado.Status == "VISTORIADA")
+                        sql = new MySqlCommand("SELECT id, titulo FROM tb_os WHERE status = 'VISTORIADA' AND faturada = 0 order by data_vistoria", con.con);
+
+                    
+                    if (dado.Status == "CONCLUÍDA")
+                        sql = new MySqlCommand("SELECT id, titulo FROM tb_os WHERE status = 'CONCLUÍDA' AND faturada = 0 order by data_concluida", con.con);
+
                 }
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = sql;
@@ -123,23 +136,7 @@ namespace Arqueng.DAO
 
 
 
-        //public DataTable ListarOsFatDAO()
-        //{
-        //    try
-        //    {
-        //        con.AbrirConexao();
-        //        sql = new MySqlCommand("SELECT * FROM tb_os WHERE faturada is not null order by data_ordem", con.con);
-        //        MySqlDataAdapter da = new MySqlDataAdapter();
-        //        da.SelectCommand = sql;
-        //        DataTable dt = new DataTable();
-        //        da.Fill(dt);
-        //        return dt;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
+       
 
 
         public void InsertOsDAO(OsENT dado)

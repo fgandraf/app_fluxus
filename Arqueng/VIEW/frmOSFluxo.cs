@@ -23,6 +23,7 @@ namespace Arqueng.VIEW
             try
             {
                 dado.Status = status;
+
                 dgv.DataSource = model.ListarOsStatusModel(dado);
                 if (dgv.Rows.Count == 0)
                 {

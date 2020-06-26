@@ -12,6 +12,7 @@ namespace Arqueng.ENTIDADES
 
         Boolean siopi, faturada;
 
+
         public string Id { get => id; set => id = value; }
         public string Titulo { get => titulo; set => titulo = value; }
         public string Referencia { get => referencia; set => referencia = value; }
@@ -31,6 +32,5 @@ namespace Arqueng.ENTIDADES
         public DateTime Data_concluida { get => data_concluida; set => data_concluida = value; }
         public bool Siopi { get => siopi; set => siopi = value; }
         public bool Faturada { get => faturada; set => faturada = value; }
-        
     }
 }
