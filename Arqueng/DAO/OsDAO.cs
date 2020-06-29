@@ -28,6 +28,24 @@ namespace Arqueng.DAO
             }
         }
 
+        public DataTable ListarOSAFaturarDAO()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT id, referencia, data_ordem, nome_cliente, atividade_cod, cidade, data_concluida FROM tb_os WHERE status = 'CONCLUÍDA' AND faturada = 0 order by data_concluida", con.con);                       
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public DataTable ListarOsStatusDAO(OsENT dado)
         {
             try
@@ -204,6 +222,25 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+        public void UpdateOsFaturada(OsENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("UPDATE tb_os SET faturada = '1', fatura_cod = @fatura_cod WHERE id = @id", con.con);
+                sql.Parameters.AddWithValue("@id", dado.Id);
+                sql.Parameters.AddWithValue("@fatura_cod", dado.Fatura_cod);
+                sql.ExecuteNonQuery();
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                con.FecharConexao();
+                throw;
+            }
+        }
+
         public void DeleteOsDAO(OsENT dado)
         {
             try

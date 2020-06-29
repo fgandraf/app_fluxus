@@ -35,6 +35,20 @@ namespace Arqueng.MODEL
             }
         }
 
+        public DataTable ListarOSAFaturarModel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.ListarOSAFaturarDAO();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable ListarOsStatusModel(OsENT dado)
         {
             try
@@ -48,34 +62,7 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
-
-        //public DataTable ListarOsNaoFatModel()
-        //{
-        //    try
-        //    {
-        //        DataTable dt = new DataTable();
-        //        dt = dao.ListarOsNaoFatDAO();
-        //        return dt;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-
-        //public DataTable ListarOsFatModel()
-        //{
-        //    try
-        //    {
-        //        DataTable dt = new DataTable();
-        //        dt = dao.ListarOsFatDAO();
-        //        return dt;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+        
 
         public void InsertOsModel(OsENT dado)
         {
@@ -88,6 +75,19 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+        public void UpdateOsFaturadaModel(OsENT dado)
+        {
+            try
+            {
+                dao.UpdateOsFaturada(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void UpdateOsModel(OsENT dado)
         {
             try

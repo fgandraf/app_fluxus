@@ -51,16 +51,19 @@
     <Compile Include="DAO\AtividadesDAO.cs" />
     <Compile Include="DAO\CadastraisDAO.cs" />
     <Compile Include="DAO\Conexao.cs" />
+    <Compile Include="DAO\FaturasDAO.cs" />
     <Compile Include="DAO\OsDAO.cs" />
     <Compile Include="DAO\ProfissionaisDAO.cs" />
     <Compile Include="ENTIDADES\AgenciasENT.cs" />
     <Compile Include="ENTIDADES\AtividadesENT.cs" />
     <Compile Include="ENTIDADES\CadastraisENT.cs" />
+    <Compile Include="ENTIDADES\FaturasENT.cs" />
     <Compile Include="ENTIDADES\OsENT.cs" />
     <Compile Include="ENTIDADES\ProfissionaisENT.cs" />
     <Compile Include="MODEL\AgenciasMODEL.cs" />
     <Compile Include="MODEL\AtividadesMODEL.cs" />
     <Compile Include="MODEL\CadastraisMODEL.cs" />
+    <Compile Include="MODEL\FaturasMODEL.cs" />
     <Compile Include="MODEL\OsMODEL.cs" />
     <Compile Include="MODEL\ProfissionaisMODEL.cs" />
     <Compile Include="VIEW\frmAddAgencia.cs">
@@ -68,6 +71,12 @@
     </Compile>
     <Compile Include="VIEW\frmAddAgencia.Designer.cs">
       <DependentUpon>frmAddAgencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VIEW\frmAddFatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VIEW\frmAddFatura.Designer.cs">
+      <DependentUpon>frmAddFatura.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\frmAddOS.cs">
       <SubType>Form</SubType>
@@ -154,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmAddAtividade.resx">
       <DependentUpon>frmAddAtividade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VIEW\frmAddFatura.resx">
+      <DependentUpon>frmAddFatura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmAddOS.resx">
       <DependentUpon>frmAddOS.cs</DependentUpon>

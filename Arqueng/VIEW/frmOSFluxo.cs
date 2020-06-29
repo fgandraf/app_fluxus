@@ -293,6 +293,11 @@ namespace Arqueng.VIEW
                 ExcluirOS(dgvConcluidas, "CONCLUÍDA");
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmAddFatura form = new frmAddFatura();
+            form.ShowDialog();
+            ListarOS(dgvConcluidas, "CONCLUÍDA");
+        }
     }
 }

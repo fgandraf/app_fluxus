@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Arqueng.VIEW;
 using Arqueng.MODEL;
+using Arqueng.DAO;
 
 namespace Arqueng
 {
@@ -108,6 +109,14 @@ namespace Arqueng
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+           /* 
+            var result = MessageBox.Show("Deseja utilizar conexao remota?", "Conexão", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.Yes)
+                con.dadoscon = "SERVER=ayearquitetura.com.br; DATABASE=ayearq02_cef_db; UID=ayearq02; PWD=452nyZRb7m;";
+            else
+                con.dadoscon = "SERVER=localhost; DATABASE=cef_db; UID=root; PWD=;";
+           */
+
             BuscarNomeFantasia();
             btnDashBoard.PerformClick();
         }
