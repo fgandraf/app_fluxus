@@ -66,14 +66,14 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel8 = new System.Windows.Forms.Panel();
             this.dgvConcluidas = new System.Windows.Forms.DataGridView();
+            this.idConcluidas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.idConcluidas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -599,6 +599,23 @@
             this.dgvConcluidas.DoubleClick += new System.EventHandler(this.dgvConcluidas_DoubleClick);
             this.dgvConcluidas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvConcluidas_KeyDown);
             // 
+            // idConcluidas
+            // 
+            this.idConcluidas.DataPropertyName = "id";
+            this.idConcluidas.HeaderText = "Id";
+            this.idConcluidas.Name = "idConcluidas";
+            this.idConcluidas.ReadOnly = true;
+            this.idConcluidas.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "titulo";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Título";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 50;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
             // panel9
             // 
             this.panel9.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -691,23 +708,6 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(201, 1);
             this.panel12.TabIndex = 1;
-            // 
-            // idConcluidas
-            // 
-            this.idConcluidas.DataPropertyName = "id";
-            this.idConcluidas.HeaderText = "Id";
-            this.idConcluidas.Name = "idConcluidas";
-            this.idConcluidas.ReadOnly = true;
-            this.idConcluidas.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "titulo";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Título";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 50;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // frmOSFluxo
             // 

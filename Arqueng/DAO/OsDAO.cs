@@ -33,7 +33,7 @@ namespace Arqueng.DAO
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("SELECT id, referencia, data_ordem, nome_cliente, atividade_cod, cidade, data_concluida FROM tb_os WHERE status = 'CONCLUÍDA' AND faturada = 0 order by data_concluida", con.con);                       
+                sql = new MySqlCommand("SELECT t1.id, t1.data_ordem, t1.referencia, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.status = 'CONCLUÍDA' AND t1.faturada = 0 order by t1.data_concluida", con.con);     //                                 
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = sql;
                 DataTable dt = new DataTable();
