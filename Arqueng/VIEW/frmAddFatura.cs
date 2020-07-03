@@ -45,9 +45,11 @@ namespace Arqueng.VIEW
             _valor_desloca = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_deslocamento.Name].Value ?? 0));
             _valor_soma = _valor_os + _valor_desloca;
 
-            txtValorOS.Text = "R$ " + _valor_os.ToString("##.00");
-            txtValorDeslocamento.Text = "R$ " + _valor_desloca.ToString("##.00");
-            txtValorTotal.Text = "R$ " + _valor_soma.ToString();
+            
+            txtValorOS.Text = string.Format("{0:0,0.00}", _valor_os);
+            txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _valor_desloca);
+            txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _valor_soma);
+            
         }
 
         public frmAddFatura()
@@ -94,14 +96,23 @@ namespace Arqueng.VIEW
             {
                 MessageBox.Show(ex.Message);
             }
+            
+            
             dadoOS.Fatura_cod = dadoFatura.Id.ToString();
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
                 dadoOS.Id = row.Cells["id"].Value.ToString();
                 modelOS.UpdateOsFaturadaModel(dadoOS);
             }
-            MessageBox.Show("Ordens faturadas com sucesso!", "Faturadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            var result = MessageBox.Show("Ordens faturadas com sucesso!" + "\n\n" + "Deseja imprimir agora?", "Fatura", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.Yes)
+            {
+                //fromulariodeimpressao form = new formulariodeimpressa();
+                //form.ShowDialog();
+            }
             this.Close();
+
         }
 
         private void frmAddFatura_Load(object sender, EventArgs e)
@@ -110,9 +121,6 @@ namespace Arqueng.VIEW
             SomarValores();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
     }
 }

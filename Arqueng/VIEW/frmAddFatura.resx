@@ -120,23 +120,17 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnRemover.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
-        CAABFVgAADqXAAAXb9daH5AAAAAJcEhZcwAACxMAAAsTAQCanBgAAAL1SURBVDhPpVRLTxNRFL4KkaX+
-        Av0DJiY8tK3ttGUKLRpAoZ0+pk/6nL6RRmba0vJ0Q1w27kxMNCExwUR+A2FlQl1A4pYfcj3fVIZqCyxc
-        fO2Zc8/5zuueyzjnzOVyjBBGAYfDytxukZXLpQNNq/NGo8nr9boOyEA+rxyQLXM6bfDV/Qgj4NIJrdZn
-        BsbHHzOv9/Xi7u4eLxYL3UQi9imVSn4DIBcK+Z84IxsPbK98TTqX/hMOh2ZkOfiGkJQkryeXy35stdo8
-        k0l3fL7lJ6GQfx6AnE6nOhsbLZ7LZT74/d45+IRCgbVIRJ42CPf23h0h6vb2Dsf/1ta2XmK7vcl3dnZ1
-        PQAZOpzBpt+HOL4ahBQBkd4Gg9JcMOhfJDkfCEgRyshH3ym/3xcG6DwlSdBJEbIpwJbs4LtOHLMGock0
-        yez253ey2XQnFotqZvOU3hen08psNjPOmCBYdBk6nJnNkywWi6jZbKYDX3wbhJisx+Maa7fbfG2tdm6x
-        TDFZDmXQR+rpFA3iO032iHr2FDrqeQY2tVrtHC2ALzgGCDVN4+Vy+RzR4vHoOvWFU0lCpVI5rVarXSrV
-        Dl08HlNhA1tVVUF4b4DQ7XaNqWqPENGj0fD65uYWp97ZisXiaalU7JIsQIcz2PQIteGEyBDR+gkxyZsI
-        K5UeISVzXYYqh9G/GRLZACEGd5nhfxB6BwjR9xtKHt7DYRn2l3wt4dWU+wm9fwhL1w7lxpKHZThsKLeW
-        3CPsZWgyTbBkMqHu77/ntFYCXeBTQleWA3boVlYSdA8nbit5ZgxLT9mcIfrS0qKFXp0v8/MvHtJmFICF
-        hZePaNU+Ly+/sqAKyvoMPvAdRjharzf46urqhSjaGRx6O24x3jzI2BDI09MCq1YrF41Gg3oo6g+zQQgC
-        QTAz2tdDXGaK/EtRcieFgvKD9vgv5POAcgIbPF2KohzCFxwGIT3fdxF9dlZ8QHt73Gxu8GYTz33DALIH
-        Lr9brRbacyyKjvt4jcDBOWe/AfoQplosGBZqAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAADWSURBVDhPtZA9CsJgEERTWFlaps4BUqYQkVTiWcRCLCwT
+        xNoTeAzxFCKWOYCVZQgp9Y1uLL5EiX8DDzazM8tHvK+VJEkG5YdkOpDDHOI3mUFeHYjtQa1FZwiFhkIf
+        5rfW/w/g9WAMI81mP4Q3gLJ2gFkstISLoVmepeoHdrCBLkygKrpMQRll1bkdSM1YQQfO0FQW2imzBHVS
+        e9BdGAEoeIS+gzztAovXxdK30AnWDvK08y3eLAJ7CzZxAEs+EYEI9GPdsrzIYq9FMIStlYTm0Na/lOdd
+        ASSgKpR1nxWAAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="ttpFatura.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
