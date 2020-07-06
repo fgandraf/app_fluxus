@@ -13,9 +13,9 @@ namespace Arqueng.VIEW
         OsENT dadoOS = new OsENT();
         FaturasMODEL modelFatura = new FaturasMODEL();
         FaturasENT dadoFatura = new FaturasENT();
-        decimal _valor_os = 0;
-        decimal _valor_desloca = 0;
-        decimal _valor_soma = 0;
+        decimal _subtotal_os = 0;
+        decimal _subtotal_desloc = 0;
+        decimal _total = 0;
 
 
         public void ListarOS()
@@ -41,14 +41,14 @@ namespace Arqueng.VIEW
 
         public void SomarValores()
         {
-            _valor_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_atividade.Name].Value ?? 0));
-            _valor_desloca = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_deslocamento.Name].Value ?? 0));
-            _valor_soma = _valor_os + _valor_desloca;
+            _subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_atividade.Name].Value ?? 0));
+            _subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_deslocamento.Name].Value ?? 0));
+            _total = _subtotal_os + _subtotal_desloc;
 
             
-            txtValorOS.Text = string.Format("{0:0,0.00}", _valor_os);
-            txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _valor_desloca);
-            txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _valor_soma);
+            txtValorOS.Text = string.Format("{0:0,0.00}", _subtotal_os);
+            txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _subtotal_desloc);
+            txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _total);
             
         }
 
@@ -84,9 +84,9 @@ namespace Arqueng.VIEW
             //POPULATE
             dadoFatura.Descricao = txtDescricao.Text;
             dadoFatura.Data = dtpData.Value;
-            dadoFatura.Valor_os = _valor_os.ToString().Replace(',', '.');
-            dadoFatura.Valor_deslocamento = _valor_desloca.ToString().Replace(',', '.');
-            dadoFatura.Valor_total = _valor_soma.ToString().Replace(',', '.');
+            dadoFatura.Subtotal_os = _subtotal_os.ToString().Replace(',', '.');
+            dadoFatura.Subtotal_desloc = _subtotal_desloc.ToString().Replace(',', '.');
+            dadoFatura.Total = _total.ToString().Replace(',', '.');
             dadoFatura.Rrtart = txtRRTART.Text;
             try
             {

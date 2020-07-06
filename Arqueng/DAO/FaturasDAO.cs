@@ -15,12 +15,12 @@ namespace Arqueng.DAO
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("INSERT INTO tb_fatura(descricao, data, valor_os, valor_deslocamento, valor_total, rrtart) VALUES (@descricao, @data, @valor_os, @valor_deslocamento, @valor_total, @rrtart)", con.con);
+                sql = new MySqlCommand("INSERT INTO tb_fatura(descricao, data, subtotal_os, subtotal_desloc, total, rrtart) VALUES (@descricao, @data, @subtotal_os, @subtotal_desloc, @total, @rrtart)", con.con);
                 sql.Parameters.AddWithValue("@descricao", dado.Descricao);
                 sql.Parameters.AddWithValue("@data", dado.Data);
-                sql.Parameters.AddWithValue("@valor_os", dado.Valor_os);
-                sql.Parameters.AddWithValue("@valor_deslocamento", dado.Valor_deslocamento);
-                sql.Parameters.AddWithValue("@valor_total", dado.Valor_total);
+                sql.Parameters.AddWithValue("@subtotal_os", dado.Subtotal_os);
+                sql.Parameters.AddWithValue("@subtotal_desloc", dado.Subtotal_desloc);
+                sql.Parameters.AddWithValue("@total", dado.Total);
                 sql.Parameters.AddWithValue("@rrtart", dado.Rrtart);
                 sql.ExecuteNonQuery();
 

@@ -70,7 +70,6 @@ namespace Arqueng.VIEW
                 Convert.ToString(dado.Data_vistoria),
                 Convert.ToString(dado.Data_concluida),
                 dado.Obs,
-                Convert.ToString(dado.Faturada),
                 dado.Fatura_cod
             );
             form.Text = "Alterar";

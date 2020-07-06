@@ -114,10 +114,31 @@ namespace Arqueng.VIEW
         {
             InitializeComponent();
             ListarProfissionais();
-            ListarAtividades();
+            ListarAtividades();   //proffi sopi contato
         }
 
-        public frmAddOS(string Id, string Titulo, string Referencia, string DataOrdem, string DataExecucao, string Profissional, string Atividade, string Siopi, string NomeCliente, string Cidade, string NomeContato, string TelefoneContato, string Status, string DataPendente, string DataVistoria, string DataConcluida, string OBS, string Faturada, string CodFatura)
+        /*
+         *      dgvOS.CurrentRow.Cells[0].Value.ToString(),//id
+                dgvOS.CurrentRow.Cells[1].Value.ToString(),//titulo
+                dgvOS.CurrentRow.Cells[2].Value.ToString(),//referencia
+                dgvOS.CurrentRow.Cells[3].Value.ToString(),//data_ordem
+                dgvOS.CurrentRow.Cells[4].Value.ToString(),//prazo_execucao
+                dgvOS.CurrentRow.Cells[5].Value.ToString(),//profissional_cod
+                dgvOS.CurrentRow.Cells[6].Value.ToString(),//atividade_cod
+                dgvOS.CurrentRow.Cells[7].Value.ToString(),//siopi
+                dgvOS.CurrentRow.Cells[8].Value.ToString(),//nome_cliente
+                dgvOS.CurrentRow.Cells[9].Value.ToString(),//cidade
+                dgvOS.CurrentRow.Cells[10].Value.ToString(),//nome_contato
+                dgvOS.CurrentRow.Cells[11].Value.ToString(),//telefone_contato
+                dgvOS.CurrentRow.Cells[12].Value.ToString(),//status
+                dgvOS.CurrentRow.Cells[13].Value.ToString(),//data_pendente
+                dgvOS.CurrentRow.Cells[14].Value.ToString(),//data_vistoria
+                dgvOS.CurrentRow.Cells[15].Value.ToString(),//data_concluida
+                dgvOS.CurrentRow.Cells[16].Value.ToString(),//obs
+                dgvOS.CurrentRow.Cells[17].Value.ToString()//fatura_cod   
+         */
+
+        public frmAddOS(string Id, string Titulo, string Referencia, string DataOrdem, string Prazo_execucao, string Profissional_cod, string Atividade_cod, string Siopi, string Nome_cliente, string Cidade, string Nome_contato, string Telefone_contato, string Status, string Data_pendente, string Data_vistoria, string Data_concluida, string OBS, string Fatura_cod)
         {
             InitializeComponent();
             ListarProfissionais();
@@ -127,17 +148,17 @@ namespace Arqueng.VIEW
             dado.Titulo = Titulo;
             txtReferencia.Text = Referencia;
             dtpDataOrdem.Text = DataOrdem;
-            dtpDataExecucao.Text = DataExecucao;
-            cboProfissional.Text = Profissional;
-            cboAtividade.Text = Atividade;
+            dtpDataExecucao.Text = Prazo_execucao;
+            cboProfissional.Text = Profissional_cod;
+            cboAtividade.Text = Atividade_cod;
             if (Siopi == "True")
                 chkSiopi.Checked = true;
             else
                 chkSiopi.Checked = false;
-            txtNomeCliente.Text = NomeCliente;
+            txtNomeCliente.Text = Nome_cliente;
             txtCidade.Text = Cidade;
-            txtNomeContato.Text = NomeContato;
-            txtTelefoneContato.Text = TelefoneContato;
+            txtNomeContato.Text = Nome_contato;
+            txtTelefoneContato.Text = Telefone_contato;
             if (Status == "RECEBIDA")
             {
                 rbtRecebida.Checked = true;
@@ -154,19 +175,19 @@ namespace Arqueng.VIEW
             {
                 rbtConcluida.Checked = true;
             }
-            dtpDataPendente.Text = DataPendente;
-            dtpDataVistoria.Text = DataVistoria;
-            dtpDataConcluida.Text = DataConcluida;
+            dtpDataPendente.Text = Data_pendente;
+            dtpDataVistoria.Text = Data_vistoria;
+            dtpDataConcluida.Text = Data_concluida;
             txtOBS.Text = OBS;
 
             BuscarNomeProfissional();
             BuscarNomeAtividade();
             BuscarAgencia();
 
-            if (Faturada == "1")
+            if (Fatura_cod != "0")
             {
                 lblFaturada.Show();
-                txtCodFatura.Text = "Fatura n°: " + CodFatura;
+                txtCodFatura.Text = "Fatura n°: " + Fatura_cod;
                 txtCodFatura.Show();
                 foreach (Control c in this.pnlDados.Controls)
                 {

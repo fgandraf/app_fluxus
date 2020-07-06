@@ -42,32 +42,27 @@ namespace Arqueng.VIEW
 
         public void ListarOSFaturada()
         {
-            try
+            if (dgvFaturas.Rows.Count > 0)
             {
-                dado.Fatura_cod = dgvFaturas.CurrentRow.Cells[0].Value.ToString();
-                dgvOS.DataSource = modelOS.ListarOSFaturadaModel(dado);
-                
-                txtRRTART.Text = dgvFaturas.CurrentRow.Cells[6].Value.ToString();
-                txtData.Text = dgvFaturas.CurrentRow.Cells[2].Value.ToString();
-                txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);     
-                txtValorDeslocamento.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[4].Value);
-                txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[5].Value);
-
-
-                if (dgvOS.Rows.Count == 0)
+                try
                 {
-                    dgvOS.Enabled = false;
-                }
-                else
-                {
-                    dgvOS.Enabled = true;
-                }
+                    dado.Fatura_cod = dgvFaturas.CurrentRow.Cells[0].Value.ToString();
+                    dgvOS.DataSource = modelOS.ListarOSFaturadaModel(dado);
 
+                    txtRRTART.Text = dgvFaturas.CurrentRow.Cells[6].Value.ToString();
+                    txtData.Text = dgvFaturas.CurrentRow.Cells[2].Value.ToString();
+                    txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);
+                    txtValorDeslocamento.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[4].Value);
+                    txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[5].Value);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            else
+                tblFaturas.Hide();
+
         }
 
 
