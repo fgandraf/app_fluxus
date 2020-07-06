@@ -49,6 +49,20 @@ namespace Arqueng.MODEL
             }
         }
 
+        public DataTable ListarOSFaturadaModel(OsENT dado)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.ListarOSFaturadaDAO(dado);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable ListarOsStatusModel(OsENT dado)
         {
             try

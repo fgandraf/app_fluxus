@@ -22,5 +22,20 @@ namespace Arqueng.MODEL
             }
         }
 
+        public DataTable ListarFaturaModel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.ListarFaturasDAO();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
     }
 }

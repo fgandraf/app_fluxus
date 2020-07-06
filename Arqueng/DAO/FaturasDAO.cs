@@ -25,7 +25,7 @@ namespace Arqueng.DAO
                 sql.ExecuteNonQuery();
 
                 dado.Id = Convert.ToInt32(sql.LastInsertedId);
-                
+
                 con.FecharConexao();
             }
             catch (Exception)
@@ -36,7 +36,23 @@ namespace Arqueng.DAO
         }
 
 
+        public DataTable ListarFaturasDAO()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT * FROM tb_fatura order by data", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
-
+        }
     }
 }
