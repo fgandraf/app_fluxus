@@ -117,26 +117,7 @@ namespace Arqueng.VIEW
             ListarAtividades();   //proffi sopi contato
         }
 
-        /*
-         *      dgvOS.CurrentRow.Cells[0].Value.ToString(),//id
-                dgvOS.CurrentRow.Cells[1].Value.ToString(),//titulo
-                dgvOS.CurrentRow.Cells[2].Value.ToString(),//referencia
-                dgvOS.CurrentRow.Cells[3].Value.ToString(),//data_ordem
-                dgvOS.CurrentRow.Cells[4].Value.ToString(),//prazo_execucao
-                dgvOS.CurrentRow.Cells[5].Value.ToString(),//profissional_cod
-                dgvOS.CurrentRow.Cells[6].Value.ToString(),//atividade_cod
-                dgvOS.CurrentRow.Cells[7].Value.ToString(),//siopi
-                dgvOS.CurrentRow.Cells[8].Value.ToString(),//nome_cliente
-                dgvOS.CurrentRow.Cells[9].Value.ToString(),//cidade
-                dgvOS.CurrentRow.Cells[10].Value.ToString(),//nome_contato
-                dgvOS.CurrentRow.Cells[11].Value.ToString(),//telefone_contato
-                dgvOS.CurrentRow.Cells[12].Value.ToString(),//status
-                dgvOS.CurrentRow.Cells[13].Value.ToString(),//data_pendente
-                dgvOS.CurrentRow.Cells[14].Value.ToString(),//data_vistoria
-                dgvOS.CurrentRow.Cells[15].Value.ToString(),//data_concluida
-                dgvOS.CurrentRow.Cells[16].Value.ToString(),//obs
-                dgvOS.CurrentRow.Cells[17].Value.ToString()//fatura_cod   
-         */
+        
 
         public frmAddOS(string Id, string Titulo, string Referencia, string DataOrdem, string Prazo_execucao, string Profissional_cod, string Atividade_cod, string Siopi, string Nome_cliente, string Cidade, string Nome_contato, string Telefone_contato, string Status, string Data_pendente, string Data_vistoria, string Data_concluida, string OBS, string Fatura_cod)
         {

@@ -56,8 +56,6 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.dgvOS = new System.Windows.Forms.DataGridView();
-            this.cboFaturadas = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +74,9 @@
             this.data_concluída = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.obs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fatura_cod = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.lblTitTotal = new System.Windows.Forms.Label();
+            this.lblTotalRegistros = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
             this.SuspendLayout();
@@ -221,35 +222,9 @@
             this.dgvOS.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOS.ShowEditingIcon = false;
-            this.dgvOS.Size = new System.Drawing.Size(820, 445);
+            this.dgvOS.Size = new System.Drawing.Size(820, 430);
             this.dgvOS.TabIndex = 221;
-            this.dgvOS.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOS_CellContentClick);
             this.dgvOS.DoubleClick += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // cboFaturadas
-            // 
-            this.cboFaturadas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFaturadas.FormattingEnabled = true;
-            this.cboFaturadas.Items.AddRange(new object[] {
-            "Não faturadas",
-            "Faturadas",
-            "Todas"});
-            this.cboFaturadas.Location = new System.Drawing.Point(770, 536);
-            this.cboFaturadas.Name = "cboFaturadas";
-            this.cboFaturadas.Size = new System.Drawing.Size(100, 21);
-            this.cboFaturadas.TabIndex = 226;
-            this.cboFaturadas.Visible = false;
-            this.cboFaturadas.SelectionChangeCommitted += new System.EventHandler(this.cboFaturadas_SelectionChangeCommitted);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(732, 539);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 227;
-            this.label1.Text = "Filtro:";
-            this.label1.Visible = false;
             // 
             // id
             // 
@@ -487,14 +462,44 @@
             this.fatura_cod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.fatura_cod.Width = 60;
             // 
+            // lblTitTotal
+            // 
+            this.lblTitTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitTotal.AutoSize = true;
+            this.lblTitTotal.Location = new System.Drawing.Point(742, 528);
+            this.lblTitTotal.Name = "lblTitTotal";
+            this.lblTitTotal.Size = new System.Drawing.Size(96, 13);
+            this.lblTitTotal.TabIndex = 227;
+            this.lblTitTotal.Text = "Total de Registros:";
+            // 
+            // lblTotalRegistros
+            // 
+            this.lblTotalRegistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalRegistros.Location = new System.Drawing.Point(836, 528);
+            this.lblTotalRegistros.Name = "lblTotalRegistros";
+            this.lblTotalRegistros.Size = new System.Drawing.Size(34, 13);
+            this.lblTotalRegistros.TabIndex = 228;
+            this.lblTotalRegistros.Text = "99";
+            this.lblTotalRegistros.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel1.Location = new System.Drawing.Point(745, 544);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(125, 1);
+            this.panel1.TabIndex = 229;
+            // 
             // frmOSLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(920, 580);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cboFaturadas);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lblTotalRegistros);
+            this.Controls.Add(this.lblTitTotal);
             this.Controls.Add(this.pnlLinha2);
             this.Controls.Add(this.pctLupa);
             this.Controls.Add(this.txtPesquisar);
@@ -526,8 +531,7 @@
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.DataGridView dgvOS;
-        private System.Windows.Forms.ComboBox cboFaturadas;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_ordem;
@@ -546,5 +550,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn data_concluída;
         private System.Windows.Forms.DataGridViewTextBoxColumn obs;
         private System.Windows.Forms.DataGridViewCheckBoxColumn fatura_cod;
+        private System.Windows.Forms.Label lblTotalRegistros;
+        private System.Windows.Forms.Panel panel1;
     }
 }

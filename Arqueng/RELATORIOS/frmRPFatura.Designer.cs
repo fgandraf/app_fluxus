@@ -30,37 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.tbInnerOsAtivBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cefdbDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cef_dbDataSet = new Arqueng.cef_dbDataSet();
             this.rpvFatura = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.tbInnerOsAtivTableAdapter = new Arqueng.cef_dbDataSetTableAdapters.tbInnerOsAtivTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.tbInnerOsAtivBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cefdbDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cef_dbDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tbInnerOsAtivBindingSource
-            // 
-            this.tbInnerOsAtivBindingSource.DataMember = "tbInnerOsAtiv";
-            this.tbInnerOsAtivBindingSource.DataSource = this.cefdbDataSetBindingSource;
-            // 
-            // cefdbDataSetBindingSource
-            // 
-            this.cefdbDataSetBindingSource.DataSource = this.cef_dbDataSet;
-            this.cefdbDataSetBindingSource.Position = 0;
-            // 
-            // cef_dbDataSet
-            // 
-            this.cef_dbDataSet.DataSetName = "cef_dbDataSet";
-            this.cef_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // rpvFatura
             // 
             this.rpvFatura.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rpvFatura.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "dtsFatura";
-            reportDataSource1.Value = this.tbInnerOsAtivBindingSource;
+            reportDataSource1.Name = "dtsOSFaturadas";
             this.rpvFatura.LocalReport.DataSources.Add(reportDataSource1);
             this.rpvFatura.LocalReport.ReportEmbeddedResource = "Arqueng.RELATORIOS.rpFatura.rdlc";
             this.rpvFatura.Location = new System.Drawing.Point(0, 0);
@@ -69,10 +46,6 @@
             this.rpvFatura.ServerReport.BearerToken = null;
             this.rpvFatura.Size = new System.Drawing.Size(784, 661);
             this.rpvFatura.TabIndex = 0;
-            // 
-            // tbInnerOsAtivTableAdapter
-            // 
-            this.tbInnerOsAtivTableAdapter.ClearBeforeFill = true;
             // 
             // frmRPFatura
             // 
@@ -88,9 +61,6 @@
             this.Text = "Relatório";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmRPFatura_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.tbInnerOsAtivBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cefdbDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cef_dbDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -98,9 +68,5 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer rpvFatura;
-        private System.Windows.Forms.BindingSource cefdbDataSetBindingSource;
-        private cef_dbDataSet cef_dbDataSet;
-        private System.Windows.Forms.BindingSource tbInnerOsAtivBindingSource;
-        private cef_dbDataSetTableAdapters.tbInnerOsAtivTableAdapter tbInnerOsAtivTableAdapter;
     }
 }

@@ -66,13 +66,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cef_dbDataSet.cs">
-      <DependentUpon>cef_dbDataSet.xsd</DependentUpon>
+    <Compile Include="dtsDB.cs">
+      <DependentUpon>dtsDB.xsd</DependentUpon>
     </Compile>
-    <Compile Include="cef_dbDataSet.Designer.cs">
+    <Compile Include="dtsDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>cef_dbDataSet.xsd</DependentUpon>
+      <DependentUpon>dtsDB.xsd</DependentUpon>
     </Compile>
     <Compile Include="DAO\AgenciasDAO.cs" />
     <Compile Include="DAO\AtividadesDAO.cs" />
@@ -87,6 +87,7 @@
     <Compile Include="ENTIDADES\FaturasENT.cs" />
     <Compile Include="ENTIDADES\OsENT.cs" />
     <Compile Include="ENTIDADES\ProfissionaisENT.cs" />
+    <Compile Include="ENTIDADES\RepFaturaENT.cs" />
     <Compile Include="MODEL\AgenciasMODEL.cs" />
     <Compile Include="MODEL\AtividadesMODEL.cs" />
     <Compile Include="MODEL\CadastraisMODEL.cs" />
@@ -245,16 +246,16 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="cef_dbDataSet.xsc">
-      <DependentUpon>cef_dbDataSet.xsd</DependentUpon>
+    <None Include="dtsDB.xsc">
+      <DependentUpon>dtsDB.xsd</DependentUpon>
     </None>
-    <None Include="cef_dbDataSet.xsd">
+    <None Include="dtsDB.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>cef_dbDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>dtsDB.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="cef_dbDataSet.xss">
-      <DependentUpon>cef_dbDataSet.xsd</DependentUpon>
+    <None Include="dtsDB.xss">
+      <DependentUpon>dtsDB.xsd</DependentUpon>
     </None>
     <None Include="Properties\DataSources\MySql.Data.MySqlClient.MySqlScriptServices.datasource" />
     <None Include="Properties\DataSources\MySql.Data.Resources.datasource" />

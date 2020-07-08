@@ -39,6 +39,16 @@ namespace Arqueng.VIEW
             {
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            if (status == "RECEBIDA")
+                lblTitRecebidas.Text = "RECEBIDAS [" + dgv.Rows.Count.ToString() + "]";
+            if (status == "PENDENTE")
+                lblTitPendentes.Text = "PENDENTES [" + dgv.Rows.Count.ToString() + "]";
+            if (status == "VISTORIADA")
+                lblTitVistoriadas.Text = "VISTORIADAS [" + dgv.Rows.Count.ToString() + "]";
+            if (status == "CONCLUÍDA")
+                lblTitConcluidas.Text = "CONCLUÍDAS [" + dgv.Rows.Count.ToString() + "]";
+
         }
 
 
@@ -292,7 +302,7 @@ namespace Arqueng.VIEW
                 ExcluirOS(dgvConcluidas, "CONCLUÍDA");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnFaturar_Click(object sender, EventArgs e)
         {
             frmAddFatura form = new frmAddFatura();
             form.ShowDialog();

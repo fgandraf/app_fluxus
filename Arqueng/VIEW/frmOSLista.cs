@@ -36,6 +36,8 @@ namespace Arqueng.VIEW
             {
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
         }
 
 
@@ -47,7 +49,6 @@ namespace Arqueng.VIEW
 
         private void frmOS_Load(object sender, EventArgs e)
         {
-            cboFaturadas.Text = "Todas";
             ListarOS();
             txtPesquisar.Focus();
         }
@@ -123,12 +124,6 @@ namespace Arqueng.VIEW
         {
             ListarOS();
         }
-
-        private void dgvOS_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
 
     }
 }

@@ -1,14 +1,19 @@
 ﻿using Arqueng.ENTIDADES;
 using Arqueng.MODEL;
 using Arqueng.RELATORIOS;
+using Microsoft.Reporting.WinForms;
 using System;
+using System.Data;
 using System.Windows.Forms;
-
+using System.Xml.Serialization.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace Arqueng.VIEW
 {
     public partial class frmFaturas : Form
     {
+
+        
 
         FaturasMODEL model = new FaturasMODEL();
         OsMODEL modelOS = new OsMODEL();
@@ -70,6 +75,7 @@ namespace Arqueng.VIEW
         {
             ListarFatura();
             ListarOSFaturada();
+            
         }
 
         private void dgvFaturas_MouseClick(object sender, MouseEventArgs e)
@@ -79,10 +85,25 @@ namespace Arqueng.VIEW
 
         private void btn_Click(object sender, EventArgs e)
         {
-            
-            frmRPFatura frm = new frmRPFatura();
-           
-            frm.ShowDialog();
+
+            frmRPFatura rep = new frmRPFatura();
+            RepFaturaENT dat = new RepFaturaENT();
+
+
+            for (int i = 0; i < dgvOS.Rows.Count; i++)
+            {
+                dat.data_ordem = Convert.ToDateTime(dgvOS.Rows[i].Cells[1].Value);
+                dat.referencia = dgvOS.Rows[i].Cells[2].Value.ToString();
+                dat.atividade_cod = dgvOS.Rows[i].Cells[3].Value.ToString();
+                dat.cidade = dgvOS.Rows[i].Cells[4].Value.ToString();
+                dat.data_concluida = Convert.ToDateTime(dgvOS.Rows[i].Cells[7].Value);
+                dat.valor_atividade = dgvOS.Rows[i].Cells[8].Value.ToString();
+                dat.valor_deslocamento = dgvOS.Rows[i].Cells[9].Value.ToString();
+                rep.Datos.Add(dat);
+            }
+            rep.ShowDialog();
+ 
         }
+
     }
 }
