@@ -1,12 +1,9 @@
 ﻿using Arqueng.ENTIDADES;
 using Arqueng.MODEL;
 using Arqueng.RELATORIOS;
-using Microsoft.Reporting.WinForms;
 using System;
-using System.Data;
 using System.Windows.Forms;
-using System.Xml.Serialization.Configuration;
-using MySql.Data.MySqlClient;
+
 
 namespace Arqueng.VIEW
 {
@@ -18,6 +15,7 @@ namespace Arqueng.VIEW
         FaturasMODEL model = new FaturasMODEL();
         OsMODEL modelOS = new OsMODEL();
         OsENT dado = new OsENT();
+        FaturasENT dadofat = new FaturasENT();
 
         public frmFaturas()
         {
@@ -85,8 +83,14 @@ namespace Arqueng.VIEW
 
         private void btn_Click(object sender, EventArgs e)
         {
+            string _contrato = "0000.00.0000.000/0000";
+            dadofat.rrtart = dgvFaturas.CurrentRow.Cells[6].Value.ToString();
+            dadofat.subtotal_os = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);
+            dadofat.subtotal_desloc = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[4].Value);
+            dadofat.total = "R$ " + string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[5].Value);
 
-            frmRPFatura rep = new frmRPFatura();
+
+            frmRPFatura rep = new frmRPFatura(_contrato, dadofat.rrtart, dadofat.subtotal_os, dadofat.subtotal_desloc, dadofat.total);
             
             for (int i = 0; i < dgvOS.Rows.Count; i++)
             {
@@ -104,5 +108,9 @@ namespace Arqueng.VIEW
  
         }
 
+        private void tblFaturas_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

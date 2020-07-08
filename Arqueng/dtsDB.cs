@@ -4,6 +4,9 @@
 
     partial class dtsDB
     {
+        partial class tbFaturaDataTable
+        {
+        }
     }
 }
 

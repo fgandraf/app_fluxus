@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaturas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -72,33 +73,42 @@
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rrtart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblNenhuma = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.tblFaturas.SuspendLayout();
             this.pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFaturas)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tblFaturas
             // 
-            this.tblFaturas.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tblFaturas.ColumnCount = 2;
+            this.tblFaturas.ColumnCount = 3;
             this.tblFaturas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tblFaturas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tblFaturas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblFaturas.Controls.Add(this.pnlFaturaMain, 1, 0);
+            this.tblFaturas.Controls.Add(this.panel3, 0, 1);
+            this.tblFaturas.Controls.Add(this.panel1, 1, 0);
+            this.tblFaturas.Controls.Add(this.pnlFaturaMain, 2, 2);
             this.tblFaturas.Controls.Add(this.dgvFaturas, 0, 0);
+            this.tblFaturas.Controls.Add(this.panel2, 2, 0);
             this.tblFaturas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblFaturas.Location = new System.Drawing.Point(0, 0);
             this.tblFaturas.Margin = new System.Windows.Forms.Padding(0);
             this.tblFaturas.Name = "tblFaturas";
-            this.tblFaturas.RowCount = 1;
+            this.tblFaturas.RowCount = 3;
+            this.tblFaturas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tblFaturas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tblFaturas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblFaturas.Size = new System.Drawing.Size(920, 580);
             this.tblFaturas.TabIndex = 424;
+            this.tblFaturas.Paint += new System.Windows.Forms.PaintEventHandler(this.tblFaturas_Paint);
             // 
             // pnlFaturaMain
             // 
             this.pnlFaturaMain.Controls.Add(this.lblrrtart);
-            this.pnlFaturaMain.Controls.Add(this.btn);
             this.pnlFaturaMain.Controls.Add(this.dgvOS);
             this.pnlFaturaMain.Controls.Add(this.pnlLinha2);
             this.pnlFaturaMain.Controls.Add(this.lbData);
@@ -110,10 +120,10 @@
             this.pnlFaturaMain.Controls.Add(this.lblSubtotal);
             this.pnlFaturaMain.Controls.Add(this.lblTotal);
             this.pnlFaturaMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFaturaMain.Location = new System.Drawing.Point(202, 1);
+            this.pnlFaturaMain.Location = new System.Drawing.Point(201, 56);
             this.pnlFaturaMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnlFaturaMain.Name = "pnlFaturaMain";
-            this.pnlFaturaMain.Size = new System.Drawing.Size(717, 578);
+            this.pnlFaturaMain.Size = new System.Drawing.Size(719, 524);
             this.pnlFaturaMain.TabIndex = 432;
             // 
             // lblrrtart
@@ -121,7 +131,7 @@
             this.lblrrtart.AutoSize = true;
             this.lblrrtart.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblrrtart.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblrrtart.Location = new System.Drawing.Point(16, 20);
+            this.lblrrtart.Location = new System.Drawing.Point(16, 10);
             this.lblrrtart.Name = "lblrrtart";
             this.lblrrtart.Size = new System.Drawing.Size(79, 20);
             this.lblrrtart.TabIndex = 422;
@@ -130,13 +140,20 @@
             // 
             // btn
             // 
-            this.btn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn.Location = new System.Drawing.Point(15, 524);
+            this.btn.BackColor = System.Drawing.SystemColors.Window;
+            this.btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn.FlatAppearance.BorderSize = 0;
+            this.btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.btn.Image = ((System.Drawing.Image)(resources.GetObject("btn.Image")));
+            this.btn.Location = new System.Drawing.Point(665, 0);
+            this.btn.Margin = new System.Windows.Forms.Padding(0);
             this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(105, 24);
+            this.btn.Size = new System.Drawing.Size(30, 30);
             this.btn.TabIndex = 431;
-            this.btn.Text = "Imprimir";
-            this.btn.UseVisualStyleBackColor = true;
+            this.btn.UseVisualStyleBackColor = false;
             this.btn.Click += new System.EventHandler(this.btn_Click);
             // 
             // dgvOS
@@ -176,7 +193,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOS.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvOS.GridColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dgvOS.Location = new System.Drawing.Point(20, 60);
+            this.dgvOS.Location = new System.Drawing.Point(20, 50);
             this.dgvOS.Name = "dgvOS";
             this.dgvOS.ReadOnly = true;
             this.dgvOS.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -194,7 +211,7 @@
             this.dgvOS.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOS.ShowEditingIcon = false;
-            this.dgvOS.Size = new System.Drawing.Size(677, 426);
+            this.dgvOS.Size = new System.Drawing.Size(679, 400);
             this.dgvOS.TabIndex = 224;
             // 
             // id
@@ -309,7 +326,7 @@
             // 
             this.pnlLinha2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLinha2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pnlLinha2.Location = new System.Drawing.Point(508, 531);
+            this.pnlLinha2.Location = new System.Drawing.Point(510, 477);
             this.pnlLinha2.Name = "pnlLinha2";
             this.pnlLinha2.Size = new System.Drawing.Size(190, 1);
             this.pnlLinha2.TabIndex = 430;
@@ -320,7 +337,7 @@
             this.lbData.AutoSize = true;
             this.lbData.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbData.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lbData.Location = new System.Drawing.Point(555, 20);
+            this.lbData.Location = new System.Drawing.Point(557, 10);
             this.lbData.Name = "lbData";
             this.lbData.Size = new System.Drawing.Size(46, 20);
             this.lbData.TabIndex = 420;
@@ -335,7 +352,7 @@
             this.txtValorDeslocamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtValorDeslocamento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorDeslocamento.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtValorDeslocamento.Location = new System.Drawing.Point(642, 510);
+            this.txtValorDeslocamento.Location = new System.Drawing.Point(644, 456);
             this.txtValorDeslocamento.MaxLength = 100;
             this.txtValorDeslocamento.Name = "txtValorDeslocamento";
             this.txtValorDeslocamento.ReadOnly = true;
@@ -352,7 +369,7 @@
             this.txtData.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtData.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtData.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtData.Location = new System.Drawing.Point(607, 20);
+            this.txtData.Location = new System.Drawing.Point(609, 10);
             this.txtData.MaxLength = 100;
             this.txtData.Name = "txtData";
             this.txtData.ReadOnly = true;
@@ -369,7 +386,7 @@
             this.txtValorOS.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtValorOS.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorOS.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtValorOS.Location = new System.Drawing.Point(581, 510);
+            this.txtValorOS.Location = new System.Drawing.Point(583, 456);
             this.txtValorOS.MaxLength = 100;
             this.txtValorOS.Name = "txtValorOS";
             this.txtValorOS.ReadOnly = true;
@@ -385,7 +402,7 @@
             this.txtRRTART.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRRTART.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRRTART.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtRRTART.Location = new System.Drawing.Point(101, 20);
+            this.txtRRTART.Location = new System.Drawing.Point(101, 10);
             this.txtRRTART.MaxLength = 100;
             this.txtRRTART.Name = "txtRRTART";
             this.txtRRTART.ReadOnly = true;
@@ -401,7 +418,7 @@
             this.txtValorTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtValorTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorTotal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtValorTotal.Location = new System.Drawing.Point(581, 535);
+            this.txtValorTotal.Location = new System.Drawing.Point(583, 481);
             this.txtValorTotal.MaxLength = 100;
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.ReadOnly = true;
@@ -416,7 +433,7 @@
             this.lblSubtotal.AutoSize = true;
             this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtotal.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lblSubtotal.Location = new System.Drawing.Point(521, 510);
+            this.lblSubtotal.Location = new System.Drawing.Point(523, 456);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(54, 13);
             this.lblSubtotal.TabIndex = 425;
@@ -429,7 +446,7 @@
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblTotal.Location = new System.Drawing.Point(518, 535);
+            this.lblTotal.Location = new System.Drawing.Point(520, 481);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(58, 20);
             this.lblTotal.TabIndex = 426;
@@ -470,8 +487,8 @@
             this.dgvFaturas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFaturas.EnableHeadersVisualStyles = false;
             this.dgvFaturas.GridColor = System.Drawing.SystemColors.Window;
-            this.dgvFaturas.Location = new System.Drawing.Point(1, 21);
-            this.dgvFaturas.Margin = new System.Windows.Forms.Padding(0, 20, 0, 20);
+            this.dgvFaturas.Location = new System.Drawing.Point(10, 20);
+            this.dgvFaturas.Margin = new System.Windows.Forms.Padding(10, 20, 10, 20);
             this.dgvFaturas.MultiSelect = false;
             this.dgvFaturas.Name = "dgvFaturas";
             this.dgvFaturas.ReadOnly = true;
@@ -479,6 +496,7 @@
             this.dgvFaturas.RowHeadersVisible = false;
             this.dgvFaturas.RowHeadersWidth = 60;
             this.dgvFaturas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.tblFaturas.SetRowSpan(this.dgvFaturas, 3);
             this.dgvFaturas.RowTemplate.DividerHeight = 5;
             this.dgvFaturas.RowTemplate.Height = 50;
             this.dgvFaturas.RowTemplate.ReadOnly = true;
@@ -486,7 +504,7 @@
             this.dgvFaturas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvFaturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFaturas.ShowEditingIcon = false;
-            this.dgvFaturas.Size = new System.Drawing.Size(200, 538);
+            this.dgvFaturas.Size = new System.Drawing.Size(180, 540);
             this.dgvFaturas.TabIndex = 223;
             this.dgvFaturas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvFaturas_MouseClick);
             // 
@@ -560,6 +578,35 @@
             this.lblNenhuma.Text = "Nenhuma fatura gerada!";
             this.lblNenhuma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(203, 3);
+            this.panel1.Name = "panel1";
+            this.tblFaturas.SetRowSpan(this.panel1, 3);
+            this.panel1.Size = new System.Drawing.Size(1, 574);
+            this.panel1.TabIndex = 433;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btn);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(204, 20);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(713, 32);
+            this.panel2.TabIndex = 434;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(204, 58);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(713, 1);
+            this.panel3.TabIndex = 435;
+            // 
             // frmFaturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -580,6 +627,7 @@
             this.pnlFaturaMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFaturas)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -618,5 +666,8 @@
         private System.Windows.Forms.TextBox txtValorTotal;
         private System.Windows.Forms.Label lblSubtotal;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

@@ -82,12 +82,12 @@ namespace Arqueng.VIEW
         private void btnFaturar_Click(object sender, EventArgs e)
         {
             //POPULATE
-            dadoFatura.Descricao = txtDescricao.Text;
-            dadoFatura.Data = dtpData.Value;
-            dadoFatura.Subtotal_os = _subtotal_os.ToString().Replace(',', '.');
-            dadoFatura.Subtotal_desloc = _subtotal_desloc.ToString().Replace(',', '.');
-            dadoFatura.Total = _total.ToString().Replace(',', '.');
-            dadoFatura.Rrtart = txtRRTART.Text;
+            dadoFatura.descricao = txtDescricao.Text;
+            dadoFatura.data = dtpData.Value;
+            dadoFatura.subtotal_os = _subtotal_os.ToString().Replace(',', '.');
+            dadoFatura.subtotal_desloc = _subtotal_desloc.ToString().Replace(',', '.');
+            dadoFatura.total = _total.ToString().Replace(',', '.');
+            dadoFatura.rrtart = txtRRTART.Text;
             try
             {
                 modelFatura.InsertFaturaModel(dadoFatura);
@@ -98,7 +98,7 @@ namespace Arqueng.VIEW
             }
             
             
-            dadoOS.Fatura_cod = dadoFatura.Id.ToString();
+            dadoOS.Fatura_cod = dadoFatura.id.ToString();
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
                 dadoOS.Id = row.Cells["id"].Value.ToString();
