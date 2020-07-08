@@ -87,11 +87,10 @@ namespace Arqueng.VIEW
         {
 
             frmRPFatura rep = new frmRPFatura();
-            RepFaturaENT dat = new RepFaturaENT();
-
-
+            
             for (int i = 0; i < dgvOS.Rows.Count; i++)
             {
+                RepFaturaENT dat = new RepFaturaENT();
                 dat.data_ordem = Convert.ToDateTime(dgvOS.Rows[i].Cells[1].Value);
                 dat.referencia = dgvOS.Rows[i].Cells[2].Value.ToString();
                 dat.atividade_cod = dgvOS.Rows[i].Cells[3].Value.ToString();
