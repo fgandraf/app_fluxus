@@ -9,7 +9,10 @@ namespace Arqueng.VIEW
     public partial class frmProfissionais : Form
     {
 
+
         ProfissionaisMODEL model = new ProfissionaisMODEL();
+
+
         public void ListarProfissionais()
         {
             try
@@ -34,10 +37,12 @@ namespace Arqueng.VIEW
             }
         }
 
+
         public frmProfissionais()
         {
             InitializeComponent();
         }
+
 
         private void frmProfissionais_Load(object sender, EventArgs e)
         {
@@ -65,6 +70,7 @@ namespace Arqueng.VIEW
             }
         }
 
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             frmAddProfissional form = new frmAddProfissional
@@ -85,6 +91,7 @@ namespace Arqueng.VIEW
             ListarProfissionais();
         }
 
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddProfissional form = new frmAddProfissional();
@@ -93,5 +100,8 @@ namespace Arqueng.VIEW
             ListarProfissionais();
         }
         
+
     }
+
+
 }

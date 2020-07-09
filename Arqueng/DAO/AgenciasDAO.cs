@@ -5,17 +5,22 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.DAO
 {
+
+
     public class AgenciasDAO
     {
+        
+
         MySqlCommand sql;
         CONEXAO con = new CONEXAO();
+
 
         public DataTable ListarAgenciasDAO()
         {
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_agencias order by agencia", con.con);
+                sql = new MySqlCommand("SELECT * FROM tb_agencias ORDER BY agencia", con.con);
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = sql;
                 DataTable dt = new DataTable();
@@ -27,6 +32,7 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
 
         public void BuscarAgenciaDAO(AgenciasENT dado)
         {
@@ -58,13 +64,6 @@ namespace Arqueng.DAO
         }
 
 
-
-
-
-
-
-
-
         public void InsertAgenciaDAO(AgenciasENT dado)
         {
             try
@@ -92,6 +91,8 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
         public void UpdateAgenciaDAO(AgenciasENT dado)
         {
             try
@@ -119,6 +120,8 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
         public void DeleteAgenciaDAO(AgenciasENT dado)
         {
             try
@@ -135,5 +138,9 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
     }
+
+
 }

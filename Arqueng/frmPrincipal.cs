@@ -3,22 +3,13 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Arqueng.VIEW;
 using Arqueng.MODEL;
-using Arqueng.DAO;
 
 namespace Arqueng
 {
 
+
     public partial class frmPrincipal : Form
     {
-
-
-        CadastraisMODEL cadmodel = new CadastraisMODEL();
-
-        public frmPrincipal()
-        {
-            InitializeComponent();
-            
-        }
 
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -26,40 +17,30 @@ namespace Arqueng
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-
-        //private void formulario_NextForm(object source, string name)
-        //{
-        //    ((Form)source).Close();
-        //    if (name == "frmAddAtividade")
-        //    {
-        //        frmAddAtividade formulario = new frmAddAtividade();
-        //        formulario.TopLevel = false;
-        //        formulario.AutoScroll = true;
-        //        this.pnlMain.Controls.Clear();
-        //        this.pnlMain.Controls.Add(formulario);
-        //        formulario.Show();
-        //    }
-        //}
+        CadastraisMODEL cadmodel = new CadastraisMODEL();
 
 
-
-        /*
-         
-        private void AbrirFormInPanel(object Formfilho)
+        public frmPrincipal()
         {
-            if (this.pnlMain.Controls.Count > 0)
-                this.pnlMain.Controls.RemoveAt(0);
-            
+            InitializeComponent();
+
+        }
+
+
+        private void AbrirFormInPanel(Form Formfilho, Panel pnl)
+        {
+            if (pnl.Controls.Count > 0)
+                pnl.Controls.RemoveAt(0);
+
             Form fh = Formfilho as Form;
             fh.TopLevel = false;
             fh.Dock = DockStyle.Fill;
-            this.pnlMain.Controls.Add(fh);
-            this.pnlMain.Tag = fh;
+            pnl.Controls.Add(fh);
+            pnl.Tag = fh;
             fh.Show();
         }
 
-        */
-        
+
         private void OcultaControles()
         {
             pnlCtrlDashboard.Hide();
@@ -74,6 +55,7 @@ namespace Arqueng
             pnlCtrlLista.Hide();
         }
 
+
         private void ExpandSubMenuOS()
         {
             tblMenu.RowStyles[2].Height = 25;
@@ -81,6 +63,7 @@ namespace Arqueng
             tblMenu.RowStyles[4].Height = 25;
             tblMenu.RowStyles[5].Height = 2;
         }
+
 
         private void RecolheSubMenuOS()
         {
@@ -107,19 +90,13 @@ namespace Arqueng
             }
         }
 
+
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-           /* 
-            var result = MessageBox.Show("Deseja utilizar conexao remota?", "Conexão", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
-                con.dadoscon = "SERVER=ayearquitetura.com.br; DATABASE=ayearq02_cef_db; UID=ayearq02; PWD=452nyZRb7m;";
-            else
-                con.dadoscon = "SERVER=localhost; DATABASE=cef_db; UID=root; PWD=;";
-           */
-
             BuscarNomeFantasia();
             btnDashBoard.PerformClick();
         }
+
 
         private void pnlTitulo_MouseDown(object sender, MouseEventArgs e)
         {
@@ -128,18 +105,16 @@ namespace Arqueng
         }
 
 
-
         private void btnProfissionais_Click(object sender, EventArgs e)
         {
             OcultaControles();
             RecolheSubMenuOS();
-            pnlCtrlProfissionais.Visible = true;
+
+            pnlCtrlProfissionais.Show();
             lblTitulo.Text = "Profissionais";
-            
-            frmProfissionais frm = new frmProfissionais { TopLevel = false, Dock = DockStyle.Fill };
-            this.pnlMain.Controls.Clear();
-            this.pnlMain.Controls.Add(frm);
-            frm.Show();
+
+            frmProfissionais frm = new frmProfissionais();
+            AbrirFormInPanel(frm, pnlMain);
         }
 
 
@@ -147,30 +122,26 @@ namespace Arqueng
         {
             OcultaControles();
             RecolheSubMenuOS();
-            pnlCtrlAtividades.Visible = true;
+            
+            pnlCtrlAtividades.Show();
             lblTitulo.Text = "Atividades";
 
-            frmAtividades frm = new frmAtividades { TopLevel = false, Dock = DockStyle.Fill };
-            this.pnlMain.Controls.Clear();
-            this.pnlMain.Controls.Add(frm);
-            frm.Show();
+            frmAtividades frm = new frmAtividades();
+            AbrirFormInPanel(frm, pnlMain);
         }
 
 
         private void btnAgencias_Click(object sender, EventArgs e)
         {
-             OcultaControles();
-             RecolheSubMenuOS();
-             pnlCtrlAgencias.Visible = true;
-             lblTitulo.Text = "Agências Demandantes";
+            OcultaControles();
+            RecolheSubMenuOS();
             
-            frmAgencias frm = new frmAgencias { TopLevel = false, Dock = DockStyle.Fill };
-            this.pnlMain.Controls.Clear();
-            this.pnlMain.Controls.Add(frm);
-            frm.Show();
+            pnlCtrlAgencias.Show();
+            lblTitulo.Text = "Agências Demandantes";
 
+            frmAgencias frm = new frmAgencias();
+            AbrirFormInPanel(frm, pnlMain);
         }
-
 
 
         private void btnSlide_Click(object sender, EventArgs e)
@@ -210,22 +181,19 @@ namespace Arqueng
                     pnlCtrlFluxo.Show();
                 }
             }
-            
-                   
         }
 
 
         private void btnDadosCadastrais_Click(object sender, EventArgs e)
         {
             OcultaControles();
-            lblTitulo.Text = "Dados Cadastrais";
             RecolheSubMenuOS();
+
             pnlCtrlDadosCadastrais.Show();
-            
-            frmDadosCadastrais frm = new frmDadosCadastrais { TopLevel = false, Dock = DockStyle.Fill };
-            this.pnlMain.Controls.Clear();
-            this.pnlMain.Controls.Add(frm);
-            frm.Show();
+            lblTitulo.Text = "Dados Cadastrais";
+
+            frmDadosCadastrais frm = new frmDadosCadastrais();
+            AbrirFormInPanel(frm, pnlMain);
         }
 
 
@@ -233,37 +201,38 @@ namespace Arqueng
         {
             OcultaControles();
             RecolheSubMenuOS();
-            pnlCtrlDashboard.Visible = true;
+            
+            pnlCtrlDashboard.Show();
             lblTitulo.Text = "Dashboard";
 
-            frmDashboard frm = new frmDashboard { TopLevel = false, Dock = DockStyle.Fill };
-            this.pnlMain.Controls.Clear();
-            this.pnlMain.Controls.Add(frm);
-            frm.Show();
+            frmDashboard frm = new frmDashboard();
+            AbrirFormInPanel(frm, pnlMain);
         }
 
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
             OcultaControles();
             RecolheSubMenuOS();
-            pnlCtrlRelatorios.Visible = true;
+            
+            pnlCtrlRelatorios.Show();
             lblTitulo.Text = "Relatórios";
 
-            frmRelatorios frm = new frmRelatorios { TopLevel = false, Dock = DockStyle.Fill };
-            this.pnlMain.Controls.Clear();
-            this.pnlMain.Controls.Add(frm);
-            frm.Show();
+            frmRelatorios frm = new frmRelatorios();
+            AbrirFormInPanel(frm, pnlMain);
         }
+
 
         private void btnAppFechar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+
         private void btnAppMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
 
         private void btnAppMaximizar_Click(object sender, EventArgs e)
         {
@@ -272,6 +241,7 @@ namespace Arqueng
             btnAppRestaurar.Show();
         }
 
+
         private void btnAppRestaurar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
@@ -279,23 +249,24 @@ namespace Arqueng
             btnAppRestaurar.Hide();
         }
 
+
         private void btnOSLista_Click(object sender, EventArgs e)
         {
             OcultaControles();
-            pnlCtrlOS.Visible = true;
             pnlCtrlFluxo.Hide();
+            
             pnlCtrlLista.Show();
+            pnlCtrlOS.Show();
             lblTitulo.Text = "Ordens de Serviços - Em lista";
 
-            frmOSLista frm = new frmOSLista { TopLevel = false, Dock = DockStyle.Fill };
-            this.pnlMain.Controls.Clear();
-            this.pnlMain.Controls.Add(frm);
-            frm.Show();
+            frmOSLista frm = new frmOSLista();
+            AbrirFormInPanel(frm, pnlMain);
         }
 
         private void btnOS_Click(object sender, EventArgs e)
         {
-            
+
+
             if (tblMenu.RowStyles[2].Height == 0)
             {
                 ExpandSubMenuOS();
@@ -323,30 +294,30 @@ namespace Arqueng
         private void btnOSFluxo_Click(object sender, EventArgs e)
         {
             OcultaControles();
-            pnlCtrlOS.Visible = true;
-
-            pnlCtrlFluxo.Show();
             pnlCtrlLista.Hide();
 
+            pnlCtrlOS.Show();
+            pnlCtrlFluxo.Show();
             lblTitulo.Text = "Ordens de Serviços - Em fluxo";
 
-            frmOSFluxo frm = new frmOSFluxo { TopLevel = false, Dock = DockStyle.Fill };
-            this.pnlMain.Controls.Clear();
-            this.pnlMain.Controls.Add(frm);
-            frm.Show();
+            frmOSFluxo frm = new frmOSFluxo();
+            AbrirFormInPanel(frm, pnlMain);
         }
 
         private void btnFaturas_Click(object sender, EventArgs e)
         {
             OcultaControles();
             RecolheSubMenuOS();
-            pnlCtrlFaturas.Visible = true;
+
+            pnlCtrlFaturas.Show();
             lblTitulo.Text = "Faturas";
 
-            frmFaturas frm = new frmFaturas { TopLevel = false, Dock = DockStyle.Fill };
-            this.pnlMain.Controls.Clear();
-            this.pnlMain.Controls.Add(frm);
-            frm.Show();
+            frmFaturas frm = new frmFaturas();
+            AbrirFormInPanel(frm, pnlMain);
         }
+
+
     }
+
+
 }

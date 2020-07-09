@@ -3,6 +3,8 @@ using MySql.Data.MySqlClient;
 
 namespace Arqueng.DAO
 {
+
+
     public class CONEXAO
     {
         string dadoscon = "SERVER=localhost; DATABASE=cef_db; UID=root; PWD=;";
@@ -23,6 +25,7 @@ namespace Arqueng.DAO
             }
         }
 
+
         public void FecharConexao()
         {
             try
@@ -35,5 +38,9 @@ namespace Arqueng.DAO
                 throw ex;
             }
         }
+
+
     }
+
+
 }

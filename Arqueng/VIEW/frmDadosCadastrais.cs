@@ -5,20 +5,23 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.VIEW
 {
+
+
     public partial class frmDadosCadastrais : Form
     {
 
+
         CadastraisMODEL model = new CadastraisMODEL();
         CadastraisENT dado = new CadastraisENT();
-       
+        public bool alterado = false;
+
+
         public frmDadosCadastrais()
         {
             InitializeComponent();
         }
 
-        public static bool alterado = false;
 
-        
         public void BuscarDadosCadastrais()
         {
             try
@@ -155,5 +158,8 @@ namespace Arqueng.VIEW
             }
         }
 
+
     }
+
+
 }

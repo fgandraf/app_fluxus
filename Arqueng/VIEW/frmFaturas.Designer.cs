@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaturas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,10 +39,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaturas));
             this.tblFaturas = new System.Windows.Forms.TableLayoutPanel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlFaturaMain = new System.Windows.Forms.Panel();
             this.lblrrtart = new System.Windows.Forms.Label();
-            this.btn = new System.Windows.Forms.Button();
             this.dgvOS = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,10 +73,9 @@
             this.subtotal_desloc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rrtart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblNenhuma = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.lblNenhuma = new System.Windows.Forms.Label();
             this.tblFaturas.SuspendLayout();
             this.pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
@@ -104,7 +104,25 @@
             this.tblFaturas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblFaturas.Size = new System.Drawing.Size(920, 580);
             this.tblFaturas.TabIndex = 424;
-            this.tblFaturas.Paint += new System.Windows.Forms.PaintEventHandler(this.tblFaturas_Paint);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(204, 58);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(713, 1);
+            this.panel3.TabIndex = 435;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(203, 3);
+            this.panel1.Name = "panel1";
+            this.tblFaturas.SetRowSpan(this.panel1, 3);
+            this.panel1.Size = new System.Drawing.Size(1, 574);
+            this.panel1.TabIndex = 433;
             // 
             // pnlFaturaMain
             // 
@@ -137,24 +155,6 @@
             this.lblrrtart.TabIndex = 422;
             this.lblrrtart.Text = "RRT/ART:";
             this.lblrrtart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btn
-            // 
-            this.btn.BackColor = System.Drawing.SystemColors.Window;
-            this.btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn.FlatAppearance.BorderSize = 0;
-            this.btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.btn.Image = ((System.Drawing.Image)(resources.GetObject("btn.Image")));
-            this.btn.Location = new System.Drawing.Point(665, 0);
-            this.btn.Margin = new System.Windows.Forms.Padding(0);
-            this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(30, 30);
-            this.btn.TabIndex = 431;
-            this.btn.UseVisualStyleBackColor = false;
-            this.btn.Click += new System.EventHandler(this.btn_Click);
             // 
             // dgvOS
             // 
@@ -565,6 +565,34 @@
             this.rrtart.ReadOnly = true;
             this.rrtart.Visible = false;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnImprimir);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(204, 20);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(713, 32);
+            this.panel2.TabIndex = 434;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.BackColor = System.Drawing.SystemColors.Window;
+            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimir.FlatAppearance.BorderSize = 0;
+            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.Location = new System.Drawing.Point(665, 0);
+            this.btnImprimir.Margin = new System.Windows.Forms.Padding(0);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(30, 30);
+            this.btnImprimir.TabIndex = 431;
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // lblNenhuma
             // 
             this.lblNenhuma.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -577,35 +605,6 @@
             this.lblNenhuma.TabIndex = 432;
             this.lblNenhuma.Text = "Nenhuma fatura gerada!";
             this.lblNenhuma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(203, 3);
-            this.panel1.Name = "panel1";
-            this.tblFaturas.SetRowSpan(this.panel1, 3);
-            this.panel1.Size = new System.Drawing.Size(1, 574);
-            this.panel1.TabIndex = 433;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btn);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(204, 20);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(713, 32);
-            this.panel2.TabIndex = 434;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(204, 58);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(713, 1);
-            this.panel3.TabIndex = 435;
             // 
             // frmFaturas
             // 
@@ -645,7 +644,7 @@
         private System.Windows.Forms.Label lblNenhuma;
         private System.Windows.Forms.Panel pnlFaturaMain;
         private System.Windows.Forms.Label lblrrtart;
-        private System.Windows.Forms.Button btn;
+        private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.DataGridView dgvOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_ordem;

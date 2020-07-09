@@ -5,18 +5,22 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.DAO
 {
+
+
     public class AtividadesDAO
     {
+
+
         MySqlCommand sql;
-        
         CONEXAO con = new CONEXAO();
+
 
         public DataTable ListarAtividadesDAO()
         {
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_atividades order by codigo", con.con);
+                sql = new MySqlCommand("SELECT * FROM tb_atividades ORDER BY codigo", con.con);
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = sql;
                 DataTable dt = new DataTable();
@@ -28,6 +32,7 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
 
         public void BuscarAtividadesDAO(AtividadesENT dado)
         {
@@ -78,6 +83,8 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
         public void UpdateAtividadeDAO(AtividadesENT dado)
         {
             try
@@ -97,6 +104,8 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
         public void DeleteAtividadeDAO(AtividadesENT dado)
         {
             try
@@ -113,5 +122,9 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
     }
+
+
 }

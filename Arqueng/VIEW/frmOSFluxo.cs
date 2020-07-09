@@ -5,6 +5,8 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.VIEW
 {
+
+
     public partial class frmOSFluxo : Form
     {
 
@@ -12,8 +14,6 @@ namespace Arqueng.VIEW
         OsMODEL model = new OsMODEL();
         OsENT dado = new OsENT();
         Control _lastEnteredControl;
-
-
 
 
         //========================LISTAR OS========================//
@@ -52,18 +52,14 @@ namespace Arqueng.VIEW
         }
 
 
-
-
-
         //========================EDITAR OS========================//
         //=========================================================//
         public void EditarOS(DataGridView dgv)
         {
-            dado.Id = dgv.CurrentRow.Cells[0].Value.ToString();
+            dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
             model.BuscarOsModel(dado);
             frmAddOS form = new frmAddOS
             (
-                dado.Id,
                 dado.Titulo,
                 dado.Referencia,
                 Convert.ToString(dado.Data_ordem),
@@ -91,8 +87,6 @@ namespace Arqueng.VIEW
         }
 
 
-
-
         //=======================EXCLUIR OS=======================//
         //========================================================//
         public void ExcluirOS(DataGridView dgv, string sta)
@@ -103,7 +97,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
-                    dado.Id = dgv.CurrentRow.Cells[0].Value.ToString();
+                    dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
                     model.DeleteOsModel(dado);
                     ListarOS(dgv, sta);
                 }
@@ -113,8 +107,6 @@ namespace Arqueng.VIEW
                 }
             }
         }
-
-
 
 
         //==============INICIALIZAÇÃO DO FORMULÁRIO==============//
@@ -140,7 +132,6 @@ namespace Arqueng.VIEW
             ListarOS(dgvConcluidas, "CONCLUÍDA");
 
         }
-
 
 
         //===============CLIQUE DIREITO NOS GRIDS===============//
@@ -302,11 +293,17 @@ namespace Arqueng.VIEW
                 ExcluirOS(dgvConcluidas, "CONCLUÍDA");
         }
 
+        //====================BOTÃO FATURAR CLICK================//
+        //=======================================================//
         private void btnFaturar_Click(object sender, EventArgs e)
         {
             frmAddFatura form = new frmAddFatura();
             form.ShowDialog();
             ListarOS(dgvConcluidas, "CONCLUÍDA");
         }
+
+
     }
+
+
 }

@@ -9,8 +9,10 @@ namespace Arqueng.VIEW
     public partial class frmOSLista : Form
     {
 
+
         OsMODEL model = new OsMODEL();
         OsENT dado = new OsENT();
+
 
         public void ListarOS()
         {
@@ -56,7 +58,7 @@ namespace Arqueng.VIEW
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (dgvOS.CurrentRow.Cells[17].Value.ToString() != "0")
+            if (dgvOS.CurrentRow.Cells["fatura_cod"].Value.ToString() != "0")
             {
                 MessageBox.Show("Não é possível excluir uma Ordem de Serviço já faturada!", "OS já faturada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -70,7 +72,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
-                    dado.Id = dgvOS.CurrentRow.Cells[0].Value.ToString();
+                    dado.Referencia = dgvOS.CurrentRow.Cells["referencia"].Value.ToString();
                     model.DeleteOsModel(dado);
                     ListarOS();
                 }
@@ -86,7 +88,6 @@ namespace Arqueng.VIEW
         {
             frmAddOS form = new frmAddOS
             (
-                dgvOS.CurrentRow.Cells[0].Value.ToString(),//id
                 dgvOS.CurrentRow.Cells[1].Value.ToString(),//titulo
                 dgvOS.CurrentRow.Cells[2].Value.ToString(),//referencia
                 dgvOS.CurrentRow.Cells[3].Value.ToString(),//data_ordem
@@ -126,4 +127,6 @@ namespace Arqueng.VIEW
         }
 
     }
+
+
 }

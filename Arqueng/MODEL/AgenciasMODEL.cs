@@ -5,10 +5,14 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.MODEL
 {
+
+
     public class AgenciasMODEL
     {
 
+
         AgenciasDAO dao = new AgenciasDAO();
+
 
         public DataTable ListarAgenciasModel()
         {
@@ -24,6 +28,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public void BuscarAgenciaModel(AgenciasENT dado)
         {
             try
@@ -36,6 +41,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public void InsertAgenciaModel(AgenciasENT dado)
         {
             try
@@ -47,6 +53,8 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
         public void UpdateAgenciaModel(AgenciasENT dado)
         {
             try
@@ -58,6 +66,8 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
         public void DeleteAgenciaModel(AgenciasENT dado)
         {
             try
@@ -69,5 +79,9 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
     }
+
+
 }

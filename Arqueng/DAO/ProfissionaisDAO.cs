@@ -5,17 +5,20 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.DAO
 {
+
+
     public class ProfissionaisDAO
     {
         MySqlCommand sql;
         CONEXAO con = new CONEXAO();
+
 
         public DataTable ListarProfissionaisDAO()
         {
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_profissionais order by codigo", con.con);
+                sql = new MySqlCommand("SELECT * FROM tb_profissionais ORDER BY codigo", con.con);
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = sql;
                 DataTable dt = new DataTable();
@@ -28,12 +31,13 @@ namespace Arqueng.DAO
             }
         }
 
+
         public DataTable ListarCodNomeProDAO()
         {
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("SELECT codigo, nome FROM tb_profissionais order by codigo", con.con);
+                sql = new MySqlCommand("SELECT codigo, nome FROM tb_profissionais ORDER BY codigo", con.con);
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = sql;
                 DataTable dt = new DataTable();
@@ -45,6 +49,7 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
 
         public void BuscarProfissionalDAO(ProfissionaisENT dado)
         {
@@ -99,6 +104,8 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
         public void UpdateProfissionalDAO(ProfissionaisENT dado)
         {
             try
@@ -124,6 +131,8 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
         public void DeleteProfissionalDAO(ProfissionaisENT dado)
         {
             try
@@ -140,5 +149,9 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
     }
+
+
 }

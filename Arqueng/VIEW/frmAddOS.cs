@@ -5,15 +5,17 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.VIEW
 {
+
     public partial class frmAddOS : Form
     {
 
+
+        OsENT dado = new OsENT();
         OsMODEL osmodel = new OsMODEL();
         ProfissionaisMODEL profmodel = new ProfissionaisMODEL();
         AtividadesMODEL ativmodel = new AtividadesMODEL();
         AgenciasMODEL agmodel = new AgenciasMODEL();
-        
-        OsENT dado = new OsENT();
+
 
         public void ListarProfissionais()
         {
@@ -27,6 +29,7 @@ namespace Arqueng.VIEW
             }
         }
 
+
         public void ListarAtividades()
         {
             try
@@ -38,6 +41,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         public void BuscarNomeAtividade()
         {
@@ -62,6 +66,7 @@ namespace Arqueng.VIEW
             }
         }
 
+
         public void BuscarNomeProfissional()
         {
             try
@@ -80,6 +85,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         public void BuscarAgencia()
         {
@@ -110,52 +116,58 @@ namespace Arqueng.VIEW
             }
         }
 
+
         public frmAddOS()
         {
             InitializeComponent();
             ListarProfissionais();
-            ListarAtividades();   //proffi sopi contato
+            ListarAtividades(); 
         }
-
         
 
-        public frmAddOS(string Id, string Titulo, string Referencia, string DataOrdem, string Prazo_execucao, string Profissional_cod, string Atividade_cod, string Siopi, string Nome_cliente, string Cidade, string Nome_contato, string Telefone_contato, string Status, string Data_pendente, string Data_vistoria, string Data_concluida, string OBS, string Fatura_cod)
+        public frmAddOS(string Titulo, string Referencia, string DataOrdem, string Prazo_execucao, string Profissional_cod, string Atividade_cod, string Siopi, string Nome_cliente, string Cidade, string Nome_contato, string Telefone_contato, string Status, string Data_pendente, string Data_vistoria, string Data_concluida, string OBS, string Fatura_cod)
         {
             InitializeComponent();
             ListarProfissionais();
             ListarAtividades();
 
-            dado.Id = Id;
             dado.Titulo = Titulo;
             txtReferencia.Text = Referencia;
             dtpDataOrdem.Text = DataOrdem;
             dtpDataExecucao.Text = Prazo_execucao;
             cboProfissional.Text = Profissional_cod;
             cboAtividade.Text = Atividade_cod;
+            
             if (Siopi == "True")
                 chkSiopi.Checked = true;
             else
                 chkSiopi.Checked = false;
+            
             txtNomeCliente.Text = Nome_cliente;
             txtCidade.Text = Cidade;
             txtNomeContato.Text = Nome_contato;
             txtTelefoneContato.Text = Telefone_contato;
+            
             if (Status == "RECEBIDA")
             {
                 rbtRecebida.Checked = true;
             }
+            
             if (Status == "PENDENTE")
             {
                 rbtPendente.Checked = true;
             }
+            
             if (Status == "VISTORIADA")
             {
                 rbtVistoriada.Checked = true;
             }
+            
             if (Status == "CONCLUÍDA")
             {
                 rbtConcluida.Checked = true;
             }
+
             dtpDataPendente.Text = Data_pendente;
             dtpDataVistoria.Text = Data_vistoria;
             dtpDataConcluida.Text = Data_concluida;
@@ -170,6 +182,7 @@ namespace Arqueng.VIEW
                 lblFaturada.Show();
                 txtCodFatura.Text = "Fatura n°: " + Fatura_cod;
                 txtCodFatura.Show();
+                
                 foreach (Control c in this.pnlDados.Controls)
                 {
                     if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker)
@@ -181,7 +194,9 @@ namespace Arqueng.VIEW
                 btnAddSave.Enabled = false;
                 tlpStatus.Enabled = false;
             }
+
         }
+
 
         private void frmAddOS_Load(object sender, EventArgs e)
         {
@@ -198,6 +213,7 @@ namespace Arqueng.VIEW
             }
         }
 
+
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             if (txtReferencia.Text == "")
@@ -213,8 +229,6 @@ namespace Arqueng.VIEW
             dado.Data_ordem = dtpDataOrdem.Value;
             dado.Prazo_execucao = dtpDataExecucao.Value;
             dado.Profissional_cod = cboProfissional.Text;
-            //CASO O DisplayMember FOR DIFERENTE DO ValueMember:
-            //dado.Profissional_cod = Convert.ToString(cboProfissional.SelectedValue);
             dado.Atividade_cod = cboAtividade.Text;
             dado.Siopi = chkSiopi.Checked;
             dado.Nome_cliente = txtNomeCliente.Text;
@@ -250,7 +264,16 @@ namespace Arqueng.VIEW
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    if (ex.Message.Contains("Duplicata du champ"))
+                    {
+                        MessageBox.Show($"Ordem de Serviço '{txtReferencia.Text}' já cadastrada!", "Código existente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
             else
@@ -264,9 +287,9 @@ namespace Arqueng.VIEW
                     MessageBox.Show(ex.Message);
                 }
             }
-
             this.Close();
         }
+
 
         private void rbtVistoriada_CheckedChanged(object sender, EventArgs e)
         {
@@ -275,12 +298,14 @@ namespace Arqueng.VIEW
             dtpDataConcluida.Hide();
         }
 
+
         private void rbtConcluida_CheckedChanged(object sender, EventArgs e)
         {
             dtpDataConcluida.Visible = true;
             dtpDataVistoria.Visible = true;
             dtpDataPendente.Hide();
         }
+
 
         private void rbtRecebida_CheckedChanged(object sender, EventArgs e)
         {
@@ -289,6 +314,7 @@ namespace Arqueng.VIEW
             dtpDataConcluida.Hide();
         }
 
+
         private void rbtPendente_CheckedChanged(object sender, EventArgs e)
         {
             dtpDataPendente.Visible = true;
@@ -296,15 +322,18 @@ namespace Arqueng.VIEW
             dtpDataConcluida.Hide();
         }
 
+
         private void dtpDataOrdem_Validated(object sender, EventArgs e)
         {
             dtpDataExecucao.Value = dtpDataOrdem.Value.AddDays(5);
         }
 
+
         private void cboProfissional_SelectionChangeCommitted(object sender, EventArgs e)
         {
             BuscarNomeProfissional();
         }
+
 
         private void cboAtividade_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -316,6 +345,7 @@ namespace Arqueng.VIEW
             BuscarAgencia();
         }
 
+
         private void btnAddAgencia_Click(object sender, EventArgs e)
         {
             AgenciasENT dado = new AgenciasENT();
@@ -326,5 +356,9 @@ namespace Arqueng.VIEW
             BuscarAgencia();
             txtCidade.Focus();
         }
+
+
     }
+
+
 }

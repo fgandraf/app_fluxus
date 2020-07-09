@@ -5,8 +5,12 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.MODEL
 {
+
+
     public class FaturasMODEL
     {
+
+
         FaturasDAO dao = new FaturasDAO();
 
 
@@ -21,6 +25,7 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
 
         public DataTable ListarFaturaModel()
         {
@@ -38,4 +43,6 @@ namespace Arqueng.MODEL
 
 
     }
+
+
 }

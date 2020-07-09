@@ -5,9 +5,15 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.MODEL
 {
+
+
     public class CadastraisMODEL
     {
+
+
         CadastraisDAO dao = new CadastraisDAO();
+
+
 
         public void BuscarCadastraisModel(CadastraisENT dado)
         {
@@ -21,6 +27,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public void BuscarFantasiaModel(CadastraisENT dado)
         {
             try
@@ -33,6 +40,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public void InsertCadastraisModel(CadastraisENT dado)
         {
             try
@@ -44,6 +52,8 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
         public void UpdateCadastraisModel(CadastraisENT dado)
         {
             try
@@ -55,5 +65,9 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
     }
+
+
 }

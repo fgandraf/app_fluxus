@@ -5,11 +5,15 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.VIEW
 {
+
+
     public partial class frmAddProfissional : Form
     {
 
+
         ProfissionaisMODEL model = new ProfissionaisMODEL();
         ProfissionaisENT dado = new ProfissionaisENT();
+
 
         public frmAddProfissional()
         {
@@ -71,7 +75,16 @@ namespace Arqueng.VIEW
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (ex.Message.Contains("Duplicata du champ"))
+                    {
+                        MessageBox.Show($"Profissional com o código '{txtCodigo.Text}' já cadastrado!", "Código existente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }                            
                 }
             }
             else
@@ -85,9 +98,11 @@ namespace Arqueng.VIEW
                     MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
             this.Close();
-       
         }
+
+
     }
+
+
 }

@@ -5,10 +5,14 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.MODEL
 {
+
+
     public class OsMODEL
     {
 
+
         OsDAO dao = new OsDAO();
+
 
         public void BuscarOsModel(OsENT dado)
         {
@@ -21,19 +25,7 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
-        public DataTable ListarOsModel()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.ListarOsDAO();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+
 
         public DataTable ListarOSAFaturarModel()
         {
@@ -49,6 +41,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public DataTable ListarOSFaturadaModel(OsENT dado)
         {
             try
@@ -62,6 +55,7 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
 
         public DataTable ListarOsStatusModel(OsENT dado)
         {
@@ -90,6 +84,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public void UpdateOsFaturadaModel(OsENT dado)
         {
             try
@@ -102,6 +97,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public void UpdateOsModel(OsENT dado)
         {
             try
@@ -113,6 +109,8 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
         public void DeleteOsModel(OsENT dado)
         {
             try
@@ -124,5 +122,9 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
     }
+
+
 }

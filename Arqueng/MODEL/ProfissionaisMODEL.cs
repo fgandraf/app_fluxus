@@ -5,10 +5,14 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.MODEL
 {
+
+
     public class ProfissionaisMODEL
     {
 
+
         ProfissionaisDAO dao = new ProfissionaisDAO();
+
 
         public DataTable ListarProfissionaisModel()
         {
@@ -24,6 +28,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public DataTable ListarCodNomeProModel()
         {
             try
@@ -38,6 +43,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public void BuscarProfissionalModel(ProfissionaisENT dado)
         {
             try
@@ -50,6 +56,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public void InsertProfissionalModel(ProfissionaisENT dado)
         {
             try
@@ -61,6 +68,8 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
         public void UpdateProfissionalModel(ProfissionaisENT dado)
         {
             try
@@ -72,6 +81,8 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
         public void DeleteProfissionalModel(ProfissionaisENT dado)
         {
             try
@@ -83,5 +94,9 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
     }
+
+
 }

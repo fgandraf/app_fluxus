@@ -5,11 +5,15 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.VIEW
 {
+
+
     public partial class frmAddAgencia : Form
     {
 
+
         AgenciasMODEL model = new AgenciasMODEL();
         AgenciasENT dado = new AgenciasENT();
+
 
         public frmAddAgencia()
         {
@@ -34,6 +38,7 @@ namespace Arqueng.VIEW
             txtEmail.Text = Email;
         }
 
+
         private void frmAddAgencia_Load(object sender, EventArgs e)
         {
             if (this.Text == "Alterar")
@@ -51,7 +56,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show("Campos com * são obrigatório", "Chave Primária", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-
+            
             //POPULATE
             dado.Agencia = txtAgencia.Text;
             dado.Nome = txtNome.Text;
@@ -74,7 +79,16 @@ namespace Arqueng.VIEW
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (ex.Message.Contains("Duplicata du champ"))
+                    {
+                        MessageBox.Show($"Agência com o código '{txtAgencia.Text}' já cadastrada!", "Código existente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
             else
@@ -88,10 +102,11 @@ namespace Arqueng.VIEW
                     MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
             this.Close();
         }
 
 
     }
+
+
 }

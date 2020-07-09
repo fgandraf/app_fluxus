@@ -4,20 +4,14 @@ using Arqueng.MODEL;
 
 namespace Arqueng.VIEW
 {
+
+
     public partial class frmAtividades : Form
     {
+
+
         AtividadesMODEL model = new AtividadesMODEL();
 
-        //public delegate void NextFormEventHandler(object source, string name);
-        //public event NextFormEventHandler NextForm;
-        
-
-
-        //public virtual void OnNextForm(string name)
-        //{
-        //    if (NextForm != null)
-        //        NextForm(this, name);
-        //}
 
         public void ListarAtividades()
         {
@@ -43,10 +37,12 @@ namespace Arqueng.VIEW
             }
         }
 
+
         public frmAtividades()
         {
             InitializeComponent();
         }
+
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -68,11 +64,13 @@ namespace Arqueng.VIEW
 
         }
 
+
         private void frmAtividades_Load(object sender, EventArgs e)
         {
             ListarAtividades();
             txtPesquisar.Focus();
         }
+
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -82,16 +80,17 @@ namespace Arqueng.VIEW
             ListarAtividades();
         }
 
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-
-            //OnNextForm("frmAddAtividade");
-
             frmAddAtividade form = new frmAddAtividade();
             form.Text = "Adicionar";
             form.ShowDialog();
             ListarAtividades();
-
         }
+
+
     }
+
+
 }

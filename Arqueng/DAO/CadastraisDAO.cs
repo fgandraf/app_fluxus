@@ -5,10 +5,13 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.DAO
 {
+
+
     public class CadastraisDAO
     {
         MySqlCommand sql;
         CONEXAO con = new CONEXAO();
+
 
         public void BuscarCadastraisDAO(CadastraisENT dado)
         {
@@ -105,6 +108,7 @@ namespace Arqueng.DAO
             }
         }
 
+
         public void InsertCadastraisDAO(CadastraisENT dado)
         {
             try
@@ -158,6 +162,8 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
         public void UpdateCadastraisDAO(CadastraisENT dado)
         {
             try
@@ -211,5 +217,9 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
     }
+
+
 }

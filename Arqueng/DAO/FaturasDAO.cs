@@ -5,10 +5,13 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.DAO
 {
+
+
     class FaturasDAO
     {
         MySqlCommand sql;
         CONEXAO con = new CONEXAO();
+
 
         public void InsertFaturaDAO(FaturasENT dado)
         {
@@ -41,7 +44,7 @@ namespace Arqueng.DAO
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_fatura order by data", con.con);
+                sql = new MySqlCommand("SELECT * FROM tb_fatura ORDER BY data", con.con);
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = sql;
                 DataTable dt = new DataTable();
@@ -54,5 +57,9 @@ namespace Arqueng.DAO
             }
 
         }
+
+
     }
+
+
 }

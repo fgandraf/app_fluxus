@@ -5,17 +5,19 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.VIEW
 {
+
     public partial class frmAddAtividade : Form
     {
 
+
         AtividadesMODEL model = new AtividadesMODEL();
         AtividadesENT dado = new AtividadesENT();
+
 
         public frmAddAtividade()
         {
             InitializeComponent();
         }
-
 
 
         public frmAddAtividade(string Codigo, string Descricao, string Valor, string Deslocamento)
@@ -61,7 +63,16 @@ namespace Arqueng.VIEW
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (ex.Message.Contains("Duplicata du champ"))
+                    {
+                        MessageBox.Show($"Atividade com o código '{txtCodigo.Text}' já cadastrada!", "Código existente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
             else
@@ -75,8 +86,11 @@ namespace Arqueng.VIEW
                     MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
             this.Close();
         }
+
+
     }
+
+
 }

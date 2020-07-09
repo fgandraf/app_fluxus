@@ -5,10 +5,14 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.MODEL
 {
+
+
     public class AtividadesMODEL
     {
 
+
         AtividadesDAO dao = new AtividadesDAO();
+
 
         public DataTable ListarAtividadesModel()
         {
@@ -24,6 +28,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public void BuscarAtividadesModel(AtividadesENT dado)
         {
             try
@@ -36,6 +41,7 @@ namespace Arqueng.MODEL
             }
         }
 
+
         public void InsertAtividadeModel(AtividadesENT dado)
         {
             try
@@ -47,6 +53,8 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
         public void UpdateAtividadeModel(AtividadesENT dado)
         {
             try
@@ -58,6 +66,8 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
         public void DeleteAtividadeModel(AtividadesENT dado)
         {
             try
@@ -69,5 +79,9 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
     }
+
+
 }

@@ -7,8 +7,12 @@ using System.Linq;
 
 namespace Arqueng.VIEW
 {
+
+
     public partial class frmAddFatura : Form
     {
+
+
         OsMODEL modelOS = new OsMODEL();
         OsENT dadoOS = new OsENT();
         FaturasMODEL modelFatura = new FaturasMODEL();
@@ -31,7 +35,6 @@ namespace Arqueng.VIEW
                 {
                     dgvOS.Enabled = true;
                 }
-
             }
             catch (Exception ex)
             {
@@ -39,18 +42,18 @@ namespace Arqueng.VIEW
             }
         }
 
+
         public void SomarValores()
         {
             _subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_atividade.Name].Value ?? 0));
             _subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_deslocamento.Name].Value ?? 0));
             _total = _subtotal_os + _subtotal_desloc;
-
             
             txtValorOS.Text = string.Format("{0:0,0.00}", _subtotal_os);
             txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _subtotal_desloc);
             txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _total);
-            
         }
+
 
         public frmAddFatura()
         {
@@ -58,6 +61,7 @@ namespace Arqueng.VIEW
             ListarOS();
             txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
+
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
@@ -74,10 +78,12 @@ namespace Arqueng.VIEW
             }
         }
 
+
         private void dtpData_ValueChanged(object sender, EventArgs e)
         {
             txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
+
 
         private void btnFaturar_Click(object sender, EventArgs e)
         {
@@ -88,6 +94,7 @@ namespace Arqueng.VIEW
             dadoFatura.subtotal_desloc = _subtotal_desloc.ToString().Replace(',', '.');
             dadoFatura.total = _total.ToString().Replace(',', '.');
             dadoFatura.rrtart = txtRRTART.Text;
+            
             try
             {
                 modelFatura.InsertFaturaModel(dadoFatura);
@@ -97,30 +104,26 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message);
             }
             
-            
             dadoOS.Fatura_cod = dadoFatura.id.ToString();
+
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
-                dadoOS.Id = row.Cells["id"].Value.ToString();
+                dadoOS.Referencia = row.Cells["referencia"].Value.ToString();
                 modelOS.UpdateOsFaturadaModel(dadoOS);
             }
 
-            var result = MessageBox.Show("Ordens faturadas com sucesso!" + "\n\n" + "Deseja imprimir agora?", "Fatura", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
-            {
-                //fromulariodeimpressao form = new formulariodeimpressa();
-                //form.ShowDialog();
-            }
+            MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
-
         }
+
 
         private void frmAddFatura_Load(object sender, EventArgs e)
         {
-
             SomarValores();
         }
 
 
     }
+
+
 }

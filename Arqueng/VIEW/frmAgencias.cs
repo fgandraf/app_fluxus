@@ -5,9 +5,15 @@ using Arqueng.ENTIDADES;
 
 namespace Arqueng.VIEW
 {
+
+
     public partial class frmAgencias : Form
     {
+
+
         AgenciasMODEL model = new AgenciasMODEL();
+
+
         public void ListarAgencias()
         {
             try
@@ -31,6 +37,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         public frmAgencias()
         {
@@ -63,6 +70,7 @@ namespace Arqueng.VIEW
             txtPesquisar.Focus();
         }
 
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             frmAddAgencia form = new frmAddAgencia
@@ -84,6 +92,7 @@ namespace Arqueng.VIEW
             ListarAgencias();
         }
 
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddAgencia form = new frmAddAgencia();
@@ -94,4 +103,6 @@ namespace Arqueng.VIEW
 
 
     }
+
+
 }

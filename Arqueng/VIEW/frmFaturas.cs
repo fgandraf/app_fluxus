@@ -7,20 +7,23 @@ using System.Windows.Forms;
 
 namespace Arqueng.VIEW
 {
+
+
     public partial class frmFaturas : Form
     {
 
-        
 
         FaturasMODEL model = new FaturasMODEL();
         OsMODEL modelOS = new OsMODEL();
         OsENT dado = new OsENT();
         FaturasENT dadofat = new FaturasENT();
 
+
         public frmFaturas()
         {
             InitializeComponent();
         }
+
 
         public void ListarFatura()
         {
@@ -42,6 +45,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         public void ListarOSFaturada()
         {
@@ -65,7 +69,6 @@ namespace Arqueng.VIEW
             }
             else
                 tblFaturas.Hide();
-
         }
 
 
@@ -73,17 +76,18 @@ namespace Arqueng.VIEW
         {
             ListarFatura();
             ListarOSFaturada();
-            
         }
+
 
         private void dgvFaturas_MouseClick(object sender, MouseEventArgs e)
         {
             ListarOSFaturada();
         }
 
-        private void btn_Click(object sender, EventArgs e)
+
+        private void btnImprimir_Click(object sender, EventArgs e)
         {
-            string _contrato = "0000.00.0000.000/0000";
+            string _contrato = "7062.01.2528.552/2019";
             dadofat.rrtart = dgvFaturas.CurrentRow.Cells[6].Value.ToString();
             dadofat.subtotal_os = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);
             dadofat.subtotal_desloc = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[4].Value);
@@ -91,26 +95,24 @@ namespace Arqueng.VIEW
 
 
             frmRPFatura rep = new frmRPFatura(_contrato, dadofat.rrtart, dadofat.subtotal_os, dadofat.subtotal_desloc, dadofat.total);
-            
+
             for (int i = 0; i < dgvOS.Rows.Count; i++)
             {
                 RepFaturaENT dat = new RepFaturaENT();
-                dat.data_ordem = Convert.ToDateTime(dgvOS.Rows[i].Cells[1].Value);
-                dat.referencia = dgvOS.Rows[i].Cells[2].Value.ToString();
-                dat.atividade_cod = dgvOS.Rows[i].Cells[3].Value.ToString();
-                dat.cidade = dgvOS.Rows[i].Cells[4].Value.ToString();
-                dat.data_concluida = Convert.ToDateTime(dgvOS.Rows[i].Cells[7].Value);
-                dat.valor_atividade = dgvOS.Rows[i].Cells[8].Value.ToString();
-                dat.valor_deslocamento = dgvOS.Rows[i].Cells[9].Value.ToString();
+                dat.Data_ordem = Convert.ToDateTime(dgvOS.Rows[i].Cells[1].Value);
+                dat.Referencia = dgvOS.Rows[i].Cells[2].Value.ToString();
+                dat.Atividade_cod = dgvOS.Rows[i].Cells[3].Value.ToString();
+                dat.Cidade = dgvOS.Rows[i].Cells[4].Value.ToString();
+                dat.Data_concluida = Convert.ToDateTime(dgvOS.Rows[i].Cells[7].Value);
+                dat.Valor_atividade = dgvOS.Rows[i].Cells[8].Value.ToString();
+                dat.Valor_deslocamento = dgvOS.Rows[i].Cells[9].Value.ToString();
                 rep.Datos.Add(dat);
             }
             rep.ShowDialog();
- 
         }
 
-        private void tblFaturas_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
     }
+
+
 }
