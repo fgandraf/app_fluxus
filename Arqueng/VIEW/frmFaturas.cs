@@ -99,18 +99,19 @@ namespace Arqueng.VIEW
             for (int i = 0; i < dgvOS.Rows.Count; i++)
             {
                 RepFaturaENT dat = new RepFaturaENT();
-                dat.Data_ordem = Convert.ToDateTime(dgvOS.Rows[i].Cells[1].Value);
-                dat.Referencia = dgvOS.Rows[i].Cells[2].Value.ToString();
-                dat.Atividade_cod = dgvOS.Rows[i].Cells[3].Value.ToString();
-                dat.Cidade = dgvOS.Rows[i].Cells[4].Value.ToString();
-                dat.Data_concluida = Convert.ToDateTime(dgvOS.Rows[i].Cells[7].Value);
-                dat.Valor_atividade = dgvOS.Rows[i].Cells[8].Value.ToString();
-                dat.Valor_deslocamento = dgvOS.Rows[i].Cells[9].Value.ToString();
+                
+                dat.data_ordem = Convert.ToDateTime(dgvOS.Rows[i].Cells[0].Value);
+                dat.referencia = dgvOS.Rows[i].Cells[1].Value.ToString();
+                dat.atividade_cod = dgvOS.Rows[i].Cells[2].Value.ToString();
+                dat.cidade = dgvOS.Rows[i].Cells[3].Value.ToString();
+                dat.data_concluida = Convert.ToDateTime(dgvOS.Rows[i].Cells[6].Value);
+                dat.valor_atividade = dgvOS.Rows[i].Cells[7].Value.ToString();
+                dat.valor_deslocamento = dgvOS.Rows[i].Cells[8].Value.ToString();
+
                 rep.Datos.Add(dat);
             }
             rep.ShowDialog();
         }
-
 
     }
 

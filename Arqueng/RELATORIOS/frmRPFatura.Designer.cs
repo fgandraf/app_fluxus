@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.rpvFatura = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
@@ -37,8 +35,6 @@
             // 
             this.rpvFatura.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rpvFatura.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "dtsOSFaturadas";
-            this.rpvFatura.LocalReport.DataSources.Add(reportDataSource1);
             this.rpvFatura.LocalReport.ReportEmbeddedResource = "Arqueng.RELATORIOS.rpFatura.rdlc";
             this.rpvFatura.Location = new System.Drawing.Point(0, 0);
             this.rpvFatura.Margin = new System.Windows.Forms.Padding(0);

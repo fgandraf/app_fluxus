@@ -29,7 +29,7 @@ namespace Arqueng.RELATORIOS
         private void frmRPFatura_Load(object sender, EventArgs e)
         {
             rpvFatura.LocalReport.DataSources.Clear();
-            rpvFatura.LocalReport.DataSources.Add(new ReportDataSource("dtsFatura", Datos));
+            rpvFatura.LocalReport.DataSources.Add(new ReportDataSource("dtFat", Datos));
             
             this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("contrato", contrato));
             this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("rrtart",dado.rrtart));
@@ -41,6 +41,8 @@ namespace Arqueng.RELATORIOS
 
             rpvFatura.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
             rpvFatura.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.Percent;
+
+            
         }
 
     }
