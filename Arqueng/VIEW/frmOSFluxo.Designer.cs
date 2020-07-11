@@ -51,28 +51,28 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dgvPendentes = new System.Windows.Forms.DataGridView();
+            this.referencia_pendentes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuContext = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuEditar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExcluir = new System.Windows.Forms.ToolStripMenuItem();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dgvRecebidas = new System.Windows.Forms.DataGridView();
+            this.referencia_recebidas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dgvVistoriadas = new System.Windows.Forms.DataGridView();
+            this.referencia_vistoriadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel8 = new System.Windows.Forms.Panel();
             this.dgvConcluidas = new System.Windows.Forms.DataGridView();
+            this.referencia_concluidas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnFaturar = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.referencia_recebidas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.referencia_pendentes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.referencia_vistoriadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.referencia_concluidas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -319,6 +319,7 @@
             this.dgvPendentes.EnableHeadersVisualStyles = false;
             this.dgvPendentes.GridColor = System.Drawing.Color.LightSteelBlue;
             this.dgvPendentes.Location = new System.Drawing.Point(8, 8);
+            this.dgvPendentes.MultiSelect = false;
             this.dgvPendentes.Name = "dgvPendentes";
             this.dgvPendentes.ReadOnly = true;
             this.dgvPendentes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -337,6 +338,23 @@
             this.dgvPendentes.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPendentes_CellMouseDown);
             this.dgvPendentes.DoubleClick += new System.EventHandler(this.dgvPendentes_DoubleClick);
             this.dgvPendentes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvPendentes_KeyDown);
+            // 
+            // referencia_pendentes
+            // 
+            this.referencia_pendentes.DataPropertyName = "referencia";
+            this.referencia_pendentes.HeaderText = "Referência";
+            this.referencia_pendentes.Name = "referencia_pendentes";
+            this.referencia_pendentes.ReadOnly = true;
+            this.referencia_pendentes.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "titulo";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Título";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 50;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // menuContext
             // 
@@ -424,6 +442,23 @@
             this.dgvRecebidas.DoubleClick += new System.EventHandler(this.dgvRecebidas_DoubleClick);
             this.dgvRecebidas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvRecebidas_KeyDown);
             // 
+            // referencia_recebidas
+            // 
+            this.referencia_recebidas.DataPropertyName = "referencia";
+            this.referencia_recebidas.HeaderText = "Referência";
+            this.referencia_recebidas.Name = "referencia_recebidas";
+            this.referencia_recebidas.ReadOnly = true;
+            this.referencia_recebidas.Visible = false;
+            // 
+            // titulo
+            // 
+            this.titulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.titulo.DataPropertyName = "titulo";
+            this.titulo.HeaderText = "Título";
+            this.titulo.MinimumWidth = 50;
+            this.titulo.Name = "titulo";
+            this.titulo.ReadOnly = true;
+            // 
             // panel7
             // 
             this.panel7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -466,6 +501,7 @@
             this.dgvVistoriadas.EnableHeadersVisualStyles = false;
             this.dgvVistoriadas.GridColor = System.Drawing.Color.LightSteelBlue;
             this.dgvVistoriadas.Location = new System.Drawing.Point(8, 8);
+            this.dgvVistoriadas.MultiSelect = false;
             this.dgvVistoriadas.Name = "dgvVistoriadas";
             this.dgvVistoriadas.ReadOnly = true;
             this.dgvVistoriadas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -484,6 +520,23 @@
             this.dgvVistoriadas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVistoriadas_CellMouseDown);
             this.dgvVistoriadas.DoubleClick += new System.EventHandler(this.dgvVistoriadas_DoubleClick);
             this.dgvVistoriadas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvVistoriadas_KeyDown);
+            // 
+            // referencia_vistoriadas
+            // 
+            this.referencia_vistoriadas.DataPropertyName = "referencia";
+            this.referencia_vistoriadas.HeaderText = "referencia";
+            this.referencia_vistoriadas.Name = "referencia_vistoriadas";
+            this.referencia_vistoriadas.ReadOnly = true;
+            this.referencia_vistoriadas.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "titulo";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Título";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 50;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // panel8
             // 
@@ -527,6 +580,7 @@
             this.dgvConcluidas.EnableHeadersVisualStyles = false;
             this.dgvConcluidas.GridColor = System.Drawing.Color.LightSteelBlue;
             this.dgvConcluidas.Location = new System.Drawing.Point(8, 8);
+            this.dgvConcluidas.MultiSelect = false;
             this.dgvConcluidas.Name = "dgvConcluidas";
             this.dgvConcluidas.ReadOnly = true;
             this.dgvConcluidas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -545,6 +599,23 @@
             this.dgvConcluidas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvConcluidas_CellMouseDown);
             this.dgvConcluidas.DoubleClick += new System.EventHandler(this.dgvConcluidas_DoubleClick);
             this.dgvConcluidas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvConcluidas_KeyDown);
+            // 
+            // referencia_concluidas
+            // 
+            this.referencia_concluidas.DataPropertyName = "referencia";
+            this.referencia_concluidas.HeaderText = "referencia";
+            this.referencia_concluidas.Name = "referencia_concluidas";
+            this.referencia_concluidas.ReadOnly = true;
+            this.referencia_concluidas.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "titulo";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Título";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 50;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // panel9
             // 
@@ -626,74 +697,6 @@
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(201, 1);
             this.panel12.TabIndex = 1;
-            // 
-            // referencia_recebidas
-            // 
-            this.referencia_recebidas.DataPropertyName = "referencia";
-            this.referencia_recebidas.HeaderText = "Referência";
-            this.referencia_recebidas.Name = "referencia_recebidas";
-            this.referencia_recebidas.ReadOnly = true;
-            this.referencia_recebidas.Visible = false;
-            // 
-            // titulo
-            // 
-            this.titulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.titulo.DataPropertyName = "titulo";
-            this.titulo.HeaderText = "Título";
-            this.titulo.MinimumWidth = 50;
-            this.titulo.Name = "titulo";
-            this.titulo.ReadOnly = true;
-            // 
-            // referencia_pendentes
-            // 
-            this.referencia_pendentes.DataPropertyName = "referencia";
-            this.referencia_pendentes.HeaderText = "Referência";
-            this.referencia_pendentes.Name = "referencia_pendentes";
-            this.referencia_pendentes.ReadOnly = true;
-            this.referencia_pendentes.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "titulo";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Título";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 50;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // referencia_vistoriadas
-            // 
-            this.referencia_vistoriadas.DataPropertyName = "referencia";
-            this.referencia_vistoriadas.HeaderText = "referencia";
-            this.referencia_vistoriadas.Name = "referencia_vistoriadas";
-            this.referencia_vistoriadas.ReadOnly = true;
-            this.referencia_vistoriadas.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "titulo";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Título";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 50;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // referencia_concluidas
-            // 
-            this.referencia_concluidas.DataPropertyName = "referencia";
-            this.referencia_concluidas.HeaderText = "referencia";
-            this.referencia_concluidas.Name = "referencia_concluidas";
-            this.referencia_concluidas.ReadOnly = true;
-            this.referencia_concluidas.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "titulo";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Título";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 50;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // frmOSFluxo
             // 

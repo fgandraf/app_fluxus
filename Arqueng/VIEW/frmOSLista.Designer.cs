@@ -88,6 +88,7 @@
             this.pnlLinha2.Name = "pnlLinha2";
             this.pnlLinha2.Size = new System.Drawing.Size(280, 1);
             this.pnlLinha2.TabIndex = 224;
+            this.pnlLinha2.Visible = false;
             // 
             // pctLupa
             // 
@@ -99,6 +100,7 @@
             this.pctLupa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctLupa.TabIndex = 223;
             this.pctLupa.TabStop = false;
+            this.pctLupa.Visible = false;
             // 
             // txtPesquisar
             // 
@@ -111,6 +113,7 @@
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(257, 18);
             this.txtPesquisar.TabIndex = 222;
+            this.txtPesquisar.Visible = false;
             // 
             // btnEditar
             // 
@@ -364,16 +367,16 @@
             // 
             // Profissional
             // 
-            this.Profissional.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.Profissional.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.Profissional.DataPropertyName = "profissional_cod";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.Profissional.DefaultCellStyle = dataGridViewCellStyle10;
-            this.Profissional.HeaderText = "Profissional";
-            this.Profissional.MinimumWidth = 90;
+            this.Profissional.HeaderText = "Pro.";
+            this.Profissional.MinimumWidth = 40;
             this.Profissional.Name = "Profissional";
             this.Profissional.ReadOnly = true;
-            this.Profissional.Visible = false;
-            this.Profissional.Width = 90;
+            this.Profissional.Width = 40;
             // 
             // siopi
             // 

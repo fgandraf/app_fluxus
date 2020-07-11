@@ -52,7 +52,7 @@ namespace Arqueng.VIEW
         private void frmOS_Load(object sender, EventArgs e)
         {
             ListarOS();
-            txtPesquisar.Focus();
+            //txtPesquisar.Focus();
         }
 
 
