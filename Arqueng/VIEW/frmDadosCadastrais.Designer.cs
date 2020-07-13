@@ -39,7 +39,6 @@
             this.lblCEP = new System.Windows.Forms.Label();
             this.lblCidade = new System.Windows.Forms.Label();
             this.lblBairro = new System.Windows.Forms.Label();
-            this.txtCEP = new System.Windows.Forms.TextBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.txtBairro = new System.Windows.Forms.TextBox();
             this.txtComplemento = new System.Windows.Forms.TextBox();
@@ -70,9 +69,10 @@
             this.cboUF = new System.Windows.Forms.ComboBox();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.txtCNPJ = new System.Windows.Forms.MaskedTextBox();
-            this.dtpConstituicao = new System.Windows.Forms.DateTimePicker();
             this.txtTelefone2 = new System.Windows.Forms.MaskedTextBox();
             this.lblTelefone2 = new System.Windows.Forms.Label();
+            this.txtCEP = new System.Windows.Forms.MaskedTextBox();
+            this.txtConstituicao = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // btnCadastrarSalvar
@@ -82,10 +82,10 @@
             this.btnCadastrarSalvar.FlatAppearance.BorderColor = System.Drawing.SystemColors.HotTrack;
             this.btnCadastrarSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastrarSalvar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCadastrarSalvar.Location = new System.Drawing.Point(462, 895);
+            this.btnCadastrarSalvar.Location = new System.Drawing.Point(437, 895);
             this.btnCadastrarSalvar.Name = "btnCadastrarSalvar";
             this.btnCadastrarSalvar.Size = new System.Drawing.Size(200, 25);
-            this.btnCadastrarSalvar.TabIndex = 42;
+            this.btnCadastrarSalvar.TabIndex = 21;
             this.btnCadastrarSalvar.Text = "&Cadastrar";
             this.btnCadastrarSalvar.UseVisualStyleBackColor = false;
             this.btnCadastrarSalvar.Click += new System.EventHandler(this.btnCadastrarSalvar_Click);
@@ -96,7 +96,7 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblEmail.Location = new System.Drawing.Point(255, 554);
+            this.lblEmail.Location = new System.Drawing.Point(230, 554);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(34, 13);
             this.lblEmail.TabIndex = 146;
@@ -108,7 +108,7 @@
             this.lblTelefone.AutoSize = true;
             this.lblTelefone.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefone.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTelefone.Location = new System.Drawing.Point(255, 502);
+            this.lblTelefone.Location = new System.Drawing.Point(230, 502);
             this.lblTelefone.Name = "lblTelefone";
             this.lblTelefone.Size = new System.Drawing.Size(51, 13);
             this.lblTelefone.TabIndex = 145;
@@ -121,7 +121,7 @@
             this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtEmail.Location = new System.Drawing.Point(257, 570);
+            this.txtEmail.Location = new System.Drawing.Point(232, 570);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(405, 23);
@@ -134,11 +134,11 @@
             this.txtRepresentanteLegal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRepresentanteLegal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRepresentanteLegal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtRepresentanteLegal.Location = new System.Drawing.Point(257, 466);
+            this.txtRepresentanteLegal.Location = new System.Drawing.Point(232, 466);
             this.txtRepresentanteLegal.MaxLength = 50;
             this.txtRepresentanteLegal.Name = "txtRepresentanteLegal";
             this.txtRepresentanteLegal.Size = new System.Drawing.Size(199, 23);
-            this.txtRepresentanteLegal.TabIndex = 13;
+            this.txtRepresentanteLegal.TabIndex = 12;
             // 
             // lblRepresentanteLegal
             // 
@@ -146,7 +146,7 @@
             this.lblRepresentanteLegal.AutoSize = true;
             this.lblRepresentanteLegal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRepresentanteLegal.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblRepresentanteLegal.Location = new System.Drawing.Point(255, 450);
+            this.lblRepresentanteLegal.Location = new System.Drawing.Point(230, 450);
             this.lblRepresentanteLegal.Name = "lblRepresentanteLegal";
             this.lblRepresentanteLegal.Size = new System.Drawing.Size(112, 13);
             this.lblRepresentanteLegal.TabIndex = 141;
@@ -158,7 +158,7 @@
             this.lblDataConstituinte.AutoSize = true;
             this.lblDataConstituinte.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataConstituinte.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblDataConstituinte.Location = new System.Drawing.Point(459, 138);
+            this.lblDataConstituinte.Location = new System.Drawing.Point(434, 138);
             this.lblDataConstituinte.Name = "lblDataConstituinte";
             this.lblDataConstituinte.Size = new System.Drawing.Size(98, 13);
             this.lblDataConstituinte.TabIndex = 133;
@@ -170,7 +170,7 @@
             this.lblUF.AutoSize = true;
             this.lblUF.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUF.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblUF.Location = new System.Drawing.Point(459, 398);
+            this.lblUF.Location = new System.Drawing.Point(434, 398);
             this.lblUF.Name = "lblUF";
             this.lblUF.Size = new System.Drawing.Size(21, 13);
             this.lblUF.TabIndex = 132;
@@ -182,7 +182,7 @@
             this.lblCEP.AutoSize = true;
             this.lblCEP.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCEP.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblCEP.Location = new System.Drawing.Point(254, 398);
+            this.lblCEP.Location = new System.Drawing.Point(229, 398);
             this.lblCEP.Name = "lblCEP";
             this.lblCEP.Size = new System.Drawing.Size(26, 13);
             this.lblCEP.TabIndex = 131;
@@ -194,7 +194,7 @@
             this.lblCidade.AutoSize = true;
             this.lblCidade.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCidade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblCidade.Location = new System.Drawing.Point(459, 346);
+            this.lblCidade.Location = new System.Drawing.Point(434, 346);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(43, 13);
             this.lblCidade.TabIndex = 130;
@@ -206,23 +206,11 @@
             this.lblBairro.AutoSize = true;
             this.lblBairro.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBairro.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblBairro.Location = new System.Drawing.Point(254, 346);
+            this.lblBairro.Location = new System.Drawing.Point(229, 346);
             this.lblBairro.Name = "lblBairro";
             this.lblBairro.Size = new System.Drawing.Size(37, 13);
             this.lblBairro.TabIndex = 129;
             this.lblBairro.Text = "Bairro";
-            // 
-            // txtCEP
-            // 
-            this.txtCEP.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtCEP.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtCEP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCEP.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCEP.Location = new System.Drawing.Point(256, 414);
-            this.txtCEP.MaxLength = 9;
-            this.txtCEP.Name = "txtCEP";
-            this.txtCEP.Size = new System.Drawing.Size(200, 23);
-            this.txtCEP.TabIndex = 10;
             // 
             // txtCidade
             // 
@@ -231,7 +219,7 @@
             this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCidade.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCidade.Location = new System.Drawing.Point(462, 362);
+            this.txtCidade.Location = new System.Drawing.Point(437, 362);
             this.txtCidade.MaxLength = 100;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(200, 23);
@@ -244,7 +232,7 @@
             this.txtBairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBairro.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBairro.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtBairro.Location = new System.Drawing.Point(256, 362);
+            this.txtBairro.Location = new System.Drawing.Point(231, 362);
             this.txtBairro.MaxLength = 100;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(200, 23);
@@ -257,7 +245,7 @@
             this.txtComplemento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtComplemento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtComplemento.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtComplemento.Location = new System.Drawing.Point(256, 310);
+            this.txtComplemento.Location = new System.Drawing.Point(231, 310);
             this.txtComplemento.MaxLength = 100;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(405, 23);
@@ -270,7 +258,7 @@
             this.txtEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEndereco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndereco.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtEndereco.Location = new System.Drawing.Point(256, 258);
+            this.txtEndereco.Location = new System.Drawing.Point(231, 258);
             this.txtEndereco.MaxLength = 100;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(405, 23);
@@ -282,7 +270,7 @@
             this.lblComplemento.AutoSize = true;
             this.lblComplemento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblComplemento.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblComplemento.Location = new System.Drawing.Point(254, 294);
+            this.lblComplemento.Location = new System.Drawing.Point(229, 294);
             this.lblComplemento.Name = "lblComplemento";
             this.lblComplemento.Size = new System.Drawing.Size(79, 13);
             this.lblComplemento.TabIndex = 122;
@@ -294,7 +282,7 @@
             this.lblEndereco.AutoSize = true;
             this.lblEndereco.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEndereco.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblEndereco.Location = new System.Drawing.Point(254, 242);
+            this.lblEndereco.Location = new System.Drawing.Point(229, 242);
             this.lblEndereco.Name = "lblEndereco";
             this.lblEndereco.Size = new System.Drawing.Size(55, 13);
             this.lblEndereco.TabIndex = 121;
@@ -307,7 +295,7 @@
             this.txtInscricaoMunicipal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtInscricaoMunicipal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInscricaoMunicipal.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtInscricaoMunicipal.Location = new System.Drawing.Point(462, 206);
+            this.txtInscricaoMunicipal.Location = new System.Drawing.Point(437, 206);
             this.txtInscricaoMunicipal.MaxLength = 50;
             this.txtInscricaoMunicipal.Name = "txtInscricaoMunicipal";
             this.txtInscricaoMunicipal.Size = new System.Drawing.Size(200, 23);
@@ -320,7 +308,7 @@
             this.txtInscricaoEstadual.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtInscricaoEstadual.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInscricaoEstadual.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtInscricaoEstadual.Location = new System.Drawing.Point(256, 206);
+            this.txtInscricaoEstadual.Location = new System.Drawing.Point(231, 206);
             this.txtInscricaoEstadual.MaxLength = 50;
             this.txtInscricaoEstadual.Name = "txtInscricaoEstadual";
             this.txtInscricaoEstadual.Size = new System.Drawing.Size(200, 23);
@@ -332,7 +320,7 @@
             this.lblInscricaoMunicipal.AutoSize = true;
             this.lblInscricaoMunicipal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInscricaoMunicipal.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblInscricaoMunicipal.Location = new System.Drawing.Point(459, 190);
+            this.lblInscricaoMunicipal.Location = new System.Drawing.Point(434, 190);
             this.lblInscricaoMunicipal.Name = "lblInscricaoMunicipal";
             this.lblInscricaoMunicipal.Size = new System.Drawing.Size(106, 13);
             this.lblInscricaoMunicipal.TabIndex = 117;
@@ -344,7 +332,7 @@
             this.lblInscricaoEstadual.AutoSize = true;
             this.lblInscricaoEstadual.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInscricaoEstadual.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblInscricaoEstadual.Location = new System.Drawing.Point(254, 190);
+            this.lblInscricaoEstadual.Location = new System.Drawing.Point(229, 190);
             this.lblInscricaoEstadual.Name = "lblInscricaoEstadual";
             this.lblInscricaoEstadual.Size = new System.Drawing.Size(99, 13);
             this.lblInscricaoEstadual.TabIndex = 116;
@@ -356,7 +344,7 @@
             this.lblCNPJ.AutoSize = true;
             this.lblCNPJ.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCNPJ.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblCNPJ.Location = new System.Drawing.Point(255, 34);
+            this.lblCNPJ.Location = new System.Drawing.Point(230, 34);
             this.lblCNPJ.Name = "lblCNPJ";
             this.lblCNPJ.Size = new System.Drawing.Size(39, 13);
             this.lblCNPJ.TabIndex = 115;
@@ -368,11 +356,11 @@
             this.lblRazaoSocial.AutoSize = true;
             this.lblRazaoSocial.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRazaoSocial.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblRazaoSocial.Location = new System.Drawing.Point(255, 86);
+            this.lblRazaoSocial.Location = new System.Drawing.Point(230, 86);
             this.lblRazaoSocial.Name = "lblRazaoSocial";
-            this.lblRazaoSocial.Size = new System.Drawing.Size(71, 13);
+            this.lblRazaoSocial.Size = new System.Drawing.Size(79, 13);
             this.lblRazaoSocial.TabIndex = 114;
-            this.lblRazaoSocial.Text = "Razão Social";
+            this.lblRazaoSocial.Text = "* Razão Social";
             // 
             // txtRazaoSocial
             // 
@@ -381,11 +369,11 @@
             this.txtRazaoSocial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRazaoSocial.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRazaoSocial.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtRazaoSocial.Location = new System.Drawing.Point(257, 102);
+            this.txtRazaoSocial.Location = new System.Drawing.Point(232, 102);
             this.txtRazaoSocial.MaxLength = 100;
             this.txtRazaoSocial.Name = "txtRazaoSocial";
             this.txtRazaoSocial.Size = new System.Drawing.Size(405, 23);
-            this.txtRazaoSocial.TabIndex = 3;
+            this.txtRazaoSocial.TabIndex = 1;
             // 
             // txtNomeFantasia
             // 
@@ -394,7 +382,7 @@
             this.txtNomeFantasia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomeFantasia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeFantasia.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtNomeFantasia.Location = new System.Drawing.Point(257, 154);
+            this.txtNomeFantasia.Location = new System.Drawing.Point(232, 154);
             this.txtNomeFantasia.MaxLength = 50;
             this.txtNomeFantasia.Name = "txtNomeFantasia";
             this.txtNomeFantasia.Size = new System.Drawing.Size(200, 23);
@@ -406,7 +394,7 @@
             this.lblNomeFantasia.AutoSize = true;
             this.lblNomeFantasia.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNomeFantasia.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblNomeFantasia.Location = new System.Drawing.Point(255, 138);
+            this.lblNomeFantasia.Location = new System.Drawing.Point(230, 138);
             this.lblNomeFantasia.Name = "lblNomeFantasia";
             this.lblNomeFantasia.Size = new System.Drawing.Size(91, 13);
             this.lblNomeFantasia.TabIndex = 111;
@@ -416,7 +404,7 @@
             // 
             this.pnlLinha2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlLinha2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pnlLinha2.Location = new System.Drawing.Point(256, 667);
+            this.pnlLinha2.Location = new System.Drawing.Point(231, 667);
             this.pnlLinha2.Name = "pnlLinha2";
             this.pnlLinha2.Size = new System.Drawing.Size(405, 1);
             this.pnlLinha2.TabIndex = 148;
@@ -427,7 +415,7 @@
             this.lblTitulo2.AutoSize = true;
             this.lblTitulo2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTitulo2.Location = new System.Drawing.Point(254, 636);
+            this.lblTitulo2.Location = new System.Drawing.Point(229, 636);
             this.lblTitulo2.Name = "lblTitulo2";
             this.lblTitulo2.Size = new System.Drawing.Size(111, 13);
             this.lblTitulo2.TabIndex = 147;
@@ -439,11 +427,11 @@
             this.txtConta.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtConta.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConta.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtConta.Location = new System.Drawing.Point(512, 769);
+            this.txtConta.Location = new System.Drawing.Point(487, 769);
             this.txtConta.MaxLength = 20;
             this.txtConta.Name = "txtConta";
             this.txtConta.Size = new System.Drawing.Size(150, 23);
-            this.txtConta.TabIndex = 23;
+            this.txtConta.TabIndex = 20;
             // 
             // txtOperador
             // 
@@ -451,11 +439,11 @@
             this.txtOperador.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtOperador.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOperador.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtOperador.Location = new System.Drawing.Point(413, 769);
+            this.txtOperador.Location = new System.Drawing.Point(388, 769);
             this.txtOperador.MaxLength = 3;
             this.txtOperador.Name = "txtOperador";
             this.txtOperador.Size = new System.Drawing.Size(93, 23);
-            this.txtOperador.TabIndex = 22;
+            this.txtOperador.TabIndex = 19;
             // 
             // txtAgencia
             // 
@@ -463,11 +451,11 @@
             this.txtAgencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtAgencia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAgencia.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtAgencia.Location = new System.Drawing.Point(257, 769);
+            this.txtAgencia.Location = new System.Drawing.Point(232, 769);
             this.txtAgencia.MaxLength = 6;
             this.txtAgencia.Name = "txtAgencia";
             this.txtAgencia.Size = new System.Drawing.Size(150, 23);
-            this.txtAgencia.TabIndex = 21;
+            this.txtAgencia.TabIndex = 18;
             // 
             // txtBanco
             // 
@@ -476,11 +464,11 @@
             this.txtBanco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBanco.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBanco.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtBanco.Location = new System.Drawing.Point(257, 717);
+            this.txtBanco.Location = new System.Drawing.Point(232, 717);
             this.txtBanco.MaxLength = 100;
             this.txtBanco.Name = "txtBanco";
             this.txtBanco.Size = new System.Drawing.Size(200, 23);
-            this.txtBanco.TabIndex = 19;
+            this.txtBanco.TabIndex = 16;
             // 
             // lblConta
             // 
@@ -488,7 +476,7 @@
             this.lblConta.AutoSize = true;
             this.lblConta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConta.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblConta.Location = new System.Drawing.Point(509, 753);
+            this.lblConta.Location = new System.Drawing.Point(484, 753);
             this.lblConta.Name = "lblConta";
             this.lblConta.Size = new System.Drawing.Size(38, 13);
             this.lblConta.TabIndex = 153;
@@ -500,7 +488,7 @@
             this.lblOperador.AutoSize = true;
             this.lblOperador.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOperador.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblOperador.Location = new System.Drawing.Point(410, 753);
+            this.lblOperador.Location = new System.Drawing.Point(385, 753);
             this.lblOperador.Name = "lblOperador";
             this.lblOperador.Size = new System.Drawing.Size(57, 13);
             this.lblOperador.TabIndex = 152;
@@ -512,7 +500,7 @@
             this.lblAgencia.AutoSize = true;
             this.lblAgencia.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAgencia.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblAgencia.Location = new System.Drawing.Point(255, 753);
+            this.lblAgencia.Location = new System.Drawing.Point(230, 753);
             this.lblAgencia.Name = "lblAgencia";
             this.lblAgencia.Size = new System.Drawing.Size(48, 13);
             this.lblAgencia.TabIndex = 151;
@@ -524,7 +512,7 @@
             this.lblTipoDeConta.AutoSize = true;
             this.lblTipoDeConta.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipoDeConta.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTipoDeConta.Location = new System.Drawing.Point(459, 701);
+            this.lblTipoDeConta.Location = new System.Drawing.Point(434, 701);
             this.lblTipoDeConta.Name = "lblTipoDeConta";
             this.lblTipoDeConta.Size = new System.Drawing.Size(80, 13);
             this.lblTipoDeConta.TabIndex = 150;
@@ -536,7 +524,7 @@
             this.lblBanco.AutoSize = true;
             this.lblBanco.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBanco.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblBanco.Location = new System.Drawing.Point(255, 701);
+            this.lblBanco.Location = new System.Drawing.Point(230, 701);
             this.lblBanco.Name = "lblBanco";
             this.lblBanco.Size = new System.Drawing.Size(38, 13);
             this.lblBanco.TabIndex = 149;
@@ -579,10 +567,10 @@
             "Conta Salário",
             "Depósitos Lotéricos",
             "Poupança Integrada"});
-            this.cboTipoDeConta.Location = new System.Drawing.Point(462, 717);
+            this.cboTipoDeConta.Location = new System.Drawing.Point(437, 717);
             this.cboTipoDeConta.Name = "cboTipoDeConta";
             this.cboTipoDeConta.Size = new System.Drawing.Size(200, 23);
-            this.cboTipoDeConta.TabIndex = 20;
+            this.cboTipoDeConta.TabIndex = 17;
             // 
             // cboUF
             // 
@@ -619,7 +607,7 @@
             "SP",
             "SE",
             "TO"});
-            this.cboUF.Location = new System.Drawing.Point(462, 414);
+            this.cboUF.Location = new System.Drawing.Point(437, 414);
             this.cboUF.Name = "cboUF";
             this.cboUF.Size = new System.Drawing.Size(75, 23);
             this.cboUF.TabIndex = 11;
@@ -630,10 +618,12 @@
             this.txtTelefone.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtTelefone.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefone.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtTelefone.Location = new System.Drawing.Point(257, 518);
+            this.txtTelefone.Location = new System.Drawing.Point(232, 518);
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(200, 23);
-            this.txtTelefone.TabIndex = 14;
+            this.txtTelefone.TabIndex = 13;
+            this.txtTelefone.Enter += new System.EventHandler(this.txtTelefone_Enter);
+            this.txtTelefone.Validated += new System.EventHandler(this.txtTelefone_Validated);
             // 
             // txtCNPJ
             // 
@@ -642,24 +632,12 @@
             this.txtCNPJ.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCNPJ.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCNPJ.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCNPJ.Location = new System.Drawing.Point(257, 50);
-            this.txtCNPJ.Mask = "00,000,000/0000-00";
+            this.txtCNPJ.Location = new System.Drawing.Point(232, 50);
             this.txtCNPJ.Name = "txtCNPJ";
             this.txtCNPJ.Size = new System.Drawing.Size(200, 23);
-            this.txtCNPJ.TabIndex = 1;
-            this.txtCNPJ.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
-            // 
-            // dtpConstituicao
-            // 
-            this.dtpConstituicao.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dtpConstituicao.CalendarForeColor = System.Drawing.SystemColors.ControlLight;
-            this.dtpConstituicao.CustomFormat = "";
-            this.dtpConstituicao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpConstituicao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpConstituicao.Location = new System.Drawing.Point(462, 154);
-            this.dtpConstituicao.Name = "dtpConstituicao";
-            this.dtpConstituicao.Size = new System.Drawing.Size(200, 23);
-            this.dtpConstituicao.TabIndex = 12;
+            this.txtCNPJ.TabIndex = 0;
+            this.txtCNPJ.Enter += new System.EventHandler(this.txtCNPJ_Enter);
+            this.txtCNPJ.Validated += new System.EventHandler(this.txtCNPJ_Validated);
             // 
             // txtTelefone2
             // 
@@ -667,10 +645,12 @@
             this.txtTelefone2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtTelefone2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefone2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtTelefone2.Location = new System.Drawing.Point(462, 518);
+            this.txtTelefone2.Location = new System.Drawing.Point(437, 518);
             this.txtTelefone2.Name = "txtTelefone2";
             this.txtTelefone2.Size = new System.Drawing.Size(200, 23);
-            this.txtTelefone2.TabIndex = 154;
+            this.txtTelefone2.TabIndex = 14;
+            this.txtTelefone2.Enter += new System.EventHandler(this.txtTelefone2_Enter);
+            this.txtTelefone2.Validated += new System.EventHandler(this.txtTelefone2_Validated);
             // 
             // lblTelefone2
             // 
@@ -678,11 +658,38 @@
             this.lblTelefone2.AutoSize = true;
             this.lblTelefone2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefone2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTelefone2.Location = new System.Drawing.Point(459, 502);
+            this.lblTelefone2.Location = new System.Drawing.Point(434, 502);
             this.lblTelefone2.Name = "lblTelefone2";
             this.lblTelefone2.Size = new System.Drawing.Size(60, 13);
             this.lblTelefone2.TabIndex = 155;
             this.lblTelefone2.Text = "Telefone 2";
+            // 
+            // txtCEP
+            // 
+            this.txtCEP.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtCEP.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtCEP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCEP.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtCEP.Location = new System.Drawing.Point(231, 414);
+            this.txtCEP.Name = "txtCEP";
+            this.txtCEP.Size = new System.Drawing.Size(200, 23);
+            this.txtCEP.TabIndex = 10;
+            this.txtCEP.Enter += new System.EventHandler(this.txtCEP_Enter);
+            this.txtCEP.Validated += new System.EventHandler(this.txtCEP_Validated);
+            // 
+            // txtConstituicao
+            // 
+            this.txtConstituicao.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtConstituicao.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtConstituicao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConstituicao.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtConstituicao.Location = new System.Drawing.Point(437, 154);
+            this.txtConstituicao.Name = "txtConstituicao";
+            this.txtConstituicao.Size = new System.Drawing.Size(200, 23);
+            this.txtConstituicao.TabIndex = 3;
+            this.txtConstituicao.ValidatingType = typeof(System.DateTime);
+            this.txtConstituicao.Enter += new System.EventHandler(this.txtConstituicao_Enter);
+            this.txtConstituicao.Validated += new System.EventHandler(this.txtConstituicao_Validated);
             // 
             // frmDadosCadastrais
             // 
@@ -690,10 +697,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(920, 580);
+            this.ClientSize = new System.Drawing.Size(937, 580);
+            this.Controls.Add(this.txtConstituicao);
+            this.Controls.Add(this.txtCEP);
             this.Controls.Add(this.txtTelefone2);
             this.Controls.Add(this.lblTelefone2);
-            this.Controls.Add(this.dtpConstituicao);
             this.Controls.Add(this.txtCNPJ);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.cboUF);
@@ -719,7 +727,6 @@
             this.Controls.Add(this.lblCEP);
             this.Controls.Add(this.lblCidade);
             this.Controls.Add(this.lblBairro);
-            this.Controls.Add(this.txtCEP);
             this.Controls.Add(this.txtCidade);
             this.Controls.Add(this.txtBairro);
             this.Controls.Add(this.txtComplemento);
@@ -762,7 +769,6 @@
         private System.Windows.Forms.Label lblCEP;
         private System.Windows.Forms.Label lblCidade;
         private System.Windows.Forms.Label lblBairro;
-        private System.Windows.Forms.TextBox txtCEP;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.TextBox txtComplemento;
@@ -793,8 +799,9 @@
         private System.Windows.Forms.ComboBox cboUF;
         private System.Windows.Forms.MaskedTextBox txtTelefone;
         private System.Windows.Forms.MaskedTextBox txtCNPJ;
-        private System.Windows.Forms.DateTimePicker dtpConstituicao;
         private System.Windows.Forms.MaskedTextBox txtTelefone2;
         private System.Windows.Forms.Label lblTelefone2;
+        private System.Windows.Forms.MaskedTextBox txtCEP;
+        private System.Windows.Forms.MaskedTextBox txtConstituicao;
     }
 }

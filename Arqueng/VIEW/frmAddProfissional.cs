@@ -11,20 +11,22 @@ namespace Arqueng.VIEW
     public partial class frmAddProfissional : Form
     {
 
-
+        frmPrincipal _frmPrincipal;
         ProfissionaisMODEL model = new ProfissionaisMODEL();
         ProfissionaisENT dado = new ProfissionaisENT();
 
 
-        public frmAddProfissional()
+        public frmAddProfissional(frmPrincipal frm1)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
         }
 
 
-        public frmAddProfissional(string Codigo, string Nome, string CPF, string Nascimento, string Profissao, string Carteira, string Entidade, string Telefone1, string Telefone2, string Email)
+        public frmAddProfissional(frmPrincipal frm1, string Codigo, string Nome, string CPF, string Nascimento, string Profissao, string Carteira, string Entidade, string Telefone1, string Telefone2, string Email)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
             txtCodigo.Text = Codigo;
             txtNome.Text = Nome;
             txtCPF.Text = CPF;
@@ -100,7 +102,10 @@ namespace Arqueng.VIEW
                     MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
             this.Close();
+            frmProfissionais formfilho = new frmProfissionais(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formfilho, _frmPrincipal.pnlMain);
         }
 
 
@@ -161,6 +166,18 @@ namespace Arqueng.VIEW
         private void txtNascimento_Enter(object sender, EventArgs e)
         {
             txtNascimento.Mask = "00/00/0000";
+        }
+
+        private void frmAddProfissional_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmProfissionais formfilho = new frmProfissionais(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formfilho, _frmPrincipal.pnlMain);
         }
     }
 

@@ -9,7 +9,7 @@ namespace Arqueng.VIEW
     public partial class frmProfissionais : Form
     {
 
-
+        frmPrincipal _frmPrincipal;
         ProfissionaisMODEL model = new ProfissionaisMODEL();
 
 
@@ -38,9 +38,10 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmProfissionais()
+        public frmProfissionais(frmPrincipal frm1)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
         }
 
 
@@ -73,8 +74,8 @@ namespace Arqueng.VIEW
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            frmAddProfissional form = new frmAddProfissional
-                (
+            frmAddProfissional formneto = new frmAddProfissional
+                (_frmPrincipal, 
                 dgvProfissionais.CurrentRow.Cells[0].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells[1].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells[2].Value.ToString(),
@@ -86,18 +87,16 @@ namespace Arqueng.VIEW
                 dgvProfissionais.CurrentRow.Cells[8].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells[9].Value.ToString()
                 );
-            form.Text = "Alterar";
-            form.ShowDialog();
-            ListarProfissionais();
+            formneto.Text = "Alterar";
+            _frmPrincipal.AbrirFormInPanel(formneto, _frmPrincipal.pnlMain);
         }
 
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            frmAddProfissional form = new frmAddProfissional();
-            form.Text = "Adicionar";
-            form.ShowDialog();
-            ListarProfissionais();
+            frmAddProfissional formneto = new frmAddProfissional(_frmPrincipal);
+            formneto.Text = "Adicionar";
+            _frmPrincipal.AbrirFormInPanel(formneto, _frmPrincipal.pnlMain);
         }
 
 

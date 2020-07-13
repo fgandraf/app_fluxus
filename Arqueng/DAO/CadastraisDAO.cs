@@ -41,7 +41,9 @@ namespace Arqueng.DAO
                         dado.Cidade = Convert.ToString(dr["cidade"]);
                         dado.Cep = Convert.ToString(dr["cep"]);
                         dado.Uf = Convert.ToString(dr["uf"]);
+                       
                         dado.Constituicao = Convert.ToDateTime(dr["constituicao"]);
+                        
                         dado.Representante = Convert.ToString(dr["representante"]);
                         dado.Telefone = Convert.ToString(dr["telefone"]);
                         dado.Telefone2 = Convert.ToString(dr["telefone2"]);

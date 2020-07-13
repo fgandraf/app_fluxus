@@ -27,7 +27,7 @@ namespace Arqueng
         }
 
 
-        private void AbrirFormInPanel(Form Formfilho, Panel pnl)
+        public void AbrirFormInPanel(Form Formfilho, Panel pnl)
         {
             if (pnl.Controls.Count > 0)
                 pnl.Controls.RemoveAt(0);
@@ -113,7 +113,7 @@ namespace Arqueng
             pnlCtrlProfissionais.Show();
             lblTitulo.Text = "Profissionais";
 
-            frmProfissionais frm = new frmProfissionais();
+            frmProfissionais frm = new frmProfissionais(this);
             AbrirFormInPanel(frm, pnlMain);
         }
 
@@ -192,7 +192,7 @@ namespace Arqueng
             pnlCtrlDadosCadastrais.Show();
             lblTitulo.Text = "Dados Cadastrais";
 
-            frmDadosCadastrais frm = new frmDadosCadastrais();
+            frmDadosCadastrais frm = new frmDadosCadastrais(this);
             AbrirFormInPanel(frm, pnlMain);
         }
 

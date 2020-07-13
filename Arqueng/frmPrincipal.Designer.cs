@@ -50,6 +50,7 @@
             this.pnlCtrlAtividades = new System.Windows.Forms.Panel();
             this.pnlCtrlAgencias = new System.Windows.Forms.Panel();
             this.btnFaturas = new System.Windows.Forms.Button();
+            this.pnlCtrlFaturas = new System.Windows.Forms.Panel();
             this.pnlCtrlDadosCadastrais = new System.Windows.Forms.Panel();
             this.btnDadosCadastrais = new System.Windows.Forms.Button();
             this.imgLogo = new System.Windows.Forms.PictureBox();
@@ -64,7 +65,6 @@
             this.ttpMenu = new System.Windows.Forms.ToolTip(this.components);
             this.ttpSempre = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.pnlCtrlFaturas = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.tblMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
@@ -468,6 +468,17 @@
             this.btnFaturas.UseVisualStyleBackColor = false;
             this.btnFaturas.Click += new System.EventHandler(this.btnFaturas_Click);
             // 
+            // pnlCtrlFaturas
+            // 
+            this.pnlCtrlFaturas.BackColor = System.Drawing.Color.LimeGreen;
+            this.pnlCtrlFaturas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCtrlFaturas.Location = new System.Drawing.Point(0, 155);
+            this.pnlCtrlFaturas.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
+            this.pnlCtrlFaturas.Name = "pnlCtrlFaturas";
+            this.pnlCtrlFaturas.Size = new System.Drawing.Size(5, 49);
+            this.pnlCtrlFaturas.TabIndex = 125;
+            this.pnlCtrlFaturas.Visible = false;
+            // 
             // pnlCtrlDadosCadastrais
             // 
             this.pnlCtrlDadosCadastrais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -663,17 +674,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // pnlCtrlFaturas
-            // 
-            this.pnlCtrlFaturas.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlFaturas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCtrlFaturas.Location = new System.Drawing.Point(0, 155);
-            this.pnlCtrlFaturas.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
-            this.pnlCtrlFaturas.Name = "pnlCtrlFaturas";
-            this.pnlCtrlFaturas.Size = new System.Drawing.Size(5, 49);
-            this.pnlCtrlFaturas.TabIndex = 125;
-            this.pnlCtrlFaturas.Visible = false;
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -719,7 +719,6 @@
         private System.Windows.Forms.Panel pnlCtrlProfissionais;
         public System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Panel pnlCtrlDadosCadastrais;
-        private System.Windows.Forms.Button btnDadosCadastrais;
         private System.Windows.Forms.Panel pnlCtrlRelatorios;
         private System.Windows.Forms.Button btnRelatorios;
         private System.Windows.Forms.Button btnAppMaximizar;
@@ -736,6 +735,7 @@
         private System.Windows.Forms.Button btnSlide;
         private System.Windows.Forms.Button btnFaturas;
         private System.Windows.Forms.Panel pnlCtrlFaturas;
+        public System.Windows.Forms.Button btnDadosCadastrais;
     }
 }
 
