@@ -249,10 +249,10 @@
             this.txtReferencia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReferencia.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtReferencia.Location = new System.Drawing.Point(99, 120);
-            this.txtReferencia.Mask = "0000,0000,000000000/0000,00,00,00";
             this.txtReferencia.Name = "txtReferencia";
             this.txtReferencia.Size = new System.Drawing.Size(340, 23);
             this.txtReferencia.TabIndex = 0;
+            this.txtReferencia.Enter += new System.EventHandler(this.txtReferencia_Enter);
             this.txtReferencia.Validated += new System.EventHandler(this.txtReferencia_Validated);
             // 
             // lblAtividade
@@ -408,6 +408,8 @@
             this.txtTelefoneContato.Name = "txtTelefoneContato";
             this.txtTelefoneContato.Size = new System.Drawing.Size(120, 23);
             this.txtTelefoneContato.TabIndex = 8;
+            this.txtTelefoneContato.Enter += new System.EventHandler(this.txtTelefoneContato_Enter);
+            this.txtTelefoneContato.Validated += new System.EventHandler(this.txtTelefoneContato_Validated);
             // 
             // txtAgenciaEmail
             // 

@@ -43,7 +43,6 @@
             this.lblCEP = new System.Windows.Forms.Label();
             this.lblCidade = new System.Windows.Forms.Label();
             this.lblBairro = new System.Windows.Forms.Label();
-            this.txtCEP = new System.Windows.Forms.TextBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.txtBairro = new System.Windows.Forms.TextBox();
             this.txtComplemento = new System.Windows.Forms.TextBox();
@@ -56,6 +55,7 @@
             this.pnlLinha2 = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAddSave = new System.Windows.Forms.Button();
+            this.txtCEP = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // txtTelefone2
@@ -68,6 +68,8 @@
             this.txtTelefone2.Name = "txtTelefone2";
             this.txtTelefone2.Size = new System.Drawing.Size(150, 23);
             this.txtTelefone2.TabIndex = 10;
+            this.txtTelefone2.Enter += new System.EventHandler(this.txtTelefone2_Enter);
+            this.txtTelefone2.Validated += new System.EventHandler(this.txtTelefone2_Validated);
             // 
             // txtTelefone1
             // 
@@ -79,6 +81,8 @@
             this.txtTelefone1.Name = "txtTelefone1";
             this.txtTelefone1.Size = new System.Drawing.Size(150, 23);
             this.txtTelefone1.TabIndex = 9;
+            this.txtTelefone1.Enter += new System.EventHandler(this.txtTelefone1_Enter);
+            this.txtTelefone1.Validated += new System.EventHandler(this.txtTelefone1_Validated);
             // 
             // lblTelefone2
             // 
@@ -268,18 +272,6 @@
             this.lblBairro.TabIndex = 249;
             this.lblBairro.Text = "Bairro";
             // 
-            // txtCEP
-            // 
-            this.txtCEP.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtCEP.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtCEP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCEP.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCEP.Location = new System.Drawing.Point(46, 282);
-            this.txtCEP.MaxLength = 9;
-            this.txtCEP.Name = "txtCEP";
-            this.txtCEP.Size = new System.Drawing.Size(150, 23);
-            this.txtCEP.TabIndex = 6;
-            // 
             // txtCidade
             // 
             this.txtCidade.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -431,6 +423,19 @@
             this.btnAddSave.UseVisualStyleBackColor = false;
             this.btnAddSave.Click += new System.EventHandler(this.btnAddSave_Click);
             // 
+            // txtCEP
+            // 
+            this.txtCEP.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtCEP.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtCEP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCEP.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtCEP.Location = new System.Drawing.Point(46, 282);
+            this.txtCEP.Name = "txtCEP";
+            this.txtCEP.Size = new System.Drawing.Size(150, 23);
+            this.txtCEP.TabIndex = 6;
+            this.txtCEP.Enter += new System.EventHandler(this.txtCEP_Enter);
+            this.txtCEP.Validated += new System.EventHandler(this.txtCEP_Validated);
+            // 
             // frmAddAgencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,6 +443,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(403, 567);
+            this.Controls.Add(this.txtCEP);
             this.Controls.Add(this.pnlLinha2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAddSave);
@@ -456,7 +462,6 @@
             this.Controls.Add(this.lblCEP);
             this.Controls.Add(this.lblCidade);
             this.Controls.Add(this.lblBairro);
-            this.Controls.Add(this.txtCEP);
             this.Controls.Add(this.txtCidade);
             this.Controls.Add(this.txtBairro);
             this.Controls.Add(this.txtComplemento);
@@ -497,7 +502,6 @@
         private System.Windows.Forms.Label lblCEP;
         private System.Windows.Forms.Label lblCidade;
         private System.Windows.Forms.Label lblBairro;
-        private System.Windows.Forms.TextBox txtCEP;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.TextBox txtComplemento;
@@ -510,5 +514,6 @@
         private System.Windows.Forms.Panel pnlLinha2;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAddSave;
+        private System.Windows.Forms.MaskedTextBox txtCEP;
     }
 }

@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
+using System.Text.RegularExpressions;
 
 namespace Arqueng.VIEW
 {
@@ -105,7 +106,52 @@ namespace Arqueng.VIEW
             this.Close();
         }
 
+        private void txtTelefone1_Enter(object sender, EventArgs e)
+        {
+            txtTelefone1.Mask = "(99) ##########";
+        }
 
+        private void txtTelefone1_Validated(object sender, EventArgs e)
+        {
+            if (txtTelefone1.Text == "(  ) ")
+            {
+                txtTelefone1.Mask = "";
+                return;
+            }
+
+            var apenasDigitos = new Regex(@"[^\d]");
+            if (apenasDigitos.Replace(txtTelefone1.Text, "").Length == 10)
+                txtTelefone1.Mask = "(99) #########";
+        }
+
+        private void txtTelefone2_Enter(object sender, EventArgs e)
+        {
+            txtTelefone2.Mask = "(99) ##########";
+        }
+
+        private void txtTelefone2_Validated(object sender, EventArgs e)
+        {
+            if (txtTelefone2.Text == "(  ) ")
+            {
+                txtTelefone2.Mask = "";
+                return;
+            }
+
+            var apenasDigitos = new Regex(@"[^\d]");
+            if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 10)
+                txtTelefone2.Mask = "(99) #########";
+        }
+
+        private void txtCEP_Enter(object sender, EventArgs e)
+        {
+            txtCEP.Mask = "#####-###";
+        }
+
+        private void txtCEP_Validated(object sender, EventArgs e)
+        {
+            if (txtCEP.Text == "     -")
+                txtCEP.Mask = "";
+        }
     }
 
 

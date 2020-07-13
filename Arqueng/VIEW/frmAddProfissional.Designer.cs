@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.txtCPF = new System.Windows.Forms.MaskedTextBox();
-            this.dtpNascimento = new System.Windows.Forms.DateTimePicker();
             this.lblDataNascimento = new System.Windows.Forms.Label();
             this.txtTelefone2 = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefone1 = new System.Windows.Forms.MaskedTextBox();
@@ -52,6 +51,7 @@
             this.pnlLinha2 = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAddSave = new System.Windows.Forms.Button();
+            this.txtNascimento = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // txtCPF
@@ -61,22 +61,11 @@
             this.txtCPF.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCPF.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtCPF.Location = new System.Drawing.Point(42, 143);
-            this.txtCPF.Mask = "000.000.000-00";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(150, 23);
             this.txtCPF.TabIndex = 2;
-            // 
-            // dtpNascimento
-            // 
-            this.dtpNascimento.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dtpNascimento.CalendarForeColor = System.Drawing.SystemColors.ControlLight;
-            this.dtpNascimento.CustomFormat = "";
-            this.dtpNascimento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNascimento.Location = new System.Drawing.Point(42, 191);
-            this.dtpNascimento.Name = "dtpNascimento";
-            this.dtpNascimento.Size = new System.Drawing.Size(150, 23);
-            this.dtpNascimento.TabIndex = 3;
+            this.txtCPF.Enter += new System.EventHandler(this.txtCPF_Enter);
+            this.txtCPF.Validated += new System.EventHandler(this.txtCPF_Validated);
             // 
             // lblDataNascimento
             // 
@@ -100,6 +89,8 @@
             this.txtTelefone2.Name = "txtTelefone2";
             this.txtTelefone2.Size = new System.Drawing.Size(150, 23);
             this.txtTelefone2.TabIndex = 8;
+            this.txtTelefone2.Enter += new System.EventHandler(this.txtTelefone2_Enter);
+            this.txtTelefone2.Validated += new System.EventHandler(this.txtTelefone2_Validated);
             // 
             // txtTelefone1
             // 
@@ -111,6 +102,8 @@
             this.txtTelefone1.Name = "txtTelefone1";
             this.txtTelefone1.Size = new System.Drawing.Size(150, 23);
             this.txtTelefone1.TabIndex = 7;
+            this.txtTelefone1.Enter += new System.EventHandler(this.txtTelefone1_Enter);
+            this.txtTelefone1.Validated += new System.EventHandler(this.txtTelefone1_Validated);
             // 
             // lblTelefone2
             // 
@@ -350,17 +343,31 @@
             this.btnAddSave.UseVisualStyleBackColor = false;
             this.btnAddSave.Click += new System.EventHandler(this.btnAddSave_Click);
             // 
+            // txtNascimento
+            // 
+            this.txtNascimento.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtNascimento.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtNascimento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNascimento.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtNascimento.Location = new System.Drawing.Point(42, 191);
+            this.txtNascimento.Name = "txtNascimento";
+            this.txtNascimento.Size = new System.Drawing.Size(150, 23);
+            this.txtNascimento.TabIndex = 3;
+            this.txtNascimento.ValidatingType = typeof(System.DateTime);
+            this.txtNascimento.Enter += new System.EventHandler(this.txtNascimento_Enter);
+            this.txtNascimento.Validated += new System.EventHandler(this.txtNascimento_Validated);
+            // 
             // frmAddProfissional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(390, 563);
+            this.Controls.Add(this.txtNascimento);
             this.Controls.Add(this.pnlLinha2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAddSave);
             this.Controls.Add(this.txtCPF);
-            this.Controls.Add(this.dtpNascimento);
             this.Controls.Add(this.lblDataNascimento);
             this.Controls.Add(this.txtTelefone2);
             this.Controls.Add(this.txtTelefone1);
@@ -397,7 +404,6 @@
         #endregion
 
         private System.Windows.Forms.MaskedTextBox txtCPF;
-        private System.Windows.Forms.DateTimePicker dtpNascimento;
         private System.Windows.Forms.Label lblDataNascimento;
         private System.Windows.Forms.MaskedTextBox txtTelefone2;
         private System.Windows.Forms.MaskedTextBox txtTelefone1;
@@ -420,5 +426,6 @@
         private System.Windows.Forms.Panel pnlLinha2;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAddSave;
+        private System.Windows.Forms.MaskedTextBox txtNascimento;
     }
 }

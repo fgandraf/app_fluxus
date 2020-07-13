@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
+using System.Text.RegularExpressions;
 
 namespace Arqueng.VIEW
 {
@@ -15,6 +16,7 @@ namespace Arqueng.VIEW
         ProfissionaisMODEL profmodel = new ProfissionaisMODEL();
         AtividadesMODEL ativmodel = new AtividadesMODEL();
         AgenciasMODEL agmodel = new AgenciasMODEL();
+        string agencia = null;
 
 
         public void ListarProfissionais()
@@ -107,6 +109,7 @@ namespace Arqueng.VIEW
                     txtAgenciaNome.Text = dado.Nome;
                     txtAgenciaTelefone.Text = dado.Telefone1;
                     txtAgenciaEmail.Text = dado.Email;
+                    agencia = txtReferencia.Text.Substring(5, 4);
                     btnAddAgencia.Hide();
                 }
             }
@@ -121,9 +124,9 @@ namespace Arqueng.VIEW
         {
             InitializeComponent();
             ListarProfissionais();
-            ListarAtividades(); 
+            ListarAtividades();
         }
-        
+
 
         public frmAddOS(string Titulo, string Referencia, string DataOrdem, string Prazo_execucao, string Profissional_cod, string Atividade_cod, string Siopi, string Nome_cliente, string Cidade, string Nome_contato, string Telefone_contato, string Status, string Data_pendente, string Data_vistoria, string Data_concluida, string OBS, string Fatura_cod)
         {
@@ -137,32 +140,32 @@ namespace Arqueng.VIEW
             dtpDataExecucao.Text = Prazo_execucao;
             cboProfissional.Text = Profissional_cod;
             cboAtividade.Text = Atividade_cod;
-            
+
             if (Siopi == "True")
                 chkSiopi.Checked = true;
             else
                 chkSiopi.Checked = false;
-            
+
             txtNomeCliente.Text = Nome_cliente;
             txtCidade.Text = Cidade;
             txtNomeContato.Text = Nome_contato;
             txtTelefoneContato.Text = Telefone_contato;
-            
+
             if (Status == "RECEBIDA")
             {
                 rbtRecebida.Checked = true;
             }
-            
+
             if (Status == "PENDENTE")
             {
                 rbtPendente.Checked = true;
             }
-            
+
             if (Status == "VISTORIADA")
             {
                 rbtVistoriada.Checked = true;
             }
-            
+
             if (Status == "CONCLUÍDA")
             {
                 rbtConcluida.Checked = true;
@@ -182,7 +185,7 @@ namespace Arqueng.VIEW
                 lblFaturada.Show();
                 txtCodFatura.Text = "Fatura n°: " + Fatura_cod;
                 txtCodFatura.Show();
-                
+
                 foreach (Control c in this.pnlDados.Controls)
                 {
                     if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker)
@@ -342,7 +345,16 @@ namespace Arqueng.VIEW
 
         private void txtReferencia_Validated(object sender, EventArgs e)
         {
-            BuscarAgencia();
+            if (txtReferencia.Text == "    .    .         /    .  .  .")
+            {
+                txtReferencia.Mask = "";
+                txtAgenciaNome.Text = "";
+                txtAgenciaTelefone.Text = "";
+                txtAgenciaEmail.Text = "";
+            }
+            else
+                if (txtReferencia.Text.Substring(5, 4) != agencia)
+                    BuscarAgencia();
         }
 
 
@@ -355,6 +367,29 @@ namespace Arqueng.VIEW
             form.ShowDialog();
             BuscarAgencia();
             txtCidade.Focus();
+        }
+
+        private void txtTelefoneContato_Enter(object sender, EventArgs e)
+        {
+            txtTelefoneContato.Mask = "(99) ##########";
+        }
+
+        private void txtTelefoneContato_Validated(object sender, EventArgs e)
+        {
+            if (txtTelefoneContato.Text == "(  ) ")
+            {
+                txtTelefoneContato.Mask = "";
+                return;
+            }
+
+            var apenasDigitos = new Regex(@"[^\d]");
+            if (apenasDigitos.Replace(txtTelefoneContato.Text, "").Length == 10)
+                txtTelefoneContato.Mask = "(99) #########";
+        }
+
+        private void txtReferencia_Enter(object sender, EventArgs e)
+        {
+            txtReferencia.Mask = "0000,0000,000000000/0000,00,00,00";
         }
 
 
