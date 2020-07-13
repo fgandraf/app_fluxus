@@ -37,6 +37,20 @@ namespace Arqueng.VIEW
             }
         }
 
+        public void ExcluirProfissional()
+        {
+            try
+            {
+                ENTIDADES.ProfissionaisENT dado = new ENTIDADES.ProfissionaisENT();
+                dado.Codigo = dgvProfissionais.CurrentRow.Cells[0].Value.ToString();
+                model.DeleteProfissionalModel(dado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         public frmProfissionais(frmPrincipal frm1)
         {
@@ -57,17 +71,8 @@ namespace Arqueng.VIEW
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                try
-                {
-                    ENTIDADES.ProfissionaisENT dado = new ENTIDADES.ProfissionaisENT();
-                    dado.Codigo = dgvProfissionais.CurrentRow.Cells[0].Value.ToString();
-                    model.DeleteProfissionalModel(dado);
-                    ListarProfissionais();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                ExcluirProfissional();
+                ListarProfissionais();
             }
         }
 
@@ -99,7 +104,18 @@ namespace Arqueng.VIEW
             _frmPrincipal.AbrirFormInPanel(formneto, _frmPrincipal.pnlMain);
         }
 
-
+        private void dgvProfissionais_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && dgvProfissionais.CurrentCell.Selected)
+            {
+                var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.Yes)
+                {
+                    ExcluirProfissional();
+                    ListarProfissionais();
+                }
+            }
+        }
     }
 
 
