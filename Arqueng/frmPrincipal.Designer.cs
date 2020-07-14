@@ -56,10 +56,10 @@
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.btnAppMinimizar = new System.Windows.Forms.Button();
-            this.btnAppMaximizar = new System.Windows.Forms.Button();
             this.btnUsuario = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnAppFechar = new System.Windows.Forms.Button();
+            this.btnAppMaximizar = new System.Windows.Forms.Button();
             this.btnAppRestaurar = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.ttpMenu = new System.Windows.Forms.ToolTip(this.components);
@@ -523,12 +523,12 @@
             // 
             // pnlTitulo
             // 
-            this.pnlTitulo.BackColor = System.Drawing.Color.SteelBlue;
+            this.pnlTitulo.BackColor = System.Drawing.Color.Lavender;
             this.pnlTitulo.Controls.Add(this.btnAppMinimizar);
-            this.pnlTitulo.Controls.Add(this.btnAppMaximizar);
             this.pnlTitulo.Controls.Add(this.btnUsuario);
             this.pnlTitulo.Controls.Add(this.lblTitulo);
             this.pnlTitulo.Controls.Add(this.btnAppFechar);
+            this.pnlTitulo.Controls.Add(this.btnAppMaximizar);
             this.pnlTitulo.Controls.Add(this.btnAppRestaurar);
             this.pnlTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitulo.Location = new System.Drawing.Point(200, 0);
@@ -540,8 +540,8 @@
             // btnAppMinimizar
             // 
             this.btnAppMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAppMinimizar.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnAppMinimizar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnAppMinimizar.BackColor = System.Drawing.Color.Transparent;
+            this.btnAppMinimizar.FlatAppearance.BorderSize = 0;
             this.btnAppMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAppMinimizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppMinimizar.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -554,24 +554,6 @@
             this.ttpSempre.SetToolTip(this.btnAppMinimizar, "Minimizar");
             this.btnAppMinimizar.UseVisualStyleBackColor = false;
             this.btnAppMinimizar.Click += new System.EventHandler(this.btnAppMinimizar_Click);
-            // 
-            // btnAppMaximizar
-            // 
-            this.btnAppMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAppMaximizar.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnAppMaximizar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.btnAppMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAppMaximizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAppMaximizar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnAppMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMaximizar.Image")));
-            this.btnAppMaximizar.Location = new System.Drawing.Point(831, -1);
-            this.btnAppMaximizar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAppMaximizar.Name = "btnAppMaximizar";
-            this.btnAppMaximizar.Size = new System.Drawing.Size(45, 30);
-            this.btnAppMaximizar.TabIndex = 122;
-            this.ttpSempre.SetToolTip(this.btnAppMaximizar, "Maximizar");
-            this.btnAppMaximizar.UseVisualStyleBackColor = false;
-            this.btnAppMaximizar.Click += new System.EventHandler(this.btnAppMaximizar_Click);
             // 
             // btnUsuario
             // 
@@ -598,20 +580,21 @@
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
+            this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
             this.lblTitulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe Print", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblTitulo.Location = new System.Drawing.Point(6, 8);
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe Print", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.lblTitulo.Location = new System.Drawing.Point(6, 9);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(134, 38);
+            this.lblTitulo.Size = new System.Drawing.Size(129, 37);
             this.lblTitulo.TabIndex = 120;
             this.lblTitulo.Text = "Dashboard";
             // 
             // btnAppFechar
             // 
             this.btnAppFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAppFechar.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnAppFechar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnAppFechar.BackColor = System.Drawing.Color.Transparent;
+            this.btnAppFechar.FlatAppearance.BorderSize = 0;
             this.btnAppFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAppFechar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppFechar.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -625,11 +608,29 @@
             this.btnAppFechar.UseVisualStyleBackColor = false;
             this.btnAppFechar.Click += new System.EventHandler(this.btnAppFechar_Click);
             // 
+            // btnAppMaximizar
+            // 
+            this.btnAppMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAppMaximizar.BackColor = System.Drawing.Color.Transparent;
+            this.btnAppMaximizar.FlatAppearance.BorderSize = 0;
+            this.btnAppMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAppMaximizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppMaximizar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnAppMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMaximizar.Image")));
+            this.btnAppMaximizar.Location = new System.Drawing.Point(831, -1);
+            this.btnAppMaximizar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAppMaximizar.Name = "btnAppMaximizar";
+            this.btnAppMaximizar.Size = new System.Drawing.Size(45, 30);
+            this.btnAppMaximizar.TabIndex = 122;
+            this.ttpSempre.SetToolTip(this.btnAppMaximizar, "Maximizar");
+            this.btnAppMaximizar.UseVisualStyleBackColor = false;
+            this.btnAppMaximizar.Click += new System.EventHandler(this.btnAppMaximizar_Click);
+            // 
             // btnAppRestaurar
             // 
             this.btnAppRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAppRestaurar.BackColor = System.Drawing.Color.SteelBlue;
-            this.btnAppRestaurar.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.btnAppRestaurar.BackColor = System.Drawing.Color.Transparent;
+            this.btnAppRestaurar.FlatAppearance.BorderSize = 0;
             this.btnAppRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAppRestaurar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppRestaurar.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -709,7 +710,6 @@
         private System.Windows.Forms.Panel pnlTitulo;
         private System.Windows.Forms.Button btnAppFechar;
         private System.Windows.Forms.Button btnUsuario;
-        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.ToolTip ttpMenu;
         private System.Windows.Forms.ToolTip ttpSempre;
@@ -736,6 +736,7 @@
         private System.Windows.Forms.Button btnFaturas;
         private System.Windows.Forms.Panel pnlCtrlFaturas;
         public System.Windows.Forms.Button btnDadosCadastrais;
+        public System.Windows.Forms.Label lblTitulo;
     }
 }
 

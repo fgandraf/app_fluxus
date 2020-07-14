@@ -12,7 +12,7 @@ namespace Arqueng.VIEW
     public partial class frmAddFatura : Form
     {
 
-
+        frmPrincipal _frmPrincipal;
         OsMODEL modelOS = new OsMODEL();
         OsENT dadoOS = new OsENT();
         FaturasMODEL modelFatura = new FaturasMODEL();
@@ -55,9 +55,10 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmAddFatura()
+        public frmAddFatura(frmPrincipal frm1)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
             ListarOS();
             txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
@@ -113,7 +114,16 @@ namespace Arqueng.VIEW
             }
 
             MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            
             this.Close();
+            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços - Em fluxo";
+            _frmPrincipal.lblTitulo.Refresh();
+
+            frmOSFluxo formFilho = new frmOSFluxo(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+
+
         }
 
 
@@ -122,7 +132,14 @@ namespace Arqueng.VIEW
             SomarValores();
         }
 
-
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços - Em fluxo";
+            _frmPrincipal.lblTitulo.Refresh();
+            frmOSFluxo formFilho = new frmOSFluxo(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+        }
     }
 
 

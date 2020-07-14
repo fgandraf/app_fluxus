@@ -10,7 +10,7 @@ namespace Arqueng.VIEW
     public partial class frmAgencias : Form
     {
 
-
+        frmPrincipal _frmPrincipal;
         AgenciasMODEL model = new AgenciasMODEL();
 
 
@@ -38,10 +38,24 @@ namespace Arqueng.VIEW
             }
         }
 
+        public void ExcluirAgencia()
+        {
+            try
+            {
+                AgenciasENT dado = new AgenciasENT();
+                dado.Agencia = dgvAgencias.CurrentRow.Cells[0].Value.ToString();
+                model.DeleteAgenciaModel(dado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-        public frmAgencias()
+        public frmAgencias(frmPrincipal frm1)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
         }
 
 
@@ -50,17 +64,8 @@ namespace Arqueng.VIEW
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                try
-                {
-                    AgenciasENT dado = new AgenciasENT();
-                    dado.Agencia = dgvAgencias.CurrentRow.Cells[0].Value.ToString();
-                    model.DeleteAgenciaModel(dado);
-                    ListarAgencias();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                ExcluirAgencia();
+                ListarAgencias();
             }
         }
 
@@ -73,8 +78,10 @@ namespace Arqueng.VIEW
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            frmAddAgencia form = new frmAddAgencia
-                (dgvAgencias.CurrentRow.Cells[0].Value.ToString(),
+            frmAddAgencia formNeto = new frmAddAgencia
+                (
+                _frmPrincipal,
+                dgvAgencias.CurrentRow.Cells[0].Value.ToString(),
                 dgvAgencias.CurrentRow.Cells[1].Value.ToString(),        
                 dgvAgencias.CurrentRow.Cells[2].Value.ToString(),
                 dgvAgencias.CurrentRow.Cells[3].Value.ToString(),
@@ -87,21 +94,30 @@ namespace Arqueng.VIEW
                 dgvAgencias.CurrentRow.Cells[10].Value.ToString(),
                 dgvAgencias.CurrentRow.Cells[11].Value.ToString()
                 );
-            form.Text = "Alterar";
-            form.ShowDialog();
-            ListarAgencias();
+            formNeto.Text = "Alterar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            frmAddAgencia form = new frmAddAgencia();
-            form.Text = "Adicionar";
-            form.ShowDialog();
-            ListarAgencias();
+            frmAddAgencia formNeto = new frmAddAgencia(_frmPrincipal);
+            formNeto.Text = "Adicionar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
-
+        private void dgvAgencias_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && dgvAgencias.CurrentCell.Selected)
+            {
+                var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.Yes)
+                {
+                    ExcluirAgencia();
+                    ListarAgencias();
+                }
+            }
+        }
     }
 
 

@@ -9,25 +9,26 @@ namespace Arqueng.VIEW
     public partial class frmAddAtividade : Form
     {
 
-
+        frmPrincipal _frmPrincipal;
         AtividadesMODEL model = new AtividadesMODEL();
         AtividadesENT dado = new AtividadesENT();
 
 
-        public frmAddAtividade()
+        public frmAddAtividade(frmPrincipal frm1)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
         }
 
 
-        public frmAddAtividade(string Codigo, string Descricao, string Valor, string Deslocamento)
+        public frmAddAtividade(frmPrincipal frm1, string Codigo, string Descricao, string Valor, string Deslocamento)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
             txtCodigo.Text = Codigo;
             txtDescricao.Text = Descricao;
             txtValor.Text = Valor;
             txtDeslocamento.Text = Deslocamento;
-
         }
 
 
@@ -37,7 +38,10 @@ namespace Arqueng.VIEW
             {
                 btnAddSave.Text = "&Salvar";
                 txtCodigo.Enabled = false;
+                txtDescricao.Focus();
             }
+            else
+                txtCodigo.Focus();
         }
 
 
@@ -87,9 +91,16 @@ namespace Arqueng.VIEW
                 }
             }
             this.Close();
+            frmAtividades formFilho = new frmAtividades(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
         }
 
-
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmAtividades formFilho = new frmAtividades(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+        }
     }
 
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgencias));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -55,6 +56,7 @@
             this.telefone1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ttpAgencias = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgencias)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +87,7 @@
             this.btnAdicionar.Size = new System.Drawing.Size(35, 35);
             this.btnAdicionar.TabIndex = 204;
             this.btnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpAgencias.SetToolTip(this.btnAdicionar, "Adicionar Agência");
             this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
@@ -103,6 +106,7 @@
             this.btnExcluir.Size = new System.Drawing.Size(35, 35);
             this.btnExcluir.TabIndex = 206;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpAgencias.SetToolTip(this.btnExcluir, "Excluir Agência");
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
@@ -121,6 +125,7 @@
             this.btnEditar.Size = new System.Drawing.Size(35, 35);
             this.btnEditar.TabIndex = 205;
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpAgencias.SetToolTip(this.btnEditar, "Editar Agência");
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
@@ -202,6 +207,7 @@
             this.dgvAgencias.Size = new System.Drawing.Size(820, 445);
             this.dgvAgencias.TabIndex = 211;
             this.dgvAgencias.DoubleClick += new System.EventHandler(this.btnEditar_Click);
+            this.dgvAgencias.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAgencias_KeyDown);
             // 
             // agencia
             // 
@@ -366,5 +372,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone1;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone2;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private System.Windows.Forms.ToolTip ttpAgencias;
     }
 }

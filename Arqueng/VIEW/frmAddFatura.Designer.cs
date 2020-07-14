@@ -54,8 +54,6 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblSubtotal = new System.Windows.Forms.Label();
             this.dgvOS = new System.Windows.Forms.DataGridView();
-            this.btnFaturar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,39 +64,28 @@
             this.data_concluída = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor_atividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor_deslocamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFaturar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.ttpFatura = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.pnlLinha2);
-            this.panel1.Controls.Add(this.txtValorDeslocamento);
-            this.panel1.Controls.Add(this.txtValorOS);
-            this.panel1.Controls.Add(this.txtValorTotal);
-            this.panel1.Controls.Add(this.btnRemover);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.txtRRTART);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtDescricao);
-            this.panel1.Controls.Add(this.lblDescricao);
-            this.panel1.Controls.Add(this.dtpData);
-            this.panel1.Controls.Add(this.lblTotal);
-            this.panel1.Controls.Add(this.lblSubtotal);
-            this.panel1.Controls.Add(this.dgvOS);
-            this.panel1.Location = new System.Drawing.Point(10, 10);
+            this.panel1.Location = new System.Drawing.Point(0, 493);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(910, 500);
+            this.panel1.Size = new System.Drawing.Size(920, 1);
             this.panel1.TabIndex = 295;
             // 
             // pnlLinha2
             // 
-            this.pnlLinha2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlLinha2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLinha2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pnlLinha2.Location = new System.Drawing.Point(691, 457);
+            this.pnlLinha2.Location = new System.Drawing.Point(701, 447);
             this.pnlLinha2.Name = "pnlLinha2";
             this.pnlLinha2.Size = new System.Drawing.Size(190, 1);
             this.pnlLinha2.TabIndex = 422;
@@ -111,7 +98,7 @@
             this.txtValorDeslocamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtValorDeslocamento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorDeslocamento.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtValorDeslocamento.Location = new System.Drawing.Point(825, 436);
+            this.txtValorDeslocamento.Location = new System.Drawing.Point(836, 426);
             this.txtValorDeslocamento.MaxLength = 100;
             this.txtValorDeslocamento.Name = "txtValorDeslocamento";
             this.txtValorDeslocamento.ReadOnly = true;
@@ -128,7 +115,7 @@
             this.txtValorOS.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtValorOS.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorOS.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtValorOS.Location = new System.Drawing.Point(764, 436);
+            this.txtValorOS.Location = new System.Drawing.Point(775, 426);
             this.txtValorOS.MaxLength = 100;
             this.txtValorOS.Name = "txtValorOS";
             this.txtValorOS.ReadOnly = true;
@@ -145,7 +132,7 @@
             this.txtValorTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtValorTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorTotal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtValorTotal.Location = new System.Drawing.Point(764, 461);
+            this.txtValorTotal.Location = new System.Drawing.Point(775, 451);
             this.txtValorTotal.MaxLength = 100;
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.ReadOnly = true;
@@ -156,6 +143,7 @@
             // 
             // btnRemover
             // 
+            this.btnRemover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRemover.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemover.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.btnRemover.FlatAppearance.BorderSize = 0;
@@ -163,7 +151,7 @@
             this.btnRemover.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
             this.btnRemover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemover.Image = ((System.Drawing.Image)(resources.GetObject("btnRemover.Image")));
-            this.btnRemover.Location = new System.Drawing.Point(30, 424);
+            this.btnRemover.Location = new System.Drawing.Point(31, 414);
             this.btnRemover.Margin = new System.Windows.Forms.Padding(0);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(25, 25);
@@ -175,11 +163,10 @@
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label6.Location = new System.Drawing.Point(27, 39);
+            this.label6.Location = new System.Drawing.Point(28, 29);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 309;
@@ -187,12 +174,11 @@
             // 
             // txtRRTART
             // 
-            this.txtRRTART.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtRRTART.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtRRTART.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRRTART.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRRTART.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtRRTART.Location = new System.Drawing.Point(442, 55);
+            this.txtRRTART.Location = new System.Drawing.Point(443, 45);
             this.txtRRTART.MaxLength = 100;
             this.txtRRTART.Name = "txtRRTART";
             this.txtRRTART.Size = new System.Drawing.Size(200, 23);
@@ -200,11 +186,10 @@
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label5.Location = new System.Drawing.Point(439, 39);
+            this.label5.Location = new System.Drawing.Point(440, 29);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 308;
@@ -212,12 +197,11 @@
             // 
             // txtDescricao
             // 
-            this.txtDescricao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtDescricao.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescricao.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDescricao.Location = new System.Drawing.Point(186, 55);
+            this.txtDescricao.Location = new System.Drawing.Point(187, 45);
             this.txtDescricao.MaxLength = 20;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(250, 23);
@@ -225,11 +209,10 @@
             // 
             // lblDescricao
             // 
-            this.lblDescricao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblDescricao.AutoSize = true;
             this.lblDescricao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescricao.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblDescricao.Location = new System.Drawing.Point(183, 39);
+            this.lblDescricao.Location = new System.Drawing.Point(184, 29);
             this.lblDescricao.Name = "lblDescricao";
             this.lblDescricao.Size = new System.Drawing.Size(59, 13);
             this.lblDescricao.TabIndex = 306;
@@ -237,12 +220,11 @@
             // 
             // dtpData
             // 
-            this.dtpData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dtpData.CalendarForeColor = System.Drawing.SystemColors.ControlLight;
             this.dtpData.CustomFormat = "";
             this.dtpData.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpData.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpData.Location = new System.Drawing.Point(30, 55);
+            this.dtpData.Location = new System.Drawing.Point(31, 45);
             this.dtpData.Name = "dtpData";
             this.dtpData.Size = new System.Drawing.Size(150, 23);
             this.dtpData.TabIndex = 304;
@@ -254,7 +236,7 @@
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblTotal.Location = new System.Drawing.Point(701, 461);
+            this.lblTotal.Location = new System.Drawing.Point(712, 451);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(58, 20);
             this.lblTotal.TabIndex = 300;
@@ -267,7 +249,7 @@
             this.lblSubtotal.AutoSize = true;
             this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubtotal.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lblSubtotal.Location = new System.Drawing.Point(704, 436);
+            this.lblSubtotal.Location = new System.Drawing.Point(715, 426);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(54, 13);
             this.lblSubtotal.TabIndex = 299;
@@ -279,7 +261,8 @@
             this.dgvOS.AllowUserToAddRows = false;
             this.dgvOS.AllowUserToDeleteRows = false;
             this.dgvOS.AllowUserToOrderColumns = true;
-            this.dgvOS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvOS.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvOS.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvOS.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -310,7 +293,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOS.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvOS.GridColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dgvOS.Location = new System.Drawing.Point(30, 118);
+            this.dgvOS.Location = new System.Drawing.Point(31, 108);
             this.dgvOS.Name = "dgvOS";
             this.dgvOS.ReadOnly = true;
             this.dgvOS.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -328,40 +311,8 @@
             this.dgvOS.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOS.ShowEditingIcon = false;
-            this.dgvOS.Size = new System.Drawing.Size(850, 300);
+            this.dgvOS.Size = new System.Drawing.Size(860, 300);
             this.dgvOS.TabIndex = 223;
-            // 
-            // btnFaturar
-            // 
-            this.btnFaturar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFaturar.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnFaturar.FlatAppearance.BorderColor = System.Drawing.SystemColors.HotTrack;
-            this.btnFaturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFaturar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFaturar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnFaturar.Location = new System.Drawing.Point(770, 530);
-            this.btnFaturar.Name = "btnFaturar";
-            this.btnFaturar.Size = new System.Drawing.Size(150, 25);
-            this.btnFaturar.TabIndex = 296;
-            this.btnFaturar.Text = "&Faturar";
-            this.btnFaturar.UseVisualStyleBackColor = false;
-            this.btnFaturar.Click += new System.EventHandler(this.btnFaturar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.BackColor = System.Drawing.SystemColors.Window;
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnCancelar.Location = new System.Drawing.Point(639, 530);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(125, 25);
-            this.btnCancelar.TabIndex = 297;
-            this.btnCancelar.Text = "&Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
             // 
             // id
             // 
@@ -472,16 +423,62 @@
             this.valor_deslocamento.ReadOnly = true;
             this.valor_deslocamento.Width = 55;
             // 
+            // btnFaturar
+            // 
+            this.btnFaturar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFaturar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnFaturar.FlatAppearance.BorderColor = System.Drawing.SystemColors.HotTrack;
+            this.btnFaturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFaturar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFaturar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnFaturar.Location = new System.Drawing.Point(761, 530);
+            this.btnFaturar.Name = "btnFaturar";
+            this.btnFaturar.Size = new System.Drawing.Size(150, 25);
+            this.btnFaturar.TabIndex = 296;
+            this.btnFaturar.Text = "&Faturar";
+            this.btnFaturar.UseVisualStyleBackColor = false;
+            this.btnFaturar.Click += new System.EventHandler(this.btnFaturar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.BackColor = System.Drawing.SystemColors.Window;
+            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnCancelar.Location = new System.Drawing.Point(630, 530);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(125, 25);
+            this.btnCancelar.TabIndex = 297;
+            this.btnCancelar.Text = "&Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // frmAddFatura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(929, 567);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(920, 580);
+            this.Controls.Add(this.pnlLinha2);
             this.Controls.Add(this.btnFaturar);
+            this.Controls.Add(this.txtValorDeslocamento);
             this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.txtValorOS);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Controls.Add(this.txtValorTotal);
+            this.Controls.Add(this.btnRemover);
+            this.Controls.Add(this.dgvOS);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblSubtotal);
+            this.Controls.Add(this.txtRRTART);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.dtpData);
+            this.Controls.Add(this.txtDescricao);
+            this.Controls.Add(this.lblDescricao);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddFatura";
@@ -490,10 +487,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Faturar";
             this.Load += new System.EventHandler(this.frmAddFatura_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

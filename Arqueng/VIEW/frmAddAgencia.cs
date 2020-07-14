@@ -11,10 +11,16 @@ namespace Arqueng.VIEW
     public partial class frmAddAgencia : Form
     {
 
-
+        frmPrincipal _frmPrincipal;
         AgenciasMODEL model = new AgenciasMODEL();
         AgenciasENT dado = new AgenciasENT();
 
+
+        public frmAddAgencia(frmPrincipal frm1)
+        {
+            InitializeComponent();
+            _frmPrincipal = frm1;
+        }
 
         public frmAddAgencia()
         {
@@ -22,9 +28,10 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmAddAgencia (string Agencia, string Nome, string Endereco, string Complemento, string Bairro, string Cidade, string CEP, string UF, string Contato, string Telefone1, string Telefone2, string Email)
+        public frmAddAgencia (frmPrincipal frm1, string Agencia, string Nome, string Endereco, string Complemento, string Bairro, string Cidade, string CEP, string UF, string Contato, string Telefone1, string Telefone2, string Email)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
             txtAgencia.Text = Agencia;
             txtNome.Text = Nome;
             txtEndereco.Text = Endereco;
@@ -46,7 +53,10 @@ namespace Arqueng.VIEW
             {
                 btnAddSave.Text = "&Salvar";
                 txtAgencia.Enabled = false;
+                txtNome.Focus();
             }
+            else
+                txtAgencia.Focus();
         }
 
 
@@ -104,6 +114,11 @@ namespace Arqueng.VIEW
                 }
             }
             this.Close();
+            if (this.FormBorderStyle != System.Windows.Forms.FormBorderStyle.FixedSingle)
+            {
+                frmAgencias formFilho = new frmAgencias(_frmPrincipal);
+                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            }
         }
 
         private void txtTelefone1_Enter(object sender, EventArgs e)
@@ -151,6 +166,17 @@ namespace Arqueng.VIEW
         {
             if (txtCEP.Text == "     -")
                 txtCEP.Mask = "";
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            if (this.FormBorderStyle != System.Windows.Forms.FormBorderStyle.FixedSingle)
+            {
+                frmAgencias formFilho = new frmAgencias(_frmPrincipal);
+                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            }
         }
     }
 

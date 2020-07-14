@@ -9,7 +9,7 @@ namespace Arqueng.VIEW
     public partial class frmAtividades : Form
     {
 
-
+        frmPrincipal _frmPrincipal;
         AtividadesMODEL model = new AtividadesMODEL();
 
 
@@ -37,10 +37,24 @@ namespace Arqueng.VIEW
             }
         }
 
+        public void ExcluirAtividade()
+        {
+            try
+            {
+                ENTIDADES.AtividadesENT dado = new ENTIDADES.AtividadesENT();
+                dado.Codigo = dgvAtividades.CurrentRow.Cells[0].Value.ToString();
+                model.DeleteAtividadeModel(dado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-        public frmAtividades()
+        public frmAtividades(frmPrincipal frm1)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
         }
 
 
@@ -49,17 +63,8 @@ namespace Arqueng.VIEW
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                try
-                {
-                    ENTIDADES.AtividadesENT dado = new ENTIDADES.AtividadesENT();
-                    dado.Codigo = dgvAtividades.CurrentRow.Cells[0].Value.ToString();
-                    model.DeleteAtividadeModel(dado);
-                    ListarAtividades();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                ExcluirAtividade();
+                ListarAtividades();
             }
 
         }
@@ -74,22 +79,38 @@ namespace Arqueng.VIEW
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            frmAddAtividade form = new frmAddAtividade(dgvAtividades.CurrentRow.Cells[0].Value.ToString(), dgvAtividades.CurrentRow.Cells[1].Value.ToString(), dgvAtividades.CurrentRow.Cells[2].Value.ToString(), dgvAtividades.CurrentRow.Cells[3].Value.ToString());
-            form.Text = "Alterar";
-            form.ShowDialog();
-            ListarAtividades();
+            frmAddAtividade formNeto = new frmAddAtividade
+                (
+                _frmPrincipal,
+                dgvAtividades.CurrentRow.Cells[0].Value.ToString(), 
+                dgvAtividades.CurrentRow.Cells[1].Value.ToString(), 
+                dgvAtividades.CurrentRow.Cells[2].Value.ToString(), 
+                dgvAtividades.CurrentRow.Cells[3].Value.ToString()
+                );
+            formNeto.Text = "Alterar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            frmAddAtividade form = new frmAddAtividade();
-            form.Text = "Adicionar";
-            form.ShowDialog();
-            ListarAtividades();
+            frmAddAtividade formNeto = new frmAddAtividade(_frmPrincipal);
+            formNeto.Text = "Adicionar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
-
+        private void dgvAtividades_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && dgvAtividades.CurrentCell.Selected)
+            {
+                var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.Yes)
+                {
+                    ExcluirAtividade();
+                    ListarAtividades();
+                }
+            }
+        }
     }
 
 

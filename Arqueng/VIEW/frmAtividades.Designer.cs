@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAtividades));
             this.dgvAtividades = new System.Windows.Forms.DataGridView();
             this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,9 +65,9 @@
             this.dgvAtividades.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvAtividades.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvAtividades.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAtividades.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAtividades.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAtividades.ColumnHeadersHeight = 35;
             this.dgvAtividades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAtividades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -81,14 +81,14 @@
             this.dgvAtividades.Name = "dgvAtividades";
             this.dgvAtividades.ReadOnly = true;
             this.dgvAtividades.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAtividades.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAtividades.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvAtividades.RowHeadersVisible = false;
             this.dgvAtividades.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            this.dgvAtividades.RowsDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            this.dgvAtividades.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvAtividades.RowTemplate.Height = 40;
             this.dgvAtividades.RowTemplate.ReadOnly = true;
             this.dgvAtividades.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -98,15 +98,16 @@
             this.dgvAtividades.Size = new System.Drawing.Size(820, 445);
             this.dgvAtividades.TabIndex = 4;
             this.dgvAtividades.DoubleClick += new System.EventHandler(this.btnEditar_Click);
+            this.dgvAtividades.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAtividades_KeyDown);
             // 
             // codigo
             // 
             this.codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.codigo.DataPropertyName = "codigo";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle23.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.codigo.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.codigo.DefaultCellStyle = dataGridViewCellStyle2;
             this.codigo.HeaderText = "Código";
             this.codigo.Name = "codigo";
             this.codigo.ReadOnly = true;
@@ -116,10 +117,10 @@
             // 
             this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descricao.DataPropertyName = "descricao";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 10F);
-            dataGridViewCellStyle24.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.descricao.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.descricao.DefaultCellStyle = dataGridViewCellStyle3;
             this.descricao.HeaderText = "Descrição";
             this.descricao.Name = "descricao";
             this.descricao.ReadOnly = true;
@@ -128,9 +129,9 @@
             // 
             this.valor_atividade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.valor_atividade.DataPropertyName = "valor_atividade";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.valor_atividade.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.valor_atividade.DefaultCellStyle = dataGridViewCellStyle4;
             this.valor_atividade.HeaderText = "Atividade (R$)";
             this.valor_atividade.Name = "valor_atividade";
             this.valor_atividade.ReadOnly = true;
@@ -140,9 +141,9 @@
             // 
             this.valor_deslocamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.valor_deslocamento.DataPropertyName = "valor_deslocamento";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.valor_deslocamento.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.valor_deslocamento.DefaultCellStyle = dataGridViewCellStyle5;
             this.valor_deslocamento.HeaderText = "Deslocamento (R$)";
             this.valor_deslocamento.Name = "valor_deslocamento";
             this.valor_deslocamento.ReadOnly = true;
@@ -164,7 +165,7 @@
             this.btnAdicionar.Size = new System.Drawing.Size(35, 35);
             this.btnAdicionar.TabIndex = 1;
             this.btnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpAtividades.SetToolTip(this.btnAdicionar, "Adicionar nova atividade");
+            this.ttpAtividades.SetToolTip(this.btnAdicionar, "Adicionar Atividade");
             this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
@@ -183,7 +184,7 @@
             this.btnExcluir.Size = new System.Drawing.Size(35, 35);
             this.btnExcluir.TabIndex = 3;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpAtividades.SetToolTip(this.btnExcluir, "Excluir atividade");
+            this.ttpAtividades.SetToolTip(this.btnExcluir, "Excluir Atividade");
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
@@ -202,7 +203,7 @@
             this.btnEditar.Size = new System.Drawing.Size(35, 35);
             this.btnEditar.TabIndex = 2;
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpAtividades.SetToolTip(this.btnEditar, "Editar atividade");
+            this.ttpAtividades.SetToolTip(this.btnEditar, "Editar Atividade");
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 

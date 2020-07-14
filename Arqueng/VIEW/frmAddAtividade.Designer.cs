@@ -49,7 +49,7 @@
             this.btnAddSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddSave.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSave.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAddSave.Location = new System.Drawing.Point(217, 290);
+            this.btnAddSave.Location = new System.Drawing.Point(490, 403);
             this.btnAddSave.Name = "btnAddSave";
             this.btnAddSave.Size = new System.Drawing.Size(125, 25);
             this.btnAddSave.TabIndex = 197;
@@ -64,7 +64,7 @@
             this.txtDeslocamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDeslocamento.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDeslocamento.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDeslocamento.Location = new System.Drawing.Point(32, 204);
+            this.txtDeslocamento.Location = new System.Drawing.Point(305, 317);
             this.txtDeslocamento.MaxLength = 13;
             this.txtDeslocamento.Name = "txtDeslocamento";
             this.txtDeslocamento.Size = new System.Drawing.Size(150, 23);
@@ -76,7 +76,7 @@
             this.lblDeslocamento.AutoSize = true;
             this.lblDeslocamento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDeslocamento.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblDeslocamento.Location = new System.Drawing.Point(29, 188);
+            this.lblDeslocamento.Location = new System.Drawing.Point(302, 301);
             this.lblDeslocamento.Name = "lblDeslocamento";
             this.lblDeslocamento.Size = new System.Drawing.Size(126, 13);
             this.lblDeslocamento.TabIndex = 201;
@@ -89,7 +89,7 @@
             this.txtValor.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtValor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValor.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtValor.Location = new System.Drawing.Point(32, 157);
+            this.txtValor.Location = new System.Drawing.Point(305, 270);
             this.txtValor.MaxLength = 13;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(150, 23);
@@ -101,7 +101,7 @@
             this.lblValor.AutoSize = true;
             this.lblValor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValor.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblValor.Location = new System.Drawing.Point(29, 141);
+            this.lblValor.Location = new System.Drawing.Point(302, 254);
             this.lblValor.Name = "lblValor";
             this.lblValor.Size = new System.Drawing.Size(100, 13);
             this.lblValor.TabIndex = 200;
@@ -114,7 +114,7 @@
             this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCodigo.Location = new System.Drawing.Point(32, 63);
+            this.txtCodigo.Location = new System.Drawing.Point(305, 176);
             this.txtCodigo.MaxLength = 10;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(150, 23);
@@ -126,7 +126,7 @@
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblCodigo.Location = new System.Drawing.Point(29, 47);
+            this.lblCodigo.Location = new System.Drawing.Point(302, 160);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(53, 13);
             this.lblCodigo.TabIndex = 199;
@@ -139,7 +139,7 @@
             this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescricao.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDescricao.Location = new System.Drawing.Point(32, 110);
+            this.txtDescricao.Location = new System.Drawing.Point(305, 223);
             this.txtDescricao.MaxLength = 100;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(310, 23);
@@ -151,7 +151,7 @@
             this.lblDescricao.AutoSize = true;
             this.lblDescricao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescricao.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblDescricao.Location = new System.Drawing.Point(29, 94);
+            this.lblDescricao.Location = new System.Drawing.Point(302, 207);
             this.lblDescricao.Name = "lblDescricao";
             this.lblDescricao.Size = new System.Drawing.Size(56, 13);
             this.lblDescricao.TabIndex = 198;
@@ -161,23 +161,23 @@
             // 
             this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCancelar.BackColor = System.Drawing.SystemColors.Window;
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowText;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnCancelar.Location = new System.Drawing.Point(86, 290);
+            this.btnCancelar.Location = new System.Drawing.Point(359, 403);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(125, 25);
             this.btnCancelar.TabIndex = 203;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // pnlLinha2
             // 
             this.pnlLinha2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlLinha2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pnlLinha2.Location = new System.Drawing.Point(32, 258);
+            this.pnlLinha2.Location = new System.Drawing.Point(305, 371);
             this.pnlLinha2.Name = "pnlLinha2";
             this.pnlLinha2.Size = new System.Drawing.Size(310, 1);
             this.pnlLinha2.TabIndex = 233;
@@ -187,7 +187,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(374, 354);
+            this.ClientSize = new System.Drawing.Size(920, 580);
             this.Controls.Add(this.pnlLinha2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAddSave);
@@ -199,7 +199,7 @@
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.lblDescricao);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddAtividade";

@@ -10,7 +10,7 @@ namespace Arqueng.VIEW
     public partial class frmOSFluxo : Form
     {
 
-
+        frmPrincipal _frmPrincipal;
         OsMODEL model = new OsMODEL();
         OsENT dado = new OsENT();
         Control _lastEnteredControl;
@@ -58,8 +58,9 @@ namespace Arqueng.VIEW
         {
             dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
             model.BuscarOsModel(dado);
-            frmAddOS form = new frmAddOS
+            frmAddOS formNeto = new frmAddOS
             (
+                _frmPrincipal, this.Name,
                 dado.Titulo,
                 dado.Referencia,
                 Convert.ToString(dado.Data_ordem),
@@ -78,12 +79,13 @@ namespace Arqueng.VIEW
                 dado.Obs,
                 dado.Fatura_cod
             );
-            form.Text = "Alterar";
-            form.ShowDialog();
-            ListarOS(dgvRecebidas, "RECEBIDA");
-            ListarOS(dgvPendentes, "PENDENTE");
-            ListarOS(dgvVistoriadas, "VISTORIADA");
-            ListarOS(dgvConcluidas, "CONCLUÍDA");
+            formNeto.Text = "Alterar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+            //form.ShowDialog();
+            //ListarOS(dgvRecebidas, "RECEBIDA");
+            //ListarOS(dgvPendentes, "PENDENTE");
+            //ListarOS(dgvVistoriadas, "VISTORIADA");
+            //ListarOS(dgvConcluidas, "CONCLUÍDA");
         }
 
 
@@ -111,9 +113,10 @@ namespace Arqueng.VIEW
 
         //==============INICIALIZAÇÃO DO FORMULÁRIO==============//
         //=======================================================//
-        public frmOSFluxo()
+        public frmOSFluxo(frmPrincipal frm1)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
 
             foreach (Control ctrl in Controls)
             {
@@ -217,13 +220,9 @@ namespace Arqueng.VIEW
         //====================================================//
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            frmAddOS form = new frmAddOS();
-            form.Text = "Adicionar";
-            form.ShowDialog();
-            ListarOS(dgvRecebidas, "RECEBIDA");
-            ListarOS(dgvPendentes, "PENDENTE");
-            ListarOS(dgvVistoriadas, "VISTORIADA");
-            ListarOS(dgvConcluidas, "CONCLUÍDA");
+            frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
+            formNeto.Text = "Adicionar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
 
@@ -297,9 +296,15 @@ namespace Arqueng.VIEW
         //=======================================================//
         private void btnFaturar_Click(object sender, EventArgs e)
         {
-            frmAddFatura form = new frmAddFatura();
-            form.ShowDialog();
-            ListarOS(dgvConcluidas, "CONCLUÍDA");
+            if (dgvConcluidas.Rows.Count > 0)
+            {
+                _frmPrincipal.lblTitulo.Text = "Fatura";
+                _frmPrincipal.lblTitulo.Refresh();
+                frmAddFatura formNeto = new frmAddFatura(_frmPrincipal);
+                _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+            }
+            else
+                MessageBox.Show("Não há ordens concluídas à faturar!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 

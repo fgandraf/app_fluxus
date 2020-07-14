@@ -120,12 +120,12 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnRemover.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAADWSURBVDhPtZA9CsJgEERTWFlaps4BUqYQkVTiWcRCLCwT
-        xNoTeAzxFCKWOYCVZQgp9Y1uLL5EiX8DDzazM8tHvK+VJEkG5YdkOpDDHOI3mUFeHYjtQa1FZwiFhkIf
-        5rfW/w/g9WAMI81mP4Q3gLJ2gFkstISLoVmepeoHdrCBLkygKrpMQRll1bkdSM1YQQfO0FQW2imzBHVS
-        e9BdGAEoeIS+gzztAovXxdK30AnWDvK08y3eLAJ7CzZxAEs+EYEI9GPdsrzIYq9FMIStlYTm0Na/lOdd
-        ASSgKpR1nxWAAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAANZJREFUOE+1kD0KwmAQRFNYWVqmzgFSphCRVOJZxEIsLBPE2hN4DPEUIpY5gJVl
+        CCn1jW4svkSJfwMPNrMzy0e8r5UkSQblh2Q6kMMc4jeZQV4diO1BrUVnCIWGQh/mt9b/D+D1YAwjzWY/
+        hDeAsnaAWSy0hIuhWZ6l6gd2sIEuTKAqukxBGWXVuR1IzVhBB87QVBbaKbMEdVJ70F0YASh4hL6DPO0C
+        i9fF0rfQCdYO8rTzLd4sAnsLNnEASz4RgQj0Y92yvMhir0UwhK2VhObQ1r+U510BJKAqlHWfFYAAAAAA
+        SUVORK5CYII=
 </value>
   </data>
   <metadata name="ttpFatura.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -160,5 +160,8 @@
   </metadata>
   <metadata name="valor_deslocamento.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
   </metadata>
 </root>

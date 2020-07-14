@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProfissionais));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -59,6 +60,7 @@
             this.telefone1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ttpProfissionais = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfissionais)).BeginInit();
             this.SuspendLayout();
@@ -113,6 +115,7 @@
             this.btnEditar.Size = new System.Drawing.Size(35, 35);
             this.btnEditar.TabIndex = 212;
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpProfissionais.SetToolTip(this.btnEditar, "Editar Profissional");
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
@@ -131,6 +134,7 @@
             this.btnExcluir.Size = new System.Drawing.Size(35, 35);
             this.btnExcluir.TabIndex = 213;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpProfissionais.SetToolTip(this.btnExcluir, "Excluir Profissional");
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
@@ -150,6 +154,7 @@
             this.btnAdicionar.Size = new System.Drawing.Size(35, 35);
             this.btnAdicionar.TabIndex = 211;
             this.btnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpProfissionais.SetToolTip(this.btnAdicionar, "Adicionar Profissional");
             this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
@@ -364,5 +369,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone1;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone2;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private System.Windows.Forms.ToolTip ttpProfissionais;
     }
 }

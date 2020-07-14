@@ -9,7 +9,7 @@ namespace Arqueng.VIEW
     public partial class frmOSLista : Form
     {
 
-
+        frmPrincipal _frmPrincipal;
         OsMODEL model = new OsMODEL();
         OsENT dado = new OsENT();
 
@@ -43,16 +43,32 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmOSLista()
+        public void ExcluirOS()
+        {
+            try
+            {
+                ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
+                dado.Referencia = dgvOS.CurrentRow.Cells["referencia"].Value.ToString();
+                model.DeleteOsModel(dado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        public frmOSLista(frmPrincipal frm1)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
         }
 
 
         private void frmOS_Load(object sender, EventArgs e)
         {
             ListarOS();
-            //txtPesquisar.Focus();
+            txtPesquisar.Focus();
         }
 
 
@@ -69,55 +85,46 @@ namespace Arqueng.VIEW
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                try
-                {
-                    ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
-                    dado.Referencia = dgvOS.CurrentRow.Cells["referencia"].Value.ToString();
-                    model.DeleteOsModel(dado);
-                    ListarOS();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                ExcluirOS();
+                ListarOS();
+
             }
         }
 
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            frmAddOS form = new frmAddOS
+            frmAddOS formNeto = new frmAddOS
             (
-                dgvOS.CurrentRow.Cells[1].Value.ToString(),//titulo
-                dgvOS.CurrentRow.Cells[2].Value.ToString(),//referencia
-                dgvOS.CurrentRow.Cells[3].Value.ToString(),//data_ordem
-                dgvOS.CurrentRow.Cells[4].Value.ToString(),//prazo_execucao
-                dgvOS.CurrentRow.Cells[5].Value.ToString(),//profissional_cod
-                dgvOS.CurrentRow.Cells[6].Value.ToString(),//atividade_cod
-                dgvOS.CurrentRow.Cells[7].Value.ToString(),//siopi
-                dgvOS.CurrentRow.Cells[8].Value.ToString(),//nome_cliente
-                dgvOS.CurrentRow.Cells[9].Value.ToString(),//cidade
-                dgvOS.CurrentRow.Cells[10].Value.ToString(),//nome_contato
-                dgvOS.CurrentRow.Cells[11].Value.ToString(),//telefone_contato
-                dgvOS.CurrentRow.Cells[12].Value.ToString(),//status
-                dgvOS.CurrentRow.Cells[13].Value.ToString(),//data_pendente
-                dgvOS.CurrentRow.Cells[14].Value.ToString(),//data_vistoria
-                dgvOS.CurrentRow.Cells[15].Value.ToString(),//data_concluida
-                dgvOS.CurrentRow.Cells[16].Value.ToString(),//obs
-                dgvOS.CurrentRow.Cells[17].Value.ToString()//fatura_cod   
+                _frmPrincipal, this.Name,
+                dgvOS.CurrentRow.Cells["titulo"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["referencia"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["data_ordem"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["prazo_execucao"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["profissional_cod"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["atividade_cod"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["siopi"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["nome_cliente"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["cidade"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["nome_contato"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["telefone_contato"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["status"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["data_pendente"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["data_vistoria"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["data_concluida"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["obs"].Value.ToString(),
+                dgvOS.CurrentRow.Cells["fatura_cod"].Value.ToString()
             );
-            form.Text = "Alterar";
-            form.ShowDialog();
-            ListarOS();
+            formNeto.Text = "Alterar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            frmAddOS form = new frmAddOS();
-            form.Text = "Adicionar";
-            form.ShowDialog();
-            ListarOS();
+            frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
+            formNeto.Text = "Adicionar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
 
@@ -125,6 +132,20 @@ namespace Arqueng.VIEW
         {
             ListarOS();
         }
+
+        private void dgvOS_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && dgvOS.CurrentCell.Selected)
+            {
+                var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.Yes)
+                {
+                    ExcluirOS();
+                    ListarOS();
+                }
+            }
+        }
+
 
     }
 

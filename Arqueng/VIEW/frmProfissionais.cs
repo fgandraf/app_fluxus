@@ -79,8 +79,9 @@ namespace Arqueng.VIEW
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            frmAddProfissional formneto = new frmAddProfissional
-                (_frmPrincipal, 
+            frmAddProfissional formNeto = new frmAddProfissional
+                (
+                _frmPrincipal, 
                 dgvProfissionais.CurrentRow.Cells[0].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells[1].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells[2].Value.ToString(),
@@ -92,16 +93,16 @@ namespace Arqueng.VIEW
                 dgvProfissionais.CurrentRow.Cells[8].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells[9].Value.ToString()
                 );
-            formneto.Text = "Alterar";
-            _frmPrincipal.AbrirFormInPanel(formneto, _frmPrincipal.pnlMain);
+            formNeto.Text = "Alterar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            frmAddProfissional formneto = new frmAddProfissional(_frmPrincipal);
-            formneto.Text = "Adicionar";
-            _frmPrincipal.AbrirFormInPanel(formneto, _frmPrincipal.pnlMain);
+            frmAddProfissional formNeto = new frmAddProfissional(_frmPrincipal);
+            formNeto.Text = "Adicionar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
         private void dgvProfissionais_KeyDown(object sender, KeyEventArgs e)

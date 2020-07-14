@@ -38,7 +38,7 @@
             // panel4
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel4.BackColor = System.Drawing.SystemColors.Window;
+            this.panel4.BackColor = System.Drawing.Color.Gainsboro;
             this.panel4.Location = new System.Drawing.Point(469, 366);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(410, 150);
@@ -47,7 +47,7 @@
             // panel5
             // 
             this.panel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel5.BackColor = System.Drawing.SystemColors.Window;
+            this.panel5.BackColor = System.Drawing.Color.Gainsboro;
             this.panel5.Location = new System.Drawing.Point(35, 366);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(410, 150);
@@ -56,7 +56,7 @@
             // panel3
             // 
             this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel3.BackColor = System.Drawing.SystemColors.Window;
+            this.panel3.BackColor = System.Drawing.Color.Gainsboro;
             this.panel3.Location = new System.Drawing.Point(35, 200);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(844, 150);
@@ -65,7 +65,7 @@
             // panel2
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.BackColor = System.Drawing.Color.Gainsboro;
             this.panel2.Location = new System.Drawing.Point(469, 34);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(410, 150);
@@ -75,7 +75,7 @@
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
             this.panel1.Location = new System.Drawing.Point(35, 34);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(410, 150);
@@ -85,7 +85,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Lavender;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(920, 580);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel5);

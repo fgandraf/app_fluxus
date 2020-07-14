@@ -1790,14 +1790,6 @@
         vAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="btnAppMaximizar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
-        CAABFVgAADqXAAAXb9daH5AAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABMSURBVDhP7cw7DgAgCARR739p
-        /DQaHBN0LSleM4EtZvYVRgVGBUYFRgXHliP8X7eFEQ/HqxycHWMOkuvBCP/XbUGFUYFRgVGB8Z2VCt/D
-        Y9Xmj+X2AAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="btnAppFechar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
@@ -1805,6 +1797,14 @@
         //9P3+PBS2SlQqFDW0wOc5k1A0LN3VNBGQFlBJQRUEZgaXaXUk7ahDZ9Q1snhA62/bgoOtpEJz7ocBYT
         KD/awEpMoGypIRezmEDZkhqssZxfpsBKFOXocBbtxCuzH3YElBFQRkAZAeV/3B7Vr3Q1mGsjHgAAAABJ
         RU5ErkJggg==
+</value>
+  </data>
+  <data name="btnAppMaximizar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
+        CAABFVgAADqXAAAXb9daH5AAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABMSURBVDhP7cw7DgAgCARR739p
+        /DQaHBN0LSleM4EtZvYVRgVGBUYFRgXHliP8X7eFEQ/HqxycHWMOkuvBCP/XbUGFUYFRgVGB8Z2VCt/D
+        Y9Xmj+X2AAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="btnAppRestaurar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

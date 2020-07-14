@@ -126,7 +126,7 @@ namespace Arqueng
             pnlCtrlAtividades.Show();
             lblTitulo.Text = "Atividades";
 
-            frmAtividades frm = new frmAtividades();
+            frmAtividades frm = new frmAtividades(this);
             AbrirFormInPanel(frm, pnlMain);
         }
 
@@ -139,7 +139,7 @@ namespace Arqueng
             pnlCtrlAgencias.Show();
             lblTitulo.Text = "Agências Demandantes";
 
-            frmAgencias frm = new frmAgencias();
+            frmAgencias frm = new frmAgencias(this);
             AbrirFormInPanel(frm, pnlMain);
         }
 
@@ -259,7 +259,7 @@ namespace Arqueng
             pnlCtrlOS.Show();
             lblTitulo.Text = "Ordens de Serviços - Em lista";
 
-            frmOSLista frm = new frmOSLista();
+            frmOSLista frm = new frmOSLista(this);
             AbrirFormInPanel(frm, pnlMain);
         }
 
@@ -300,7 +300,7 @@ namespace Arqueng
             pnlCtrlFluxo.Show();
             lblTitulo.Text = "Ordens de Serviços - Em fluxo";
 
-            frmOSFluxo frm = new frmOSFluxo();
+            frmOSFluxo frm = new frmOSFluxo(this);
             AbrirFormInPanel(frm, pnlMain);
         }
 

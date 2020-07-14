@@ -10,6 +10,8 @@ namespace Arqueng.VIEW
     public partial class frmAddOS : Form
     {
 
+        frmPrincipal _frmPrincipal;
+        string _formFilho;
 
         OsENT dado = new OsENT();
         OsMODEL osmodel = new OsMODEL();
@@ -120,17 +122,22 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmAddOS()
+        public frmAddOS(frmPrincipal frm1, string frmfilho)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
+            _formFilho = frmfilho;
             ListarProfissionais();
             ListarAtividades();
         }
 
 
-        public frmAddOS(string Titulo, string Referencia, string DataOrdem, string Prazo_execucao, string Profissional_cod, string Atividade_cod, string Siopi, string Nome_cliente, string Cidade, string Nome_contato, string Telefone_contato, string Status, string Data_pendente, string Data_vistoria, string Data_concluida, string OBS, string Fatura_cod)
+        public frmAddOS(frmPrincipal frm1, string frmfilho, string Titulo, string Referencia, string DataOrdem, string Prazo_execucao, string Profissional_cod, string Atividade_cod, string Siopi, string Nome_cliente, string Cidade, string Nome_contato, string Telefone_contato, string Status, string Data_pendente, string Data_vistoria, string Data_concluida, string OBS, string Fatura_cod)
         {
             InitializeComponent();
+            _frmPrincipal = frm1;
+            _formFilho = frmfilho;
+
             ListarProfissionais();
             ListarAtividades();
 
@@ -214,6 +221,7 @@ namespace Arqueng.VIEW
                 cboProfissional.Text = null;
                 dtpDataExecucao.Value = dtpDataExecucao.Value.AddDays(5);
             }
+            dtpDataOrdem.Focus();
         }
 
 
@@ -291,6 +299,18 @@ namespace Arqueng.VIEW
                 }
             }
             this.Close();
+            if (_formFilho == "frmOSLista")
+            {
+                frmOSLista formFilho = new frmOSLista(_frmPrincipal);
+                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            }
+            else
+            {
+                frmOSFluxo formFilho = new frmOSFluxo(_frmPrincipal);
+                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            }
+
+
         }
 
 
@@ -354,7 +374,7 @@ namespace Arqueng.VIEW
             }
             else
                 if (txtReferencia.Text.Substring(5, 4) != agencia)
-                    BuscarAgencia();
+                BuscarAgencia();
         }
 
 
@@ -364,6 +384,9 @@ namespace Arqueng.VIEW
             dado.Agencia = txtReferencia.Text.Substring(5, 4);
             frmAddAgencia form = new frmAddAgencia();
             form.Text = "Adicionar";
+
+            form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            form.Size = new System.Drawing.Size(400, 600);
             form.ShowDialog();
             BuscarAgencia();
             txtCidade.Focus();
@@ -392,7 +415,20 @@ namespace Arqueng.VIEW
             txtReferencia.Mask = "0000,0000,000000000/0000,00,00,00";
         }
 
-
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            if (_formFilho == "frmOSLista")
+            {
+                frmOSLista formFilho = new frmOSLista(_frmPrincipal);
+                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            }
+            else
+            {
+                frmOSFluxo formFilho = new frmOSFluxo(_frmPrincipal);
+                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            }
+        }
     }
 
 

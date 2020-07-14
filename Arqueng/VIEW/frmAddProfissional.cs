@@ -46,7 +46,10 @@ namespace Arqueng.VIEW
             {
                 btnAddSave.Text = "&Salvar";
                 txtCodigo.Enabled = false;
+                txtNome.Focus();
             }
+            else
+                txtCodigo.Focus();
         }
 
 
@@ -104,8 +107,8 @@ namespace Arqueng.VIEW
             }
 
             this.Close();
-            frmProfissionais formfilho = new frmProfissionais(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formfilho, _frmPrincipal.pnlMain);
+            frmProfissionais formFilho = new frmProfissionais(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
         }
 
 

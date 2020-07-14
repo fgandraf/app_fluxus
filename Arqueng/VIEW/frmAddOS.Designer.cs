@@ -76,7 +76,6 @@
             this.pnlStatus = new System.Windows.Forms.Panel();
             this.txtCodFatura = new System.Windows.Forms.TextBox();
             this.lblFaturada = new System.Windows.Forms.Label();
-            this.chkFaturada = new System.Windows.Forms.CheckBox();
             this.pnlOBS = new System.Windows.Forms.Panel();
             this.txtOBS = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -97,17 +96,17 @@
             // 
             this.btnCancelar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnCancelar.BackColor = System.Drawing.SystemColors.Window;
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnCancelar.Location = new System.Drawing.Point(273, 46);
+            this.btnCancelar.Location = new System.Drawing.Point(430, 46);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(125, 25);
             this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAddSave
             // 
@@ -117,7 +116,7 @@
             this.btnAddSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddSave.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddSave.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnAddSave.Location = new System.Drawing.Point(404, 46);
+            this.btnAddSave.Location = new System.Drawing.Point(561, 46);
             this.btnAddSave.Name = "btnAddSave";
             this.btnAddSave.Size = new System.Drawing.Size(150, 25);
             this.btnAddSave.TabIndex = 0;
@@ -212,7 +211,7 @@
             this.lblReferencia.AutoSize = true;
             this.lblReferencia.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblReferencia.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblReferencia.Location = new System.Drawing.Point(99, 104);
+            this.lblReferencia.Location = new System.Drawing.Point(256, 104);
             this.lblReferencia.Name = "lblReferencia";
             this.lblReferencia.Size = new System.Drawing.Size(69, 13);
             this.lblReferencia.TabIndex = 0;
@@ -236,7 +235,7 @@
             this.lblDataExecucao.AutoSize = true;
             this.lblDataExecucao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataExecucao.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblDataExecucao.Location = new System.Drawing.Point(377, 206);
+            this.lblDataExecucao.Location = new System.Drawing.Point(534, 206);
             this.lblDataExecucao.Name = "lblDataExecucao";
             this.lblDataExecucao.Size = new System.Drawing.Size(85, 13);
             this.lblDataExecucao.TabIndex = 347;
@@ -248,7 +247,7 @@
             this.txtReferencia.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtReferencia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReferencia.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtReferencia.Location = new System.Drawing.Point(99, 120);
+            this.txtReferencia.Location = new System.Drawing.Point(256, 120);
             this.txtReferencia.Name = "txtReferencia";
             this.txtReferencia.Size = new System.Drawing.Size(340, 23);
             this.txtReferencia.TabIndex = 0;
@@ -261,7 +260,7 @@
             this.lblAtividade.AutoSize = true;
             this.lblAtividade.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAtividade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblAtividade.Location = new System.Drawing.Point(96, 320);
+            this.lblAtividade.Location = new System.Drawing.Point(253, 320);
             this.lblAtividade.Name = "lblAtividade";
             this.lblAtividade.Size = new System.Drawing.Size(55, 13);
             this.lblAtividade.TabIndex = 350;
@@ -292,7 +291,7 @@
             this.chkSiopi.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkSiopi.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.chkSiopi.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.chkSiopi.Location = new System.Drawing.Point(445, 124);
+            this.chkSiopi.Location = new System.Drawing.Point(602, 124);
             this.chkSiopi.Name = "chkSiopi";
             this.chkSiopi.Size = new System.Drawing.Size(44, 15);
             this.chkSiopi.TabIndex = 1;
@@ -305,7 +304,7 @@
             this.lblProfissional.AutoSize = true;
             this.lblProfissional.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProfissional.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblProfissional.Location = new System.Drawing.Point(97, 263);
+            this.lblProfissional.Location = new System.Drawing.Point(254, 263);
             this.lblProfissional.Name = "lblProfissional";
             this.lblProfissional.Size = new System.Drawing.Size(67, 13);
             this.lblProfissional.TabIndex = 355;
@@ -317,7 +316,7 @@
             this.lblCliente.AutoSize = true;
             this.lblCliente.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCliente.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblCliente.Location = new System.Drawing.Point(96, 384);
+            this.lblCliente.Location = new System.Drawing.Point(253, 384);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(93, 13);
             this.lblCliente.TabIndex = 358;
@@ -330,7 +329,7 @@
             this.txtNomeCliente.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomeCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeCliente.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtNomeCliente.Location = new System.Drawing.Point(99, 400);
+            this.txtNomeCliente.Location = new System.Drawing.Point(256, 400);
             this.txtNomeCliente.MaxLength = 100;
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.Size = new System.Drawing.Size(390, 23);
@@ -343,7 +342,7 @@
             this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCidade.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCidade.Location = new System.Drawing.Point(99, 222);
+            this.txtCidade.Location = new System.Drawing.Point(256, 222);
             this.txtCidade.MaxLength = 50;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(274, 23);
@@ -355,7 +354,7 @@
             this.lblCidade.AutoSize = true;
             this.lblCidade.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCidade.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblCidade.Location = new System.Drawing.Point(96, 206);
+            this.lblCidade.Location = new System.Drawing.Point(253, 206);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(43, 13);
             this.lblCidade.TabIndex = 360;
@@ -367,7 +366,7 @@
             this.lblNomeContato.AutoSize = true;
             this.lblNomeContato.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNomeContato.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblNomeContato.Location = new System.Drawing.Point(96, 447);
+            this.lblNomeContato.Location = new System.Drawing.Point(253, 447);
             this.lblNomeContato.Name = "lblNomeContato";
             this.lblNomeContato.Size = new System.Drawing.Size(99, 13);
             this.lblNomeContato.TabIndex = 362;
@@ -380,7 +379,7 @@
             this.txtNomeContato.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomeContato.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeContato.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtNomeContato.Location = new System.Drawing.Point(99, 463);
+            this.txtNomeContato.Location = new System.Drawing.Point(256, 463);
             this.txtNomeContato.MaxLength = 100;
             this.txtNomeContato.Name = "txtNomeContato";
             this.txtNomeContato.Size = new System.Drawing.Size(264, 23);
@@ -392,7 +391,7 @@
             this.lblTelefoneContato.AutoSize = true;
             this.lblTelefoneContato.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefoneContato.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTelefoneContato.Location = new System.Drawing.Point(366, 446);
+            this.lblTelefoneContato.Location = new System.Drawing.Point(523, 446);
             this.lblTelefoneContato.Name = "lblTelefoneContato";
             this.lblTelefoneContato.Size = new System.Drawing.Size(113, 13);
             this.lblTelefoneContato.TabIndex = 364;
@@ -404,7 +403,7 @@
             this.txtTelefoneContato.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtTelefoneContato.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefoneContato.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtTelefoneContato.Location = new System.Drawing.Point(369, 463);
+            this.txtTelefoneContato.Location = new System.Drawing.Point(526, 463);
             this.txtTelefoneContato.Name = "txtTelefoneContato";
             this.txtTelefoneContato.Size = new System.Drawing.Size(120, 23);
             this.txtTelefoneContato.TabIndex = 8;
@@ -418,7 +417,7 @@
             this.txtAgenciaEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAgenciaEmail.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAgenciaEmail.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAgenciaEmail.Location = new System.Drawing.Point(241, 160);
+            this.txtAgenciaEmail.Location = new System.Drawing.Point(398, 160);
             this.txtAgenciaEmail.MaxLength = 100;
             this.txtAgenciaEmail.Name = "txtAgenciaEmail";
             this.txtAgenciaEmail.ReadOnly = true;
@@ -433,7 +432,7 @@
             this.txtAgenciaTelefone.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAgenciaTelefone.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAgenciaTelefone.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAgenciaTelefone.Location = new System.Drawing.Point(99, 160);
+            this.txtAgenciaTelefone.Location = new System.Drawing.Point(256, 160);
             this.txtAgenciaTelefone.MaxLength = 100;
             this.txtAgenciaTelefone.Name = "txtAgenciaTelefone";
             this.txtAgenciaTelefone.ReadOnly = true;
@@ -448,7 +447,7 @@
             this.txtAgenciaNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAgenciaNome.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAgenciaNome.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.txtAgenciaNome.Location = new System.Drawing.Point(99, 145);
+            this.txtAgenciaNome.Location = new System.Drawing.Point(256, 145);
             this.txtAgenciaNome.MaxLength = 100;
             this.txtAgenciaNome.Name = "txtAgenciaNome";
             this.txtAgenciaNome.ReadOnly = true;
@@ -461,7 +460,7 @@
             this.pnlMolduraProfissional.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlMolduraProfissional.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMolduraProfissional.Controls.Add(this.cboProfissional);
-            this.pnlMolduraProfissional.Location = new System.Drawing.Point(100, 279);
+            this.pnlMolduraProfissional.Location = new System.Drawing.Point(257, 279);
             this.pnlMolduraProfissional.Name = "pnlMolduraProfissional";
             this.pnlMolduraProfissional.Size = new System.Drawing.Size(110, 26);
             this.pnlMolduraProfissional.TabIndex = 4;
@@ -490,7 +489,7 @@
             this.dtpDataExecucao.CustomFormat = "";
             this.dtpDataExecucao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpDataExecucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataExecucao.Location = new System.Drawing.Point(379, 222);
+            this.dtpDataExecucao.Location = new System.Drawing.Point(536, 222);
             this.dtpDataExecucao.Name = "dtpDataExecucao";
             this.dtpDataExecucao.Size = new System.Drawing.Size(110, 23);
             this.dtpDataExecucao.TabIndex = 3;
@@ -500,7 +499,7 @@
             this.pnlMolduraAtividade.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlMolduraAtividade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMolduraAtividade.Controls.Add(this.cboAtividade);
-            this.pnlMolduraAtividade.Location = new System.Drawing.Point(99, 336);
+            this.pnlMolduraAtividade.Location = new System.Drawing.Point(256, 336);
             this.pnlMolduraAtividade.Name = "pnlMolduraAtividade";
             this.pnlMolduraAtividade.Size = new System.Drawing.Size(110, 26);
             this.pnlMolduraAtividade.TabIndex = 5;
@@ -511,7 +510,7 @@
             this.lblNomeProfissional.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblNomeProfissional.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNomeProfissional.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblNomeProfissional.Location = new System.Drawing.Point(219, 279);
+            this.lblNomeProfissional.Location = new System.Drawing.Point(376, 279);
             this.lblNomeProfissional.Name = "lblNomeProfissional";
             this.lblNomeProfissional.Size = new System.Drawing.Size(270, 26);
             this.lblNomeProfissional.TabIndex = 403;
@@ -523,7 +522,7 @@
             this.lblAtividadeDeslocamento.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblAtividadeDeslocamento.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAtividadeDeslocamento.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblAtividadeDeslocamento.Location = new System.Drawing.Point(354, 349);
+            this.lblAtividadeDeslocamento.Location = new System.Drawing.Point(511, 349);
             this.lblAtividadeDeslocamento.Name = "lblAtividadeDeslocamento";
             this.lblAtividadeDeslocamento.Size = new System.Drawing.Size(135, 13);
             this.lblAtividadeDeslocamento.TabIndex = 406;
@@ -535,7 +534,7 @@
             this.lblAtividadeValor.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblAtividadeValor.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAtividadeValor.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblAtividadeValor.Location = new System.Drawing.Point(219, 349);
+            this.lblAtividadeValor.Location = new System.Drawing.Point(376, 349);
             this.lblAtividadeValor.Name = "lblAtividadeValor";
             this.lblAtividadeValor.Size = new System.Drawing.Size(135, 13);
             this.lblAtividadeValor.TabIndex = 405;
@@ -547,7 +546,7 @@
             this.lblAtividadeNome.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblAtividadeNome.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAtividadeNome.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblAtividadeNome.Location = new System.Drawing.Point(219, 336);
+            this.lblAtividadeNome.Location = new System.Drawing.Point(376, 336);
             this.lblAtividadeNome.Name = "lblAtividadeNome";
             this.lblAtividadeNome.Size = new System.Drawing.Size(270, 13);
             this.lblAtividadeNome.TabIndex = 404;
@@ -559,7 +558,7 @@
             this.pnlLinhaStatus.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.pnlLinhaStatus.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlLinhaStatus.ForeColor = System.Drawing.SystemColors.Window;
-            this.pnlLinhaStatus.Location = new System.Drawing.Point(34, 54);
+            this.pnlLinhaStatus.Location = new System.Drawing.Point(191, 54);
             this.pnlLinhaStatus.Name = "pnlLinhaStatus";
             this.pnlLinhaStatus.Size = new System.Drawing.Size(520, 1);
             this.pnlLinhaStatus.TabIndex = 407;
@@ -580,7 +579,7 @@
             this.tlpStatus.Controls.Add(this.dtpDataVistoria, 2, 1);
             this.tlpStatus.Controls.Add(this.dtpDataConcluida, 3, 1);
             this.tlpStatus.Controls.Add(this.dtpDataOrdem, 0, 1);
-            this.tlpStatus.Location = new System.Drawing.Point(54, 89);
+            this.tlpStatus.Location = new System.Drawing.Point(211, 89);
             this.tlpStatus.Name = "tlpStatus";
             this.tlpStatus.RowCount = 2;
             this.tlpStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
@@ -606,7 +605,7 @@
             this.lblTitulo2.AutoSize = true;
             this.lblTitulo2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTitulo2.Location = new System.Drawing.Point(34, 38);
+            this.lblTitulo2.Location = new System.Drawing.Point(191, 38);
             this.lblTitulo2.Name = "lblTitulo2";
             this.lblTitulo2.Size = new System.Drawing.Size(45, 13);
             this.lblTitulo2.TabIndex = 411;
@@ -618,7 +617,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(34, 54);
+            this.label2.Location = new System.Drawing.Point(191, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 13);
             this.label2.TabIndex = 414;
@@ -630,7 +629,7 @@
             this.pnlLinhaDados.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.pnlLinhaDados.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlLinhaDados.ForeColor = System.Drawing.SystemColors.Window;
-            this.pnlLinhaDados.Location = new System.Drawing.Point(34, 70);
+            this.pnlLinhaDados.Location = new System.Drawing.Point(191, 70);
             this.pnlLinhaDados.Name = "pnlLinhaDados";
             this.pnlLinhaDados.Size = new System.Drawing.Size(520, 1);
             this.pnlLinhaDados.TabIndex = 413;
@@ -640,7 +639,7 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(445, 104);
+            this.label3.Location = new System.Drawing.Point(602, 104);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 416;
@@ -652,14 +651,13 @@
             this.pnlStatus.BackColor = System.Drawing.Color.LightBlue;
             this.pnlStatus.Controls.Add(this.txtCodFatura);
             this.pnlStatus.Controls.Add(this.lblFaturada);
-            this.pnlStatus.Controls.Add(this.chkFaturada);
             this.pnlStatus.Controls.Add(this.tlpStatus);
             this.pnlStatus.Controls.Add(this.pnlLinhaStatus);
             this.pnlStatus.Controls.Add(this.lblTitulo2);
             this.pnlStatus.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlStatus.Location = new System.Drawing.Point(0, 0);
             this.pnlStatus.Name = "pnlStatus";
-            this.pnlStatus.Size = new System.Drawing.Size(589, 200);
+            this.pnlStatus.Size = new System.Drawing.Size(903, 200);
             this.pnlStatus.TabIndex = 0;
             // 
             // txtCodFatura
@@ -669,7 +667,7 @@
             this.txtCodFatura.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodFatura.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodFatura.ForeColor = System.Drawing.Color.Red;
-            this.txtCodFatura.Location = new System.Drawing.Point(408, 35);
+            this.txtCodFatura.Location = new System.Drawing.Point(565, 35);
             this.txtCodFatura.MaxLength = 100;
             this.txtCodFatura.Name = "txtCodFatura";
             this.txtCodFatura.ReadOnly = true;
@@ -683,24 +681,13 @@
             this.lblFaturada.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblFaturada.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFaturada.ForeColor = System.Drawing.Color.Red;
-            this.lblFaturada.Location = new System.Drawing.Point(404, 9);
+            this.lblFaturada.Location = new System.Drawing.Point(561, 9);
             this.lblFaturada.Name = "lblFaturada";
             this.lblFaturada.Size = new System.Drawing.Size(150, 20);
             this.lblFaturada.TabIndex = 412;
             this.lblFaturada.Text = "OS FATURADA";
             this.lblFaturada.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblFaturada.Visible = false;
-            // 
-            // chkFaturada
-            // 
-            this.chkFaturada.AutoSize = true;
-            this.chkFaturada.Location = new System.Drawing.Point(723, 120);
-            this.chkFaturada.Name = "chkFaturada";
-            this.chkFaturada.Size = new System.Drawing.Size(68, 17);
-            this.chkFaturada.TabIndex = 406;
-            this.chkFaturada.Text = "Faturada";
-            this.chkFaturada.UseVisualStyleBackColor = true;
-            this.chkFaturada.Visible = false;
             // 
             // pnlOBS
             // 
@@ -711,7 +698,7 @@
             this.pnlOBS.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlOBS.Location = new System.Drawing.Point(0, 750);
             this.pnlOBS.Name = "pnlOBS";
-            this.pnlOBS.Size = new System.Drawing.Size(589, 200);
+            this.pnlOBS.Size = new System.Drawing.Size(903, 200);
             this.pnlOBS.TabIndex = 2;
             // 
             // txtOBS
@@ -719,7 +706,7 @@
             this.txtOBS.AcceptsReturn = true;
             this.txtOBS.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtOBS.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtOBS.Location = new System.Drawing.Point(54, 81);
+            this.txtOBS.Location = new System.Drawing.Point(211, 81);
             this.txtOBS.MaxLength = 250;
             this.txtOBS.Multiline = true;
             this.txtOBS.Name = "txtOBS";
@@ -732,7 +719,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(34, 40);
+            this.label4.Location = new System.Drawing.Point(191, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 13);
             this.label4.TabIndex = 422;
@@ -744,7 +731,7 @@
             this.pnlLinhaOBS.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.pnlLinhaOBS.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlLinhaOBS.ForeColor = System.Drawing.SystemColors.Window;
-            this.pnlLinhaOBS.Location = new System.Drawing.Point(34, 56);
+            this.pnlLinhaOBS.Location = new System.Drawing.Point(191, 56);
             this.pnlLinhaOBS.Name = "pnlLinhaOBS";
             this.pnlLinhaOBS.Size = new System.Drawing.Size(520, 1);
             this.pnlLinhaOBS.TabIndex = 421;
@@ -757,7 +744,7 @@
             this.pnlBotton.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlBotton.Location = new System.Drawing.Point(0, 950);
             this.pnlBotton.Name = "pnlBotton";
-            this.pnlBotton.Size = new System.Drawing.Size(589, 100);
+            this.pnlBotton.Size = new System.Drawing.Size(903, 100);
             this.pnlBotton.TabIndex = 3;
             // 
             // pnlDados
@@ -794,14 +781,15 @@
             this.pnlDados.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlDados.Location = new System.Drawing.Point(0, 200);
             this.pnlDados.Name = "pnlDados";
-            this.pnlDados.Size = new System.Drawing.Size(589, 550);
+            this.pnlDados.Size = new System.Drawing.Size(903, 550);
             this.pnlDados.TabIndex = 1;
             // 
             // btnAddAgencia
             // 
+            this.btnAddAgencia.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnAddAgencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddAgencia.Image = ((System.Drawing.Image)(resources.GetObject("btnAddAgencia.Image")));
-            this.btnAddAgencia.Location = new System.Drawing.Point(339, 177);
+            this.btnAddAgencia.Location = new System.Drawing.Point(496, 178);
             this.btnAddAgencia.Margin = new System.Windows.Forms.Padding(0);
             this.btnAddAgencia.Name = "btnAddAgencia";
             this.btnAddAgencia.Size = new System.Drawing.Size(150, 25);
@@ -818,12 +806,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(606, 580);
+            this.ClientSize = new System.Drawing.Size(920, 580);
             this.Controls.Add(this.pnlBotton);
             this.Controls.Add(this.pnlOBS);
             this.Controls.Add(this.pnlDados);
             this.Controls.Add(this.pnlStatus);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmAddOS";
@@ -898,7 +886,6 @@
         private System.Windows.Forms.Panel pnlBotton;
         private System.Windows.Forms.Panel pnlDados;
         private System.Windows.Forms.DateTimePicker dtpDataPendente;
-        private System.Windows.Forms.CheckBox chkFaturada;
         private System.Windows.Forms.Label lblFaturada;
         private System.Windows.Forms.TextBox txtCodFatura;
         private System.Windows.Forms.Button btnAddAgencia;
