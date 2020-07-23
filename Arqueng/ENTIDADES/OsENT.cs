@@ -22,7 +22,6 @@ namespace Arqueng.ENTIDADES
         public DateTime Data_vistoria { get; set; }
         public DateTime Data_concluida { get; set; }
         public bool Siopi { get; set; }
-        public bool Faturada { get; set; }
     }
 
 

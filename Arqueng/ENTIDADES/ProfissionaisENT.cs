@@ -15,6 +15,7 @@ namespace Arqueng.ENTIDADES
         public string Telefone1 { get; set; }
         public string Telefone2 { get; set; }
         public string Email { get; set; }
+        public bool Rt { get; set; }
     }
 
 

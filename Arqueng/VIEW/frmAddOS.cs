@@ -195,14 +195,13 @@ namespace Arqueng.VIEW
 
                 foreach (Control c in this.pnlDados.Controls)
                 {
-                    if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker)
+                    if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker || c is RadioButton)
                         c.Enabled = false;
                 }
                 cboAtividade.Enabled = false;
                 cboProfissional.Enabled = false;
                 txtOBS.Enabled = false;
                 btnAddSave.Enabled = false;
-                tlpStatus.Enabled = false;
             }
 
         }

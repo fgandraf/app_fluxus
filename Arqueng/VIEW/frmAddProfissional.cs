@@ -23,7 +23,7 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmAddProfissional(frmPrincipal frm1, string Codigo, string Nome, string CPF, string Nascimento, string Profissao, string Carteira, string Entidade, string Telefone1, string Telefone2, string Email)
+        public frmAddProfissional(frmPrincipal frm1, string Codigo, string Nome, string CPF, string Nascimento, string Profissao, string Carteira, string Entidade, string Telefone1, string Telefone2, string Email, string Rt)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -37,6 +37,10 @@ namespace Arqueng.VIEW
             txtTelefone1.Text = Telefone1;
             txtTelefone2.Text = Telefone2;
             txtEmail.Text = Email;
+            if (Rt == "True")
+                chkRT.Checked = true;
+            else
+                chkRT.Checked = false;
         }
 
 
@@ -73,6 +77,7 @@ namespace Arqueng.VIEW
             dado.Telefone1 = txtTelefone1.Text;
             dado.Telefone2 = txtTelefone2.Text;
             dado.Email = txtEmail.Text;
+            dado.Rt = chkRT.Checked;
 
             if (btnAddSave.Text == "&Adicionar")
             {

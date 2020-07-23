@@ -81,17 +81,18 @@ namespace Arqueng.VIEW
         {
             frmAddProfissional formNeto = new frmAddProfissional
                 (
-                _frmPrincipal, 
-                dgvProfissionais.CurrentRow.Cells[0].Value.ToString(),
-                dgvProfissionais.CurrentRow.Cells[1].Value.ToString(),
-                dgvProfissionais.CurrentRow.Cells[2].Value.ToString(),
-                dgvProfissionais.CurrentRow.Cells[3].Value.ToString(),
-                dgvProfissionais.CurrentRow.Cells[4].Value.ToString(),
-                dgvProfissionais.CurrentRow.Cells[5].Value.ToString(),
-                dgvProfissionais.CurrentRow.Cells[6].Value.ToString(),
-                dgvProfissionais.CurrentRow.Cells[7].Value.ToString(),
-                dgvProfissionais.CurrentRow.Cells[8].Value.ToString(),
-                dgvProfissionais.CurrentRow.Cells[9].Value.ToString()
+                _frmPrincipal,
+                dgvProfissionais.CurrentRow.Cells["codigo"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["nome"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["cpf"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["nascimento"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["profissao"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["carteira"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["entidade"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["telefone1"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["telefone2"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["email"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["rt"].Value.ToString()
                 );
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
@@ -117,6 +118,7 @@ namespace Arqueng.VIEW
                 }
             }
         }
+
     }
 
 

@@ -542,6 +542,7 @@
             this.btnAppMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAppMinimizar.BackColor = System.Drawing.Color.Transparent;
             this.btnAppMinimizar.FlatAppearance.BorderSize = 0;
+            this.btnAppMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.btnAppMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAppMinimizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppMinimizar.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -576,6 +577,7 @@
             this.btnUsuario.Text = "Nome do Usuário  ▼";
             this.btnUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnUsuario.UseVisualStyleBackColor = false;
+            this.btnUsuario.Visible = false;
             // 
             // lblTitulo
             // 
@@ -595,6 +597,7 @@
             this.btnAppFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAppFechar.BackColor = System.Drawing.Color.Transparent;
             this.btnAppFechar.FlatAppearance.BorderSize = 0;
+            this.btnAppFechar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.btnAppFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAppFechar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppFechar.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -613,6 +616,7 @@
             this.btnAppMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAppMaximizar.BackColor = System.Drawing.Color.Transparent;
             this.btnAppMaximizar.FlatAppearance.BorderSize = 0;
+            this.btnAppMaximizar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.btnAppMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAppMaximizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppMaximizar.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -631,6 +635,7 @@
             this.btnAppRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAppRestaurar.BackColor = System.Drawing.Color.Transparent;
             this.btnAppRestaurar.FlatAppearance.BorderSize = 0;
+            this.btnAppRestaurar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.btnAppRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAppRestaurar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppRestaurar.ForeColor = System.Drawing.SystemColors.WindowText;

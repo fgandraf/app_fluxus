@@ -142,173 +142,168 @@ namespace Arqueng.VIEW
         private void dgvRecebidas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
-            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
-            {
-                _lastEnteredControl = (Control)sender;
-                var row = dataGrid.Rows[e.RowIndex];
-                dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
-                row.Selected = true;
-                dataGrid.Focus();
-            }
+            _lastEnteredControl = (Control)sender;
+            var row = dataGrid.Rows[e.RowIndex];
+            dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
+            row.Selected = true;
+            dataGrid.Focus();
+
+            if (e.Button == MouseButtons.Left && e.RowIndex != -1)
+                EditarOS(dataGrid);
         }
 
         private void dgvPendentes_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
-            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
-            {
-                _lastEnteredControl = (Control)sender;
-                var row = dataGrid.Rows[e.RowIndex];
-                dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
-                row.Selected = true;
-                dataGrid.Focus();
-            }
+            _lastEnteredControl = (Control)sender;
+            var row = dataGrid.Rows[e.RowIndex];
+            dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
+            row.Selected = true;
+            dataGrid.Focus();
+
+            if (e.Button == MouseButtons.Left && e.RowIndex != -1)
+                EditarOS(dataGrid);
         }
 
         private void dgvVistoriadas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
-            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
-            {
-                _lastEnteredControl = (Control)sender;
-                var row = dataGrid.Rows[e.RowIndex];
-                dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
-                row.Selected = true;
-                dataGrid.Focus();
-            }
+            _lastEnteredControl = (Control)sender;
+            var row = dataGrid.Rows[e.RowIndex];
+            dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
+            row.Selected = true;
+            dataGrid.Focus();
+
+            if (e.Button == MouseButtons.Left && e.RowIndex != -1)
+                EditarOS(dataGrid);
         }
 
         private void dgvConcluidas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
-            if (e.Button == MouseButtons.Right && e.RowIndex != -1)
+            _lastEnteredControl = (Control)sender;
+            var row = dataGrid.Rows[e.RowIndex];
+            dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
+            row.Selected = true;
+            dataGrid.Focus();
+
+            if (e.Button == MouseButtons.Left && e.RowIndex != -1)
+                EditarOS(dataGrid);
+        }
+
+
+
+            //===================BOTÃO ADICIONAR OS===============//
+            //====================================================//
+            private void btnAdicionar_Click(object sender, EventArgs e)
             {
-                _lastEnteredControl = (Control)sender;
-                var row = dataGrid.Rows[e.RowIndex];
-                dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
-                row.Selected = true;
-                dataGrid.Focus();
-            }
-        }
-
-
-        //===============DUPLO CLIQUE NOS GRIDS===============//
-        //====================================================//
-        private void dgvRecebidas_DoubleClick(object sender, EventArgs e)
-        {
-            EditarOS(dgvRecebidas);
-        }
-
-        private void dgvPendentes_DoubleClick(object sender, EventArgs e)
-        {
-            EditarOS(dgvPendentes);
-        }
-
-        private void dgvVistoriadas_DoubleClick(object sender, EventArgs e)
-        {
-            EditarOS(dgvVistoriadas);
-        }
-
-        private void dgvConcluidas_DoubleClick(object sender, EventArgs e)
-        {
-            EditarOS(dgvConcluidas);
-        }
-
-
-
-        //===================BOTÃO ADICIONAR OS===============//
-        //====================================================//
-        private void btnAdicionar_Click(object sender, EventArgs e)
-        {
-            frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
-            formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
-        }
-
-
-
-        //=================TECLA DELETE PRESSIONADA=============//
-        //======================================================//
-        private void dgvRecebidas_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete && dgvRecebidas.CurrentCell.Selected)
-                ExcluirOS(dgvRecebidas, "RECEBIDA");
-        }
-
-        private void dgvPendentes_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete && dgvPendentes.CurrentCell.Selected)
-                ExcluirOS(dgvPendentes, "PENDENTE");
-        }
-
-        private void dgvVistoriadas_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete && dgvVistoriadas.CurrentCell.Selected)
-                ExcluirOS(dgvVistoriadas, "VISTORIADA");
-        }
-
-        private void dgvConcluidas_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete && dgvConcluidas.CurrentCell.Selected)
-                ExcluirOS(dgvConcluidas, "CONCLUÍDA");
-        }
-
-
-
-        //====================MENU EDITAR CLICK================//
-        //=====================================================//
-        private void mnuEditar_Click(object sender, EventArgs e)
-        {
-            if (_lastEnteredControl == dgvRecebidas)
-                EditarOS(dgvRecebidas);
-
-            if (_lastEnteredControl == dgvPendentes)
-                EditarOS(dgvPendentes);
-
-            if (_lastEnteredControl == dgvVistoriadas)
-                EditarOS(dgvVistoriadas);
-
-            if (_lastEnteredControl == dgvConcluidas)
-                EditarOS(dgvConcluidas);
-
-        }
-
-
-
-        //====================MENU EXCLUIR CLICK================//
-        //=====================================================//
-        private void mnuExcluir_Click(object sender, EventArgs e)
-        {
-            if (_lastEnteredControl == dgvRecebidas)
-                ExcluirOS(dgvRecebidas, "RECEBIDA");
-
-            if (_lastEnteredControl == dgvPendentes)
-                ExcluirOS(dgvPendentes, "PENDENTE");
-
-            if (_lastEnteredControl == dgvVistoriadas)
-                ExcluirOS(dgvVistoriadas, "VISTORIADA");
-
-            if (_lastEnteredControl == dgvConcluidas)
-                ExcluirOS(dgvConcluidas, "CONCLUÍDA");
-        }
-
-        //====================BOTÃO FATURAR CLICK================//
-        //=======================================================//
-        private void btnFaturar_Click(object sender, EventArgs e)
-        {
-            if (dgvConcluidas.Rows.Count > 0)
-            {
-                _frmPrincipal.lblTitulo.Text = "Fatura";
-                _frmPrincipal.lblTitulo.Refresh();
-                frmAddFatura formNeto = new frmAddFatura(_frmPrincipal);
+                frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
+                formNeto.Text = "Adicionar";
                 _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
             }
-            else
-                MessageBox.Show("Não há ordens concluídas à faturar!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+
+            //====================MENU EDITAR CLICK================//
+            //=====================================================//
+            private void mnuEditar_Click(object sender, EventArgs e)
+            {
+                if (_lastEnteredControl == dgvRecebidas)
+                    EditarOS(dgvRecebidas);
+
+                if (_lastEnteredControl == dgvPendentes)
+                    EditarOS(dgvPendentes);
+
+                if (_lastEnteredControl == dgvVistoriadas)
+                    EditarOS(dgvVistoriadas);
+
+                if (_lastEnteredControl == dgvConcluidas)
+                    EditarOS(dgvConcluidas);
+
+            }
+
+
+
+            //====================MENU EXCLUIR CLICK================//
+            //=====================================================//
+            private void mnuExcluir_Click(object sender, EventArgs e)
+            {
+                if (_lastEnteredControl == dgvRecebidas)
+                    ExcluirOS(dgvRecebidas, "RECEBIDA");
+
+                if (_lastEnteredControl == dgvPendentes)
+                    ExcluirOS(dgvPendentes, "PENDENTE");
+
+                if (_lastEnteredControl == dgvVistoriadas)
+                    ExcluirOS(dgvVistoriadas, "VISTORIADA");
+
+                if (_lastEnteredControl == dgvConcluidas)
+                    ExcluirOS(dgvConcluidas, "CONCLUÍDA");
+            }
+
+            //====================BOTÃO FATURAR CLICK================//
+            //=======================================================//
+            private void btnFaturar_Click(object sender, EventArgs e)
+            {
+                if (dgvConcluidas.Rows.Count > 0)
+                {
+                    _frmPrincipal.lblTitulo.Text = "Fatura";
+                    _frmPrincipal.lblTitulo.Refresh();
+                    frmAddFatura formNeto = new frmAddFatura(_frmPrincipal);
+                    _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+                }
+                else
+                    MessageBox.Show("Não há ordens concluídas à faturar!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        private void dgvRecebidas_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = (DataGridView)sender;
+            dataGrid.Cursor = Cursors.Hand;
         }
 
+        private void dgvRecebidas_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            var dataGrid = (DataGridView)sender;
+            dataGrid.Cursor = Cursors.Default;
+        }
 
+        private void dgvPendentes_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = (DataGridView)sender;
+            dataGrid.Cursor = Cursors.Hand;
+        }
+
+        private void dgvPendentes_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            var dataGrid = (DataGridView)sender;
+            dataGrid.Cursor = Cursors.Default;
+        }
+
+        private void dgvVistoriadas_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = (DataGridView)sender;
+            dataGrid.Cursor = Cursors.Hand;
+        }
+
+        private void dgvVistoriadas_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            var dataGrid = (DataGridView)sender;
+            dataGrid.Cursor = Cursors.Default;
+        }
+
+        private void dgvConcluidas_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = (DataGridView)sender;
+            dataGrid.Cursor = Cursors.Hand;
+        }
+
+        private void dgvConcluidas_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            var dataGrid = (DataGridView)sender;
+            dataGrid.Cursor = Cursors.Default;
+        }
     }
 
 
-}
+    }

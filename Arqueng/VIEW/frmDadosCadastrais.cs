@@ -219,7 +219,15 @@ namespace Arqueng.VIEW
                 txtConstituicao.Mask = "";
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+
+        private void lblOperador_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
