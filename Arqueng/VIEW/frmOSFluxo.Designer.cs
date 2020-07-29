@@ -70,9 +70,11 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.panel10 = new System.Windows.Forms.Panel();
+            this.pnlFaturar = new System.Windows.Forms.Panel();
             this.btnFaturar = new System.Windows.Forms.Button();
-            this.panel12 = new System.Windows.Forms.Panel();
+            this.pnlLinhaFaturar = new System.Windows.Forms.Panel();
+            this.cboProfissional = new System.Windows.Forms.ComboBox();
+            this.lblProfissional = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -88,7 +90,7 @@
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcluidas)).BeginInit();
             this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
+            this.pnlFaturar.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -240,7 +242,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel1.Controls.Add(this.panel11, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel6, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
@@ -251,8 +253,10 @@
             this.tableLayoutPanel1.Controls.Add(this.panel7, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel8, 7, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel9, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.panel10, 7, 4);
-            this.tableLayoutPanel1.Controls.Add(this.panel12, 7, 3);
+            this.tableLayoutPanel1.Controls.Add(this.pnlFaturar, 7, 4);
+            this.tableLayoutPanel1.Controls.Add(this.pnlLinhaFaturar, 7, 3);
+            this.tableLayoutPanel1.Controls.Add(this.cboProfissional, 7, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblProfissional, 5, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -653,18 +657,19 @@
             this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // panel10
+            // pnlFaturar
             // 
-            this.panel10.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel10.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.panel10.Controls.Add(this.btnFaturar);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(683, 500);
-            this.panel10.Margin = new System.Windows.Forms.Padding(0);
-            this.panel10.Name = "panel10";
-            this.panel10.Padding = new System.Windows.Forms.Padding(8);
-            this.panel10.Size = new System.Drawing.Size(201, 40);
-            this.panel10.TabIndex = 15;
+            this.pnlFaturar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.pnlFaturar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.pnlFaturar.Controls.Add(this.btnFaturar);
+            this.pnlFaturar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFaturar.Location = new System.Drawing.Point(683, 500);
+            this.pnlFaturar.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlFaturar.Name = "pnlFaturar";
+            this.pnlFaturar.Padding = new System.Windows.Forms.Padding(8);
+            this.pnlFaturar.Size = new System.Drawing.Size(201, 40);
+            this.pnlFaturar.TabIndex = 15;
+            this.pnlFaturar.Visible = false;
             // 
             // btnFaturar
             // 
@@ -688,15 +693,46 @@
             this.btnFaturar.UseVisualStyleBackColor = false;
             this.btnFaturar.Click += new System.EventHandler(this.btnFaturar_Click);
             // 
-            // panel12
+            // pnlLinhaFaturar
             // 
-            this.panel12.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(683, 499);
-            this.panel12.Margin = new System.Windows.Forms.Padding(0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(201, 1);
-            this.panel12.TabIndex = 1;
+            this.pnlLinhaFaturar.BackColor = System.Drawing.Color.SteelBlue;
+            this.pnlLinhaFaturar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlLinhaFaturar.Location = new System.Drawing.Point(683, 499);
+            this.pnlLinhaFaturar.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlLinhaFaturar.Name = "pnlLinhaFaturar";
+            this.pnlLinhaFaturar.Size = new System.Drawing.Size(201, 1);
+            this.pnlLinhaFaturar.TabIndex = 1;
+            this.pnlLinhaFaturar.Visible = false;
+            // 
+            // cboProfissional
+            // 
+            this.cboProfissional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboProfissional.DisplayMember = "nomeid";
+            this.cboProfissional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProfissional.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cboProfissional.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboProfissional.FormattingEnabled = true;
+            this.cboProfissional.Location = new System.Drawing.Point(683, 7);
+            this.cboProfissional.Margin = new System.Windows.Forms.Padding(0);
+            this.cboProfissional.Name = "cboProfissional";
+            this.cboProfissional.Size = new System.Drawing.Size(201, 21);
+            this.cboProfissional.TabIndex = 16;
+            this.cboProfissional.ValueMember = "codigo";
+            this.cboProfissional.Visible = false;
+            this.cboProfissional.SelectedIndexChanged += new System.EventHandler(this.cboProfissional_SelectedIndexChanged);
+            // 
+            // lblProfissional
+            // 
+            this.lblProfissional.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblProfissional.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.lblProfissional, 2);
+            this.lblProfissional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProfissional.Location = new System.Drawing.Point(607, 10);
+            this.lblProfissional.Name = "lblProfissional";
+            this.lblProfissional.Size = new System.Drawing.Size(73, 15);
+            this.lblProfissional.TabIndex = 17;
+            this.lblProfissional.Text = "Profissional:";
+            this.lblProfissional.Visible = false;
             // 
             // frmOSFluxo
             // 
@@ -710,11 +746,13 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "frmOSFluxo";
+            this.Load += new System.EventHandler(this.frmOSFluxo_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPendentes)).EndInit();
             this.menuContext.ResumeLayout(false);
@@ -725,7 +763,7 @@
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcluidas)).EndInit();
             this.panel9.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
+            this.pnlFaturar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -752,14 +790,14 @@
         private System.Windows.Forms.DataGridView dgvPendentes;
         private System.Windows.Forms.DataGridView dgvVistoriadas;
         private System.Windows.Forms.DataGridView dgvConcluidas;
-        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel pnlFaturar;
         private System.Windows.Forms.Button btnFaturar;
         private System.Windows.Forms.Panel linhaRecebidas;
         private System.Windows.Forms.Panel linhaPendentes;
         private System.Windows.Forms.Panel linhaConcluidas;
         private System.Windows.Forms.Panel linhaVistoriadas;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel pnlLinhaFaturar;
         private System.Windows.Forms.ContextMenuStrip menuContext;
         private System.Windows.Forms.ToolStripMenuItem mnuEditar;
         private System.Windows.Forms.ToolStripMenuItem mnuExcluir;
@@ -771,5 +809,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia_concluidas;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.ComboBox cboProfissional;
+        private System.Windows.Forms.Label lblProfissional;
     }
 }

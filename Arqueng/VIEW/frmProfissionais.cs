@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Arqueng.ENTIDADES;
 using Arqueng.MODEL;
 
 namespace Arqueng.VIEW
@@ -62,7 +63,11 @@ namespace Arqueng.VIEW
         private void frmProfissionais_Load(object sender, EventArgs e)
         {
             ListarProfissionais();
-            txtPesquisar.Focus();
+            if (UsuarioENT.Rl == false)
+            {
+                btnAdicionar.Enabled = false;
+                btnExcluir.Enabled = false;
+            }
         }
 
 
@@ -84,6 +89,7 @@ namespace Arqueng.VIEW
                 _frmPrincipal,
                 dgvProfissionais.CurrentRow.Cells["codigo"].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells["nome"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["nomeid"].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells["cpf"].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells["nascimento"].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells["profissao"].Value.ToString(),
@@ -92,7 +98,11 @@ namespace Arqueng.VIEW
                 dgvProfissionais.CurrentRow.Cells["telefone1"].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells["telefone2"].Value.ToString(),
                 dgvProfissionais.CurrentRow.Cells["email"].Value.ToString(),
-                dgvProfissionais.CurrentRow.Cells["rt"].Value.ToString()
+                dgvProfissionais.CurrentRow.Cells["rt"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["rl"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["usr_ativo"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["usr_nome"].Value.ToString(),
+                dgvProfissionais.CurrentRow.Cells["usr_senha"].Value.ToString()
                 );
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
@@ -110,12 +120,13 @@ namespace Arqueng.VIEW
         {
             if (e.KeyCode == Keys.Delete && dgvProfissionais.CurrentCell.Selected)
             {
-                var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (result == DialogResult.Yes)
-                {
-                    ExcluirProfissional();
-                    ListarProfissionais();
-                }
+                btnExcluir.PerformClick();
+                //var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                //if (result == DialogResult.Yes)
+                //{
+                //    ExcluirProfissional();
+                //    ListarProfissionais();
+                //}
             }
         }
 

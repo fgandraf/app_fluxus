@@ -79,10 +79,10 @@ namespace Arqueng.VIEW
                 dado.Codigo = cboProfissional.Text;
                 profmodel.BuscarProfissionalModel(dado);
 
-                if (dado.Nome == null)
+                if (dado.Nomeid == null)
                     lblNomeProfissional.Text = "Profissional não cadastrado!";
                 else
-                    lblNomeProfissional.Text = dado.Nome;
+                    lblNomeProfissional.Text = dado.Nomeid;
             }
             catch (Exception ex)
             {
@@ -234,7 +234,7 @@ namespace Arqueng.VIEW
 
             //POPULATE
             int refe = Convert.ToInt32(txtReferencia.Text.Substring(10, 9));
-            dado.Titulo = txtCidade.Text + "-" + Convert.ToString(refe);
+            dado.Titulo = cboAtividade.Text + "-" + txtCidade.Text + "-" + Convert.ToString(refe);
             dado.Referencia = txtReferencia.Text;
             dado.Data_ordem = dtpDataOrdem.Value;
             dado.Prazo_execucao = dtpDataExecucao.Value;

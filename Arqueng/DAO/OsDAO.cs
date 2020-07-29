@@ -81,19 +81,22 @@ namespace Arqueng.DAO
                 else
                 {
                     if (dado.Status == "RECEBIDA")
-                        sql = new MySqlCommand("SELECT referencia, titulo FROM tb_os WHERE status = 'RECEBIDA' AND fatura_cod = 0 ORDER BY data_ordem", con.con);
+                        sql = new MySqlCommand("SELECT referencia, titulo FROM tb_os WHERE status = 'RECEBIDA' AND fatura_cod = 0 AND profissional_cod = @profissional_cod ORDER BY data_ordem", con.con);
 
 
                     if (dado.Status == "PENDENTE")
-                        sql = new MySqlCommand("SELECT referencia, titulo FROM tb_os WHERE status = 'PENDENTE' AND fatura_cod = 0 ORDER BY data_pendente", con.con);
+                        sql = new MySqlCommand("SELECT referencia, titulo FROM tb_os WHERE status = 'PENDENTE' AND fatura_cod = 0 AND profissional_cod = @profissional_cod ORDER BY data_pendente", con.con);
 
 
                     if (dado.Status == "VISTORIADA")
-                        sql = new MySqlCommand("SELECT referencia, titulo FROM tb_os WHERE status = 'VISTORIADA' AND fatura_cod = 0 ORDER BY data_vistoria", con.con);
+                        sql = new MySqlCommand("SELECT referencia, titulo FROM tb_os WHERE status = 'VISTORIADA' AND fatura_cod = 0 AND profissional_cod = @profissional_cod ORDER BY data_vistoria", con.con);
 
                     
                     if (dado.Status == "CONCLUÍDA")
-                        sql = new MySqlCommand("SELECT referencia, titulo FROM tb_os WHERE status = 'CONCLUÍDA' AND fatura_cod = 0 ORDER BY data_concluida", con.con);
+                        sql = new MySqlCommand("SELECT referencia, titulo FROM tb_os WHERE status = 'CONCLUÍDA' AND fatura_cod = 0 AND profissional_cod = @profissional_cod ORDER BY data_concluida", con.con);
+
+
+                    sql.Parameters.AddWithValue("@profissional_cod", dado.Profissional_cod);
 
                 }
                 MySqlDataAdapter da = new MySqlDataAdapter();

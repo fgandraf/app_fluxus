@@ -14,7 +14,8 @@ namespace Arqueng.VIEW
         frmPrincipal _frmPrincipal;
         ProfissionaisMODEL model = new ProfissionaisMODEL();
         ProfissionaisENT dado = new ProfissionaisENT();
-
+        private string nomeid = null;
+        private string usr_nome = null;
 
         public frmAddProfissional(frmPrincipal frm1)
         {
@@ -23,12 +24,13 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmAddProfissional(frmPrincipal frm1, string Codigo, string Nome, string CPF, string Nascimento, string Profissao, string Carteira, string Entidade, string Telefone1, string Telefone2, string Email, string Rt)
+        public frmAddProfissional(frmPrincipal frm1, string Codigo, string Nome, string Nomeid, string CPF, string Nascimento, string Profissao, string Carteira, string Entidade, string Telefone1, string Telefone2, string Email, string Rt, string Rl, string Usr_ativo, string Usr_nome, string Usr_senha)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
             txtCodigo.Text = Codigo;
             txtNome.Text = Nome;
+            nomeid = Nomeid;
             txtCPF.Text = CPF;
             txtNascimento.Text = (Convert.ToDateTime(Nascimento)).ToString("dd/MM/yyyy");
             txtProfissao.Text = Profissao;
@@ -41,11 +43,38 @@ namespace Arqueng.VIEW
                 chkRT.Checked = true;
             else
                 chkRT.Checked = false;
+
+            if (Rl == "True")
+                chkRL.Checked = true;
+            else
+                chkRL.Checked = false;
+
+            if (Usr_ativo == "True")
+                chkUsrAtivo.Checked = true;
+            else
+                chkUsrAtivo.Checked = false;
+
+            txtUsrNome.Text = Usr_nome;
+            usr_nome = Usr_nome;
+            txtUsrSenha.Text = Usr_senha;
+            txtUsrSenha2.Text = Usr_senha;
         }
 
 
         private void frmAddProfissional_Load(object sender, EventArgs e)
         {
+            if (UsuarioENT.Rl == false)
+            {
+                foreach (Control c in this.pnlMainAddProfissional.Controls)
+                {
+                    if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker)
+                        c.Enabled = false;
+                }
+                btnAddSave.Hide();
+                btnCancelar.Size = new System.Drawing.Size(200, 25);
+                btnCancelar.Location = new System.Drawing.Point(687, 13);
+            }
+
             if (this.Text == "Alterar")
             {
                 btnAddSave.Text = "&Salvar";
@@ -59,18 +88,50 @@ namespace Arqueng.VIEW
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            if (txtCodigo.Text == "")
+            if (txtCodigo.Text == "" || txtNome.Text == "")
             {
                 MessageBox.Show("Campos com * são obrigatório", "Chave Primária", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
+
+
+            if (chkUsrAtivo.Checked == true)
+                if (txtUsrNome.Text == "" || txtUsrSenha.Text == "" || txtUsrSenha2.Text == "")
+                {
+                    MessageBox.Show("Nome de usuário e/ou senha inválidos", "Chave Primária", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtUsrNome.Focus();
+                    return;
+                }
+
+
+
+            if (txtUsrNome.Text != usr_nome)
+            {
+                dado.Usr_nome = txtUsrNome.Text;
+                if (model.BuscarNomeUsuarioModel(dado) == true)
+                {
+                    MessageBox.Show("Nome de usuário já existente", "Nome de usuário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtUsrNome.Focus();
+                    return;
+                }
+            }
+
+
+            //CRIAÇÃO DO NOME ID
+            if (txtProfissao.Text != "")
+            nomeid = txtProfissao.Text.Substring(0, 3) + ". ";
+            string[] nomecomp = txtNome.Text.Split(' ');
+            nomeid = nomeid + nomecomp[0] + " " + nomecomp[nomecomp.Length - 1];
+
+
             //POPULATE
             dado.Codigo = txtCodigo.Text;
+            dado.Nomeid = nomeid;
             dado.Nome = txtNome.Text;
             dado.Cpf = txtCPF.Text;
             if (txtNascimento.Text != "")
-            dado.Nascimento = Convert.ToDateTime(txtNascimento.Text);
+                dado.Nascimento = Convert.ToDateTime(txtNascimento.Text);
             dado.Profissao = txtProfissao.Text;
             dado.Carteira = txtCarteira.Text;
             dado.Entidade = txtEntidade.Text;
@@ -78,6 +139,11 @@ namespace Arqueng.VIEW
             dado.Telefone2 = txtTelefone2.Text;
             dado.Email = txtEmail.Text;
             dado.Rt = chkRT.Checked;
+            dado.Rl = chkRL.Checked;
+            dado.Usr_ativo = chkUsrAtivo.Checked;
+            dado.Usr_nome = txtUsrNome.Text;
+            dado.Usr_senha = txtUsrSenha.Text;
+
 
             if (btnAddSave.Text == "&Adicionar")
             {
@@ -119,7 +185,7 @@ namespace Arqueng.VIEW
 
         private void txtTelefone1_Enter(object sender, EventArgs e)
         {
-           txtTelefone1.Mask = "(99) ##########";
+            txtTelefone1.Mask = "(99) ##########";
         }
 
         private void txtTelefone1_Validated(object sender, EventArgs e)
@@ -176,17 +242,13 @@ namespace Arqueng.VIEW
             txtNascimento.Mask = "00/00/0000";
         }
 
-        private void frmAddProfissional_Leave(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
             frmProfissionais formfilho = new frmProfissionais(_frmPrincipal);
             _frmPrincipal.AbrirFormInPanel(formfilho, _frmPrincipal.pnlMain);
         }
+
     }
 
 

@@ -14,7 +14,19 @@ namespace Arqueng.VIEW
         OsMODEL model = new OsMODEL();
         OsENT dado = new OsENT();
         Control _lastEnteredControl;
+        ProfissionaisMODEL profmodel = new ProfissionaisMODEL();
 
+        public void ListarProfissionais()
+        {
+            try
+            {
+                cboProfissional.DataSource = profmodel.ListarCodNomeProModel();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         //========================LISTAR OS========================//
         //=========================================================//
@@ -23,6 +35,7 @@ namespace Arqueng.VIEW
             try
             {
                 dado.Status = status;
+                dado.Profissional_cod = cboProfissional.SelectedValue.ToString();
 
                 dgv.DataSource = model.ListarOsStatusModel(dado);
                 if (dgv.Rows.Count == 0)
@@ -81,11 +94,6 @@ namespace Arqueng.VIEW
             );
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
-            //form.ShowDialog();
-            //ListarOS(dgvRecebidas, "RECEBIDA");
-            //ListarOS(dgvPendentes, "PENDENTE");
-            //ListarOS(dgvVistoriadas, "VISTORIADA");
-            //ListarOS(dgvConcluidas, "CONCLUÍDA");
         }
 
 
@@ -128,7 +136,7 @@ namespace Arqueng.VIEW
                     };
                 }
             }
-
+            ListarProfissionais();
             ListarOS(dgvRecebidas, "RECEBIDA");
             ListarOS(dgvPendentes, "PENDENTE");
             ListarOS(dgvVistoriadas, "VISTORIADA");
@@ -302,6 +310,26 @@ namespace Arqueng.VIEW
         {
             var dataGrid = (DataGridView)sender;
             dataGrid.Cursor = Cursors.Default;
+        }
+
+        private void cboProfissional_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListarOS(dgvRecebidas, "RECEBIDA");
+            ListarOS(dgvPendentes, "PENDENTE");
+            ListarOS(dgvVistoriadas, "VISTORIADA");
+            ListarOS(dgvConcluidas, "CONCLUÍDA");
+        }
+
+        private void frmOSFluxo_Load(object sender, EventArgs e)
+        {
+            cboProfissional.SelectedValue = UsuarioENT.Codigo;
+            if (UsuarioENT.Rl)
+            {
+                cboProfissional.Show();
+                lblProfissional.Show();
+                pnlFaturar.Show();
+                pnlLinhaFaturar.Show();
+            }
         }
     }
 

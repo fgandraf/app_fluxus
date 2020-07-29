@@ -3,6 +3,9 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Arqueng.VIEW;
 using Arqueng.MODEL;
+using Arqueng.ENTIDADES;
+using Microsoft.Reporting.Map.WebForms.BingMaps;
+using System.Drawing;
 
 namespace Arqueng
 {
@@ -23,7 +26,8 @@ namespace Arqueng
         public frmPrincipal()
         {
             InitializeComponent();
-
+            frmLogin login = new frmLogin();
+            login.ShowDialog();
         }
 
 
@@ -93,6 +97,7 @@ namespace Arqueng
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            lblUsuario.Text = "Usuário: " + UsuarioENT.Usr_nome;
             BuscarNomeFantasia();
             btnDashBoard.PerformClick();
         }
@@ -316,6 +321,16 @@ namespace Arqueng
             AbrirFormInPanel(frm, pnlMain);
         }
 
+        private void button1_MouseClick(object sender, MouseEventArgs e)
+        {
+            menuUsuario.Show(Cursor.Position.X-132, Cursor.Position.Y+9);
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLogin login = new frmLogin();
+            login.ShowDialog();
+        }
 
     }
 

@@ -55,8 +55,8 @@
             this.btnDadosCadastrais = new System.Windows.Forms.Button();
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.pnlTitulo = new System.Windows.Forms.Panel();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.btnAppMinimizar = new System.Windows.Forms.Button();
-            this.btnUsuario = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnAppFechar = new System.Windows.Forms.Button();
             this.btnAppMaximizar = new System.Windows.Forms.Button();
@@ -64,11 +64,14 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.ttpMenu = new System.Windows.Forms.ToolTip(this.components);
             this.ttpSempre = new System.Windows.Forms.ToolTip(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuUsuario = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.alterarSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlMenu.SuspendLayout();
             this.tblMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.pnlTitulo.SuspendLayout();
+            this.menuUsuario.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -524,8 +527,8 @@
             // pnlTitulo
             // 
             this.pnlTitulo.BackColor = System.Drawing.Color.Lavender;
+            this.pnlTitulo.Controls.Add(this.lblUsuario);
             this.pnlTitulo.Controls.Add(this.btnAppMinimizar);
-            this.pnlTitulo.Controls.Add(this.btnUsuario);
             this.pnlTitulo.Controls.Add(this.lblTitulo);
             this.pnlTitulo.Controls.Add(this.btnAppFechar);
             this.pnlTitulo.Controls.Add(this.btnAppMaximizar);
@@ -536,6 +539,17 @@
             this.pnlTitulo.Size = new System.Drawing.Size(920, 50);
             this.pnlTitulo.TabIndex = 2;
             this.pnlTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitulo_MouseDown);
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 7F);
+            this.lblUsuario.Location = new System.Drawing.Point(767, 33);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(150, 17);
+            this.lblUsuario.TabIndex = 126;
+            this.lblUsuario.Text = "Usuário: null";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnAppMinimizar
             // 
@@ -555,29 +569,6 @@
             this.ttpSempre.SetToolTip(this.btnAppMinimizar, "Minimizar");
             this.btnAppMinimizar.UseVisualStyleBackColor = false;
             this.btnAppMinimizar.Click += new System.EventHandler(this.btnAppMinimizar_Click);
-            // 
-            // btnUsuario
-            // 
-            this.btnUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUsuario.BackColor = System.Drawing.Color.Transparent;
-            this.btnUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUsuario.Enabled = false;
-            this.btnUsuario.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.btnUsuario.FlatAppearance.BorderSize = 0;
-            this.btnUsuario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.btnUsuario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuario.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsuario.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnUsuario.Location = new System.Drawing.Point(745, 32);
-            this.btnUsuario.Margin = new System.Windows.Forms.Padding(0);
-            this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(175, 18);
-            this.btnUsuario.TabIndex = 121;
-            this.btnUsuario.Text = "Nome do Usuário  ▼";
-            this.btnUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUsuario.UseVisualStyleBackColor = false;
-            this.btnUsuario.Visible = false;
             // 
             // lblTitulo
             // 
@@ -675,10 +666,26 @@
             this.ttpSempre.InitialDelay = 50;
             this.ttpSempre.ReshowDelay = 10;
             // 
-            // contextMenuStrip1
+            // menuUsuario
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.menuUsuario.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alterarSenhaToolStripMenuItem,
+            this.sairToolStripMenuItem});
+            this.menuUsuario.Name = "contextMenuStrip1";
+            this.menuUsuario.Size = new System.Drawing.Size(144, 48);
+            // 
+            // alterarSenhaToolStripMenuItem
+            // 
+            this.alterarSenhaToolStripMenuItem.Name = "alterarSenhaToolStripMenuItem";
+            this.alterarSenhaToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.alterarSenhaToolStripMenuItem.Text = "Alterar senha";
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -701,6 +708,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.pnlTitulo.ResumeLayout(false);
             this.pnlTitulo.PerformLayout();
+            this.menuUsuario.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -714,7 +722,6 @@
         private System.Windows.Forms.Button btnOS;
         private System.Windows.Forms.Panel pnlTitulo;
         private System.Windows.Forms.Button btnAppFechar;
-        private System.Windows.Forms.Button btnUsuario;
         private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.ToolTip ttpMenu;
         private System.Windows.Forms.ToolTip ttpSempre;
@@ -729,7 +736,7 @@
         private System.Windows.Forms.Button btnAppMaximizar;
         private System.Windows.Forms.Button btnAppMinimizar;
         private System.Windows.Forms.Button btnAppRestaurar;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip menuUsuario;
         private System.Windows.Forms.TableLayoutPanel tblMenu;
         private System.Windows.Forms.Panel pnlCtrlDashboard;
         private System.Windows.Forms.Button btnDashBoard;
@@ -742,6 +749,9 @@
         private System.Windows.Forms.Panel pnlCtrlFaturas;
         public System.Windows.Forms.Button btnDadosCadastrais;
         public System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.ToolStripMenuItem alterarSenhaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
     }
 }
 
