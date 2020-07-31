@@ -18,8 +18,7 @@ namespace Arqueng.VIEW
         {
             try
             {
-                dado.Status = null;
-                dgvOS.DataSource = model.ListarOsStatusModel(dado);
+                dgvOS.DataSource = model.ListarOsModel();
 
                 if (dgvOS.Rows.Count == 0)
                 {
@@ -103,7 +102,7 @@ namespace Arqueng.VIEW
                 dgvOS.CurrentRow.Cells["prazo_execucao"].Value.ToString(),
                 dgvOS.CurrentRow.Cells["profissional_cod"].Value.ToString(),
                 dgvOS.CurrentRow.Cells["atividade_cod"].Value.ToString(),
-                dgvOS.CurrentRow.Cells["siopi"].Value.ToString(),
+                Convert.ToBoolean(dgvOS.CurrentRow.Cells["siopi"].Value),
                 dgvOS.CurrentRow.Cells["nome_cliente"].Value.ToString(),
                 dgvOS.CurrentRow.Cells["cidade"].Value.ToString(),
                 dgvOS.CurrentRow.Cells["nome_contato"].Value.ToString(),

@@ -56,13 +56,12 @@ namespace Arqueng.MODEL
             }
         }
 
-
-        public DataTable ListarOsStatusModel(OsENT dado)
+        public DataTable ListarOsModel()
         {
             try
             {
                 DataTable dt = new DataTable();
-                dt = dao.ListarOsStatusDAO(dado);
+                dt = dao.ListarOsDAO();
                 return dt;
             }
             catch (Exception ex)
@@ -70,7 +69,25 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
-        
+
+        public DataTable ListarOsStatusModel(OsENT dado)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                if (dado.Profissional_cod == "")
+                    dt = dao.ListarOsStatusDAO(dado);
+                else
+                    dt = dao.ListarOsStatusProDAO(dado);
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         public void InsertOsModel(OsENT dado)
         {

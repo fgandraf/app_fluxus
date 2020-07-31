@@ -81,18 +81,18 @@ namespace Arqueng.VIEW
             frmAddAgencia formNeto = new frmAddAgencia
                 (
                 _frmPrincipal,
-                dgvAgencias.CurrentRow.Cells[0].Value.ToString(),
-                dgvAgencias.CurrentRow.Cells[1].Value.ToString(),        
-                dgvAgencias.CurrentRow.Cells[2].Value.ToString(),
-                dgvAgencias.CurrentRow.Cells[3].Value.ToString(),
-                dgvAgencias.CurrentRow.Cells[4].Value.ToString(),
-                dgvAgencias.CurrentRow.Cells[5].Value.ToString(),
-                dgvAgencias.CurrentRow.Cells[6].Value.ToString(),
-                dgvAgencias.CurrentRow.Cells[7].Value.ToString(),
-                dgvAgencias.CurrentRow.Cells[8].Value.ToString(),
-                dgvAgencias.CurrentRow.Cells[9].Value.ToString(),
-                dgvAgencias.CurrentRow.Cells[10].Value.ToString(),
-                dgvAgencias.CurrentRow.Cells[11].Value.ToString()
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["agencia"].Value),
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["nome"].Value),
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["endereco"].Value),
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["complemento"].Value),
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["bairro"].Value),
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["cidade"].Value),
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["cep"].Value),
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["uf"].Value),
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["contato"].Value),
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["telefone1"].Value),
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["telefone2"].Value),
+                Convert.ToString(dgvAgencias.CurrentRow.Cells["email"].Value)
                 );
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);

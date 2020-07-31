@@ -28,22 +28,22 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmAddAgencia (frmPrincipal frm1, string Agencia, string Nome, string Endereco, string Complemento, string Bairro, string Cidade, string CEP, string UF, string Contato, string Telefone1, string Telefone2, string Email)
+        public frmAddAgencia (frmPrincipal frm1, string agencia, string nome, string endereco, string complemento, string bairro, string cidade, string cep, string uf, string contato, string telefone1, string telefone2, string email)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            txtAgencia.Text = Agencia;
-            txtNome.Text = Nome;
-            txtEndereco.Text = Endereco;
-            txtComplemento.Text = Complemento;
-            txtBairro.Text = Bairro;
-            txtCidade.Text = Cidade;
-            txtCEP.Text = CEP;
-            cboUF.Text = UF;
-            txtContato.Text = Contato;
-            txtTelefone1.Text = Telefone1;
-            txtTelefone2.Text = Telefone2;
-            txtEmail.Text = Email;
+            txtAgencia.Text = agencia;
+            txtNome.Text = nome;
+            txtEndereco.Text = endereco;
+            txtComplemento.Text = complemento;
+            txtBairro.Text = bairro;
+            txtCidade.Text = cidade;
+            txtCEP.Text = cep;
+            cboUF.Text = uf;
+            txtContato.Text = contato;
+            txtTelefone1.Text = telefone1;
+            txtTelefone2.Text = telefone2;
+            txtEmail.Text = email;
         }
 
 

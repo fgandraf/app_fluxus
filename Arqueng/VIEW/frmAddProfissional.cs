@@ -14,8 +14,8 @@ namespace Arqueng.VIEW
         frmPrincipal _frmPrincipal;
         ProfissionaisMODEL model = new ProfissionaisMODEL();
         ProfissionaisENT dado = new ProfissionaisENT();
-        private string nomeid = null;
-        private string usr_nome = null;
+        private string NomeId = null;
+        private string UsrNome = null;
 
         public frmAddProfissional(frmPrincipal frm1)
         {
@@ -24,56 +24,37 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmAddProfissional(frmPrincipal frm1, string Codigo, string Nome, string Nomeid, string CPF, string Nascimento, string Profissao, string Carteira, string Entidade, string Telefone1, string Telefone2, string Email, string Rt, string Rl, string Usr_ativo, string Usr_nome, string Usr_senha)
+        public frmAddProfissional(frmPrincipal frm1, string codigo, string nome, string nomeid, string cpf, string nascimento, string profissao, string carteira, string entidade, string telefone1, string telefone2, string email, bool rt, bool rl, bool usrativo, string usrnome, string usrsenha)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            txtCodigo.Text = Codigo;
-            txtNome.Text = Nome;
-            nomeid = Nomeid;
-            txtCPF.Text = CPF;
-            txtNascimento.Text = (Convert.ToDateTime(Nascimento)).ToString("dd/MM/yyyy");
-            txtProfissao.Text = Profissao;
-            txtCarteira.Text = Carteira;
-            txtEntidade.Text = Entidade;
-            txtTelefone1.Text = Telefone1;
-            txtTelefone2.Text = Telefone2;
-            txtEmail.Text = Email;
-            if (Rt == "True")
-                chkRT.Checked = true;
-            else
-                chkRT.Checked = false;
-
-            if (Rl == "True")
-                chkRL.Checked = true;
-            else
-                chkRL.Checked = false;
-
-            if (Usr_ativo == "True")
-                chkUsrAtivo.Checked = true;
-            else
-                chkUsrAtivo.Checked = false;
-
-            txtUsrNome.Text = Usr_nome;
-            usr_nome = Usr_nome;
-            txtUsrSenha.Text = Usr_senha;
-            txtUsrSenha2.Text = Usr_senha;
+            txtCodigo.Text = codigo;
+            txtNome.Text = nome;
+            NomeId = nomeid;
+            txtCPF.Text = cpf;
+            txtNascimento.Text = (Convert.ToDateTime(nascimento)).ToString("dd/MM/yyyy");
+            txtProfissao.Text = profissao;
+            txtCarteira.Text = carteira;
+            txtEntidade.Text = entidade;
+            txtTelefone1.Text = telefone1;
+            txtTelefone2.Text = telefone2;
+            txtEmail.Text = email;
+            chkRT.Checked = rt;
+            chkRL.Checked = rl;
+            chkUsrAtivo.Checked = usrativo;
+            txtUsrNome.Text = usrnome;
+            UsrNome = usrnome;
+            txtUsrSenha.Text = usrsenha;
+            txtUsrSenha2.Text = usrsenha;
+            
+            if (Globais.Codpro == txtCodigo.Text && chkRL.Checked)
+                chkRL.Enabled = false;
         }
 
 
         private void frmAddProfissional_Load(object sender, EventArgs e)
         {
-            if (UsuarioENT.Rl == false)
-            {
-                foreach (Control c in this.pnlMainAddProfissional.Controls)
-                {
-                    if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker)
-                        c.Enabled = false;
-                }
-                btnAddSave.Hide();
-                btnCancelar.Size = new System.Drawing.Size(200, 25);
-                btnCancelar.Location = new System.Drawing.Point(687, 13);
-            }
+            
 
             if (this.Text == "Alterar")
             {
@@ -106,7 +87,7 @@ namespace Arqueng.VIEW
 
 
 
-            if (txtUsrNome.Text != usr_nome)
+            if (txtUsrNome.Text != UsrNome)
             {
                 dado.Usr_nome = txtUsrNome.Text;
                 if (model.BuscarNomeUsuarioModel(dado) == true)
@@ -120,14 +101,14 @@ namespace Arqueng.VIEW
 
             //CRIAÇÃO DO NOME ID
             if (txtProfissao.Text != "")
-            nomeid = txtProfissao.Text.Substring(0, 3) + ". ";
+            NomeId = txtProfissao.Text.Substring(0, 3) + ". ";
             string[] nomecomp = txtNome.Text.Split(' ');
-            nomeid = nomeid + nomecomp[0] + " " + nomecomp[nomecomp.Length - 1];
+            NomeId = NomeId + nomecomp[0] + " " + nomecomp[nomecomp.Length - 1];
 
 
             //POPULATE
             dado.Codigo = txtCodigo.Text;
-            dado.Nomeid = nomeid;
+            dado.Nomeid = NomeId;
             dado.Nome = txtNome.Text;
             dado.Cpf = txtCPF.Text;
             if (txtNascimento.Text != "")
@@ -143,7 +124,11 @@ namespace Arqueng.VIEW
             dado.Usr_ativo = chkUsrAtivo.Checked;
             dado.Usr_nome = txtUsrNome.Text;
             dado.Usr_senha = txtUsrSenha.Text;
-
+            if (Globais.Codpro == txtCodigo.Text)
+            {
+                Globais.Rt = chkRT.Checked;
+                Globais.Rl = chkRL.Checked;
+            }
 
             if (btnAddSave.Text == "&Adicionar")
             {

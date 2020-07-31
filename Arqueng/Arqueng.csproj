@@ -86,7 +86,7 @@
     <Compile Include="ENTIDADES\AtividadesENT.cs" />
     <Compile Include="ENTIDADES\CadastraisENT.cs" />
     <Compile Include="ENTIDADES\FaturasENT.cs" />
-    <Compile Include="ENTIDADES\UsuarioENT.cs" />
+    <Compile Include="ENTIDADES\Globais.cs" />
     <Compile Include="ENTIDADES\OsENT.cs" />
     <Compile Include="ENTIDADES\ProfissionaisENT.cs" />
     <Compile Include="ENTIDADES\RepFaturaENT.cs" />

@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
+using System.Data;
 
 namespace Arqueng.VIEW
 {
@@ -20,7 +21,11 @@ namespace Arqueng.VIEW
         {
             try
             {
-                cboProfissional.DataSource = profmodel.ListarCodNomeProModel();
+                DataTable dt = profmodel.ListarCodNomeProModel();
+                DataRow linha = dt.NewRow();
+                linha[1] = "--TODOS--";
+                dt.Rows.InsertAt(linha, 0);
+                cboProfissional.DataSource = dt;
             }
             catch (Exception ex)
             {
@@ -38,6 +43,7 @@ namespace Arqueng.VIEW
                 dado.Profissional_cod = cboProfissional.SelectedValue.ToString();
 
                 dgv.DataSource = model.ListarOsStatusModel(dado);
+
                 if (dgv.Rows.Count == 0)
                 {
                     dgv.Enabled = false;
@@ -80,7 +86,7 @@ namespace Arqueng.VIEW
                 Convert.ToString(dado.Prazo_execucao),
                 dado.Profissional_cod,
                 dado.Atividade_cod,
-                Convert.ToString(dado.Siopi),
+                Convert.ToBoolean(dado.Siopi),
                 dado.Nome_cliente,
                 dado.Cidade,
                 dado.Nome_contato,
@@ -201,69 +207,72 @@ namespace Arqueng.VIEW
 
 
 
-            //===================BOTÃO ADICIONAR OS===============//
-            //====================================================//
-            private void btnAdicionar_Click(object sender, EventArgs e)
+        //===================BOTÃO ADICIONAR OS===============//
+        //====================================================//
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
+            formNeto.Text = "Adicionar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+        }
+
+
+
+        //====================MENU EDITAR CLICK================//
+        //=====================================================//
+        private void mnuEditar_Click(object sender, EventArgs e)
+        {
+            if (_lastEnteredControl == dgvRecebidas)
+                EditarOS(dgvRecebidas);
+
+            if (_lastEnteredControl == dgvPendentes)
+                EditarOS(dgvPendentes);
+
+            if (_lastEnteredControl == dgvVistoriadas)
+                EditarOS(dgvVistoriadas);
+
+            if (_lastEnteredControl == dgvConcluidas)
+                EditarOS(dgvConcluidas);
+
+        }
+
+
+
+        //====================MENU EXCLUIR CLICK================//
+        //=====================================================//
+        private void mnuExcluir_Click(object sender, EventArgs e)
+        {
+            if (_lastEnteredControl == dgvRecebidas)
+                ExcluirOS(dgvRecebidas, "RECEBIDA");
+
+            if (_lastEnteredControl == dgvPendentes)
+                ExcluirOS(dgvPendentes, "PENDENTE");
+
+            if (_lastEnteredControl == dgvVistoriadas)
+                ExcluirOS(dgvVistoriadas, "VISTORIADA");
+
+            if (_lastEnteredControl == dgvConcluidas)
+                ExcluirOS(dgvConcluidas, "CONCLUÍDA");
+        }
+
+        //====================BOTÃO FATURAR CLICK================//
+        //=======================================================//
+        private void btnFaturar_Click(object sender, EventArgs e)
+        {
+            if (dgvConcluidas.Rows.Count > 0)
             {
-                frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
-                formNeto.Text = "Adicionar";
+                _frmPrincipal.lblTitulo.Text = "Fatura";
+                _frmPrincipal.lblTitulo.Refresh();
+                frmAddFatura formNeto = new frmAddFatura(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
             }
+            else
+                MessageBox.Show("Não há ordens concluídas à faturar!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
 
-
-            //====================MENU EDITAR CLICK================//
-            //=====================================================//
-            private void mnuEditar_Click(object sender, EventArgs e)
-            {
-                if (_lastEnteredControl == dgvRecebidas)
-                    EditarOS(dgvRecebidas);
-
-                if (_lastEnteredControl == dgvPendentes)
-                    EditarOS(dgvPendentes);
-
-                if (_lastEnteredControl == dgvVistoriadas)
-                    EditarOS(dgvVistoriadas);
-
-                if (_lastEnteredControl == dgvConcluidas)
-                    EditarOS(dgvConcluidas);
-
-            }
-
-
-
-            //====================MENU EXCLUIR CLICK================//
-            //=====================================================//
-            private void mnuExcluir_Click(object sender, EventArgs e)
-            {
-                if (_lastEnteredControl == dgvRecebidas)
-                    ExcluirOS(dgvRecebidas, "RECEBIDA");
-
-                if (_lastEnteredControl == dgvPendentes)
-                    ExcluirOS(dgvPendentes, "PENDENTE");
-
-                if (_lastEnteredControl == dgvVistoriadas)
-                    ExcluirOS(dgvVistoriadas, "VISTORIADA");
-
-                if (_lastEnteredControl == dgvConcluidas)
-                    ExcluirOS(dgvConcluidas, "CONCLUÍDA");
-            }
-
-            //====================BOTÃO FATURAR CLICK================//
-            //=======================================================//
-            private void btnFaturar_Click(object sender, EventArgs e)
-            {
-                if (dgvConcluidas.Rows.Count > 0)
-                {
-                    _frmPrincipal.lblTitulo.Text = "Fatura";
-                    _frmPrincipal.lblTitulo.Refresh();
-                    frmAddFatura formNeto = new frmAddFatura(_frmPrincipal);
-                    _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
-                }
-                else
-                    MessageBox.Show("Não há ordens concluídas à faturar!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
+        //===================MUDAR CURSOR DO MOUSE===============//
+        //=======================================================//
         private void dgvRecebidas_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
@@ -312,6 +321,10 @@ namespace Arqueng.VIEW
             dataGrid.Cursor = Cursors.Default;
         }
 
+
+
+
+
         private void cboProfissional_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListarOS(dgvRecebidas, "RECEBIDA");
@@ -322,16 +335,23 @@ namespace Arqueng.VIEW
 
         private void frmOSFluxo_Load(object sender, EventArgs e)
         {
-            cboProfissional.SelectedValue = UsuarioENT.Codigo;
-            if (UsuarioENT.Rl)
+            if (Globais.Rl)
             {
                 cboProfissional.Show();
                 lblProfissional.Show();
                 pnlFaturar.Show();
                 pnlLinhaFaturar.Show();
+
+                if (Globais.Rt)
+                    cboProfissional.SelectedValue = Globais.Codpro;
+                else
+                    cboProfissional.SelectedIndex = 0;
+                return;
             }
+            cboProfissional.SelectedValue = Globais.Codpro;
         }
+
     }
 
 
-    }
+}

@@ -97,8 +97,11 @@ namespace Arqueng
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            lblUsuario.Text = "Usuário: " + UsuarioENT.Usr_nome;
+            lblUsuario.Text = "Usuário: " + Globais.Usr_nome;
             BuscarNomeFantasia();
+            if (Globais.Rl == false)
+                tblMenu.RowStyles[6].Height = 0;
+
             btnDashBoard.PerformClick();
         }
 
@@ -332,6 +335,10 @@ namespace Arqueng
             login.ShowDialog();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

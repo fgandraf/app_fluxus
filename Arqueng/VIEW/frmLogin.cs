@@ -41,8 +41,10 @@ namespace Arqueng.VIEW
             dado.Usr_nome = txtUsuario.Text;
             model.BuscarUsuarioModel(dado);
 
-            if (UsuarioENT.Usr_nome == null || txtSenha.Text != UsuarioENT.Usr_senha)
-                MessageBox.Show("Usuário e/ou senha incorreto(s)");
+
+
+            if (Globais.Usr_nome == null || txtSenha.Text != Globais.Usr_senha || Globais.Usr_ativo == false)
+                MessageBox.Show("Nome de usuário/senha incorreto(s) ou usuário não está ativo");
             else
                 this.Close();
         }
@@ -63,6 +65,11 @@ namespace Arqueng.VIEW
         {
             txtSenha.PasswordChar = '*';
             imgShowPwd.Show();
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            lblVersao.Text = Globais.Versao;
         }
     }
 }

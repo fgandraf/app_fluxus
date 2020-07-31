@@ -396,7 +396,7 @@
             // 
             this.pnlLinha2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlLinha2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pnlLinha2.Location = new System.Drawing.Point(-1632, 696);
+            this.pnlLinha2.Location = new System.Drawing.Point(-1659, 696);
             this.pnlLinha2.Name = "pnlLinha2";
             this.pnlLinha2.Size = new System.Drawing.Size(405, 1);
             this.pnlLinha2.TabIndex = 148;
@@ -675,7 +675,7 @@
             this.pnlDadosPrincipais.Controls.Add(this.lblDataConstituinte);
             this.pnlDadosPrincipais.Controls.Add(this.lblRepresentanteLegal);
             this.pnlDadosPrincipais.Controls.Add(this.txtRepresentanteLegal);
-            this.pnlDadosPrincipais.Location = new System.Drawing.Point(25, 33);
+            this.pnlDadosPrincipais.Location = new System.Drawing.Point(38, 33);
             this.pnlDadosPrincipais.Name = "pnlDadosPrincipais";
             this.pnlDadosPrincipais.Size = new System.Drawing.Size(420, 400);
             this.pnlDadosPrincipais.TabIndex = 0;
@@ -720,7 +720,7 @@
             this.pnlEndereco.Controls.Add(this.lblCidade);
             this.pnlEndereco.Controls.Add(this.lblCEP);
             this.pnlEndereco.Controls.Add(this.lblUF);
-            this.pnlEndereco.Location = new System.Drawing.Point(466, 33);
+            this.pnlEndereco.Location = new System.Drawing.Point(479, 33);
             this.pnlEndereco.Name = "pnlEndereco";
             this.pnlEndereco.Size = new System.Drawing.Size(390, 310);
             this.pnlEndereco.TabIndex = 1;
@@ -756,7 +756,7 @@
             this.pnlContato.Controls.Add(this.txtTelefone2);
             this.pnlContato.Controls.Add(this.lblEmail);
             this.pnlContato.Controls.Add(this.txtEmail);
-            this.pnlContato.Location = new System.Drawing.Point(25, 444);
+            this.pnlContato.Location = new System.Drawing.Point(38, 444);
             this.pnlContato.Name = "pnlContato";
             this.pnlContato.Size = new System.Drawing.Size(420, 180);
             this.pnlContato.TabIndex = 2;
@@ -796,7 +796,7 @@
             this.pnlBancario.Controls.Add(this.lblOperador);
             this.pnlBancario.Controls.Add(this.txtAgencia);
             this.pnlBancario.Controls.Add(this.lblAgencia);
-            this.pnlBancario.Location = new System.Drawing.Point(466, 354);
+            this.pnlBancario.Location = new System.Drawing.Point(479, 354);
             this.pnlBancario.Name = "pnlBancario";
             this.pnlBancario.Size = new System.Drawing.Size(390, 299);
             this.pnlBancario.TabIndex = 3;

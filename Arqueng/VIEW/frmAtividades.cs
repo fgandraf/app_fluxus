@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Arqueng.ENTIDADES;
 using Arqueng.MODEL;
 
 namespace Arqueng.VIEW
@@ -73,19 +74,27 @@ namespace Arqueng.VIEW
         private void frmAtividades_Load(object sender, EventArgs e)
         {
             ListarAtividades();
-            txtPesquisar.Focus();
+            if (Globais.Rl == false)
+            {
+                btnAdicionar.Enabled = false;
+                btnEditar.Enabled = false;
+                btnExcluir.Enabled = false;
+            }
         }
 
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (Globais.Rl == false)
+                return;
+
             frmAddAtividade formNeto = new frmAddAtividade
                 (
                 _frmPrincipal,
-                dgvAtividades.CurrentRow.Cells[0].Value.ToString(), 
-                dgvAtividades.CurrentRow.Cells[1].Value.ToString(), 
-                dgvAtividades.CurrentRow.Cells[2].Value.ToString(), 
-                dgvAtividades.CurrentRow.Cells[3].Value.ToString()
+                Convert.ToString(dgvAtividades.CurrentRow.Cells["codigo"].Value),
+                Convert.ToString(dgvAtividades.CurrentRow.Cells["descricao"].Value),
+                Convert.ToString(dgvAtividades.CurrentRow.Cells["valor_atividade"].Value),
+                Convert.ToString(dgvAtividades.CurrentRow.Cells["valor_deslocamento"].Value)
                 );
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
@@ -102,14 +111,7 @@ namespace Arqueng.VIEW
         private void dgvAtividades_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && dgvAtividades.CurrentCell.Selected)
-            {
-                var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (result == DialogResult.Yes)
-                {
-                    ExcluirAtividade();
-                    ListarAtividades();
-                }
-            }
+                btnExcluir.PerformClick();
         }
     }
 

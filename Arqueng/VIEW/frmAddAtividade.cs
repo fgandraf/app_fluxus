@@ -21,14 +21,14 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmAddAtividade(frmPrincipal frm1, string Codigo, string Descricao, string Valor, string Deslocamento)
+        public frmAddAtividade(frmPrincipal frm1, string codigo, string descricao, string valor, string deslocamento)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            txtCodigo.Text = Codigo;
-            txtDescricao.Text = Descricao;
-            txtValor.Text = Valor;
-            txtDeslocamento.Text = Deslocamento;
+            txtCodigo.Text = codigo;
+            txtDescricao.Text = descricao;
+            txtValor.Text = valor;
+            txtDeslocamento.Text = deslocamento;
         }
 
 

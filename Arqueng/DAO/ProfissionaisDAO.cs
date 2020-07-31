@@ -88,17 +88,17 @@ namespace Arqueng.DAO
                 MySqlDataReader dr = sql.ExecuteReader();
 
                 if (dr.HasRows == false)
-                    UsuarioENT.Usr_nome = null;
+                    Globais.Usr_nome = null;
                 else
                 {
                     while (dr.Read())
                     {
-                        UsuarioENT.Codigo = Convert.ToString(dr["codigo"]);
-                        UsuarioENT.Rt = Convert.ToBoolean(dr["rt"]);
-                        UsuarioENT.Rl = Convert.ToBoolean(dr["rl"]);
-                        UsuarioENT.Usr_nome = Convert.ToString(dr["usr_nome"]);
-                        UsuarioENT.Usr_ativo = Convert.ToBoolean(dr["usr_ativo"]);
-                        UsuarioENT.Usr_senha = Convert.ToString(dr["usr_senha"]);
+                        Globais.Codpro = Convert.ToString(dr["codigo"]);
+                        Globais.Rt = Convert.ToBoolean(dr["rt"]);
+                        Globais.Rl = Convert.ToBoolean(dr["rl"]);
+                        Globais.Usr_nome = Convert.ToString(dr["usr_nome"]);
+                        Globais.Usr_ativo = Convert.ToBoolean(dr["usr_ativo"]);
+                        Globais.Usr_senha = Convert.ToString(dr["usr_senha"]);
                     }
                 }
 

@@ -11,14 +11,15 @@ namespace Arqueng.VIEW
     {
 
         frmPrincipal _frmPrincipal;
-        string _formFilho;
+        string FormFilho;
+        string Agencia = null;
 
         OsENT dado = new OsENT();
         OsMODEL osmodel = new OsMODEL();
         ProfissionaisMODEL profmodel = new ProfissionaisMODEL();
         AtividadesMODEL ativmodel = new AtividadesMODEL();
         AgenciasMODEL agmodel = new AgenciasMODEL();
-        string agencia = null;
+
 
 
         public void ListarProfissionais()
@@ -111,7 +112,7 @@ namespace Arqueng.VIEW
                     txtAgenciaNome.Text = dado.Nome;
                     txtAgenciaTelefone.Text = dado.Telefone1;
                     txtAgenciaEmail.Text = dado.Email;
-                    agencia = txtReferencia.Text.Substring(5, 4);
+                    Agencia = txtReferencia.Text.Substring(5, 4);
                     btnAddAgencia.Hide();
                 }
             }
@@ -126,71 +127,53 @@ namespace Arqueng.VIEW
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            _formFilho = frmfilho;
+            FormFilho = frmfilho;
             ListarProfissionais();
             ListarAtividades();
         }
 
 
-        public frmAddOS(frmPrincipal frm1, string frmfilho, string Titulo, string Referencia, string DataOrdem, string Prazo_execucao, string Profissional_cod, string Atividade_cod, string Siopi, string Nome_cliente, string Cidade, string Nome_contato, string Telefone_contato, string Status, string Data_pendente, string Data_vistoria, string Data_concluida, string OBS, string Fatura_cod)
+        public frmAddOS(frmPrincipal frm1, string frmfilho, string titulo, string referencia, string dataordem, string prazoexecucao, string profissionalcod, string atividadecod, bool siopi, string nomecliente, string cidade, string nomecontato, string telefonecontato, string status, string datapendente, string datavistoria, string dataconcluida, string obs, string faturacod)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            _formFilho = frmfilho;
+            FormFilho = frmfilho;
 
             ListarProfissionais();
             ListarAtividades();
 
-            dado.Titulo = Titulo;
-            txtReferencia.Text = Referencia;
-            dtpDataOrdem.Text = DataOrdem;
-            dtpDataExecucao.Text = Prazo_execucao;
-            cboProfissional.Text = Profissional_cod;
-            cboAtividade.Text = Atividade_cod;
-
-            if (Siopi == "True")
-                chkSiopi.Checked = true;
-            else
-                chkSiopi.Checked = false;
-
-            txtNomeCliente.Text = Nome_cliente;
-            txtCidade.Text = Cidade;
-            txtNomeContato.Text = Nome_contato;
-            txtTelefoneContato.Text = Telefone_contato;
-
-            if (Status == "RECEBIDA")
-            {
+            dado.Titulo = titulo;
+            txtReferencia.Text = referencia;
+            dtpDataOrdem.Text = dataordem;
+            dtpDataExecucao.Text = prazoexecucao;
+            cboProfissional.Text = profissionalcod;
+            cboAtividade.Text = atividadecod;
+            chkSiopi.Checked = siopi;
+            txtNomeCliente.Text = nomecliente;
+            txtCidade.Text = cidade;
+            txtNomeContato.Text = nomecontato;
+            txtTelefoneContato.Text = telefonecontato;
+            if (status == "RECEBIDA")
                 rbtRecebida.Checked = true;
-            }
-
-            if (Status == "PENDENTE")
-            {
+            else if (status == "PENDENTE")
                 rbtPendente.Checked = true;
-            }
-
-            if (Status == "VISTORIADA")
-            {
+            else if (status == "VISTORIADA")
                 rbtVistoriada.Checked = true;
-            }
-
-            if (Status == "CONCLUÍDA")
-            {
+            else
                 rbtConcluida.Checked = true;
-            }
-
-            dtpDataPendente.Text = Data_pendente;
-            dtpDataVistoria.Text = Data_vistoria;
-            dtpDataConcluida.Text = Data_concluida;
-            txtOBS.Text = OBS;
+            dtpDataPendente.Text = datapendente;
+            dtpDataVistoria.Text = datavistoria;
+            dtpDataConcluida.Text = dataconcluida;
+            txtOBS.Text = obs;
 
             BuscarNomeProfissional();
             BuscarNomeAtividade();
             BuscarAgencia();
 
-            if (Fatura_cod != "0")
+            if (faturacod != "0")
             {
                 lblFaturada.Show();
-                txtCodFatura.Text = "Fatura n°: " + Fatura_cod;
+                txtCodFatura.Text = "Fatura n°: " + faturacod;
                 txtCodFatura.Show();
 
                 foreach (Control c in this.pnlDados.Controls)
@@ -246,25 +229,18 @@ namespace Arqueng.VIEW
             dado.Nome_contato = txtNomeContato.Text;
             dado.Telefone_contato = txtTelefoneContato.Text;
             if (rbtRecebida.Checked)
-            {
                 dado.Status = "RECEBIDA";
-            }
-            if (rbtPendente.Checked)
-            {
+            else if (rbtPendente.Checked)
                 dado.Status = "PENDENTE";
-            }
-            if (rbtVistoriada.Checked)
-            {
+            else if (rbtVistoriada.Checked)
                 dado.Status = "VISTORIADA";
-            }
-            if (rbtConcluida.Checked)
-            {
+            else
                 dado.Status = "CONCLUÍDA";
-            }
             dado.Data_pendente = dtpDataPendente.Value;
             dado.Data_vistoria = dtpDataVistoria.Value;
             dado.Data_concluida = dtpDataConcluida.Value;
             dado.Obs = txtOBS.Text;
+
 
             if (btnAddSave.Text == "&Adicionar")
             {
@@ -298,7 +274,7 @@ namespace Arqueng.VIEW
                 }
             }
             this.Close();
-            if (_formFilho == "frmOSLista")
+            if (FormFilho == "frmOSLista")
             {
                 frmOSLista formFilho = new frmOSLista(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
@@ -372,7 +348,7 @@ namespace Arqueng.VIEW
                 txtAgenciaEmail.Text = "";
             }
             else
-                if (txtReferencia.Text.Substring(5, 4) != agencia)
+                if (txtReferencia.Text.Substring(5, 4) != Agencia)
                 BuscarAgencia();
         }
 
@@ -417,7 +393,7 @@ namespace Arqueng.VIEW
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            if (_formFilho == "frmOSLista")
+            if (FormFilho == "frmOSLista")
             {
                 frmOSLista formFilho = new frmOSLista(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
@@ -428,6 +404,8 @@ namespace Arqueng.VIEW
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
             }
         }
+
+
     }
 
 

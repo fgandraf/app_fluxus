@@ -54,7 +54,7 @@
             // 
             // btnEntrar
             // 
-            this.btnEntrar.BackColor = System.Drawing.Color.SteelBlue;
+            this.btnEntrar.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.btnEntrar.FlatAppearance.BorderSize = 0;
             this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEntrar.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -126,7 +126,7 @@
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(225, 24);
             this.txtSenha.TabIndex = 1;
-            this.txtSenha.Text = "abcde";
+            this.txtSenha.Text = "123456";
             this.ttpLogin.SetToolTip(this.txtSenha, "Senha");
             this.txtSenha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSenha_KeyDown);
             // 
@@ -158,7 +158,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(240, 24);
             this.txtUsuario.TabIndex = 0;
-            this.txtUsuario.Text = "paulog";
+            this.txtUsuario.Text = "fgandraf";
             this.ttpLogin.SetToolTip(this.txtUsuario, "Nome de usuário");
             this.txtUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSenha_KeyDown);
             // 
@@ -215,9 +215,9 @@
             this.lblVersao.Location = new System.Drawing.Point(351, 258);
             this.lblVersao.Margin = new System.Windows.Forms.Padding(0);
             this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(29, 13);
+            this.lblVersao.Size = new System.Drawing.Size(27, 13);
             this.lblVersao.TabIndex = 12;
-            this.lblVersao.Text = "1.0b";
+            this.lblVersao.Text = "-----";
             this.lblVersao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
@@ -251,6 +251,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Arqueng";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmLogin_MouseDown);
             this.pnlLogin.ResumeLayout(false);
             this.pnlLogin.PerformLayout();
