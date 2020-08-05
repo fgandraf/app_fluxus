@@ -515,7 +515,7 @@
             this.btnDadosCadastrais.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDadosCadastrais.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnDadosCadastrais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDadosCadastrais.Location = new System.Drawing.Point(-3, 135);
+            this.btnDadosCadastrais.Location = new System.Drawing.Point(0, 135);
             this.btnDadosCadastrais.Name = "btnDadosCadastrais";
             this.btnDadosCadastrais.Size = new System.Drawing.Size(200, 20);
             this.btnDadosCadastrais.TabIndex = 128;
@@ -530,9 +530,9 @@
             // 
             this.imgLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.imgLogo.Image = ((System.Drawing.Image)(resources.GetObject("imgLogo.Image")));
-            this.imgLogo.Location = new System.Drawing.Point(50, 55);
+            this.imgLogo.Location = new System.Drawing.Point(60, 55);
             this.imgLogo.Name = "imgLogo";
-            this.imgLogo.Size = new System.Drawing.Size(100, 79);
+            this.imgLogo.Size = new System.Drawing.Size(80, 80);
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgLogo.TabIndex = 17;
             this.imgLogo.TabStop = false;
