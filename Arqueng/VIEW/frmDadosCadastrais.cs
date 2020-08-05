@@ -163,10 +163,27 @@ namespace Arqueng.VIEW
 
             if (picLogotipo.ImageLocation != Locallogo && picLogotipo.ImageLocation != "")
             {
+                if (File.Exists(Globais.Logotipo))
+                    File.Delete(Globais.Logotipo);
+
+
+
                 System.IO.File.Copy(picLogotipo.ImageLocation, System.Environment.CurrentDirectory + @"\" + LogoNome, true);
                 dado.Logotipo = System.Environment.CurrentDirectory + @"\" + LogoNome;
+                
                 picLogotipo.ImageLocation = System.Environment.CurrentDirectory + @"\" + LogoNome;
             }
+
+
+
+
+
+
+
+
+
+
+
 
             if (Globais.Logotipo != picLogotipo.ImageLocation)
                 Globais.Logotipo = picLogotipo.ImageLocation;
