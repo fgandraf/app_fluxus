@@ -59,7 +59,7 @@ namespace Arqueng.DAO
                         dado.Ct_celebrado = Convert.ToDateTime(dr["ct_celebrado"]);
                         dado.Ct_inicio = Convert.ToDateTime(dr["ct_inicio"]);
                         dado.Ct_termino = Convert.ToDateTime(dr["ct_termino"]);
-
+                        dado.Logotipo = Convert.ToString(dr["logotipo"]);
 
                     }
                 }
@@ -78,7 +78,7 @@ namespace Arqueng.DAO
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("SELECT cnpj, fantasia, razao FROM tb_dadoscadastrais", con.con);
+                sql = new MySqlCommand("SELECT cnpj, fantasia, razao, ct_edital, ct_contrato, logotipo FROM tb_dadoscadastrais", con.con);
                 MySqlDataReader dr = sql.ExecuteReader();
 
                 if (dr.HasRows == false)
@@ -92,7 +92,10 @@ namespace Arqueng.DAO
                     {
                         Globais.Cnpj = Convert.ToString(dr["cnpj"]);
                         Globais.Razao = Convert.ToString(dr["razao"]);
+                        Globais.Edital = Convert.ToString(dr["ct_edital"]);
+                        Globais.Contrato = Convert.ToString(dr["ct_contrato"]);
                         dado.Fantasia = Convert.ToString(dr["fantasia"]);
+                        Globais.Logotipo = Convert.ToString(dr["logotipo"]);
                     }
                 }
                 con.FecharConexao();
@@ -109,7 +112,7 @@ namespace Arqueng.DAO
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("INSERT INTO tb_dadoscadastrais(codigo, cnpj, fantasia, razao, ie, im, endereco, complemento, bairro, cidade, cep, uf, constituicao, telefone, telefone2, email, db_banco, db_tipo, db_agencia, db_operador, db_conta, ct_tomador, ct_edital, ct_contrato, ct_celebrado, ct_inicio, ct_termino) VALUES (@codigo, @cnpj, @fantasia, @razao, @ie, @im, @endereco, @complemento, @bairro, @cidade, @cep, @uf, @constituicao, @telefone, @telefone2 @email, @db_banco, @db_tipo, @db_agencia, @db_operador, @db_conta, @ct_tomador, @ct_edital, @ct_contrato, @ct_celebrado, @ct_inicio, @ct_termino)", con.con);
+                sql = new MySqlCommand("INSERT INTO tb_dadoscadastrais(codigo, cnpj, fantasia, razao, ie, im, endereco, complemento, bairro, cidade, cep, uf, constituicao, telefone, telefone2, email, db_banco, db_tipo, db_agencia, db_operador, db_conta, ct_tomador, ct_edital, ct_contrato, ct_celebrado, ct_inicio, ct_termino, logotipo) VALUES (@codigo, @cnpj, @fantasia, @razao, @ie, @im, @endereco, @complemento, @bairro, @cidade, @cep, @uf, @constituicao, @telefone, @telefone2 @email, @db_banco, @db_tipo, @db_agencia, @db_operador, @db_conta, @ct_tomador, @ct_edital, @ct_contrato, @ct_celebrado, @ct_inicio, @ct_termino, @logotipo)", con.con);
                 sql.Parameters.AddWithValue("@codigo", "1");
                 sql.Parameters.AddWithValue("@cnpj", dado.Cnpj);
                 sql.Parameters.AddWithValue("@fantasia", dado.Fantasia);
@@ -137,7 +140,7 @@ namespace Arqueng.DAO
                 sql.Parameters.AddWithValue("@ct_celebrado", dado.Ct_celebrado);
                 sql.Parameters.AddWithValue("@ct_inicio", dado.Ct_inicio);
                 sql.Parameters.AddWithValue("@ct_termino", dado.Ct_termino);
-
+                sql.Parameters.AddWithValue("@logotipo", dado.Logotipo);
 
 
 
@@ -157,16 +160,7 @@ namespace Arqueng.DAO
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("UPDATE tb_dadoscadastrais SET cnpj = @cnpj, fantasia = @fantasia, razao = @razao, ie = @ie, im = @im, endereco = @endereco, complemento = @complemento, bairro = @bairro, cidade = @cidade, cep = @cep, uf = @uf, constituicao = @constituicao, telefone = @telefone, telefone2 = @telefone2, email = @email, db_banco = @db_banco, db_tipo = @db_tipo, db_agencia = @db_agencia, db_operador = @db_operador, db_conta = @db_conta, ct_tomador = @ct_tomador, ct_edital = @ct_edital, ct_contrato = @ct_contrato, ct_celebrado = @ct_celebrado, ct_inicio = @ct_inicio, ct_termino = @ct_termino WHERE codigo = @codigo", con.con);
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                sql = new MySqlCommand("UPDATE tb_dadoscadastrais SET cnpj = @cnpj, fantasia = @fantasia, razao = @razao, ie = @ie, im = @im, endereco = @endereco, complemento = @complemento, bairro = @bairro, cidade = @cidade, cep = @cep, uf = @uf, constituicao = @constituicao, telefone = @telefone, telefone2 = @telefone2, email = @email, db_banco = @db_banco, db_tipo = @db_tipo, db_agencia = @db_agencia, db_operador = @db_operador, db_conta = @db_conta, ct_tomador = @ct_tomador, ct_edital = @ct_edital, ct_contrato = @ct_contrato, ct_celebrado = @ct_celebrado, ct_inicio = @ct_inicio, ct_termino = @ct_termino, logotipo = @logotipo WHERE codigo = @codigo", con.con);
                 
                 sql.Parameters.AddWithValue("@codigo", "1");
                 sql.Parameters.AddWithValue("@cnpj", dado.Cnpj);
@@ -189,15 +183,13 @@ namespace Arqueng.DAO
                 sql.Parameters.AddWithValue("@db_agencia", dado.Db_agencia);
                 sql.Parameters.AddWithValue("@db_operador", dado.Db_operador);
                 sql.Parameters.AddWithValue("@db_conta", dado.Db_conta);
-
-
                 sql.Parameters.AddWithValue("@ct_tomador", dado.Ct_tomador);
                 sql.Parameters.AddWithValue("@ct_edital", dado.Ct_edital);
                 sql.Parameters.AddWithValue("@ct_contrato", dado.Ct_contrato);
                 sql.Parameters.AddWithValue("@ct_celebrado", dado.Ct_celebrado);
                 sql.Parameters.AddWithValue("@ct_inicio", dado.Ct_inicio);
                 sql.Parameters.AddWithValue("@ct_termino", dado.Ct_termino);
-
+                sql.Parameters.AddWithValue("@logotipo", dado.Logotipo);
 
 
                 sql.ExecuteNonQuery();

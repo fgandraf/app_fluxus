@@ -88,12 +88,18 @@
             this.lblContrato = new System.Windows.Forms.Label();
             this.lblTomador = new System.Windows.Forms.Label();
             this.txtCelebrado = new System.Windows.Forms.MaskedTextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.picLogotipo = new System.Windows.Forms.PictureBox();
+            this.btnCarregar = new System.Windows.Forms.Button();
+            this.openDialog = new System.Windows.Forms.OpenFileDialog();
             this.pnlBotton.SuspendLayout();
             this.tbcCadastrais.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogotipo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCadastrarSalvar
@@ -477,7 +483,6 @@
             this.lblOperador.Size = new System.Drawing.Size(57, 13);
             this.lblOperador.TabIndex = 152;
             this.lblOperador.Text = "Operador";
-            this.lblOperador.Click += new System.EventHandler(this.lblOperador_Click);
             // 
             // lblAgencia
             // 
@@ -697,6 +702,7 @@
             this.tbcCadastrais.Controls.Add(this.tabPage4);
             this.tbcCadastrais.Controls.Add(this.tabPage2);
             this.tbcCadastrais.Controls.Add(this.tabPage3);
+            this.tbcCadastrais.Controls.Add(this.tabPage5);
             this.tbcCadastrais.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbcCadastrais.HotTrack = true;
             this.tbcCadastrais.ItemSize = new System.Drawing.Size(160, 40);
@@ -977,6 +983,45 @@
             this.txtCelebrado.Enter += new System.EventHandler(this.txtCelebrado_Enter);
             this.txtCelebrado.Validated += new System.EventHandler(this.txtCelebrado_Validated);
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.picLogotipo);
+            this.tabPage5.Controls.Add(this.btnCarregar);
+            this.tabPage5.Location = new System.Drawing.Point(4, 44);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(872, 450);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "Logotipo";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // picLogotipo
+            // 
+            this.picLogotipo.BackColor = System.Drawing.Color.Transparent;
+            this.picLogotipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picLogotipo.Location = new System.Drawing.Point(311, 100);
+            this.picLogotipo.Name = "picLogotipo";
+            this.picLogotipo.Size = new System.Drawing.Size(250, 250);
+            this.picLogotipo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLogotipo.TabIndex = 1;
+            this.picLogotipo.TabStop = false;
+            // 
+            // btnCarregar
+            // 
+            this.btnCarregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCarregar.Location = new System.Drawing.Point(311, 356);
+            this.btnCarregar.Name = "btnCarregar";
+            this.btnCarregar.Size = new System.Drawing.Size(250, 32);
+            this.btnCarregar.TabIndex = 0;
+            this.btnCarregar.Text = "Selecionar arquivo";
+            this.btnCarregar.UseVisualStyleBackColor = true;
+            this.btnCarregar.Click += new System.EventHandler(this.btnCarregar_Click);
+            // 
+            // openDialog
+            // 
+            this.openDialog.FileName = "openFileDialog1";
+            this.openDialog.Filter = "PNG(*.png)|*.png|JPEG(*.jpg)|*.jpg";
+            // 
             // frmDadosCadastrais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1005,6 +1050,8 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogotipo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1070,5 +1117,9 @@
         private System.Windows.Forms.TextBox txtEdital;
         private System.Windows.Forms.Label lblEdital;
         private System.Windows.Forms.ComboBox cboTomador;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.PictureBox picLogotipo;
+        private System.Windows.Forms.Button btnCarregar;
+        private System.Windows.Forms.OpenFileDialog openDialog;
     }
 }

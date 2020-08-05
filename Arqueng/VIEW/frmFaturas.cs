@@ -97,14 +97,15 @@ namespace Arqueng.VIEW
             for (int i = 0; i < dgvOS.Rows.Count; i++)
             {
                 RepFaturaENT dat = new RepFaturaENT();
-                
-                dat.data_ordem = Convert.ToDateTime(dgvOS.Rows[i].Cells[0].Value);
-                dat.referencia = dgvOS.Rows[i].Cells[1].Value.ToString();
-                dat.atividade_cod = dgvOS.Rows[i].Cells[2].Value.ToString();
-                dat.cidade = dgvOS.Rows[i].Cells[3].Value.ToString();
-                dat.data_concluida = Convert.ToDateTime(dgvOS.Rows[i].Cells[6].Value);
-                dat.valor_atividade = dgvOS.Rows[i].Cells[7].Value.ToString();
-                dat.valor_deslocamento = dgvOS.Rows[i].Cells[8].Value.ToString();
+
+
+                dat.data_ordem = Convert.ToDateTime(dgvOS.Rows[i].Cells["data_ordem"].Value);
+                dat.referencia = dgvOS.Rows[i].Cells["referencia"].Value.ToString();
+                dat.atividade_cod = dgvOS.Rows[i].Cells["atividade_cod"].Value.ToString();
+                dat.cidade = dgvOS.Rows[i].Cells["cidade"].Value.ToString();
+                dat.data_concluida = Convert.ToDateTime(dgvOS.Rows[i].Cells["data_concluida"].Value);
+                dat.valor_atividade = dgvOS.Rows[i].Cells["valor_atividade"].Value.ToString();
+                dat.valor_deslocamento = dgvOS.Rows[i].Cells["valor_deslocamento"].Value.ToString();
 
                 rep.Datos.Add(dat);
             }

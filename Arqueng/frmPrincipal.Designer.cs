@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.lblVersao = new System.Windows.Forms.Label();
             this.btnSlide = new System.Windows.Forms.Button();
             this.tblMenu = new System.Windows.Forms.TableLayoutPanel();
             this.pnlCtrlDashboard = new System.Windows.Forms.Panel();
@@ -67,7 +68,6 @@
             this.menuUsuario = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.alterarSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblVersao = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.tblMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
@@ -89,6 +89,17 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(200, 630);
             this.pnlMenu.TabIndex = 160;
+            // 
+            // lblVersao
+            // 
+            this.lblVersao.AutoSize = true;
+            this.lblVersao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersao.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblVersao.Location = new System.Drawing.Point(4, 614);
+            this.lblVersao.Name = "lblVersao";
+            this.lblVersao.Size = new System.Drawing.Size(30, 13);
+            this.lblVersao.TabIndex = 134;
+            this.lblVersao.Text = "v. ---";
             // 
             // btnSlide
             // 
@@ -688,17 +699,6 @@
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
-            // 
-            // lblVersao
-            // 
-            this.lblVersao.AutoSize = true;
-            this.lblVersao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersao.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblVersao.Location = new System.Drawing.Point(4, 614);
-            this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(30, 13);
-            this.lblVersao.TabIndex = 134;
-            this.lblVersao.Text = "v. ---";
             // 
             // frmPrincipal
             // 

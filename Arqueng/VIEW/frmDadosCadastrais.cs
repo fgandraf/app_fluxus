@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace Arqueng.VIEW
 {
@@ -16,6 +17,8 @@ namespace Arqueng.VIEW
         CadastraisMODEL model = new CadastraisMODEL();
         CadastraisENT dado = new CadastraisENT();
         string NFantasia = null;
+        string LogoNome = null;
+        string Locallogo = null;
 
 
         public frmDadosCadastrais(frmPrincipal frm1)
@@ -47,10 +50,8 @@ namespace Arqueng.VIEW
                     txtCidade.Text = dado.Cidade;
                     txtCEP.Text = dado.Cep;
                     cboUF.Text = dado.Uf;
-
                     if (dado.Constituicao.ToString() != "01/01/0001 00:00:00")
                         txtConstituicao.Text = dado.Constituicao.ToString("dd/MM/yyyy");
-                    
                     txtTelefone.Text = dado.Telefone;
                     txtTelefone2.Text = dado.Telefone2;
                     txtEmail.Text = dado.Email;
@@ -59,32 +60,21 @@ namespace Arqueng.VIEW
                     txtAgencia.Text = dado.Db_agencia;
                     txtOperador.Text = dado.Db_operador;
                     txtConta.Text = dado.Db_conta;
-
-                    btnCadastrarSalvar.Text = "&Salvar";
-                    txtCNPJ.Focus();
-
-
-
                     cboTomador.Text = dado.Ct_tomador;
                     txtEdital.Text = dado.Ct_edital;
                     txtContrato.Text = dado.Ct_contrato;
-
-
                     if (dado.Ct_celebrado.ToString() != "01/01/0001 00:00:00")
                         txtCelebrado.Text = dado.Ct_celebrado.ToString("dd/MM/yyy");
-
-
                     if (dado.Ct_inicio.ToString() != "01/01/0001 00:00:00")
                         txtInicio.Text = dado.Ct_inicio.ToString("dd/MM/yyyy");
-
                     if (dado.Ct_termino.ToString() != "01/01/0001 00:00:00")
                         txtTermino.Text = dado.Ct_termino.ToString("dd/MM/yyyy");
-
-
-
-
-
-
+                    picLogotipo.ImageLocation = dado.Logotipo;
+                    Locallogo = dado.Logotipo;
+                    
+                    
+                    btnCadastrarSalvar.Text = "&Salvar";
+                    txtCNPJ.Focus();
                     NFantasia = dado.Fantasia;
                 }
             }
@@ -112,9 +102,9 @@ namespace Arqueng.VIEW
                 MessageBox.Show("Campos com * são obrigatório", "Chave Primária", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            
-            
-            
+
+
+
             if (NFantasia != txtNomeFantasia.Text)
             {
                 _frmPrincipal.btnDadosCadastrais.Text = txtNomeFantasia.Text.ToString();
@@ -128,6 +118,14 @@ namespace Arqueng.VIEW
             if (Globais.Cnpj != txtCNPJ.Text)
                 Globais.Cnpj = txtCNPJ.Text;
 
+            if (Globais.Edital != txtEdital.Text)
+                Globais.Edital = txtEdital.Text;
+
+            if (Globais.Contrato != txtContrato.Text)
+                Globais.Contrato = txtContrato.Text;
+
+            
+            
 
             //POPULATE
             dado.Cnpj = txtCNPJ.Text;
@@ -152,22 +150,26 @@ namespace Arqueng.VIEW
             dado.Db_agencia = txtAgencia.Text;
             dado.Db_operador = txtOperador.Text;
             dado.Db_conta = txtConta.Text;
-
             dado.Ct_tomador = cboTomador.Text;
             dado.Ct_edital = txtEdital.Text;
             dado.Ct_contrato = txtContrato.Text;
-
-
-
-
-
-
             if (txtCelebrado.Text != "")
                 dado.Ct_celebrado = Convert.ToDateTime(txtCelebrado.Text);
             if (txtInicio.Text != "")
                 dado.Ct_inicio = Convert.ToDateTime(txtInicio.Text);
             if (txtTermino.Text != "")
                 dado.Ct_termino = Convert.ToDateTime(txtTermino.Text);
+
+
+            if (picLogotipo.ImageLocation != Locallogo && picLogotipo.ImageLocation != "")
+            {
+                System.IO.File.Copy(picLogotipo.ImageLocation, System.Environment.CurrentDirectory + @"\" + LogoNome, true);
+                dado.Logotipo = System.Environment.CurrentDirectory + @"\" + LogoNome;
+                picLogotipo.ImageLocation = System.Environment.CurrentDirectory + @"\" + LogoNome;
+            }
+
+            if (Globais.Logotipo != picLogotipo.ImageLocation)
+                Globais.Logotipo = picLogotipo.ImageLocation;
 
 
 
@@ -267,16 +269,6 @@ namespace Arqueng.VIEW
                 txtConstituicao.Mask = "";
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void lblOperador_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtCelebrado_Enter(object sender, EventArgs e)
         {
             txtCelebrado.Mask = "00/00/0000";
@@ -309,6 +301,16 @@ namespace Arqueng.VIEW
             if (txtTermino.Text == "  /  /")
                 txtTermino.Mask = "";
         }
+
+        private void btnCarregar_Click(object sender, EventArgs e)
+        {
+            if (openDialog.ShowDialog() == DialogResult.OK)
+            {
+                picLogotipo.ImageLocation = openDialog.FileName;
+                LogoNome = openDialog.SafeFileName;
+            }
+        }
+
     }
 
 

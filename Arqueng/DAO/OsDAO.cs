@@ -58,7 +58,7 @@ namespace Arqueng.DAO
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("SELECT t1.data_ordem, t1.referencia, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.fatura_cod = @fatura_cod ORDER BY t1.data_concluida", con.con);
+                sql = new MySqlCommand("SELECT t1.data_ordem, t1.referencia, t1.profissional_cod, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.fatura_cod = @fatura_cod ORDER BY t1.data_ordem", con.con);
                 sql.Parameters.AddWithValue("@fatura_cod", dado.Fatura_cod);
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = sql;

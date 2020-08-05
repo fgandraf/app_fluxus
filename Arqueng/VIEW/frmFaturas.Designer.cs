@@ -28,32 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaturas));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tblFaturas = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlFaturaMain = new System.Windows.Forms.Panel();
             this.dgvOS = new System.Windows.Forms.DataGridView();
-            this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.atividade_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_vistoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_concluída = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valor_atividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valor_deslocamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlLinha2 = new System.Windows.Forms.Panel();
             this.lbData = new System.Windows.Forms.Label();
             this.txtValorDeslocamento = new System.Windows.Forms.TextBox();
@@ -63,15 +54,25 @@
             this.lblSubtotal = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.dgvFaturas = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.lblNenhuma = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal_os = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal_desloc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.lblNenhuma = new System.Windows.Forms.Label();
+            this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.atividade_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.profissional_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_vistoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_concluida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valor_atividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valor_deslocamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblFaturas.SuspendLayout();
             this.pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
@@ -150,42 +151,43 @@
             this.dgvOS.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvOS.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvOS.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI Semibold", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOS.ColumnHeadersHeight = 35;
             this.dgvOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvOS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.data_ordem,
             this.referencia,
             this.atividade_cod,
+            this.profissional_cod,
             this.cidade,
             this.nome_cliente,
             this.data_vistoria,
-            this.data_concluída,
+            this.data_concluida,
             this.valor_atividade,
             this.valor_deslocamento});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvOS.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvOS.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvOS.GridColor = System.Drawing.SystemColors.InactiveCaption;
             this.dgvOS.Location = new System.Drawing.Point(20, 50);
             this.dgvOS.Name = "dgvOS";
             this.dgvOS.ReadOnly = true;
             this.dgvOS.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvOS.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.dgvOS.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvOS.RowHeadersVisible = false;
             this.dgvOS.RowHeadersWidth = 40;
             this.dgvOS.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 8F);
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            this.dgvOS.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 8F);
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            this.dgvOS.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvOS.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOS.RowTemplate.Height = 30;
             this.dgvOS.RowTemplate.ReadOnly = true;
@@ -194,106 +196,6 @@
             this.dgvOS.ShowEditingIcon = false;
             this.dgvOS.Size = new System.Drawing.Size(679, 400);
             this.dgvOS.TabIndex = 224;
-            // 
-            // data_ordem
-            // 
-            this.data_ordem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.data_ordem.DataPropertyName = "data_ordem";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_ordem.DefaultCellStyle = dataGridViewCellStyle13;
-            this.data_ordem.HeaderText = "Data da Ordem";
-            this.data_ordem.MinimumWidth = 75;
-            this.data_ordem.Name = "data_ordem";
-            this.data_ordem.ReadOnly = true;
-            this.data_ordem.Width = 75;
-            // 
-            // referencia
-            // 
-            this.referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.referencia.DataPropertyName = "referencia";
-            this.referencia.HeaderText = "Referência";
-            this.referencia.MinimumWidth = 80;
-            this.referencia.Name = "referencia";
-            this.referencia.ReadOnly = true;
-            // 
-            // atividade_cod
-            // 
-            this.atividade_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.atividade_cod.DataPropertyName = "atividade_cod";
-            this.atividade_cod.HeaderText = "Tipo";
-            this.atividade_cod.MinimumWidth = 45;
-            this.atividade_cod.Name = "atividade_cod";
-            this.atividade_cod.ReadOnly = true;
-            this.atividade_cod.Width = 45;
-            // 
-            // cidade
-            // 
-            this.cidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.cidade.DataPropertyName = "cidade";
-            this.cidade.HeaderText = "Cidade";
-            this.cidade.MinimumWidth = 60;
-            this.cidade.Name = "cidade";
-            this.cidade.ReadOnly = true;
-            this.cidade.Width = 60;
-            // 
-            // nome_cliente
-            // 
-            this.nome_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nome_cliente.DataPropertyName = "nome_cliente";
-            this.nome_cliente.HeaderText = "Nome do Cliente";
-            this.nome_cliente.MinimumWidth = 110;
-            this.nome_cliente.Name = "nome_cliente";
-            this.nome_cliente.ReadOnly = true;
-            // 
-            // data_vistoria
-            // 
-            this.data_vistoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.data_vistoria.DataPropertyName = "data_vistoria";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_vistoria.DefaultCellStyle = dataGridViewCellStyle14;
-            this.data_vistoria.HeaderText = "Data da Vistoria";
-            this.data_vistoria.MinimumWidth = 75;
-            this.data_vistoria.Name = "data_vistoria";
-            this.data_vistoria.ReadOnly = true;
-            this.data_vistoria.Width = 75;
-            // 
-            // data_concluída
-            // 
-            this.data_concluída.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.data_concluída.DataPropertyName = "data_concluida";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_concluída.DefaultCellStyle = dataGridViewCellStyle15;
-            this.data_concluída.HeaderText = "Data da Conclusão";
-            this.data_concluída.MinimumWidth = 75;
-            this.data_concluída.Name = "data_concluída";
-            this.data_concluída.ReadOnly = true;
-            this.data_concluída.Width = 75;
-            // 
-            // valor_atividade
-            // 
-            this.valor_atividade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.valor_atividade.DataPropertyName = "valor_atividade";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.valor_atividade.DefaultCellStyle = dataGridViewCellStyle16;
-            this.valor_atividade.HeaderText = "Valor OS";
-            this.valor_atividade.MinimumWidth = 55;
-            this.valor_atividade.Name = "valor_atividade";
-            this.valor_atividade.ReadOnly = true;
-            this.valor_atividade.Width = 55;
-            // 
-            // valor_deslocamento
-            // 
-            this.valor_deslocamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.valor_deslocamento.DataPropertyName = "valor_deslocamento";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.valor_deslocamento.DefaultCellStyle = dataGridViewCellStyle17;
-            this.valor_deslocamento.HeaderText = "Desloca.";
-            this.valor_deslocamento.MinimumWidth = 55;
-            this.valor_deslocamento.Name = "valor_deslocamento";
-            this.valor_deslocamento.ReadOnly = true;
-            this.valor_deslocamento.Width = 55;
             // 
             // pnlLinha2
             // 
@@ -420,7 +322,7 @@
             this.dgvFaturas.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvFaturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvFaturas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvFaturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.dgvFaturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvFaturas.ColumnHeadersHeight = 35;
             this.dgvFaturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvFaturas.ColumnHeadersVisible = false;
@@ -432,15 +334,15 @@
             this.subtotal_desloc,
             this.total});
             this.dgvFaturas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle22.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFaturas.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFaturas.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvFaturas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFaturas.EnableHeadersVisualStyles = false;
             this.dgvFaturas.GridColor = System.Drawing.SystemColors.Window;
@@ -464,48 +366,6 @@
             this.dgvFaturas.Size = new System.Drawing.Size(180, 540);
             this.dgvFaturas.TabIndex = 223;
             this.dgvFaturas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvFaturas_MouseClick);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnImprimir);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(204, 20);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(713, 32);
-            this.panel2.TabIndex = 434;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimir.BackColor = System.Drawing.SystemColors.Window;
-            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImprimir.FlatAppearance.BorderSize = 0;
-            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
-            this.btnImprimir.Location = new System.Drawing.Point(665, 0);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(0);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(30, 30);
-            this.btnImprimir.TabIndex = 431;
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // lblNenhuma
-            // 
-            this.lblNenhuma.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblNenhuma.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblNenhuma.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblNenhuma.Location = new System.Drawing.Point(0, 0);
-            this.lblNenhuma.Margin = new System.Windows.Forms.Padding(0);
-            this.lblNenhuma.Name = "lblNenhuma";
-            this.lblNenhuma.Size = new System.Drawing.Size(920, 580);
-            this.lblNenhuma.TabIndex = 432;
-            this.lblNenhuma.Text = "Nenhuma fatura gerada!";
-            this.lblNenhuma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -556,6 +416,158 @@
             this.total.ReadOnly = true;
             this.total.Visible = false;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnImprimir);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(204, 20);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(713, 32);
+            this.panel2.TabIndex = 434;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimir.BackColor = System.Drawing.SystemColors.Window;
+            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimir.FlatAppearance.BorderSize = 0;
+            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.Location = new System.Drawing.Point(665, 0);
+            this.btnImprimir.Margin = new System.Windows.Forms.Padding(0);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(30, 30);
+            this.btnImprimir.TabIndex = 431;
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // lblNenhuma
+            // 
+            this.lblNenhuma.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblNenhuma.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblNenhuma.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lblNenhuma.Location = new System.Drawing.Point(0, 0);
+            this.lblNenhuma.Margin = new System.Windows.Forms.Padding(0);
+            this.lblNenhuma.Name = "lblNenhuma";
+            this.lblNenhuma.Size = new System.Drawing.Size(920, 580);
+            this.lblNenhuma.TabIndex = 432;
+            this.lblNenhuma.Text = "Nenhuma fatura gerada!";
+            this.lblNenhuma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // data_ordem
+            // 
+            this.data_ordem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.data_ordem.DataPropertyName = "data_ordem";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_ordem.DefaultCellStyle = dataGridViewCellStyle2;
+            this.data_ordem.HeaderText = "Data da Ordem";
+            this.data_ordem.MinimumWidth = 75;
+            this.data_ordem.Name = "data_ordem";
+            this.data_ordem.ReadOnly = true;
+            this.data_ordem.Width = 75;
+            // 
+            // referencia
+            // 
+            this.referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.referencia.DataPropertyName = "referencia";
+            this.referencia.HeaderText = "Referência";
+            this.referencia.MinimumWidth = 80;
+            this.referencia.Name = "referencia";
+            this.referencia.ReadOnly = true;
+            // 
+            // atividade_cod
+            // 
+            this.atividade_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.atividade_cod.DataPropertyName = "atividade_cod";
+            this.atividade_cod.HeaderText = "Tipo";
+            this.atividade_cod.MinimumWidth = 45;
+            this.atividade_cod.Name = "atividade_cod";
+            this.atividade_cod.ReadOnly = true;
+            this.atividade_cod.Width = 45;
+            // 
+            // profissional_cod
+            // 
+            this.profissional_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.profissional_cod.DataPropertyName = "profissional_cod";
+            this.profissional_cod.HeaderText = "Pro.";
+            this.profissional_cod.MinimumWidth = 45;
+            this.profissional_cod.Name = "profissional_cod";
+            this.profissional_cod.ReadOnly = true;
+            this.profissional_cod.Width = 45;
+            // 
+            // cidade
+            // 
+            this.cidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.cidade.DataPropertyName = "cidade";
+            this.cidade.HeaderText = "Cidade";
+            this.cidade.MinimumWidth = 60;
+            this.cidade.Name = "cidade";
+            this.cidade.ReadOnly = true;
+            this.cidade.Width = 60;
+            // 
+            // nome_cliente
+            // 
+            this.nome_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nome_cliente.DataPropertyName = "nome_cliente";
+            this.nome_cliente.HeaderText = "Nome do Cliente";
+            this.nome_cliente.MinimumWidth = 110;
+            this.nome_cliente.Name = "nome_cliente";
+            this.nome_cliente.ReadOnly = true;
+            // 
+            // data_vistoria
+            // 
+            this.data_vistoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.data_vistoria.DataPropertyName = "data_vistoria";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_vistoria.DefaultCellStyle = dataGridViewCellStyle3;
+            this.data_vistoria.HeaderText = "Data da Vistoria";
+            this.data_vistoria.MinimumWidth = 75;
+            this.data_vistoria.Name = "data_vistoria";
+            this.data_vistoria.ReadOnly = true;
+            this.data_vistoria.Width = 75;
+            // 
+            // data_concluida
+            // 
+            this.data_concluida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.data_concluida.DataPropertyName = "data_concluida";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_concluida.DefaultCellStyle = dataGridViewCellStyle4;
+            this.data_concluida.HeaderText = "Data da Conclusão";
+            this.data_concluida.MinimumWidth = 75;
+            this.data_concluida.Name = "data_concluida";
+            this.data_concluida.ReadOnly = true;
+            this.data_concluida.Width = 75;
+            // 
+            // valor_atividade
+            // 
+            this.valor_atividade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.valor_atividade.DataPropertyName = "valor_atividade";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.valor_atividade.DefaultCellStyle = dataGridViewCellStyle5;
+            this.valor_atividade.HeaderText = "Valor OS";
+            this.valor_atividade.MinimumWidth = 55;
+            this.valor_atividade.Name = "valor_atividade";
+            this.valor_atividade.ReadOnly = true;
+            this.valor_atividade.Width = 55;
+            // 
+            // valor_deslocamento
+            // 
+            this.valor_deslocamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.valor_deslocamento.DataPropertyName = "valor_deslocamento";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.valor_deslocamento.DefaultCellStyle = dataGridViewCellStyle6;
+            this.valor_deslocamento.HeaderText = "Desloca.";
+            this.valor_deslocamento.MinimumWidth = 55;
+            this.valor_deslocamento.Name = "valor_deslocamento";
+            this.valor_deslocamento.ReadOnly = true;
+            this.valor_deslocamento.Width = 55;
+            // 
             // frmFaturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,20 +611,21 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_ordem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn referencia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn atividade_cod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nome_cliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_vistoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data_concluída;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valor_atividade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn valor_deslocamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn data;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal_os;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal_desloc;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_ordem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn referencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn atividade_cod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn profissional_cod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nome_cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_vistoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data_concluida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valor_atividade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valor_deslocamento;
     }
 }

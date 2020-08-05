@@ -29,7 +29,11 @@ namespace Arqueng.RELATORIOS
         {
             rpvFatura.LocalReport.DataSources.Clear();
             rpvFatura.LocalReport.DataSources.Add(new ReportDataSource("dtFat", Datos));
+            this.rpvFatura.LocalReport.EnableExternalImages = true;
 
+
+
+            this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("logotipo", "file:"+Globais.Logotipo));
             this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("edital", Globais.Edital));
             this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("contrato", Globais.Contrato));
             this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("subtotal_os", dado.subtotal_os));

@@ -16,8 +16,10 @@ namespace Arqueng.ENTIDADES
         //COMPANY INFO
         public static string Razao = null;
         public static string Cnpj = null;
+        public static string Logotipo = null;
         //CONTRACT INFO
-        public static string Edital = "2528/2019";
-        public static string Contrato = "7062.01.2528.552/2019";
+        public static string Edital = null;
+        public static string Contrato = null;
+
     }
 }
