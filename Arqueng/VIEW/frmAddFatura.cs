@@ -70,7 +70,7 @@ namespace Arqueng.VIEW
                 return;
             else
             {
-                var result = MessageBox.Show("Deseja remover a O.S. da Fatura?" + "\n\n" + dgvOS.CurrentRow.Cells[2].Value.ToString() + "\n" + dgvOS.CurrentRow.Cells[5].Value.ToString(), "Não Faturar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                var result = MessageBox.Show("Deseja remover a O.S. da Fatura?" + "\n\n" + dgvOS.CurrentRow.Cells[2].Value.ToString() + "\n" + dgvOS.CurrentRow.Cells[6].Value.ToString(), "Não Faturar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (result == DialogResult.Yes)
                 {
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
@@ -94,7 +94,6 @@ namespace Arqueng.VIEW
             dadoFatura.subtotal_os = Subtotal_os.ToString().Replace(',', '.');
             dadoFatura.subtotal_desloc = Subtotal_desloc.ToString().Replace(',', '.');
             dadoFatura.total = Total.ToString().Replace(',', '.');
-            dadoFatura.rrtart = txtRRTART.Text;
             
             try
             {

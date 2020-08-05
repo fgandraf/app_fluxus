@@ -69,7 +69,7 @@ namespace Arqueng.VIEW
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            lblVersao.Text = Globais.Versao;
+            lblVersao.Text = "v. " + Globais.Versao;
         }
     }
 }

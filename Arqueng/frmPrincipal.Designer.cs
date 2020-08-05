@@ -67,6 +67,7 @@
             this.menuUsuario = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.alterarSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblVersao = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.tblMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
@@ -77,6 +78,7 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.pnlMenu.Controls.Add(this.lblVersao);
             this.pnlMenu.Controls.Add(this.btnSlide);
             this.pnlMenu.Controls.Add(this.tblMenu);
             this.pnlMenu.Controls.Add(this.pnlCtrlDadosCadastrais);
@@ -687,6 +689,17 @@
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
+            // lblVersao
+            // 
+            this.lblVersao.AutoSize = true;
+            this.lblVersao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersao.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblVersao.Location = new System.Drawing.Point(4, 614);
+            this.lblVersao.Name = "lblVersao";
+            this.lblVersao.Size = new System.Drawing.Size(30, 13);
+            this.lblVersao.TabIndex = 134;
+            this.lblVersao.Text = "v. ---";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -752,6 +765,7 @@
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.ToolStripMenuItem alterarSenhaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
+        private System.Windows.Forms.Label lblVersao;
     }
 }
 

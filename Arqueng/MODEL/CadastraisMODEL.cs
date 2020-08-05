@@ -28,11 +28,11 @@ namespace Arqueng.MODEL
         }
 
 
-        public void BuscarFantasiaModel(CadastraisENT dado)
+        public void BuscarDadosEmpModel(CadastraisENT dado)
         {
             try
             {
-                dao.BuscarFantasiaDAO(dado);
+                dao.BuscarDadosEmpDAO(dado);
             }
             catch (Exception ex)
             {

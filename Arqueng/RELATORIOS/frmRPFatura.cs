@@ -15,11 +15,10 @@ namespace Arqueng.RELATORIOS
         public string contrato = null;
 
 
-        public frmRPFatura(string _contrato, string rrtart, string subtotal_os, string subtotal_desloc, string total)
+        public frmRPFatura(string _contrato, string subtotal_os, string subtotal_desloc, string total)
         {
             InitializeComponent();
-            contrato = _contrato;
-            dado.rrtart = rrtart;
+            
             dado.subtotal_os = subtotal_os;
             dado.subtotal_desloc = subtotal_desloc;
             dado.total = total;
@@ -30,12 +29,14 @@ namespace Arqueng.RELATORIOS
         {
             rpvFatura.LocalReport.DataSources.Clear();
             rpvFatura.LocalReport.DataSources.Add(new ReportDataSource("dtFat", Datos));
-            
-            this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("contrato", contrato));
-            this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("rrtart",dado.rrtart));
+
+            this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("edital", Globais.Edital));
+            this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("contrato", Globais.Contrato));
             this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("subtotal_os", dado.subtotal_os));
             this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("subtotal_desloc", dado.subtotal_desloc));
             this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("total", dado.total));
+            this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("razao", Globais.Razao));
+            this.rpvFatura.LocalReport.SetParameters(new Microsoft.Reporting.WinForms.ReportParameter("cnpj", Globais.Cnpj));
 
             rpvFatura.RefreshReport();
 

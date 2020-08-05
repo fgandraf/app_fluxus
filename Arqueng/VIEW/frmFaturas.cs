@@ -56,7 +56,6 @@ namespace Arqueng.VIEW
                     dado.Fatura_cod = dgvFaturas.CurrentRow.Cells[0].Value.ToString();
                     dgvOS.DataSource = modelOS.ListarOSFaturadaModel(dado);
 
-                    txtRRTART.Text = dgvFaturas.CurrentRow.Cells[6].Value.ToString();
                     txtData.Text = dgvFaturas.CurrentRow.Cells[2].Value.ToString();
                     txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);
                     txtValorDeslocamento.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[4].Value);
@@ -88,13 +87,12 @@ namespace Arqueng.VIEW
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             string _contrato = "7062.01.2528.552/2019";
-            dadofat.rrtart = dgvFaturas.CurrentRow.Cells[6].Value.ToString();
             dadofat.subtotal_os = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);
             dadofat.subtotal_desloc = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[4].Value);
             dadofat.total = "R$ " + string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[5].Value);
 
 
-            frmRPFatura rep = new frmRPFatura(_contrato, dadofat.rrtart, dadofat.subtotal_os, dadofat.subtotal_desloc, dadofat.total);
+            frmRPFatura rep = new frmRPFatura(_contrato, dadofat.subtotal_os, dadofat.subtotal_desloc, dadofat.total);
 
             for (int i = 0; i < dgvOS.Rows.Count; i++)
             {

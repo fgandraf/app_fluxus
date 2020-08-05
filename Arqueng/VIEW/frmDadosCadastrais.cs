@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
-using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 
 namespace Arqueng.VIEW
@@ -52,7 +51,6 @@ namespace Arqueng.VIEW
                     if (dado.Constituicao.ToString() != "01/01/0001 00:00:00")
                         txtConstituicao.Text = dado.Constituicao.ToString("dd/MM/yyyy");
                     
-                    txtRepresentanteLegal.Text = dado.Representante;
                     txtTelefone.Text = dado.Telefone;
                     txtTelefone2.Text = dado.Telefone2;
                     txtEmail.Text = dado.Email;
@@ -64,6 +62,29 @@ namespace Arqueng.VIEW
 
                     btnCadastrarSalvar.Text = "&Salvar";
                     txtCNPJ.Focus();
+
+
+
+                    cboTomador.Text = dado.Ct_tomador;
+                    txtEdital.Text = dado.Ct_edital;
+                    txtContrato.Text = dado.Ct_contrato;
+
+
+                    if (dado.Ct_celebrado.ToString() != "01/01/0001 00:00:00")
+                        txtCelebrado.Text = dado.Ct_celebrado.ToString("dd/MM/yyy");
+
+
+                    if (dado.Ct_inicio.ToString() != "01/01/0001 00:00:00")
+                        txtInicio.Text = dado.Ct_inicio.ToString("dd/MM/yyyy");
+
+                    if (dado.Ct_termino.ToString() != "01/01/0001 00:00:00")
+                        txtTermino.Text = dado.Ct_termino.ToString("dd/MM/yyyy");
+
+
+
+
+
+
                     NFantasia = dado.Fantasia;
                 }
             }
@@ -77,6 +98,10 @@ namespace Arqueng.VIEW
         private void frmDadosCadastrais_Load(object sender, EventArgs e)
         {
             BuscarDadosCadastrais();
+            if (Globais.Rl == false)
+            {
+                pnlBotton.Hide();
+            }
         }
 
 
@@ -97,6 +122,12 @@ namespace Arqueng.VIEW
                 NFantasia = txtNomeFantasia.Text;
             }
 
+            if (Globais.Razao != txtRazaoSocial.Text)
+                Globais.Razao = txtRazaoSocial.Text;
+
+            if (Globais.Cnpj != txtCNPJ.Text)
+                Globais.Cnpj = txtCNPJ.Text;
+
 
             //POPULATE
             dado.Cnpj = txtCNPJ.Text;
@@ -113,7 +144,6 @@ namespace Arqueng.VIEW
             dado.Uf = cboUF.Text;
             if (txtConstituicao.Text != "")
                 dado.Constituicao = Convert.ToDateTime(txtConstituicao.Text);
-            dado.Representante = txtRepresentanteLegal.Text;
             dado.Telefone = txtTelefone.Text;
             dado.Telefone2 = txtTelefone2.Text;
             dado.Email = txtEmail.Text;
@@ -122,7 +152,25 @@ namespace Arqueng.VIEW
             dado.Db_agencia = txtAgencia.Text;
             dado.Db_operador = txtOperador.Text;
             dado.Db_conta = txtConta.Text;
-            
+
+            dado.Ct_tomador = cboTomador.Text;
+            dado.Ct_edital = txtEdital.Text;
+            dado.Ct_contrato = txtContrato.Text;
+
+
+
+
+
+
+            if (txtCelebrado.Text != "")
+                dado.Ct_celebrado = Convert.ToDateTime(txtCelebrado.Text);
+            if (txtInicio.Text != "")
+                dado.Ct_inicio = Convert.ToDateTime(txtInicio.Text);
+            if (txtTermino.Text != "")
+                dado.Ct_termino = Convert.ToDateTime(txtTermino.Text);
+
+
+
 
             if (btnCadastrarSalvar.Text == "&Cadastrar")
             {
@@ -227,6 +275,39 @@ namespace Arqueng.VIEW
         private void lblOperador_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtCelebrado_Enter(object sender, EventArgs e)
+        {
+            txtCelebrado.Mask = "00/00/0000";
+        }
+
+        private void txtCelebrado_Validated(object sender, EventArgs e)
+        {
+            if (txtCelebrado.Text == "  /  /")
+                txtCelebrado.Mask = "";
+        }
+
+        private void txtInicio_Enter(object sender, EventArgs e)
+        {
+            txtInicio.Mask = "00/00/0000";
+        }
+
+        private void txtInicio_Validated(object sender, EventArgs e)
+        {
+            if (txtInicio.Text == "  /  /")
+                txtInicio.Mask = "";
+        }
+
+        private void txtTermino_Enter(object sender, EventArgs e)
+        {
+            txtTermino.Mask = "00/00/0000";
+        }
+
+        private void txtTermino_Validated(object sender, EventArgs e)
+        {
+            if (txtTermino.Text == "  /  /")
+                txtTermino.Mask = "";
         }
     }
 

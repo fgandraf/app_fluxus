@@ -41,7 +41,6 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.imgHidePwd = new System.Windows.Forms.PictureBox();
             this.btnAppFechar = new System.Windows.Forms.Button();
-            this.lblVersaoTitulo = new System.Windows.Forms.Label();
             this.lblVersao = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ttpLogin = new System.Windows.Forms.ToolTip(this.components);
@@ -194,30 +193,17 @@
             this.btnAppFechar.UseVisualStyleBackColor = false;
             this.btnAppFechar.Click += new System.EventHandler(this.btnAppFechar_Click);
             // 
-            // lblVersaoTitulo
-            // 
-            this.lblVersaoTitulo.AutoSize = true;
-            this.lblVersaoTitulo.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersaoTitulo.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblVersaoTitulo.Location = new System.Drawing.Point(311, 258);
-            this.lblVersaoTitulo.Margin = new System.Windows.Forms.Padding(0);
-            this.lblVersaoTitulo.Name = "lblVersaoTitulo";
-            this.lblVersaoTitulo.Size = new System.Drawing.Size(44, 13);
-            this.lblVersaoTitulo.TabIndex = 11;
-            this.lblVersaoTitulo.Text = "Versão:";
-            this.lblVersaoTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // lblVersao
             // 
             this.lblVersao.AutoSize = true;
             this.lblVersao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVersao.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblVersao.Location = new System.Drawing.Point(351, 258);
+            this.lblVersao.Location = new System.Drawing.Point(41, 253);
             this.lblVersao.Margin = new System.Windows.Forms.Padding(0);
             this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(27, 13);
+            this.lblVersao.Size = new System.Drawing.Size(30, 13);
             this.lblVersao.TabIndex = 12;
-            this.lblVersao.Text = "-----";
+            this.lblVersao.Text = "v. ---";
             this.lblVersao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
@@ -241,7 +227,6 @@
             this.ClientSize = new System.Drawing.Size(420, 300);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblVersao);
-            this.Controls.Add(this.lblVersaoTitulo);
             this.Controls.Add(this.btnAppFechar);
             this.Controls.Add(this.pnlLogin);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -274,7 +259,6 @@
         private System.Windows.Forms.PictureBox imgSenha;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Button btnAppFechar;
-        private System.Windows.Forms.Label lblVersaoTitulo;
         private System.Windows.Forms.Label lblVersao;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip ttpLogin;

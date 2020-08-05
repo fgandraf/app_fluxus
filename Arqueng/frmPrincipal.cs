@@ -4,8 +4,6 @@ using System.Runtime.InteropServices;
 using Arqueng.VIEW;
 using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
-using Microsoft.Reporting.Map.WebForms.BingMaps;
-using System.Drawing;
 
 namespace Arqueng
 {
@@ -78,12 +76,12 @@ namespace Arqueng
         }
 
 
-        public void BuscarNomeFantasia()
+        public void BuscarDadosEmpresa()
         {
             try
             {
                 ENTIDADES.CadastraisENT dado = new ENTIDADES.CadastraisENT();
-                cadmodel.BuscarFantasiaModel(dado);
+                cadmodel.BuscarDadosEmpModel(dado);
 
                 if (dado.Fantasia != null)
                     btnDadosCadastrais.Text = dado.Fantasia;
@@ -98,10 +96,11 @@ namespace Arqueng
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = "Usuário: " + Globais.Usr_nome;
-            BuscarNomeFantasia();
+            BuscarDadosEmpresa();
             if (Globais.Rl == false)
                 tblMenu.RowStyles[6].Height = 0;
 
+            lblVersao.Text = "v. " + Globais.Versao;
             btnDashBoard.PerformClick();
         }
 
@@ -338,6 +337,11 @@ namespace Arqueng
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            
         }
     }
 

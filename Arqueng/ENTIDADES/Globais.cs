@@ -12,6 +12,12 @@ namespace Arqueng.ENTIDADES
         public static string Usr_nome = null;
         public static string Usr_senha = null;
         //GENERAL INFO
-        public static string Versao = "1.1b";
+        public static string Versao = "1.0b";
+        //COMPANY INFO
+        public static string Razao = null;
+        public static string Cnpj = null;
+        //CONTRACT INFO
+        public static string Edital = "2528/2019";
+        public static string Contrato = "7062.01.2528.552/2019";
     }
 }
