@@ -685,7 +685,7 @@
             // 
             // pnlBotton
             // 
-            this.pnlBotton.BackColor = System.Drawing.Color.LightGray;
+            this.pnlBotton.BackColor = System.Drawing.Color.LightBlue;
             this.pnlBotton.Controls.Add(this.btnCadastrarSalvar);
             this.pnlBotton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBotton.Location = new System.Drawing.Point(0, 530);
@@ -1026,7 +1026,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(920, 580);
             this.Controls.Add(this.tbcCadastrais);
             this.Controls.Add(this.pnlBotton);

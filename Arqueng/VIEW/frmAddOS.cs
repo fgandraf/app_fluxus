@@ -144,8 +144,10 @@ namespace Arqueng.VIEW
 
             dado.Titulo = titulo;
             txtReferencia.Text = referencia;
-            dtpDataOrdem.Text = dataordem;
-            dtpDataExecucao.Text = prazoexecucao;
+            txtDataOrdem.Text = dataordem;
+
+            txtPrazo.Text = prazoexecucao;
+            
             cboProfissional.Text = profissionalcod;
             cboAtividade.Text = atividadecod;
             chkSiopi.Checked = siopi;
@@ -161,9 +163,10 @@ namespace Arqueng.VIEW
                 rbtVistoriada.Checked = true;
             else
                 rbtConcluida.Checked = true;
-            dtpDataPendente.Text = datapendente;
-            dtpDataVistoria.Text = datavistoria;
-            dtpDataConcluida.Text = dataconcluida;
+
+            txtDataPendente.Text = datapendente;
+            txtDataVistoria.Text = datavistoria;
+            txtDataConcluida.Text = dataconcluida;
             txtOBS.Text = obs;
 
             BuscarNomeProfissional();
@@ -176,15 +179,24 @@ namespace Arqueng.VIEW
                 txtCodFatura.Text = "Fatura n°: " + faturacod;
                 txtCodFatura.Show();
 
-                foreach (Control c in this.pnlDados.Controls)
+                foreach (Control c in this.tabPage1.Controls)
                 {
                     if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker || c is RadioButton)
                         c.Enabled = false;
                 }
+
+                foreach (Control c in this.tableLayoutPanel1.Controls)
+                {
+                    if (c is MaskedTextBox || c is RadioButton)
+                        c.Enabled = false;
+                }
+
                 cboAtividade.Enabled = false;
                 cboProfissional.Enabled = false;
                 txtOBS.Enabled = false;
-                btnAddSave.Enabled = false;
+                btnAddSave.Hide();
+                btnCancelar.Size = new System.Drawing.Size(200,25);
+                btnCancelar.Location = new System.Drawing.Point(696, 13);
             }
 
         }
@@ -201,9 +213,10 @@ namespace Arqueng.VIEW
             {
                 cboAtividade.Text = null;
                 cboProfissional.Text = null;
-                dtpDataExecucao.Value = dtpDataExecucao.Value.AddDays(5);
+                txtDataOrdem.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                txtPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
             }
-            dtpDataOrdem.Focus();
+            txtDataOrdem.Focus();
         }
 
 
@@ -219,8 +232,10 @@ namespace Arqueng.VIEW
             int refe = Convert.ToInt32(txtReferencia.Text.Substring(10, 9));
             dado.Titulo = cboAtividade.Text + "-" + txtCidade.Text + "-" + Convert.ToString(refe);
             dado.Referencia = txtReferencia.Text;
-            dado.Data_ordem = dtpDataOrdem.Value;
-            dado.Prazo_execucao = dtpDataExecucao.Value;
+            if (txtDataOrdem.Text != "")
+                dado.Data_ordem = Convert.ToDateTime(txtDataOrdem.Text);
+            if (txtPrazo.Text != "")
+                dado.Prazo_execucao = Convert.ToDateTime(txtPrazo.Text);
             dado.Profissional_cod = cboProfissional.Text;
             dado.Atividade_cod = cboAtividade.Text;
             dado.Siopi = chkSiopi.Checked;
@@ -236,9 +251,16 @@ namespace Arqueng.VIEW
                 dado.Status = "VISTORIADA";
             else
                 dado.Status = "CONCLUÍDA";
-            dado.Data_pendente = dtpDataPendente.Value;
-            dado.Data_vistoria = dtpDataVistoria.Value;
-            dado.Data_concluida = dtpDataConcluida.Value;
+
+            if (txtDataPendente.Text != "")
+                dado.Data_pendente = Convert.ToDateTime(txtDataPendente.Text);
+            if (txtDataVistoria.Text != "")
+                dado.Data_vistoria = Convert.ToDateTime(txtDataVistoria.Text);
+            if (txtDataConcluida.Text != "")
+                dado.Data_concluida = Convert.ToDateTime(txtDataConcluida.Text);
+
+
+
             dado.Obs = txtOBS.Text;
 
 
@@ -291,40 +313,35 @@ namespace Arqueng.VIEW
 
         private void rbtVistoriada_CheckedChanged(object sender, EventArgs e)
         {
-            dtpDataVistoria.Visible = true;
-            dtpDataPendente.Hide();
-            dtpDataConcluida.Hide();
+            txtDataVistoria.Visible = true;
+            txtDataPendente.Hide();
+            txtDataConcluida.Hide();
         }
 
 
         private void rbtConcluida_CheckedChanged(object sender, EventArgs e)
         {
-            dtpDataConcluida.Visible = true;
-            dtpDataVistoria.Visible = true;
-            dtpDataPendente.Hide();
+            txtDataConcluida.Visible = true;
+            txtDataVistoria.Visible = true;
+            txtDataPendente.Hide();
         }
 
 
         private void rbtRecebida_CheckedChanged(object sender, EventArgs e)
         {
-            dtpDataPendente.Hide();
-            dtpDataVistoria.Hide();
-            dtpDataConcluida.Hide();
+            txtDataPendente.Hide();
+            txtDataVistoria.Hide();
+            txtDataConcluida.Hide();
         }
 
 
         private void rbtPendente_CheckedChanged(object sender, EventArgs e)
         {
-            dtpDataPendente.Visible = true;
-            dtpDataVistoria.Hide();
-            dtpDataConcluida.Hide();
+            txtDataPendente.Visible = true;
+            txtDataVistoria.Hide();
+            txtDataConcluida.Hide();
         }
 
-
-        private void dtpDataOrdem_Validated(object sender, EventArgs e)
-        {
-            dtpDataExecucao.Value = dtpDataOrdem.Value.AddDays(5);
-        }
 
 
         private void cboProfissional_SelectionChangeCommitted(object sender, EventArgs e)
@@ -405,7 +422,30 @@ namespace Arqueng.VIEW
             }
         }
 
+        private void txtDataOrdem_Validated(object sender, EventArgs e)
+        {
+            txtPrazo.Text = (   DateTime.Parse(txtDataOrdem.Text).AddDays(5)   ).ToString("dd/MM/yyyy");
+        }
 
+        private void rbtRecebida_Click(object sender, EventArgs e)
+        {
+            txtDataOrdem.Focus();
+        }
+
+        private void rbtPendente_Click(object sender, EventArgs e)
+        {
+            txtDataPendente.Focus();
+        }
+
+        private void rbtVistoriada_Click(object sender, EventArgs e)
+        {
+            txtDataVistoria.Focus();
+        }
+
+        private void rbtConcluida_Click(object sender, EventArgs e)
+        {
+            txtDataConcluida.Focus();
+        }
     }
 
 

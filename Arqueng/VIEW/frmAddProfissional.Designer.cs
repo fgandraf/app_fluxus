@@ -318,7 +318,7 @@
             // 
             // pnlLinha2
             // 
-            this.pnlLinha2.BackColor = System.Drawing.Color.LightGray;
+            this.pnlLinha2.BackColor = System.Drawing.Color.LightBlue;
             this.pnlLinha2.Controls.Add(this.btnAddSave);
             this.pnlLinha2.Controls.Add(this.btnCancelar);
             this.pnlLinha2.Dock = System.Windows.Forms.DockStyle.Bottom;
