@@ -997,6 +997,7 @@
             // 
             // picLogotipo
             // 
+            this.picLogotipo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.picLogotipo.BackColor = System.Drawing.Color.Transparent;
             this.picLogotipo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picLogotipo.Location = new System.Drawing.Point(311, 100);
@@ -1008,6 +1009,7 @@
             // 
             // btnCarregar
             // 
+            this.btnCarregar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCarregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCarregar.Location = new System.Drawing.Point(311, 356);
             this.btnCarregar.Name = "btnCarregar";
