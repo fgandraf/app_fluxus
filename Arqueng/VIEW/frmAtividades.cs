@@ -14,7 +14,7 @@ namespace Arqueng.VIEW
         AtividadesMODEL model = new AtividadesMODEL();
 
 
-        public void ListarAtividades()
+        private  void ListarAtividades()
         {
             try
             {
@@ -38,7 +38,7 @@ namespace Arqueng.VIEW
             }
         }
 
-        public void ExcluirAtividade()
+        private  void ExcluirAtividade()
         {
             try
             {

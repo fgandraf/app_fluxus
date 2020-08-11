@@ -14,7 +14,7 @@ namespace Arqueng.VIEW
         ProfissionaisMODEL model = new ProfissionaisMODEL();
 
 
-        public void ListarProfissionais()
+        private void ListarProfissionais()
         {
             try
             {
@@ -38,7 +38,7 @@ namespace Arqueng.VIEW
             }
         }
 
-        public void ExcluirProfissional()
+        private void ExcluirProfissional()
         {
             try
             {

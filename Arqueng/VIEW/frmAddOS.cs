@@ -11,8 +11,8 @@ namespace Arqueng.VIEW
     {
 
         frmPrincipal _frmPrincipal;
-        string FormFilho;
-        string Agencia = null;
+        private string FormFilho;
+        private string Agencia = null;
 
         OsENT dado = new OsENT();
         OsMODEL osmodel = new OsMODEL();
@@ -22,7 +22,7 @@ namespace Arqueng.VIEW
 
 
 
-        public void ListarProfissionais()
+        private void ListarProfissionais()
         {
             try
             {
@@ -35,7 +35,7 @@ namespace Arqueng.VIEW
         }
 
 
-        public void ListarAtividades()
+        private void ListarAtividades()
         {
             try
             {
@@ -48,7 +48,7 @@ namespace Arqueng.VIEW
         }
 
 
-        public void BuscarNomeAtividade()
+        private void BuscarNomeAtividade()
         {
             try
             {
@@ -72,7 +72,7 @@ namespace Arqueng.VIEW
         }
 
 
-        public void BuscarNomeProfissional()
+        private void BuscarNomeProfissional()
         {
             try
             {
@@ -92,7 +92,7 @@ namespace Arqueng.VIEW
         }
 
 
-        public void BuscarAgencia()
+        private void BuscarAgencia()
         {
             try
             {

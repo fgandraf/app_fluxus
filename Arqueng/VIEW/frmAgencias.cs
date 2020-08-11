@@ -14,7 +14,7 @@ namespace Arqueng.VIEW
         AgenciasMODEL model = new AgenciasMODEL();
 
 
-        public void ListarAgencias()
+        private  void ListarAgencias()
         {
             try
             {
@@ -38,7 +38,7 @@ namespace Arqueng.VIEW
             }
         }
 
-        public void ExcluirAgencia()
+        private  void ExcluirAgencia()
         {
             try
             {

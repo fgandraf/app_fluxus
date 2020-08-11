@@ -16,9 +16,9 @@ namespace Arqueng.VIEW
 
         CadastraisMODEL model = new CadastraisMODEL();
         CadastraisENT dado = new CadastraisENT();
-        string NFantasia = null;
-        string LogoNome = null;
-        string Locallogo = null;
+        private string NFantasia = null;
+        private string LogoNome = null;
+        private string Locallogo = null;
 
 
         public frmDadosCadastrais(frmPrincipal frm1)
@@ -28,7 +28,7 @@ namespace Arqueng.VIEW
         }
 
 
-        public void BuscarDadosCadastrais()
+        private  void BuscarDadosCadastrais()
         {
             try
             {

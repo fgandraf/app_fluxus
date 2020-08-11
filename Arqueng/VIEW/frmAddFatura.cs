@@ -17,12 +17,12 @@ namespace Arqueng.VIEW
         OsENT dadoOS = new OsENT();
         FaturasMODEL modelFatura = new FaturasMODEL();
         FaturasENT dadoFatura = new FaturasENT();
-        decimal Subtotal_os = 0;
-        decimal Subtotal_desloc = 0;
-        decimal Total = 0;
+        private decimal Subtotal_os = 0;
+        private decimal Subtotal_desloc = 0;
+        private decimal Total = 0;
 
 
-        public void ListarOS()
+        protected void ListarOS()
         {
             try
             {
@@ -43,7 +43,7 @@ namespace Arqueng.VIEW
         }
 
 
-        public void SomarValores()
+        private void SomarValores()
         {
             Subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_atividade.Name].Value ?? 0));
             Subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_deslocamento.Name].Value ?? 0));

@@ -1,5 +1,7 @@
 ﻿//using
 
+using System.Threading;
+
 namespace Arqueng.ENTIDADES
 {
     public static class Globais

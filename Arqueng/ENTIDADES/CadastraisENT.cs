@@ -25,7 +25,6 @@ namespace Arqueng.ENTIDADES
         public string Db_operador { get; set; }
         public string Db_conta { get; set; }
         public DateTime Constituicao { get; set; }
-
         public string Ct_tomador { get; set; }
         public string Ct_edital { get; set; }
         public string Ct_contrato { get; set; }

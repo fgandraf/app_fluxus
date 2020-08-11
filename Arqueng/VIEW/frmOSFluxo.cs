@@ -17,7 +17,7 @@ namespace Arqueng.VIEW
         Control _lastEnteredControl;
         ProfissionaisMODEL profmodel = new ProfissionaisMODEL();
 
-        public void ListarProfissionais()
+        private  void ListarProfissionais()
         {
             try
             {
@@ -35,7 +35,7 @@ namespace Arqueng.VIEW
 
         //========================LISTAR OS========================//
         //=========================================================//
-        public void ListarOS(DataGridView dgv, string status)
+        private  void ListarOS(DataGridView dgv, string status)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace Arqueng.VIEW
 
         //========================EDITAR OS========================//
         //=========================================================//
-        public void EditarOS(DataGridView dgv)
+        private  void EditarOS(DataGridView dgv)
         {
             dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
             model.BuscarOsModel(dado);
@@ -105,7 +105,7 @@ namespace Arqueng.VIEW
 
         //=======================EXCLUIR OS=======================//
         //========================================================//
-        public void ExcluirOS(DataGridView dgv, string sta)
+        private  void ExcluirOS(DataGridView dgv, string sta)
         {
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)

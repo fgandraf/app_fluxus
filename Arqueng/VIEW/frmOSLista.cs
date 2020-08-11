@@ -14,7 +14,7 @@ namespace Arqueng.VIEW
         OsENT dado = new OsENT();
 
 
-        public void ListarOS()
+        private  void ListarOS()
         {
             try
             {
@@ -42,7 +42,7 @@ namespace Arqueng.VIEW
         }
 
 
-        public void ExcluirOS()
+        private void ExcluirOS()
         {
             try
             {
