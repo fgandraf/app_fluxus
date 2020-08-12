@@ -72,6 +72,25 @@ namespace Arqueng.DAO
             }
         }
 
+        public DataTable DistinctProOSFaturadaDAO(OsENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT DISTINCT t1.profissional_cod, t2.nomeid FROM tb_os t1 INNER JOIN tb_profissionais t2 on t1.profissional_cod = t2.codigo WHERE t1.fatura_cod = @fatura_cod ORDER BY t2.nomeid", con.con);
+                sql.Parameters.AddWithValue("@fatura_cod", dado.Fatura_cod);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         //***** LISTAR ORDENS DE SERVIÇO NÃO FATURADAS, POR STATUS *****//
         public DataTable ListarOsStatusDAO(OsENT dado)
         {

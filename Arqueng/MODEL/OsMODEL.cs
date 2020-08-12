@@ -56,6 +56,20 @@ namespace Arqueng.MODEL
             }
         }
 
+        public DataTable DistinctProOSFaturadaModel(OsENT dado)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.DistinctProOSFaturadaDAO(dado);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable ListarOsModel()
         {
             try

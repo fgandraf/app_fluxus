@@ -73,7 +73,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.lblNenhuma = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.tblFaturas.SuspendLayout();
             this.pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
@@ -177,7 +176,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOS.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvOS.GridColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dgvOS.Location = new System.Drawing.Point(20, 50);
+            this.dgvOS.Location = new System.Drawing.Point(20, 36);
             this.dgvOS.Name = "dgvOS";
             this.dgvOS.ReadOnly = true;
             this.dgvOS.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -195,7 +194,7 @@
             this.dgvOS.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOS.ShowEditingIcon = false;
-            this.dgvOS.Size = new System.Drawing.Size(679, 400);
+            this.dgvOS.Size = new System.Drawing.Size(679, 414);
             this.dgvOS.TabIndex = 224;
             // 
             // data_ordem
@@ -529,7 +528,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnImprimir);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(204, 20);
@@ -569,25 +567,6 @@
             this.lblNenhuma.TabIndex = 432;
             this.lblNenhuma.Text = "Nenhuma fatura gerada!";
             this.lblNenhuma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.SystemColors.Window;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(3, 2);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 433;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmFaturas
             // 
@@ -648,6 +627,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn data_concluida;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_atividade;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_deslocamento;
-        private System.Windows.Forms.Button button1;
     }
 }
