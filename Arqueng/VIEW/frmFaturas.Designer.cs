@@ -73,6 +73,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.lblNenhuma = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tblFaturas.SuspendLayout();
             this.pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
@@ -568,6 +569,11 @@
             this.lblNenhuma.Text = "Nenhuma fatura gerada!";
             this.lblNenhuma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.FileName = "Relacao_OS.pdf";
+            this.saveFileDialog.Filter = "Arquivos PDF|*.pdf";
+            // 
             // frmFaturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -627,5 +633,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn data_concluida;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_atividade;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_deslocamento;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

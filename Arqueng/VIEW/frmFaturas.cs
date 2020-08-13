@@ -104,19 +104,23 @@ namespace Arqueng.VIEW
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-
-            itsFatura.GerarFaturaPDF
-                (
-                Globais.Edital,
-                Globais.Contrato,
-                Globais.Razao,
-                Globais.Cnpj,
-                Profissionais(),
-                (DataTable)dgvOS.DataSource,
-                @"D:\pdf\" + "Relacao_OS.pdf"
-                );
-        
+            string caminho = null;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                caminho = saveFileDialog.FileName;
+                itsFatura.GerarFaturaPDF
+                    (
+                    Globais.Edital,
+                    Globais.Contrato,
+                    Globais.Razao,
+                    Globais.Cnpj,
+                    Profissionais(),
+                    (DataTable)dgvOS.DataSource,
+                    caminho
+                    );
+            }
         }
+
 
     }
 
