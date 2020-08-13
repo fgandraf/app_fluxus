@@ -76,6 +76,7 @@
     <Compile Include="MODEL\FaturasMODEL.cs" />
     <Compile Include="MODEL\OsMODEL.cs" />
     <Compile Include="MODEL\ProfissionaisMODEL.cs" />
+    <Compile Include="RELATORIOS\itsFatura.cs" />
     <Compile Include="VIEW\frmAddAgencia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,8 +253,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="RELATORIOS\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
