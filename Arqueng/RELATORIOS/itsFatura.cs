@@ -304,7 +304,7 @@ namespace Arqueng.RELATORIOS
                             double somavaloratividade = double.Parse(dtOS.Compute("Sum(valor_atividade)", "profissional_cod = '" + dataRowPro[i - 1]["profissional_cod"].ToString() + "'").ToString());
                             subtotal_os += somavaloratividade;
                             celula = new PdfPCell(new Phrase(new Chunk(
-                                        somavaloratividade.ToString("F2", CultureInfo.CurrentCulture),
+                                        string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", somavaloratividade),
                                         FontFactory.GetFont("Calibre", 08, iTextSharp.text.Font.NORMAL, BaseColor.BLACK))));
                             celula.Border = 1;
                             celula.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -316,7 +316,7 @@ namespace Arqueng.RELATORIOS
                             double somavalordeslocamento = double.Parse(dtOS.Compute("Sum(valor_deslocamento)", "profissional_cod = '" + dataRowPro[i - 1]["profissional_cod"].ToString() + "'").ToString());
                             subtotal_deslocamento += somavalordeslocamento;
                             celula = new PdfPCell(new Phrase(new Chunk(
-                                        somavalordeslocamento.ToString("F2", CultureInfo.CurrentCulture),
+                                        string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", somavalordeslocamento),
                                         FontFactory.GetFont("Calibre", 08, iTextSharp.text.Font.NORMAL, BaseColor.BLACK))));
                             celula.Border = 1;
                             celula.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -339,7 +339,7 @@ namespace Arqueng.RELATORIOS
                             double somatotal = somavaloratividade + somavalordeslocamento;
                             total += somatotal;
                             celula = new PdfPCell(new Phrase(new Chunk(
-                                        "R$ " + somatotal.ToString("F2", CultureInfo.CurrentCulture),
+                                        "R$ " + string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", somatotal),
                                         FontFactory.GetFont("Calibre", 08, iTextSharp.text.Font.BOLD, BaseColor.BLACK)))); ;
                             celula.Border = 1;
                             celula.BorderColor = BaseColor.GRAY;
@@ -393,7 +393,7 @@ namespace Arqueng.RELATORIOS
 
                     //--célula subtotal valor os
                     celula = new PdfPCell(new Phrase(new Chunk(
-                                subtotal_os.ToString("F2", CultureInfo.CurrentCulture),
+                                string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", subtotal_os),
                                 FontFactory.GetFont("Calibre", 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK))));
                     celula.Border = 1;
                     celula.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -403,7 +403,7 @@ namespace Arqueng.RELATORIOS
 
                     //--célula subtotal valor deslocamento
                     celula = new PdfPCell(new Phrase(new Chunk(
-                                subtotal_deslocamento.ToString("F2", CultureInfo.CurrentCulture),
+                                string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", subtotal_deslocamento),
                                 FontFactory.GetFont("Calibre", 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK))));
                     celula.Border = 1;
                     celula.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -423,7 +423,7 @@ namespace Arqueng.RELATORIOS
 
                     //--célula valor total
                     celula = new PdfPCell(new Phrase(new Chunk(
-                                "R$ " + total.ToString("F2", CultureInfo.CurrentCulture),
+                                "R$ " + string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", total),
                                 FontFactory.GetFont("Calibre", 14, iTextSharp.text.Font.BOLD, BaseColor.BLACK))));
                     celula.Border = 1;
                     celula.BorderColor = BaseColor.GRAY;
