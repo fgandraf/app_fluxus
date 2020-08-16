@@ -53,26 +53,6 @@ namespace Arqueng
             pnlCtrlDadosCadastrais.Hide();
             pnlCtrlRelatorios.Hide();
             pnlCtrlFaturas.Hide();
-            pnlCtrlFluxo.Hide();
-            pnlCtrlLista.Hide();
-        }
-
-
-        private void ExpandSubMenuOS()
-        {
-            tblMenu.RowStyles[2].Height = 25;
-            tblMenu.RowStyles[3].Height = 2;
-            tblMenu.RowStyles[4].Height = 25;
-            tblMenu.RowStyles[5].Height = 2;
-        }
-
-
-        private void RecolheSubMenuOS()
-        {
-            tblMenu.RowStyles[2].Height = 0;
-            tblMenu.RowStyles[3].Height = 0;
-            tblMenu.RowStyles[4].Height = 0;
-            tblMenu.RowStyles[5].Height = 0;
         }
 
 
@@ -97,8 +77,6 @@ namespace Arqueng
         {
             lblUsuario.Text = "Usuário: " + Globais.Usr_nome;
             BuscarDadosEmpresa();
-            if (Globais.Rl == false)
-                tblMenu.RowStyles[6].Height = 0;
 
             lblVersao.Text = "v. " + Globais.Versao;
             btnDashBoard.PerformClick();
@@ -115,7 +93,6 @@ namespace Arqueng
         private void btnProfissionais_Click(object sender, EventArgs e)
         {
             OcultaControles();
-            RecolheSubMenuOS();
 
             pnlCtrlProfissionais.Show();
             lblTitulo.Text = "Profissionais";
@@ -128,7 +105,6 @@ namespace Arqueng
         private void btnAtividades_Click(object sender, EventArgs e)
         {
             OcultaControles();
-            RecolheSubMenuOS();
             
             pnlCtrlAtividades.Show();
             lblTitulo.Text = "Atividades";
@@ -141,7 +117,6 @@ namespace Arqueng
         private void btnAgencias_Click(object sender, EventArgs e)
         {
             OcultaControles();
-            RecolheSubMenuOS();
             
             pnlCtrlAgencias.Show();
             lblTitulo.Text = "Agências Demandantes";
@@ -158,11 +133,7 @@ namespace Arqueng
                 pnlMenu.Width = 50;
                 ttpMenu.Active = true;
                 btnDadosCadastrais.Hide();
-                RecolheSubMenuOS();
-                tblMenu.RowStyles[3].Height = 0;
-                tblMenu.RowStyles[5].Height = 0;
-                pnlCtrlFluxo.Hide();
-                pnlCtrlLista.Hide();
+
 
                 if (pnlCtrlDadosCadastrais.Visible == true)
                     pnlCtrlDadosCadastrais.Width = 20;
@@ -173,20 +144,6 @@ namespace Arqueng
                 ttpMenu.Active = false;
                 btnDadosCadastrais.Show();
                 pnlCtrlDadosCadastrais.Width = 150;
-                if (lblTitulo.Text == "Ordens de Serviços - Em lista")
-                {
-                    ExpandSubMenuOS();
-                    tblMenu.RowStyles[3].Height = 2;
-                    tblMenu.RowStyles[5].Height = 2;
-                    pnlCtrlLista.Show();
-                }
-                else if (lblTitulo.Text == "Ordens de Serviços - Em fluxo")
-                {
-                    ExpandSubMenuOS();
-                    tblMenu.RowStyles[3].Height = 2;
-                    tblMenu.RowStyles[5].Height = 2;
-                    pnlCtrlFluxo.Show();
-                }
             }
         }
 
@@ -194,7 +151,6 @@ namespace Arqueng
         private void btnDadosCadastrais_Click(object sender, EventArgs e)
         {
             OcultaControles();
-            RecolheSubMenuOS();
 
             pnlCtrlDadosCadastrais.Show();
             lblTitulo.Text = "Dados Cadastrais";
@@ -207,7 +163,6 @@ namespace Arqueng
         private void btnDashBoard_Click(object sender, EventArgs e)
         {
             OcultaControles();
-            RecolheSubMenuOS();
             
             pnlCtrlDashboard.Show();
             lblTitulo.Text = "Dashboard";
@@ -218,8 +173,23 @@ namespace Arqueng
 
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
+
+            //OcultaControles();
+            //pnlCtrlFluxo.Hide();
+
+            //pnlCtrlLista.Show();
+            //pnlCtrlOS.Show();
+            //lblTitulo.Text = "Ordens de Serviços - Em lista";
+
+            //frmOSLista frm = new frmOSLista(this);
+            //AbrirFormInPanel(frm, pnlMain);
+
+
+
+
+
+
             OcultaControles();
-            RecolheSubMenuOS();
             
             pnlCtrlRelatorios.Show();
             lblTitulo.Text = "Relatórios";
@@ -259,62 +229,24 @@ namespace Arqueng
 
         private void btnOSLista_Click(object sender, EventArgs e)
         {
-            OcultaControles();
-            pnlCtrlFluxo.Hide();
             
-            pnlCtrlLista.Show();
-            pnlCtrlOS.Show();
-            lblTitulo.Text = "Ordens de Serviços - Em lista";
-
-            frmOSLista frm = new frmOSLista(this);
-            AbrirFormInPanel(frm, pnlMain);
         }
 
         private void btnOS_Click(object sender, EventArgs e)
         {
-
-
-            if (tblMenu.RowStyles[2].Height == 0)
-            {
-                ExpandSubMenuOS();
-
-                if (lblTitulo.Text == "Ordens de Serviços - Em lista")
-                    pnlCtrlLista.Show();
-                else if (lblTitulo.Text == "Ordens de Serviços - Em fluxo")
-                    pnlCtrlFluxo.Show();
-                else
-                {
-                    pnlCtrlFluxo.Hide();
-                    pnlCtrlLista.Hide();
-                }
-            }
-            else
-            {
-                RecolheSubMenuOS();
-                pnlCtrlFluxo.Hide();
-                pnlCtrlLista.Hide();
-            }
-            if (pnlMenu.Width == 50)
-                btnSlide.PerformClick();
-        }
-
-        private void btnOSFluxo_Click(object sender, EventArgs e)
-        {
             OcultaControles();
-            pnlCtrlLista.Hide();
-
             pnlCtrlOS.Show();
-            pnlCtrlFluxo.Show();
+
             lblTitulo.Text = "Ordens de Serviços - Em fluxo";
 
             frmOSFluxo frm = new frmOSFluxo(this);
             AbrirFormInPanel(frm, pnlMain);
         }
 
+
         private void btnFaturas_Click(object sender, EventArgs e)
         {
             OcultaControles();
-            RecolheSubMenuOS();
 
             pnlCtrlFaturas.Show();
             lblTitulo.Text = "Faturas";
@@ -332,6 +264,11 @@ namespace Arqueng
         {
             frmLogin login = new frmLogin();
             login.ShowDialog();
+        }
+
+        private void btnOSFluxo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
