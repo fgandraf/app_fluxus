@@ -217,6 +217,18 @@ namespace Arqueng.VIEW
                 txtPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
             }
             txtDataOrdem.Focus();
+
+            
+            if (Globais.Rt && Globais.Rl == false)
+            {
+                cboProfissional.SelectedValue = Globais.Codpro;
+                BuscarNomeProfissional();
+                cboProfissional.Enabled = false;
+                
+            }
+
+
+
         }
 
 
@@ -230,7 +242,11 @@ namespace Arqueng.VIEW
 
             //POPULATE
             int refe = Convert.ToInt32(txtReferencia.Text.Substring(10, 9));
-            dado.Titulo = cboAtividade.Text + "-" + txtCidade.Text + "-" + Convert.ToString(refe);
+            dado.Titulo = cboAtividade.Text + "-" + txtCidade.Text + "-" + Convert.ToString(refe) + "\n\n" + "● Prazo: " + txtPrazo.Text + "\nCliente: " + txtNomeCliente.Text.Replace(" ", " ");
+
+
+
+
             dado.Referencia = txtReferencia.Text;
             if (txtDataOrdem.Text != "")
                 dado.Data_ordem = Convert.ToDateTime(txtDataOrdem.Text);

@@ -240,7 +240,7 @@
             this.cboAtividade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboAtividade.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cboAtividade.FormattingEnabled = true;
-            this.cboAtividade.Location = new System.Drawing.Point(1, 1);
+            this.cboAtividade.Location = new System.Drawing.Point(0, 1);
             this.cboAtividade.MaxLength = 10;
             this.cboAtividade.Name = "cboAtividade";
             this.cboAtividade.Size = new System.Drawing.Size(90, 23);
@@ -441,7 +441,7 @@
             this.cboProfissional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboProfissional.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cboProfissional.FormattingEnabled = true;
-            this.cboProfissional.Location = new System.Drawing.Point(1, 1);
+            this.cboProfissional.Location = new System.Drawing.Point(0, 1);
             this.cboProfissional.MaxLength = 3;
             this.cboProfissional.Name = "cboProfissional";
             this.cboProfissional.Size = new System.Drawing.Size(90, 23);

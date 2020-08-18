@@ -31,25 +31,25 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.lblVersao = new System.Windows.Forms.Label();
-            this.btnSlide = new System.Windows.Forms.Button();
-            this.pnlCtrlDashboard = new System.Windows.Forms.Panel();
-            this.btnDashBoard = new System.Windows.Forms.Button();
-            this.pnlCtrlOS = new System.Windows.Forms.Panel();
-            this.btnOS = new System.Windows.Forms.Button();
-            this.btnRelatorios = new System.Windows.Forms.Button();
             this.pnlCtrlRelatorios = new System.Windows.Forms.Panel();
-            this.btnProfissionais = new System.Windows.Forms.Button();
-            this.btnAtividades = new System.Windows.Forms.Button();
-            this.btnAgencias = new System.Windows.Forms.Button();
+            this.pnlCtrlOS = new System.Windows.Forms.Panel();
+            this.btnRelatorios = new System.Windows.Forms.Button();
+            this.pnlCtrlDashboard = new System.Windows.Forms.Panel();
             this.pnlCtrlProfissionais = new System.Windows.Forms.Panel();
+            this.btnProfissionais = new System.Windows.Forms.Button();
+            this.btnOS = new System.Windows.Forms.Button();
             this.pnlCtrlAtividades = new System.Windows.Forms.Panel();
+            this.lblVersao = new System.Windows.Forms.Label();
+            this.btnDashBoard = new System.Windows.Forms.Button();
             this.pnlCtrlAgencias = new System.Windows.Forms.Panel();
-            this.btnFaturas = new System.Windows.Forms.Button();
-            this.pnlCtrlFaturas = new System.Windows.Forms.Panel();
+            this.btnSlide = new System.Windows.Forms.Button();
             this.pnlCtrlDadosCadastrais = new System.Windows.Forms.Panel();
+            this.pnlCtrlFaturas = new System.Windows.Forms.Panel();
+            this.btnFaturas = new System.Windows.Forms.Button();
             this.btnDadosCadastrais = new System.Windows.Forms.Button();
             this.imgLogo = new System.Windows.Forms.PictureBox();
+            this.btnAgencias = new System.Windows.Forms.Button();
+            this.btnAtividades = new System.Windows.Forms.Button();
             this.pnlTitulo = new System.Windows.Forms.Panel();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.btnAppMinimizar = new System.Windows.Forms.Button();
@@ -97,68 +97,15 @@
             this.pnlMenu.Size = new System.Drawing.Size(200, 630);
             this.pnlMenu.TabIndex = 160;
             // 
-            // lblVersao
+            // pnlCtrlRelatorios
             // 
-            this.lblVersao.AutoSize = true;
-            this.lblVersao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersao.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblVersao.Location = new System.Drawing.Point(4, 614);
-            this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(30, 13);
-            this.lblVersao.TabIndex = 134;
-            this.lblVersao.Text = "v. ---";
-            // 
-            // btnSlide
-            // 
-            this.btnSlide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSlide.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSlide.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnSlide.FlatAppearance.BorderSize = 0;
-            this.btnSlide.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnSlide.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnSlide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSlide.Image = ((System.Drawing.Image)(resources.GetObject("btnSlide.Image")));
-            this.btnSlide.Location = new System.Drawing.Point(166, 13);
-            this.btnSlide.Name = "btnSlide";
-            this.btnSlide.Size = new System.Drawing.Size(20, 20);
-            this.btnSlide.TabIndex = 133;
-            this.ttpSempre.SetToolTip(this.btnSlide, "Recolher/Expandir Menu");
-            this.btnSlide.UseVisualStyleBackColor = true;
-            this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
-            // 
-            // pnlCtrlDashboard
-            // 
-            this.pnlCtrlDashboard.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlDashboard.Location = new System.Drawing.Point(0, 190);
-            this.pnlCtrlDashboard.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlCtrlDashboard.Name = "pnlCtrlDashboard";
-            this.pnlCtrlDashboard.Size = new System.Drawing.Size(5, 50);
-            this.pnlCtrlDashboard.TabIndex = 128;
-            // 
-            // btnDashBoard
-            // 
-            this.btnDashBoard.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnDashBoard.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDashBoard.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnDashBoard.FlatAppearance.BorderSize = 0;
-            this.btnDashBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashBoard.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDashBoard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDashBoard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashBoard.Image")));
-            this.btnDashBoard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashBoard.Location = new System.Drawing.Point(0, 190);
-            this.btnDashBoard.Margin = new System.Windows.Forms.Padding(0);
-            this.btnDashBoard.Name = "btnDashBoard";
-            this.btnDashBoard.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnDashBoard.Size = new System.Drawing.Size(200, 50);
-            this.btnDashBoard.TabIndex = 18;
-            this.btnDashBoard.Text = "    Dashboard";
-            this.btnDashBoard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashBoard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnDashBoard, "Dashboard");
-            this.btnDashBoard.UseVisualStyleBackColor = false;
-            this.btnDashBoard.Click += new System.EventHandler(this.btnDashBoard_Click);
+            this.pnlCtrlRelatorios.BackColor = System.Drawing.Color.LimeGreen;
+            this.pnlCtrlRelatorios.Location = new System.Drawing.Point(0, 490);
+            this.pnlCtrlRelatorios.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlCtrlRelatorios.Name = "pnlCtrlRelatorios";
+            this.pnlCtrlRelatorios.Size = new System.Drawing.Size(5, 50);
+            this.pnlCtrlRelatorios.TabIndex = 131;
+            this.pnlCtrlRelatorios.Visible = false;
             // 
             // pnlCtrlOS
             // 
@@ -169,6 +116,76 @@
             this.pnlCtrlOS.Size = new System.Drawing.Size(5, 50);
             this.pnlCtrlOS.TabIndex = 126;
             this.pnlCtrlOS.Visible = false;
+            // 
+            // btnRelatorios
+            // 
+            this.btnRelatorios.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnRelatorios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRelatorios.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnRelatorios.FlatAppearance.BorderSize = 0;
+            this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorios.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRelatorios.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRelatorios.Image = ((System.Drawing.Image)(resources.GetObject("btnRelatorios.Image")));
+            this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRelatorios.Location = new System.Drawing.Point(0, 490);
+            this.btnRelatorios.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRelatorios.Name = "btnRelatorios";
+            this.btnRelatorios.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnRelatorios.Size = new System.Drawing.Size(200, 50);
+            this.btnRelatorios.TabIndex = 130;
+            this.btnRelatorios.Text = "    Relatórios";
+            this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRelatorios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnRelatorios, "Relatórios");
+            this.btnRelatorios.UseVisualStyleBackColor = false;
+            this.btnRelatorios.Visible = false;
+            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
+            // 
+            // pnlCtrlDashboard
+            // 
+            this.pnlCtrlDashboard.BackColor = System.Drawing.Color.LimeGreen;
+            this.pnlCtrlDashboard.Location = new System.Drawing.Point(0, 190);
+            this.pnlCtrlDashboard.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlCtrlDashboard.Name = "pnlCtrlDashboard";
+            this.pnlCtrlDashboard.Size = new System.Drawing.Size(5, 50);
+            this.pnlCtrlDashboard.TabIndex = 128;
+            // 
+            // pnlCtrlProfissionais
+            // 
+            this.pnlCtrlProfissionais.BackColor = System.Drawing.Color.LimeGreen;
+            this.pnlCtrlProfissionais.Location = new System.Drawing.Point(0, 440);
+            this.pnlCtrlProfissionais.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlCtrlProfissionais.Name = "pnlCtrlProfissionais";
+            this.pnlCtrlProfissionais.Size = new System.Drawing.Size(5, 50);
+            this.pnlCtrlProfissionais.TabIndex = 123;
+            this.pnlCtrlProfissionais.Visible = false;
+            // 
+            // btnProfissionais
+            // 
+            this.btnProfissionais.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnProfissionais.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProfissionais.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnProfissionais.FlatAppearance.BorderSize = 0;
+            this.btnProfissionais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnProfissionais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProfissionais.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProfissionais.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnProfissionais.Image = ((System.Drawing.Image)(resources.GetObject("btnProfissionais.Image")));
+            this.btnProfissionais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProfissionais.Location = new System.Drawing.Point(0, 440);
+            this.btnProfissionais.Margin = new System.Windows.Forms.Padding(0);
+            this.btnProfissionais.Name = "btnProfissionais";
+            this.btnProfissionais.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnProfissionais.Size = new System.Drawing.Size(200, 50);
+            this.btnProfissionais.TabIndex = 5;
+            this.btnProfissionais.Text = "    Profissionais";
+            this.btnProfissionais.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProfissionais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnProfissionais, "Profissionais");
+            this.btnProfissionais.UseVisualStyleBackColor = false;
+            this.btnProfissionais.Click += new System.EventHandler(this.btnProfissionais_Click);
             // 
             // btnOS
             // 
@@ -195,127 +212,6 @@
             this.btnOS.UseVisualStyleBackColor = false;
             this.btnOS.Click += new System.EventHandler(this.btnOS_Click);
             // 
-            // btnRelatorios
-            // 
-            this.btnRelatorios.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnRelatorios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRelatorios.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnRelatorios.FlatAppearance.BorderSize = 0;
-            this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRelatorios.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRelatorios.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRelatorios.Image = ((System.Drawing.Image)(resources.GetObject("btnRelatorios.Image")));
-            this.btnRelatorios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRelatorios.Location = new System.Drawing.Point(0, 440);
-            this.btnRelatorios.Margin = new System.Windows.Forms.Padding(0);
-            this.btnRelatorios.Name = "btnRelatorios";
-            this.btnRelatorios.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnRelatorios.Size = new System.Drawing.Size(200, 50);
-            this.btnRelatorios.TabIndex = 130;
-            this.btnRelatorios.Text = "    Relatórios";
-            this.btnRelatorios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRelatorios.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnRelatorios, "Relatórios");
-            this.btnRelatorios.UseVisualStyleBackColor = false;
-            this.btnRelatorios.Visible = false;
-            this.btnRelatorios.Click += new System.EventHandler(this.btnRelatorios_Click);
-            // 
-            // pnlCtrlRelatorios
-            // 
-            this.pnlCtrlRelatorios.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlRelatorios.Location = new System.Drawing.Point(0, 440);
-            this.pnlCtrlRelatorios.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlCtrlRelatorios.Name = "pnlCtrlRelatorios";
-            this.pnlCtrlRelatorios.Size = new System.Drawing.Size(5, 50);
-            this.pnlCtrlRelatorios.TabIndex = 131;
-            this.pnlCtrlRelatorios.Visible = false;
-            // 
-            // btnProfissionais
-            // 
-            this.btnProfissionais.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnProfissionais.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnProfissionais.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnProfissionais.FlatAppearance.BorderSize = 0;
-            this.btnProfissionais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnProfissionais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProfissionais.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProfissionais.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnProfissionais.Image = ((System.Drawing.Image)(resources.GetObject("btnProfissionais.Image")));
-            this.btnProfissionais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProfissionais.Location = new System.Drawing.Point(0, 390);
-            this.btnProfissionais.Margin = new System.Windows.Forms.Padding(0);
-            this.btnProfissionais.Name = "btnProfissionais";
-            this.btnProfissionais.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnProfissionais.Size = new System.Drawing.Size(200, 50);
-            this.btnProfissionais.TabIndex = 5;
-            this.btnProfissionais.Text = "    Profissionais";
-            this.btnProfissionais.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProfissionais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnProfissionais, "Profissionais");
-            this.btnProfissionais.UseVisualStyleBackColor = false;
-            this.btnProfissionais.Click += new System.EventHandler(this.btnProfissionais_Click);
-            // 
-            // btnAtividades
-            // 
-            this.btnAtividades.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnAtividades.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAtividades.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnAtividades.FlatAppearance.BorderSize = 0;
-            this.btnAtividades.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnAtividades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAtividades.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtividades.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAtividades.Image = ((System.Drawing.Image)(resources.GetObject("btnAtividades.Image")));
-            this.btnAtividades.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAtividades.Location = new System.Drawing.Point(0, 340);
-            this.btnAtividades.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAtividades.Name = "btnAtividades";
-            this.btnAtividades.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnAtividades.Size = new System.Drawing.Size(195, 50);
-            this.btnAtividades.TabIndex = 4;
-            this.btnAtividades.Text = "    Atividades";
-            this.btnAtividades.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAtividades.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnAtividades, "Atividades");
-            this.btnAtividades.UseVisualStyleBackColor = false;
-            this.btnAtividades.Click += new System.EventHandler(this.btnAtividades_Click);
-            // 
-            // btnAgencias
-            // 
-            this.btnAgencias.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnAgencias.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAgencias.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnAgencias.FlatAppearance.BorderSize = 0;
-            this.btnAgencias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.btnAgencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgencias.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgencias.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAgencias.Image = ((System.Drawing.Image)(resources.GetObject("btnAgencias.Image")));
-            this.btnAgencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgencias.Location = new System.Drawing.Point(0, 340);
-            this.btnAgencias.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAgencias.Name = "btnAgencias";
-            this.btnAgencias.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.btnAgencias.Size = new System.Drawing.Size(200, 50);
-            this.btnAgencias.TabIndex = 3;
-            this.btnAgencias.Text = "    Agências";
-            this.btnAgencias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgencias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpMenu.SetToolTip(this.btnAgencias, "Agências");
-            this.btnAgencias.UseVisualStyleBackColor = false;
-            this.btnAgencias.Click += new System.EventHandler(this.btnAgencias_Click);
-            // 
-            // pnlCtrlProfissionais
-            // 
-            this.pnlCtrlProfissionais.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlProfissionais.Location = new System.Drawing.Point(0, 390);
-            this.pnlCtrlProfissionais.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlCtrlProfissionais.Name = "pnlCtrlProfissionais";
-            this.pnlCtrlProfissionais.Size = new System.Drawing.Size(5, 50);
-            this.pnlCtrlProfissionais.TabIndex = 123;
-            this.pnlCtrlProfissionais.Visible = false;
-            // 
             // pnlCtrlAtividades
             // 
             this.pnlCtrlAtividades.BackColor = System.Drawing.Color.LimeGreen;
@@ -326,15 +222,88 @@
             this.pnlCtrlAtividades.TabIndex = 124;
             this.pnlCtrlAtividades.Visible = false;
             // 
+            // lblVersao
+            // 
+            this.lblVersao.AutoSize = true;
+            this.lblVersao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersao.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblVersao.Location = new System.Drawing.Point(4, 614);
+            this.lblVersao.Name = "lblVersao";
+            this.lblVersao.Size = new System.Drawing.Size(30, 13);
+            this.lblVersao.TabIndex = 134;
+            this.lblVersao.Text = "v. ---";
+            // 
+            // btnDashBoard
+            // 
+            this.btnDashBoard.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnDashBoard.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDashBoard.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnDashBoard.FlatAppearance.BorderSize = 0;
+            this.btnDashBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDashBoard.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashBoard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDashBoard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashBoard.Image")));
+            this.btnDashBoard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDashBoard.Location = new System.Drawing.Point(0, 190);
+            this.btnDashBoard.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDashBoard.Name = "btnDashBoard";
+            this.btnDashBoard.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnDashBoard.Size = new System.Drawing.Size(200, 50);
+            this.btnDashBoard.TabIndex = 18;
+            this.btnDashBoard.Text = "    Dashboard";
+            this.btnDashBoard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDashBoard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnDashBoard, "Dashboard");
+            this.btnDashBoard.UseVisualStyleBackColor = false;
+            this.btnDashBoard.Click += new System.EventHandler(this.btnDashBoard_Click);
+            // 
             // pnlCtrlAgencias
             // 
             this.pnlCtrlAgencias.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlAgencias.Location = new System.Drawing.Point(0, 340);
+            this.pnlCtrlAgencias.Location = new System.Drawing.Point(0, 390);
             this.pnlCtrlAgencias.Margin = new System.Windows.Forms.Padding(0);
             this.pnlCtrlAgencias.Name = "pnlCtrlAgencias";
             this.pnlCtrlAgencias.Size = new System.Drawing.Size(5, 50);
             this.pnlCtrlAgencias.TabIndex = 125;
             this.pnlCtrlAgencias.Visible = false;
+            // 
+            // btnSlide
+            // 
+            this.btnSlide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSlide.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSlide.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnSlide.FlatAppearance.BorderSize = 0;
+            this.btnSlide.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnSlide.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnSlide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSlide.Image = ((System.Drawing.Image)(resources.GetObject("btnSlide.Image")));
+            this.btnSlide.Location = new System.Drawing.Point(166, 13);
+            this.btnSlide.Name = "btnSlide";
+            this.btnSlide.Size = new System.Drawing.Size(20, 20);
+            this.btnSlide.TabIndex = 133;
+            this.ttpSempre.SetToolTip(this.btnSlide, "Recolher/Expandir Menu");
+            this.btnSlide.UseVisualStyleBackColor = true;
+            this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
+            // 
+            // pnlCtrlDadosCadastrais
+            // 
+            this.pnlCtrlDadosCadastrais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlCtrlDadosCadastrais.BackColor = System.Drawing.Color.LimeGreen;
+            this.pnlCtrlDadosCadastrais.Location = new System.Drawing.Point(25, 156);
+            this.pnlCtrlDadosCadastrais.Name = "pnlCtrlDadosCadastrais";
+            this.pnlCtrlDadosCadastrais.Size = new System.Drawing.Size(150, 2);
+            this.pnlCtrlDadosCadastrais.TabIndex = 129;
+            // 
+            // pnlCtrlFaturas
+            // 
+            this.pnlCtrlFaturas.BackColor = System.Drawing.Color.LimeGreen;
+            this.pnlCtrlFaturas.Location = new System.Drawing.Point(0, 290);
+            this.pnlCtrlFaturas.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
+            this.pnlCtrlFaturas.Name = "pnlCtrlFaturas";
+            this.pnlCtrlFaturas.Size = new System.Drawing.Size(5, 49);
+            this.pnlCtrlFaturas.TabIndex = 125;
+            this.pnlCtrlFaturas.Visible = false;
             // 
             // btnFaturas
             // 
@@ -360,25 +329,6 @@
             this.ttpMenu.SetToolTip(this.btnFaturas, "Faturas");
             this.btnFaturas.UseVisualStyleBackColor = false;
             this.btnFaturas.Click += new System.EventHandler(this.btnFaturas_Click);
-            // 
-            // pnlCtrlFaturas
-            // 
-            this.pnlCtrlFaturas.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlFaturas.Location = new System.Drawing.Point(0, 290);
-            this.pnlCtrlFaturas.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
-            this.pnlCtrlFaturas.Name = "pnlCtrlFaturas";
-            this.pnlCtrlFaturas.Size = new System.Drawing.Size(5, 49);
-            this.pnlCtrlFaturas.TabIndex = 125;
-            this.pnlCtrlFaturas.Visible = false;
-            // 
-            // pnlCtrlDadosCadastrais
-            // 
-            this.pnlCtrlDadosCadastrais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlCtrlDadosCadastrais.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlDadosCadastrais.Location = new System.Drawing.Point(25, 156);
-            this.pnlCtrlDadosCadastrais.Name = "pnlCtrlDadosCadastrais";
-            this.pnlCtrlDadosCadastrais.Size = new System.Drawing.Size(150, 2);
-            this.pnlCtrlDadosCadastrais.TabIndex = 129;
             // 
             // btnDadosCadastrais
             // 
@@ -412,6 +362,56 @@
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgLogo.TabIndex = 17;
             this.imgLogo.TabStop = false;
+            // 
+            // btnAgencias
+            // 
+            this.btnAgencias.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAgencias.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAgencias.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAgencias.FlatAppearance.BorderSize = 0;
+            this.btnAgencias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnAgencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgencias.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgencias.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAgencias.Image = ((System.Drawing.Image)(resources.GetObject("btnAgencias.Image")));
+            this.btnAgencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgencias.Location = new System.Drawing.Point(0, 390);
+            this.btnAgencias.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAgencias.Name = "btnAgencias";
+            this.btnAgencias.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnAgencias.Size = new System.Drawing.Size(200, 50);
+            this.btnAgencias.TabIndex = 3;
+            this.btnAgencias.Text = "    Agências";
+            this.btnAgencias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgencias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnAgencias, "Agências");
+            this.btnAgencias.UseVisualStyleBackColor = false;
+            this.btnAgencias.Click += new System.EventHandler(this.btnAgencias_Click);
+            // 
+            // btnAtividades
+            // 
+            this.btnAtividades.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAtividades.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAtividades.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAtividades.FlatAppearance.BorderSize = 0;
+            this.btnAtividades.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnAtividades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAtividades.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtividades.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAtividades.Image = ((System.Drawing.Image)(resources.GetObject("btnAtividades.Image")));
+            this.btnAtividades.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAtividades.Location = new System.Drawing.Point(0, 340);
+            this.btnAtividades.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAtividades.Name = "btnAtividades";
+            this.btnAtividades.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnAtividades.Size = new System.Drawing.Size(195, 50);
+            this.btnAtividades.TabIndex = 4;
+            this.btnAtividades.Text = "    Atividades";
+            this.btnAtividades.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAtividades.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpMenu.SetToolTip(this.btnAtividades, "Atividades");
+            this.btnAtividades.UseVisualStyleBackColor = false;
+            this.btnAtividades.Click += new System.EventHandler(this.btnAtividades_Click);
             // 
             // pnlTitulo
             // 

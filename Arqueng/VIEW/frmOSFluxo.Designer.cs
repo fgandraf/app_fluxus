@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOSFluxo));
             this.panel1 = new System.Windows.Forms.Panel();
             this.linhaRecebidas = new System.Windows.Forms.Panel();
@@ -118,7 +119,8 @@
             // 
             this.lblTitRecebidas.BackColor = System.Drawing.Color.LightSteelBlue;
             this.lblTitRecebidas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitRecebidas.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitRecebidas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblTitRecebidas.ForeColor = System.Drawing.Color.Black;
             this.lblTitRecebidas.Location = new System.Drawing.Point(0, 0);
             this.lblTitRecebidas.Name = "lblTitRecebidas";
             this.lblTitRecebidas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -152,7 +154,8 @@
             // 
             this.lblTitPendentes.BackColor = System.Drawing.Color.LightSteelBlue;
             this.lblTitPendentes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitPendentes.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitPendentes.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblTitPendentes.ForeColor = System.Drawing.Color.Black;
             this.lblTitPendentes.Location = new System.Drawing.Point(0, 0);
             this.lblTitPendentes.Name = "lblTitPendentes";
             this.lblTitPendentes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -186,7 +189,8 @@
             // 
             this.lblTitConcluidas.BackColor = System.Drawing.Color.LightSteelBlue;
             this.lblTitConcluidas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitConcluidas.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitConcluidas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblTitConcluidas.ForeColor = System.Drawing.Color.Black;
             this.lblTitConcluidas.Location = new System.Drawing.Point(0, 0);
             this.lblTitConcluidas.Name = "lblTitConcluidas";
             this.lblTitConcluidas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -220,7 +224,8 @@
             // 
             this.lblTitVistoriadas.BackColor = System.Drawing.Color.LightSteelBlue;
             this.lblTitVistoriadas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitVistoriadas.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitVistoriadas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblTitVistoriadas.ForeColor = System.Drawing.Color.Black;
             this.lblTitVistoriadas.Location = new System.Drawing.Point(0, 0);
             this.lblTitVistoriadas.Name = "lblTitVistoriadas";
             this.lblTitVistoriadas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
@@ -232,7 +237,7 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Window;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tableLayoutPanel1.ColumnCount = 9;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -310,15 +315,15 @@
             this.dataGridViewTextBoxColumn4});
             this.dgvPendentes.ContextMenuStrip = this.menuContext;
             this.dgvPendentes.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPendentes.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPendentes.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPendentes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPendentes.EnableHeadersVisualStyles = false;
             this.dgvPendentes.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -339,9 +344,9 @@
             this.dgvPendentes.ShowEditingIcon = false;
             this.dgvPendentes.Size = new System.Drawing.Size(185, 423);
             this.dgvPendentes.TabIndex = 223;
-            this.dgvPendentes.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPendentes_CellMouseDown);
             this.dgvPendentes.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPendentes_CellMouseLeave);
             this.dgvPendentes.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPendentes_CellMouseMove);
+            this.dgvPendentes.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPendentes_CellMouseUp);
             // 
             // referencia_pendentes
             // 
@@ -356,7 +361,7 @@
             this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn4.DataPropertyName = "titulo";
             this.dataGridViewTextBoxColumn4.HeaderText = "Título";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 50;
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 120;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
@@ -404,7 +409,7 @@
             this.dgvRecebidas.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvRecebidas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRecebidas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvRecebidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvRecebidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvRecebidas.ColumnHeadersHeight = 35;
             this.dgvRecebidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRecebidas.ColumnHeadersVisible = false;
@@ -413,15 +418,15 @@
             this.titulo});
             this.dgvRecebidas.ContextMenuStrip = this.menuContext;
             this.dgvRecebidas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRecebidas.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRecebidas.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvRecebidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRecebidas.EnableHeadersVisualStyles = false;
             this.dgvRecebidas.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -433,18 +438,18 @@
             this.dgvRecebidas.RowHeadersVisible = false;
             this.dgvRecebidas.RowHeadersWidth = 60;
             this.dgvRecebidas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvRecebidas.RowTemplate.DividerHeight = 5;
+            this.dgvRecebidas.RowTemplate.DividerHeight = 8;
             this.dgvRecebidas.RowTemplate.Height = 50;
             this.dgvRecebidas.RowTemplate.ReadOnly = true;
-            this.dgvRecebidas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRecebidas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvRecebidas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvRecebidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecebidas.ShowEditingIcon = false;
             this.dgvRecebidas.Size = new System.Drawing.Size(185, 423);
             this.dgvRecebidas.TabIndex = 222;
-            this.dgvRecebidas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRecebidas_CellMouseDown);
             this.dgvRecebidas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecebidas_CellMouseLeave);
             this.dgvRecebidas.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRecebidas_CellMouseMove);
+            this.dgvRecebidas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRecebidas_CellMouseUp);
             // 
             // referencia_recebidas
             // 
@@ -458,8 +463,11 @@
             // 
             this.titulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.titulo.DataPropertyName = "titulo";
+            dataGridViewCellStyle7.NullValue = null;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.titulo.DefaultCellStyle = dataGridViewCellStyle7;
             this.titulo.HeaderText = "Título";
-            this.titulo.MinimumWidth = 50;
+            this.titulo.MinimumWidth = 120;
             this.titulo.Name = "titulo";
             this.titulo.ReadOnly = true;
             // 
@@ -492,15 +500,15 @@
             this.dataGridViewTextBoxColumn5});
             this.dgvVistoriadas.ContextMenuStrip = this.menuContext;
             this.dgvVistoriadas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvVistoriadas.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVistoriadas.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvVistoriadas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVistoriadas.EnableHeadersVisualStyles = false;
             this.dgvVistoriadas.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -521,9 +529,9 @@
             this.dgvVistoriadas.ShowEditingIcon = false;
             this.dgvVistoriadas.Size = new System.Drawing.Size(185, 423);
             this.dgvVistoriadas.TabIndex = 223;
-            this.dgvVistoriadas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVistoriadas_CellMouseDown);
             this.dgvVistoriadas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVistoriadas_CellMouseLeave);
             this.dgvVistoriadas.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVistoriadas_CellMouseMove);
+            this.dgvVistoriadas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVistoriadas_CellMouseUp);
             // 
             // referencia_vistoriadas
             // 
@@ -538,7 +546,7 @@
             this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn5.DataPropertyName = "titulo";
             this.dataGridViewTextBoxColumn5.HeaderText = "Título";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 50;
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 120;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
@@ -571,15 +579,15 @@
             this.dataGridViewTextBoxColumn6});
             this.dgvConcluidas.ContextMenuStrip = this.menuContext;
             this.dgvConcluidas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvConcluidas.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvConcluidas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvConcluidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvConcluidas.EnableHeadersVisualStyles = false;
             this.dgvConcluidas.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -600,9 +608,9 @@
             this.dgvConcluidas.ShowEditingIcon = false;
             this.dgvConcluidas.Size = new System.Drawing.Size(185, 423);
             this.dgvConcluidas.TabIndex = 223;
-            this.dgvConcluidas.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvConcluidas_CellMouseDown);
             this.dgvConcluidas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcluidas_CellMouseLeave);
             this.dgvConcluidas.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvConcluidas_CellMouseMove);
+            this.dgvConcluidas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvConcluidas_CellMouseUp);
             // 
             // referencia_concluidas
             // 
@@ -617,7 +625,7 @@
             this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn6.DataPropertyName = "titulo";
             this.dataGridViewTextBoxColumn6.HeaderText = "Título";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 50;
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 120;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
@@ -643,7 +651,7 @@
             this.btnAdicionar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnAdicionar.ForeColor = System.Drawing.Color.Black;
             this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdicionar.Location = new System.Drawing.Point(8, 8);
@@ -669,18 +677,18 @@
             this.pnlFaturar.Padding = new System.Windows.Forms.Padding(8);
             this.pnlFaturar.Size = new System.Drawing.Size(201, 40);
             this.pnlFaturar.TabIndex = 15;
-            this.pnlFaturar.Visible = false;
             // 
             // btnFaturar
             // 
             this.btnFaturar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnFaturar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFaturar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFaturar.Enabled = false;
             this.btnFaturar.FlatAppearance.BorderSize = 0;
             this.btnFaturar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
             this.btnFaturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFaturar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFaturar.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.btnFaturar.ForeColor = System.Drawing.Color.Black;
             this.btnFaturar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFaturar.Location = new System.Drawing.Point(8, 8);
             this.btnFaturar.Margin = new System.Windows.Forms.Padding(0);
@@ -702,7 +710,6 @@
             this.pnlLinhaFaturar.Name = "pnlLinhaFaturar";
             this.pnlLinhaFaturar.Size = new System.Drawing.Size(201, 1);
             this.pnlLinhaFaturar.TabIndex = 1;
-            this.pnlLinhaFaturar.Visible = false;
             // 
             // cboProfissional
             // 
@@ -710,6 +717,7 @@
             this.cboProfissional.BackColor = System.Drawing.SystemColors.Window;
             this.cboProfissional.DisplayMember = "nomeid";
             this.cboProfissional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboProfissional.Enabled = false;
             this.cboProfissional.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cboProfissional.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboProfissional.FormattingEnabled = true;
@@ -719,7 +727,6 @@
             this.cboProfissional.Size = new System.Drawing.Size(201, 21);
             this.cboProfissional.TabIndex = 16;
             this.cboProfissional.ValueMember = "codigo";
-            this.cboProfissional.Visible = false;
             this.cboProfissional.SelectedIndexChanged += new System.EventHandler(this.cboProfissional_SelectedIndexChanged);
             // 
             // lblProfissional
@@ -733,13 +740,12 @@
             this.lblProfissional.Size = new System.Drawing.Size(73, 15);
             this.lblProfissional.TabIndex = 17;
             this.lblProfissional.Text = "Profissional:";
-            this.lblProfissional.Visible = false;
             // 
             // frmOSFluxo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Lavender;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(920, 580);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -802,15 +808,15 @@
         private System.Windows.Forms.ContextMenuStrip menuContext;
         private System.Windows.Forms.ToolStripMenuItem mnuEditar;
         private System.Windows.Forms.ToolStripMenuItem mnuExcluir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn referencia_pendentes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.ComboBox cboProfissional;
+        private System.Windows.Forms.Label lblProfissional;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia_recebidas;
         private System.Windows.Forms.DataGridViewTextBoxColumn titulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn referencia_pendentes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia_vistoriadas;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia_concluidas;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.ComboBox cboProfissional;
-        private System.Windows.Forms.Label lblProfissional;
     }
 }

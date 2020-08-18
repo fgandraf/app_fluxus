@@ -135,14 +135,32 @@ namespace Arqueng.VIEW
             foreach (Control ctrl in Controls)
             {
                 if (ctrl is DataGridView)
-                {
                     ctrl.Enter += delegate (object sender, EventArgs e)
                     {
                         _lastEnteredControl = (Control)sender;
                     };
-                }
             }
             ListarProfissionais();
+
+
+
+            dgvRecebidas.Columns[1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvRecebidas.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvRecebidas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            dgvPendentes.Columns[1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvPendentes.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvPendentes.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            dgvVistoriadas.Columns[1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvVistoriadas.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvVistoriadas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            dgvConcluidas.Columns[1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvConcluidas.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvConcluidas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+
             ListarOS(dgvRecebidas, "RECEBIDA");
             ListarOS(dgvPendentes, "PENDENTE");
             ListarOS(dgvVistoriadas, "VISTORIADA");
@@ -153,7 +171,7 @@ namespace Arqueng.VIEW
 
         //===============CLIQUE DIREITO NOS GRIDS===============//
         //======================================================//
-        private void dgvRecebidas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvRecebidas_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
             _lastEnteredControl = (Control)sender;
@@ -166,7 +184,7 @@ namespace Arqueng.VIEW
                 EditarOS(dataGrid);
         }
 
-        private void dgvPendentes_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvPendentes_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
             _lastEnteredControl = (Control)sender;
@@ -179,7 +197,7 @@ namespace Arqueng.VIEW
                 EditarOS(dataGrid);
         }
 
-        private void dgvVistoriadas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvVistoriadas_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
             _lastEnteredControl = (Control)sender;
@@ -192,7 +210,7 @@ namespace Arqueng.VIEW
                 EditarOS(dataGrid);
         }
 
-        private void dgvConcluidas_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvConcluidas_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
             _lastEnteredControl = (Control)sender;
@@ -204,8 +222,6 @@ namespace Arqueng.VIEW
             if (e.Button == MouseButtons.Left && e.RowIndex != -1)
                 EditarOS(dataGrid);
         }
-
-
 
         //===================BOTÃO ADICIONAR OS===============//
         //====================================================//
@@ -337,10 +353,8 @@ namespace Arqueng.VIEW
         {
             if (Globais.Rl)
             {
-                cboProfissional.Show();
-                lblProfissional.Show();
-                pnlFaturar.Show();
-                pnlLinhaFaturar.Show();
+                cboProfissional.Enabled = true;
+                pnlFaturar.Enabled = true;
 
                 if (Globais.Rt)
                     cboProfissional.SelectedValue = Globais.Codpro;
@@ -351,6 +365,12 @@ namespace Arqueng.VIEW
             cboProfissional.SelectedValue = Globais.Codpro;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 
 
