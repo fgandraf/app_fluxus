@@ -354,7 +354,7 @@ namespace Arqueng.VIEW
             if (Globais.Rl)
             {
                 cboProfissional.Enabled = true;
-                pnlFaturar.Enabled = true;
+                btnFaturar.Enabled = true;
 
                 if (Globais.Rt)
                     cboProfissional.SelectedValue = Globais.Codpro;

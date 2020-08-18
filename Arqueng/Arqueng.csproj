@@ -119,23 +119,11 @@
     <Compile Include="VIEW\frmOSFluxo.Designer.cs">
       <DependentUpon>frmOSFluxo.cs</DependentUpon>
     </Compile>
-    <Compile Include="VIEW\frmRelatorios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\frmRelatorios.Designer.cs">
-      <DependentUpon>frmRelatorios.cs</DependentUpon>
-    </Compile>
     <Compile Include="VIEW\frmAddAtividade.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VIEW\frmAddAtividade.Designer.cs">
       <DependentUpon>frmAddAtividade.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEW\frmDashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEW\frmDashboard.Designer.cs">
-      <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\frmOSLista.cs">
       <SubType>Form</SubType>
@@ -190,9 +178,6 @@
     <EmbeddedResource Include="VIEW\frmAddProfissional.resx">
       <DependentUpon>frmAddProfissional.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\frmDashboard.resx">
-      <DependentUpon>frmDashboard.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmFaturas.resx">
       <DependentUpon>frmFaturas.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,9 +198,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmDadosCadastrais.resx">
       <DependentUpon>frmDadosCadastrais.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\frmRelatorios.resx">
-      <DependentUpon>frmRelatorios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

@@ -45,13 +45,11 @@ namespace Arqueng
 
         private void OcultaControles()
         {
-            pnlCtrlDashboard.Hide();
             pnlCtrlOS.Hide();
             pnlCtrlAgencias.Hide();
             pnlCtrlAtividades.Hide();
             pnlCtrlProfissionais.Hide();
             pnlCtrlDadosCadastrais.Hide();
-            pnlCtrlRelatorios.Hide();
             pnlCtrlFaturas.Hide();
         }
 
@@ -79,7 +77,7 @@ namespace Arqueng
             BuscarDadosEmpresa();
 
             lblVersao.Text = "v. " + Globais.Versao;
-            btnDashBoard.PerformClick();
+            btnOS.PerformClick();
         }
 
 
@@ -160,45 +158,6 @@ namespace Arqueng
         }
 
 
-        private void btnDashBoard_Click(object sender, EventArgs e)
-        {
-            OcultaControles();
-            
-            pnlCtrlDashboard.Show();
-            lblTitulo.Text = "Dashboard";
-
-            frmDashboard frm = new frmDashboard();
-            AbrirFormInPanel(frm, pnlMain);
-        }
-
-        private void btnRelatorios_Click(object sender, EventArgs e)
-        {
-
-            //OcultaControles();
-            //pnlCtrlFluxo.Hide();
-
-            //pnlCtrlLista.Show();
-            //pnlCtrlOS.Show();
-            //lblTitulo.Text = "Ordens de Serviços - Em lista";
-
-            //frmOSLista frm = new frmOSLista(this);
-            //AbrirFormInPanel(frm, pnlMain);
-
-
-
-
-
-
-            OcultaControles();
-            
-            pnlCtrlRelatorios.Show();
-            lblTitulo.Text = "Relatórios";
-
-            frmRelatorios frm = new frmRelatorios();
-            AbrirFormInPanel(frm, pnlMain);
-        }
-
-
         private void btnAppFechar_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -227,17 +186,12 @@ namespace Arqueng
         }
 
 
-        private void btnOSLista_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void btnOS_Click(object sender, EventArgs e)
         {
             OcultaControles();
             pnlCtrlOS.Show();
 
-            lblTitulo.Text = "Ordens de Serviços - Em fluxo";
+            lblTitulo.Text = "Ordens de Serviços";
 
             frmOSFluxo frm = new frmOSFluxo(this);
             AbrirFormInPanel(frm, pnlMain);
@@ -255,21 +209,12 @@ namespace Arqueng
             AbrirFormInPanel(frm, pnlMain);
         }
 
-        private void button1_MouseClick(object sender, MouseEventArgs e)
-        {
-            menuUsuario.Show(Cursor.Position.X-132, Cursor.Position.Y+9);
-        }
-
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmLogin login = new frmLogin();
             login.ShowDialog();
         }
 
-        private void btnOSFluxo_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 
 
