@@ -4,6 +4,8 @@ using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Arqueng.VIEW
 {
@@ -16,10 +18,28 @@ namespace Arqueng.VIEW
 
         CadastraisMODEL model = new CadastraisMODEL();
         CadastraisENT dado = new CadastraisENT();
-        private string NFantasia = null;
-        private string LogoNome = null;
-        private string Locallogo = null;
+        //private string NFantasia = null;
+        //private string LogoNome = null;
+        //private string Locallogo = null;
+        private Image LogoAtual = null;
 
+
+        public static byte[] ImagemParaByte(Image logo)
+        {
+            using (var stream = new MemoryStream())
+            {
+                logo.Save(stream, ImageFormat.Png);
+                return stream.ToArray();
+            }
+        }
+
+        public static Image ByteParaImagem(byte[] bytes)
+        {
+            using (var stream = new MemoryStream(bytes))
+            {
+                return Image.FromStream(stream);
+            }
+        }
 
         public frmDadosCadastrais(frmPrincipal frm1)
         {
@@ -28,7 +48,7 @@ namespace Arqueng.VIEW
         }
 
 
-        private  void BuscarDadosCadastrais()
+        private void BuscarDadosCadastrais()
         {
             try
             {
@@ -69,13 +89,13 @@ namespace Arqueng.VIEW
                         txtInicio.Text = dado.Ct_inicio.ToString("dd/MM/yyyy");
                     if (dado.Ct_termino.ToString() != "01/01/0001 00:00:00")
                         txtTermino.Text = dado.Ct_termino.ToString("dd/MM/yyyy");
-                    picLogotipo.ImageLocation = dado.Logotipo;
-                    Locallogo = dado.Logotipo;
-                    
-                    
+
+
+                    LogoAtual = ByteParaImagem(dado.Logo);
+                    picLogotipo.Image = ByteParaImagem(dado.Logo);
                     btnCadastrarSalvar.Text = "&Salvar";
                     txtCNPJ.Focus();
-                    NFantasia = dado.Fantasia;
+                    //NFantasia = dado.Fantasia;
                 }
             }
             catch (Exception ex)
@@ -105,11 +125,12 @@ namespace Arqueng.VIEW
 
 
 
-            if (NFantasia != txtNomeFantasia.Text)
+            if (Globais.Fantasia != txtNomeFantasia.Text)
             {
-                _frmPrincipal.btnDadosCadastrais.Text = txtNomeFantasia.Text.ToString();
+                Globais.Fantasia = txtNomeFantasia.Text;
+                _frmPrincipal.btnDadosCadastrais.Text = Globais.Fantasia;//txtNomeFantasia.Text.ToString();
                 _frmPrincipal.btnDadosCadastrais.Refresh();
-                NFantasia = txtNomeFantasia.Text;
+                //NFantasia = txtNomeFantasia.Text;
             }
 
             if (Globais.Razao != txtRazaoSocial.Text)
@@ -124,8 +145,8 @@ namespace Arqueng.VIEW
             if (Globais.Contrato != txtContrato.Text)
                 Globais.Contrato = txtContrato.Text;
 
-            
-            
+
+
 
             //POPULATE
             dado.Cnpj = txtCNPJ.Text;
@@ -161,34 +182,16 @@ namespace Arqueng.VIEW
                 dado.Ct_termino = Convert.ToDateTime(txtTermino.Text);
 
 
-            if (picLogotipo.ImageLocation != Locallogo && picLogotipo.ImageLocation != "")
+            if (picLogotipo.Image != LogoAtual && picLogotipo.ImageLocation != "")
             {
-                if (File.Exists(Globais.Logotipo))
-                    File.Delete(Globais.Logotipo);
-
-
-
-                System.IO.File.Copy(picLogotipo.ImageLocation, System.Environment.CurrentDirectory + @"\" + LogoNome, true);
-                dado.Logotipo = System.Environment.CurrentDirectory + @"\" + LogoNome;
-                
-                picLogotipo.ImageLocation = System.Environment.CurrentDirectory + @"\" + LogoNome;
+                dado.Logo = ImagemParaByte(picLogotipo.Image);
+                Globais.Logo = ImagemParaByte(picLogotipo.Image);
             }
 
 
 
-
-
-
-
-
-
-
-
-
-            if (Globais.Logotipo != picLogotipo.ImageLocation)
-                Globais.Logotipo = picLogotipo.ImageLocation;
-
-
+            if (Globais.Logo != ImagemParaByte(picLogotipo.Image))
+                Globais.Logo = ImagemParaByte(picLogotipo.Image);
 
 
             if (btnCadastrarSalvar.Text == "&Cadastrar")
@@ -217,6 +220,17 @@ namespace Arqueng.VIEW
             }
         }
 
+
+
+
+
+
+
+
+
+
+
+        //////////MÁSCARAS DOS MASKEDTEXTBOX//////////
         private void txtCNPJ_Enter(object sender, EventArgs e)
         {
             txtCNPJ.Mask = "00,000,000/0000-00";
@@ -319,14 +333,21 @@ namespace Arqueng.VIEW
                 txtTermino.Mask = "";
         }
 
+
+
+
+
+
+
+
+
+
         private void btnCarregar_Click(object sender, EventArgs e)
         {
             if (openDialog.ShowDialog() == DialogResult.OK)
-            {
                 picLogotipo.ImageLocation = openDialog.FileName;
-                LogoNome = openDialog.SafeFileName;
-            }
         }
+
 
     }
 

@@ -61,8 +61,8 @@ namespace Arqueng
                 ENTIDADES.CadastraisENT dado = new ENTIDADES.CadastraisENT();
                 cadmodel.BuscarDadosEmpModel(dado);
 
-                if (dado.Fantasia != null)
-                    btnDadosCadastrais.Text = dado.Fantasia;
+                if (Globais.Fantasia != null)
+                    btnDadosCadastrais.Text = Globais.Fantasia;
             }
             catch (Exception ex)
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace Arqueng.ENTIDADES
 {
@@ -31,7 +32,8 @@ namespace Arqueng.ENTIDADES
         public DateTime Ct_celebrado { get; set; }
         public DateTime Ct_inicio { get; set; }
         public DateTime Ct_termino { get; set; }
-        public string Logotipo { get; set; }
+        public byte[] Logo { get; set; }
+        
     }
 
 

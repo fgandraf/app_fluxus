@@ -108,8 +108,14 @@ namespace Arqueng.VIEW
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 caminho = saveFileDialog.FileName;
+                //CONVERTER bytes[] EM Imagem
+                System.Drawing.Image logoImagem;
+                using (var stream = new MemoryStream(Globais.Logo))
+                    logoImagem = System.Drawing.Image.FromStream(stream);
+                //CHAMAR O MÉTODO
                 itsFatura.GerarFaturaPDF
                     (
+                    logoImagem,
                     Globais.Edital,
                     Globais.Contrato,
                     Globais.Razao,
@@ -117,7 +123,7 @@ namespace Arqueng.VIEW
                     Profissionais(),
                     (DataTable)dgvOS.DataSource,
                     caminho
-                    );
+                    ); 
             }
         }
 

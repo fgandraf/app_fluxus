@@ -1,5 +1,6 @@
 ﻿//using
 
+using System.Drawing;
 using System.Threading;
 
 namespace Arqueng.ENTIDADES
@@ -17,8 +18,9 @@ namespace Arqueng.ENTIDADES
         public static string Versao = "1.0b";
         //COMPANY INFO
         public static string Razao = null;
+        public static string Fantasia = null;
         public static string Cnpj = null;
-        public static string Logotipo = null;
+        public static byte[] Logo = null;
         //CONTRACT INFO
         public static string Edital = null;
         public static string Contrato = null;

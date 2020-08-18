@@ -11,7 +11,7 @@ namespace Arqueng.RELATORIOS
     public class itsFatura
     {
 
-        public static void GerarFaturaPDF (string edital, string contrato, string razaosocial, string cnpj, DataTable dtPro, DataTable dtOS, string caminho)
+        public static void GerarFaturaPDF (System.Drawing.Image logotipo, string edital, string contrato, string razaosocial, string cnpj, DataTable dtPro, DataTable dtOS, string caminho)
         {
 
             //////////////////-CRIAÇÃO DO PDF-///////////////////////
@@ -40,15 +40,14 @@ namespace Arqueng.RELATORIOS
                     float[] widths = new float[] { 30f, 40f, 30f };
                     tabhead.SetWidths(widths);
                     //--célula do logotipo
-                    string simg = System.Environment.CurrentDirectory + @"\logoaye.png";
-                    iTextSharp.text.Image logotipo = iTextSharp.text.Image.GetInstance(simg);
-                    logotipo.ScaleAbsolute(50, 50);
+                    iTextSharp.text.Image imagem = iTextSharp.text.Image.GetInstance(logotipo, System.Drawing.Imaging.ImageFormat.Png);
+                    imagem.ScaleAbsolute(50, 50);
                     PdfPCell celLogo = new PdfPCell(new Phrase());
                     celLogo.Border = 2;
                     celLogo.BorderColor = BaseColor.LIGHT_GRAY;
                     celLogo.BorderWidth = 1f;
                     celLogo.Rowspan = 2;
-                    celLogo.AddElement(logotipo);
+                    celLogo.AddElement(imagem);
                     tabhead.AddCell(celLogo);
                     //---célula do título
                     Phrase ptitulo = new Phrase();

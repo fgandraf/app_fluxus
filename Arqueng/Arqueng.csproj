@@ -69,7 +69,6 @@
     <Compile Include="ENTIDADES\Globais.cs" />
     <Compile Include="ENTIDADES\OsENT.cs" />
     <Compile Include="ENTIDADES\ProfissionaisENT.cs" />
-    <Compile Include="ENTIDADES\RepFaturaENT.cs" />
     <Compile Include="MODEL\AgenciasMODEL.cs" />
     <Compile Include="MODEL\AtividadesMODEL.cs" />
     <Compile Include="MODEL\CadastraisMODEL.cs" />

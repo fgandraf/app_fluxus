@@ -43,6 +43,7 @@ namespace Arqueng.DAO
                 sql.Parameters.AddWithValue("@agencia", dado.Agencia);
                 MySqlDataReader dr = sql.ExecuteReader();
 
+                
                 if (dr.HasRows == false)
                     dado.Agencia = null;
                 else
@@ -54,7 +55,8 @@ namespace Arqueng.DAO
                         dado.Email = Convert.ToString(dr["email"]);
                     }
                 }
-
+                
+                
                 con.FecharConexao();
             }
             catch (Exception)
