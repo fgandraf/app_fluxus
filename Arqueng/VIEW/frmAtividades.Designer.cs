@@ -265,6 +265,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Atividades";
             this.Load += new System.EventHandler(this.frmAtividades_Load);
+            this.Leave += new System.EventHandler(this.frmAtividades_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAtividades)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).EndInit();
             this.ResumeLayout(false);

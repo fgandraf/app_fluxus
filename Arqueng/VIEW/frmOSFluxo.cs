@@ -82,6 +82,7 @@ namespace Arqueng.VIEW
                 _frmPrincipal, this.Name,
                 dado.Titulo,
                 dado.Referencia,
+                dado.Agencia,
                 Convert.ToString(dado.Data_ordem),
                 Convert.ToString(dado.Prazo_execucao),
                 dado.Profissional_cod,
@@ -91,6 +92,7 @@ namespace Arqueng.VIEW
                 dado.Cidade,
                 dado.Nome_contato,
                 dado.Telefone_contato,
+                dado.Coordenada,
                 dado.Status,
                 Convert.ToString(dado.Data_pendente),
                 Convert.ToString(dado.Data_vistoria),
@@ -354,7 +356,9 @@ namespace Arqueng.VIEW
             if (Globais.Rl)
             {
                 cboProfissional.Enabled = true;
-                btnFaturar.Enabled = true;
+                pnlLinhaFaturar.Show();
+                pnlFaturar.Show();
+
 
                 if (Globais.Rt)
                     cboProfissional.SelectedValue = Globais.Codpro;
@@ -365,12 +369,10 @@ namespace Arqueng.VIEW
             cboProfissional.SelectedValue = Globais.Codpro;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void frmOSFluxo_Leave(object sender, EventArgs e)
         {
-
+            GC.Collect();
         }
-
-        
     }
 
 

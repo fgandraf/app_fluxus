@@ -127,7 +127,10 @@ namespace Arqueng.VIEW
             }
         }
 
-
+        private void frmFaturas_Leave(object sender, EventArgs e)
+        {
+            GC.Collect();
+        }
     }
 
 

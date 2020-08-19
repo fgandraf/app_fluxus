@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Arqueng.ENTIDADES;
 using Arqueng.MODEL;
 
-namespace Arqueng.VIEW
+namespace Arqueng
 {
     public partial class frmLogin : Form
     {
@@ -47,6 +47,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show("Nome de usuário/senha incorreto(s) ou usuário não está ativo");
             else
                 this.Close();
+
         }
 
         private void txtSenha_KeyDown(object sender, KeyEventArgs e)

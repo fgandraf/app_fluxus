@@ -71,9 +71,9 @@
             this.txtTelefone2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtTelefone2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefone2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtTelefone2.Location = new System.Drawing.Point(501, 422);
+            this.txtTelefone2.Location = new System.Drawing.Point(534, 422);
             this.txtTelefone2.Name = "txtTelefone2";
-            this.txtTelefone2.Size = new System.Drawing.Size(100, 23);
+            this.txtTelefone2.Size = new System.Drawing.Size(150, 23);
             this.txtTelefone2.TabIndex = 10;
             this.txtTelefone2.Enter += new System.EventHandler(this.txtTelefone2_Enter);
             this.txtTelefone2.Validated += new System.EventHandler(this.txtTelefone2_Validated);
@@ -86,7 +86,7 @@
             this.txtTelefone1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtTelefone1.Location = new System.Drawing.Point(309, 422);
             this.txtTelefone1.Name = "txtTelefone1";
-            this.txtTelefone1.Size = new System.Drawing.Size(100, 23);
+            this.txtTelefone1.Size = new System.Drawing.Size(150, 23);
             this.txtTelefone1.TabIndex = 9;
             this.txtTelefone1.Enter += new System.EventHandler(this.txtTelefone1_Enter);
             this.txtTelefone1.Validated += new System.EventHandler(this.txtTelefone1_Validated);
@@ -158,6 +158,7 @@
             // 
             this.cboUF.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cboUF.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cboUF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUF.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboUF.ForeColor = System.Drawing.SystemColors.ControlText;
             this.cboUF.FormattingEnabled = true;
@@ -337,6 +338,7 @@
             this.txtNome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtNome.Location = new System.Drawing.Point(528, 41);
+            this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(156, 23);
             this.txtNome.TabIndex = 1;
@@ -521,7 +523,7 @@
             this.lblTelefone2.AutoSize = true;
             this.lblTelefone2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefone2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblTelefone2.Location = new System.Drawing.Point(425, 426);
+            this.lblTelefone2.Location = new System.Drawing.Point(468, 426);
             this.lblTelefone2.Name = "lblTelefone2";
             this.lblTelefone2.Size = new System.Drawing.Size(60, 13);
             this.lblTelefone2.TabIndex = 291;
@@ -546,6 +548,7 @@
             this.Tag = "";
             this.Text = "Adicionar Agência";
             this.Load += new System.EventHandler(this.frmAddAgencia_Load);
+            this.Leave += new System.EventHandler(this.frmAddAgencia_Leave);
             this.panel1.ResumeLayout(false);
             this.pnlMainAddAgencia.ResumeLayout(false);
             this.pnlMainAddAgencia.PerformLayout();

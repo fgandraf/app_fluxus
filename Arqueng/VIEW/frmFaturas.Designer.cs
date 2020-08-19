@@ -589,6 +589,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmFaturas";
             this.Load += new System.EventHandler(this.frmFaturas_Load);
+            this.Leave += new System.EventHandler(this.frmFaturas_Leave);
             this.tblFaturas.ResumeLayout(false);
             this.pnlFaturaMain.ResumeLayout(false);
             this.pnlFaturaMain.PerformLayout();

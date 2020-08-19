@@ -127,6 +127,10 @@ namespace Arqueng.VIEW
                 btnExcluir.PerformClick();
         }
 
+        private void frmProfissionais_Leave(object sender, EventArgs e)
+        {
+            GC.Collect();
+        }
     }
 
 

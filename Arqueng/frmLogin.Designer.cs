@@ -1,4 +1,4 @@
-﻿namespace Arqueng.VIEW
+﻿namespace Arqueng
 {
     partial class frmLogin
     {

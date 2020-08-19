@@ -118,6 +118,11 @@ namespace Arqueng.VIEW
                 }
             }
         }
+
+        private void frmAgencias_Leave(object sender, EventArgs e)
+        {
+            GC.Collect();
+        }
     }
 
 

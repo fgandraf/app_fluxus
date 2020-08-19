@@ -223,6 +223,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Atividade";
             this.Load += new System.EventHandler(this.frmAddAtividade_Load);
+            this.Leave += new System.EventHandler(this.frmAddAtividade_Leave);
             this.panel1.ResumeLayout(false);
             this.pnlMainAddAtividade.ResumeLayout(false);
             this.pnlMainAddAtividade.PerformLayout();

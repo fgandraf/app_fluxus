@@ -559,6 +559,7 @@
             "Depósitos Lotéricos",
             "Poupança Integrada"});
             this.cboTipoDeConta.Location = new System.Drawing.Point(354, 166);
+            this.cboTipoDeConta.MaxLength = 100;
             this.cboTipoDeConta.Name = "cboTipoDeConta";
             this.cboTipoDeConta.Size = new System.Drawing.Size(300, 23);
             this.cboTipoDeConta.TabIndex = 1;
@@ -692,6 +693,7 @@
             this.pnlBotton.Name = "pnlBotton";
             this.pnlBotton.Size = new System.Drawing.Size(920, 50);
             this.pnlBotton.TabIndex = 1;
+            this.pnlBotton.Visible = false;
             // 
             // tbcCadastrais
             // 
@@ -839,6 +841,7 @@
             this.cboTomador.Items.AddRange(new object[] {
             "Caixa Econômica Federal"});
             this.cboTomador.Location = new System.Drawing.Point(354, 103);
+            this.cboTomador.MaxLength = 100;
             this.cboTomador.Name = "cboTomador";
             this.cboTomador.Size = new System.Drawing.Size(300, 23);
             this.cboTomador.TabIndex = 0;
@@ -1041,7 +1044,9 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dados Cadastrais";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDadosCadastrais_FormClosed);
             this.Load += new System.EventHandler(this.frmDadosCadastrais_Load);
+            this.Leave += new System.EventHandler(this.frmDadosCadastrais_Leave);
             this.pnlBotton.ResumeLayout(false);
             this.tbcCadastrais.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

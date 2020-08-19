@@ -18,9 +18,6 @@ namespace Arqueng.VIEW
 
         CadastraisMODEL model = new CadastraisMODEL();
         CadastraisENT dado = new CadastraisENT();
-        //private string NFantasia = null;
-        //private string LogoNome = null;
-        //private string Locallogo = null;
         private Image LogoAtual = null;
 
 
@@ -95,7 +92,6 @@ namespace Arqueng.VIEW
                     picLogotipo.Image = ByteParaImagem(dado.Logo);
                     btnCadastrarSalvar.Text = "&Salvar";
                     txtCNPJ.Focus();
-                    //NFantasia = dado.Fantasia;
                 }
             }
             catch (Exception ex)
@@ -108,9 +104,9 @@ namespace Arqueng.VIEW
         private void frmDadosCadastrais_Load(object sender, EventArgs e)
         {
             BuscarDadosCadastrais();
-            if (Globais.Rl == false)
+            if (Globais.Rl)
             {
-                pnlBotton.Hide();
+                pnlBotton.Show();
             }
         }
 
@@ -128,9 +124,8 @@ namespace Arqueng.VIEW
             if (Globais.Fantasia != txtNomeFantasia.Text)
             {
                 Globais.Fantasia = txtNomeFantasia.Text;
-                _frmPrincipal.btnDadosCadastrais.Text = Globais.Fantasia;//txtNomeFantasia.Text.ToString();
+                _frmPrincipal.btnDadosCadastrais.Text = Globais.Fantasia;
                 _frmPrincipal.btnDadosCadastrais.Refresh();
-                //NFantasia = txtNomeFantasia.Text;
             }
 
             if (Globais.Razao != txtRazaoSocial.Text)
@@ -263,6 +258,8 @@ namespace Arqueng.VIEW
             var apenasDigitos = new Regex(@"[^\d]");
             if (apenasDigitos.Replace(txtTelefone.Text, "").Length == 10)
                 txtTelefone.Mask = "(99) #########";
+            else if (apenasDigitos.Replace(txtTelefone.Text, "").Length == 11)
+                txtTelefone.Mask = "(99) ##########";
         }
 
         private void txtTelefone2_Validated(object sender, EventArgs e)
@@ -276,6 +273,8 @@ namespace Arqueng.VIEW
             var apenasDigitos = new Regex(@"[^\d]");
             if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 10)
                 txtTelefone2.Mask = "(99) #########";
+            else if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 11)
+                txtTelefone2.Mask = "(99) ##########";
         }
 
         private void txtCEP_Enter(object sender, EventArgs e)
@@ -348,7 +347,15 @@ namespace Arqueng.VIEW
                 picLogotipo.ImageLocation = openDialog.FileName;
         }
 
+        private void frmDadosCadastrais_Leave(object sender, EventArgs e)
+        {
+            
+        }
 
+        private void frmDadosCadastrais_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
     }
 
 

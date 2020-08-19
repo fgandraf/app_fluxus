@@ -7,12 +7,14 @@ namespace Arqueng.ENTIDADES
     {
         public string Titulo { get; set; }
         public string Referencia { get; set; }
+        public string Agencia { get; set; }
         public string Profissional_cod { get; set; }
         public string Atividade_cod { get; set; }
         public string Nome_cliente { get; set; }
         public string Cidade { get; set; }
         public string Nome_contato { get; set; }
         public string Telefone_contato { get; set; }
+        public string Coordenada { get; set; }
         public string Status { get; set; }
         public string Obs { get; set; }
         public string Fatura_cod { get; set; }

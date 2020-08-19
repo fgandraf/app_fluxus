@@ -113,6 +113,11 @@ namespace Arqueng.VIEW
             if (e.KeyCode == Keys.Delete && dgvAtividades.CurrentCell.Selected)
                 btnExcluir.PerformClick();
         }
+
+        private void frmAtividades_Leave(object sender, EventArgs e)
+        {
+            GC.Collect();
+        }
     }
 
 

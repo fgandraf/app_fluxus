@@ -133,7 +133,7 @@ namespace Arqueng.VIEW
         }
 
 
-        public frmAddOS(frmPrincipal frm1, string frmfilho, string titulo, string referencia, string dataordem, string prazoexecucao, string profissionalcod, string atividadecod, bool siopi, string nomecliente, string cidade, string nomecontato, string telefonecontato, string status, string datapendente, string datavistoria, string dataconcluida, string obs, string faturacod)
+        public frmAddOS(frmPrincipal frm1, string frmfilho, string titulo, string referencia, string agencia, string dataordem, string prazoexecucao, string profissionalcod, string atividadecod, bool siopi, string nomecliente, string cidade, string nomecontato, string telefonecontato, string coordenada, string status, string datapendente, string datavistoria, string dataconcluida, string obs, string faturacod)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -144,9 +144,10 @@ namespace Arqueng.VIEW
 
             dado.Titulo = titulo;
             txtReferencia.Text = referencia;
+            Agencia = agencia;
             txtDataOrdem.Text = dataordem;
 
-            txtPrazo.Text = prazoexecucao;
+            dtpPrazo.Text = prazoexecucao;
             
             cboProfissional.Text = profissionalcod;
             cboAtividade.Text = atividadecod;
@@ -155,6 +156,8 @@ namespace Arqueng.VIEW
             txtCidade.Text = cidade;
             txtNomeContato.Text = nomecontato;
             txtTelefoneContato.Text = telefonecontato;
+            txtCoordenada.Text = coordenada;
+
             if (status == "RECEBIDA")
                 rbtRecebida.Checked = true;
             else if (status == "PENDENTE")
@@ -214,9 +217,10 @@ namespace Arqueng.VIEW
                 cboAtividade.Text = null;
                 cboProfissional.Text = null;
                 txtDataOrdem.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                txtPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
+                dtpPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
             }
             txtDataOrdem.Focus();
+            txtDataOrdem.SelectAll();
 
             
             if (Globais.Rt && Globais.Rl == false)
@@ -242,16 +246,17 @@ namespace Arqueng.VIEW
 
             //POPULATE
             int refe = Convert.ToInt32(txtReferencia.Text.Substring(10, 9));
-            dado.Titulo = cboAtividade.Text + "-" + txtCidade.Text + "-" + Convert.ToString(refe) + "\n\n" + "● Prazo: " + txtPrazo.Text + "\nCliente: " + txtNomeCliente.Text.Replace(" ", " ");
-
-
-
-
+            dado.Titulo = cboAtividade.Text + "-" + txtCidade.Text + "-" + Convert.ToString(refe) + "\n\n" + "● Prazo: " + dtpPrazo.Text + "\nCliente: " + txtNomeCliente.Text.Replace(" ", " ");
             dado.Referencia = txtReferencia.Text;
+            dado.Agencia = Agencia;
             if (txtDataOrdem.Text != "")
                 dado.Data_ordem = Convert.ToDateTime(txtDataOrdem.Text);
-            if (txtPrazo.Text != "")
-                dado.Prazo_execucao = Convert.ToDateTime(txtPrazo.Text);
+
+            //if (txtPrazo.Text != "")
+            //    dado.Prazo_execucao = Convert.ToDateTime(txtPrazo.Text);
+
+            dado.Prazo_execucao = dtpPrazo.Value;
+
             dado.Profissional_cod = cboProfissional.Text;
             dado.Atividade_cod = cboAtividade.Text;
             dado.Siopi = chkSiopi.Checked;
@@ -259,6 +264,7 @@ namespace Arqueng.VIEW
             dado.Cidade = txtCidade.Text;
             dado.Nome_contato = txtNomeContato.Text;
             dado.Telefone_contato = txtTelefoneContato.Text;
+            dado.Coordenada = txtCoordenada.Text;
             if (rbtRecebida.Checked)
                 dado.Status = "RECEBIDA";
             else if (rbtPendente.Checked)
@@ -268,14 +274,12 @@ namespace Arqueng.VIEW
             else
                 dado.Status = "CONCLUÍDA";
 
-            if (txtDataPendente.Text != "")
+            if (txtDataPendente.Text != "  /  /")
                 dado.Data_pendente = Convert.ToDateTime(txtDataPendente.Text);
-            if (txtDataVistoria.Text != "")
+            if (txtDataVistoria.Text != "  /  /")
                 dado.Data_vistoria = Convert.ToDateTime(txtDataVistoria.Text);
-            if (txtDataConcluida.Text != "")
+            if (txtDataConcluida.Text != "  /  /")
                 dado.Data_concluida = Convert.ToDateTime(txtDataConcluida.Text);
-
-
 
             dado.Obs = txtOBS.Text;
 
@@ -390,14 +394,15 @@ namespace Arqueng.VIEW
         {
             AgenciasENT dado = new AgenciasENT();
             dado.Agencia = txtReferencia.Text.Substring(5, 4);
-            frmAddAgencia form = new frmAddAgencia();
+            
+            frmAddAgencia form = new frmAddAgencia(txtReferencia.Text.Substring(5, 4));
             form.Text = "Adicionar";
 
             form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            form.Size = new System.Drawing.Size(400, 600);
+            form.Size = new System.Drawing.Size(650, 600);
             form.ShowDialog();
             BuscarAgencia();
-            txtCidade.Focus();
+            txtNomeCliente.Focus();
         }
 
         private void txtTelefoneContato_Enter(object sender, EventArgs e)
@@ -416,6 +421,8 @@ namespace Arqueng.VIEW
             var apenasDigitos = new Regex(@"[^\d]");
             if (apenasDigitos.Replace(txtTelefoneContato.Text, "").Length == 10)
                 txtTelefoneContato.Mask = "(99) #########";
+            else if (apenasDigitos.Replace(txtTelefoneContato.Text, "").Length == 11)
+                txtTelefoneContato.Mask = "(99) ##########";
         }
 
         private void txtReferencia_Enter(object sender, EventArgs e)
@@ -440,7 +447,7 @@ namespace Arqueng.VIEW
 
         private void txtDataOrdem_Validated(object sender, EventArgs e)
         {
-            txtPrazo.Text = (   DateTime.Parse(txtDataOrdem.Text).AddDays(5)   ).ToString("dd/MM/yyyy");
+            dtpPrazo.Text = (   DateTime.Parse(txtDataOrdem.Text).AddDays(5)   ).ToString("dd/MM/yyyy");
         }
 
         private void rbtRecebida_Click(object sender, EventArgs e)
@@ -462,6 +469,13 @@ namespace Arqueng.VIEW
         {
             txtDataConcluida.Focus();
         }
+
+
+        private void frmAddOS_Leave(object sender, EventArgs e)
+        {
+            GC.Collect();
+        }
+
     }
 
 

@@ -19,7 +19,7 @@ namespace Arqueng
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
         CadastraisMODEL cadmodel = new CadastraisMODEL();
-
+        Form FormAtivo = null;
 
         public frmPrincipal()
         {
@@ -32,14 +32,19 @@ namespace Arqueng
         public void AbrirFormInPanel(Form Formfilho, Panel pnl)
         {
             if (pnl.Controls.Count > 0)
-                pnl.Controls.RemoveAt(0);
+                FormAtivo.Close();
+            
 
             Form fh = Formfilho as Form;
             fh.TopLevel = false;
             fh.Dock = DockStyle.Fill;
+            pnl.Controls.Clear();
+            
             pnl.Controls.Add(fh);
             pnl.Tag = fh;
+            
             fh.Show();
+            GC.Collect();
         }
 
 
@@ -94,9 +99,11 @@ namespace Arqueng
 
             pnlCtrlProfissionais.Show();
             lblTitulo.Text = "Profissionais";
-
+            
             frmProfissionais frm = new frmProfissionais(this);
+            
             AbrirFormInPanel(frm, pnlMain);
+            FormAtivo = frm;
         }
 
 
@@ -106,9 +113,10 @@ namespace Arqueng
             
             pnlCtrlAtividades.Show();
             lblTitulo.Text = "Atividades";
-
+            
             frmAtividades frm = new frmAtividades(this);
             AbrirFormInPanel(frm, pnlMain);
+            FormAtivo = frm;
         }
 
 
@@ -118,9 +126,10 @@ namespace Arqueng
             
             pnlCtrlAgencias.Show();
             lblTitulo.Text = "Agências Demandantes";
-
+            
             frmAgencias frm = new frmAgencias(this);
             AbrirFormInPanel(frm, pnlMain);
+            FormAtivo = frm;
         }
 
 
@@ -155,6 +164,7 @@ namespace Arqueng
 
             frmDadosCadastrais frm = new frmDadosCadastrais(this);
             AbrirFormInPanel(frm, pnlMain);
+            FormAtivo = frm;
         }
 
 
@@ -195,6 +205,7 @@ namespace Arqueng
 
             frmOSFluxo frm = new frmOSFluxo(this);
             AbrirFormInPanel(frm, pnlMain);
+            FormAtivo = frm;
         }
 
 
@@ -204,9 +215,9 @@ namespace Arqueng
 
             pnlCtrlFaturas.Show();
             lblTitulo.Text = "Faturas";
-
             frmFaturas frm = new frmFaturas();
             AbrirFormInPanel(frm, pnlMain);
+            FormAtivo = frm;
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)

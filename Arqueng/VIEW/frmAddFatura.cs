@@ -139,6 +139,11 @@ namespace Arqueng.VIEW
             frmOSFluxo formFilho = new frmOSFluxo(_frmPrincipal);
             _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
         }
+
+        private void frmAddFatura_Leave(object sender, EventArgs e)
+        {
+            GC.Collect();
+        }
     }
 
 

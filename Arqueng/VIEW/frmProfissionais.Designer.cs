@@ -50,7 +50,6 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.dgvProfissionais = new System.Windows.Forms.DataGridView();
-            this.ttpProfissionais = new System.Windows.Forms.ToolTip(this.components);
             this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +66,7 @@
             this.usr_ativo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.usr_nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usr_senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ttpProfissionais = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfissionais)).BeginInit();
             this.SuspendLayout();
@@ -405,6 +405,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Profissionais";
             this.Load += new System.EventHandler(this.frmProfissionais_Load);
+            this.Leave += new System.EventHandler(this.frmProfissionais_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfissionais)).EndInit();
             this.ResumeLayout(false);

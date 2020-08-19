@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddProfissional));
             this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.lblDataNascimento = new System.Windows.Forms.Label();
             this.txtTelefone2 = new System.Windows.Forms.MaskedTextBox();
@@ -41,7 +43,6 @@
             this.lblNome = new System.Windows.Forms.Label();
             this.lblCarteiraProfissional = new System.Windows.Forms.Label();
             this.txtCarteira = new System.Windows.Forms.TextBox();
-            this.txtEntidade = new System.Windows.Forms.TextBox();
             this.lblEntidadedeClasse = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.lblCodigo = new System.Windows.Forms.Label();
@@ -75,8 +76,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.chkRL = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.imgShowPwd = new System.Windows.Forms.PictureBox();
+            this.imgHidePwd = new System.Windows.Forms.PictureBox();
+            this.ttpAddProfissional = new System.Windows.Forms.ToolTip(this.components);
+            this.cboEntidade = new System.Windows.Forms.ComboBox();
             this.pnlLinha2.SuspendLayout();
             this.pnlMainAddProfissional.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgShowPwd)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHidePwd)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCPF
@@ -240,19 +247,6 @@
             this.txtCarteira.Name = "txtCarteira";
             this.txtCarteira.Size = new System.Drawing.Size(331, 23);
             this.txtCarteira.TabIndex = 7;
-            // 
-            // txtEntidade
-            // 
-            this.txtEntidade.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtEntidade.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtEntidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtEntidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEntidade.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtEntidade.Location = new System.Drawing.Point(360, 460);
-            this.txtEntidade.MaxLength = 100;
-            this.txtEntidade.Name = "txtEntidade";
-            this.txtEntidade.Size = new System.Drawing.Size(331, 23);
-            this.txtEntidade.TabIndex = 8;
             // 
             // lblEntidadedeClasse
             // 
@@ -465,6 +459,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMainAddProfissional.AutoScroll = true;
             this.pnlMainAddProfissional.BackColor = System.Drawing.SystemColors.Window;
+            this.pnlMainAddProfissional.Controls.Add(this.cboEntidade);
+            this.pnlMainAddProfissional.Controls.Add(this.imgShowPwd);
+            this.pnlMainAddProfissional.Controls.Add(this.imgHidePwd);
             this.pnlMainAddProfissional.Controls.Add(this.txtUsrSenha2);
             this.pnlMainAddProfissional.Controls.Add(this.txtUsrSenha);
             this.pnlMainAddProfissional.Controls.Add(this.label10);
@@ -502,7 +499,6 @@
             this.pnlMainAddProfissional.Controls.Add(this.txtNascimento);
             this.pnlMainAddProfissional.Controls.Add(this.txtNome);
             this.pnlMainAddProfissional.Controls.Add(this.lblTelefone2);
-            this.pnlMainAddProfissional.Controls.Add(this.txtEntidade);
             this.pnlMainAddProfissional.Controls.Add(this.txtProfissao);
             this.pnlMainAddProfissional.Controls.Add(this.lblCodigo);
             this.pnlMainAddProfissional.Controls.Add(this.txtTelefone2);
@@ -521,7 +517,7 @@
             this.txtUsrSenha2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsrSenha2.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtUsrSenha2.Location = new System.Drawing.Point(568, 807);
-            this.txtUsrSenha2.MaxLength = 50;
+            this.txtUsrSenha2.MaxLength = 15;
             this.txtUsrSenha2.Name = "txtUsrSenha2";
             this.txtUsrSenha2.PasswordChar = '*';
             this.txtUsrSenha2.Size = new System.Drawing.Size(120, 23);
@@ -535,7 +531,7 @@
             this.txtUsrSenha.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsrSenha.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtUsrSenha.Location = new System.Drawing.Point(357, 807);
-            this.txtUsrSenha.MaxLength = 50;
+            this.txtUsrSenha.MaxLength = 15;
             this.txtUsrSenha.Name = "txtUsrSenha";
             this.txtUsrSenha.PasswordChar = '*';
             this.txtUsrSenha.Size = new System.Drawing.Size(120, 23);
@@ -592,7 +588,7 @@
             this.txtUsrNome.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsrNome.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txtUsrNome.Location = new System.Drawing.Point(357, 763);
-            this.txtUsrNome.MaxLength = 50;
+            this.txtUsrNome.MaxLength = 40;
             this.txtUsrNome.Name = "txtUsrNome";
             this.txtUsrNome.Size = new System.Drawing.Size(331, 23);
             this.txtUsrNome.TabIndex = 13;
@@ -686,6 +682,52 @@
             this.panel1.Size = new System.Drawing.Size(480, 1);
             this.panel1.TabIndex = 285;
             // 
+            // imgShowPwd
+            // 
+            this.imgShowPwd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.imgShowPwd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgShowPwd.Image = ((System.Drawing.Image)(resources.GetObject("imgShowPwd.Image")));
+            this.imgShowPwd.Location = new System.Drawing.Point(459, 811);
+            this.imgShowPwd.Name = "imgShowPwd";
+            this.imgShowPwd.Size = new System.Drawing.Size(15, 15);
+            this.imgShowPwd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgShowPwd.TabIndex = 234;
+            this.imgShowPwd.TabStop = false;
+            this.ttpAddProfissional.SetToolTip(this.imgShowPwd, "Mostrar senha");
+            this.imgShowPwd.Click += new System.EventHandler(this.imgShowPwd_Click);
+            // 
+            // imgHidePwd
+            // 
+            this.imgHidePwd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.imgHidePwd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgHidePwd.Image = ((System.Drawing.Image)(resources.GetObject("imgHidePwd.Image")));
+            this.imgHidePwd.Location = new System.Drawing.Point(459, 811);
+            this.imgHidePwd.Name = "imgHidePwd";
+            this.imgHidePwd.Size = new System.Drawing.Size(15, 15);
+            this.imgHidePwd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgHidePwd.TabIndex = 235;
+            this.imgHidePwd.TabStop = false;
+            this.ttpAddProfissional.SetToolTip(this.imgHidePwd, "Ocultar senha");
+            this.imgHidePwd.Click += new System.EventHandler(this.imgHidePwd_Click);
+            // 
+            // cboEntidade
+            // 
+            this.cboEntidade.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cboEntidade.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cboEntidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEntidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboEntidade.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cboEntidade.FormattingEnabled = true;
+            this.cboEntidade.Items.AddRange(new object[] {
+            "C.A.U. - CONSELHO DE ARQUITETURA E URBANISMO",
+            "C.R.E.A. - CONSELHO DE ENGENHARIA E AGRONOMIA",
+            "OUTRO"});
+            this.cboEntidade.Location = new System.Drawing.Point(360, 460);
+            this.cboEntidade.MaxLength = 100;
+            this.cboEntidade.Name = "cboEntidade";
+            this.cboEntidade.Size = new System.Drawing.Size(331, 23);
+            this.cboEntidade.TabIndex = 8;
+            // 
             // frmAddProfissional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -703,9 +745,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Profissional";
             this.Load += new System.EventHandler(this.frmAddProfissional_Load);
+            this.Leave += new System.EventHandler(this.frmAddProfissional_Leave);
             this.pnlLinha2.ResumeLayout(false);
             this.pnlMainAddProfissional.ResumeLayout(false);
             this.pnlMainAddProfissional.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgShowPwd)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgHidePwd)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -725,7 +770,6 @@
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblCarteiraProfissional;
         private System.Windows.Forms.TextBox txtCarteira;
-        private System.Windows.Forms.TextBox txtEntidade;
         private System.Windows.Forms.Label lblEntidadedeClasse;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblCodigo;
@@ -759,5 +803,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox imgShowPwd;
+        private System.Windows.Forms.PictureBox imgHidePwd;
+        private System.Windows.Forms.ToolTip ttpAddProfissional;
+        private System.Windows.Forms.ComboBox cboEntidade;
     }
 }

@@ -22,15 +22,5 @@ namespace Arqueng.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;database=cef_db")]
-        public string cef_dbConnectionString {
-            get {
-                return ((string)(this["cef_dbConnectionString"]));
-            }
-        }
     }
 }

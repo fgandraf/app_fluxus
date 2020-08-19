@@ -27,6 +27,12 @@ namespace Arqueng.VIEW
             InitializeComponent();
         }
 
+        public frmAddAgencia(string agencia)
+        {
+            InitializeComponent();
+            txtAgencia.Text = agencia;
+        }
+
 
         public frmAddAgencia (frmPrincipal frm1, string agencia, string nome, string endereco, string complemento, string bairro, string cidade, string cep, string uf, string contato, string telefone1, string telefone2, string email)
         {
@@ -123,7 +129,7 @@ namespace Arqueng.VIEW
 
         private void txtTelefone1_Enter(object sender, EventArgs e)
         {
-            txtTelefone1.Mask = "(99) ##########";
+            txtTelefone1.Mask = "(99) #########";
         }
 
         private void txtTelefone1_Validated(object sender, EventArgs e)
@@ -133,10 +139,15 @@ namespace Arqueng.VIEW
                 txtTelefone1.Mask = "";
                 return;
             }
+            
+            
 
             var apenasDigitos = new Regex(@"[^\d]");
             if (apenasDigitos.Replace(txtTelefone1.Text, "").Length == 10)
                 txtTelefone1.Mask = "(99) #########";
+            else if (apenasDigitos.Replace(txtTelefone1.Text, "").Length == 11)
+                txtTelefone1.Mask = "(99) ##########";
+
         }
 
         private void txtTelefone2_Enter(object sender, EventArgs e)
@@ -155,6 +166,8 @@ namespace Arqueng.VIEW
             var apenasDigitos = new Regex(@"[^\d]");
             if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 10)
                 txtTelefone2.Mask = "(99) #########";
+            else if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 11)
+                txtTelefone2.Mask = "(99) ##########";
         }
 
         private void txtCEP_Enter(object sender, EventArgs e)
@@ -177,6 +190,11 @@ namespace Arqueng.VIEW
                 frmAgencias formFilho = new frmAgencias(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
             }
+        }
+
+        private void frmAddAgencia_Leave(object sender, EventArgs e)
+        {
+            GC.Collect();
         }
 
     }

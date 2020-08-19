@@ -101,6 +101,11 @@ namespace Arqueng.VIEW
             frmAtividades formFilho = new frmAtividades(_frmPrincipal);
             _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
         }
+
+        private void frmAddAtividade_Leave(object sender, EventArgs e)
+        {
+               GC.Collect();
+        }
     }
 
 

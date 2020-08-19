@@ -152,6 +152,7 @@ namespace Arqueng.DAO
                 {
                     dado.Titulo = Convert.ToString(dr["titulo"]);
                     dado.Referencia = Convert.ToString(dr["referencia"]);
+                    dado.Agencia = Convert.ToString(dr["agencia"]);
                     dado.Data_ordem = Convert.ToDateTime(dr["data_ordem"]);
                     dado.Prazo_execucao = Convert.ToDateTime(dr["prazo_execucao"]);
                     dado.Profissional_cod = Convert.ToString(dr["profissional_cod"]);
@@ -161,6 +162,7 @@ namespace Arqueng.DAO
                     dado.Cidade = Convert.ToString(dr["cidade"]);
                     dado.Nome_contato = Convert.ToString(dr["nome_contato"]);
                     dado.Telefone_contato = Convert.ToString(dr["telefone_contato"]);
+                    dado.Coordenada = Convert.ToString(dr["coordenada"]);
                     dado.Status = Convert.ToString(dr["status"]);
                     dado.Data_pendente = Convert.ToDateTime(dr["data_pendente"]);
                     dado.Data_vistoria = Convert.ToDateTime(dr["data_vistoria"]);
@@ -183,10 +185,11 @@ namespace Arqueng.DAO
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("INSERT INTO tb_os(titulo, referencia, data_ordem, prazo_execucao, profissional_cod, atividade_cod, siopi, nome_cliente, cidade, nome_contato, telefone_contato, status, data_pendente, data_vistoria, data_concluida, obs) VALUES (@titulo, @referencia, @data_ordem, @prazo_execucao, @profissional_cod, @atividade_cod, @siopi, @nome_cliente, @cidade, @nome_contato, @telefone_contato, @status, @data_pendente, @data_vistoria, @data_concluida, @obs)", con.con);
+                sql = new MySqlCommand("INSERT INTO tb_os(titulo, referencia, agencia, data_ordem, prazo_execucao, profissional_cod, atividade_cod, siopi, nome_cliente, cidade, nome_contato, telefone_contato, coordenada, status, data_pendente, data_vistoria, data_concluida, obs) VALUES (@titulo, @referencia, @agencia, @data_ordem, @prazo_execucao, @profissional_cod, @atividade_cod, @siopi, @nome_cliente, @cidade, @nome_contato, @telefone_contato, @coordenada, @status, @data_pendente, @data_vistoria, @data_concluida, @obs)", con.con);
 
                 sql.Parameters.AddWithValue("@titulo", dado.Titulo);
                 sql.Parameters.AddWithValue("@referencia", dado.Referencia);
+                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
                 sql.Parameters.AddWithValue("@data_ordem", dado.Data_ordem);
                 sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo_execucao);
                 sql.Parameters.AddWithValue("@profissional_cod", dado.Profissional_cod);
@@ -196,6 +199,7 @@ namespace Arqueng.DAO
                 sql.Parameters.AddWithValue("@cidade", dado.Cidade);
                 sql.Parameters.AddWithValue("@nome_contato", dado.Nome_contato);
                 sql.Parameters.AddWithValue("@telefone_contato", dado.Telefone_contato);
+                sql.Parameters.AddWithValue("@coordenada", dado.Coordenada);
                 sql.Parameters.AddWithValue("@status", dado.Status);
                 sql.Parameters.AddWithValue("@data_pendente", dado.Data_pendente);
                 sql.Parameters.AddWithValue("@data_vistoria", dado.Data_vistoria);
@@ -218,7 +222,7 @@ namespace Arqueng.DAO
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("UPDATE tb_os SET titulo = @titulo, data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, status = @status, data_pendente = @data_pendente, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs WHERE referencia = @referencia", con.con);
+                sql = new MySqlCommand("UPDATE tb_os SET titulo = @titulo, data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, coordenada = @coordenada, status = @status, data_pendente = @data_pendente, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs WHERE referencia = @referencia", con.con);
                 sql.Parameters.AddWithValue("@titulo", dado.Titulo);
                 sql.Parameters.AddWithValue("@data_ordem", dado.Data_ordem);
                 sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo_execucao);
@@ -229,6 +233,7 @@ namespace Arqueng.DAO
                 sql.Parameters.AddWithValue("@cidade", dado.Cidade);
                 sql.Parameters.AddWithValue("@nome_contato", dado.Nome_contato);
                 sql.Parameters.AddWithValue("@telefone_contato", dado.Telefone_contato);
+                sql.Parameters.AddWithValue("@coordenada", dado.Coordenada);
                 sql.Parameters.AddWithValue("@status", dado.Status);
                 sql.Parameters.AddWithValue("@data_pendente", dado.Data_pendente);
                 sql.Parameters.AddWithValue("@data_vistoria", dado.Data_vistoria);
