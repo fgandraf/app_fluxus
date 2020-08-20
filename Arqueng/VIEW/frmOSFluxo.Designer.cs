@@ -301,6 +301,7 @@
             // 
             // dgvPendentes
             // 
+            this.dgvPendentes.AllowDrop = true;
             this.dgvPendentes.AllowUserToAddRows = false;
             this.dgvPendentes.AllowUserToDeleteRows = false;
             this.dgvPendentes.AllowUserToOrderColumns = true;
@@ -344,9 +345,13 @@
             this.dgvPendentes.ShowEditingIcon = false;
             this.dgvPendentes.Size = new System.Drawing.Size(185, 423);
             this.dgvPendentes.TabIndex = 223;
+            this.dgvPendentes.Tag = "PENDENTE";
             this.dgvPendentes.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPendentes_CellMouseLeave);
             this.dgvPendentes.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPendentes_CellMouseMove);
             this.dgvPendentes.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPendentes_CellMouseUp);
+            this.dgvPendentes.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvPendentes_DragDrop);
+            this.dgvPendentes.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvPendentes_DragOver);
+            this.dgvPendentes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvPendentes_MouseDown);
             // 
             // referencia_pendentes
             // 
@@ -402,6 +407,7 @@
             // 
             // dgvRecebidas
             // 
+            this.dgvRecebidas.AllowDrop = true;
             this.dgvRecebidas.AllowUserToAddRows = false;
             this.dgvRecebidas.AllowUserToDeleteRows = false;
             this.dgvRecebidas.AllowUserToResizeColumns = false;
@@ -447,9 +453,14 @@
             this.dgvRecebidas.ShowEditingIcon = false;
             this.dgvRecebidas.Size = new System.Drawing.Size(185, 423);
             this.dgvRecebidas.TabIndex = 222;
+            this.dgvRecebidas.Tag = "RECEBIDA";
             this.dgvRecebidas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecebidas_CellMouseLeave);
             this.dgvRecebidas.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRecebidas_CellMouseMove);
             this.dgvRecebidas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRecebidas_CellMouseUp);
+            this.dgvRecebidas.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvRecebidas_DragDrop);
+            this.dgvRecebidas.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvRecebidas_DragOver);
+            this.dgvRecebidas.DoubleClick += new System.EventHandler(this.dgvRecebidas_DoubleClick);
+            this.dgvRecebidas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvRecebidas_MouseDown);
             // 
             // referencia_recebidas
             // 
@@ -486,6 +497,7 @@
             // 
             // dgvVistoriadas
             // 
+            this.dgvVistoriadas.AllowDrop = true;
             this.dgvVistoriadas.AllowUserToAddRows = false;
             this.dgvVistoriadas.AllowUserToDeleteRows = false;
             this.dgvVistoriadas.AllowUserToOrderColumns = true;
@@ -529,9 +541,13 @@
             this.dgvVistoriadas.ShowEditingIcon = false;
             this.dgvVistoriadas.Size = new System.Drawing.Size(185, 423);
             this.dgvVistoriadas.TabIndex = 223;
+            this.dgvVistoriadas.Tag = "VISTORIADA";
             this.dgvVistoriadas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVistoriadas_CellMouseLeave);
             this.dgvVistoriadas.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVistoriadas_CellMouseMove);
             this.dgvVistoriadas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVistoriadas_CellMouseUp);
+            this.dgvVistoriadas.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvVistoriadas_DragDrop);
+            this.dgvVistoriadas.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvVistoriadas_DragOver);
+            this.dgvVistoriadas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvVistoriadas_MouseDown);
             // 
             // referencia_vistoriadas
             // 
@@ -565,6 +581,7 @@
             // 
             // dgvConcluidas
             // 
+            this.dgvConcluidas.AllowDrop = true;
             this.dgvConcluidas.AllowUserToAddRows = false;
             this.dgvConcluidas.AllowUserToDeleteRows = false;
             this.dgvConcluidas.AllowUserToOrderColumns = true;
@@ -608,9 +625,13 @@
             this.dgvConcluidas.ShowEditingIcon = false;
             this.dgvConcluidas.Size = new System.Drawing.Size(185, 423);
             this.dgvConcluidas.TabIndex = 223;
+            this.dgvConcluidas.Tag = "CONCLUÍDA";
             this.dgvConcluidas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcluidas_CellMouseLeave);
             this.dgvConcluidas.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvConcluidas_CellMouseMove);
             this.dgvConcluidas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvConcluidas_CellMouseUp);
+            this.dgvConcluidas.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvConcluidas_DragDrop);
+            this.dgvConcluidas.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvConcluidas_DragOver);
+            this.dgvConcluidas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvConcluidas_MouseDown);
             // 
             // referencia_concluidas
             // 

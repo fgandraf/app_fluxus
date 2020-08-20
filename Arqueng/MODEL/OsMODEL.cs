@@ -142,6 +142,57 @@ namespace Arqueng.MODEL
         }
 
 
+
+        public void UpdateStatusModel(OsENT dado)
+        {
+            if (dado.Status == "RECEBIDA")
+            {
+                try
+                {
+                    dao.UpdateStatusRecebida(dado);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            else if (dado.Status == "PENDENTE")
+            {
+                try
+                {
+                    dao.UpdateStatusPendente(dado);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            else if (dado.Status == "VISTORIADA")
+            {
+                try
+                {
+                    dao.UpdateStatusVistoriada(dado);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+            else
+            {
+                try
+                {
+                    dao.UpdateStatusConcluida(dado);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+
+
         public void DeleteOsModel(OsENT dado)
         {
             try

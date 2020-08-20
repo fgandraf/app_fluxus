@@ -288,6 +288,83 @@ namespace Arqueng.DAO
         }
 
 
+
+
+
+
+
+        public void UpdateStatusRecebida(OsENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("UPDATE tb_os SET status = 'RECEBIDA' WHERE referencia = @referencia", con.con);
+                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
+                sql.ExecuteNonQuery();
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                con.FecharConexao();
+                throw;
+            }
+        }
+
+
+        public void UpdateStatusPendente(OsENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("UPDATE tb_os SET status = 'PENDENTE', data_pendente = @data_pendente WHERE referencia = @referencia", con.con);
+                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
+                sql.Parameters.AddWithValue("@data_pendente", DateTime.Now);
+                sql.ExecuteNonQuery();
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                con.FecharConexao();
+                throw;
+            }
+        }
+
+        public void UpdateStatusVistoriada(OsENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("UPDATE tb_os SET status = 'VISTORIADA', data_vistoria = @data_vistoria WHERE referencia = @referencia", con.con);
+                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
+                sql.Parameters.AddWithValue("@data_vistoria", DateTime.Now);
+                sql.ExecuteNonQuery();
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                con.FecharConexao();
+                throw;
+            }
+        }
+
+        public void UpdateStatusConcluida(OsENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("UPDATE tb_os SET status = 'CONCLUÍDA', data_concluida = @data_concluida WHERE referencia = @referencia", con.con);
+                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
+                sql.Parameters.AddWithValue("@data_concluida", DateTime.Now);
+                sql.ExecuteNonQuery();
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                con.FecharConexao();
+                throw;
+            }
+        }
+
     }
 
 

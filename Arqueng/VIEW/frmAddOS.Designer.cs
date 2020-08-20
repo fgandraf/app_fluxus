@@ -75,11 +75,11 @@
             this.txtDataOrdem = new System.Windows.Forms.MaskedTextBox();
             this.tabOS = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dtpPrazo = new System.Windows.Forms.DateTimePicker();
             this.btnAddAgencia = new System.Windows.Forms.Button();
             this.txtCoordenada = new System.Windows.Forms.TextBox();
             this.lblCoordenada = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.dtpPrazo = new System.Windows.Forms.DateTimePicker();
             this.pnlMolduraProfissional.SuspendLayout();
             this.pnlMolduraAtividade.SuspendLayout();
             this.pnlBotton.SuspendLayout();
@@ -702,6 +702,15 @@
             this.tabPage1.Text = "Dados da Ordem";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dtpPrazo
+            // 
+            this.dtpPrazo.CustomFormat = "";
+            this.dtpPrazo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpPrazo.Location = new System.Drawing.Point(170, 256);
+            this.dtpPrazo.Name = "dtpPrazo";
+            this.dtpPrazo.Size = new System.Drawing.Size(400, 23);
+            this.dtpPrazo.TabIndex = 429;
+            // 
             // btnAddAgencia
             // 
             this.btnAddAgencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -750,16 +759,6 @@
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Observações";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // dtpPrazo
-            // 
-            this.dtpPrazo.CustomFormat = "";
-            this.dtpPrazo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpPrazo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpPrazo.Location = new System.Drawing.Point(170, 256);
-            this.dtpPrazo.Name = "dtpPrazo";
-            this.dtpPrazo.Size = new System.Drawing.Size(200, 23);
-            this.dtpPrazo.TabIndex = 429;
             // 
             // frmAddOS
             // 
