@@ -468,6 +468,7 @@
             // 
             // btnFiltrar
             // 
+            this.btnFiltrar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnFiltrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFiltrar.FlatAppearance.BorderSize = 0;
             this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -482,6 +483,7 @@
             // 
             // btnLimparFiltro
             // 
+            this.btnLimparFiltro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLimparFiltro.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLimparFiltro.FlatAppearance.BorderSize = 0;
             this.btnLimparFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -497,6 +499,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 7F);
             this.label1.ForeColor = System.Drawing.Color.Black;
@@ -508,6 +511,7 @@
             // 
             // cboFaturadas
             // 
+            this.cboFaturadas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboFaturadas.AutoCompleteCustomSource.AddRange(new string[] {
             "Todas",
             "Sim",
@@ -526,6 +530,7 @@
             // 
             // cboProfissional
             // 
+            this.cboProfissional.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboProfissional.DisplayMember = "nomeid";
             this.cboProfissional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProfissional.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -538,6 +543,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7F);
             this.label3.ForeColor = System.Drawing.Color.Black;
@@ -549,6 +555,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 7F);
             this.label4.ForeColor = System.Drawing.Color.Black;
@@ -560,6 +567,7 @@
             // 
             // cboAtividade
             // 
+            this.cboAtividade.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboAtividade.DisplayMember = "codigo";
             this.cboAtividade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAtividade.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -572,6 +580,7 @@
             // 
             // cboCidade
             // 
+            this.cboCidade.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboCidade.DisplayMember = "cidade";
             this.cboCidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCidade.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -584,6 +593,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 7F);
             this.label6.ForeColor = System.Drawing.Color.Black;
@@ -595,6 +605,7 @@
             // 
             // cboStatus
             // 
+            this.cboStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cboStatus.AutoCompleteCustomSource.AddRange(new string[] {
             "Todas",
             "Sim",
@@ -615,6 +626,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 7F);
             this.label7.ForeColor = System.Drawing.Color.Black;
