@@ -124,11 +124,11 @@
     <Compile Include="VIEW\frmAddAtividade.Designer.cs">
       <DependentUpon>frmAddAtividade.cs</DependentUpon>
     </Compile>
-    <Compile Include="VIEW\frmOSLista.cs">
+    <Compile Include="VIEW\frmRelatorios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VIEW\frmOSLista.Designer.cs">
-      <DependentUpon>frmOSLista.cs</DependentUpon>
+    <Compile Include="VIEW\frmRelatorios.Designer.cs">
+      <DependentUpon>frmRelatorios.cs</DependentUpon>
     </Compile>
     <Compile Include="VIEW\frmAgencias.cs">
       <SubType>Form</SubType>
@@ -186,8 +186,8 @@
     <EmbeddedResource Include="VIEW\frmOSFluxo.resx">
       <DependentUpon>frmOSFluxo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEW\frmOSLista.resx">
-      <DependentUpon>frmOSLista.cs</DependentUpon>
+    <EmbeddedResource Include="VIEW\frmRelatorios.resx">
+      <DependentUpon>frmRelatorios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEW\frmAgencias.resx">
       <DependentUpon>frmAgencias.cs</DependentUpon>

@@ -41,6 +41,20 @@ namespace Arqueng.MODEL
             }
         }
 
+        public DataTable ListarCidadesModel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.ListarCidadesDAO();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         public DataTable ListarOSFaturadaModel(OsENT dado)
         {
@@ -84,6 +98,7 @@ namespace Arqueng.MODEL
             }
         }
 
+       
         public DataTable ListarOsStatusModel(OsENT dado)
         {
             try

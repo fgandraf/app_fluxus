@@ -33,6 +33,25 @@ namespace Arqueng.DAO
             }
         }
 
+        //***** LISTAR TODAS CIDADES *****//
+        public DataTable ListarCidadesDAO()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT DISTINCT cidade FROM tb_os ORDER BY cidade", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         //***** LISTAR ORDENS DE SERVIÇO À SEREM FATURADAS *****//
         public DataTable ListarOSAFaturarDAO()
         {
@@ -364,6 +383,10 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
+
+
 
     }
 

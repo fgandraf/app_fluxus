@@ -38,8 +38,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaturas));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tblFaturas = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -64,16 +66,16 @@
             this.lblSubtotal = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.dgvFaturas = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.lblNenhuma = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal_os = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal_desloc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.lblNenhuma = new System.Windows.Forms.Label();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tblFaturas.SuspendLayout();
             this.pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
@@ -432,6 +434,7 @@
             this.dgvFaturas.AllowUserToResizeRows = false;
             this.dgvFaturas.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvFaturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvFaturas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvFaturas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvFaturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvFaturas.ColumnHeadersHeight = 35;
@@ -445,15 +448,15 @@
             this.subtotal_desloc,
             this.total});
             this.dgvFaturas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFaturas.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFaturas.DefaultCellStyle = dataGridViewCellStyle13;
             this.dgvFaturas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFaturas.EnableHeadersVisualStyles = false;
             this.dgvFaturas.GridColor = System.Drawing.SystemColors.Window;
@@ -467,7 +470,6 @@
             this.dgvFaturas.RowHeadersWidth = 60;
             this.dgvFaturas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.tblFaturas.SetRowSpan(this.dgvFaturas, 3);
-            this.dgvFaturas.RowTemplate.DividerHeight = 5;
             this.dgvFaturas.RowTemplate.Height = 50;
             this.dgvFaturas.RowTemplate.ReadOnly = true;
             this.dgvFaturas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -477,55 +479,6 @@
             this.dgvFaturas.Size = new System.Drawing.Size(180, 540);
             this.dgvFaturas.TabIndex = 223;
             this.dgvFaturas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvFaturas_MouseClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // descricao
-            // 
-            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricao.DataPropertyName = "descricao";
-            this.descricao.HeaderText = "Descrição";
-            this.descricao.MinimumWidth = 50;
-            this.descricao.Name = "descricao";
-            this.descricao.ReadOnly = true;
-            // 
-            // data
-            // 
-            this.data.DataPropertyName = "data";
-            this.data.HeaderText = "data";
-            this.data.Name = "data";
-            this.data.ReadOnly = true;
-            this.data.Visible = false;
-            // 
-            // subtotal_os
-            // 
-            this.subtotal_os.DataPropertyName = "subtotal_os";
-            this.subtotal_os.HeaderText = "Subtotal OS";
-            this.subtotal_os.Name = "subtotal_os";
-            this.subtotal_os.ReadOnly = true;
-            this.subtotal_os.Visible = false;
-            // 
-            // subtotal_desloc
-            // 
-            this.subtotal_desloc.DataPropertyName = "subtotal_desloc";
-            this.subtotal_desloc.HeaderText = "Subtotal Desloc.";
-            this.subtotal_desloc.Name = "subtotal_desloc";
-            this.subtotal_desloc.ReadOnly = true;
-            this.subtotal_desloc.Visible = false;
-            // 
-            // total
-            // 
-            this.total.DataPropertyName = "total";
-            this.total.HeaderText = "Total";
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            this.total.Visible = false;
             // 
             // panel2
             // 
@@ -574,6 +527,60 @@
             this.saveFileDialog.FileName = "Relacao_OS.pdf";
             this.saveFileDialog.Filter = "Arquivos PDF|*.pdf";
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 5;
+            // 
+            // descricao
+            // 
+            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricao.DataPropertyName = "descricao";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.descricao.DefaultCellStyle = dataGridViewCellStyle12;
+            this.descricao.HeaderText = "Descrição";
+            this.descricao.MinimumWidth = 50;
+            this.descricao.Name = "descricao";
+            this.descricao.ReadOnly = true;
+            // 
+            // data
+            // 
+            this.data.DataPropertyName = "data";
+            this.data.HeaderText = "data";
+            this.data.Name = "data";
+            this.data.ReadOnly = true;
+            this.data.Visible = false;
+            // 
+            // subtotal_os
+            // 
+            this.subtotal_os.DataPropertyName = "subtotal_os";
+            this.subtotal_os.HeaderText = "Subtotal OS";
+            this.subtotal_os.Name = "subtotal_os";
+            this.subtotal_os.ReadOnly = true;
+            this.subtotal_os.Visible = false;
+            // 
+            // subtotal_desloc
+            // 
+            this.subtotal_desloc.DataPropertyName = "subtotal_desloc";
+            this.subtotal_desloc.HeaderText = "Subtotal Desloc.";
+            this.subtotal_desloc.Name = "subtotal_desloc";
+            this.subtotal_desloc.ReadOnly = true;
+            this.subtotal_desloc.Visible = false;
+            // 
+            // total
+            // 
+            this.total.DataPropertyName = "total";
+            this.total.HeaderText = "Total";
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.Visible = false;
+            // 
             // frmFaturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -618,12 +625,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal_os;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal_desloc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_ordem;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn atividade_cod;
@@ -635,5 +636,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_atividade;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_deslocamento;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal_os;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal_desloc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
     }
 }

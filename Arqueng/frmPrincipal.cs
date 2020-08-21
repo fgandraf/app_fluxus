@@ -21,13 +21,11 @@ namespace Arqueng
         CadastraisMODEL cadmodel = new CadastraisMODEL();
         Form FormAtivo = null;
 
-        public frmPrincipal()
-        {
-            InitializeComponent();
-            frmLogin login = new frmLogin();
-            login.ShowDialog();
-        }
 
+
+
+
+        //:MÉTODOS
 
         public void AbrirFormInPanel(Form Formfilho, Panel pnl)
         {
@@ -47,7 +45,6 @@ namespace Arqueng
             GC.Collect();
         }
 
-
         private void OcultaControles()
         {
             pnlCtrlOS.Hide();
@@ -56,8 +53,8 @@ namespace Arqueng
             pnlCtrlProfissionais.Hide();
             pnlCtrlDadosCadastrais.Hide();
             pnlCtrlFaturas.Hide();
+            pnlCtrlRelatorios.Hide();
         }
-
 
         public void BuscarDadosEmpresa()
         {
@@ -76,6 +73,25 @@ namespace Arqueng
         }
 
 
+
+
+
+
+
+
+
+
+        //:EVENTOS
+
+        ///_______FORMULÁRIO
+        
+        public frmPrincipal()
+        {
+            InitializeComponent();
+            frmLogin login = new frmLogin();
+            login.ShowDialog();
+        }
+
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = "Usuário: " + Globais.Usr_nome;
@@ -86,6 +102,13 @@ namespace Arqueng
         }
 
 
+
+
+
+
+
+        ///_______PAINEL
+        
         private void pnlTitulo_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -93,45 +116,44 @@ namespace Arqueng
         }
 
 
-        private void btnProfissionais_Click(object sender, EventArgs e)
-        {
-            OcultaControles();
 
-            pnlCtrlProfissionais.Show();
-            lblTitulo.Text = "Profissionais";
-            
-            frmProfissionais frm = new frmProfissionais(this);
-            
-            AbrirFormInPanel(frm, pnlMain);
-            FormAtivo = frm;
+
+
+
+
+        ///_______BOTÕES DE CONTROLE
+
+        private void btnAppFechar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnAppMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnAppMaximizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            btnAppMaximizar.Hide();
+            btnAppRestaurar.Show();
+        }
+
+        private void btnAppRestaurar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            btnAppMaximizar.Show();
+            btnAppRestaurar.Hide();
         }
 
 
-        private void btnAtividades_Click(object sender, EventArgs e)
-        {
-            OcultaControles();
-            
-            pnlCtrlAtividades.Show();
-            lblTitulo.Text = "Atividades";
-            
-            frmAtividades frm = new frmAtividades(this);
-            AbrirFormInPanel(frm, pnlMain);
-            FormAtivo = frm;
-        }
 
 
-        private void btnAgencias_Click(object sender, EventArgs e)
-        {
-            OcultaControles();
-            
-            pnlCtrlAgencias.Show();
-            lblTitulo.Text = "Agências Demandantes";
-            
-            frmAgencias frm = new frmAgencias(this);
-            AbrirFormInPanel(frm, pnlMain);
-            FormAtivo = frm;
-        }
 
+
+
+        ///_______MENU
 
         private void btnSlide_Click(object sender, EventArgs e)
         {
@@ -154,7 +176,6 @@ namespace Arqueng
             }
         }
 
-
         private void btnDadosCadastrais_Click(object sender, EventArgs e)
         {
             OcultaControles();
@@ -166,35 +187,6 @@ namespace Arqueng
             AbrirFormInPanel(frm, pnlMain);
             FormAtivo = frm;
         }
-
-
-        private void btnAppFechar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-
-        private void btnAppMinimizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-
-        private void btnAppMaximizar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-            btnAppMaximizar.Hide();
-            btnAppRestaurar.Show();
-        }
-
-
-        private void btnAppRestaurar_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Normal;
-            btnAppMaximizar.Show();
-            btnAppRestaurar.Hide();
-        }
-
 
         private void btnOS_Click(object sender, EventArgs e)
         {
@@ -208,7 +200,6 @@ namespace Arqueng
             FormAtivo = frm;
         }
 
-
         private void btnFaturas_Click(object sender, EventArgs e)
         {
             OcultaControles();
@@ -220,12 +211,60 @@ namespace Arqueng
             FormAtivo = frm;
         }
 
-        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnAtividades_Click(object sender, EventArgs e)
         {
-            frmLogin login = new frmLogin();
-            login.ShowDialog();
+            OcultaControles();
+
+            pnlCtrlAtividades.Show();
+            lblTitulo.Text = "Atividades";
+
+            frmAtividades frm = new frmAtividades(this);
+            AbrirFormInPanel(frm, pnlMain);
+            FormAtivo = frm;
         }
 
+        private void btnAgencias_Click(object sender, EventArgs e)
+        {
+            OcultaControles();
+
+            pnlCtrlAgencias.Show();
+            lblTitulo.Text = "Agências Demandantes";
+
+            frmAgencias frm = new frmAgencias(this);
+            AbrirFormInPanel(frm, pnlMain);
+            FormAtivo = frm;
+        }
+
+        private void btnProfissionais_Click(object sender, EventArgs e)
+        {
+            OcultaControles();
+
+            pnlCtrlProfissionais.Show();
+            lblTitulo.Text = "Profissionais";
+            
+            frmProfissionais frm = new frmProfissionais(this);
+            
+            AbrirFormInPanel(frm, pnlMain);
+            FormAtivo = frm;
+        }
+
+        private void btnRelatorios_Click(object sender, EventArgs e)
+        {
+            OcultaControles();
+
+            pnlCtrlRelatorios.Show();
+            lblTitulo.Text = "Relatórios";
+
+            frmRelatorios frm = new frmRelatorios(this);
+
+            AbrirFormInPanel(frm, pnlMain);
+            FormAtivo = frm;
+        }
+    
+    
+    
+    
+    
     }
 
 

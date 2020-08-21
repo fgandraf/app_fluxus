@@ -33,6 +33,24 @@ namespace Arqueng.DAO
             }
         }
 
+        public DataTable ListarCodigosAtividadesDAO()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT codigo FROM tb_atividades ORDER BY codigo", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
         public void BuscarAtividadesDAO(AtividadesENT dado)
         {

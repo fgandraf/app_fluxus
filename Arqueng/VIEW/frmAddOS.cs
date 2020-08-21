@@ -22,6 +22,9 @@ namespace Arqueng.VIEW
 
 
 
+
+        //:MÉTODOS
+
         private void ListarProfissionais()
         {
             try
@@ -34,7 +37,6 @@ namespace Arqueng.VIEW
             }
         }
 
-
         private void ListarAtividades()
         {
             try
@@ -46,7 +48,6 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void BuscarNomeAtividade()
         {
@@ -71,7 +72,6 @@ namespace Arqueng.VIEW
             }
         }
 
-
         private void BuscarNomeProfissional()
         {
             try
@@ -90,7 +90,6 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void BuscarAgencia()
         {
@@ -121,6 +120,15 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
+
+
+
+
+
+
 
 
         public frmAddOS(frmPrincipal frm1, string frmfilho)
@@ -251,12 +259,7 @@ namespace Arqueng.VIEW
             dado.Agencia = Agencia;
             if (txtDataOrdem.Text != "")
                 dado.Data_ordem = Convert.ToDateTime(txtDataOrdem.Text);
-
-            //if (txtPrazo.Text != "")
-            //    dado.Prazo_execucao = Convert.ToDateTime(txtPrazo.Text);
-
             dado.Prazo_execucao = dtpPrazo.Value;
-
             dado.Profissional_cod = cboProfissional.Text;
             dado.Atividade_cod = cboAtividade.Text;
             dado.Siopi = chkSiopi.Checked;
@@ -316,9 +319,9 @@ namespace Arqueng.VIEW
                 }
             }
             this.Close();
-            if (FormFilho == "frmOSLista")
+            if (FormFilho == "frmRelatorios")
             {
-                frmOSLista formFilho = new frmOSLista(_frmPrincipal);
+                frmRelatorios formFilho = new frmRelatorios(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
             }
             else
@@ -338,14 +341,12 @@ namespace Arqueng.VIEW
             txtDataConcluida.Hide();
         }
 
-
         private void rbtConcluida_CheckedChanged(object sender, EventArgs e)
         {
             txtDataConcluida.Visible = true;
             txtDataVistoria.Visible = true;
             txtDataPendente.Hide();
         }
-
 
         private void rbtRecebida_CheckedChanged(object sender, EventArgs e)
         {
@@ -354,13 +355,15 @@ namespace Arqueng.VIEW
             txtDataConcluida.Hide();
         }
 
-
         private void rbtPendente_CheckedChanged(object sender, EventArgs e)
         {
             txtDataPendente.Visible = true;
             txtDataVistoria.Hide();
             txtDataConcluida.Hide();
         }
+
+
+
 
 
 
@@ -433,9 +436,9 @@ namespace Arqueng.VIEW
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            if (FormFilho == "frmOSLista")
+            if (FormFilho == "frmRelatorios")
             {
-                frmOSLista formFilho = new frmOSLista(_frmPrincipal);
+                frmRelatorios formFilho = new frmRelatorios(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
             }
             else

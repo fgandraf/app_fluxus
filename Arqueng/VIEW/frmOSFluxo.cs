@@ -532,14 +532,6 @@ namespace Arqueng.VIEW
         }
 
 
-
-
-
-
-        private void dgvRecebidas_DoubleClick(object sender, EventArgs e)
-        {
-            EditarOS((DataGridView)sender);
-        }
     }
 
 
