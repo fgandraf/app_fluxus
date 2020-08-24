@@ -34,13 +34,9 @@ namespace Arqueng.VIEW
             try
             {
                 dgvFaturas.DataSource = model.ListarFaturaModel();
-                if (dgvFaturas.Rows.Count == 0)
+                if (dgvFaturas.Rows.Count > 0)
                 {
-                    dgvFaturas.Enabled = false;
-                }
-                else
-                {
-                    dgvFaturas.Enabled = true;
+                    tblFaturas.Show();
                 }
 
             }
@@ -64,14 +60,15 @@ namespace Arqueng.VIEW
                     txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);
                     txtValorDeslocamento.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[4].Value);
                     txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[5].Value);
+                    
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-                tblFaturas.Hide();
+
+                
         }
 
         private DataTable Profissionais()

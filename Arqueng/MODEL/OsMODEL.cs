@@ -84,19 +84,7 @@ namespace Arqueng.MODEL
             }
         }
 
-        public DataTable ListarOsModel()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.ListarOsDAO();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        
 
        
         public DataTable ListarOsStatusModel(OsENT dado)
@@ -116,6 +104,8 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+        
 
 
         public void InsertOsModel(OsENT dado)
@@ -219,6 +209,47 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //CARREGAR TABELA
+
+        public DataTable ListarOsModel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.ListarOsDAO();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
+
 
 
     }

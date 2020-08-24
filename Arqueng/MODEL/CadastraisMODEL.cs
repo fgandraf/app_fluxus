@@ -67,6 +67,28 @@ namespace Arqueng.MODEL
         }
 
 
+
+
+
+
+
+
+        //CARREGAR TABELA
+
+        public DataTable ListarCadastraisModel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.ListarCadastraisDAO();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 
 

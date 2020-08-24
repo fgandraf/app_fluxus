@@ -44,6 +44,8 @@
             this.lblVersao = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ttpLogin = new System.Windows.Forms.ToolTip(this.components);
+            this.lblLoad = new System.Windows.Forms.Label();
+            this.prbProgress = new System.Windows.Forms.ProgressBar();
             this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgShowPwd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSenha)).BeginInit();
@@ -219,12 +221,35 @@
             this.label1.Text = "Arqueng";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // lblLoad
+            // 
+            this.lblLoad.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoad.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblLoad.Location = new System.Drawing.Point(0, 278);
+            this.lblLoad.Margin = new System.Windows.Forms.Padding(0);
+            this.lblLoad.Name = "lblLoad";
+            this.lblLoad.Size = new System.Drawing.Size(420, 13);
+            this.lblLoad.TabIndex = 14;
+            this.lblLoad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // prbProgress
+            // 
+            this.prbProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.prbProgress.Location = new System.Drawing.Point(0, 294);
+            this.prbProgress.Maximum = 8;
+            this.prbProgress.Name = "prbProgress";
+            this.prbProgress.Size = new System.Drawing.Size(420, 6);
+            this.prbProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.prbProgress.TabIndex = 15;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(420, 300);
+            this.Controls.Add(this.lblLoad);
+            this.Controls.Add(this.prbProgress);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblVersao);
             this.Controls.Add(this.btnAppFechar);
@@ -264,5 +289,7 @@
         private System.Windows.Forms.ToolTip ttpLogin;
         private System.Windows.Forms.PictureBox imgShowPwd;
         private System.Windows.Forms.PictureBox imgHidePwd;
+        private System.Windows.Forms.Label lblLoad;
+        private System.Windows.Forms.ProgressBar prbProgress;
     }
 }

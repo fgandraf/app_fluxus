@@ -39,9 +39,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaturas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaturas));
             this.tblFaturas = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -66,16 +66,16 @@
             this.lblSubtotal = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.dgvFaturas = new System.Windows.Forms.DataGridView();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.lblNenhuma = new System.Windows.Forms.Label();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal_os = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal_desloc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.lblNenhuma = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.tblFaturas.SuspendLayout();
             this.pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
@@ -104,6 +104,7 @@
             this.tblFaturas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblFaturas.Size = new System.Drawing.Size(920, 580);
             this.tblFaturas.TabIndex = 424;
+            this.tblFaturas.Visible = false;
             // 
             // panel3
             // 
@@ -480,53 +481,6 @@
             this.dgvFaturas.TabIndex = 223;
             this.dgvFaturas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvFaturas_MouseClick);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnImprimir);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(204, 20);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(713, 32);
-            this.panel2.TabIndex = 434;
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimir.BackColor = System.Drawing.SystemColors.Window;
-            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImprimir.FlatAppearance.BorderSize = 0;
-            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
-            this.btnImprimir.Location = new System.Drawing.Point(665, 0);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(0);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(30, 30);
-            this.btnImprimir.TabIndex = 431;
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // lblNenhuma
-            // 
-            this.lblNenhuma.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblNenhuma.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblNenhuma.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblNenhuma.Location = new System.Drawing.Point(0, 0);
-            this.lblNenhuma.Margin = new System.Windows.Forms.Padding(0);
-            this.lblNenhuma.Name = "lblNenhuma";
-            this.lblNenhuma.Size = new System.Drawing.Size(920, 580);
-            this.lblNenhuma.TabIndex = 432;
-            this.lblNenhuma.Text = "Nenhuma fatura gerada!";
-            this.lblNenhuma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // saveFileDialog
-            // 
-            this.saveFileDialog.FileName = "Relacao_OS.pdf";
-            this.saveFileDialog.Filter = "Arquivos PDF|*.pdf";
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -580,6 +534,53 @@
             this.total.Name = "total";
             this.total.ReadOnly = true;
             this.total.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnImprimir);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(204, 20);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(713, 32);
+            this.panel2.TabIndex = 434;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimir.BackColor = System.Drawing.SystemColors.Window;
+            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimir.FlatAppearance.BorderSize = 0;
+            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.Location = new System.Drawing.Point(665, 0);
+            this.btnImprimir.Margin = new System.Windows.Forms.Padding(0);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(30, 30);
+            this.btnImprimir.TabIndex = 431;
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // lblNenhuma
+            // 
+            this.lblNenhuma.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblNenhuma.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblNenhuma.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lblNenhuma.Location = new System.Drawing.Point(0, 0);
+            this.lblNenhuma.Margin = new System.Windows.Forms.Padding(0);
+            this.lblNenhuma.Name = "lblNenhuma";
+            this.lblNenhuma.Size = new System.Drawing.Size(920, 580);
+            this.lblNenhuma.TabIndex = 432;
+            this.lblNenhuma.Text = "Nenhuma fatura gerada!";
+            this.lblNenhuma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.FileName = "Relacao_OS.pdf";
+            this.saveFileDialog.Filter = "Arquivos PDF|*.pdf";
             // 
             // frmFaturas
             // 

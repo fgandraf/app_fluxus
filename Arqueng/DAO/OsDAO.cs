@@ -14,7 +14,7 @@ namespace Arqueng.DAO
 
 
 
-        //***** LISTAR TODAS AS ORDENS DE SERVIÇO SEM FILTRO *****//
+        //***** LISTAR TODAS *****//
         public DataTable ListarOsDAO()
         {
             try
@@ -32,6 +32,56 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //***** LISTAR TODAS CIDADES *****//
         public DataTable ListarCidadesDAO()
@@ -129,6 +179,8 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+        
 
 
         //***** LISTAR ORDENS DE SERVIÇO NÃO FATURADAS, POR STATUS E PROFISSIONAL *****//
@@ -385,10 +437,5 @@ namespace Arqueng.DAO
         }
 
 
-
-
-
+        }
     }
-
-
-}

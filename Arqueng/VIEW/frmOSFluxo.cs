@@ -22,6 +22,8 @@ namespace Arqueng.VIEW
 
         //:MÉTODOS
 
+        
+
         ///_______Listar Profissionais
         private void ListarProfissionais()
         {
@@ -46,7 +48,6 @@ namespace Arqueng.VIEW
             {
                 dado.Status = status;
                 dado.Profissional_cod = cboProfissional.SelectedValue.ToString();
-
                 dgv.DataSource = model.ListarOsStatusModel(dado);
 
                 if (dgv.Rows.Count == 0)

@@ -1,6 +1,7 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
 using Arqueng.ENTIDADES;
+using System.Data;
 
 namespace Arqueng.DAO
 {
@@ -10,6 +11,29 @@ namespace Arqueng.DAO
     {
         MySqlCommand sql;
         CONEXAO con = new CONEXAO();
+
+
+        //***** LISTAR TODAS *****//
+        public DataTable ListarCadastraisDAO()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT * FROM tb_dadoscadastrais", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
 
 
         public void BuscarCadastraisDAO(CadastraisENT dado)
