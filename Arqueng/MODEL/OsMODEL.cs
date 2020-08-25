@@ -14,6 +14,92 @@ namespace Arqueng.MODEL
         OsDAO dao = new OsDAO();
 
 
+        public DataTable ListarOsModel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.SelectAllDAO();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void InsertOsModel(OsENT dado)
+        {
+            try
+            {
+                dao.InsertDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void UpdateOsModel(OsENT dado)
+        {
+            try
+            {
+                dao.UpdateDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void UpdateOsFaturadaModel(OsENT dado)
+        {
+            try
+            {
+                dao.UpdateFaturada(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public void BuscarOsModel(OsENT dado)
         {
             try
@@ -108,43 +194,30 @@ namespace Arqueng.MODEL
         
 
 
-        public void InsertOsModel(OsENT dado)
-        {
-            try
-            {
-                dao.InsertOsDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        
 
 
-        public void UpdateOsFaturadaModel(OsENT dado)
-        {
-            try
-            {
-                dao.UpdateOsFaturada(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
 
-        public void UpdateOsModel(OsENT dado)
-        {
-            try
-            {
-                dao.UpdateOsDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+        
 
 
 
@@ -232,19 +305,7 @@ namespace Arqueng.MODEL
 
         //CARREGAR TABELA
 
-        public DataTable ListarOsModel()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.ListarOsDAO();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+        
 
 
 

@@ -9,13 +9,13 @@ namespace Arqueng.DAO
 
     public class OsDAO
     {
+
+
         MySqlCommand sql;
         CONEXAO con = new CONEXAO();
 
 
-
-        //***** LISTAR TODAS *****//
-        public DataTable ListarOsDAO()
+        public DataTable SelectAllDAO()
         {
             try
             {
@@ -34,9 +34,94 @@ namespace Arqueng.DAO
         }
 
 
+        public void InsertDAO(OsENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("INSERT INTO tb_os(titulo, referencia, agencia, data_ordem, prazo_execucao, profissional_cod, atividade_cod, siopi, nome_cliente, cidade, nome_contato, telefone_contato, coordenada, status, data_pendente, data_vistoria, data_concluida, obs) VALUES (@titulo, @referencia, @agencia, @data_ordem, @prazo_execucao, @profissional_cod, @atividade_cod, @siopi, @nome_cliente, @cidade, @nome_contato, @telefone_contato, @coordenada, @status, @data_pendente, @data_vistoria, @data_concluida, @obs)", con.con);
+
+                sql.Parameters.AddWithValue("@titulo", dado.Titulo);
+                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
+                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
+                sql.Parameters.AddWithValue("@data_ordem", dado.Data_ordem);
+                sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo_execucao);
+                sql.Parameters.AddWithValue("@profissional_cod", dado.Profissional_cod);
+                sql.Parameters.AddWithValue("@atividade_cod", dado.Atividade_cod);
+                sql.Parameters.AddWithValue("@siopi", dado.Siopi);
+                sql.Parameters.AddWithValue("@nome_cliente", dado.Nome_cliente);
+                sql.Parameters.AddWithValue("@cidade", dado.Cidade);
+                sql.Parameters.AddWithValue("@nome_contato", dado.Nome_contato);
+                sql.Parameters.AddWithValue("@telefone_contato", dado.Telefone_contato);
+                sql.Parameters.AddWithValue("@coordenada", dado.Coordenada);
+                sql.Parameters.AddWithValue("@status", dado.Status);
+                sql.Parameters.AddWithValue("@data_pendente", dado.Data_pendente);
+                sql.Parameters.AddWithValue("@data_vistoria", dado.Data_vistoria);
+                sql.Parameters.AddWithValue("@data_concluida", dado.Data_concluida);
+                sql.Parameters.AddWithValue("@obs", dado.Obs);
+
+                sql.ExecuteNonQuery();
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                con.FecharConexao();
+                throw;
+            }
+        }
 
 
+        public void UpdateDAO(OsENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("UPDATE tb_os SET titulo = @titulo, data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, coordenada = @coordenada, status = @status, data_pendente = @data_pendente, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs WHERE referencia = @referencia", con.con);
+                sql.Parameters.AddWithValue("@titulo", dado.Titulo);
+                sql.Parameters.AddWithValue("@data_ordem", dado.Data_ordem);
+                sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo_execucao);
+                sql.Parameters.AddWithValue("@profissional_cod", dado.Profissional_cod);
+                sql.Parameters.AddWithValue("@atividade_cod", dado.Atividade_cod);
+                sql.Parameters.AddWithValue("@siopi", dado.Siopi);
+                sql.Parameters.AddWithValue("@nome_cliente", dado.Nome_cliente);
+                sql.Parameters.AddWithValue("@cidade", dado.Cidade);
+                sql.Parameters.AddWithValue("@nome_contato", dado.Nome_contato);
+                sql.Parameters.AddWithValue("@telefone_contato", dado.Telefone_contato);
+                sql.Parameters.AddWithValue("@coordenada", dado.Coordenada);
+                sql.Parameters.AddWithValue("@status", dado.Status);
+                sql.Parameters.AddWithValue("@data_pendente", dado.Data_pendente);
+                sql.Parameters.AddWithValue("@data_vistoria", dado.Data_vistoria);
+                sql.Parameters.AddWithValue("@data_concluida", dado.Data_concluida);
+                sql.Parameters.AddWithValue("@obs", dado.Obs);
+                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
+                sql.ExecuteNonQuery();
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                con.FecharConexao();
+                throw;
+            }
+        }
 
+
+        public void UpdateFaturada(OsENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("UPDATE tb_os SET fatura_cod = @fatura_cod WHERE referencia = @referencia", con.con);
+                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
+                sql.Parameters.AddWithValue("@fatura_cod", dado.Fatura_cod);
+                sql.ExecuteNonQuery();
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                con.FecharConexao();
+                throw;
+            }
+        }
 
 
 
@@ -251,94 +336,10 @@ namespace Arqueng.DAO
         }
 
 
-        public void InsertOsDAO(OsENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("INSERT INTO tb_os(titulo, referencia, agencia, data_ordem, prazo_execucao, profissional_cod, atividade_cod, siopi, nome_cliente, cidade, nome_contato, telefone_contato, coordenada, status, data_pendente, data_vistoria, data_concluida, obs) VALUES (@titulo, @referencia, @agencia, @data_ordem, @prazo_execucao, @profissional_cod, @atividade_cod, @siopi, @nome_cliente, @cidade, @nome_contato, @telefone_contato, @coordenada, @status, @data_pendente, @data_vistoria, @data_concluida, @obs)", con.con);
-
-                sql.Parameters.AddWithValue("@titulo", dado.Titulo);
-                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
-                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
-                sql.Parameters.AddWithValue("@data_ordem", dado.Data_ordem);
-                sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo_execucao);
-                sql.Parameters.AddWithValue("@profissional_cod", dado.Profissional_cod);
-                sql.Parameters.AddWithValue("@atividade_cod", dado.Atividade_cod);
-                sql.Parameters.AddWithValue("@siopi", dado.Siopi);
-                sql.Parameters.AddWithValue("@nome_cliente", dado.Nome_cliente);
-                sql.Parameters.AddWithValue("@cidade", dado.Cidade);
-                sql.Parameters.AddWithValue("@nome_contato", dado.Nome_contato);
-                sql.Parameters.AddWithValue("@telefone_contato", dado.Telefone_contato);
-                sql.Parameters.AddWithValue("@coordenada", dado.Coordenada);
-                sql.Parameters.AddWithValue("@status", dado.Status);
-                sql.Parameters.AddWithValue("@data_pendente", dado.Data_pendente);
-                sql.Parameters.AddWithValue("@data_vistoria", dado.Data_vistoria);
-                sql.Parameters.AddWithValue("@data_concluida", dado.Data_concluida);
-                sql.Parameters.AddWithValue("@obs", dado.Obs);
-
-                sql.ExecuteNonQuery();
-                con.FecharConexao();
-            }
-            catch (Exception)
-            {
-                con.FecharConexao();
-                throw;
-            }
-        }
+        
 
 
-        public void UpdateOsDAO(OsENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("UPDATE tb_os SET titulo = @titulo, data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, coordenada = @coordenada, status = @status, data_pendente = @data_pendente, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs WHERE referencia = @referencia", con.con);
-                sql.Parameters.AddWithValue("@titulo", dado.Titulo);
-                sql.Parameters.AddWithValue("@data_ordem", dado.Data_ordem);
-                sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo_execucao);
-                sql.Parameters.AddWithValue("@profissional_cod", dado.Profissional_cod);
-                sql.Parameters.AddWithValue("@atividade_cod", dado.Atividade_cod);
-                sql.Parameters.AddWithValue("@siopi", dado.Siopi);
-                sql.Parameters.AddWithValue("@nome_cliente", dado.Nome_cliente);
-                sql.Parameters.AddWithValue("@cidade", dado.Cidade);
-                sql.Parameters.AddWithValue("@nome_contato", dado.Nome_contato);
-                sql.Parameters.AddWithValue("@telefone_contato", dado.Telefone_contato);
-                sql.Parameters.AddWithValue("@coordenada", dado.Coordenada);
-                sql.Parameters.AddWithValue("@status", dado.Status);
-                sql.Parameters.AddWithValue("@data_pendente", dado.Data_pendente);
-                sql.Parameters.AddWithValue("@data_vistoria", dado.Data_vistoria);
-                sql.Parameters.AddWithValue("@data_concluida", dado.Data_concluida);
-                sql.Parameters.AddWithValue("@obs", dado.Obs);
-                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
-                sql.ExecuteNonQuery();
-                con.FecharConexao();
-            }
-            catch (Exception)
-            {
-                con.FecharConexao();
-                throw;
-            }
-        }
-
-
-        public void UpdateOsFaturada(OsENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("UPDATE tb_os SET fatura_cod = @fatura_cod WHERE referencia = @referencia", con.con);
-                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
-                sql.Parameters.AddWithValue("@fatura_cod", dado.Fatura_cod);
-                sql.ExecuteNonQuery();
-                con.FecharConexao();
-            }
-            catch (Exception)
-            {
-                con.FecharConexao();
-                throw;
-            }
-        }
+        
 
 
         public void DeleteOsDAO(OsENT dado)

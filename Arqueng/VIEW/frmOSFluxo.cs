@@ -3,12 +3,10 @@ using System.Windows.Forms;
 using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
 using System.Data;
-using System.Drawing;
+
 
 namespace Arqueng.VIEW
 {
-
-
     public partial class frmOSFluxo : Form
     {
 
@@ -16,24 +14,33 @@ namespace Arqueng.VIEW
         OsMODEL model = new OsMODEL();
         OsENT dado = new OsENT();
         Control _lastEnteredControl;
-        ProfissionaisMODEL profmodel = new ProfissionaisMODEL();
         DataGridView dgvOrigem;
 
 
-        //:MÉTODOS
 
-        
+        //:METHODS
+        private void ContarRegistros(DataGridView dgv)
+        {
+            if (dgv.Tag.ToString() == "RECEBIDA")
+                lblTitRecebidas.Text = "RECEBIDAS [" + dgv.Rows.Count.ToString() + "]";
+            if (dgv.Tag.ToString() == "PENDENTE")
+                lblTitPendentes.Text = "PENDENTES [" + dgv.Rows.Count.ToString() + "]";
+            if (dgv.Tag.ToString() == "VISTORIADA")
+                lblTitVistoriadas.Text = "VISTORIADAS [" + dgv.Rows.Count.ToString() + "]";
+            if (dgv.Tag.ToString() == "CONCLUÍDA")
+                lblTitConcluidas.Text = "CONCLUÍDAS [" + dgv.Rows.Count.ToString() + "]";
+        }
 
-        ///_______Listar Profissionais
         private void ListarProfissionais()
         {
             try
             {
-                DataTable dt = profmodel.ListarCodNomeProModel();
-                DataRow linha = dt.NewRow();
+                DataView dvPro = new DataView(DT.DT_Profissionais);
+                DataTable dtPro = dvPro.ToTable("Selected", false, "codigo", "nomeid");
+                DataRow linha = dtPro.NewRow();
                 linha[1] = "--TODOS--";
-                dt.Rows.InsertAt(linha, 0);
-                cboProfissional.DataSource = dt;
+                dtPro.Rows.InsertAt(linha, 0);
+                cboProfissional.DataSource = dtPro;
             }
             catch (Exception ex)
             {
@@ -41,14 +48,19 @@ namespace Arqueng.VIEW
             }
         }
 
-        ///_______Listar Os
-        private void ListarOS(DataGridView dgv, string status)
+        private void ListarOS(DataGridView dgv)
         {
             try
             {
-                dado.Status = status;
-                dado.Profissional_cod = cboProfissional.SelectedValue.ToString();
-                dgv.DataSource = model.ListarOsStatusModel(dado);
+                DataView dvOS = new DataView(DT.DT_OS);
+                if (cboProfissional.SelectedIndex == 0)
+                    dvOS.RowFilter = String.Format("status = '{0}' AND fatura_cod = 0", dgv.Tag.ToString());
+                else
+                    dvOS.RowFilter = String.Format("status = '{0}' AND profissional_cod = '{1}' AND fatura_cod = 0", dgv.Tag.ToString(), cboProfissional.SelectedValue.ToString());
+                //DataTable dtOS = dvOS.ToTable("Selected", false, "referencia", "titulo");
+                
+                dgv.DataSource = dvOS;
+
 
                 if (dgv.Rows.Count == 0)
                 {
@@ -64,51 +76,78 @@ namespace Arqueng.VIEW
             {
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            if (status == "RECEBIDA")
-                lblTitRecebidas.Text = "RECEBIDAS [" + dgv.Rows.Count.ToString() + "]";
-            if (status == "PENDENTE")
-                lblTitPendentes.Text = "PENDENTES [" + dgv.Rows.Count.ToString() + "]";
-            if (status == "VISTORIADA")
-                lblTitVistoriadas.Text = "VISTORIADAS [" + dgv.Rows.Count.ToString() + "]";
-            if (status == "CONCLUÍDA")
-                lblTitConcluidas.Text = "CONCLUÍDAS [" + dgv.Rows.Count.ToString() + "]";
-
+            ContarRegistros(dgv);
         }
 
-        ///_______Editar Os
-        private void EditarOS(DataGridView dgv)
+        private void EditarOS(DataGridView dgv, string referencia)
         {
-            dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
-            model.BuscarOsModel(dado);
+
+
+
+
+            //DataView dvOS = new DataView(DT.DT_OS);
+            //dvOS.RowFilter = ("referencia = '" + referencia + "'");
+
+            //DataTable dtOS = dvOS.ToTable();
+
+
+
+            //frmAddOS formNeto = new frmAddOS
+            //(
+            //    _frmPrincipal, this.Name,
+            //    dtOS.Rows[0]["referencia"].ToString(),//referencia
+            //    dtOS.Rows[0]["agencia"].ToString(),//agencia
+            //    dtOS.Rows[0]["titulo"].ToString(),//titulo
+            //    dtOS.Rows[0]["data_ordem"].ToString(),//data_ordem
+            //    dtOS.Rows[0]["prazo_execucao"].ToString(),//prazo_execucao
+            //    dtOS.Rows[0]["profissional_cod"].ToString(),//profissional_cod
+            //    dtOS.Rows[0]["atividade_cod"].ToString(),//atividade_cod
+            //    Convert.ToBoolean(dtOS.Rows[0]["siopi"].ToString()),//siopi
+            //    dtOS.Rows[0]["nome_cliente"].ToString(),//nome_cliente
+            //    dtOS.Rows[0]["cidade"].ToString(),//cidade
+            //    dtOS.Rows[0]["nome_contato"].ToString(),//nome_contato
+            //    dtOS.Rows[0]["telefone_contato"].ToString(),//telefone_contato
+            //    dtOS.Rows[0]["coordenada"].ToString(),//coordenada
+            //    dtOS.Rows[0]["status"].ToString(),//status
+            //    dtOS.Rows[0]["data_pendente"].ToString(),//data_pendente
+            //    dtOS.Rows[0]["data_vistoria"].ToString(),//data_vistoria
+            //    dtOS.Rows[0]["data_concluida"].ToString(),//data_concluida
+            //    dtOS.Rows[0]["obs"].ToString(),//obs
+            //    dtOS.Rows[0]["fatura_cod"].ToString()//fatura_cod
+            //);
+
+
+
+
+
+
             frmAddOS formNeto = new frmAddOS
             (
                 _frmPrincipal, this.Name,
-                dado.Titulo,
-                dado.Referencia,
-                dado.Agencia,
-                Convert.ToString(dado.Data_ordem),
-                Convert.ToString(dado.Prazo_execucao),
-                dado.Profissional_cod,
-                dado.Atividade_cod,
-                Convert.ToBoolean(dado.Siopi),
-                dado.Nome_cliente,
-                dado.Cidade,
-                dado.Nome_contato,
-                dado.Telefone_contato,
-                dado.Coordenada,
-                dado.Status,
-                Convert.ToString(dado.Data_pendente),
-                Convert.ToString(dado.Data_vistoria),
-                Convert.ToString(dado.Data_concluida),
-                dado.Obs,
-                dado.Fatura_cod
+                dgv.CurrentRow.Cells[0].Value.ToString(),//referencia
+                dgv.CurrentRow.Cells[1].Value.ToString(),//agencia
+                dgv.CurrentRow.Cells[2].Value.ToString(),//titulo
+                dgv.CurrentRow.Cells[3].Value.ToString(),//data_ordem
+                dgv.CurrentRow.Cells[4].Value.ToString(),//prazo_execucao
+                dgv.CurrentRow.Cells[5].Value.ToString(),//profissional_cod
+                dgv.CurrentRow.Cells[6].Value.ToString(),//atividade_cod
+                Convert.ToBoolean(dgv.CurrentRow.Cells[7].Value),//siopi
+                dgv.CurrentRow.Cells[8].Value.ToString(),//nome_cliente
+                dgv.CurrentRow.Cells[9].Value.ToString(),//cidade
+                dgv.CurrentRow.Cells[10].Value.ToString(),//nome_contato
+                dgv.CurrentRow.Cells[11].Value.ToString(),//telefone_contato
+                dgv.CurrentRow.Cells[12].Value.ToString(),//coordenada
+                dgv.CurrentRow.Cells[13].Value.ToString(),//status
+                dgv.CurrentRow.Cells[14].Value.ToString(),//data_pendente
+                dgv.CurrentRow.Cells[15].Value.ToString(),//data_vistoria
+                dgv.CurrentRow.Cells[16].Value.ToString(),//data_concluida
+                dgv.CurrentRow.Cells[17].Value.ToString(),//obs
+                dgv.CurrentRow.Cells[18].Value.ToString()//fatura_cod
             );
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
-        ///_______Excluir Os
         private void ExcluirOS(DataGridView dgv, string sta)
         {
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -119,7 +158,7 @@ namespace Arqueng.VIEW
                     ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
                     dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
                     model.DeleteOsModel(dado);
-                    ListarOS(dgv, sta);
+                    ListarOS(dgv);
                 }
                 catch (Exception ex)
                 {
@@ -128,7 +167,6 @@ namespace Arqueng.VIEW
             }
         }
 
-        ///_______Atualizar Status
         private void AtualizaStatus(DataGridView dgvDestino, DragEventArgs ev)
         {
             int sourcerow = Convert.ToInt32(ev.Data.GetData(Type.GetType("System.Int32")));
@@ -137,17 +175,17 @@ namespace Arqueng.VIEW
             try
             {
                 model.UpdateStatusModel(dado);
+                DT.DT_OS = model.ListarOsModel();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            ListarOS(dgvOrigem, dgvOrigem.Tag.ToString());
-            ListarOS(dgvDestino, dgvDestino.Tag.ToString());
+            ListarOS(dgvOrigem);
+            ListarOS(dgvDestino);
         }
 
-        ///_______Capturar DataGridView de Origem
-        private void CapturaOrigem(DataGridView dgv, MouseEventArgs e)
+        private void CapturaDGVOrigem(DataGridView dgv, MouseEventArgs e)
         {
             int SourceRow;
             dgvOrigem = dgv;
@@ -159,14 +197,8 @@ namespace Arqueng.VIEW
 
 
 
-
-
-
-
-
-        //:EVENTOS
-
-        ///_______CRIAÇÃO DO FORMULÁRIO
+        //:EVENTS
+        ///_______Form
         public frmOSFluxo(frmPrincipal frm1)
         {
             InitializeComponent();
@@ -180,9 +212,6 @@ namespace Arqueng.VIEW
                         _lastEnteredControl = (Control)sender;
                     };
             }
-            ListarProfissionais();
-
-
 
             dgvRecebidas.Columns[1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvRecebidas.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -200,17 +229,11 @@ namespace Arqueng.VIEW
             dgvConcluidas.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvConcluidas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-
-            ListarOS(dgvRecebidas, "RECEBIDA");
-            ListarOS(dgvPendentes, "PENDENTE");
-            ListarOS(dgvVistoriadas, "VISTORIADA");
-            ListarOS(dgvConcluidas, "CONCLUÍDA");
-
         }
 
-        ///_______INICIALIZAÇÃO DO FORMULÁRIO
         private void frmOSFluxo_Load(object sender, EventArgs e)
         {
+            ListarProfissionais();
             if (Globais.Rl)
             {
                 cboProfissional.Enabled = true;
@@ -225,20 +248,17 @@ namespace Arqueng.VIEW
                 return;
             }
             cboProfissional.SelectedValue = Globais.Codpro;
+            ListarOS(dgvRecebidas);
+            ListarOS(dgvPendentes);
+            ListarOS(dgvVistoriadas);
+            ListarOS(dgvConcluidas);
         }
 
-        ///_______SAIR DO FORMULÁRIO
-        private void frmOSFluxo_Leave(object sender, EventArgs e)
-        {
-            GC.Collect();
-        }
 
 
 
 
-
-
-        ///_______BOTÃO ADICIONAR OS
+        ///_______Button
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
@@ -246,7 +266,6 @@ namespace Arqueng.VIEW
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
-        ///_______BOTÃO FATURAR CLICK
         private void btnFaturar_Click(object sender, EventArgs e)
         {
             if (dgvConcluidas.Rows.Count > 0)
@@ -264,25 +283,23 @@ namespace Arqueng.VIEW
 
 
 
-
-        ///_______MENU EDITAR CLICK
+        ///_______ContextMenu
         private void mnuEditar_Click(object sender, EventArgs e)
         {
             if (_lastEnteredControl == dgvRecebidas)
-                EditarOS(dgvRecebidas);
+                EditarOS(dgvRecebidas, dgvRecebidas.CurrentRow.Cells["referencia_recebida"].Value.ToString());
 
             if (_lastEnteredControl == dgvPendentes)
-                EditarOS(dgvPendentes);
+                EditarOS(dgvPendentes, dgvPendentes.CurrentRow.Cells["referencia_pendente"].Value.ToString());
 
             if (_lastEnteredControl == dgvVistoriadas)
-                EditarOS(dgvVistoriadas);
+                EditarOS(dgvVistoriadas, dgvVistoriadas.CurrentRow.Cells["referencia_vistoriada"].Value.ToString());
 
             if (_lastEnteredControl == dgvConcluidas)
-                EditarOS(dgvConcluidas);
+                EditarOS(dgvConcluidas, dgvConcluidas.CurrentRow.Cells["referencia_concluida"].Value.ToString());
 
         }
 
-        ///_______MENU EXCLUIR CLICK
         private void mnuExcluir_Click(object sender, EventArgs e)
         {
             if (_lastEnteredControl == dgvRecebidas)
@@ -303,21 +320,20 @@ namespace Arqueng.VIEW
 
 
 
-        ///_______COMBOBOX PROFISSIONAIS
+        ///_______ComboBox
         private void cboProfissional_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListarOS(dgvRecebidas, "RECEBIDA");
-            ListarOS(dgvPendentes, "PENDENTE");
-            ListarOS(dgvVistoriadas, "VISTORIADA");
-            ListarOS(dgvConcluidas, "CONCLUÍDA");
+            ListarOS(dgvRecebidas);
+            ListarOS(dgvPendentes);
+            ListarOS(dgvVistoriadas);
+            ListarOS(dgvConcluidas);
         }
 
 
 
 
 
-
-        ///_______MUDAR CURSOR DO MOUSE
+        ///_______DataGridView
         private void dgvRecebidas_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
@@ -329,6 +345,36 @@ namespace Arqueng.VIEW
             var dataGrid = (DataGridView)sender;
             dataGrid.Cursor = Cursors.Default;
         }
+
+        private void dgvRecebidas_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void dgvRecebidas_DragDrop(object sender, DragEventArgs e)
+        {
+            AtualizaStatus((DataGridView)sender, e);
+        }
+
+        private void dgvRecebidas_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                CapturaDGVOrigem((DataGridView)sender, e);
+        }
+
+        private void dgvRecebidas_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = (DataGridView)sender;
+            _lastEnteredControl = (Control)sender;
+            var row = dataGrid.Rows[e.RowIndex];
+            dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
+            row.Selected = true;
+            dataGrid.Focus();
+        }
+
+
+
+
 
         private void dgvPendentes_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -342,6 +388,36 @@ namespace Arqueng.VIEW
             dataGrid.Cursor = Cursors.Default;
         }
 
+        private void dgvPendentes_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void dgvPendentes_DragDrop(object sender, DragEventArgs e)
+        {
+            AtualizaStatus((DataGridView)sender, e);
+        }
+
+        private void dgvPendentes_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                CapturaDGVOrigem((DataGridView)sender, e);
+        }
+
+        private void dgvPendentes_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = (DataGridView)sender;
+            _lastEnteredControl = (Control)sender;
+            var row = dataGrid.Rows[e.RowIndex];
+            dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
+            row.Selected = true;
+            dataGrid.Focus();
+        }
+
+
+
+
+
         private void dgvVistoriadas_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
@@ -353,6 +429,36 @@ namespace Arqueng.VIEW
             var dataGrid = (DataGridView)sender;
             dataGrid.Cursor = Cursors.Default;
         }
+
+        private void dgvVistoriadas_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void dgvVistoriadas_DragDrop(object sender, DragEventArgs e)
+        {
+            AtualizaStatus((DataGridView)sender, e);
+        }
+
+        private void dgvVistoriadas_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                CapturaDGVOrigem((DataGridView)sender, e);
+        }
+
+        private void dgvVistoriadas_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            var dataGrid = (DataGridView)sender;
+            _lastEnteredControl = (Control)sender;
+            var row = dataGrid.Rows[e.RowIndex];
+            dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
+            row.Selected = true;
+            dataGrid.Focus();
+        }
+
+
+
+
 
         private void dgvConcluidas_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -366,128 +472,14 @@ namespace Arqueng.VIEW
             dataGrid.Cursor = Cursors.Default;
         }
 
-
-
-        ///_______DRAG OVER
-        private void dgvRecebidas_DragOver(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Move;
-        }
-
-        private void dgvPendentes_DragOver(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Move;
-        }
-
-        private void dgvVistoriadas_DragOver(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Move;
-        }
-
         private void dgvConcluidas_DragOver(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
 
-
-
-        ///_______DRAG DROP
-        private void dgvRecebidas_DragDrop(object sender, DragEventArgs e)
-        {
-            AtualizaStatus((DataGridView)sender, e);
-        }
-
-        private void dgvPendentes_DragDrop(object sender, DragEventArgs e)
-        {
-            AtualizaStatus((DataGridView)sender, e);
-        }
-
-        private void dgvVistoriadas_DragDrop(object sender, DragEventArgs e)
-        {
-            AtualizaStatus((DataGridView)sender, e);
-        }
-
         private void dgvConcluidas_DragDrop(object sender, DragEventArgs e)
         {
             AtualizaStatus((DataGridView)sender, e);
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        ///_______CLIQUE DIREITO NOS GRIDS
-        private void dgvRecebidas_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            var dataGrid = (DataGridView)sender;
-            _lastEnteredControl = (Control)sender;
-            var row = dataGrid.Rows[e.RowIndex];
-            dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
-            row.Selected = true;
-            dataGrid.Focus();
-
-            //if (e.Button == MouseButtons.Left && e.RowIndex != -1)
-            //    EditarOS(dataGrid);
-        }
-
-        private void dgvPendentes_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            var dataGrid = (DataGridView)sender;
-            _lastEnteredControl = (Control)sender;
-            var row = dataGrid.Rows[e.RowIndex];
-            dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
-            row.Selected = true;
-            dataGrid.Focus();
-
-            //if (e.Button == MouseButtons.Left && e.RowIndex != -1)
-            //    EditarOS(dataGrid);
-        }
-
-        private void dgvVistoriadas_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            var dataGrid = (DataGridView)sender;
-            _lastEnteredControl = (Control)sender;
-            var row = dataGrid.Rows[e.RowIndex];
-            dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
-            row.Selected = true;
-            dataGrid.Focus();
-
-            //if (e.Button == MouseButtons.Left && e.RowIndex != -1)
-            //    EditarOS(dataGrid);
         }
 
         private void dgvConcluidas_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -498,40 +490,13 @@ namespace Arqueng.VIEW
             dataGrid.CurrentCell = row.Cells[e.ColumnIndex == -1 ? 1 : e.ColumnIndex];
             row.Selected = true;
             dataGrid.Focus();
-
-            //if (e.Button == MouseButtons.Left && e.RowIndex != -1)
-            //    EditarOS(dataGrid);
-        }
-
-
-
-
-
-        ///_______MOUSE DOWN
-        private void dgvRecebidas_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            CapturaOrigem((DataGridView)sender, e);
-        }
-
-        private void dgvPendentes_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                CapturaOrigem((DataGridView)sender, e);
-        }
-
-        private void dgvVistoriadas_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                CapturaOrigem((DataGridView)sender, e);
         }
 
         private void dgvConcluidas_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
-                CapturaOrigem((DataGridView)sender, e);
+                CapturaDGVOrigem((DataGridView)sender, e);
         }
-
 
     }
 

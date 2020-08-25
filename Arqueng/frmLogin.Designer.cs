@@ -234,13 +234,15 @@
             // 
             // prbProgress
             // 
+            this.prbProgress.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.prbProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.prbProgress.Location = new System.Drawing.Point(0, 294);
+            this.prbProgress.Location = new System.Drawing.Point(0, 296);
             this.prbProgress.Maximum = 8;
             this.prbProgress.Name = "prbProgress";
-            this.prbProgress.Size = new System.Drawing.Size(420, 6);
-            this.prbProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.prbProgress.Size = new System.Drawing.Size(420, 4);
+            this.prbProgress.Step = 8;
             this.prbProgress.TabIndex = 15;
+            this.prbProgress.Visible = false;
             // 
             // frmLogin
             // 

@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
+using System.Data;
 
 namespace Arqueng.VIEW
 {
@@ -14,11 +15,14 @@ namespace Arqueng.VIEW
         AgenciasMODEL model = new AgenciasMODEL();
 
 
-        private  void ListarAgencias()
+
+        //:METHODS
+        private void PopulateGrid()
         {
             try
             {
-                dgvAgencias.DataSource = model.ListarAgenciasModel();
+                DataView dvAgencias = new DataView(DT.DT_Agencias);//------
+                dgvAgencias.DataSource = dvAgencias;//-----------
                 if (dgvAgencias.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -37,8 +41,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private  void ExcluirAgencia()
+        private void Delete()
         {
             try
             {
@@ -52,30 +55,34 @@ namespace Arqueng.VIEW
             }
         }
 
+
+
+        //:EVENTS
+        //_______Form
         public frmAgencias(frmPrincipal frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
+        private void frmAgencias_Load(object sender, EventArgs e)
+        {
+            PopulateGrid();
+            txtPesquisar.Focus();
+        }
 
 
+
+        //_______Button
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                ExcluirAgencia();
-                ListarAgencias();
+                Delete();
+                DT.DT_Agencias = model.ListarAgenciasModel();//-------
+                PopulateGrid();//---------
             }
         }
-
-        private void frmAgencias_Load(object sender, EventArgs e)
-        {
-            ListarAgencias();
-            txtPesquisar.Focus();
-        }
-
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             frmAddAgencia formNeto = new frmAddAgencia
@@ -97,8 +104,6 @@ namespace Arqueng.VIEW
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
-
-
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddAgencia formNeto = new frmAddAgencia(_frmPrincipal);
@@ -106,23 +111,17 @@ namespace Arqueng.VIEW
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
+
+
+        //_______DataGridView
         private void dgvAgencias_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && dgvAgencias.CurrentCell.Selected)
-            {
-                var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (result == DialogResult.Yes)
-                {
-                    ExcluirAgencia();
-                    ListarAgencias();
-                }
-            }
+                btnExcluir.PerformClick();
         }
 
-        private void frmAgencias_Leave(object sender, EventArgs e)
-        {
-            GC.Collect();
-        }
+
+        
     }
 
 

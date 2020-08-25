@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Arqueng.ENTIDADES;
 using Arqueng.MODEL;
@@ -10,11 +11,6 @@ namespace Arqueng
     public partial class frmLogin : Form
     {
 
-        ProfissionaisMODEL model = new ProfissionaisMODEL();
-        ProfissionaisENT dado = new ProfissionaisENT();
-
-
-
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -22,24 +18,13 @@ namespace Arqueng
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        ///_______Populate component DataTable - tb_os
+        //:METHODS
         private void Listar_tb_os()
         {
             OsMODEL model = new OsMODEL();
             try
             {
-                DataTableENT.DT_OS = model.ListarOsModel();
+                DT.DT_OS = model.ListarOsModel();
             }
             catch (Exception ex)
             {
@@ -47,13 +32,12 @@ namespace Arqueng
             }
         }
 
-        ///_______Populate component DataTable - tb_dadoscadastrais
         private void Listar_cadastrais()
         {
             CadastraisMODEL model = new CadastraisMODEL();
             try
             {
-                DataTableENT.DT_Dados = model.ListarCadastraisModel();
+                DT.DT_Dados = model.ListarCadastraisModel();
             }
             catch (Exception ex)
             {
@@ -61,13 +45,12 @@ namespace Arqueng
             }
         }
 
-        ///_______Populate component DataTable - tb_profissionais
         private void Listar_profissionais()
         {
             ProfissionaisMODEL model = new ProfissionaisMODEL();
             try
             {
-                DataTableENT.DT_Profissionais = model.ListarProfissionaisModel();
+                DT.DT_Profissionais = model.ListarProfissionaisModel();
             }
             catch (Exception ex)
             {
@@ -75,13 +58,12 @@ namespace Arqueng
             }
         }
 
-        ///_______Populate component DataTable - tb_atividades
         private void Listar_atividades()
         {
             AtividadesMODEL model = new AtividadesMODEL();
             try
             {
-                DataTableENT.DT_Atividades = model.ListarAtividadesModel();
+                DT.DT_Atividades = model.ListarAtividadesModel();
             }
             catch (Exception ex)
             {
@@ -89,14 +71,12 @@ namespace Arqueng
             }
         }
 
-
-        ///_______Populate component DataTable - tb_agencias
         private void Listar_agencias()
         {
             AgenciasMODEL model = new AgenciasMODEL();
             try
             {
-                DataTableENT.DT_Agencias = model.ListarAgenciasModel();
+                DT.DT_Agencias = model.ListarAgenciasModel();
             }
             catch (Exception ex)
             {
@@ -104,13 +84,12 @@ namespace Arqueng
             }
         }
 
-        ///_______Populate component DataTable - tb_agencias
         private void Listar_faturas()
         {
             FaturasMODEL model = new FaturasMODEL();
             try
             {
-                DataTableENT.DT_Faturas = model.ListarFaturaModel();
+                DT.DT_Faturas = model.ListarFaturaModel();
             }
             catch (Exception ex)
             {
@@ -143,8 +122,11 @@ namespace Arqueng
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+            prbProgress.Show();
             prbProgress.Value += 1;
+            ProfissionaisENT dado = new ProfissionaisENT();
             dado.Usr_nome = txtUsuario.Text;
+            ProfissionaisMODEL model = new ProfissionaisMODEL();
             model.BuscarUsuarioModel(dado);
             prbProgress.Value += 1;
             if (Globais.Usr_nome == null || txtSenha.Text != Globais.Usr_senha || Globais.Usr_ativo == false)
@@ -169,8 +151,9 @@ namespace Arqueng
                 Listar_tb_os();
                 prbProgress.Value += 1;
 
-                
 
+                Task.Delay(5000);
+                prbProgress.Hide();
                 this.Close();
             }
 

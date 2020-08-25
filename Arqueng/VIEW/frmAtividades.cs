@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using Arqueng.ENTIDADES;
 using Arqueng.MODEL;
@@ -14,11 +15,14 @@ namespace Arqueng.VIEW
         AtividadesMODEL model = new AtividadesMODEL();
 
 
-        private  void ListarAtividades()
+
+        //:METHODS
+        private void PopulateGrid()//---------------
         {
             try
             {
-                dgvAtividades.DataSource = model.ListarAtividadesModel();
+                DataView dvAtividades = new DataView(DT.DT_Atividades);//------
+                dgvAtividades.DataSource = dvAtividades;//-----------
                 if (dgvAtividades.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -37,8 +41,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private  void ExcluirAtividade()
+        private void Delete()
         {
             try
             {
@@ -52,28 +55,18 @@ namespace Arqueng.VIEW
             }
         }
 
+
+
+        //:EVENTS
+        //_______Form
         public frmAtividades(frmPrincipal frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
-
-
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-            var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
-            {
-                ExcluirAtividade();
-                ListarAtividades();
-            }
-
-        }
-
-
         private void frmAtividades_Load(object sender, EventArgs e)
         {
-            ListarAtividades();
+            PopulateGrid();//---------
             if (Globais.Rl == false)
             {
                 btnAdicionar.Enabled = false;
@@ -83,6 +76,19 @@ namespace Arqueng.VIEW
         }
 
 
+
+        //_______Button
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (result == DialogResult.Yes)
+            {
+                Delete();
+                DT.DT_Atividades = model.ListarAtividadesModel();//-------
+                PopulateGrid();//---------
+            }
+
+        }
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (Globais.Rl == false)
@@ -99,8 +105,6 @@ namespace Arqueng.VIEW
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
-
-
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddAtividade formNeto = new frmAddAtividade(_frmPrincipal);
@@ -108,16 +112,17 @@ namespace Arqueng.VIEW
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
+
+
+        //_______DataGridView
         private void dgvAtividades_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && dgvAtividades.CurrentCell.Selected)
                 btnExcluir.PerformClick();
         }
 
-        private void frmAtividades_Leave(object sender, EventArgs e)
-        {
-            GC.Collect();
-        }
+
+
     }
 
 

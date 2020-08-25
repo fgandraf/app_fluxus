@@ -2,7 +2,7 @@
 
 namespace Arqueng.ENTIDADES
 {
-    public class DataTableENT
+    public class DT
     {
         public static DataTable DT_OS;
         public static DataTable DT_Dados;

@@ -14,6 +14,75 @@ namespace Arqueng.MODEL
         CadastraisDAO dao = new CadastraisDAO();
 
 
+        public DataTable ListarCadastraisModel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.SelectAllDAO();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void InsertCadastraisModel(CadastraisENT dado)
+        {
+            try
+            {
+                dao.InsertDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void UpdateCadastraisModel(CadastraisENT dado)
+        {
+            try
+            {
+                dao.UpdateDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
 
         public void BuscarCadastraisModel(CadastraisENT dado)
         {
@@ -33,55 +102,6 @@ namespace Arqueng.MODEL
             try
             {
                 dao.BuscarDadosEmpDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void InsertCadastraisModel(CadastraisENT dado)
-        {
-            try
-            {
-                dao.InsertCadastraisDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void UpdateCadastraisModel(CadastraisENT dado)
-        {
-            try
-            {
-                dao.UpdateCadastraisDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-
-
-
-
-
-
-        //CARREGAR TABELA
-
-        public DataTable ListarCadastraisModel()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.ListarCadastraisDAO();
-                return dt;
             }
             catch (Exception ex)
             {

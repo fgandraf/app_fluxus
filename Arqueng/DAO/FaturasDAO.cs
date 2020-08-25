@@ -13,7 +13,27 @@ namespace Arqueng.DAO
         CONEXAO con = new CONEXAO();
 
 
-        public void InsertFaturaDAO(FaturasENT dado)
+        public DataTable SelectAllDAO()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT * FROM tb_fatura ORDER BY data", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+
+        public void InsertDAO(FaturasENT dado)
         {
             try
             {
@@ -36,28 +56,6 @@ namespace Arqueng.DAO
                 throw;
             }
         }
-
-
-        public DataTable ListarFaturasDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_fatura ORDER BY data", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-        }
-
-
     }
 
 

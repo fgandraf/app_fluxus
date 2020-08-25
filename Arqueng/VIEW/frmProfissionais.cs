@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using Arqueng.ENTIDADES;
 using Arqueng.MODEL;
@@ -14,11 +15,14 @@ namespace Arqueng.VIEW
         ProfissionaisMODEL model = new ProfissionaisMODEL();
 
 
-        private void ListarProfissionais()
+
+        //:METHODS
+        private void PopulateGrid()
         {
             try
             {
-                dgvProfissionais.DataSource = model.ListarProfissionaisModel();
+                DataView dvProfissionais = new DataView(DT.DT_Profissionais);//------
+                dgvProfissionais.DataSource = dvProfissionais;//-----------
                 if (dgvProfissionais.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -37,8 +41,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void ExcluirProfissional()
+        private void Delete()
         {
             try
             {
@@ -53,16 +56,17 @@ namespace Arqueng.VIEW
         }
 
 
+
+        //:EVENTS
+        //_______Form
         public frmProfissionais(frmPrincipal frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
-
-
         private void frmProfissionais_Load(object sender, EventArgs e)
         {
-            ListarProfissionais();
+            PopulateGrid();//---------
             if (Globais.Rl == false)
             {
                 btnAdicionar.Enabled = false;
@@ -72,17 +76,18 @@ namespace Arqueng.VIEW
         }
 
 
+
+        //_______Button
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                ExcluirProfissional();
-                ListarProfissionais();
+                Delete();
+                DT.DT_Profissionais = model.ListarProfissionaisModel();//-------
+                PopulateGrid();//---------
             }
         }
-
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (Globais.Rl == false)
@@ -112,8 +117,6 @@ namespace Arqueng.VIEW
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
-
-
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddProfissional formNeto = new frmAddProfissional(_frmPrincipal);
@@ -121,16 +124,17 @@ namespace Arqueng.VIEW
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
+
+
+        //_______DataGridView
         private void dgvProfissionais_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && dgvProfissionais.CurrentCell.Selected)
                 btnExcluir.PerformClick();
         }
 
-        private void frmProfissionais_Leave(object sender, EventArgs e)
-        {
-            GC.Collect();
-        }
+
+
     }
 
 

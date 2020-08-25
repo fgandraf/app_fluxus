@@ -19,7 +19,7 @@ namespace Arqueng.MODEL
             try
             {
                 DataTable dt = new DataTable();
-                dt = dao.ListarProfissionaisDAO();
+                dt = dao.SelectAllDAO();
                 return dt;
             }
             catch (Exception ex)
@@ -27,6 +27,68 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
+        public void InsertProfissionalModel(ProfissionaisENT dado)
+        {
+            try
+            {
+                dao.InsertDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void UpdateProfissionalModel(ProfissionaisENT dado)
+        {
+            try
+            {
+                dao.UpdateDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void DeleteProfissionalModel(ProfissionaisENT dado)
+        {
+            try
+            {
+                dao.DeleteDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public DataTable ListarCodNomeProModel()
@@ -80,43 +142,7 @@ namespace Arqueng.MODEL
         }
 
 
-        public void InsertProfissionalModel(ProfissionaisENT dado)
-        {
-            try
-            {
-                dao.InsertProfissionalDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
-
-        public void UpdateProfissionalModel(ProfissionaisENT dado)
-        {
-            try
-            {
-                dao.UpdateProfissionalDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void DeleteProfissionalModel(ProfissionaisENT dado)
-        {
-            try
-            {
-                dao.DeleteProfissionalDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
 
     }

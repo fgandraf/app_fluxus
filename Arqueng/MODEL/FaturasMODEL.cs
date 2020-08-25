@@ -14,11 +14,13 @@ namespace Arqueng.MODEL
         FaturasDAO dao = new FaturasDAO();
 
 
-        public void InsertFaturaModel(FaturasENT dado)
+        public DataTable ListarFaturaModel()
         {
             try
             {
-                dao.InsertFaturaDAO(dado);
+                DataTable dt = new DataTable();
+                dt = dao.SelectAllDAO();
+                return dt;
             }
             catch (Exception ex)
             {
@@ -27,13 +29,11 @@ namespace Arqueng.MODEL
         }
 
 
-        public DataTable ListarFaturaModel()
+        public void InsertFaturaModel(FaturasENT dado)
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt = dao.ListarFaturasDAO();
-                return dt;
+                dao.InsertDAO(dado);
             }
             catch (Exception ex)
             {

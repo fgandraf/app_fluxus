@@ -1044,9 +1044,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dados Cadastrais";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDadosCadastrais_FormClosed);
             this.Load += new System.EventHandler(this.frmDadosCadastrais_Load);
-            this.Leave += new System.EventHandler(this.frmDadosCadastrais_Leave);
             this.pnlBotton.ResumeLayout(false);
             this.tbcCadastrais.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

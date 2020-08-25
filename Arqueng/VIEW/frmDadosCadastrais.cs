@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Data;
 
 namespace Arqueng.VIEW
 {
@@ -15,81 +16,61 @@ namespace Arqueng.VIEW
     {
 
         frmPrincipal _frmPrincipal;
-
         CadastraisMODEL model = new CadastraisMODEL();
         CadastraisENT dado = new CadastraisENT();
         private Image LogoAtual = null;
 
 
-        public static byte[] ImagemParaByte(Image logo)
-        {
-            using (var stream = new MemoryStream())
-            {
-                logo.Save(stream, ImageFormat.Png);
-                return stream.ToArray();
-            }
-        }
 
-        public static Image ByteParaImagem(byte[] bytes)
-        {
-            using (var stream = new MemoryStream(bytes))
-            {
-                return Image.FromStream(stream);
-            }
-        }
-
-        public frmDadosCadastrais(frmPrincipal frm1)
-        {
-            InitializeComponent();
-            _frmPrincipal = frm1;
-        }
-
-
-        private void BuscarDadosCadastrais()
+        //:METHODS
+        private void PopulateFields()
         {
             try
             {
-                ENTIDADES.CadastraisENT dado = new ENTIDADES.CadastraisENT();
-                model.BuscarCadastraisModel(dado);
-
-                if (dado.Cnpj == null)
+                if (DT.DT_Dados.Rows.Count == 0)
                     txtCNPJ.Focus();
                 else
                 {
-                    txtCNPJ.Text = dado.Cnpj;
-                    txtNomeFantasia.Text = dado.Fantasia;
-                    txtRazaoSocial.Text = dado.Razao;
-                    txtInscricaoEstadual.Text = dado.Ie;
-                    txtInscricaoMunicipal.Text = dado.Im;
-                    txtEndereco.Text = dado.Endereco;
-                    txtComplemento.Text = dado.Complemento;
-                    txtBairro.Text = dado.Bairro;
-                    txtCidade.Text = dado.Cidade;
-                    txtCEP.Text = dado.Cep;
-                    cboUF.Text = dado.Uf;
-                    if (dado.Constituicao.ToString() != "01/01/0001 00:00:00")
-                        txtConstituicao.Text = dado.Constituicao.ToString("dd/MM/yyyy");
-                    txtTelefone.Text = dado.Telefone;
-                    txtTelefone2.Text = dado.Telefone2;
-                    txtEmail.Text = dado.Email;
-                    txtBanco.Text = dado.Db_banco;
-                    cboTipoDeConta.Text = dado.Db_tipo;
-                    txtAgencia.Text = dado.Db_agencia;
-                    txtOperador.Text = dado.Db_operador;
-                    txtConta.Text = dado.Db_conta;
-                    cboTomador.Text = dado.Ct_tomador;
-                    txtEdital.Text = dado.Ct_edital;
-                    txtContrato.Text = dado.Ct_contrato;
-                    if (dado.Ct_celebrado.ToString() != "01/01/0001 00:00:00")
-                        txtCelebrado.Text = dado.Ct_celebrado.ToString("dd/MM/yyy");
-                    if (dado.Ct_inicio.ToString() != "01/01/0001 00:00:00")
-                        txtInicio.Text = dado.Ct_inicio.ToString("dd/MM/yyyy");
-                    if (dado.Ct_termino.ToString() != "01/01/0001 00:00:00")
-                        txtTermino.Text = dado.Ct_termino.ToString("dd/MM/yyyy");
+                    txtCNPJ.Text = DT.DT_Dados.Rows[0]["cnpj"].ToString();
+                    txtNomeFantasia.Text = DT.DT_Dados.Rows[0]["fantasia"].ToString();
+                    txtRazaoSocial.Text = DT.DT_Dados.Rows[0]["razao"].ToString();
+                    txtInscricaoEstadual.Text = DT.DT_Dados.Rows[0]["ie"].ToString();
+                    txtInscricaoMunicipal.Text = DT.DT_Dados.Rows[0]["im"].ToString();
+                    txtEndereco.Text = DT.DT_Dados.Rows[0]["endereco"].ToString();
+                    txtComplemento.Text = DT.DT_Dados.Rows[0]["complemento"].ToString();
+                    txtBairro.Text = DT.DT_Dados.Rows[0]["bairro"].ToString();
+                    txtCidade.Text = DT.DT_Dados.Rows[0]["cidade"].ToString();
+                    txtCEP.Text = DT.DT_Dados.Rows[0]["cep"].ToString();
+                    cboUF.Text = DT.DT_Dados.Rows[0]["uf"].ToString();
+                    DateTime constituicao = Convert.ToDateTime(DT.DT_Dados.Rows[0]["constituicao"]);
+                    if (constituicao.ToString() != "01/01/0001 00:00:00")
+                        txtConstituicao.Text = constituicao.ToString("dd/MM/yyyy");
+                    txtTelefone.Text = DT.DT_Dados.Rows[0]["telefone"].ToString();
+                    txtTelefone2.Text = DT.DT_Dados.Rows[0]["telefone2"].ToString();
+                    txtEmail.Text = DT.DT_Dados.Rows[0]["email"].ToString();
+                    txtBanco.Text = DT.DT_Dados.Rows[0]["db_banco"].ToString();
+                    cboTipoDeConta.Text = DT.DT_Dados.Rows[0]["db_tipo"].ToString();
+                    txtAgencia.Text = DT.DT_Dados.Rows[0]["db_agencia"].ToString();
+                    txtOperador.Text = DT.DT_Dados.Rows[0]["db_operador"].ToString();
+                    txtConta.Text = DT.DT_Dados.Rows[0]["db_conta"].ToString();
+                    cboTomador.Text = DT.DT_Dados.Rows[0]["ct_tomador"].ToString();
+                    txtEdital.Text = DT.DT_Dados.Rows[0]["ct_edital"].ToString();
+                    txtContrato.Text = DT.DT_Dados.Rows[0]["ct_contrato"].ToString();
 
+                    DateTime ct_celebrado = Convert.ToDateTime(DT.DT_Dados.Rows[0]["ct_celebrado"]);
+                    if (ct_celebrado.ToString() != "01/01/0001 00:00:00")
+                        txtCelebrado.Text = ct_celebrado.ToString("dd/MM/yyy");
 
-                    LogoAtual = ByteParaImagem(dado.Logo);
-                    picLogotipo.Image = ByteParaImagem(dado.Logo);
+                    DateTime ct_inicio = Convert.ToDateTime(DT.DT_Dados.Rows[0]["ct_inicio"]);
+                    if (ct_inicio.ToString() != "01/01/0001 00:00:00")
+                        txtInicio.Text = ct_inicio.ToString("dd/MM/yyyy");
+
+                    DateTime ct_termino = Convert.ToDateTime(DT.DT_Dados.Rows[0]["ct_termino"]);
+                    if (ct_termino.ToString() != "01/01/0001 00:00:00")
+                        txtTermino.Text = ct_termino.ToString("dd/MM/yyyy");
+
+                    LogoAtual = ByteParaImagem((byte[])DT.DT_Dados.Rows[0]["logo"]);
+                    picLogotipo.Image = ByteParaImagem((byte[])DT.DT_Dados.Rows[0]["logo"]);
                     btnCadastrarSalvar.Text = "&Salvar";
                     txtCNPJ.Focus();
                 }
@@ -99,11 +80,34 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public static byte[] ImagemParaByte(Image logo)
+        {
+            using (var stream = new MemoryStream())
+            {
+                logo.Save(stream, ImageFormat.Png);
+                return stream.ToArray();
+            }
+        }
+        public static Image ByteParaImagem(byte[] bytes)
+        {
+            using (var stream = new MemoryStream(bytes))
+            {
+                return Image.FromStream(stream);
+            }
+        }
 
 
+
+        //:EVENTS
+        //_______Form
+        public frmDadosCadastrais(frmPrincipal frm1)
+        {
+            InitializeComponent();
+            _frmPrincipal = frm1;
+        }
         private void frmDadosCadastrais_Load(object sender, EventArgs e)
         {
-            BuscarDadosCadastrais();
+            PopulateFields();
             if (Globais.Rl)
             {
                 pnlBotton.Show();
@@ -111,6 +115,8 @@ namespace Arqueng.VIEW
         }
 
 
+
+        //_______Button
         private void btnCadastrarSalvar_Click(object sender, EventArgs e)
         {
             if (txtCNPJ.Text == "" || txtNomeFantasia.Text == "" || txtRazaoSocial.Text == "")
@@ -194,6 +200,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     model.InsertCadastraisModel(dado);
+                    DT.DT_Dados = model.ListarCadastraisModel();
                     MessageBox.Show("Dados cadastrados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -206,6 +213,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     model.UpdateCadastraisModel(dado);
+                    DT.DT_Dados = model.ListarCadastraisModel();
                     MessageBox.Show("Dados cadastrais alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -214,23 +222,19 @@ namespace Arqueng.VIEW
                 }
             }
         }
+        private void btnCarregar_Click(object sender, EventArgs e)
+        {
+            if (openDialog.ShowDialog() == DialogResult.OK)
+                picLogotipo.ImageLocation = openDialog.FileName;
+        }
 
 
 
-
-
-
-
-
-
-
-
-        //////////MÁSCARAS DOS MASKEDTEXTBOX//////////
+        //_______MaskedTexttBox
         private void txtCNPJ_Enter(object sender, EventArgs e)
         {
             txtCNPJ.Mask = "00,000,000/0000-00";
         }
-
         private void txtCNPJ_Validated(object sender, EventArgs e)
         {
             if (txtCNPJ.Text == "  .   .   /    -")
@@ -241,12 +245,6 @@ namespace Arqueng.VIEW
         {
             txtTelefone.Mask = "(99) ##########";
         }
-
-        private void txtTelefone2_Enter(object sender, EventArgs e)
-        {
-            txtTelefone2.Mask = "(99) ##########";
-        }
-
         private void txtTelefone_Validated(object sender, EventArgs e)
         {
             if (txtTelefone.Text == "(  ) ")
@@ -262,6 +260,10 @@ namespace Arqueng.VIEW
                 txtTelefone.Mask = "(99) ##########";
         }
 
+        private void txtTelefone2_Enter(object sender, EventArgs e)
+        {
+            txtTelefone2.Mask = "(99) ##########";
+        }
         private void txtTelefone2_Validated(object sender, EventArgs e)
         {
             if (txtTelefone2.Text == "(  ) ")
@@ -281,7 +283,6 @@ namespace Arqueng.VIEW
         {
             txtCEP.Mask = "#####-###";
         }
-
         private void txtCEP_Validated(object sender, EventArgs e)
         {
             if (txtCEP.Text == "     -")
@@ -292,7 +293,6 @@ namespace Arqueng.VIEW
         {
             txtConstituicao.Mask = "00/00/0000";
         }
-
         private void txtConstituicao_Validated(object sender, EventArgs e)
         {
             if (txtConstituicao.Text == "  /  /")
@@ -303,7 +303,6 @@ namespace Arqueng.VIEW
         {
             txtCelebrado.Mask = "00/00/0000";
         }
-
         private void txtCelebrado_Validated(object sender, EventArgs e)
         {
             if (txtCelebrado.Text == "  /  /")
@@ -314,7 +313,6 @@ namespace Arqueng.VIEW
         {
             txtInicio.Mask = "00/00/0000";
         }
-
         private void txtInicio_Validated(object sender, EventArgs e)
         {
             if (txtInicio.Text == "  /  /")
@@ -325,7 +323,6 @@ namespace Arqueng.VIEW
         {
             txtTermino.Mask = "00/00/0000";
         }
-
         private void txtTermino_Validated(object sender, EventArgs e)
         {
             if (txtTermino.Text == "  /  /")
@@ -334,28 +331,6 @@ namespace Arqueng.VIEW
 
 
 
-
-
-
-
-
-
-
-        private void btnCarregar_Click(object sender, EventArgs e)
-        {
-            if (openDialog.ShowDialog() == DialogResult.OK)
-                picLogotipo.ImageLocation = openDialog.FileName;
-        }
-
-        private void frmDadosCadastrais_Leave(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void frmDadosCadastrais_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
-        }
     }
 
 

@@ -98,6 +98,7 @@ namespace Arqueng.VIEW
             try
             {
                 modelFatura.InsertFaturaModel(dadoFatura);
+                DT.DT_Faturas = modelFatura.ListarFaturaModel();
             }
             catch (Exception ex)
             {
@@ -110,6 +111,7 @@ namespace Arqueng.VIEW
             {
                 dadoOS.Referencia = row.Cells["referencia"].Value.ToString();
                 modelOS.UpdateOsFaturadaModel(dadoOS);
+                DT.DT_OS = modelOS.ListarOsModel();
             }
 
             MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);

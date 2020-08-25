@@ -15,7 +15,7 @@ namespace Arqueng.DAO
         CONEXAO con = new CONEXAO();
 
 
-        public DataTable ListarAgenciasDAO()
+        public DataTable SelectAllDAO()
         {
             try
             {
@@ -34,39 +34,7 @@ namespace Arqueng.DAO
         }
 
 
-        public void BuscarAgenciaDAO(AgenciasENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT nome, telefone1, email FROM tb_agencias WHERE agencia = @agencia", con.con);
-                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
-                MySqlDataReader dr = sql.ExecuteReader();
-
-                
-                if (dr.HasRows == false)
-                    dado.Agencia = null;
-                else
-                {
-                    while (dr.Read())
-                    {
-                        dado.Nome = Convert.ToString(dr["nome"]);
-                        dado.Telefone1 = Convert.ToString(dr["telefone1"]);
-                        dado.Email = Convert.ToString(dr["email"]);
-                    }
-                }
-                
-                
-                con.FecharConexao();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-        public void InsertAgenciaDAO(AgenciasENT dado)
+        public void InsertDAO(AgenciasENT dado)
         {
             try
             {
@@ -95,7 +63,7 @@ namespace Arqueng.DAO
         }
 
 
-        public void UpdateAgenciaDAO(AgenciasENT dado)
+        public void UpdateDAO(AgenciasENT dado)
         {
             try
             {
@@ -124,7 +92,7 @@ namespace Arqueng.DAO
         }
 
 
-        public void DeleteAgenciaDAO(AgenciasENT dado)
+        public void DeleteDAO(AgenciasENT dado)
         {
             try
             {
@@ -141,6 +109,59 @@ namespace Arqueng.DAO
             }
         }
 
+
+
+
+
+
+
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+        public void BuscarAgenciaDAO(AgenciasENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT nome, telefone1, email FROM tb_agencias WHERE agencia = @agencia", con.con);
+                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
+                MySqlDataReader dr = sql.ExecuteReader();
+
+
+                if (dr.HasRows == false)
+                    dado.Agencia = null;
+                else
+                {
+                    while (dr.Read())
+                    {
+                        dado.Nome = Convert.ToString(dr["nome"]);
+                        dado.Telefone1 = Convert.ToString(dr["telefone1"]);
+                        dado.Email = Convert.ToString(dr["email"]);
+                    }
+                }
+
+
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
     }
 

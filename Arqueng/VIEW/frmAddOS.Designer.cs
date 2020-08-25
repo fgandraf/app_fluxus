@@ -137,7 +137,6 @@
             this.rbtRecebida.Text = "Recebida";
             this.rbtRecebida.UseVisualStyleBackColor = true;
             this.rbtRecebida.CheckedChanged += new System.EventHandler(this.rbtRecebida_CheckedChanged);
-            this.rbtRecebida.Click += new System.EventHandler(this.rbtRecebida_Click);
             // 
             // rbtPendente
             // 
@@ -152,7 +151,6 @@
             this.rbtPendente.Text = "Pendente";
             this.rbtPendente.UseVisualStyleBackColor = true;
             this.rbtPendente.CheckedChanged += new System.EventHandler(this.rbtPendente_CheckedChanged);
-            this.rbtPendente.Click += new System.EventHandler(this.rbtPendente_Click);
             // 
             // rbtConcluida
             // 
@@ -167,7 +165,6 @@
             this.rbtConcluida.Text = "Concluída";
             this.rbtConcluida.UseVisualStyleBackColor = true;
             this.rbtConcluida.CheckedChanged += new System.EventHandler(this.rbtConcluida_CheckedChanged);
-            this.rbtConcluida.Click += new System.EventHandler(this.rbtConcluida_Click);
             // 
             // rbtVistoriada
             // 
@@ -182,7 +179,6 @@
             this.rbtVistoriada.Text = "Vistoriada";
             this.rbtVistoriada.UseVisualStyleBackColor = true;
             this.rbtVistoriada.CheckedChanged += new System.EventHandler(this.rbtVistoriada_CheckedChanged);
-            this.rbtVistoriada.Click += new System.EventHandler(this.rbtVistoriada_Click);
             // 
             // lblReferencia
             // 
@@ -709,7 +705,7 @@
             this.dtpPrazo.Location = new System.Drawing.Point(170, 256);
             this.dtpPrazo.Name = "dtpPrazo";
             this.dtpPrazo.Size = new System.Drawing.Size(400, 23);
-            this.dtpPrazo.TabIndex = 429;
+            this.dtpPrazo.TabIndex = 6;
             // 
             // btnAddAgencia
             // 
@@ -778,7 +774,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar";
             this.Load += new System.EventHandler(this.frmAddOS_Load);
-            this.Leave += new System.EventHandler(this.frmAddOS_Leave);
             this.pnlMolduraProfissional.ResumeLayout(false);
             this.pnlMolduraAtividade.ResumeLayout(false);
             this.pnlBotton.ResumeLayout(false);

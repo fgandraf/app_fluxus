@@ -19,7 +19,7 @@ namespace Arqueng.MODEL
             try
             {
                 DataTable dt = new DataTable();
-                dt = dao.ListarAgenciasDAO();
+                dt = dao.SelectAllDAO();
                 return dt;
             }
             catch (Exception ex)
@@ -27,6 +27,76 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
+        public void InsertAgenciaModel(AgenciasENT dado)
+        {
+            try
+            {
+                dao.InsertDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void UpdateAgenciaModel(AgenciasENT dado)
+        {
+            try
+            {
+                dao.UpdateDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void DeleteAgenciaModel(AgenciasENT dado)
+        {
+            try
+            {
+                dao.DeleteDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public void BuscarAgenciaModel(AgenciasENT dado)
@@ -40,46 +110,6 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
-
-
-        public void InsertAgenciaModel(AgenciasENT dado)
-        {
-            try
-            {
-                dao.InsertAgenciaDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void UpdateAgenciaModel(AgenciasENT dado)
-        {
-            try
-            {
-                dao.UpdateAgenciaDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void DeleteAgenciaModel(AgenciasENT dado)
-        {
-            try
-            {
-                dao.DeleteAgenciaDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
 
     }
 

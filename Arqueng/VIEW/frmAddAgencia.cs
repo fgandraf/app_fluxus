@@ -93,6 +93,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     model.InsertAgenciaModel(dado);
+                    DT.DT_Agencias = model.ListarAgenciasModel();
                 }
                 catch (Exception ex)
                 {
@@ -113,6 +114,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     model.UpdateAgenciaModel(dado);
+                    DT.DT_Agencias = model.ListarAgenciasModel();
                 }
                 catch (Exception ex)
                 {

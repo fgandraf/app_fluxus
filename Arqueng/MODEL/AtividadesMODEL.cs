@@ -19,7 +19,7 @@ namespace Arqueng.MODEL
             try
             {
                 DataTable dt = new DataTable();
-                dt = dao.ListarAtividadesDAO();
+                dt = dao.SelectAllDAO();
                 return dt;
             }
             catch (Exception ex)
@@ -27,6 +27,70 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
+        public void InsertAtividadeModel(AtividadesENT dado)
+        {
+            try
+            {
+                dao.InsertDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void UpdateAtividadeModel(AtividadesENT dado)
+        {
+            try
+            {
+                dao.UpdateDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public void DeleteAtividadeModel(AtividadesENT dado)
+        {
+            try
+            {
+                dao.DeleteDAO(dado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public DataTable ListarCodigoAtividadesModel()
         {
@@ -48,45 +112,6 @@ namespace Arqueng.MODEL
             try
             {
                 dao.BuscarAtividadesDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void InsertAtividadeModel(AtividadesENT dado)
-        {
-            try
-            {
-                dao.InsertAtividadeDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void UpdateAtividadeModel(AtividadesENT dado)
-        {
-            try
-            {
-                dao.UpdateAtividadeDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void DeleteAtividadeModel(AtividadesENT dado)
-        {
-            try
-            {
-                dao.DeleteAtividadeDAO(dado);
             }
             catch (Exception ex)
             {

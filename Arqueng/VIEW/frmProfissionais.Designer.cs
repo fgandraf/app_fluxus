@@ -404,7 +404,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Profissionais";
             this.Load += new System.EventHandler(this.frmProfissionais_Load);
-            this.Leave += new System.EventHandler(this.frmProfissionais_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfissionais)).EndInit();
             this.ResumeLayout(false);

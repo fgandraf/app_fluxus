@@ -22,18 +22,13 @@ namespace Arqueng.VIEW
 
 
 
-        public frmFaturas()
-        {
-            InitializeComponent();
-        }
-
-
-
-        private void ListarFatura()
+        //:METHODS
+        private void PopulateGridFatura()
         {
             try
             {
-                dgvFaturas.DataSource = model.ListarFaturaModel();
+                DataView dvFaturas = new DataView(DT.DT_Faturas);//------
+                dgvFaturas.DataSource = dvFaturas;//-----------
                 if (dgvFaturas.Rows.Count > 0)
                 {
                     tblFaturas.Show();
@@ -46,21 +41,21 @@ namespace Arqueng.VIEW
             }
         }
 
-
-        private void ListarOSFaturada()
+        private void PopulateGridOS()
         {
             if (dgvFaturas.Rows.Count > 0)
             {
                 try
                 {
-                    dado.Fatura_cod = dgvFaturas.CurrentRow.Cells[0].Value.ToString();
-                    dgvOS.DataSource = modelOS.ListarOSFaturadaModel(dado);
+                    DataView dvOS = new DataView(DT.DT_OS);
+                    dvOS.RowFilter = String.Format("fatura_cod = '{0}'", dgvFaturas.CurrentRow.Cells[0].Value.ToString());
+                    dgvOS.DataSource = dvOS;
 
                     txtData.Text = dgvFaturas.CurrentRow.Cells[2].Value.ToString();
                     txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);
                     txtValorDeslocamento.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[4].Value);
                     txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[5].Value);
-                    
+
                 }
                 catch (Exception ex)
                 {
@@ -68,8 +63,21 @@ namespace Arqueng.VIEW
                 }
             }
 
-                
+
         }
+
+
+
+
+
+        public frmFaturas()
+        {
+            InitializeComponent();
+        }
+
+
+
+        
 
         private DataTable Profissionais()
         {
@@ -88,14 +96,14 @@ namespace Arqueng.VIEW
 
         private void frmFaturas_Load(object sender, EventArgs e)
         {
-            ListarFatura();
-            ListarOSFaturada();
+            PopulateGridFatura();
+            PopulateGridOS();
         }
 
 
         private void dgvFaturas_MouseClick(object sender, MouseEventArgs e)
         {
-            ListarOSFaturada();
+            PopulateGridOS();
         }
 
 
@@ -110,7 +118,7 @@ namespace Arqueng.VIEW
                 using (var stream = new MemoryStream(Globais.Logo))
                     logoImagem = System.Drawing.Image.FromStream(stream);
                 //CHAMAR O MÉTODO
-                itsFatura.GerarFaturaPDF
+                    itsFatura.GerarFaturaPDF
                     (
                     logoImagem,
                     Globais.Edital,
@@ -118,7 +126,7 @@ namespace Arqueng.VIEW
                     Globais.Razao,
                     Globais.Cnpj,
                     Profissionais(),
-                    (DataTable)dgvOS.DataSource,
+                    ((DataView)dgvOS.DataSource).ToTable(),
                     caminho
                     ); 
             }
