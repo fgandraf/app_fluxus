@@ -124,6 +124,24 @@ namespace Arqueng.DAO
         }
 
 
+        public void DeleteOsDAO(OsENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("DELETE FROM tb_os WHERE referencia = @referencia", con.con);
+                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
+                sql.ExecuteNonQuery();
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                con.FecharConexao();
+                throw;
+            }
+        }
+
+
         public DataTable ListarOSFaturaDAO()
         {
             try
@@ -184,24 +202,7 @@ namespace Arqueng.DAO
 
 
 
-        //***** LISTAR TODAS CIDADES *****//
-        public DataTable ListarCidadesDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT DISTINCT cidade FROM tb_os ORDER BY cidade", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        
 
         //***** LISTAR ORDENS DE SERVIÇO À SEREM FATURADAS *****//
         public DataTable ListarOSAFaturarDAO()
@@ -222,25 +223,7 @@ namespace Arqueng.DAO
             }
         }
 
-        //***** LISTAR ORDENS DE SERVIÇO JÁ FATURADAS *****//
-        public DataTable ListarOSFaturadaDAO(OsENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT t1.data_ordem, t1.referencia, t1.profissional_cod, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.fatura_cod = @fatura_cod ORDER BY t1.data_ordem", con.con);
-                sql.Parameters.AddWithValue("@fatura_cod", dado.Fatura_cod);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
+        
 
         public DataTable DistinctProOSFaturadaDAO(OsENT dado)
         {
@@ -261,124 +244,7 @@ namespace Arqueng.DAO
             }
         }
 
-        //***** LISTAR ORDENS DE SERVIÇO NÃO FATURADAS, POR STATUS *****//
-        public DataTable ListarOsStatusDAO(OsENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT referencia, titulo FROM tb_os WHERE status = @status AND fatura_cod = 0 ORDER BY data_ordem", con.con);
-                sql.Parameters.AddWithValue("@status", dado.Status);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
         
-
-
-        //***** LISTAR ORDENS DE SERVIÇO NÃO FATURADAS, POR STATUS E PROFISSIONAL *****//
-        public DataTable ListarOsStatusProDAO(OsENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT referencia, titulo FROM tb_os WHERE status = @status AND fatura_cod = 0 AND profissional_cod = @profissional_cod ORDER BY data_ordem", con.con);
-                sql.Parameters.AddWithValue("@status", dado.Status);
-                sql.Parameters.AddWithValue("@profissional_cod", dado.Profissional_cod);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-
-
-
-
-
-        public void BuscarOSDAO(OsENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_os WHERE referencia = @referencia", con.con);
-                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
-                MySqlDataReader dr = sql.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    dado.Titulo = Convert.ToString(dr["titulo"]);
-                    dado.Referencia = Convert.ToString(dr["referencia"]);
-                    dado.Agencia = Convert.ToString(dr["agencia"]);
-                    dado.Data_ordem = Convert.ToDateTime(dr["data_ordem"]);
-                    dado.Prazo_execucao = Convert.ToDateTime(dr["prazo_execucao"]);
-                    dado.Profissional_cod = Convert.ToString(dr["profissional_cod"]);
-                    dado.Atividade_cod = Convert.ToString(dr["atividade_cod"]);
-                    dado.Siopi = Convert.ToBoolean(dr["siopi"]);
-                    dado.Nome_cliente = Convert.ToString(dr["nome_cliente"]);
-                    dado.Cidade = Convert.ToString(dr["cidade"]);
-                    dado.Nome_contato = Convert.ToString(dr["nome_contato"]);
-                    dado.Telefone_contato = Convert.ToString(dr["telefone_contato"]);
-                    dado.Coordenada = Convert.ToString(dr["coordenada"]);
-                    dado.Status = Convert.ToString(dr["status"]);
-                    dado.Data_pendente = Convert.ToDateTime(dr["data_pendente"]);
-                    dado.Data_vistoria = Convert.ToDateTime(dr["data_vistoria"]);
-                    dado.Data_concluida = Convert.ToDateTime(dr["data_concluida"]);
-                    dado.Obs = Convert.ToString(dr["obs"]);
-                    dado.Fatura_cod = Convert.ToString(dr["fatura_cod"]);
-                }
-
-                con.FecharConexao();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-        
-
-
-        
-
-
-        public void DeleteOsDAO(OsENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("DELETE FROM tb_os WHERE referencia = @referencia", con.con);
-                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
-                sql.ExecuteNonQuery();
-                con.FecharConexao();
-            }
-            catch (Exception)
-            {
-                con.FecharConexao();
-                throw;
-            }
-        }
-
-
-
-
-
 
 
         public void UpdateStatusRecebida(OsENT dado)

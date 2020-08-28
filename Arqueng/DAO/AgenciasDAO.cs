@@ -110,59 +110,7 @@ namespace Arqueng.DAO
         }
 
 
-
-
-
-
-
-
-
-
-
-
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-        public void BuscarAgenciaDAO(AgenciasENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT nome, telefone1, email FROM tb_agencias WHERE agencia = @agencia", con.con);
-                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
-                MySqlDataReader dr = sql.ExecuteReader();
-
-
-                if (dr.HasRows == false)
-                    dado.Agencia = null;
-                else
-                {
-                    while (dr.Read())
-                    {
-                        dado.Nome = Convert.ToString(dr["nome"]);
-                        dado.Telefone1 = Convert.ToString(dr["telefone1"]);
-                        dado.Email = Convert.ToString(dr["email"]);
-                    }
-                }
-
-
-                con.FecharConexao();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
+      
     }
 
 

@@ -55,60 +55,6 @@ namespace Arqueng.MODEL
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public void BuscarCadastraisModel(CadastraisENT dado)
-        {
-            try
-            {
-                dao.BuscarCadastraisDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void BuscarDadosEmpModel(CadastraisENT dado)
-        {
-            try
-            {
-                dao.BuscarDadosEmpDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
     }
 
 

@@ -67,50 +67,6 @@ namespace Arqueng.MODEL
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public void BuscarAgenciaModel(AgenciasENT dado)
-        {
-            try
-            {
-                dao.BuscarAgenciaDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
     }
 
 

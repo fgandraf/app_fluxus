@@ -90,34 +90,6 @@ namespace Arqueng.MODEL
 
 
 
-
-        public DataTable ListarCodNomeProModel()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.ListarCodNomeProDAO();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void BuscarProfissionalModel(ProfissionaisENT dado)
-        {
-            try
-            {
-                dao.BuscarProfissionalDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         public bool BuscarNomeUsuarioModel(ProfissionaisENT dado)
         {
             try

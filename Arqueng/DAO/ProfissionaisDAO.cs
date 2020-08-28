@@ -117,77 +117,6 @@ namespace Arqueng.DAO
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-        public DataTable ListarCodNomeProDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT codigo, nomeid FROM tb_profissionais WHERE rt = '1' ORDER BY codigo", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-        public void BuscarProfissionalDAO(ProfissionaisENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT nomeid FROM tb_profissionais WHERE codigo = @codigo", con.con);
-                sql.Parameters.AddWithValue("@codigo", dado.Codigo);
-                MySqlDataReader dr = sql.ExecuteReader();
-
-                if (dr.HasRows == false)
-                    dado.Nomeid = null;
-                else
-                {
-                    while (dr.Read())
-                    {
-                        dado.Nomeid = Convert.ToString(dr["nomeid"]);
-                    }
-                }
-
-                con.FecharConexao();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
         public void BuscarUsuarioDAO(ProfissionaisENT dado)
         {
             try
@@ -219,6 +148,28 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
 
         public bool BuscarNomeUsuarioDAO(ProfissionaisENT dado)
         {

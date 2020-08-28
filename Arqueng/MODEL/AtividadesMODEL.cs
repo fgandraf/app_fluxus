@@ -69,57 +69,6 @@ namespace Arqueng.MODEL
 
 
 
-
-
-
-
-
-
-
-
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public DataTable ListarCodigoAtividadesModel()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.ListarCodigosAtividadesDAO();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void BuscarAtividadesModel(AtividadesENT dado)
-        {
-            try
-            {
-                dao.BuscarAtividadesDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
     }
 
 

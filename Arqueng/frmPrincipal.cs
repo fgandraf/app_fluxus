@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using Arqueng.VIEW;
 using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
+using System.Data;
 
 namespace Arqueng
 {
@@ -60,8 +61,14 @@ namespace Arqueng
         {
             try
             {
-                ENTIDADES.CadastraisENT dado = new ENTIDADES.CadastraisENT();
-                cadmodel.BuscarDadosEmpModel(dado);
+                DataRow[] dadosDaEmpresa = DT.DadosCadastrais.Select(String.Format("codigo = 1"));
+                
+                Globais.Cnpj = dadosDaEmpresa[0]["cnpj"].ToString();
+                Globais.Razao = dadosDaEmpresa[0]["razao"].ToString();
+                Globais.Edital = dadosDaEmpresa[0]["ct_edital"].ToString();
+                Globais.Contrato = dadosDaEmpresa[0]["ct_contrato"].ToString();
+                Globais.Fantasia = dadosDaEmpresa[0]["fantasia"].ToString();
+                Globais.Logo = (byte[])(dadosDaEmpresa[0]["logo"]);
 
                 if (Globais.Fantasia != null)
                     btnDadosCadastrais.Text = Globais.Fantasia;

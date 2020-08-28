@@ -109,22 +109,6 @@ namespace Arqueng.MODEL
 
 
 
-
-
-
-        public void BuscarOsModel(OsENT dado)
-        {
-            try
-            {
-                dao.BuscarOSDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
         public DataTable ListarOSAFaturarModel()
         {
             try
@@ -139,34 +123,9 @@ namespace Arqueng.MODEL
             }
         }
 
-        public DataTable ListarCidadesModel()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.ListarCidadesDAO();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
 
 
-        public DataTable ListarOSFaturadaModel(OsENT dado)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.ListarOSFaturadaDAO(dado);
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+
 
         public DataTable DistinctProOSFaturadaModel(OsENT dado)
         {
@@ -181,43 +140,6 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
-
-        
-
-       
-        public DataTable ListarOsStatusModel(OsENT dado)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                if (dado.Profissional_cod == "")
-                    dt = dao.ListarOsStatusDAO(dado);
-                else
-                    dt = dao.ListarOsStatusProDAO(dado);
-
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -294,33 +216,6 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //CARREGAR TABELA
-
-        
-
-
-
 
 
 
