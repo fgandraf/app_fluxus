@@ -23,57 +23,15 @@ namespace Arqueng.VIEW
 
         //:METHODS
 
-        private void ListarProfissionais()
+ 
+        private void BuscarNomeAtividade()
         {
             try
             {
-                DataView dvPro = new DataView(DT.DT_Profissionais);
-                DataTable dtPro = dvPro.ToTable("Selected", false, "codigo", "nomeid");
-                cboProfissional.DataSource = dtPro;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }//--------
-
-        private void ListarAtividades()
-        {
-            try
-            {
-                DataView dvAtividades = new DataView(DT.DT_Atividades);
-                DataTable dtAtividades = dvAtividades.ToTable("Selected", false, "codigo", "descricao", "valor_atividade", "valor_deslocamento");
-                cboAtividade.DataSource = dtAtividades;
-                //cboAtividade.DataSource = ativmodel.ListarAtividadesModel();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }//------------
-
-        private void BuscarNomeAtividade()//-----------
-        {
-            try
-            {
-                DataRow[] dataRowAtividade = DT.DT_Atividades.Select(String.Format("codigo = '{0}'", cboAtividade.Text));
+                DataRow[] dataRowAtividade = DT.Atividades.Select(String.Format("codigo = '{0}'", cboAtividade.Text));
                 lblAtividadeNome.Text = dataRowAtividade[0]["descricao"].ToString();
                 lblAtividadeValor.Text = dataRowAtividade[0]["valor_atividade"].ToString();
                 lblAtividadeDeslocamento.Text = dataRowAtividade[0]["valor_deslocamento"].ToString();
-
-
-                //ENTIDADES.AtividadesENT dado = new ENTIDADES.AtividadesENT();
-                //dado.Codigo = cboAtividade.Text;
-                //ativmodel.BuscarAtividadesModel(dado);
-
-                //if (dado.Descricao == null)
-                //    lblAtividadeNome.Text = "Atividade não cadastrado!";
-                //else
-                //{
-                //    lblAtividadeNome.Text = dado.Descricao;
-                //    lblAtividadeValor.Text = dado.Valor_atividade;
-                //    lblAtividadeDeslocamento.Text = dado.Valor_deslocamento;
-                //}
             }
             catch (Exception ex)
             {
@@ -85,20 +43,20 @@ namespace Arqueng.VIEW
         {
             try
             {
-                DataRow[] dataRowPro = DT.DT_Profissionais.Select(String.Format("codigo = '{0}'", cboProfissional.Text));
+                DataRow[] dataRowPro = DT.Profissionais.Select(String.Format("codigo = '{0}'", cboProfissional.Text));
                 lblNomeProfissional.Text = dataRowPro[0]["nomeid"].ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }//-------
+        }
 
         private void BuscarAgencia()
         {
             try
             {
-                DataRow[] dataRowAgencia = DT.DT_Agencias.Select(String.Format("agencia = '{0}'", txtReferencia.Text.Substring(5, 4)));
+                DataRow[] dataRowAgencia = DT.Agencias.Select(String.Format("agencia = '{0}'", txtReferencia.Text.Substring(5, 4)));
                 if (dataRowAgencia.Length == 0)
                 {
                     txtAgenciaNome.Text = "Agência não cadastrado!";
@@ -114,31 +72,12 @@ namespace Arqueng.VIEW
                     Agencia = txtReferencia.Text.Substring(5, 4);
                     btnAddAgencia.Hide();
                 }
-                //ENTIDADES.AgenciasENT dado = new ENTIDADES.AgenciasENT();
-                //dado.Agencia = txtReferencia.Text.Substring(5, 4);
-                //agmodel.BuscarAgenciaModel(dado);
-
-                //if (dado.Agencia == null)
-                //{
-                //    txtAgenciaNome.Text = "Agência não cadastrado!";
-                //    txtAgenciaTelefone.Text = "";
-                //    txtAgenciaEmail.Text = "";
-                //    btnAddAgencia.Show();
-                //}
-                //else
-                //{
-                //    txtAgenciaNome.Text = dado.Nome;
-                //    txtAgenciaTelefone.Text = dado.Telefone1;
-                //    txtAgenciaEmail.Text = dado.Email;
-                //    Agencia = txtReferencia.Text.Substring(5, 4);
-                //    btnAddAgencia.Hide();
-                //}
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }//------------
+        }
 
 
 
@@ -151,8 +90,8 @@ namespace Arqueng.VIEW
             InitializeComponent();
             _frmPrincipal = frm1;
             FormFilho = frmfilho;
-            ListarProfissionais();
-            ListarAtividades();
+            cboProfissional.DataSource = Globais.Profissionais(false);
+            cboAtividade.DataSource = Globais.Atividades(false);
         }
 
         public frmAddOS(frmPrincipal frm1, string frmfilho, string referencia, string agencia, string titulo, string dataordem, string prazoexecucao, string profissionalcod, string atividadecod, bool siopi, string nomecliente, string cidade, string nomecontato, string telefonecontato, string coordenada, string status, string datapendente, string datavistoria, string dataconcluida, string obs, string faturacod)
@@ -161,16 +100,14 @@ namespace Arqueng.VIEW
             _frmPrincipal = frm1;
             FormFilho = frmfilho;
 
-            ListarProfissionais();
-            ListarAtividades();
-
+            //POPULATE
+            cboProfissional.DataSource = Globais.Profissionais(false);
+            cboAtividade.DataSource = Globais.Atividades(false);
             dado.Titulo = titulo;
             txtReferencia.Text = referencia;
             Agencia = agencia;
             txtDataOrdem.Text = dataordem;
-
             dtpPrazo.Text = prazoexecucao;
-
             cboProfissional.Text = profissionalcod;
             cboAtividade.Text = atividadecod;
             chkSiopi.Checked = siopi;
@@ -179,7 +116,6 @@ namespace Arqueng.VIEW
             txtNomeContato.Text = nomecontato;
             txtTelefoneContato.Text = telefonecontato;
             txtCoordenada.Text = coordenada;
-
             if (status == "RECEBIDA")
                 rbtRecebida.Checked = true;
             else if (status == "PENDENTE")
@@ -188,11 +124,13 @@ namespace Arqueng.VIEW
                 rbtVistoriada.Checked = true;
             else
                 rbtConcluida.Checked = true;
-
             txtDataPendente.Text = datapendente;
             txtDataVistoria.Text = datavistoria;
             txtDataConcluida.Text = dataconcluida;
             txtOBS.Text = obs;
+
+
+
 
             BuscarNomeProfissional();
             BuscarNomeAtividade();
@@ -308,7 +246,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     osmodel.InsertOsModel(dado);
-                    DT.DT_OS = osmodel.ListarOsModel();
+                    DT.OS = osmodel.ListarOsModel();
                 }
                 catch (Exception ex)
                 {
@@ -329,7 +267,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     osmodel.UpdateOsModel(dado);
-                    DT.DT_OS = osmodel.ListarOsModel();
+                    DT.OS = osmodel.ListarOsModel();
                 }
                 catch (Exception ex)
                 {
@@ -337,9 +275,9 @@ namespace Arqueng.VIEW
                 }
             }
             this.Close();
-            if (FormFilho == "frmRelatorios")
+            if (FormFilho == "frmOSLista")
             {
-                frmRelatorios formFilho = new frmRelatorios(_frmPrincipal);
+                frmOSLista formFilho = new frmOSLista(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
             }
             else
@@ -371,7 +309,7 @@ namespace Arqueng.VIEW
             this.Close();
             if (FormFilho == "frmRelatorios")
             {
-                frmRelatorios formFilho = new frmRelatorios(_frmPrincipal);
+                frmOSLista formFilho = new frmOSLista(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
             }
             else
@@ -486,9 +424,6 @@ namespace Arqueng.VIEW
         {
             dtpPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
         }
-
-
-
 
 
 

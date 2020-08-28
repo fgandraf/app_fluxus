@@ -4,12 +4,12 @@ namespace Arqueng.ENTIDADES
 {
     public class DT
     {
-        public static DataTable DT_OS;
-        public static DataTable DT_Dados;
-        public static DataTable DT_Profissionais;
-        public static DataTable DT_Atividades;
-        public static DataTable DT_Agencias;
-        public static DataTable DT_Faturas;
-
+        public static DataTable OS;
+        public static DataTable OSFatura;
+        public static DataTable DadosCadastrais;
+        public static DataTable Profissionais;
+        public static DataTable Atividades;
+        public static DataTable Agencias;
+        public static DataTable Faturas;
     }
 }

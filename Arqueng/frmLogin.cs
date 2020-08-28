@@ -24,7 +24,20 @@ namespace Arqueng
             OsMODEL model = new OsMODEL();
             try
             {
-                DT.DT_OS = model.ListarOsModel();
+                DT.OS = model.ListarOsModel();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar tabela 'tb_os'.\n\n" + ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Listar_tbOsFatura()
+        {
+            OsMODEL model = new OsMODEL();
+            try
+            {
+                DT.OSFatura = model.ListarOSFaturaModel();
             }
             catch (Exception ex)
             {
@@ -37,7 +50,7 @@ namespace Arqueng
             CadastraisMODEL model = new CadastraisMODEL();
             try
             {
-                DT.DT_Dados = model.ListarCadastraisModel();
+                DT.DadosCadastrais = model.ListarCadastraisModel();
             }
             catch (Exception ex)
             {
@@ -50,7 +63,7 @@ namespace Arqueng
             ProfissionaisMODEL model = new ProfissionaisMODEL();
             try
             {
-                DT.DT_Profissionais = model.ListarProfissionaisModel();
+                DT.Profissionais = model.ListarProfissionaisModel();
             }
             catch (Exception ex)
             {
@@ -63,7 +76,7 @@ namespace Arqueng
             AtividadesMODEL model = new AtividadesMODEL();
             try
             {
-                DT.DT_Atividades = model.ListarAtividadesModel();
+                DT.Atividades = model.ListarAtividadesModel();
             }
             catch (Exception ex)
             {
@@ -76,7 +89,7 @@ namespace Arqueng
             AgenciasMODEL model = new AgenciasMODEL();
             try
             {
-                DT.DT_Agencias = model.ListarAgenciasModel();
+                DT.Agencias = model.ListarAgenciasModel();
             }
             catch (Exception ex)
             {
@@ -89,7 +102,7 @@ namespace Arqueng
             FaturasMODEL model = new FaturasMODEL();
             try
             {
-                DT.DT_Faturas = model.ListarFaturaModel();
+                DT.Faturas = model.ListarFaturaModel();
             }
             catch (Exception ex)
             {
@@ -150,6 +163,11 @@ namespace Arqueng
 
                 Listar_tb_os();
                 prbProgress.Value += 1;
+
+                Listar_tbOsFatura();
+                prbProgress.Value += 1;
+
+
 
 
                 Task.Delay(5000);

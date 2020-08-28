@@ -21,7 +21,7 @@ namespace Arqueng.VIEW
         {
             try
             {
-                DataView dvProfissionais = new DataView(DT.DT_Profissionais);//------
+                DataView dvProfissionais = new DataView(DT.Profissionais);//------
                 dgvProfissionais.DataSource = dvProfissionais;//-----------
                 if (dgvProfissionais.Rows.Count == 0)
                 {
@@ -84,7 +84,7 @@ namespace Arqueng.VIEW
             if (result == DialogResult.Yes)
             {
                 Delete();
-                DT.DT_Profissionais = model.ListarProfissionaisModel();//-------
+                DT.Profissionais = model.ListarProfissionaisModel();//-------
                 PopulateGrid();//---------
             }
         }

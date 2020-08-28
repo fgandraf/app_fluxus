@@ -145,7 +145,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     model.InsertProfissionalModel(dado);
-                    DT.DT_Profissionais = model.ListarProfissionaisModel();
+                    DT.Profissionais = model.ListarProfissionaisModel();
                 }
                 catch (Exception ex)
                 {
@@ -166,7 +166,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     model.UpdateProfissionalModel(dado);
-                    DT.DT_Profissionais = model.ListarProfissionaisModel();
+                    DT.Profissionais = model.ListarProfissionaisModel();
                 }
                 catch (Exception ex)
                 {

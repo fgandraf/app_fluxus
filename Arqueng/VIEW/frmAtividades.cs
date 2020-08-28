@@ -21,7 +21,7 @@ namespace Arqueng.VIEW
         {
             try
             {
-                DataView dvAtividades = new DataView(DT.DT_Atividades);//------
+                DataView dvAtividades = new DataView(DT.Atividades);//------
                 dgvAtividades.DataSource = dvAtividades;//-----------
                 if (dgvAtividades.Rows.Count == 0)
                 {
@@ -84,7 +84,7 @@ namespace Arqueng.VIEW
             if (result == DialogResult.Yes)
             {
                 Delete();
-                DT.DT_Atividades = model.ListarAtividadesModel();//-------
+                DT.Atividades = model.ListarAtividadesModel();//-------
                 PopulateGrid();//---------
             }
 

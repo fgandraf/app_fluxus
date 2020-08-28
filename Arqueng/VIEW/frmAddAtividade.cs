@@ -64,7 +64,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     model.InsertAtividadeModel(dado);
-                    DT.DT_Atividades = model.ListarAtividadesModel();
+                    DT.Atividades = model.ListarAtividadesModel();
                 }
                 catch (Exception ex)
                 {
@@ -85,7 +85,7 @@ namespace Arqueng.VIEW
                 try
                 {
                     model.UpdateAtividadeModel(dado);
-                    DT.DT_Atividades = model.ListarAtividadesModel();
+                    DT.Atividades = model.ListarAtividadesModel();
                 }
                 catch (Exception ex)
                 {

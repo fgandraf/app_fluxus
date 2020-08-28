@@ -27,7 +27,7 @@ namespace Arqueng.VIEW
         {
             try
             {
-                DataView dvFaturas = new DataView(DT.DT_Faturas);//------
+                DataView dvFaturas = new DataView(DT.Faturas);//------
                 dgvFaturas.DataSource = dvFaturas;//-----------
                 if (dgvFaturas.Rows.Count > 0)
                 {
@@ -47,7 +47,7 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    DataView dvOS = new DataView(DT.DT_OS);
+                    DataView dvOS = new DataView(DT.OSFatura);
                     dvOS.RowFilter = String.Format("fatura_cod = '{0}'", dgvFaturas.CurrentRow.Cells[0].Value.ToString());
                     dgvOS.DataSource = dvOS;
 

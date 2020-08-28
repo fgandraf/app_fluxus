@@ -21,7 +21,7 @@ namespace Arqueng.VIEW
         {
             try
             {
-                DataView dvAgencias = new DataView(DT.DT_Agencias);//------
+                DataView dvAgencias = new DataView(DT.Agencias);//------
                 dgvAgencias.DataSource = dvAgencias;//-----------
                 if (dgvAgencias.Rows.Count == 0)
                 {
@@ -79,7 +79,7 @@ namespace Arqueng.VIEW
             if (result == DialogResult.Yes)
             {
                 Delete();
-                DT.DT_Agencias = model.ListarAgenciasModel();//-------
+                DT.Agencias = model.ListarAgenciasModel();//-------
                 PopulateGrid();//---------
             }
         }

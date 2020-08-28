@@ -1,6 +1,6 @@
 ﻿namespace Arqueng.VIEW
 {
-    partial class frmRelatorios
+    partial class frmOSLista
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRelatorios));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOSLista));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -121,7 +121,7 @@
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(257, 18);
             this.txtPesquisar.TabIndex = 222;
-            this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
+            this.txtPesquisar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPesquisar_KeyUp);
             // 
             // btnEditar
             // 
@@ -527,6 +527,7 @@
             this.cboFaturadas.Name = "cboFaturadas";
             this.cboFaturadas.Size = new System.Drawing.Size(120, 21);
             this.cboFaturadas.TabIndex = 243;
+            this.cboFaturadas.SelectionChangeCommitted += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // cboProfissional
             // 
@@ -540,6 +541,7 @@
             this.cboProfissional.Size = new System.Drawing.Size(175, 21);
             this.cboProfissional.TabIndex = 247;
             this.cboProfissional.ValueMember = "codigo";
+            this.cboProfissional.SelectionChangeCommitted += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // label3
             // 
@@ -577,6 +579,7 @@
             this.cboAtividade.Size = new System.Drawing.Size(78, 21);
             this.cboAtividade.TabIndex = 250;
             this.cboAtividade.ValueMember = "codigo";
+            this.cboAtividade.SelectionChangeCommitted += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // cboCidade
             // 
@@ -590,6 +593,7 @@
             this.cboCidade.Size = new System.Drawing.Size(144, 21);
             this.cboCidade.TabIndex = 253;
             this.cboCidade.ValueMember = "cidade";
+            this.cboCidade.SelectionChangeCommitted += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // label6
             // 
@@ -623,6 +627,7 @@
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(100, 21);
             this.cboStatus.TabIndex = 255;
+            this.cboStatus.SelectionChangeCommitted += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // label7
             // 

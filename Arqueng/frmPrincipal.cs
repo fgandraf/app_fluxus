@@ -255,7 +255,7 @@ namespace Arqueng
             pnlCtrlRelatorios.Show();
             lblTitulo.Text = "Relatórios";
 
-            frmRelatorios frm = new frmRelatorios(this);
+            frmOSLista frm = new frmOSLista(this);
 
             AbrirFormInPanel(frm, pnlMain);
             FormAtivo = frm;

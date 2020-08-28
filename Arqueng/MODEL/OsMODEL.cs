@@ -68,7 +68,19 @@ namespace Arqueng.MODEL
         }
 
 
-
+        public DataTable ListarOSFaturaModel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.ListarOSFaturaDAO();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
 

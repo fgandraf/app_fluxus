@@ -11,8 +11,6 @@ namespace Arqueng.VIEW
     {
 
         frmPrincipal _frmPrincipal;
-        OsMODEL model = new OsMODEL();
-        OsENT dado = new OsENT();
         Control _lastEnteredControl;
         DataGridView dgvOrigem;
 
@@ -31,33 +29,15 @@ namespace Arqueng.VIEW
                 lblTitConcluidas.Text = "CONCLUÍDAS [" + dgv.Rows.Count.ToString() + "]";
         }
 
-        private void ListarProfissionais()
-        {
-            try
-            {
-                DataView dvPro = new DataView(DT.DT_Profissionais);
-                DataTable dtPro = dvPro.ToTable("Selected", false, "codigo", "nomeid");
-                DataRow linha = dtPro.NewRow();
-                linha[1] = "--TODOS--";
-                dtPro.Rows.InsertAt(linha, 0);
-                cboProfissional.DataSource = dtPro;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void ListarOS(DataGridView dgv)
         {
             try
             {
-                DataView dvOS = new DataView(DT.DT_OS);
+                DataView dvOS = new DataView(DT.OS);
                 if (cboProfissional.SelectedIndex == 0)
                     dvOS.RowFilter = String.Format("status = '{0}' AND fatura_cod = 0", dgv.Tag.ToString());
                 else
                     dvOS.RowFilter = String.Format("status = '{0}' AND profissional_cod = '{1}' AND fatura_cod = 0", dgv.Tag.ToString(), cboProfissional.SelectedValue.ToString());
-                //DataTable dtOS = dvOS.ToTable("Selected", false, "referencia", "titulo");
                 
                 dgv.DataSource = dvOS;
 
@@ -79,51 +59,12 @@ namespace Arqueng.VIEW
             ContarRegistros(dgv);
         }
 
-        private void EditarOS(DataGridView dgv, string referencia)
+        private void EditarOS(DataGridView dgv)
         {
-
-
-
-
-            //DataView dvOS = new DataView(DT.DT_OS);
-            //dvOS.RowFilter = ("referencia = '" + referencia + "'");
-
-            //DataTable dtOS = dvOS.ToTable();
-
-
-
-            //frmAddOS formNeto = new frmAddOS
-            //(
-            //    _frmPrincipal, this.Name,
-            //    dtOS.Rows[0]["referencia"].ToString(),//referencia
-            //    dtOS.Rows[0]["agencia"].ToString(),//agencia
-            //    dtOS.Rows[0]["titulo"].ToString(),//titulo
-            //    dtOS.Rows[0]["data_ordem"].ToString(),//data_ordem
-            //    dtOS.Rows[0]["prazo_execucao"].ToString(),//prazo_execucao
-            //    dtOS.Rows[0]["profissional_cod"].ToString(),//profissional_cod
-            //    dtOS.Rows[0]["atividade_cod"].ToString(),//atividade_cod
-            //    Convert.ToBoolean(dtOS.Rows[0]["siopi"].ToString()),//siopi
-            //    dtOS.Rows[0]["nome_cliente"].ToString(),//nome_cliente
-            //    dtOS.Rows[0]["cidade"].ToString(),//cidade
-            //    dtOS.Rows[0]["nome_contato"].ToString(),//nome_contato
-            //    dtOS.Rows[0]["telefone_contato"].ToString(),//telefone_contato
-            //    dtOS.Rows[0]["coordenada"].ToString(),//coordenada
-            //    dtOS.Rows[0]["status"].ToString(),//status
-            //    dtOS.Rows[0]["data_pendente"].ToString(),//data_pendente
-            //    dtOS.Rows[0]["data_vistoria"].ToString(),//data_vistoria
-            //    dtOS.Rows[0]["data_concluida"].ToString(),//data_concluida
-            //    dtOS.Rows[0]["obs"].ToString(),//obs
-            //    dtOS.Rows[0]["fatura_cod"].ToString()//fatura_cod
-            //);
-
-
-
-
-
-
             frmAddOS formNeto = new frmAddOS
             (
-                _frmPrincipal, this.Name,
+                _frmPrincipal, 
+                this.Name,
                 dgv.CurrentRow.Cells[0].Value.ToString(),//referencia
                 dgv.CurrentRow.Cells[1].Value.ToString(),//agencia
                 dgv.CurrentRow.Cells[2].Value.ToString(),//titulo
@@ -148,16 +89,18 @@ namespace Arqueng.VIEW
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
 
-        private void ExcluirOS(DataGridView dgv, string sta)
+        private void ExcluirOS(DataGridView dgv)
         {
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
                 try
                 {
+                    OsMODEL model = new OsMODEL();
                     ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
                     dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
                     model.DeleteOsModel(dado);
+                    DT.OS = model.ListarOsModel();
                     ListarOS(dgv);
                 }
                 catch (Exception ex)
@@ -169,13 +112,15 @@ namespace Arqueng.VIEW
 
         private void AtualizaStatus(DataGridView dgvDestino, DragEventArgs ev)
         {
-            int sourcerow = Convert.ToInt32(ev.Data.GetData(Type.GetType("System.Int32")));
-            dado.Status = dgvDestino.Tag.ToString();
-            dado.Referencia = dgvOrigem.Rows[sourcerow].Cells[0].Value.ToString();
             try
             {
+                OsENT dado = new OsENT();
+                OsMODEL model = new OsMODEL();
+                int sourcerow = Convert.ToInt32(ev.Data.GetData(Type.GetType("System.Int32")));
+                dado.Status = dgvDestino.Tag.ToString();
+                dado.Referencia = dgvOrigem.Rows[sourcerow].Cells[0].Value.ToString();
                 model.UpdateStatusModel(dado);
-                DT.DT_OS = model.ListarOsModel();
+                DT.OS = model.ListarOsModel();
             }
             catch (Exception ex)
             {
@@ -233,7 +178,7 @@ namespace Arqueng.VIEW
 
         private void frmOSFluxo_Load(object sender, EventArgs e)
         {
-            ListarProfissionais();
+            cboProfissional.DataSource = Globais.Profissionais(true);
             if (Globais.Rl)
             {
                 cboProfissional.Enabled = true;
@@ -286,33 +231,12 @@ namespace Arqueng.VIEW
         ///_______ContextMenu
         private void mnuEditar_Click(object sender, EventArgs e)
         {
-            if (_lastEnteredControl == dgvRecebidas)
-                EditarOS(dgvRecebidas, dgvRecebidas.CurrentRow.Cells["referencia_recebida"].Value.ToString());
-
-            if (_lastEnteredControl == dgvPendentes)
-                EditarOS(dgvPendentes, dgvPendentes.CurrentRow.Cells["referencia_pendente"].Value.ToString());
-
-            if (_lastEnteredControl == dgvVistoriadas)
-                EditarOS(dgvVistoriadas, dgvVistoriadas.CurrentRow.Cells["referencia_vistoriada"].Value.ToString());
-
-            if (_lastEnteredControl == dgvConcluidas)
-                EditarOS(dgvConcluidas, dgvConcluidas.CurrentRow.Cells["referencia_concluida"].Value.ToString());
-
+            EditarOS((DataGridView)_lastEnteredControl);
         }
 
         private void mnuExcluir_Click(object sender, EventArgs e)
         {
-            if (_lastEnteredControl == dgvRecebidas)
-                ExcluirOS(dgvRecebidas, "RECEBIDA");
-
-            if (_lastEnteredControl == dgvPendentes)
-                ExcluirOS(dgvPendentes, "PENDENTE");
-
-            if (_lastEnteredControl == dgvVistoriadas)
-                ExcluirOS(dgvVistoriadas, "VISTORIADA");
-
-            if (_lastEnteredControl == dgvConcluidas)
-                ExcluirOS(dgvConcluidas, "CONCLUÍDA");
+            ExcluirOS((DataGridView)_lastEnteredControl);
         }
 
 
@@ -496,7 +420,12 @@ namespace Arqueng.VIEW
         {
             if (e.Button == MouseButtons.Left)
                 CapturaDGVOrigem((DataGridView)sender, e);
+            
+            
+            
+            _lastEnteredControl = (Control)sender;
         }
+
 
     }
 
