@@ -56,6 +56,7 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.ttpMenu = new System.Windows.Forms.ToolTip(this.components);
             this.ttpSempre = new System.Windows.Forms.ToolTip(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.pnlTitulo.SuspendLayout();
@@ -64,6 +65,7 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.pnlMenu.Controls.Add(this.lblUsuario);
             this.pnlMenu.Controls.Add(this.pnlCtrlOS);
             this.pnlMenu.Controls.Add(this.pnlCtrlProfissionais);
             this.pnlMenu.Controls.Add(this.btnProfissionais);
@@ -167,14 +169,15 @@
             // 
             // lblVersao
             // 
-            this.lblVersao.AutoSize = true;
+            this.lblVersao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVersao.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblVersao.Location = new System.Drawing.Point(4, 614);
+            this.lblVersao.Location = new System.Drawing.Point(140, 614);
             this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(30, 13);
+            this.lblVersao.Size = new System.Drawing.Size(60, 13);
             this.lblVersao.TabIndex = 134;
             this.lblVersao.Text = "v. ---";
+            this.lblVersao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnlCtrlAgencias
             // 
@@ -202,6 +205,7 @@
             this.btnSlide.TabIndex = 133;
             this.ttpSempre.SetToolTip(this.btnSlide, "Recolher/Expandir Menu");
             this.btnSlide.UseVisualStyleBackColor = true;
+            this.btnSlide.Visible = false;
             this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
             // 
             // pnlCtrlDadosCadastrais
@@ -334,7 +338,7 @@
             // pnlTitulo
             // 
             this.pnlTitulo.BackColor = System.Drawing.Color.Lavender;
-            this.pnlTitulo.Controls.Add(this.lblUsuario);
+            this.pnlTitulo.Controls.Add(this.panel1);
             this.pnlTitulo.Controls.Add(this.btnAppMinimizar);
             this.pnlTitulo.Controls.Add(this.lblTitulo);
             this.pnlTitulo.Controls.Add(this.btnAppFechar);
@@ -343,20 +347,21 @@
             this.pnlTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitulo.Location = new System.Drawing.Point(200, 0);
             this.pnlTitulo.Name = "pnlTitulo";
-            this.pnlTitulo.Size = new System.Drawing.Size(920, 50);
+            this.pnlTitulo.Size = new System.Drawing.Size(920, 30);
             this.pnlTitulo.TabIndex = 2;
             this.pnlTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitulo_MouseDown);
             // 
             // lblUsuario
             // 
-            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 7F);
-            this.lblUsuario.Location = new System.Drawing.Point(767, 33);
+            this.lblUsuario.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblUsuario.Location = new System.Drawing.Point(0, 614);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(150, 17);
+            this.lblUsuario.Size = new System.Drawing.Size(134, 13);
             this.lblUsuario.TabIndex = 126;
             this.lblUsuario.Text = "Usuário: null";
-            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnAppMinimizar
             // 
@@ -368,10 +373,10 @@
             this.btnAppMinimizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppMinimizar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnAppMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMinimizar.Image")));
-            this.btnAppMinimizar.Location = new System.Drawing.Point(786, -1);
+            this.btnAppMinimizar.Location = new System.Drawing.Point(786, 4);
             this.btnAppMinimizar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppMinimizar.Name = "btnAppMinimizar";
-            this.btnAppMinimizar.Size = new System.Drawing.Size(45, 30);
+            this.btnAppMinimizar.Size = new System.Drawing.Size(45, 26);
             this.btnAppMinimizar.TabIndex = 123;
             this.ttpSempre.SetToolTip(this.btnAppMinimizar, "Minimizar");
             this.btnAppMinimizar.UseVisualStyleBackColor = false;
@@ -382,11 +387,11 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
             this.lblTitulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe Print", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lblTitulo.Location = new System.Drawing.Point(6, 9);
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lblTitulo.Location = new System.Drawing.Point(0, 3);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(129, 37);
+            this.lblTitulo.Size = new System.Drawing.Size(97, 28);
             this.lblTitulo.TabIndex = 120;
             this.lblTitulo.Text = "Dashboard";
             // 
@@ -400,10 +405,10 @@
             this.btnAppFechar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppFechar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnAppFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppFechar.Image")));
-            this.btnAppFechar.Location = new System.Drawing.Point(876, -1);
+            this.btnAppFechar.Location = new System.Drawing.Point(876, 4);
             this.btnAppFechar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppFechar.Name = "btnAppFechar";
-            this.btnAppFechar.Size = new System.Drawing.Size(45, 30);
+            this.btnAppFechar.Size = new System.Drawing.Size(45, 26);
             this.btnAppFechar.TabIndex = 114;
             this.ttpSempre.SetToolTip(this.btnAppFechar, "Fechar");
             this.btnAppFechar.UseVisualStyleBackColor = false;
@@ -419,10 +424,10 @@
             this.btnAppMaximizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppMaximizar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnAppMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMaximizar.Image")));
-            this.btnAppMaximizar.Location = new System.Drawing.Point(831, -1);
+            this.btnAppMaximizar.Location = new System.Drawing.Point(831, 4);
             this.btnAppMaximizar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppMaximizar.Name = "btnAppMaximizar";
-            this.btnAppMaximizar.Size = new System.Drawing.Size(45, 30);
+            this.btnAppMaximizar.Size = new System.Drawing.Size(45, 26);
             this.btnAppMaximizar.TabIndex = 122;
             this.ttpSempre.SetToolTip(this.btnAppMaximizar, "Maximizar");
             this.btnAppMaximizar.UseVisualStyleBackColor = false;
@@ -452,10 +457,10 @@
             // 
             this.pnlMain.BackColor = System.Drawing.SystemColors.Window;
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(200, 50);
+            this.pnlMain.Location = new System.Drawing.Point(200, 30);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(920, 580);
+            this.pnlMain.Size = new System.Drawing.Size(920, 600);
             this.pnlMain.TabIndex = 161;
             // 
             // ttpMenu
@@ -473,6 +478,16 @@
             this.ttpSempre.InitialDelay = 50;
             this.ttpSempre.ReshowDelay = 10;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(921, 5);
+            this.panel1.TabIndex = 125;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,7 +504,6 @@
             this.Text = "Arqueng";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.pnlMenu.ResumeLayout(false);
-            this.pnlMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
             this.pnlTitulo.ResumeLayout(false);
             this.pnlTitulo.PerformLayout();
@@ -525,6 +539,7 @@
         public System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblVersao;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

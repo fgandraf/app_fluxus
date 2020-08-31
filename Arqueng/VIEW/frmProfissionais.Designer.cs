@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -50,7 +51,6 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.dgvProfissionais = new System.Windows.Forms.DataGridView();
-            this.ttpProfissionais = new System.Windows.Forms.ToolTip(this.components);
             this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +67,7 @@
             this.usr_ativo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.usr_nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usr_senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ttpProfissionais = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfissionais)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +76,7 @@
             // 
             this.pnlLinha2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlLinha2.BackColor = System.Drawing.Color.SteelBlue;
-            this.pnlLinha2.Location = new System.Drawing.Point(590, 54);
+            this.pnlLinha2.Location = new System.Drawing.Point(610, 54);
             this.pnlLinha2.Name = "pnlLinha2";
             this.pnlLinha2.Size = new System.Drawing.Size(280, 1);
             this.pnlLinha2.TabIndex = 217;
@@ -85,7 +86,7 @@
             // 
             this.pctLupa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pctLupa.Image = ((System.Drawing.Image)(resources.GetObject("pctLupa.Image")));
-            this.pctLupa.Location = new System.Drawing.Point(590, 32);
+            this.pctLupa.Location = new System.Drawing.Point(610, 32);
             this.pctLupa.Name = "pctLupa";
             this.pctLupa.Size = new System.Drawing.Size(20, 20);
             this.pctLupa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -99,7 +100,7 @@
             this.txtPesquisar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPesquisar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisar.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.txtPesquisar.Location = new System.Drawing.Point(613, 33);
+            this.txtPesquisar.Location = new System.Drawing.Point(633, 33);
             this.txtPesquisar.Margin = new System.Windows.Forms.Padding(0);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(257, 18);
@@ -116,7 +117,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
-            this.btnEditar.Location = new System.Drawing.Point(88, 25);
+            this.btnEditar.Location = new System.Drawing.Point(68, 25);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(35, 35);
             this.btnEditar.TabIndex = 212;
@@ -135,7 +136,7 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
-            this.btnExcluir.Location = new System.Drawing.Point(129, 25);
+            this.btnExcluir.Location = new System.Drawing.Point(109, 25);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(35, 35);
             this.btnExcluir.TabIndex = 213;
@@ -154,7 +155,7 @@
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
-            this.btnAdicionar.Location = new System.Drawing.Point(50, 25);
+            this.btnAdicionar.Location = new System.Drawing.Point(30, 25);
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(35, 35);
@@ -198,27 +199,35 @@
             this.usr_ativo,
             this.usr_nome,
             this.usr_senha});
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProfissionais.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvProfissionais.GridColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dgvProfissionais.Location = new System.Drawing.Point(50, 85);
+            this.dgvProfissionais.Location = new System.Drawing.Point(30, 85);
             this.dgvProfissionais.MultiSelect = false;
             this.dgvProfissionais.Name = "dgvProfissionais";
             this.dgvProfissionais.ReadOnly = true;
             this.dgvProfissionais.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProfissionais.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProfissionais.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvProfissionais.RowHeadersVisible = false;
             this.dgvProfissionais.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            this.dgvProfissionais.RowsDefaultCellStyle = dataGridViewCellStyle13;
-            this.dgvProfissionais.RowTemplate.Height = 40;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            this.dgvProfissionais.RowsDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvProfissionais.RowTemplate.Height = 30;
             this.dgvProfissionais.RowTemplate.ReadOnly = true;
             this.dgvProfissionais.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvProfissionais.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvProfissionais.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProfissionais.ShowEditingIcon = false;
-            this.dgvProfissionais.Size = new System.Drawing.Size(820, 445);
+            this.dgvProfissionais.Size = new System.Drawing.Size(860, 445);
             this.dgvProfissionais.TabIndex = 214;
             this.dgvProfissionais.DoubleClick += new System.EventHandler(this.btnEditar_Click);
             this.dgvProfissionais.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvProfissionais_KeyDown);
@@ -228,7 +237,6 @@
             this.codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.codigo.DataPropertyName = "codigo";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F);
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.codigo.DefaultCellStyle = dataGridViewCellStyle2;
             this.codigo.HeaderText = "Código";
@@ -241,7 +249,6 @@
             this.nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nome.DataPropertyName = "nome";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10F);
             dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.nome.DefaultCellStyle = dataGridViewCellStyle3;
             this.nome.HeaderText = "Nome";
@@ -281,7 +288,6 @@
             this.profissao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.profissao.DataPropertyName = "profissao";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.profissao.DefaultCellStyle = dataGridViewCellStyle6;
             this.profissao.HeaderText = "Profissão";
             this.profissao.Name = "profissao";
@@ -313,7 +319,6 @@
             this.telefone1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.telefone1.DataPropertyName = "telefone1";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.telefone1.DefaultCellStyle = dataGridViewCellStyle9;
             this.telefone1.HeaderText = "Telefone";
             this.telefone1.Name = "telefone1";

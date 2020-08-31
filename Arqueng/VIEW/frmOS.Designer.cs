@@ -36,13 +36,16 @@
             // 
             // tabOS
             // 
+            this.tabOS.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabOS.Controls.Add(this.tabFluxo);
             this.tabOS.Controls.Add(this.tabList);
             this.tabOS.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.tabOS.HotTrack = true;
             this.tabOS.ItemSize = new System.Drawing.Size(160, 40);
             this.tabOS.Location = new System.Drawing.Point(10, 10);
-            this.tabOS.Margin = new System.Windows.Forms.Padding(5);
+            this.tabOS.Margin = new System.Windows.Forms.Padding(0);
             this.tabOS.Name = "tabOS";
             this.tabOS.Padding = new System.Drawing.Point(0, 0);
             this.tabOS.SelectedIndex = 0;
@@ -54,8 +57,8 @@
             // tabFluxo
             // 
             this.tabFluxo.Location = new System.Drawing.Point(4, 44);
+            this.tabFluxo.Margin = new System.Windows.Forms.Padding(0);
             this.tabFluxo.Name = "tabFluxo";
-            this.tabFluxo.Padding = new System.Windows.Forms.Padding(3);
             this.tabFluxo.Size = new System.Drawing.Size(892, 512);
             this.tabFluxo.TabIndex = 0;
             this.tabFluxo.Text = "Fluxo";
@@ -66,7 +69,7 @@
             this.tabList.Location = new System.Drawing.Point(4, 44);
             this.tabList.Name = "tabList";
             this.tabList.Padding = new System.Windows.Forms.Padding(3);
-            this.tabList.Size = new System.Drawing.Size(888, 532);
+            this.tabList.Size = new System.Drawing.Size(892, 512);
             this.tabList.TabIndex = 1;
             this.tabList.Text = "Lista";
             this.tabList.UseVisualStyleBackColor = true;
