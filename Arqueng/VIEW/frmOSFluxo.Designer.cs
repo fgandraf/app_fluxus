@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOSFluxo));
             this.panel1 = new System.Windows.Forms.Panel();
             this.linhaRecebidas = new System.Windows.Forms.Panel();
@@ -169,7 +169,7 @@
             this.panel1.Controls.Add(this.linhaRecebidas);
             this.panel1.Controls.Add(this.lblTitRecebidas);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(35, 35);
+            this.panel1.Location = new System.Drawing.Point(20, 45);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(201, 25);
@@ -204,7 +204,7 @@
             this.panel2.Controls.Add(this.linhaPendentes);
             this.panel2.Controls.Add(this.lblTitPendentes);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(251, 35);
+            this.panel2.Location = new System.Drawing.Point(236, 45);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(201, 25);
@@ -239,7 +239,7 @@
             this.panel3.Controls.Add(this.linhaConcluidas);
             this.panel3.Controls.Add(this.lblTitConcluidas);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(683, 35);
+            this.panel3.Location = new System.Drawing.Point(668, 45);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(201, 25);
@@ -274,7 +274,7 @@
             this.panel4.Controls.Add(this.linhaVistoriadas);
             this.panel4.Controls.Add(this.lblTitVistoriadas);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(467, 35);
+            this.panel4.Location = new System.Drawing.Point(452, 45);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(201, 25);
@@ -305,9 +305,9 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Window;
             this.tableLayoutPanel1.ColumnCount = 9;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -315,7 +315,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.panel11, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel6, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
@@ -334,21 +334,20 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(920, 580);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(892, 512);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.SteelBlue;
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(35, 499);
+            this.panel11.Location = new System.Drawing.Point(20, 461);
             this.panel11.Margin = new System.Windows.Forms.Padding(0);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(201, 1);
@@ -360,11 +359,11 @@
             this.panel6.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel6.Controls.Add(this.dgvPendentes);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(251, 60);
+            this.panel6.Location = new System.Drawing.Point(236, 70);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(8);
-            this.panel6.Size = new System.Drawing.Size(201, 439);
+            this.panel6.Size = new System.Drawing.Size(201, 391);
             this.panel6.TabIndex = 11;
             // 
             // dgvPendentes
@@ -401,15 +400,15 @@
             this.dataGridViewTextBoxColumn20});
             this.dgvPendentes.ContextMenuStrip = this.menuContext;
             this.dgvPendentes.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.5F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPendentes.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPendentes.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvPendentes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPendentes.EnableHeadersVisualStyles = false;
             this.dgvPendentes.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -428,7 +427,7 @@
             this.dgvPendentes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvPendentes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPendentes.ShowEditingIcon = false;
-            this.dgvPendentes.Size = new System.Drawing.Size(185, 423);
+            this.dgvPendentes.Size = new System.Drawing.Size(185, 375);
             this.dgvPendentes.TabIndex = 223;
             this.dgvPendentes.Tag = "PENDENTE";
             this.dgvPendentes.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPendentes_CellMouseLeave);
@@ -623,11 +622,11 @@
             this.panel5.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel5.Controls.Add(this.dgvRecebidas);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(35, 60);
+            this.panel5.Location = new System.Drawing.Point(20, 70);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(8);
-            this.panel5.Size = new System.Drawing.Size(201, 439);
+            this.panel5.Size = new System.Drawing.Size(201, 391);
             this.panel5.TabIndex = 10;
             // 
             // dgvRecebidas
@@ -640,7 +639,7 @@
             this.dgvRecebidas.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvRecebidas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRecebidas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvRecebidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvRecebidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRecebidas.ColumnHeadersHeight = 35;
             this.dgvRecebidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvRecebidas.ColumnHeadersVisible = false;
@@ -666,15 +665,15 @@
             this.fatura_cod});
             this.dgvRecebidas.ContextMenuStrip = this.menuContext;
             this.dgvRecebidas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.5F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRecebidas.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRecebidas.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvRecebidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRecebidas.EnableHeadersVisualStyles = false;
             this.dgvRecebidas.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -693,7 +692,7 @@
             this.dgvRecebidas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvRecebidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecebidas.ShowEditingIcon = false;
-            this.dgvRecebidas.Size = new System.Drawing.Size(185, 423);
+            this.dgvRecebidas.Size = new System.Drawing.Size(185, 375);
             this.dgvRecebidas.TabIndex = 222;
             this.dgvRecebidas.Tag = "RECEBIDA";
             this.dgvRecebidas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecebidas_CellMouseLeave);
@@ -723,9 +722,9 @@
             // 
             this.titulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.titulo.DataPropertyName = "titulo";
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.titulo.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.NullValue = null;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.titulo.DefaultCellStyle = dataGridViewCellStyle8;
             this.titulo.HeaderText = "Título";
             this.titulo.MinimumWidth = 120;
             this.titulo.Name = "titulo";
@@ -869,11 +868,11 @@
             this.panel7.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel7.Controls.Add(this.dgvVistoriadas);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(467, 60);
+            this.panel7.Location = new System.Drawing.Point(452, 70);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(8);
-            this.panel7.Size = new System.Drawing.Size(201, 439);
+            this.panel7.Size = new System.Drawing.Size(201, 391);
             this.panel7.TabIndex = 12;
             // 
             // dgvVistoriadas
@@ -910,15 +909,15 @@
             this.dataGridViewTextBoxColumn37});
             this.dgvVistoriadas.ContextMenuStrip = this.menuContext;
             this.dgvVistoriadas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 7.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvVistoriadas.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVistoriadas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvVistoriadas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVistoriadas.EnableHeadersVisualStyles = false;
             this.dgvVistoriadas.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -937,7 +936,7 @@
             this.dgvVistoriadas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvVistoriadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVistoriadas.ShowEditingIcon = false;
-            this.dgvVistoriadas.Size = new System.Drawing.Size(185, 423);
+            this.dgvVistoriadas.Size = new System.Drawing.Size(185, 375);
             this.dgvVistoriadas.TabIndex = 223;
             this.dgvVistoriadas.Tag = "VISTORIADA";
             this.dgvVistoriadas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVistoriadas_CellMouseLeave);
@@ -1110,11 +1109,11 @@
             this.panel8.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel8.Controls.Add(this.dgvConcluidas);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(683, 60);
+            this.panel8.Location = new System.Drawing.Point(668, 70);
             this.panel8.Margin = new System.Windows.Forms.Padding(0);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(8);
-            this.panel8.Size = new System.Drawing.Size(201, 439);
+            this.panel8.Size = new System.Drawing.Size(201, 391);
             this.panel8.TabIndex = 13;
             // 
             // dgvConcluidas
@@ -1151,15 +1150,15 @@
             this.dataGridViewTextBoxColumn54});
             this.dgvConcluidas.ContextMenuStrip = this.menuContext;
             this.dgvConcluidas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 7.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvConcluidas.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvConcluidas.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvConcluidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvConcluidas.EnableHeadersVisualStyles = false;
             this.dgvConcluidas.GridColor = System.Drawing.Color.LightSteelBlue;
@@ -1178,7 +1177,7 @@
             this.dgvConcluidas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvConcluidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvConcluidas.ShowEditingIcon = false;
-            this.dgvConcluidas.Size = new System.Drawing.Size(185, 423);
+            this.dgvConcluidas.Size = new System.Drawing.Size(185, 375);
             this.dgvConcluidas.TabIndex = 223;
             this.dgvConcluidas.Tag = "CONCLUÍDA";
             this.dgvConcluidas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcluidas_CellMouseLeave);
@@ -1351,7 +1350,7 @@
             this.panel9.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel9.Controls.Add(this.btnAdicionar);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(35, 500);
+            this.panel9.Location = new System.Drawing.Point(20, 462);
             this.panel9.Margin = new System.Windows.Forms.Padding(0);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(8);
@@ -1387,7 +1386,7 @@
             this.pnlFaturar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlFaturar.Controls.Add(this.btnFaturar);
             this.pnlFaturar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFaturar.Location = new System.Drawing.Point(683, 500);
+            this.pnlFaturar.Location = new System.Drawing.Point(668, 462);
             this.pnlFaturar.Margin = new System.Windows.Forms.Padding(0);
             this.pnlFaturar.Name = "pnlFaturar";
             this.pnlFaturar.Padding = new System.Windows.Forms.Padding(8);
@@ -1421,7 +1420,7 @@
             // 
             this.pnlLinhaFaturar.BackColor = System.Drawing.Color.SteelBlue;
             this.pnlLinhaFaturar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlLinhaFaturar.Location = new System.Drawing.Point(683, 499);
+            this.pnlLinhaFaturar.Location = new System.Drawing.Point(668, 461);
             this.pnlLinhaFaturar.Margin = new System.Windows.Forms.Padding(0);
             this.pnlLinhaFaturar.Name = "pnlLinhaFaturar";
             this.pnlLinhaFaturar.Size = new System.Drawing.Size(201, 1);
@@ -1438,7 +1437,7 @@
             this.cboProfissional.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cboProfissional.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboProfissional.FormattingEnabled = true;
-            this.cboProfissional.Location = new System.Drawing.Point(683, 7);
+            this.cboProfissional.Location = new System.Drawing.Point(668, 12);
             this.cboProfissional.Margin = new System.Windows.Forms.Padding(0);
             this.cboProfissional.Name = "cboProfissional";
             this.cboProfissional.Size = new System.Drawing.Size(201, 21);
@@ -1452,7 +1451,7 @@
             this.lblProfissional.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.lblProfissional, 2);
             this.lblProfissional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProfissional.Location = new System.Drawing.Point(607, 10);
+            this.lblProfissional.Location = new System.Drawing.Point(592, 15);
             this.lblProfissional.Name = "lblProfissional";
             this.lblProfissional.Size = new System.Drawing.Size(73, 15);
             this.lblProfissional.TabIndex = 17;
@@ -1462,8 +1461,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(920, 580);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(892, 512);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmOSFluxo";

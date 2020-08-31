@@ -54,7 +54,6 @@ namespace Arqueng
             pnlCtrlProfissionais.Hide();
             pnlCtrlDadosCadastrais.Hide();
             pnlCtrlFaturas.Hide();
-            pnlCtrlRelatorios.Hide();
         }
 
         public void BuscarDadosEmpresa()
@@ -202,7 +201,8 @@ namespace Arqueng
 
             lblTitulo.Text = "Ordens de Serviços";
 
-            frmOSFluxo frm = new frmOSFluxo(this);
+            //frmOSFluxo frm = new frmOSFluxo(this);
+            frmOS frm = new frmOS(this);
             AbrirFormInPanel(frm, pnlMain);
             FormAtivo = frm;
         }
@@ -257,15 +257,7 @@ namespace Arqueng
 
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
-            OcultaControles();
 
-            pnlCtrlRelatorios.Show();
-            lblTitulo.Text = "Relatórios";
-
-            frmOSLista frm = new frmOSLista(this);
-
-            AbrirFormInPanel(frm, pnlMain);
-            FormAtivo = frm;
         }
     
     

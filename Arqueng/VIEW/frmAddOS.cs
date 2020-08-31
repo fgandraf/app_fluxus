@@ -277,12 +277,12 @@ namespace Arqueng.VIEW
             this.Close();
             if (FormFilho == "frmOSLista")
             {
-                frmOSLista formFilho = new frmOSLista(_frmPrincipal);
+                frmOS formFilho = new frmOS(_frmPrincipal, 1);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
             }
             else
             {
-                frmOSFluxo formFilho = new frmOSFluxo(_frmPrincipal);
+                frmOS formFilho = new frmOS(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
             }
 
@@ -307,14 +307,14 @@ namespace Arqueng.VIEW
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            if (FormFilho == "frmRelatorios")
+            if (FormFilho == "frmOSLista")
             {
-                frmOSLista formFilho = new frmOSLista(_frmPrincipal);
+                frmOS formFilho = new frmOS(_frmPrincipal, 1);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
             }
             else
             {
-                frmOSFluxo formFilho = new frmOSFluxo(_frmPrincipal);
+                frmOS formFilho = new frmOS(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
             }
         }

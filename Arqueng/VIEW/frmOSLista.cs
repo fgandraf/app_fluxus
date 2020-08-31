@@ -258,6 +258,13 @@ namespace Arqueng.VIEW
             }
             lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
         }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
+            formNeto.Text = "Adicionar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+        }
     }
 
 
