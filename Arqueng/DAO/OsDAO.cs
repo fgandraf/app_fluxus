@@ -202,7 +202,7 @@ namespace Arqueng.DAO
 
 
 
-        
+
 
         //***** LISTAR ORDENS DE SERVIÇO À SEREM FATURADAS *****//
         public DataTable ListarOSAFaturarDAO()
@@ -223,7 +223,7 @@ namespace Arqueng.DAO
             }
         }
 
-        
+
 
         public DataTable DistinctProOSFaturadaDAO(OsENT dado)
         {
@@ -244,7 +244,7 @@ namespace Arqueng.DAO
             }
         }
 
-        
+
 
 
         public void UpdateStatusRecebida(OsENT dado)
@@ -320,5 +320,5 @@ namespace Arqueng.DAO
         }
 
 
-        }
     }
+}

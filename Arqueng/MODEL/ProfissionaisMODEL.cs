@@ -68,55 +68,6 @@ namespace Arqueng.MODEL
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public bool BuscarNomeUsuarioModel(ProfissionaisENT dado)
-        {
-            try
-            {
-                return dao.BuscarNomeUsuarioDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public void BuscarUsuarioModel(ProfissionaisENT dado)
-        {
-            try
-            {
-                dao.BuscarUsuarioDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-
-
-
     }
 
 

@@ -106,27 +106,6 @@ namespace Arqueng.MODEL
 
 
 
-
-
-
-        public DataTable ListarOSAFaturarModel()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = dao.ListarOSAFaturarDAO();
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-
-
-
         public DataTable DistinctProOSFaturadaModel(OsENT dado)
         {
             try

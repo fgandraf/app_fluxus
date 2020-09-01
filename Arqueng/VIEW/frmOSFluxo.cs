@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
 using System.Data;
-
+using System.Linq;
 
 namespace Arqueng.VIEW
 {
@@ -38,7 +38,7 @@ namespace Arqueng.VIEW
                     dvOS.RowFilter = String.Format("status = '{0}' AND fatura_cod = 0", dgv.Tag.ToString());
                 else
                     dvOS.RowFilter = String.Format("status = '{0}' AND profissional_cod = '{1}' AND fatura_cod = 0", dgv.Tag.ToString(), cboProfissional.SelectedValue.ToString());
-                
+
                 dgv.DataSource = dvOS;
 
 
@@ -61,9 +61,11 @@ namespace Arqueng.VIEW
 
         private void EditarOS(DataGridView dgv)
         {
-            frmAddOS formNeto = new frmAddOS
-            (
-                _frmPrincipal, 
+            if (dgv != null)
+            {
+                frmAddOS formNeto = new frmAddOS
+                (
+                _frmPrincipal,
                 this.Name,
                 dgv.CurrentRow.Cells[0].Value.ToString(),//referencia
                 dgv.CurrentRow.Cells[1].Value.ToString(),//agencia
@@ -84,28 +86,32 @@ namespace Arqueng.VIEW
                 dgv.CurrentRow.Cells[16].Value.ToString(),//data_concluida
                 dgv.CurrentRow.Cells[17].Value.ToString(),//obs
                 dgv.CurrentRow.Cells[18].Value.ToString()//fatura_cod
-            );
-            formNeto.Text = "Alterar";
-            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+                );
+                formNeto.Text = "Alterar";
+                _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+            }
         }
 
         private void ExcluirOS(DataGridView dgv)
         {
-            var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
+            if (dgv != null)
             {
-                try
+                var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.Yes)
                 {
-                    OsMODEL model = new OsMODEL();
-                    ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
-                    dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
-                    model.DeleteOsModel(dado);
-                    DT.OS = model.ListarOsModel();
-                    ListarOS(dgv);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try
+                    {
+                        OsMODEL model = new OsMODEL();
+                        ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
+                        dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
+                        model.DeleteOsModel(dado);
+                        DT.OS = model.ListarOsModel();
+                        ListarOS(dgv);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
@@ -114,20 +120,29 @@ namespace Arqueng.VIEW
         {
             try
             {
-                OsENT dado = new OsENT();
-                OsMODEL model = new OsMODEL();
                 int sourcerow = Convert.ToInt32(ev.Data.GetData(Type.GetType("System.Int32")));
-                dado.Status = dgvDestino.Tag.ToString();
-                dado.Referencia = dgvOrigem.Rows[sourcerow].Cells[0].Value.ToString();
-                model.UpdateStatusModel(dado);
-                DT.OS = model.ListarOsModel();
+
+                if (sourcerow >= 0)
+                {
+                    OsENT dado = new OsENT();
+                    OsMODEL model = new OsMODEL();
+
+                    dado.Status = dgvDestino.Tag.ToString();
+                    dado.Referencia = dgvOrigem.Rows[sourcerow].Cells[0].Value.ToString();
+
+                    DataRow linha = DT.OS.Select("referencia = '" + dado.Referencia + "'").FirstOrDefault();
+                    linha["status"] = dado.Status;
+
+                    linha = DT.OSFatura.Select("referencia = '" + dado.Referencia + "'").FirstOrDefault();
+                    linha["status"] = dado.Status;
+
+                    model.UpdateStatusModel(dado);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            ListarOS(dgvOrigem);
-            ListarOS(dgvDestino);
         }
 
         private void CapturaDGVOrigem(DataGridView dgv, MouseEventArgs e)
@@ -278,6 +293,8 @@ namespace Arqueng.VIEW
         private void dgvRecebidas_DragDrop(object sender, DragEventArgs e)
         {
             AtualizaStatus((DataGridView)sender, e);
+            ContarRegistros(dgvOrigem);
+            ContarRegistros((DataGridView)sender);
         }
 
         private void dgvRecebidas_MouseDown(object sender, MouseEventArgs e)
@@ -320,6 +337,8 @@ namespace Arqueng.VIEW
         private void dgvPendentes_DragDrop(object sender, DragEventArgs e)
         {
             AtualizaStatus((DataGridView)sender, e);
+            ContarRegistros(dgvOrigem);
+            ContarRegistros((DataGridView)sender);
         }
 
         private void dgvPendentes_MouseDown(object sender, MouseEventArgs e)
@@ -362,6 +381,8 @@ namespace Arqueng.VIEW
         private void dgvVistoriadas_DragDrop(object sender, DragEventArgs e)
         {
             AtualizaStatus((DataGridView)sender, e);
+            ContarRegistros(dgvOrigem);
+            ContarRegistros((DataGridView)sender);
         }
 
         private void dgvVistoriadas_MouseDown(object sender, MouseEventArgs e)
@@ -404,6 +425,8 @@ namespace Arqueng.VIEW
         private void dgvConcluidas_DragDrop(object sender, DragEventArgs e)
         {
             AtualizaStatus((DataGridView)sender, e);
+            ContarRegistros(dgvOrigem);
+            ContarRegistros((DataGridView)sender);
         }
 
         private void dgvConcluidas_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
@@ -420,10 +443,6 @@ namespace Arqueng.VIEW
         {
             if (e.Button == MouseButtons.Left)
                 CapturaDGVOrigem((DataGridView)sender, e);
-            
-            
-            
-            _lastEnteredControl = (Control)sender;
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace Arqueng
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
+        
 
 
         //:METHODS
@@ -137,45 +139,64 @@ namespace Arqueng
         {
             prbProgress.Show();
             prbProgress.Value += 1;
-            ProfissionaisENT dado = new ProfissionaisENT();
-            dado.Usr_nome = txtUsuario.Text;
-            ProfissionaisMODEL model = new ProfissionaisMODEL();
-            model.BuscarUsuarioModel(dado);
+
+            lblLoad.Text = "Validando usuário";
+            Listar_profissionais();
+            DataView dvUsr = new DataView(DT.Profissionais);
+            dvUsr.RowFilter = String.Format("usr_nome = '{0}'", txtUsuario.Text);
+            DataRow[] dataRow;
             prbProgress.Value += 1;
-            if (Globais.Usr_nome == null || txtSenha.Text != Globais.Usr_senha || Globais.Usr_ativo == false)
-                MessageBox.Show("Nome de usuário/senha incorreto(s) ou usuário não está ativo");
+
+            if (dvUsr.Count == 0)
+            {
+                MessageBox.Show("Usuário não encontrado", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                prbProgress.Value = 0;
+                lblLoad.Text = "";
+                return;
+            }
             else
             {
-                Listar_atividades();
-                prbProgress.Value += 1;
-
-                Listar_faturas();
-                prbProgress.Value += 1;
-
-                Listar_cadastrais();
-                prbProgress.Value += 1;
-
-                Listar_profissionais();
-                prbProgress.Value += 1;
-
-                Listar_agencias();
-                prbProgress.Value += 1;
-
-                Listar_tb_os();
-                prbProgress.Value += 1;
-
-                Listar_tbOsFatura();
-                prbProgress.Value += 1;
-
-
-
-
-                Task.Delay(5000);
-                prbProgress.Hide();
-                this.Close();
+                dataRow = ((DataTable)dvUsr.ToTable()).Select(String.Format("usr_nome = '{0}'", txtUsuario.Text));
+                if (dataRow[0]["usr_senha"].ToString() != txtSenha.Text || Convert.ToBoolean(dataRow[0]["usr_ativo"]) == false)
+                {
+                    MessageBox.Show("Senha incorreta ou usuário não está ativo", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    prbProgress.Value = 0;
+                    lblLoad.Text = "";
+                    return;
+                }
             }
+            Globais.Usr_nome = dataRow[0]["usr_nome"].ToString();
+            Globais.Codpro = dataRow[0]["codigo"].ToString();
+            Globais.Rt = Convert.ToBoolean(dataRow[0]["rt"]);
+            Globais.Rl = Convert.ToBoolean(dataRow[0]["rl"]);
 
+            prbProgress.Value += 1;
+
+            lblLoad.Text = "Carregando Banco de Dados";
+            Listar_atividades();
+            prbProgress.Value += 1;
+
+            Listar_faturas();
+            prbProgress.Value += 1;
+
+            Listar_cadastrais();
+            prbProgress.Value += 1;
+
+            Listar_agencias();
+            prbProgress.Value += 1;
+
+            Listar_tb_os();
+            prbProgress.Value += 1;
+
+            Listar_tbOsFatura();
+            prbProgress.Value += 1;
+
+            lblLoad.Text = "";
+            prbProgress.Hide();
+            this.Close();
         }
+
+    
 
         private void txtSenha_KeyDown(object sender, KeyEventArgs e)
         {
@@ -193,6 +214,11 @@ namespace Arqueng
         {
             txtSenha.PasswordChar = '*';
             imgShowPwd.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

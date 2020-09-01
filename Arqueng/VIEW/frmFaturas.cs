@@ -3,10 +3,7 @@ using Arqueng.MODEL;
 using System;
 using System.Windows.Forms;
 using System.IO;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using System.Data;
-using System.Globalization;
 using Arqueng.RELATORIOS;
 
 namespace Arqueng.VIEW

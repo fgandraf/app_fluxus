@@ -223,7 +223,7 @@
             // 
             // lblLoad
             // 
-            this.lblLoad.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLoad.Font = new System.Drawing.Font("Segoe UI", 7F);
             this.lblLoad.ForeColor = System.Drawing.SystemColors.Window;
             this.lblLoad.Location = new System.Drawing.Point(0, 278);
             this.lblLoad.Margin = new System.Windows.Forms.Padding(0);

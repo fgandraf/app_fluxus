@@ -371,7 +371,8 @@
             this.dgvPendentes.AllowDrop = true;
             this.dgvPendentes.AllowUserToAddRows = false;
             this.dgvPendentes.AllowUserToDeleteRows = false;
-            this.dgvPendentes.AllowUserToOrderColumns = true;
+            this.dgvPendentes.AllowUserToResizeColumns = false;
+            this.dgvPendentes.AllowUserToResizeRows = false;
             this.dgvPendentes.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvPendentes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPendentes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -880,7 +881,8 @@
             this.dgvVistoriadas.AllowDrop = true;
             this.dgvVistoriadas.AllowUserToAddRows = false;
             this.dgvVistoriadas.AllowUserToDeleteRows = false;
-            this.dgvVistoriadas.AllowUserToOrderColumns = true;
+            this.dgvVistoriadas.AllowUserToResizeColumns = false;
+            this.dgvVistoriadas.AllowUserToResizeRows = false;
             this.dgvVistoriadas.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvVistoriadas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvVistoriadas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -1121,7 +1123,8 @@
             this.dgvConcluidas.AllowDrop = true;
             this.dgvConcluidas.AllowUserToAddRows = false;
             this.dgvConcluidas.AllowUserToDeleteRows = false;
-            this.dgvConcluidas.AllowUserToOrderColumns = true;
+            this.dgvConcluidas.AllowUserToResizeColumns = false;
+            this.dgvConcluidas.AllowUserToResizeRows = false;
             this.dgvConcluidas.BackgroundColor = System.Drawing.Color.LightSteelBlue;
             this.dgvConcluidas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvConcluidas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;

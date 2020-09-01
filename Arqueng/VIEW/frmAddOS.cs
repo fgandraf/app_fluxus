@@ -178,8 +178,8 @@ namespace Arqueng.VIEW
                 txtDataOrdem.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 dtpPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
             }
-            txtDataOrdem.Focus();
-            txtDataOrdem.SelectAll();
+            cboProfissional.Focus();
+
 
 
             if (Globais.Rt && Globais.Rl == false)

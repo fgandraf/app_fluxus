@@ -4,6 +4,7 @@ using Arqueng.MODEL;
 using Arqueng.ENTIDADES;
 using System.Globalization;
 using System.Linq;
+using System.Data;
 
 namespace Arqueng.VIEW
 {
@@ -22,11 +23,17 @@ namespace Arqueng.VIEW
         private decimal Total = 0;
 
 
+
+
         protected void ListarOS()
         {
             try
             {
-                dgvOS.DataSource = modelOS.ListarOSAFaturarModel();
+                DataView dvOS = new DataView(DT.OSFatura);
+                dvOS.RowFilter = "fatura_cod = 0 AND status = 'CONCLUÍDA'";
+                dgvOS.DataSource = dvOS;
+
+
                 if (dgvOS.Rows.Count == 0)
                 {
                     dgvOS.Enabled = false;
@@ -48,7 +55,7 @@ namespace Arqueng.VIEW
             Subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_atividade.Name].Value ?? 0));
             Subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_deslocamento.Name].Value ?? 0));
             Total = Subtotal_os + Subtotal_desloc;
-            
+
             txtValorOS.Text = string.Format("{0:0,0.00}", Subtotal_os);
             txtValorDeslocamento.Text = string.Format("{0:0,0.00}", Subtotal_desloc);
             txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", Total);
@@ -94,7 +101,7 @@ namespace Arqueng.VIEW
             dadoFatura.subtotal_os = Subtotal_os.ToString().Replace(',', '.');
             dadoFatura.subtotal_desloc = Subtotal_desloc.ToString().Replace(',', '.');
             dadoFatura.total = Total.ToString().Replace(',', '.');
-            
+
             try
             {
                 modelFatura.InsertFaturaModel(dadoFatura);
@@ -104,7 +111,7 @@ namespace Arqueng.VIEW
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
             dadoOS.Fatura_cod = dadoFatura.id.ToString();
 
             foreach (DataGridViewRow row in dgvOS.Rows)
@@ -116,13 +123,13 @@ namespace Arqueng.VIEW
             DT.OSFatura = modelOS.ListarOSFaturaModel();
 
             MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-            
+
+
             this.Close();
-            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços - Em fluxo";
+            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços";
             _frmPrincipal.lblTitulo.Refresh();
 
-            frmOSFluxo formFilho = new frmOSFluxo(_frmPrincipal);
+            frmOS formFilho = new frmOS(_frmPrincipal);
             _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
 
 
@@ -137,9 +144,9 @@ namespace Arqueng.VIEW
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços - Em fluxo";
+            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços";
             _frmPrincipal.lblTitulo.Refresh();
-            frmOSFluxo formFilho = new frmOSFluxo(_frmPrincipal);
+            frmOS formFilho = new frmOS(_frmPrincipal);
             _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
         }
 

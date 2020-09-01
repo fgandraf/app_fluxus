@@ -15,7 +15,7 @@ namespace Arqueng.ENTIDADES
         public static bool Rl = false;
         public static bool Usr_ativo = false;
         public static string Usr_nome = null;
-        public static string Usr_senha = null;
+        //public static string Usr_senha = null;
         //GENERAL INFO
         public static string Versao = "1.0b";
         //COMPANY INFO
