@@ -17,18 +17,21 @@ namespace Arqueng.VIEW
 
         OsENT dado = new OsENT();
         OsMODEL osmodel = new OsMODEL();
+        ProfissionaisMODEL promodel = new ProfissionaisMODEL();
 
+        DataTable DtAtividades = new DataTable();
+        DataTable DtProfissionais = new DataTable();
 
 
 
         //:METHODS
 
- 
+
         private void BuscarNomeAtividade()
         {
             try
             {
-                DataRow[] dataRowAtividade = DT.Atividades.Select(String.Format("codigo = '{0}'", cboAtividade.Text));
+                DataRow[] dataRowAtividade = DtAtividades.Select(String.Format("codigo = '{0}'", cboAtividade.Text));
                 lblAtividadeNome.Text = dataRowAtividade[0]["descricao"].ToString();
                 lblAtividadeValor.Text = dataRowAtividade[0]["valor_atividade"].ToString();
                 lblAtividadeDeslocamento.Text = dataRowAtividade[0]["valor_deslocamento"].ToString();
@@ -43,7 +46,7 @@ namespace Arqueng.VIEW
         {
             try
             {
-                DataRow[] dataRowPro = DT.Profissionais.Select(String.Format("codigo = '{0}'", cboProfissional.Text));
+                DataRow[] dataRowPro = DtProfissionais.Select(String.Format("codigo = '{0}'", cboProfissional.Text));
                 lblNomeProfissional.Text = dataRowPro[0]["nomeid"].ToString();
             }
             catch (Exception ex)
@@ -56,7 +59,10 @@ namespace Arqueng.VIEW
         {
             try
             {
-                DataRow[] dataRowAgencia = DT.Agencias.Select(String.Format("agencia = '{0}'", txtReferencia.Text.Substring(5, 4)));
+                AgenciasENT dado = new AgenciasENT();
+                AgenciasMODEL model = new AgenciasMODEL();
+                dado.Agencia = txtReferencia.Text.Substring(5, 4);
+                DataRow[] dataRowAgencia = (model.BuscarAgenciaModel(dado)).Select();
                 if (dataRowAgencia.Length == 0)
                 {
                     txtAgenciaNome.Text = "Agência não cadastrado!";
@@ -90,8 +96,17 @@ namespace Arqueng.VIEW
             InitializeComponent();
             _frmPrincipal = frm1;
             FormFilho = frmfilho;
-            cboProfissional.DataSource = Globais.Profissionais(false);
-            cboAtividade.DataSource = Globais.Atividades(false);
+            
+
+            DtProfissionais = promodel.ListarCodigoENomeidModel(false);
+            cboProfissional.DataSource = DtProfissionais;
+
+
+            DtAtividades = Globais.Atividades(false);
+            cboAtividade.DataSource = DtAtividades;
+
+            cboCidade.DataSource = Globais.Cidades(false);
+            cboCidade.SelectedIndex = -1;
         }
 
         public frmAddOS(frmPrincipal frm1, string frmfilho, string referencia, string agencia, string titulo, string dataordem, string prazoexecucao, string profissionalcod, string atividadecod, bool siopi, string nomecliente, string cidade, string nomecontato, string telefonecontato, string coordenada, string status, string datapendente, string datavistoria, string dataconcluida, string obs, string faturacod)
@@ -100,8 +115,14 @@ namespace Arqueng.VIEW
             _frmPrincipal = frm1;
             FormFilho = frmfilho;
 
+            DtProfissionais = promodel.ListarCodigoENomeidModel(false);
+            DtAtividades = Globais.Atividades(false);
+
+            cboCidade.DataSource = Globais.Cidades(false);
+            cboCidade.SelectedIndex = -1;
+
             //POPULATE
-            cboProfissional.DataSource = Globais.Profissionais(false);
+            cboProfissional.DataSource = DtProfissionais;
             cboAtividade.DataSource = Globais.Atividades(false);
             dado.Titulo = titulo;
             txtReferencia.Text = referencia;
@@ -112,7 +133,7 @@ namespace Arqueng.VIEW
             cboAtividade.Text = atividadecod;
             chkSiopi.Checked = siopi;
             txtNomeCliente.Text = nomecliente;
-            txtCidade.Text = cidade;
+            cboCidade.Text = cidade;
             txtNomeContato.Text = nomecontato;
             txtTelefoneContato.Text = telefonecontato;
             txtCoordenada.Text = coordenada;
@@ -138,8 +159,9 @@ namespace Arqueng.VIEW
 
             if (faturacod != "0")
             {
+                FaturasMODEL modelFat = new FaturasMODEL();
                 lblFaturada.Show();
-                txtCodFatura.Text = "Fatura n°: " + faturacod;
+                txtCodFatura.Text = "Fatura: " + modelFat.DescricaoFaturaModel(faturacod); 
                 txtCodFatura.Show();
 
                 foreach (Control c in this.tabPage1.Controls)
@@ -179,6 +201,7 @@ namespace Arqueng.VIEW
                 dtpPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
             }
             cboProfissional.Focus();
+            
 
 
 
@@ -210,7 +233,7 @@ namespace Arqueng.VIEW
 
             //POPULATE
             int refe = Convert.ToInt32(txtReferencia.Text.Substring(10, 9));
-            dado.Titulo = cboAtividade.Text + "-" + txtCidade.Text + "-" + Convert.ToString(refe) + "\n\n" + "● Prazo: " + dtpPrazo.Value.ToString("dd/MM/yyyy") + "\nCliente: " + txtNomeCliente.Text.Replace(" ", " ");
+            dado.Titulo = cboAtividade.Text + "-" + cboCidade.Text + "-" + Convert.ToString(refe) + "\n\n" + "● Prazo: " + dtpPrazo.Value.ToString("dd/MM/yyyy") + "\nCliente: " + txtNomeCliente.Text.Replace(" ", " ");
             dado.Referencia = txtReferencia.Text;
             dado.Agencia = Agencia;
             if (txtDataOrdem.Text != "")
@@ -220,7 +243,7 @@ namespace Arqueng.VIEW
             dado.Atividade_cod = cboAtividade.Text;
             dado.Siopi = chkSiopi.Checked;
             dado.Nome_cliente = txtNomeCliente.Text;
-            dado.Cidade = txtCidade.Text;
+            dado.Cidade = cboCidade.Text;
             dado.Nome_contato = txtNomeContato.Text;
             dado.Telefone_contato = txtTelefoneContato.Text;
             dado.Coordenada = txtCoordenada.Text;
@@ -370,7 +393,12 @@ namespace Arqueng.VIEW
         {
             BuscarNomeAtividade();
         }
-
+        
+        private void cboCidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsLetter(e.KeyChar))
+                e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
 
 
 
@@ -424,8 +452,6 @@ namespace Arqueng.VIEW
         {
             dtpPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
         }
-
-
 
 
 

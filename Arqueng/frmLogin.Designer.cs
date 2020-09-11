@@ -240,7 +240,7 @@
             this.prbProgress.Maximum = 9;
             this.prbProgress.Name = "prbProgress";
             this.prbProgress.Size = new System.Drawing.Size(420, 4);
-            this.prbProgress.Step = 9;
+            this.prbProgress.Step = 8;
             this.prbProgress.TabIndex = 15;
             this.prbProgress.Visible = false;
             // 

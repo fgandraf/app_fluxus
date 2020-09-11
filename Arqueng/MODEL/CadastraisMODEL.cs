@@ -18,9 +18,7 @@ namespace Arqueng.MODEL
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt = dao.SelectAllDAO();
-                return dt;
+                return dao.SelectAllDAO();
             }
             catch (Exception ex)
             {
@@ -28,6 +26,29 @@ namespace Arqueng.MODEL
             }
         }
 
+        public DataTable DadosParaImpressaoModel()
+        {
+            try
+            {
+                return dao.DadosParaImpressaoDAO();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public string NomeFantasiaModel()
+        {
+            try
+            {
+                return dao.NomeFantasiaDAO();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public void InsertCadastraisModel(CadastraisENT dado)
         {

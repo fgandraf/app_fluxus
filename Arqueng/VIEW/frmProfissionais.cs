@@ -12,17 +12,18 @@ namespace Arqueng.VIEW
     {
 
         frmPrincipal _frmPrincipal;
-        ProfissionaisMODEL model = new ProfissionaisMODEL();
+        
 
 
 
         //:METHODS
-        private void PopulateGrid()
+        private void Listar()
         {
             try
             {
-                DataView dvProfissionais = new DataView(DT.Profissionais);//------
-                dgvProfissionais.DataSource = dvProfissionais;//-----------
+                ProfissionaisMODEL model = new ProfissionaisMODEL();
+                dgvProfissionais.DataSource = model.ListarProfissionaisModel();
+
                 if (dgvProfissionais.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -46,6 +47,7 @@ namespace Arqueng.VIEW
             try
             {
                 ENTIDADES.ProfissionaisENT dado = new ENTIDADES.ProfissionaisENT();
+                ProfissionaisMODEL model = new ProfissionaisMODEL();
                 dado.Codigo = dgvProfissionais.CurrentRow.Cells[0].Value.ToString();
                 model.DeleteProfissionalModel(dado);
             }
@@ -66,7 +68,7 @@ namespace Arqueng.VIEW
         }
         private void frmProfissionais_Load(object sender, EventArgs e)
         {
-            PopulateGrid();//---------
+            Listar();
             if (Globais.Rl == false)
             {
                 btnAdicionar.Enabled = false;
@@ -84,8 +86,7 @@ namespace Arqueng.VIEW
             if (result == DialogResult.Yes)
             {
                 Delete();
-                DT.Profissionais = model.ListarProfissionaisModel();//-------
-                PopulateGrid();//---------
+                Listar();
             }
         }
         private void btnEditar_Click(object sender, EventArgs e)

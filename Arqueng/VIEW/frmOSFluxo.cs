@@ -13,7 +13,10 @@ namespace Arqueng.VIEW
         frmPrincipal _frmPrincipal;
         Control _lastEnteredControl;
         DataGridView dgvOrigem;
+       
+        DataTable dtOSNFaturada = new DataTable();
 
+        
 
 
         //:METHODS
@@ -33,11 +36,11 @@ namespace Arqueng.VIEW
         {
             try
             {
-                DataView dvOS = new DataView(DT.OS);
+                DataView dvOS = new DataView(dtOSNFaturada);
                 if (cboProfissional.SelectedIndex == 0)
-                    dvOS.RowFilter = String.Format("status = '{0}' AND fatura_cod = 0", dgv.Tag.ToString());
+                    dvOS.RowFilter = String.Format("status = '{0}'", dgv.Tag.ToString());
                 else
-                    dvOS.RowFilter = String.Format("status = '{0}' AND profissional_cod = '{1}' AND fatura_cod = 0", dgv.Tag.ToString(), cboProfissional.SelectedValue.ToString());
+                    dvOS.RowFilter = String.Format("status = '{0}' AND profissional_cod = '{1}'", dgv.Tag.ToString(), cboProfissional.SelectedValue.ToString());
 
                 dgv.DataSource = dvOS;
 
@@ -102,10 +105,10 @@ namespace Arqueng.VIEW
                     try
                     {
                         OsMODEL model = new OsMODEL();
-                        ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
+                        OsENT dado = new OsENT();
                         dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
                         model.DeleteOsModel(dado);
-                        DT.OS = model.ListarOsModel();
+                        dtOSNFaturada = model.NFaturadasModel();
                         ListarOS(dgv);
                     }
                     catch (Exception ex)
@@ -120,23 +123,25 @@ namespace Arqueng.VIEW
         {
             try
             {
+                OsMODEL model = new OsMODEL();
                 int sourcerow = Convert.ToInt32(ev.Data.GetData(Type.GetType("System.Int32")));
 
                 if (sourcerow >= 0)
                 {
                     OsENT dado = new OsENT();
-                    OsMODEL model = new OsMODEL();
 
                     dado.Status = dgvDestino.Tag.ToString();
                     dado.Referencia = dgvOrigem.Rows[sourcerow].Cells[0].Value.ToString();
 
-                    DataRow linha = DT.OS.Select("referencia = '" + dado.Referencia + "'").FirstOrDefault();
+                    DataRow linha = dtOSNFaturada.Select("referencia = '" + dado.Referencia + "'").FirstOrDefault();
                     linha["status"] = dado.Status;
 
-                    linha = DT.OSFatura.Select("referencia = '" + dado.Referencia + "'").FirstOrDefault();
+                    linha = dtOSNFaturada.Select("referencia = '" + dado.Referencia + "'").FirstOrDefault();
                     linha["status"] = dado.Status;
 
                     model.UpdateStatusModel(dado);
+                    ListarOS(dgvOrigem);
+                    ListarOS(dgvDestino);
                 }
             }
             catch (Exception ex)
@@ -193,7 +198,10 @@ namespace Arqueng.VIEW
 
         private void frmOSFluxo_Load(object sender, EventArgs e)
         {
-            cboProfissional.DataSource = Globais.Profissionais(true);
+            OsMODEL model = new OsMODEL();
+            ProfissionaisMODEL promodel = new ProfissionaisMODEL();
+            dtOSNFaturada = model.NFaturadasModel();
+            cboProfissional.DataSource = promodel.ListarCodigoENomeidModel(true);
             if (Globais.Rl)
             {
                 cboProfissional.Enabled = true;

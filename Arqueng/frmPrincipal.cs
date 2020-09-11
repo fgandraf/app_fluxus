@@ -19,7 +19,6 @@ namespace Arqueng
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        CadastraisMODEL cadmodel = new CadastraisMODEL();
         Form FormAtivo = null;
 
 
@@ -56,29 +55,6 @@ namespace Arqueng
             pnlCtrlFaturas.Hide();
         }
 
-        public void BuscarDadosEmpresa()
-        {
-            try
-            {
-                DataRow[] dadosDaEmpresa = DT.DadosCadastrais.Select(String.Format("codigo = 1"));
-                
-                Globais.Cnpj = dadosDaEmpresa[0]["cnpj"].ToString();
-                Globais.Razao = dadosDaEmpresa[0]["razao"].ToString();
-                Globais.Edital = dadosDaEmpresa[0]["ct_edital"].ToString();
-                Globais.Contrato = dadosDaEmpresa[0]["ct_contrato"].ToString();
-                Globais.Fantasia = dadosDaEmpresa[0]["fantasia"].ToString();
-                Globais.Logo = (byte[])(dadosDaEmpresa[0]["logo"]);
-
-                if (Globais.Fantasia != null)
-                    btnDadosCadastrais.Text = Globais.Fantasia;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
 
 
 
@@ -101,7 +77,8 @@ namespace Arqueng
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = "Usuário: " + Globais.Usr_nome;
-            BuscarDadosEmpresa();
+            if (Globais.Fantasia != null)
+                btnDadosCadastrais.Text = Globais.Fantasia;
 
             lblVersao.Text = "v. " + Globais.Versao;
             btnOS.PerformClick();
@@ -201,7 +178,6 @@ namespace Arqueng
 
             lblTitulo.Text = "Ordens de Serviços";
 
-            //frmOSFluxo frm = new frmOSFluxo(this);
             frmOS frm = new frmOS(this);
             AbrirFormInPanel(frm, pnlMain);
             FormAtivo = frm;

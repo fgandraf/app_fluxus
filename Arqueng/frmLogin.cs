@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Arqueng.ENTIDADES;
 using Arqueng.MODEL;
@@ -17,108 +15,34 @@ namespace Arqueng
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        
+
 
 
         //:METHODS
-        private void Listar_tb_os()
+        public void BuscarDadosEmpresa()
         {
-            OsMODEL model = new OsMODEL();
             try
             {
-                DT.OS = model.ListarOsModel();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao carregar tabela 'tb_os'.\n\n" + ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+                CadastraisMODEL model = new CadastraisMODEL();
+                DataRow[] dadosDaEmpresa = (model.DadosParaImpressaoModel()).Select();
 
-        private void Listar_tbOsFatura()
-        {
-            OsMODEL model = new OsMODEL();
-            try
-            {
-                DT.OSFatura = model.ListarOSFaturaModel();
+                Globais.Cnpj = dadosDaEmpresa[0]["cnpj"].ToString();
+                Globais.Razao = dadosDaEmpresa[0]["razao"].ToString();
+                Globais.Edital = dadosDaEmpresa[0]["ct_edital"].ToString();
+                Globais.Contrato = dadosDaEmpresa[0]["ct_contrato"].ToString();
+                Globais.Fantasia = dadosDaEmpresa[0]["fantasia"].ToString();
+                Globais.Logo = (byte[])(dadosDaEmpresa[0]["logo"]);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao carregar tabela 'tb_os'.\n\n" + ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void Listar_cadastrais()
-        {
-            CadastraisMODEL model = new CadastraisMODEL();
-            try
-            {
-                DT.DadosCadastrais = model.ListarCadastraisModel();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao carregar tabela 'tb_dadoscadastrais'.\n\n" + ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void Listar_profissionais()
-        {
-            ProfissionaisMODEL model = new ProfissionaisMODEL();
-            try
-            {
-                DT.Profissionais = model.ListarProfissionaisModel();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao carregar tabela 'tb_profissionais'.\n\n" + ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void Listar_atividades()
-        {
-            AtividadesMODEL model = new AtividadesMODEL();
-            try
-            {
-                DT.Atividades = model.ListarAtividadesModel();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao carregar tabela 'tb_atividades'.\n\n" + ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void Listar_agencias()
-        {
-            AgenciasMODEL model = new AgenciasMODEL();
-            try
-            {
-                DT.Agencias = model.ListarAgenciasModel();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao carregar tabela 'tb_agencias'.\n\n" + ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void Listar_faturas()
-        {
-            FaturasMODEL model = new FaturasMODEL();
-            try
-            {
-                DT.Faturas = model.ListarFaturaModel();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao carregar tabela 'tb_faturas'.\n\n" + ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
 
 
-
-
-
-
+        //:EVENTS
         public frmLogin()
         {
             InitializeComponent();
@@ -137,30 +61,24 @@ namespace Arqueng
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            prbProgress.Show();
-            prbProgress.Value += 1;
-
             lblLoad.Text = "Validando usuário";
-            Listar_profissionais();
-            DataView dvUsr = new DataView(DT.Profissionais);
-            dvUsr.RowFilter = String.Format("usr_nome = '{0}'", txtUsuario.Text);
-            DataRow[] dataRow;
-            prbProgress.Value += 1;
 
-            if (dvUsr.Count == 0)
+            ProfissionaisMODEL model = new ProfissionaisMODEL();
+            DataTable dtUsuario = model.BuscarUsuarioModel(txtUsuario.Text);
+            DataRow[] dataRow;
+
+            if (dtUsuario.Rows.Count == 0)
             {
                 MessageBox.Show("Usuário não encontrado", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                prbProgress.Value = 0;
                 lblLoad.Text = "";
                 return;
             }
             else
             {
-                dataRow = ((DataTable)dvUsr.ToTable()).Select(String.Format("usr_nome = '{0}'", txtUsuario.Text));
+                dataRow = dtUsuario.Select();
                 if (dataRow[0]["usr_senha"].ToString() != txtSenha.Text || Convert.ToBoolean(dataRow[0]["usr_ativo"]) == false)
                 {
                     MessageBox.Show("Senha incorreta ou usuário não está ativo", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    prbProgress.Value = 0;
                     lblLoad.Text = "";
                     return;
                 }
@@ -170,29 +88,63 @@ namespace Arqueng
             Globais.Rt = Convert.ToBoolean(dataRow[0]["rt"]);
             Globais.Rl = Convert.ToBoolean(dataRow[0]["rl"]);
 
-            prbProgress.Value += 1;
+            BuscarDadosEmpresa();
 
-            lblLoad.Text = "Carregando Banco de Dados";
-            Listar_atividades();
-            prbProgress.Value += 1;
 
-            Listar_faturas();
-            prbProgress.Value += 1;
 
-            Listar_cadastrais();
-            prbProgress.Value += 1;
 
-            Listar_agencias();
-            prbProgress.Value += 1;
 
-            Listar_tb_os();
-            prbProgress.Value += 1;
 
-            Listar_tbOsFatura();
-            prbProgress.Value += 1;
+
+
+
+
+
+
+
+
+            ////TABELA DE PROFISSIONAIS
+            //Listar_profissionais();
+            //DataView dvUsr = new DataView(DT.Profissionais);
+            //dvUsr.RowFilter = String.Format("usr_nome = '{0}'", txtUsuario.Text);
+            //DataRow[] dataRow;
+            //prbProgress.Value += 1;
+
+            //if (dvUsr.Count == 0)
+            //{
+            //    MessageBox.Show("Usuário não encontrado", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    prbProgress.Value = 0;
+            //    lblLoad.Text = "";
+            //    return;
+            //}
+            //else
+            //{
+            //    dataRow = ((DataTable)dvUsr.ToTable()).Select(String.Format("usr_nome = '{0}'", txtUsuario.Text));
+            //    if (dataRow[0]["usr_senha"].ToString() != txtSenha.Text || Convert.ToBoolean(dataRow[0]["usr_ativo"]) == false)
+            //    {
+            //        MessageBox.Show("Senha incorreta ou usuário não está ativo", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        prbProgress.Value = 0;
+            //        lblLoad.Text = "";
+            //        return;
+            //    }
+            //}
+            //prbProgress.Value += 1;
+            //Globais.Usr_nome = dataRow[0]["usr_nome"].ToString();
+            //prbProgress.Value += 1;
+            //Globais.Codpro = dataRow[0]["codigo"].ToString();
+            //prbProgress.Value += 1;
+            //Globais.Rt = Convert.ToBoolean(dataRow[0]["rt"]);
+            //prbProgress.Value += 1;
+            //Globais.Rl = Convert.ToBoolean(dataRow[0]["rl"]);
+            //prbProgress.Value += 1;
+            ////FIM DA TABELA DE PROFISSIONAIS
+
+           
+            //prbProgress.Value += 1;
+
 
             lblLoad.Text = "";
-            prbProgress.Hide();
+            //prbProgress.Hide();
             this.Close();
         }
 

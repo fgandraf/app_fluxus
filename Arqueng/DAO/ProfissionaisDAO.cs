@@ -32,6 +32,45 @@ namespace Arqueng.DAO
         }
 
 
+        public DataTable BuscarUsuarioDAO(string nomeDeUsuario)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT codigo, rt, rl, usr_nome, usr_senha, usr_ativo FROM tb_profissionais WHERE usr_nome = @usr_nome", con.con);
+                sql.Parameters.AddWithValue("@usr_nome", nomeDeUsuario);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public DataTable ListarCodigoENomeidDAO()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT codigo, nomeid FROM tb_profissionais ORDER BY codigo", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
         public void InsertDAO(ProfissionaisENT dado)
         {
             try

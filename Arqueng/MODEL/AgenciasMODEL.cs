@@ -18,9 +18,20 @@ namespace Arqueng.MODEL
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt = dao.SelectAllDAO();
-                return dt;
+                return dao.SelectAllDAO();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public DataTable BuscarAgenciaModel(AgenciasENT dado)
+        {
+            try
+            {
+                return dao.BuscarDAO(dado);
             }
             catch (Exception ex)
             {
@@ -66,6 +77,8 @@ namespace Arqueng.MODEL
                 throw ex;
             }
         }
+
+
 
     }
 

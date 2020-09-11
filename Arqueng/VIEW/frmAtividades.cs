@@ -17,12 +17,13 @@ namespace Arqueng.VIEW
 
 
         //:METHODS
-        private void PopulateGrid()//---------------
+
+        private void Listar()
         {
+            AtividadesMODEL model = new AtividadesMODEL();
             try
             {
-                DataView dvAtividades = new DataView(DT.Atividades);//------
-                dgvAtividades.DataSource = dvAtividades;//-----------
+                dgvAtividades.DataSource = model.ListarAtividadesModel();
                 if (dgvAtividades.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -41,6 +42,32 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        //private void PopulateGrid()//---------------
+        //{
+        //    try
+        //    {
+        //        DataView dvAtividades = new DataView(DT.Atividades);//------
+        //        dgvAtividades.DataSource = dvAtividades;//-----------
+        //        if (dgvAtividades.Rows.Count == 0)
+        //        {
+        //            btnEditar.Enabled = false;
+        //            btnExcluir.Enabled = false;
+        //            dgvAtividades.Enabled = false;
+        //        }
+        //        else
+        //        {
+        //            btnEditar.Enabled = true;
+        //            btnExcluir.Enabled = true;
+        //            dgvAtividades.Enabled = true;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
         private void Delete()
         {
             try
@@ -66,7 +93,7 @@ namespace Arqueng.VIEW
         }
         private void frmAtividades_Load(object sender, EventArgs e)
         {
-            PopulateGrid();//---------
+            Listar();
             if (Globais.Rl == false)
             {
                 btnAdicionar.Enabled = false;
@@ -84,8 +111,7 @@ namespace Arqueng.VIEW
             if (result == DialogResult.Yes)
             {
                 Delete();
-                DT.Atividades = model.ListarAtividadesModel();//-------
-                PopulateGrid();//---------
+                Listar();
             }
 
         }

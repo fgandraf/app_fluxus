@@ -479,7 +479,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Faturar";
             this.Load += new System.EventHandler(this.frmAddFatura_Load);
-            this.Leave += new System.EventHandler(this.frmAddFatura_Leave);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

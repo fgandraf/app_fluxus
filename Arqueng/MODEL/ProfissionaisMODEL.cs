@@ -18,9 +18,7 @@ namespace Arqueng.MODEL
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt = dao.SelectAllDAO();
-                return dt;
+                return dao.SelectAllDAO();
             }
             catch (Exception ex)
             {
@@ -67,6 +65,40 @@ namespace Arqueng.MODEL
             }
         }
 
+
+        public DataTable BuscarUsuarioModel(string nomeDeUsuario)
+        {
+            try
+            {
+                return dao.BuscarUsuarioDAO(nomeDeUsuario);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable ListarCodigoENomeidModel(bool adicionaTitulo)
+        {
+            DataTable dtPro = new DataTable();
+            try
+            {
+               
+                dtPro = dao.ListarCodigoENomeidDAO();
+
+                if (adicionaTitulo)
+                {
+                    DataRow linha = dtPro.NewRow();
+                    linha[1] = "--TODOS--";
+                    dtPro.Rows.InsertAt(linha, 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return dtPro;
+        }
 
     }
 

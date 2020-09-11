@@ -98,9 +98,15 @@ namespace Arqueng.VIEW
             }
 
 
-            DataView dvPro = new DataView(DT.Profissionais);
-            dvPro.RowFilter = String.Format("usr_nome = '{0}'", txtUsrNome.Text);
-            if (dvPro.Count > 0)
+            //DataView dvPro = new DataView(DT.Profissionais);
+            //dvPro.RowFilter = String.Format("usr_nome = '{0}'", txtUsrNome.Text);
+
+            ProfissionaisMODEL model = new ProfissionaisMODEL();
+            DataTable dtPro = model.BuscarUsuarioModel(txtUsrNome.Text);
+
+
+
+            if (dtPro.Rows.Count > 0)
             {
                 MessageBox.Show("Nome de usuário já existente", "Nome de usuário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtUsrNome.Focus();
@@ -144,7 +150,6 @@ namespace Arqueng.VIEW
                 try
                 {
                     model.InsertProfissionalModel(dado);
-                    DT.Profissionais = model.ListarProfissionaisModel();
                 }
                 catch (Exception ex)
                 {
@@ -165,7 +170,6 @@ namespace Arqueng.VIEW
                 try
                 {
                     model.UpdateProfissionalModel(dado);
-                    DT.Profissionais = model.ListarProfissionaisModel();
                 }
                 catch (Exception ex)
                 {

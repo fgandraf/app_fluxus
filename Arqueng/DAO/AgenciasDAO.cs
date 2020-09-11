@@ -34,6 +34,26 @@ namespace Arqueng.DAO
         }
 
 
+        public DataTable BuscarDAO(AgenciasENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT nome, telefone1, email FROM tb_agencias WHERE agencia = @agencia", con.con);
+                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
         public void InsertDAO(AgenciasENT dado)
         {
             try
@@ -110,7 +130,6 @@ namespace Arqueng.DAO
         }
 
 
-      
     }
 
 

@@ -49,7 +49,7 @@
             this.tabOS.Name = "tabOS";
             this.tabOS.Padding = new System.Drawing.Point(0, 0);
             this.tabOS.SelectedIndex = 0;
-            this.tabOS.Size = new System.Drawing.Size(900, 560);
+            this.tabOS.Size = new System.Drawing.Size(900, 561);
             this.tabOS.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabOS.TabIndex = 0;
             this.tabOS.SelectedIndexChanged += new System.EventHandler(this.tabOS_SelectedIndexChanged);
@@ -69,7 +69,7 @@
             this.tabList.Location = new System.Drawing.Point(4, 44);
             this.tabList.Name = "tabList";
             this.tabList.Padding = new System.Windows.Forms.Padding(3);
-            this.tabList.Size = new System.Drawing.Size(892, 512);
+            this.tabList.Size = new System.Drawing.Size(892, 513);
             this.tabList.TabIndex = 1;
             this.tabList.Text = "Lista";
             this.tabList.UseVisualStyleBackColor = true;

@@ -18,9 +18,19 @@ namespace Arqueng.MODEL
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt = dao.SelectAllDAO();
-                return dt;
+                return dao.SelectAllDAO();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable NFaturadasModel()
+        {
+            try
+            {
+                return dao.NFaturadasDAO();
             }
             catch (Exception ex)
             {
@@ -55,11 +65,11 @@ namespace Arqueng.MODEL
         }
 
 
-        public void UpdateOsFaturadaModel(OsENT dado)
+        public void UpdateOsFaturadaModel(string referencia, string fatura_cod)
         {
             try
             {
-                dao.UpdateFaturada(dado);
+                dao.UpdateFaturada(referencia, fatura_cod);
             }
             catch (Exception ex)
             {
@@ -68,13 +78,11 @@ namespace Arqueng.MODEL
         }
 
 
-        public DataTable ListarOSFaturaModel()
+        public DataTable ListarOSFaturaModel(string fatura_cod, bool status)
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt = dao.ListarOSFaturaDAO();
-                return dt;
+                return dao.ListarOSFaturaDAO(fatura_cod, status);
             }
             catch (Exception ex)
             {
@@ -82,7 +90,17 @@ namespace Arqueng.MODEL
             }
         }
 
-
+        public DataTable ListarOSFiltradaModel(string sqlFiltro)
+        {
+            try
+            {
+                return dao.ListarOSFiltradaDAO(sqlFiltro);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
 
@@ -120,6 +138,19 @@ namespace Arqueng.MODEL
             }
         }
 
+        public DataTable DistinctCidadesModel()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                dt = dao.DistinctCidadesDAO();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
 
@@ -127,10 +158,10 @@ namespace Arqueng.MODEL
 
 
 
-        
 
 
-        
+
+
 
 
 

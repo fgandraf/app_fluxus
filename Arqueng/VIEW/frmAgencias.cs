@@ -12,17 +12,16 @@ namespace Arqueng.VIEW
     {
 
         frmPrincipal _frmPrincipal;
-        AgenciasMODEL model = new AgenciasMODEL();
 
 
 
         //:METHODS
-        private void PopulateGrid()
+        private void Listar()
         {
+            AgenciasMODEL model = new AgenciasMODEL();
             try
             {
-                DataView dvAgencias = new DataView(DT.Agencias);//------
-                dgvAgencias.DataSource = dvAgencias;//-----------
+                dgvAgencias.DataSource = model.ListarAgenciasModel();
                 if (dgvAgencias.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -41,11 +40,13 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void Delete()
         {
             try
             {
                 AgenciasENT dado = new AgenciasENT();
+                AgenciasMODEL model = new AgenciasMODEL();
                 dado.Agencia = dgvAgencias.CurrentRow.Cells[0].Value.ToString();
                 model.DeleteAgenciaModel(dado);
             }
@@ -66,7 +67,7 @@ namespace Arqueng.VIEW
         }
         private void frmAgencias_Load(object sender, EventArgs e)
         {
-            PopulateGrid();
+            Listar();
             txtPesquisar.Focus();
         }
 
@@ -79,8 +80,7 @@ namespace Arqueng.VIEW
             if (result == DialogResult.Yes)
             {
                 Delete();
-                DT.Agencias = model.ListarAgenciasModel();//-------
-                PopulateGrid();//---------
+                Listar();
             }
         }
         private void btnEditar_Click(object sender, EventArgs e)

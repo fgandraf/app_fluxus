@@ -24,14 +24,18 @@ namespace Arqueng.VIEW
 
 
 
-
-        protected void ListarOS()
+        //:METHODS
+        private void ListarOS()
         {
             try
             {
-                DataView dvOS = new DataView(DT.OSFatura);
-                dvOS.RowFilter = "fatura_cod = 0 AND status = 'CONCLUÍDA'";
-                dgvOS.DataSource = dvOS;
+                //DataView dvOS = new DataView(DT.OSFatura);
+                //dvOS.RowFilter = "fatura_cod = 0 AND status = 'CONCLUÍDA'";
+                //dgvOS.DataSource = dvOS;
+                OsMODEL model = new OsMODEL();
+                dgvOS.DataSource = model.ListarOSFaturaModel("", true);
+
+
 
 
                 if (dgvOS.Rows.Count == 0)
@@ -49,7 +53,6 @@ namespace Arqueng.VIEW
             }
         }
 
-
         private void SomarValores()
         {
             Subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_atividade.Name].Value ?? 0));
@@ -62,6 +65,11 @@ namespace Arqueng.VIEW
         }
 
 
+
+
+
+        //:EVENTS
+        ///_______Form
         public frmAddFatura(frmPrincipal frm1)
         {
             InitializeComponent();
@@ -70,7 +78,16 @@ namespace Arqueng.VIEW
             txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
 
+        private void frmAddFatura_Load(object sender, EventArgs e)
+        {
+            SomarValores();
+        }
 
+
+
+
+
+        ///_______Button
         private void btnRemover_Click(object sender, EventArgs e)
         {
             if (dgvOS.SelectedRows.Count == 0)
@@ -86,13 +103,6 @@ namespace Arqueng.VIEW
             }
         }
 
-
-        private void dtpData_ValueChanged(object sender, EventArgs e)
-        {
-            txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
-        }
-
-
         private void btnFaturar_Click(object sender, EventArgs e)
         {
             //POPULATE
@@ -105,22 +115,22 @@ namespace Arqueng.VIEW
             try
             {
                 modelFatura.InsertFaturaModel(dadoFatura);
-                DT.Faturas = modelFatura.ListarFaturaModel();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
-            dadoOS.Fatura_cod = dadoFatura.id.ToString();
+
+            string referencia;
+            string fatura_cod = dadoFatura.id.ToString();
 
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
-                dadoOS.Referencia = row.Cells["referencia"].Value.ToString();
-                modelOS.UpdateOsFaturadaModel(dadoOS);
+                referencia = row.Cells["referencia"].Value.ToString();
+                modelOS.UpdateOsFaturadaModel(referencia, fatura_cod);
             }
-            DT.OS = modelOS.ListarOsModel();
-            DT.OSFatura = modelOS.ListarOSFaturaModel();
+
 
             MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -132,13 +142,6 @@ namespace Arqueng.VIEW
             frmOS formFilho = new frmOS(_frmPrincipal);
             _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
 
-
-        }
-
-
-        private void frmAddFatura_Load(object sender, EventArgs e)
-        {
-            SomarValores();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -150,10 +153,18 @@ namespace Arqueng.VIEW
             _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
         }
 
-        private void frmAddFatura_Leave(object sender, EventArgs e)
+
+
+
+
+        ///_______DateTimePicker
+        private void dtpData_ValueChanged(object sender, EventArgs e)
         {
-            GC.Collect();
+            txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
+
+
+
     }
 
 

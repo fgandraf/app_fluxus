@@ -30,7 +30,43 @@ namespace Arqueng.DAO
                 throw;
             }
         }
-      
+
+        public DataTable DadosParaImpressaoDAO()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT cnpj, razao, fantasia, ct_edital, ct_contrato, logo FROM tb_dadoscadastrais WHERE codigo = 1", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public string NomeFantasiaDAO()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT fantasia FROM tb_dadoscadastrais WHERE codigo = 1", con.con);
+                MySqlDataReader dr = sql.ExecuteReader();
+                dr.Read();
+                if (dr.HasRows == false)
+                    return null;
+                else
+                    return Convert.ToString(dr["fantasia"]);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         public void InsertDAO(CadastraisENT dado)
         {
@@ -84,7 +120,7 @@ namespace Arqueng.DAO
             {
                 con.AbrirConexao();
                 sql = new MySqlCommand("UPDATE tb_dadoscadastrais SET cnpj = @cnpj, fantasia = @fantasia, razao = @razao, ie = @ie, im = @im, endereco = @endereco, complemento = @complemento, bairro = @bairro, cidade = @cidade, cep = @cep, uf = @uf, constituicao = @constituicao, telefone = @telefone, telefone2 = @telefone2, email = @email, db_banco = @db_banco, db_tipo = @db_tipo, db_agencia = @db_agencia, db_operador = @db_operador, db_conta = @db_conta, ct_tomador = @ct_tomador, ct_edital = @ct_edital, ct_contrato = @ct_contrato, ct_celebrado = @ct_celebrado, ct_inicio = @ct_inicio, ct_termino = @ct_termino, logo = @logo WHERE codigo = @codigo", con.con);
-                
+
                 sql.Parameters.AddWithValue("@codigo", "1");
                 sql.Parameters.AddWithValue("@cnpj", dado.Cnpj);
                 sql.Parameters.AddWithValue("@fantasia", dado.Fantasia);

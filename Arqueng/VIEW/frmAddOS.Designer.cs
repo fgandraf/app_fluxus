@@ -46,7 +46,6 @@
             this.lblProfissional = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
-            this.txtCidade = new System.Windows.Forms.TextBox();
             this.lblCidade = new System.Windows.Forms.Label();
             this.lblNomeContato = new System.Windows.Forms.Label();
             this.txtNomeContato = new System.Windows.Forms.TextBox();
@@ -80,6 +79,7 @@
             this.txtCoordenada = new System.Windows.Forms.TextBox();
             this.lblCoordenada = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cboCidade = new System.Windows.Forms.ComboBox();
             this.pnlMolduraProfissional.SuspendLayout();
             this.pnlMolduraAtividade.SuspendLayout();
             this.pnlBotton.SuspendLayout();
@@ -291,18 +291,6 @@
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.Size = new System.Drawing.Size(400, 23);
             this.txtNomeCliente.TabIndex = 4;
-            // 
-            // txtCidade
-            // 
-            this.txtCidade.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCidade.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtCidade.Location = new System.Drawing.Point(170, 228);
-            this.txtCidade.MaxLength = 100;
-            this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(400, 23);
-            this.txtCidade.TabIndex = 5;
             // 
             // lblCidade
             // 
@@ -663,6 +651,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.cboCidade);
             this.tabPage1.Controls.Add(this.dtpPrazo);
             this.tabPage1.Controls.Add(this.btnAddAgencia);
             this.tabPage1.Controls.Add(this.txtCoordenada);
@@ -673,7 +662,6 @@
             this.tabPage1.Controls.Add(this.pnlMolduraProfissional);
             this.tabPage1.Controls.Add(this.txtAgenciaTelefone);
             this.tabPage1.Controls.Add(this.lblNomeProfissional);
-            this.tabPage1.Controls.Add(this.txtCidade);
             this.tabPage1.Controls.Add(this.lblAtividadeDeslocamento);
             this.tabPage1.Controls.Add(this.lblCliente);
             this.tabPage1.Controls.Add(this.txtReferencia);
@@ -757,6 +745,19 @@
             this.tabPage3.Text = "Observações";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // cboCidade
+            // 
+            this.cboCidade.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboCidade.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboCidade.DisplayMember = "cidade";
+            this.cboCidade.FormattingEnabled = true;
+            this.cboCidade.Location = new System.Drawing.Point(170, 228);
+            this.cboCidade.Name = "cboCidade";
+            this.cboCidade.Size = new System.Drawing.Size(400, 21);
+            this.cboCidade.TabIndex = 5;
+            this.cboCidade.ValueMember = "cidade";
+            this.cboCidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboCidade_KeyPress);
+            // 
             // frmAddOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -808,7 +809,6 @@
         private System.Windows.Forms.Label lblProfissional;
         private System.Windows.Forms.Label lblCliente;
         private System.Windows.Forms.TextBox txtNomeCliente;
-        private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.Label lblCidade;
         private System.Windows.Forms.Label lblNomeContato;
         private System.Windows.Forms.TextBox txtNomeContato;
@@ -842,5 +842,6 @@
         private System.Windows.Forms.TextBox txtCoordenada;
         private System.Windows.Forms.Label lblCoordenada;
         private System.Windows.Forms.DateTimePicker dtpPrazo;
+        private System.Windows.Forms.ComboBox cboCidade;
     }
 }

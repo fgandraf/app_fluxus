@@ -28,44 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaturas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFaturas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tblFaturas = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlFaturaMain = new System.Windows.Forms.Panel();
+            this.btnRemoverOs = new System.Windows.Forms.Button();
             this.dgvOS = new System.Windows.Forms.DataGridView();
-            this.pnlLinha2 = new System.Windows.Forms.Panel();
-            this.lbData = new System.Windows.Forms.Label();
-            this.txtValorDeslocamento = new System.Windows.Forms.TextBox();
-            this.txtData = new System.Windows.Forms.TextBox();
-            this.txtValorOS = new System.Windows.Forms.TextBox();
-            this.txtValorTotal = new System.Windows.Forms.TextBox();
-            this.lblSubtotal = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.dgvFaturas = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal_os = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal_desloc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.lblNenhuma = new System.Windows.Forms.Label();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.atividade_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +59,27 @@
             this.valor_deslocamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fatura_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlLinha2 = new System.Windows.Forms.Panel();
+            this.lbData = new System.Windows.Forms.Label();
+            this.txtValorDeslocamento = new System.Windows.Forms.TextBox();
+            this.txtData = new System.Windows.Forms.TextBox();
+            this.txtValorOS = new System.Windows.Forms.TextBox();
+            this.txtValorTotal = new System.Windows.Forms.TextBox();
+            this.lblSubtotal = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.dgvFaturas = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotalos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotaldesloca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalsas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.lblNenhuma = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.ttpFatura = new System.Windows.Forms.ToolTip(this.components);
             this.tblFaturas.SuspendLayout();
             this.pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
@@ -129,6 +131,7 @@
             // 
             // pnlFaturaMain
             // 
+            this.pnlFaturaMain.Controls.Add(this.btnRemoverOs);
             this.pnlFaturaMain.Controls.Add(this.dgvOS);
             this.pnlFaturaMain.Controls.Add(this.pnlLinha2);
             this.pnlFaturaMain.Controls.Add(this.lbData);
@@ -144,6 +147,27 @@
             this.pnlFaturaMain.Name = "pnlFaturaMain";
             this.pnlFaturaMain.Size = new System.Drawing.Size(719, 524);
             this.pnlFaturaMain.TabIndex = 432;
+            // 
+            // btnRemoverOs
+            // 
+            this.btnRemoverOs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRemoverOs.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoverOs.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.btnRemoverOs.FlatAppearance.BorderSize = 0;
+            this.btnRemoverOs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
+            this.btnRemoverOs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.btnRemoverOs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverOs.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverOs.Image")));
+            this.btnRemoverOs.Location = new System.Drawing.Point(20, 456);
+            this.btnRemoverOs.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRemoverOs.Name = "btnRemoverOs";
+            this.btnRemoverOs.Size = new System.Drawing.Size(25, 25);
+            this.btnRemoverOs.TabIndex = 431;
+            this.btnRemoverOs.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpFatura.SetToolTip(this.btnRemoverOs, "Remover Ordem de Serviço da Fatura");
+            this.btnRemoverOs.UseVisualStyleBackColor = true;
+            this.btnRemoverOs.Visible = false;
+            this.btnRemoverOs.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // dgvOS
             // 
@@ -204,6 +228,132 @@
             this.dgvOS.ShowEditingIcon = false;
             this.dgvOS.Size = new System.Drawing.Size(679, 414);
             this.dgvOS.TabIndex = 224;
+            // 
+            // data_ordem
+            // 
+            this.data_ordem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.data_ordem.DataPropertyName = "data_ordem";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_ordem.DefaultCellStyle = dataGridViewCellStyle2;
+            this.data_ordem.HeaderText = "Data da Ordem";
+            this.data_ordem.MinimumWidth = 75;
+            this.data_ordem.Name = "data_ordem";
+            this.data_ordem.ReadOnly = true;
+            this.data_ordem.Width = 75;
+            // 
+            // referencia
+            // 
+            this.referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.referencia.DataPropertyName = "referencia";
+            this.referencia.HeaderText = "Referência";
+            this.referencia.MinimumWidth = 70;
+            this.referencia.Name = "referencia";
+            this.referencia.ReadOnly = true;
+            // 
+            // atividade_cod
+            // 
+            this.atividade_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.atividade_cod.DataPropertyName = "atividade_cod";
+            this.atividade_cod.HeaderText = "Tipo";
+            this.atividade_cod.MinimumWidth = 45;
+            this.atividade_cod.Name = "atividade_cod";
+            this.atividade_cod.ReadOnly = true;
+            this.atividade_cod.Width = 45;
+            // 
+            // profissional_cod
+            // 
+            this.profissional_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.profissional_cod.DataPropertyName = "profissional_cod";
+            this.profissional_cod.HeaderText = "Pro.";
+            this.profissional_cod.MinimumWidth = 45;
+            this.profissional_cod.Name = "profissional_cod";
+            this.profissional_cod.ReadOnly = true;
+            this.profissional_cod.Width = 45;
+            // 
+            // cidade
+            // 
+            this.cidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.cidade.DataPropertyName = "cidade";
+            this.cidade.HeaderText = "Cidade";
+            this.cidade.MinimumWidth = 60;
+            this.cidade.Name = "cidade";
+            this.cidade.ReadOnly = true;
+            this.cidade.Width = 60;
+            // 
+            // nome_cliente
+            // 
+            this.nome_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nome_cliente.DataPropertyName = "nome_cliente";
+            this.nome_cliente.HeaderText = "Nome do Cliente";
+            this.nome_cliente.MinimumWidth = 100;
+            this.nome_cliente.Name = "nome_cliente";
+            this.nome_cliente.ReadOnly = true;
+            // 
+            // data_vistoria
+            // 
+            this.data_vistoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.data_vistoria.DataPropertyName = "data_vistoria";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_vistoria.DefaultCellStyle = dataGridViewCellStyle3;
+            this.data_vistoria.HeaderText = "Data da Vistoria";
+            this.data_vistoria.MinimumWidth = 75;
+            this.data_vistoria.Name = "data_vistoria";
+            this.data_vistoria.ReadOnly = true;
+            this.data_vistoria.Width = 75;
+            // 
+            // data_concluida
+            // 
+            this.data_concluida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.data_concluida.DataPropertyName = "data_concluida";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_concluida.DefaultCellStyle = dataGridViewCellStyle4;
+            this.data_concluida.HeaderText = "Data da Conclusão";
+            this.data_concluida.MinimumWidth = 75;
+            this.data_concluida.Name = "data_concluida";
+            this.data_concluida.ReadOnly = true;
+            this.data_concluida.Width = 75;
+            // 
+            // valor_atividade
+            // 
+            this.valor_atividade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.valor_atividade.DataPropertyName = "valor_atividade";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.valor_atividade.DefaultCellStyle = dataGridViewCellStyle5;
+            this.valor_atividade.HeaderText = "Valor OS";
+            this.valor_atividade.MinimumWidth = 55;
+            this.valor_atividade.Name = "valor_atividade";
+            this.valor_atividade.ReadOnly = true;
+            this.valor_atividade.Width = 55;
+            // 
+            // valor_deslocamento
+            // 
+            this.valor_deslocamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.valor_deslocamento.DataPropertyName = "valor_deslocamento";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.valor_deslocamento.DefaultCellStyle = dataGridViewCellStyle6;
+            this.valor_deslocamento.HeaderText = "Desloca.";
+            this.valor_deslocamento.MinimumWidth = 55;
+            this.valor_deslocamento.Name = "valor_deslocamento";
+            this.valor_deslocamento.ReadOnly = true;
+            this.valor_deslocamento.Width = 55;
+            // 
+            // fatura_cod
+            // 
+            this.fatura_cod.DataPropertyName = "fatura_cod";
+            this.fatura_cod.HeaderText = "fatura_cod";
+            this.fatura_cod.Name = "fatura_cod";
+            this.fatura_cod.ReadOnly = true;
+            this.fatura_cod.Visible = false;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "status";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            this.status.Visible = false;
             // 
             // pnlLinha2
             // 
@@ -336,27 +486,27 @@
             this.dgvFaturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvFaturas.ColumnHeadersVisible = false;
             this.dgvFaturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
+            this.id,
             this.descricao,
             this.data,
-            this.subtotal_os,
-            this.subtotal_desloc,
-            this.total});
+            this.subtotalos,
+            this.subtotaldesloca,
+            this.totalsas});
             this.dgvFaturas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFaturas.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFaturas.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvFaturas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFaturas.EnableHeadersVisualStyles = false;
             this.dgvFaturas.GridColor = System.Drawing.SystemColors.Window;
-            this.dgvFaturas.Location = new System.Drawing.Point(10, 20);
-            this.dgvFaturas.Margin = new System.Windows.Forms.Padding(10, 20, 10, 20);
+            this.dgvFaturas.Location = new System.Drawing.Point(3, 20);
+            this.dgvFaturas.Margin = new System.Windows.Forms.Padding(3, 20, 0, 20);
             this.dgvFaturas.MultiSelect = false;
             this.dgvFaturas.Name = "dgvFaturas";
             this.dgvFaturas.ReadOnly = true;
@@ -371,29 +521,23 @@
             this.dgvFaturas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvFaturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFaturas.ShowEditingIcon = false;
-            this.dgvFaturas.Size = new System.Drawing.Size(180, 540);
+            this.dgvFaturas.Size = new System.Drawing.Size(197, 540);
             this.dgvFaturas.TabIndex = 223;
             this.dgvFaturas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvFaturas_MouseClick);
             // 
-            // dataGridViewTextBoxColumn1
+            // id
             // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "id";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 5;
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
             // descricao
             // 
             this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descricao.DataPropertyName = "descricao";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.descricao.DefaultCellStyle = dataGridViewCellStyle12;
-            this.descricao.HeaderText = "Descrição";
-            this.descricao.MinimumWidth = 50;
+            this.descricao.HeaderText = "descricao";
             this.descricao.Name = "descricao";
             this.descricao.ReadOnly = true;
             // 
@@ -405,32 +549,33 @@
             this.data.ReadOnly = true;
             this.data.Visible = false;
             // 
-            // subtotal_os
+            // subtotalos
             // 
-            this.subtotal_os.DataPropertyName = "subtotal_os";
-            this.subtotal_os.HeaderText = "Subtotal OS";
-            this.subtotal_os.Name = "subtotal_os";
-            this.subtotal_os.ReadOnly = true;
-            this.subtotal_os.Visible = false;
+            this.subtotalos.DataPropertyName = "subtotal_os";
+            this.subtotalos.HeaderText = "subtotalos";
+            this.subtotalos.Name = "subtotalos";
+            this.subtotalos.ReadOnly = true;
+            this.subtotalos.Visible = false;
             // 
-            // subtotal_desloc
+            // subtotaldesloca
             // 
-            this.subtotal_desloc.DataPropertyName = "subtotal_desloc";
-            this.subtotal_desloc.HeaderText = "Subtotal Desloc.";
-            this.subtotal_desloc.Name = "subtotal_desloc";
-            this.subtotal_desloc.ReadOnly = true;
-            this.subtotal_desloc.Visible = false;
+            this.subtotaldesloca.DataPropertyName = "subtotal_desloc";
+            this.subtotaldesloca.HeaderText = "subtotaldesloca";
+            this.subtotaldesloca.Name = "subtotaldesloca";
+            this.subtotaldesloca.ReadOnly = true;
+            this.subtotaldesloca.Visible = false;
             // 
-            // total
+            // totalsas
             // 
-            this.total.DataPropertyName = "total";
-            this.total.HeaderText = "Total";
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            this.total.Visible = false;
+            this.totalsas.DataPropertyName = "total";
+            this.totalsas.HeaderText = "totalsas";
+            this.totalsas.Name = "totalsas";
+            this.totalsas.ReadOnly = true;
+            this.totalsas.Visible = false;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnExcluir);
             this.panel2.Controls.Add(this.btnImprimir);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(204, 20);
@@ -438,6 +583,26 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(713, 32);
             this.panel2.TabIndex = 434;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.BackColor = System.Drawing.SystemColors.Window;
+            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluir.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.btnExcluir.FlatAppearance.BorderSize = 0;
+            this.btnExcluir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
+            this.btnExcluir.Location = new System.Drawing.Point(17, 1);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(30, 30);
+            this.btnExcluir.TabIndex = 432;
+            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpFatura.SetToolTip(this.btnExcluir, "Excluir Fatura");
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Visible = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnImprimir
             // 
@@ -450,7 +615,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
-            this.btnImprimir.Location = new System.Drawing.Point(665, 0);
+            this.btnImprimir.Location = new System.Drawing.Point(665, 1);
             this.btnImprimir.Margin = new System.Windows.Forms.Padding(0);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(30, 30);
@@ -476,132 +641,6 @@
             this.saveFileDialog.FileName = "Relacao_OS.pdf";
             this.saveFileDialog.Filter = "Arquivos PDF|*.pdf";
             // 
-            // data_ordem
-            // 
-            this.data_ordem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.data_ordem.DataPropertyName = "data_ordem";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_ordem.DefaultCellStyle = dataGridViewCellStyle2;
-            this.data_ordem.HeaderText = "Data da Ordem";
-            this.data_ordem.MinimumWidth = 75;
-            this.data_ordem.Name = "data_ordem";
-            this.data_ordem.ReadOnly = true;
-            this.data_ordem.Width = 75;
-            // 
-            // referencia
-            // 
-            this.referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.referencia.DataPropertyName = "referencia";
-            this.referencia.HeaderText = "Referência";
-            this.referencia.MinimumWidth = 70;
-            this.referencia.Name = "referencia";
-            this.referencia.ReadOnly = true;
-            // 
-            // atividade_cod
-            // 
-            this.atividade_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.atividade_cod.DataPropertyName = "atividade_cod";
-            this.atividade_cod.HeaderText = "Tipo";
-            this.atividade_cod.MinimumWidth = 45;
-            this.atividade_cod.Name = "atividade_cod";
-            this.atividade_cod.ReadOnly = true;
-            this.atividade_cod.Width = 45;
-            // 
-            // profissional_cod
-            // 
-            this.profissional_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.profissional_cod.DataPropertyName = "profissional_cod";
-            this.profissional_cod.HeaderText = "Pro.";
-            this.profissional_cod.MinimumWidth = 45;
-            this.profissional_cod.Name = "profissional_cod";
-            this.profissional_cod.ReadOnly = true;
-            this.profissional_cod.Width = 45;
-            // 
-            // cidade
-            // 
-            this.cidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.cidade.DataPropertyName = "cidade";
-            this.cidade.HeaderText = "Cidade";
-            this.cidade.MinimumWidth = 60;
-            this.cidade.Name = "cidade";
-            this.cidade.ReadOnly = true;
-            this.cidade.Width = 60;
-            // 
-            // nome_cliente
-            // 
-            this.nome_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nome_cliente.DataPropertyName = "nome_cliente";
-            this.nome_cliente.HeaderText = "Nome do Cliente";
-            this.nome_cliente.MinimumWidth = 100;
-            this.nome_cliente.Name = "nome_cliente";
-            this.nome_cliente.ReadOnly = true;
-            // 
-            // data_vistoria
-            // 
-            this.data_vistoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.data_vistoria.DataPropertyName = "data_vistoria";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_vistoria.DefaultCellStyle = dataGridViewCellStyle3;
-            this.data_vistoria.HeaderText = "Data da Vistoria";
-            this.data_vistoria.MinimumWidth = 75;
-            this.data_vistoria.Name = "data_vistoria";
-            this.data_vistoria.ReadOnly = true;
-            this.data_vistoria.Width = 75;
-            // 
-            // data_concluida
-            // 
-            this.data_concluida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.data_concluida.DataPropertyName = "data_concluida";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_concluida.DefaultCellStyle = dataGridViewCellStyle4;
-            this.data_concluida.HeaderText = "Data da Conclusão";
-            this.data_concluida.MinimumWidth = 75;
-            this.data_concluida.Name = "data_concluida";
-            this.data_concluida.ReadOnly = true;
-            this.data_concluida.Width = 75;
-            // 
-            // valor_atividade
-            // 
-            this.valor_atividade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.valor_atividade.DataPropertyName = "valor_atividade";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.valor_atividade.DefaultCellStyle = dataGridViewCellStyle5;
-            this.valor_atividade.HeaderText = "Valor OS";
-            this.valor_atividade.MinimumWidth = 55;
-            this.valor_atividade.Name = "valor_atividade";
-            this.valor_atividade.ReadOnly = true;
-            this.valor_atividade.Width = 55;
-            // 
-            // valor_deslocamento
-            // 
-            this.valor_deslocamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.valor_deslocamento.DataPropertyName = "valor_deslocamento";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this.valor_deslocamento.DefaultCellStyle = dataGridViewCellStyle6;
-            this.valor_deslocamento.HeaderText = "Desloca.";
-            this.valor_deslocamento.MinimumWidth = 55;
-            this.valor_deslocamento.Name = "valor_deslocamento";
-            this.valor_deslocamento.ReadOnly = true;
-            this.valor_deslocamento.Width = 55;
-            // 
-            // fatura_cod
-            // 
-            this.fatura_cod.DataPropertyName = "fatura_cod";
-            this.fatura_cod.HeaderText = "fatura_cod";
-            this.fatura_cod.Name = "fatura_cod";
-            this.fatura_cod.ReadOnly = true;
-            this.fatura_cod.Visible = false;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "status";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            this.status.Visible = false;
-            // 
             // frmFaturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -617,7 +656,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmFaturas";
             this.Load += new System.EventHandler(this.frmFaturas_Load);
-            this.Leave += new System.EventHandler(this.frmFaturas_Leave);
             this.tblFaturas.ResumeLayout(false);
             this.pnlFaturaMain.ResumeLayout(false);
             this.pnlFaturaMain.PerformLayout();
@@ -630,7 +668,6 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel tblFaturas;
-        private System.Windows.Forms.DataGridView dgvFaturas;
         private System.Windows.Forms.Label lblNenhuma;
         private System.Windows.Forms.Panel pnlFaturaMain;
         private System.Windows.Forms.Button btnImprimir;
@@ -647,12 +684,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal_os;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal_desloc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_ordem;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn atividade_cod;
@@ -665,5 +696,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_deslocamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn fatura_cod;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.Button btnRemoverOs;
+        private System.Windows.Forms.ToolTip ttpFatura;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.DataGridView dgvFaturas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotalos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotaldesloca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalsas;
     }
 }
