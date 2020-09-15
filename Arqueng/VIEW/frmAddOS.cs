@@ -238,7 +238,7 @@ namespace Arqueng.VIEW
             dado.Agencia = Agencia;
             if (txtDataOrdem.Text != "")
                 dado.Data_ordem = Convert.ToDateTime(txtDataOrdem.Text);
-            dado.Prazo_execucao = dtpPrazo.Value;
+            dado.Prazo_execucao = Convert.ToDateTime(dtpPrazo.Value);
             dado.Profissional_cod = cboProfissional.Text;
             dado.Atividade_cod = cboAtividade.Text;
             dado.Siopi = chkSiopi.Checked;

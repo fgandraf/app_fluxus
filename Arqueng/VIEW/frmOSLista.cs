@@ -313,11 +313,11 @@ namespace Arqueng.VIEW
                         XcelApp.Cells[i + 2, 1] = dgvOS.Rows[i].Cells["profissional_cod"].Value.ToString();
                         XcelApp.Cells[i + 2, 2] = dgvOS.Rows[i].Cells["status"].Value.ToString();
 
-                        if (((DateTime)dgvOS.Rows[i].Cells["data_ordem"].Value).ToString("dd/MM/yyy") != "01/01/001")
-                            XcelApp.Cells[i + 2, 3] = ((DateTime)dgvOS.Rows[i].Cells["data_ordem"].Value).ToString("dd/MM/yyy");
+                        if (((DateTime)dgvOS.Rows[i].Cells["data_ordem"].Value).ToString("dd/MM/yyyy") != "01/01/0001")
+                            XcelApp.Cells[i + 2, 3] = ((DateTime)dgvOS.Rows[i].Cells["data_ordem"].Value).ToString("MM/dd/yyyy");
                         
-                        if (((DateTime)dgvOS.Rows[i].Cells["prazo_execucao"].Value).ToString("dd/MM/yyy") != "01/01/001")
-                            XcelApp.Cells[i + 2, 4] = ((DateTime)dgvOS.Rows[i].Cells["prazo_execucao"].Value).ToString("dd/MM/yyy");
+                        if (((DateTime)dgvOS.Rows[i].Cells["prazo_execucao"].Value).ToString("dd/MM/yyyy") != "01/01/0001")
+                            XcelApp.Cells[i + 2, 4] = ((DateTime)dgvOS.Rows[i].Cells["prazo_execucao"].Value).ToString("MM/dd/yyyy");
                         
                         XcelApp.Cells[i + 2, 5] = dgvOS.Rows[i].Cells["referencia"].Value.ToString();
                         XcelApp.Cells[i + 2, 6] = dgvOS.Rows[i].Cells["atividade_cod"].Value.ToString();
@@ -333,14 +333,14 @@ namespace Arqueng.VIEW
                         XcelApp.Cells[i + 2, 11] = dgvOS.Rows[i].Cells["nome_contato"].Value.ToString();
                         XcelApp.Cells[i + 2, 12] = dgvOS.Rows[i].Cells["telefone_contato"].Value.ToString();
                         
-                        if (((DateTime)dgvOS.Rows[i].Cells["data_pendente"].Value).ToString("dd/MM/yyy") != "01/01/001")
-                            XcelApp.Cells[i + 2, 13] = ((DateTime)dgvOS.Rows[i].Cells["data_pendente"].Value).ToString("dd/MM/yyy");
+                        if (((DateTime)dgvOS.Rows[i].Cells["data_pendente"].Value).ToString("dd/MM/yyyy") != "01/01/0001")
+                            XcelApp.Cells[i + 2, 13] = ((DateTime)dgvOS.Rows[i].Cells["data_pendente"].Value).ToString("MM/dd/yyyy");
                         
-                        if (((DateTime)dgvOS.Rows[i].Cells["data_vistoria"].Value).ToString("dd/MM/yyy") != "01/01/001")
-                            XcelApp.Cells[i + 2, 14] = ((DateTime)dgvOS.Rows[i].Cells["data_vistoria"].Value).ToString("dd/MM/yyy");
+                        if (((DateTime)dgvOS.Rows[i].Cells["data_vistoria"].Value).ToString("dd/MM/yyyy") != "01/01/0001")
+                            XcelApp.Cells[i + 2, 14] = ((DateTime)dgvOS.Rows[i].Cells["data_vistoria"].Value).ToString("MM/dd/yyyy");
                         
-                        if (((DateTime)dgvOS.Rows[i].Cells["data_concluida"].Value).ToString("dd/MM/yyy") != "01/01/001")
-                            XcelApp.Cells[i + 2, 15] = ((DateTime)dgvOS.Rows[i].Cells["data_concluida"].Value).ToString("dd/MM/yyy");
+                        if (((DateTime)dgvOS.Rows[i].Cells["data_concluida"].Value).ToString("dd/MM/yyyy") != "01/01/0001")
+                            XcelApp.Cells[i + 2, 15] = ((DateTime)dgvOS.Rows[i].Cells["data_concluida"].Value).ToString("MM/dd/yyyy");
                         
                         XcelApp.Cells[i + 2, 16] = dgvOS.Rows[i].Cells["coordenada"].Value.ToString();
                         XcelApp.Cells[i + 2, 17] = dgvOS.Rows[i].Cells["obs"].Value.ToString();
@@ -349,6 +349,7 @@ namespace Arqueng.VIEW
 
                     //Configurações
                     XcelApp.Columns.AutoFit();
+                    //XcelApp.Columns.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     XcelApp.Rows.RowHeight = 15;
 
 

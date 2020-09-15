@@ -30,6 +30,8 @@ namespace Arqueng.VIEW
                 lblTitVistoriadas.Text = "VISTORIADAS [" + dgv.Rows.Count.ToString() + "]";
             if (dgv.Tag.ToString() == "CONCLUÍDA")
                 lblTitConcluidas.Text = "CONCLUÍDAS [" + dgv.Rows.Count.ToString() + "]";
+
+            
         }
 
         private void ListarOS(DataGridView dgv)
@@ -44,15 +46,16 @@ namespace Arqueng.VIEW
 
                 dgv.DataSource = dvOS;
 
-
-                if (dgv.Rows.Count == 0)
+                if (dvOS.Count == 0)
                 {
-                    dgv.Enabled = false;
+                    dgv.ContextMenuStrip = null;
+                    dgv.Cursor = Cursors.Default;
                 }
                 else
                 {
-                    dgv.Enabled = true;
+                    dgv.ContextMenuStrip = menuContext;
                 }
+
 
             }
             catch (Exception ex)
@@ -60,6 +63,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             ContarRegistros(dgv);
+
         }
 
         private void EditarOS(DataGridView dgv)
@@ -193,6 +197,7 @@ namespace Arqueng.VIEW
             dgvConcluidas.Columns[1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvConcluidas.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvConcluidas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            
 
         }
 
@@ -220,6 +225,7 @@ namespace Arqueng.VIEW
             ListarOS(dgvPendentes);
             ListarOS(dgvVistoriadas);
             ListarOS(dgvConcluidas);
+            
         }
 
 

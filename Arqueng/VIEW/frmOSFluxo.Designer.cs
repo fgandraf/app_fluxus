@@ -1514,7 +1514,6 @@
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.DataGridView dgvRecebidas;
         private System.Windows.Forms.DataGridView dgvPendentes;
-        private System.Windows.Forms.DataGridView dgvVistoriadas;
         private System.Windows.Forms.DataGridView dgvConcluidas;
         private System.Windows.Forms.Panel pnlFaturar;
         private System.Windows.Forms.Button btnFaturar;
@@ -1605,5 +1604,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn52;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn53;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewTextBoxColumn54;
+        private System.Windows.Forms.DataGridView dgvVistoriadas;
     }
 }
