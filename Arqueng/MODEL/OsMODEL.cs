@@ -1,100 +1,22 @@
 ﻿using System;
 using System.Data;
-using Arqueng.DAO;
-using Arqueng.ENTIDADES;
+using Fluxus.DAO;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.MODEL
+namespace Fluxus.MODEL
 {
-
-
     public class OsMODEL
     {
-
-
         OsDAO dao = new OsDAO();
 
 
-        public DataTable ListarOsModel()
+
+        //:INSERT
+        public void InsertOsMODEL(OsENT dado)
         {
             try
             {
-                return dao.SelectAllDAO();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public DataTable NFaturadasModel()
-        {
-            try
-            {
-                return dao.NFaturadasDAO();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void InsertOsModel(OsENT dado)
-        {
-            try
-            {
-                dao.InsertDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void UpdateOsModel(OsENT dado)
-        {
-            try
-            {
-                dao.UpdateDAO(dado);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public void UpdateOsFaturadaModel(string referencia, string fatura_cod)
-        {
-            try
-            {
-                dao.UpdateFaturada(referencia, fatura_cod);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-
-        public DataTable ListarOSFaturaModel(string fatura_cod, bool status)
-        {
-            try
-            {
-                return dao.ListarOSFaturaDAO(fatura_cod, status);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public DataTable ListarOSFiltradaModel(string sqlFiltro)
-        {
-            try
-            {
-                return dao.ListarOSFiltradaDAO(sqlFiltro);
+                dao.Insert(dado);
             }
             catch (Exception ex)
             {
@@ -106,31 +28,12 @@ namespace Arqueng.MODEL
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public DataTable DistinctProOSFaturadaModel(OsENT dado)
+        //:UPDATE
+        public void UpdateOsMODEL(OsENT dado)
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt = dao.DistinctProOSFaturadaDAO(dado);
-                return dt;
+                dao.Update(dado);
             }
             catch (Exception ex)
             {
@@ -138,13 +41,11 @@ namespace Arqueng.MODEL
             }
         }
 
-        public DataTable DistinctCidadesModel()
+        public void UpdateFaturaCodMODEL(string referencia, string fatura_cod)
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt = dao.DistinctCidadesDAO();
-                return dt;
+                dao.UpdateFaturaCod(referencia, fatura_cod);
             }
             catch (Exception ex)
             {
@@ -152,26 +53,13 @@ namespace Arqueng.MODEL
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public void UpdateStatusModel(OsENT dado)
+        public void UpdateStatusMODEL(OsENT dado)
         {
             if (dado.Status == "RECEBIDA")
             {
                 try
                 {
-                    dao.UpdateStatusRecebida(dado);
+                    dao.UpdateStatusToRecebida(dado);
                 }
                 catch (Exception ex)
                 {
@@ -182,7 +70,7 @@ namespace Arqueng.MODEL
             {
                 try
                 {
-                    dao.UpdateStatusPendente(dado);
+                    dao.UpdateStatusToPendente(dado);
                 }
                 catch (Exception ex)
                 {
@@ -193,7 +81,7 @@ namespace Arqueng.MODEL
             {
                 try
                 {
-                    dao.UpdateStatusVistoriada(dado);
+                    dao.UpdateStatusToVistoriada(dado);
                 }
                 catch (Exception ex)
                 {
@@ -204,7 +92,7 @@ namespace Arqueng.MODEL
             {
                 try
                 {
-                    dao.UpdateStatusConcluida(dado);
+                    dao.UpdateStatusToConcluida(dado);
                 }
                 catch (Exception ex)
                 {
@@ -215,11 +103,14 @@ namespace Arqueng.MODEL
 
 
 
-        public void DeleteOsModel(OsENT dado)
+
+
+        //:DELETE
+        public void DeleteOsMODEL(OsENT dado)
         {
             try
             {
-                dao.DeleteOsDAO(dado);
+                dao.DeleteOs(dado);
             }
             catch (Exception ex)
             {
@@ -230,7 +121,92 @@ namespace Arqueng.MODEL
 
 
 
+
+        //:SELECT
+        public DataTable ListarOrdensNaoFaturadasMODEL()
+        {
+            try
+            {
+                return dao.SelectOrdensNaoFaturadas();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable ListarOrdensConcluidasNaoFaturadasMODEL()
+        {
+            try
+            {
+                return dao.SelectOrdensConcluidasNaoFaturadas();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable ListarOrdensFaturadasDoCodigoMODEL(string fatura_cod)
+        {
+            try
+            {
+                return dao.SelectOrdensFaturadasDoCodigo(fatura_cod);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable ListarOrdensComFiltroMODEL(string filtro)
+        {
+            try
+            {
+                return dao.SelectOrdensComFiltro(filtro);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable ListarCodigoENomeidDosProfissionaisDaFaturaMODEL(string fatura_cod)
+        {
+            try
+            {
+                return dao.SelectCodigoENomeidDosProfissionaisDaFatura(fatura_cod);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable ListarCidadesDasOrdensMODEL(bool adicionaTitulo)
+        {
+            DataTable distinctCidades = new DataTable();
+            try
+            {
+                distinctCidades = dao.SelectCidadesDasOrdens();
+                if (adicionaTitulo)
+                {
+                    DataRow linha = distinctCidades.NewRow();
+                    linha[0] = "--TODAS--";
+                    distinctCidades.Rows.InsertAt(linha, 0);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return distinctCidades;
+        }
+
+   
+
     }
+
 
 
 }

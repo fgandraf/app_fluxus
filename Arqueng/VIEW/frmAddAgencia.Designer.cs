@@ -1,4 +1,4 @@
-﻿namespace Arqueng.VIEW
+﻿namespace Fluxus.VIEW
 {
     partial class frmAddAgencia
     {
@@ -548,7 +548,6 @@
             this.Tag = "";
             this.Text = "Adicionar Agência";
             this.Load += new System.EventHandler(this.frmAddAgencia_Load);
-            this.Leave += new System.EventHandler(this.frmAddAgencia_Leave);
             this.panel1.ResumeLayout(false);
             this.pnlMainAddAgencia.ResumeLayout(false);
             this.pnlMainAddAgencia.PerformLayout();

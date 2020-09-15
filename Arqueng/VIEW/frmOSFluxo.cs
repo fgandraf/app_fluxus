@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Windows.Forms;
-using Arqueng.MODEL;
-using Arqueng.ENTIDADES;
+using Fluxus.MODEL;
+using Fluxus.ENTIDADES;
 using System.Data;
 using System.Linq;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
     public partial class frmOSFluxo : Form
     {
-
         frmPrincipal _frmPrincipal;
         Control _lastEnteredControl;
         DataGridView dgvOrigem;
-       
         DataTable dtOSNFaturada = new DataTable();
 
         
-
 
         //:METHODS
         private void ContarRegistros(DataGridView dgv)
@@ -111,8 +108,8 @@ namespace Arqueng.VIEW
                         OsMODEL model = new OsMODEL();
                         OsENT dado = new OsENT();
                         dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
-                        model.DeleteOsModel(dado);
-                        dtOSNFaturada = model.NFaturadasModel();
+                        model.DeleteOsMODEL(dado);
+                        dtOSNFaturada = model.ListarOrdensNaoFaturadasMODEL();
                         ListarOS(dgv);
                     }
                     catch (Exception ex)
@@ -143,7 +140,7 @@ namespace Arqueng.VIEW
                     linha = dtOSNFaturada.Select("referencia = '" + dado.Referencia + "'").FirstOrDefault();
                     linha["status"] = dado.Status;
 
-                    model.UpdateStatusModel(dado);
+                    model.UpdateStatusMODEL(dado);
                     ListarOS(dgvOrigem);
                     ListarOS(dgvDestino);
                 }
@@ -205,8 +202,8 @@ namespace Arqueng.VIEW
         {
             OsMODEL model = new OsMODEL();
             ProfissionaisMODEL promodel = new ProfissionaisMODEL();
-            dtOSNFaturada = model.NFaturadasModel();
-            cboProfissional.DataSource = promodel.ListarCodigoENomeidModel(true);
+            dtOSNFaturada = model.ListarOrdensNaoFaturadasMODEL();
+            cboProfissional.DataSource = promodel.ListarCodigoENomeidMODEL(true);
             if (Globais.Rl)
             {
                 cboProfissional.Enabled = true;
@@ -460,7 +457,9 @@ namespace Arqueng.VIEW
         }
 
 
+
     }
+
 
 
 }

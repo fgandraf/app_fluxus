@@ -1,60 +1,21 @@
 ﻿using System;
 using System.Data;
 using MySql.Data.MySqlClient;
-using Arqueng.ENTIDADES;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.DAO
+namespace Fluxus.DAO
 {
 
 
     public class AgenciasDAO
     {
-        
-
         MySqlCommand sql;
         CONEXAO con = new CONEXAO();
 
 
-        public DataTable SelectAllDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_agencias ORDER BY agencia", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
 
-
-        public DataTable BuscarDAO(AgenciasENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT nome, telefone1, email FROM tb_agencias WHERE agencia = @agencia", con.con);
-                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-        public void InsertDAO(AgenciasENT dado)
+        //:INSERT
+        public void Insert(AgenciasENT dado)
         {
             try
             {
@@ -83,7 +44,11 @@ namespace Arqueng.DAO
         }
 
 
-        public void UpdateDAO(AgenciasENT dado)
+
+
+
+        //:UPDATE
+        public void Update(AgenciasENT dado)
         {
             try
             {
@@ -112,7 +77,11 @@ namespace Arqueng.DAO
         }
 
 
-        public void DeleteDAO(AgenciasENT dado)
+
+
+
+        //:DELETE
+        public void Delete(AgenciasENT dado)
         {
             try
             {
@@ -128,6 +97,49 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
+
+
+
+        //:SELECT
+        public DataTable SelectAll()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT * FROM tb_agencias ORDER BY agencia", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable BuscarPelaAgencia(AgenciasENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT nome, telefone1, email FROM tb_agencias WHERE agencia = @agencia", con.con);
+                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
 
     }

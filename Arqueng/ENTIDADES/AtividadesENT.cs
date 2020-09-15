@@ -1,6 +1,6 @@
 ﻿//using
 
-namespace Arqueng.ENTIDADES
+namespace Fluxus.ENTIDADES
 {
 
     public class AtividadesENT

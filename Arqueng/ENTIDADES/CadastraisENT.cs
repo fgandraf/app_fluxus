@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace Arqueng.ENTIDADES
+namespace Fluxus.ENTIDADES
 {
 
     public class CadastraisENT

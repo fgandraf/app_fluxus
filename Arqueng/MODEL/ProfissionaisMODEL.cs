@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Data;
-using Arqueng.DAO;
-using Arqueng.ENTIDADES;
+using Fluxus.DAO;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.MODEL
+namespace Fluxus.MODEL
 {
-
-
     public class ProfissionaisMODEL
     {
-
-
         ProfissionaisDAO dao = new ProfissionaisDAO();
 
 
-        public DataTable ListarProfissionaisModel()
+
+        //:INSERT
+        public void InsertProfissionalMODEL(ProfissionaisENT dado)
         {
             try
             {
-                return dao.SelectAllDAO();
+                dao.Insert(dado);
             }
             catch (Exception ex)
             {
@@ -27,11 +25,15 @@ namespace Arqueng.MODEL
         }
 
 
-        public void InsertProfissionalModel(ProfissionaisENT dado)
+
+
+        
+        //:UPDATE
+        public void UpdateProfissionalMODEL(ProfissionaisENT dado)
         {
             try
             {
-                dao.InsertDAO(dado);
+                dao.Update(dado);
             }
             catch (Exception ex)
             {
@@ -40,11 +42,15 @@ namespace Arqueng.MODEL
         }
 
 
-        public void UpdateProfissionalModel(ProfissionaisENT dado)
+
+
+
+        //:DELETE
+        public void DeleteProfissionalMODEL(ProfissionaisENT dado)
         {
             try
             {
-                dao.UpdateDAO(dado);
+                dao.Delete(dado);
             }
             catch (Exception ex)
             {
@@ -53,11 +59,15 @@ namespace Arqueng.MODEL
         }
 
 
-        public void DeleteProfissionalModel(ProfissionaisENT dado)
+
+
+
+        //:SELECT
+        public DataTable ListarProfissionaisMODEL()
         {
             try
             {
-                dao.DeleteDAO(dado);
+                return dao.SelectAll();
             }
             catch (Exception ex)
             {
@@ -65,12 +75,11 @@ namespace Arqueng.MODEL
             }
         }
 
-
-        public DataTable BuscarUsuarioModel(string nomeDeUsuario)
+        public DataTable BuscarUsuarioMODEL(string nomeDeUsuario)
         {
             try
             {
-                return dao.BuscarUsuarioDAO(nomeDeUsuario);
+                return dao.BuscarUsuario(nomeDeUsuario);
             }
             catch (Exception ex)
             {
@@ -78,13 +87,13 @@ namespace Arqueng.MODEL
             }
         }
 
-        public DataTable ListarCodigoENomeidModel(bool adicionaTitulo)
+        public DataTable ListarCodigoENomeidMODEL(bool adicionaTitulo)
         {
             DataTable dtPro = new DataTable();
             try
             {
                
-                dtPro = dao.ListarCodigoENomeidDAO();
+                dtPro = dao.SelectCodigoENomeid();
 
                 if (adicionaTitulo)
                 {
@@ -100,7 +109,10 @@ namespace Arqueng.MODEL
             return dtPro;
         }
 
+
+
     }
+
 
 
 }

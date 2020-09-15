@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
 using MySql.Data.MySqlClient;
-using Arqueng.ENTIDADES;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.DAO
+namespace Fluxus.DAO
 {
 
 
@@ -13,65 +13,9 @@ namespace Arqueng.DAO
         CONEXAO con = new CONEXAO();
 
 
-        public DataTable SelectAllDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_profissionais ORDER BY codigo", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
 
-
-        public DataTable BuscarUsuarioDAO(string nomeDeUsuario)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT codigo, rt, rl, usr_nome, usr_senha, usr_ativo FROM tb_profissionais WHERE usr_nome = @usr_nome", con.con);
-                sql.Parameters.AddWithValue("@usr_nome", nomeDeUsuario);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-        public DataTable ListarCodigoENomeidDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT codigo, nomeid FROM tb_profissionais ORDER BY codigo", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-        public void InsertDAO(ProfissionaisENT dado)
+        //:INSERT
+        public void Insert(ProfissionaisENT dado)
         {
             try
             {
@@ -105,7 +49,11 @@ namespace Arqueng.DAO
         }
 
 
-        public void UpdateDAO(ProfissionaisENT dado)
+
+
+
+        //:UPDATE
+        public void Update(ProfissionaisENT dado)
         {
             try
             {
@@ -138,7 +86,11 @@ namespace Arqueng.DAO
         }
 
 
-        public void DeleteDAO(ProfissionaisENT dado)
+
+
+
+        //:DELETE
+        public void Delete(ProfissionaisENT dado)
         {
             try
             {
@@ -151,6 +103,66 @@ namespace Arqueng.DAO
             catch (Exception)
             {
                 con.FecharConexao();
+                throw;
+            }
+        }
+
+
+
+
+
+        //:SELECT
+        public DataTable SelectAll()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT * FROM tb_profissionais ORDER BY codigo", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable BuscarUsuario(string nomeDeUsuario)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT codigo, rt, rl, usr_nome, usr_senha, usr_ativo FROM tb_profissionais WHERE usr_nome = @usr_nome", con.con);
+                sql.Parameters.AddWithValue("@usr_nome", nomeDeUsuario);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable SelectCodigoENomeid()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT codigo, nomeid FROM tb_profissionais ORDER BY codigo", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }

@@ -2,19 +2,17 @@
 using System.Data;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Arqueng.ENTIDADES;
-using Arqueng.MODEL;
+using Fluxus.ENTIDADES;
+using Fluxus.MODEL;
 
-namespace Arqueng
+namespace Fluxus
 {
     public partial class frmLogin : Form
     {
-
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-
 
 
 
@@ -24,7 +22,7 @@ namespace Arqueng
             try
             {
                 CadastraisMODEL model = new CadastraisMODEL();
-                DataRow[] dadosDaEmpresa = (model.DadosParaImpressaoModel()).Select();
+                DataRow[] dadosDaEmpresa = (model.DadosParaImpressaoMODEL()).Select();
 
                 Globais.Cnpj = dadosDaEmpresa[0]["cnpj"].ToString();
                 Globais.Razao = dadosDaEmpresa[0]["razao"].ToString();
@@ -42,7 +40,9 @@ namespace Arqueng
 
 
 
+
         //:EVENTS
+        ///_______Form
         public frmLogin()
         {
             InitializeComponent();
@@ -54,6 +54,16 @@ namespace Arqueng
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            lblVersao.Text = "v. " + Globais.Versao;
+        }
+
+
+
+
+
+        ///_______Button
         private void btnAppFechar_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -64,7 +74,7 @@ namespace Arqueng
             lblLoad.Text = "Validando usuário";
 
             ProfissionaisMODEL model = new ProfissionaisMODEL();
-            DataTable dtUsuario = model.BuscarUsuarioModel(txtUsuario.Text);
+            DataTable dtUsuario = model.BuscarUsuarioMODEL(txtUsuario.Text);
             DataRow[] dataRow;
 
             if (dtUsuario.Rows.Count == 0)
@@ -148,14 +158,22 @@ namespace Arqueng
             this.Close();
         }
 
-    
 
+
+
+
+        ///_______TextBox
         private void txtSenha_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
                 btnEntrar.PerformClick();
         }
 
+
+
+
+
+        ///_______PictureBox
         private void imgShowPwd_Click(object sender, EventArgs e)
         {
             txtSenha.PasswordChar = '\0';
@@ -168,14 +186,10 @@ namespace Arqueng
             imgShowPwd.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-            lblVersao.Text = "v. " + Globais.Versao;
-        }
     }
+
+
+
 }

@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Windows.Forms;
-using Arqueng.MODEL;
-using Arqueng.ENTIDADES;
+using Fluxus.MODEL;
+using Fluxus.ENTIDADES;
 using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
-
     public partial class frmOSLista : Form
     {
-
         frmPrincipal _frmPrincipal;
         DataView dvOSFiltrada;
-        System.Data.DataTable dtOS = new System.Data.DataTable();
+        DataTable dtOS = new DataTable();
 
 
 
-
-        //:MÉTODOS
-
+        //:METHODS
         private void EditarOS(DataGridView dgv)
         {
             frmAddOS formNeto = new frmAddOS
@@ -59,7 +55,7 @@ namespace Arqueng.VIEW
                     OsMODEL model = new OsMODEL();
                     ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
                     dado.Referencia = dgv.CurrentRow.Cells["referencia"].Value.ToString();
-                    model.DeleteOsModel(dado);
+                    model.DeleteOsMODEL(dado);
                 }
                 catch (Exception ex)
                 {
@@ -73,7 +69,7 @@ namespace Arqueng.VIEW
             try
             {
                 OsMODEL model = new OsMODEL();
-                dtOS = model.ListarOSFiltradaModel(GerarStringSQL());
+                dtOS = model.ListarOrdensComFiltroMODEL(GerarStringSQL());
                 dgvOS.DataSource = dtOS;
             }
             catch (Exception ex)
@@ -82,55 +78,6 @@ namespace Arqueng.VIEW
             }
             lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
         }
-
-        //private string GerarFiltro()
-        //{
-        //    string faturadas;
-        //    {
-        //        if (cboFaturadas.SelectedIndex == 0)
-        //            faturadas = ">= 0";
-        //        else if (cboFaturadas.SelectedIndex == 1)
-        //            faturadas = "> 0";
-        //        else
-        //            faturadas = "= 0";
-        //    }
-
-        //    string profissional;
-        //    {
-        //        if (cboProfissional.SelectedValue.ToString() == "")
-        //            profissional = "<> ' '";
-        //        else
-        //            profissional = "= '" + cboProfissional.SelectedValue.ToString() + "'";
-        //    }
-
-        //    string atividade;
-        //    {
-        //        if (cboAtividade.SelectedIndex == 0)
-        //            atividade = "<> ' '";
-        //        else
-        //            atividade = "= '" + cboAtividade.SelectedValue.ToString() + "'";
-        //    }
-
-        //    string cidade;
-        //    {
-        //        if (cboCidade.SelectedIndex == 0)
-        //            cidade = "<> ' '";
-        //        else
-        //            cidade = "= '" + cboCidade.SelectedValue.ToString() + "'";
-        //    }
-
-        //    string status;
-        //    {
-        //        if (cboStatus.SelectedIndex == 0)
-        //            status = "<> ' '";
-        //        else
-        //            status = "= '" + cboStatus.SelectedItem + "'";
-        //    }
-
-        //    string filtro = String.Format("profissional_cod {0} AND atividade_cod {1} AND cidade {2} AND status {3} AND fatura_cod {4}", profissional, atividade, cidade, status, faturadas);
-
-        //    return filtro;
-        //}
 
         private void LimparFiltro()
         {
@@ -198,9 +145,8 @@ namespace Arqueng.VIEW
 
 
 
-        //:EVENTOS
-
-        ///_______FORMULÁRIO
+        //:EVENTS
+        ///_______Form
         public frmOSLista(frmPrincipal frm1)
         {
             InitializeComponent();
@@ -210,9 +156,15 @@ namespace Arqueng.VIEW
         private void frmOS_Load(object sender, EventArgs e)
         {
             ProfissionaisMODEL promodel = new ProfissionaisMODEL();
-            cboProfissional.DataSource = promodel.ListarCodigoENomeidModel(true);
-            cboCidade.DataSource = Globais.Cidades(true);
-            cboAtividade.DataSource = Globais.Atividades(true);
+            cboProfissional.DataSource = promodel.ListarCodigoENomeidMODEL(true);
+
+
+            OsMODEL model = new OsMODEL();
+            cboCidade.DataSource = model.ListarCidadesDasOrdensMODEL(true);
+
+            AtividadesMODEL atividadesModel = new AtividadesMODEL();
+            cboAtividade.DataSource = atividadesModel.ListarAtividadesMODEL(true);
+
             LimparFiltro();
 
             if (Globais.Rt)
@@ -233,7 +185,14 @@ namespace Arqueng.VIEW
 
 
 
-        ///_______BOTÔES
+        ///_______Button
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
+            formNeto.Text = "Adicionar";
+            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+        }
+
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             if (dgvOS.CurrentRow.Cells["fatura_cod"].Value.ToString() != "0")
@@ -255,11 +214,6 @@ namespace Arqueng.VIEW
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            //OsMODEL model = new OsMODEL();
-            //dgvOS.DataSource = model.ListarOSFiltradaModel(GerarStringSQL());
-            //dvOSFiltrada = new DataView(dtOS);
-            //dvOSFiltrada.RowFilter = GerarFiltro();
-            //dgvOS.DataSource = dvOSFiltrada;
             ListarOS(dgvOS);
             lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
             btnLimparFiltro.Show();
@@ -315,10 +269,10 @@ namespace Arqueng.VIEW
 
                         if (((DateTime)dgvOS.Rows[i].Cells["data_ordem"].Value).ToString("dd/MM/yyyy") != "01/01/0001")
                             XcelApp.Cells[i + 2, 3] = ((DateTime)dgvOS.Rows[i].Cells["data_ordem"].Value).ToString("MM/dd/yyyy");
-                        
+
                         if (((DateTime)dgvOS.Rows[i].Cells["prazo_execucao"].Value).ToString("dd/MM/yyyy") != "01/01/0001")
                             XcelApp.Cells[i + 2, 4] = ((DateTime)dgvOS.Rows[i].Cells["prazo_execucao"].Value).ToString("MM/dd/yyyy");
-                        
+
                         XcelApp.Cells[i + 2, 5] = dgvOS.Rows[i].Cells["referencia"].Value.ToString();
                         XcelApp.Cells[i + 2, 6] = dgvOS.Rows[i].Cells["atividade_cod"].Value.ToString();
                         XcelApp.Cells[i + 2, 7] = dgvOS.Rows[i].Cells["cidade"].Value.ToString();
@@ -332,16 +286,16 @@ namespace Arqueng.VIEW
                         XcelApp.Cells[i + 2, 10] = dgvOS.Rows[i].Cells["nome_cliente"].Value.ToString();
                         XcelApp.Cells[i + 2, 11] = dgvOS.Rows[i].Cells["nome_contato"].Value.ToString();
                         XcelApp.Cells[i + 2, 12] = dgvOS.Rows[i].Cells["telefone_contato"].Value.ToString();
-                        
+
                         if (((DateTime)dgvOS.Rows[i].Cells["data_pendente"].Value).ToString("dd/MM/yyyy") != "01/01/0001")
                             XcelApp.Cells[i + 2, 13] = ((DateTime)dgvOS.Rows[i].Cells["data_pendente"].Value).ToString("MM/dd/yyyy");
-                        
+
                         if (((DateTime)dgvOS.Rows[i].Cells["data_vistoria"].Value).ToString("dd/MM/yyyy") != "01/01/0001")
                             XcelApp.Cells[i + 2, 14] = ((DateTime)dgvOS.Rows[i].Cells["data_vistoria"].Value).ToString("MM/dd/yyyy");
-                        
+
                         if (((DateTime)dgvOS.Rows[i].Cells["data_concluida"].Value).ToString("dd/MM/yyyy") != "01/01/0001")
                             XcelApp.Cells[i + 2, 15] = ((DateTime)dgvOS.Rows[i].Cells["data_concluida"].Value).ToString("MM/dd/yyyy");
-                        
+
                         XcelApp.Cells[i + 2, 16] = dgvOS.Rows[i].Cells["coordenada"].Value.ToString();
                         XcelApp.Cells[i + 2, 17] = dgvOS.Rows[i].Cells["obs"].Value.ToString();
                     }
@@ -367,7 +321,8 @@ namespace Arqueng.VIEW
 
 
 
-        ///_______DATAGRIDVIEW
+
+        ///_______DataGridView
         private void dgvOS_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete && dgvOS.CurrentCell.Selected)
@@ -394,18 +349,16 @@ namespace Arqueng.VIEW
 
 
 
-        ///_______TEXTBOX PESQUISAR
+        ///_______TextBox
         private void txtPesquisar_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txtPesquisar.Text == "")// && btnLimparFiltro.Visible == false)
+            if (txtPesquisar.Text == "")
                 dgvOS.DataSource = dtOS;
-            //else if (txtPesquisar.Text == "" && btnLimparFiltro.Visible == true)
-            //    dgvOS.DataSource = dtOS;//dgvOS.DataSource = dvOSFiltrada;
             else
             {
                 if (btnLimparFiltro.Visible == true)
                 {
-                    System.Data.DataTable dtFiltrada = dtOS.Copy();//dvOSFiltrada.ToTable();
+                    System.Data.DataTable dtFiltrada = dtOS.Copy();
                     DataView dvPesquisa = new DataView(dtFiltrada);
                     dvPesquisa.RowFilter = String.Format("nome_cliente LIKE '%{0}%' OR referencia LIKE '%{0}%' OR atividade_cod LIKE '%{0}%' OR cidade LIKE '%{0}%' OR nome_contato LIKE '%{0}%' OR profissional_cod LIKE '%{0}%' OR status LIKE '%{0}%'", txtPesquisar.Text);
                     dgvOS.DataSource = dvPesquisa;
@@ -420,15 +373,12 @@ namespace Arqueng.VIEW
             lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
         }
 
-        private void btnAdicionar_Click(object sender, EventArgs e)
-        {
-            frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
-            formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
-        }
 
 
     }
+
+
+
 }
 
 

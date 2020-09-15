@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
-using Arqueng.MODEL;
-using Arqueng.ENTIDADES;
+using Fluxus.MODEL;
+using Fluxus.ENTIDADES;
 using System.Globalization;
 using System.Linq;
 using System.Data;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
-
-
     public partial class frmAddFatura : Form
     {
-
         frmPrincipal _frmPrincipal;
         OsMODEL modelOS = new OsMODEL();
         OsENT dadoOS = new OsENT();
@@ -29,14 +26,8 @@ namespace Arqueng.VIEW
         {
             try
             {
-                //DataView dvOS = new DataView(DT.OSFatura);
-                //dvOS.RowFilter = "fatura_cod = 0 AND status = 'CONCLUÍDA'";
-                //dgvOS.DataSource = dvOS;
                 OsMODEL model = new OsMODEL();
-                dgvOS.DataSource = model.ListarOSFaturaModel("", true);
-
-
-
+                dgvOS.DataSource = model.ListarOrdensConcluidasNaoFaturadasMODEL();
 
                 if (dgvOS.Rows.Count == 0)
                 {
@@ -114,7 +105,7 @@ namespace Arqueng.VIEW
 
             try
             {
-                modelFatura.InsertFaturaModel(dadoFatura);
+                modelFatura.InsertFaturaMODEL(dadoFatura);
             }
             catch (Exception ex)
             {
@@ -128,7 +119,7 @@ namespace Arqueng.VIEW
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
                 referencia = row.Cells["referencia"].Value.ToString();
-                modelOS.UpdateOsFaturadaModel(referencia, fatura_cod);
+                modelOS.UpdateFaturaCodMODEL(referencia, fatura_cod);
             }
 
 
@@ -166,6 +157,7 @@ namespace Arqueng.VIEW
 
 
     }
+
 
 
 }

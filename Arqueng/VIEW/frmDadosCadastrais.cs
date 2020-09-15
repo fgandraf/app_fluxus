@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
-using Arqueng.MODEL;
-using Arqueng.ENTIDADES;
+using Fluxus.MODEL;
+using Fluxus.ENTIDADES;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Data;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
-
-
     public partial class frmDadosCadastrais : Form
     {
-
         frmPrincipal _frmPrincipal;
         CadastraisENT dado = new CadastraisENT();
         private Image LogoAtual = null;
@@ -27,7 +24,7 @@ namespace Arqueng.VIEW
             try
             {
                 CadastraisMODEL model = new CadastraisMODEL();
-                DataTable dtDados = model.ListarCadastraisModel();
+                DataTable dtDados = model.ListarCadastraisMODEL();
                 if (dtDados.Rows.Count == 0)
                     txtCNPJ.Focus();
                 else
@@ -81,6 +78,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public static byte[] ImagemParaByte(Image logo)
         {
             using (var stream = new MemoryStream())
@@ -89,6 +87,7 @@ namespace Arqueng.VIEW
                 return stream.ToArray();
             }
         }
+
         public static Image ByteParaImagem(byte[] bytes)
         {
             using (var stream = new MemoryStream(bytes))
@@ -99,6 +98,8 @@ namespace Arqueng.VIEW
 
 
 
+
+
         //:EVENTS
         //_______Form
         public frmDadosCadastrais(frmPrincipal frm1)
@@ -106,6 +107,7 @@ namespace Arqueng.VIEW
             InitializeComponent();
             _frmPrincipal = frm1;
         }
+
         private void frmDadosCadastrais_Load(object sender, EventArgs e)
         {
             PopulateFields();
@@ -200,7 +202,7 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    model.InsertCadastraisModel(dado);
+                    model.InsertCadastraisMODEL(dado);
                     MessageBox.Show("Dados cadastrados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -212,7 +214,7 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    model.UpdateCadastraisModel(dado);
+                    model.UpdateCadastraisMODEL(dado);
                     MessageBox.Show("Dados cadastrais alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -221,6 +223,7 @@ namespace Arqueng.VIEW
                 }
             }
         }
+
         private void btnCarregar_Click(object sender, EventArgs e)
         {
             if (openDialog.ShowDialog() == DialogResult.OK)
@@ -234,16 +237,20 @@ namespace Arqueng.VIEW
         {
             txtCNPJ.Mask = "00,000,000/0000-00";
         }
+
         private void txtCNPJ_Validated(object sender, EventArgs e)
         {
             if (txtCNPJ.Text == "  .   .   /    -")
                 txtCNPJ.Mask = "";
         }
 
+
+
         private void txtTelefone_Enter(object sender, EventArgs e)
         {
             txtTelefone.Mask = "(99) ##########";
         }
+
         private void txtTelefone_Validated(object sender, EventArgs e)
         {
             if (txtTelefone.Text == "(  ) ")
@@ -259,10 +266,13 @@ namespace Arqueng.VIEW
                 txtTelefone.Mask = "(99) ##########";
         }
 
+
+
         private void txtTelefone2_Enter(object sender, EventArgs e)
         {
             txtTelefone2.Mask = "(99) ##########";
         }
+
         private void txtTelefone2_Validated(object sender, EventArgs e)
         {
             if (txtTelefone2.Text == "(  ) ")
@@ -278,50 +288,65 @@ namespace Arqueng.VIEW
                 txtTelefone2.Mask = "(99) ##########";
         }
 
+
+
         private void txtCEP_Enter(object sender, EventArgs e)
         {
             txtCEP.Mask = "#####-###";
         }
+
         private void txtCEP_Validated(object sender, EventArgs e)
         {
             if (txtCEP.Text == "     -")
                 txtCEP.Mask = "";
         }
 
+
+
         private void txtConstituicao_Enter(object sender, EventArgs e)
         {
             txtConstituicao.Mask = "00/00/0000";
         }
+
         private void txtConstituicao_Validated(object sender, EventArgs e)
         {
             if (txtConstituicao.Text == "  /  /")
                 txtConstituicao.Mask = "";
         }
 
+
+
         private void txtCelebrado_Enter(object sender, EventArgs e)
         {
             txtCelebrado.Mask = "00/00/0000";
         }
+
         private void txtCelebrado_Validated(object sender, EventArgs e)
         {
             if (txtCelebrado.Text == "  /  /")
                 txtCelebrado.Mask = "";
         }
 
+
+
         private void txtInicio_Enter(object sender, EventArgs e)
         {
             txtInicio.Mask = "00/00/0000";
         }
+
         private void txtInicio_Validated(object sender, EventArgs e)
         {
             if (txtInicio.Text == "  /  /")
                 txtInicio.Mask = "";
         }
 
+
+
         private void txtTermino_Enter(object sender, EventArgs e)
         {
             txtTermino.Mask = "00/00/0000";
         }
+
         private void txtTermino_Validated(object sender, EventArgs e)
         {
             if (txtTermino.Text == "  /  /")
@@ -331,6 +356,7 @@ namespace Arqueng.VIEW
 
 
     }
+
 
 
 }

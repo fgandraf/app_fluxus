@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Arqueng.ENTIDADES
+namespace Fluxus.ENTIDADES
 {
 
     public class ProfissionaisENT

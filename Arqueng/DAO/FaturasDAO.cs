@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
 using MySql.Data.MySqlClient;
-using Arqueng.ENTIDADES;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.DAO
+namespace Fluxus.DAO
 {
 
 
@@ -13,27 +13,10 @@ namespace Arqueng.DAO
         CONEXAO con = new CONEXAO();
 
 
-        public DataTable SelectAllDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_fatura ORDER BY data", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-        }
 
 
-        public void InsertDAO(FaturasENT dado)
+        //:INSERT
+        public void Insert(FaturasENT dado)
         {
             try
             {
@@ -58,7 +41,33 @@ namespace Arqueng.DAO
         }
 
 
-        public void DeleteDAO(FaturasENT dado)
+
+        //:UPDATE
+        public void UpdateValores(FaturasENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("UPDATE tb_fatura SET subtotal_os = @subtotal_os, subtotal_desloc = @subtotal_desloc, total = @total WHERE id = @id", con.con);
+                sql.Parameters.AddWithValue("@id", dado.id);
+                sql.Parameters.AddWithValue("@descricao", dado.descricao);
+                sql.Parameters.AddWithValue("@subtotal_os", dado.subtotal_os);
+                sql.Parameters.AddWithValue("@subtotal_desloc", dado.subtotal_desloc);
+                sql.Parameters.AddWithValue("@total", dado.total);
+                sql.ExecuteNonQuery();
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                con.FecharConexao();
+                throw;
+            }
+        }
+
+
+
+        //:DELETE
+        public void Delete(FaturasENT dado)
         {
             try
             {
@@ -76,7 +85,28 @@ namespace Arqueng.DAO
         }
 
 
-        public string DescricaoDAO(string id)
+
+        //:SELECT
+        public DataTable SelectAll()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT * FROM tb_fatura ORDER BY data", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public string SelectDescricaoDaFatura(string id)
         {
             try
             {
@@ -97,27 +127,7 @@ namespace Arqueng.DAO
         }
 
 
-
-        public void UpdateValoresDAO(FaturasENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("UPDATE tb_fatura SET subtotal_os = @subtotal_os, subtotal_desloc = @subtotal_desloc, total = @total WHERE id = @id", con.con);
-                sql.Parameters.AddWithValue("@id", dado.id);
-                sql.Parameters.AddWithValue("@descricao", dado.descricao);
-                sql.Parameters.AddWithValue("@subtotal_os", dado.subtotal_os);
-                sql.Parameters.AddWithValue("@subtotal_desloc", dado.subtotal_desloc);
-                sql.Parameters.AddWithValue("@total", dado.total);
-                sql.ExecuteNonQuery();
-                con.FecharConexao();
-            }
-            catch (Exception)
-            {
-                con.FecharConexao();
-                throw;
-            }
-        }
+        
     }
 
 

@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Data;
-using Arqueng.DAO;
-using Arqueng.ENTIDADES;
+using Fluxus.DAO;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.MODEL
+namespace Fluxus.MODEL
 {
-
-
     public class AgenciasMODEL
     {
-
-
         AgenciasDAO dao = new AgenciasDAO();
 
 
-        public DataTable ListarAgenciasModel()
+
+        //:INSERT
+        public void InsertAgenciaMODEL(AgenciasENT dado)
         {
             try
             {
-                return dao.SelectAllDAO();
+                dao.Insert(dado);
             }
             catch (Exception ex)
             {
@@ -27,11 +25,15 @@ namespace Arqueng.MODEL
         }
 
 
-        public DataTable BuscarAgenciaModel(AgenciasENT dado)
+
+
+
+        //:UPDATE
+        public void UpdateAgenciaMODEL(AgenciasENT dado)
         {
             try
             {
-                return dao.BuscarDAO(dado);
+                dao.Update(dado);
             }
             catch (Exception ex)
             {
@@ -40,11 +42,15 @@ namespace Arqueng.MODEL
         }
 
 
-        public void InsertAgenciaModel(AgenciasENT dado)
+
+
+
+        //:DELETE
+        public void DeleteAgenciaMODEL(AgenciasENT dado)
         {
             try
             {
-                dao.InsertDAO(dado);
+                dao.Delete(dado);
             }
             catch (Exception ex)
             {
@@ -53,11 +59,15 @@ namespace Arqueng.MODEL
         }
 
 
-        public void UpdateAgenciaModel(AgenciasENT dado)
+
+
+
+        //:SELECT
+        public DataTable ListarAgenciasMODEL()
         {
             try
             {
-                dao.UpdateDAO(dado);
+                return dao.SelectAll();
             }
             catch (Exception ex)
             {
@@ -65,12 +75,11 @@ namespace Arqueng.MODEL
             }
         }
 
-
-        public void DeleteAgenciaModel(AgenciasENT dado)
+        public DataTable BuscarAgenciaMODEL(AgenciasENT dado)
         {
             try
             {
-                dao.DeleteDAO(dado);
+                return dao.BuscarPelaAgencia(dado);
             }
             catch (Exception ex)
             {
@@ -81,6 +90,7 @@ namespace Arqueng.MODEL
 
 
     }
+
 
 
 }

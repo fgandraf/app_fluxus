@@ -1,29 +1,33 @@
 ﻿using System;
 using System.Windows.Forms;
-using Arqueng.MODEL;
-using Arqueng.ENTIDADES;
+using Fluxus.MODEL;
+using Fluxus.ENTIDADES;
 using System.Text.RegularExpressions;
 using System.Data;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
-
-
     public partial class frmAddProfissional : Form
     {
-
         frmPrincipal _frmPrincipal;
-        ProfissionaisMODEL model = new ProfissionaisMODEL();
         ProfissionaisENT dado = new ProfissionaisENT();
         private string NomeId = null;
-        private string UsrNome = null;
 
+
+
+        //:METHODS
+
+
+
+
+
+        //:EVENTS
+        ///_______Form
         public frmAddProfissional(frmPrincipal frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
-
 
         public frmAddProfissional(frmPrincipal frm1, string codigo, string nome, string nomeid, string cpf, string nascimento, string profissao, string carteira, string entidade, string telefone1, string telefone2, string email, bool rt, bool rl, bool usrativo, string usrnome, string usrsenha)
         {
@@ -44,14 +48,12 @@ namespace Arqueng.VIEW
             chkRL.Checked = rl;
             chkUsrAtivo.Checked = usrativo;
             txtUsrNome.Text = usrnome;
-            UsrNome = usrnome;
             txtUsrSenha.Text = usrsenha;
             txtUsrSenha2.Text = usrsenha;
 
             if (Globais.Codpro == txtCodigo.Text && chkRL.Checked)
                 chkRL.Enabled = false;
         }
-
 
         private void frmAddProfissional_Load(object sender, EventArgs e)
         {
@@ -68,6 +70,10 @@ namespace Arqueng.VIEW
         }
 
 
+
+
+
+        ///_______Button
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             if (txtCodigo.Text == "" || txtNome.Text == "")
@@ -75,8 +81,6 @@ namespace Arqueng.VIEW
                 MessageBox.Show("Campos com * são obrigatório", "Chave Primária", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-
-
 
             if (chkUsrAtivo.Checked == true)
             {
@@ -97,14 +101,8 @@ namespace Arqueng.VIEW
                 txtUsrSenha2.Text = "";
             }
 
-
-            //DataView dvPro = new DataView(DT.Profissionais);
-            //dvPro.RowFilter = String.Format("usr_nome = '{0}'", txtUsrNome.Text);
-
             ProfissionaisMODEL model = new ProfissionaisMODEL();
-            DataTable dtPro = model.BuscarUsuarioModel(txtUsrNome.Text);
-
-
+            DataTable dtPro = model.BuscarUsuarioMODEL(txtUsrNome.Text);
 
             if (dtPro.Rows.Count > 0)
             {
@@ -113,13 +111,11 @@ namespace Arqueng.VIEW
                 return;
             }
 
-
             //CRIAÇÃO DO NOME ID
             if (txtProfissao.Text != "")
                 NomeId = txtProfissao.Text.Substring(0, 3) + ". ";
             string[] nomecomp = txtNome.Text.Split(' ');
             NomeId = NomeId + nomecomp[0] + " " + nomecomp[nomecomp.Length - 1];
-
 
             //POPULATE
             dado.Codigo = txtCodigo.Text;
@@ -139,6 +135,7 @@ namespace Arqueng.VIEW
             dado.Usr_ativo = chkUsrAtivo.Checked;
             dado.Usr_nome = txtUsrNome.Text;
             dado.Usr_senha = txtUsrSenha.Text;
+            
             if (Globais.Codpro == txtCodigo.Text)
             {
                 Globais.Rt = chkRT.Checked;
@@ -149,7 +146,7 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    model.InsertProfissionalModel(dado);
+                    model.InsertProfissionalMODEL(dado);
                 }
                 catch (Exception ex)
                 {
@@ -169,7 +166,7 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    model.UpdateProfissionalModel(dado);
+                    model.UpdateProfissionalMODEL(dado);
                 }
                 catch (Exception ex)
                 {
@@ -182,93 +179,107 @@ namespace Arqueng.VIEW
             _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
         }
 
-
-    private void txtTelefone1_Enter(object sender, EventArgs e)
-    {
-        txtTelefone1.Mask = "(99) ##########";
-    }
-
-    private void txtTelefone1_Validated(object sender, EventArgs e)
-    {
-        if (txtTelefone1.Text == "(  ) ")
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            txtTelefone1.Mask = "";
-            return;
+            this.Close();
+            frmProfissionais formfilho = new frmProfissionais(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formfilho, _frmPrincipal.pnlMain);
         }
 
-        var apenasDigitos = new Regex(@"[^\d]");
-        if (apenasDigitos.Replace(txtTelefone1.Text, "").Length == 10)
-            txtTelefone1.Mask = "(99) #########";
-        else if (apenasDigitos.Replace(txtTelefone1.Text, "").Length == 11)
+
+
+
+        ///_______MaskedTextBox
+        private void txtTelefone1_Enter(object sender, EventArgs e)
+        {
             txtTelefone1.Mask = "(99) ##########";
-
-    }
-
-    private void txtTelefone2_Enter(object sender, EventArgs e)
-    {
-        txtTelefone2.Mask = "(99) ##########";
-    }
-
-    private void txtTelefone2_Validated(object sender, EventArgs e)
-    {
-        if (txtTelefone2.Text == "(  ) ")
-        {
-            txtTelefone2.Mask = "";
-            return;
         }
 
-        var apenasDigitos = new Regex(@"[^\d]");
-        if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 10)
-            txtTelefone2.Mask = "(99) #########";
-        else if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 11)
+        private void txtTelefone1_Validated(object sender, EventArgs e)
+        {
+            if (txtTelefone1.Text == "(  ) ")
+            {
+                txtTelefone1.Mask = "";
+                return;
+            }
+
+            var apenasDigitos = new Regex(@"[^\d]");
+            if (apenasDigitos.Replace(txtTelefone1.Text, "").Length == 10)
+                txtTelefone1.Mask = "(99) #########";
+            else if (apenasDigitos.Replace(txtTelefone1.Text, "").Length == 11)
+                txtTelefone1.Mask = "(99) ##########";
+
+        }
+
+
+
+        private void txtTelefone2_Enter(object sender, EventArgs e)
+        {
             txtTelefone2.Mask = "(99) ##########";
-    }
+        }
 
-    private void txtCPF_Enter(object sender, EventArgs e)
-    {
-        txtCPF.Mask = "000,000,000-00";
-    }
+        private void txtTelefone2_Validated(object sender, EventArgs e)
+        {
+            if (txtTelefone2.Text == "(  ) ")
+            {
+                txtTelefone2.Mask = "";
+                return;
+            }
 
-    private void txtCPF_Validated(object sender, EventArgs e)
-    {
-        if (txtCPF.Text == "   .   .   -")
-            txtCPF.Mask = "";
-    }
-
-    private void txtNascimento_Validated(object sender, EventArgs e)
-    {
-        if (txtNascimento.Text == "  /  /")
-            txtNascimento.Mask = "";
-    }
-
-    private void txtNascimento_Enter(object sender, EventArgs e)
-    {
-        txtNascimento.Mask = "00/00/0000";
-    }
-
-    private void btnCancelar_Click(object sender, EventArgs e)
-    {
-        this.Close();
-        frmProfissionais formfilho = new frmProfissionais(_frmPrincipal);
-        _frmPrincipal.AbrirFormInPanel(formfilho, _frmPrincipal.pnlMain);
-    }
+            var apenasDigitos = new Regex(@"[^\d]");
+            if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 10)
+                txtTelefone2.Mask = "(99) #########";
+            else if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 11)
+                txtTelefone2.Mask = "(99) ##########";
+        }
 
 
-    private void frmAddProfissional_Leave(object sender, EventArgs e)
-    {
-        GC.Collect();
+
+        private void txtCPF_Enter(object sender, EventArgs e)
+        {
+            txtCPF.Mask = "000,000,000-00";
+        }
+
+        private void txtCPF_Validated(object sender, EventArgs e)
+        {
+            if (txtCPF.Text == "   .   .   -")
+                txtCPF.Mask = "";
+        }
+
+
+
+        private void txtNascimento_Validated(object sender, EventArgs e)
+        {
+            if (txtNascimento.Text == "  /  /")
+                txtNascimento.Mask = "";
+        }
+
+        private void txtNascimento_Enter(object sender, EventArgs e)
+        {
+            txtNascimento.Mask = "00/00/0000";
+        }
+
+
+
+
+
+        ///_______PictureBox
+        private void imgShowPwd_Click(object sender, EventArgs e)
+        {
+            txtUsrSenha.PasswordChar = '\0';
+            imgShowPwd.Hide();
+        }
+
+        private void imgHidePwd_Click(object sender, EventArgs e)
+        {
+            txtUsrSenha.PasswordChar = '*';
+            imgShowPwd.Show();
+        }
+   
+    
+    
     }
 
-    private void imgShowPwd_Click(object sender, EventArgs e)
-    {
-        txtUsrSenha.PasswordChar = '\0';
-        imgShowPwd.Hide();
-    }
 
-    private void imgHidePwd_Click(object sender, EventArgs e)
-    {
-        txtUsrSenha.PasswordChar = '*';
-        imgShowPwd.Show();
-    }
-}
+
 }

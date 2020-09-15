@@ -1,32 +1,26 @@
 ﻿using System;
 using System.Windows.Forms;
-using Arqueng.MODEL;
-using Arqueng.ENTIDADES;
+using Fluxus.MODEL;
+using Fluxus.ENTIDADES;
 using System.Text.RegularExpressions;
 using System.Data;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
-
     public partial class frmAddOS : Form
     {
-
         frmPrincipal _frmPrincipal;
         private string FormFilho;
         private string Agencia = null;
-
         OsENT dado = new OsENT();
         OsMODEL osmodel = new OsMODEL();
         ProfissionaisMODEL promodel = new ProfissionaisMODEL();
-
         DataTable DtAtividades = new DataTable();
         DataTable DtProfissionais = new DataTable();
 
 
 
         //:METHODS
-
-
         private void BuscarNomeAtividade()
         {
             try
@@ -62,7 +56,7 @@ namespace Arqueng.VIEW
                 AgenciasENT dado = new AgenciasENT();
                 AgenciasMODEL model = new AgenciasMODEL();
                 dado.Agencia = txtReferencia.Text.Substring(5, 4);
-                DataRow[] dataRowAgencia = (model.BuscarAgenciaModel(dado)).Select();
+                DataRow[] dataRowAgencia = (model.BuscarAgenciaMODEL(dado)).Select();
                 if (dataRowAgencia.Length == 0)
                 {
                     txtAgenciaNome.Text = "Agência não cadastrado!";
@@ -98,14 +92,17 @@ namespace Arqueng.VIEW
             FormFilho = frmfilho;
             
 
-            DtProfissionais = promodel.ListarCodigoENomeidModel(false);
+            DtProfissionais = promodel.ListarCodigoENomeidMODEL(false);
             cboProfissional.DataSource = DtProfissionais;
 
 
-            DtAtividades = Globais.Atividades(false);
+            AtividadesMODEL atividadesModel = new AtividadesMODEL();
+            DtAtividades = atividadesModel.ListarAtividadesMODEL(false);
             cboAtividade.DataSource = DtAtividades;
 
-            cboCidade.DataSource = Globais.Cidades(false);
+
+            OsMODEL model = new OsMODEL();
+            cboCidade.DataSource = model.ListarCidadesDasOrdensMODEL(false);
             cboCidade.SelectedIndex = -1;
         }
 
@@ -115,15 +112,19 @@ namespace Arqueng.VIEW
             _frmPrincipal = frm1;
             FormFilho = frmfilho;
 
-            DtProfissionais = promodel.ListarCodigoENomeidModel(false);
-            DtAtividades = Globais.Atividades(false);
+            DtProfissionais = promodel.ListarCodigoENomeidMODEL(false);
+            
+            AtividadesMODEL atividadesModel = new AtividadesMODEL();
+            DtAtividades = atividadesModel.ListarAtividadesMODEL(false);
 
-            cboCidade.DataSource = Globais.Cidades(false);
+            OsMODEL model = new OsMODEL();
+            cboCidade.DataSource = model.ListarCidadesDasOrdensMODEL(false);
             cboCidade.SelectedIndex = -1;
 
             //POPULATE
             cboProfissional.DataSource = DtProfissionais;
-            cboAtividade.DataSource = Globais.Atividades(false);
+
+            cboAtividade.DataSource = DtAtividades;
             dado.Titulo = titulo;
             txtReferencia.Text = referencia;
             Agencia = agencia;
@@ -161,7 +162,7 @@ namespace Arqueng.VIEW
             {
                 FaturasMODEL modelFat = new FaturasMODEL();
                 lblFaturada.Show();
-                txtCodFatura.Text = "Fatura: " + modelFat.DescricaoFaturaModel(faturacod); 
+                txtCodFatura.Text = "Fatura: " + modelFat.DescricaoFaturaMODEL(faturacod); 
                 txtCodFatura.Show();
 
                 foreach (Control c in this.tabPage1.Controls)
@@ -268,8 +269,7 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    osmodel.InsertOsModel(dado);
-                    DT.OS = osmodel.ListarOsModel();
+                    osmodel.InsertOsMODEL(dado);
                 }
                 catch (Exception ex)
                 {
@@ -289,8 +289,7 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    osmodel.UpdateOsModel(dado);
-                    DT.OS = osmodel.ListarOsModel();
+                    osmodel.UpdateOsMODEL(dado);
                 }
                 catch (Exception ex)
                 {
@@ -443,6 +442,8 @@ namespace Arqueng.VIEW
                 txtTelefoneContato.Mask = "(99) ##########";
         }
 
+
+
         private void txtReferencia_Enter(object sender, EventArgs e)
         {
             txtReferencia.Mask = "0000,0000,000000000/0000,00,00,00";
@@ -456,6 +457,7 @@ namespace Arqueng.VIEW
 
 
     }
+
 
 
 }

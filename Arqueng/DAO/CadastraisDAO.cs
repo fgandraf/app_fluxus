@@ -1,9 +1,9 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
-using Arqueng.ENTIDADES;
+using Fluxus.ENTIDADES;
 using System.Data;
 
-namespace Arqueng.DAO
+namespace Fluxus.DAO
 {
 
 
@@ -13,62 +13,9 @@ namespace Arqueng.DAO
         CONEXAO con = new CONEXAO();
 
 
-        public DataTable SelectAllDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_dadoscadastrais", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
 
-        public DataTable DadosParaImpressaoDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT cnpj, razao, fantasia, ct_edital, ct_contrato, logo FROM tb_dadoscadastrais WHERE codigo = 1", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public string NomeFantasiaDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT fantasia FROM tb_dadoscadastrais WHERE codigo = 1", con.con);
-                MySqlDataReader dr = sql.ExecuteReader();
-                dr.Read();
-                if (dr.HasRows == false)
-                    return null;
-                else
-                    return Convert.ToString(dr["fantasia"]);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public void InsertDAO(CadastraisENT dado)
+        //:INSERT
+        public void Insert(CadastraisENT dado)
         {
             try
             {
@@ -114,7 +61,11 @@ namespace Arqueng.DAO
         }
 
 
-        public void UpdateDAO(CadastraisENT dado)
+
+
+
+        //:UPDATE
+        public void Update(CadastraisENT dado)
         {
             try
             {
@@ -156,6 +107,47 @@ namespace Arqueng.DAO
             catch (Exception)
             {
                 con.FecharConexao();
+                throw;
+            }
+        }
+
+
+
+
+
+        //:SELECT
+        public DataTable SelectAll()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT * FROM tb_dadoscadastrais", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable SelectDadosParaImpressao()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT cnpj, razao, fantasia, ct_edital, ct_contrato, logo FROM tb_dadoscadastrais WHERE codigo = 1", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }

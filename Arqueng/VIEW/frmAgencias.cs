@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
-using Arqueng.MODEL;
-using Arqueng.ENTIDADES;
-using System.Data;
+using Fluxus.MODEL;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
-
-
     public partial class frmAgencias : Form
     {
-
         frmPrincipal _frmPrincipal;
 
 
@@ -21,7 +17,7 @@ namespace Arqueng.VIEW
             AgenciasMODEL model = new AgenciasMODEL();
             try
             {
-                dgvAgencias.DataSource = model.ListarAgenciasModel();
+                dgvAgencias.DataSource = model.ListarAgenciasMODEL();
                 if (dgvAgencias.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -48,13 +44,15 @@ namespace Arqueng.VIEW
                 AgenciasENT dado = new AgenciasENT();
                 AgenciasMODEL model = new AgenciasMODEL();
                 dado.Agencia = dgvAgencias.CurrentRow.Cells[0].Value.ToString();
-                model.DeleteAgenciaModel(dado);
+                model.DeleteAgenciaMODEL(dado);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
 
@@ -65,6 +63,7 @@ namespace Arqueng.VIEW
             InitializeComponent();
             _frmPrincipal = frm1;
         }
+
         private void frmAgencias_Load(object sender, EventArgs e)
         {
             Listar();
@@ -83,6 +82,7 @@ namespace Arqueng.VIEW
                 Listar();
             }
         }
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             frmAddAgencia formNeto = new frmAddAgencia
@@ -104,6 +104,7 @@ namespace Arqueng.VIEW
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddAgencia formNeto = new frmAddAgencia(_frmPrincipal);
@@ -123,6 +124,7 @@ namespace Arqueng.VIEW
 
         
     }
+
 
 
 }

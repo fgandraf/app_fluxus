@@ -1,29 +1,24 @@
 ﻿using System;
-using System.Data;
 using System.Windows.Forms;
-using Arqueng.ENTIDADES;
-using Arqueng.MODEL;
+using Fluxus.ENTIDADES;
+using Fluxus.MODEL;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
-
-
     public partial class frmAtividades : Form
     {
-
         frmPrincipal _frmPrincipal;
         AtividadesMODEL model = new AtividadesMODEL();
 
 
 
         //:METHODS
-
         private void Listar()
         {
             AtividadesMODEL model = new AtividadesMODEL();
             try
             {
-                dgvAtividades.DataSource = model.ListarAtividadesModel();
+                dgvAtividades.DataSource = model.ListarAtividadesMODEL(false);
                 if (dgvAtividades.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -42,45 +37,22 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-        //private void PopulateGrid()//---------------
-        //{
-        //    try
-        //    {
-        //        DataView dvAtividades = new DataView(DT.Atividades);//------
-        //        dgvAtividades.DataSource = dvAtividades;//-----------
-        //        if (dgvAtividades.Rows.Count == 0)
-        //        {
-        //            btnEditar.Enabled = false;
-        //            btnExcluir.Enabled = false;
-        //            dgvAtividades.Enabled = false;
-        //        }
-        //        else
-        //        {
-        //            btnEditar.Enabled = true;
-        //            btnExcluir.Enabled = true;
-        //            dgvAtividades.Enabled = true;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+        
         private void Delete()
         {
             try
             {
                 ENTIDADES.AtividadesENT dado = new ENTIDADES.AtividadesENT();
                 dado.Codigo = dgvAtividades.CurrentRow.Cells[0].Value.ToString();
-                model.DeleteAtividadeModel(dado);
+                model.DeleteAtividadeMODEL(dado);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
 
@@ -91,6 +63,7 @@ namespace Arqueng.VIEW
             InitializeComponent();
             _frmPrincipal = frm1;
         }
+
         private void frmAtividades_Load(object sender, EventArgs e)
         {
             Listar();
@@ -115,6 +88,7 @@ namespace Arqueng.VIEW
             }
 
         }
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (Globais.Rl == false)
@@ -131,6 +105,7 @@ namespace Arqueng.VIEW
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddAtividade formNeto = new frmAddAtividade(_frmPrincipal);
@@ -150,6 +125,7 @@ namespace Arqueng.VIEW
 
 
     }
+
 
 
 }

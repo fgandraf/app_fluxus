@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Data;
 using System.Windows.Forms;
-using Arqueng.ENTIDADES;
-using Arqueng.MODEL;
+using Fluxus.ENTIDADES;
+using Fluxus.MODEL;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
-
-
     public partial class frmProfissionais : Form
     {
-
         frmPrincipal _frmPrincipal;
-        
 
 
 
@@ -22,7 +17,7 @@ namespace Arqueng.VIEW
             try
             {
                 ProfissionaisMODEL model = new ProfissionaisMODEL();
-                dgvProfissionais.DataSource = model.ListarProfissionaisModel();
+                dgvProfissionais.DataSource = model.ListarProfissionaisMODEL();
 
                 if (dgvProfissionais.Rows.Count == 0)
                 {
@@ -42,6 +37,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void Delete()
         {
             try
@@ -49,13 +45,15 @@ namespace Arqueng.VIEW
                 ENTIDADES.ProfissionaisENT dado = new ENTIDADES.ProfissionaisENT();
                 ProfissionaisMODEL model = new ProfissionaisMODEL();
                 dado.Codigo = dgvProfissionais.CurrentRow.Cells[0].Value.ToString();
-                model.DeleteProfissionalModel(dado);
+                model.DeleteProfissionalMODEL(dado);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
 
@@ -79,6 +77,8 @@ namespace Arqueng.VIEW
 
 
 
+
+
         //_______Button
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -89,6 +89,7 @@ namespace Arqueng.VIEW
                 Listar();
             }
         }
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (Globais.Rl == false)
@@ -118,12 +119,15 @@ namespace Arqueng.VIEW
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddProfissional formNeto = new frmAddProfissional(_frmPrincipal);
             formNeto.Text = "Adicionar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
+
+
 
 
 
@@ -137,6 +141,7 @@ namespace Arqueng.VIEW
 
 
     }
+
 
 
 }

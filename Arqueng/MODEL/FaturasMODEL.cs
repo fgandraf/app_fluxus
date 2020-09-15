@@ -1,26 +1,22 @@
 ﻿using System;
 using System.Data;
-using Arqueng.DAO;
-using Arqueng.ENTIDADES;
+using Fluxus.DAO;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.MODEL
+namespace Fluxus.MODEL
 {
-
-
     public class FaturasMODEL
     {
-
-
         FaturasDAO dao = new FaturasDAO();
 
 
-        public DataTable ListarFaturaModel()
+
+        //:INSERT
+        public void InsertFaturaMODEL(FaturasENT dado)
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt = dao.SelectAllDAO();
-                return dt;
+                dao.Insert(dado);
             }
             catch (Exception ex)
             {
@@ -29,11 +25,15 @@ namespace Arqueng.MODEL
         }
 
 
-        public void InsertFaturaModel(FaturasENT dado)
+
+
+
+        //:UPDATE
+        public void UpdateFaturaValoresMODEL(FaturasENT dado)
         {
             try
             {
-                dao.InsertDAO(dado);
+                dao.UpdateValores(dado);
             }
             catch (Exception ex)
             {
@@ -42,11 +42,15 @@ namespace Arqueng.MODEL
         }
 
 
-        public void UpdateFaturaValoresModel(FaturasENT dado)
+
+
+
+        //:DELETE
+        public void DeleteFaturaMODEL(FaturasENT dado)
         {
             try
             {
-                dao.UpdateValoresDAO(dado);
+                dao.Delete(dado);
             }
             catch (Exception ex)
             {
@@ -54,11 +58,16 @@ namespace Arqueng.MODEL
             }
         }
 
-        public void DeleteFaturaModel(FaturasENT dado)
+
+
+
+
+        //:SELECT
+        public DataTable ListarFaturaMODEL()
         {
             try
             {
-                dao.DeleteDAO(dado);
+                return dao.SelectAll();
             }
             catch (Exception ex)
             {
@@ -66,19 +75,22 @@ namespace Arqueng.MODEL
             }
         }
 
-        public string DescricaoFaturaModel(string id)
+        public string DescricaoFaturaMODEL(string id)
         {
             try
             {
-                return dao.DescricaoDAO(id);
+                return dao.SelectDescricaoDaFatura(id);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
+    
+    
+    
     }
+
 
 
 }

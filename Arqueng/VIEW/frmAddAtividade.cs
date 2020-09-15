@@ -1,25 +1,31 @@
 ﻿using System;
 using System.Windows.Forms;
-using Arqueng.MODEL;
-using Arqueng.ENTIDADES;
+using Fluxus.MODEL;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
-
     public partial class frmAddAtividade : Form
     {
-
         frmPrincipal _frmPrincipal;
         AtividadesMODEL model = new AtividadesMODEL();
         AtividadesENT dado = new AtividadesENT();
 
 
+
+        //:METHODS
+
+
+
+
+
+        //:EVENTS
+        ///_______Form
         public frmAddAtividade(frmPrincipal frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
-
 
         public frmAddAtividade(frmPrincipal frm1, string codigo, string descricao, string valor, string deslocamento)
         {
@@ -30,7 +36,6 @@ namespace Arqueng.VIEW
             txtValor.Text = valor;
             txtDeslocamento.Text = deslocamento;
         }
-
 
         private void frmAddAtividade_Load(object sender, EventArgs e)
         {
@@ -45,6 +50,10 @@ namespace Arqueng.VIEW
         }
 
 
+
+
+
+        ///_______Button
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             if (txtCodigo.Text == "")
@@ -63,8 +72,7 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    model.InsertAtividadeModel(dado);
-                    DT.Atividades = model.ListarAtividadesModel();
+                    model.InsertAtividadeMODEL(dado);
                 }
                 catch (Exception ex)
                 {
@@ -84,8 +92,7 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    model.UpdateAtividadeModel(dado);
-                    DT.Atividades = model.ListarAtividadesModel();
+                    model.UpdateAtividadeMODEL(dado);
                 }
                 catch (Exception ex)
                 {
@@ -104,11 +111,10 @@ namespace Arqueng.VIEW
             _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
         }
 
-        private void frmAddAtividade_Leave(object sender, EventArgs e)
-        {
-               GC.Collect();
-        }
+
+
     }
+
 
 
 }

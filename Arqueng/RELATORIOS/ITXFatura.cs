@@ -6,9 +6,9 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 
 
-namespace Arqueng.RELATORIOS
+namespace Fluxus.RELATORIOS
 {
-    public class itsFatura
+    public class ITXFatura
     {
 
         public static void GerarFaturaPDF (System.Drawing.Image logotipo, string edital, string contrato, string razaosocial, string cnpj, DataTable dtPro, DataTable dtOS, string caminho)

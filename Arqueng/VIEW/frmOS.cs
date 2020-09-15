@@ -2,13 +2,15 @@
 using System.Windows.Forms;
 
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
     public partial class frmOS : Form
     {
         frmPrincipal _frmPrincipal;
 
 
+
+        //:METHODS
         private void CarregarOsLista()
         {
             if (tabList.Controls.Count > 0)
@@ -23,6 +25,11 @@ namespace Arqueng.VIEW
         }
 
 
+
+
+
+        //:EVENTS
+        ///_______Form
         public frmOS(frmPrincipal frm1)
         {
             InitializeComponent();
@@ -40,8 +47,6 @@ namespace Arqueng.VIEW
             }
         }
 
-
-
         private void frmOS_Load(object sender, EventArgs e)
         {
             if (tabFluxo.Controls.Count > 0)
@@ -55,6 +60,11 @@ namespace Arqueng.VIEW
             formFluxo.Show();
         }
 
+
+
+
+
+        ///_______TabControl
         private void tabOS_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabOS.SelectedTab.Name == "tabList" && tabList.Controls.Count == 0)
@@ -63,5 +73,9 @@ namespace Arqueng.VIEW
         }
 
 
+
     }
+
+
+
 }

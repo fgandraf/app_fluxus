@@ -1,4 +1,4 @@
-﻿namespace Arqueng.VIEW
+﻿namespace Fluxus.VIEW
 {
     partial class frmAddProfissional
     {
@@ -745,7 +745,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Profissional";
             this.Load += new System.EventHandler(this.frmAddProfissional_Load);
-            this.Leave += new System.EventHandler(this.frmAddProfissional_Leave);
             this.pnlLinha2.ResumeLayout(false);
             this.pnlMainAddProfissional.ResumeLayout(false);
             this.pnlMainAddProfissional.PerformLayout();

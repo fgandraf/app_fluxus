@@ -1,30 +1,30 @@
 ﻿using System;
 using System.Windows.Forms;
-using Arqueng.MODEL;
-using Arqueng.ENTIDADES;
+using Fluxus.MODEL;
+using Fluxus.ENTIDADES;
 using System.Text.RegularExpressions;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
-
-
     public partial class frmAddAgencia : Form
     {
-
         frmPrincipal _frmPrincipal;
         AgenciasMODEL model = new AgenciasMODEL();
         AgenciasENT dado = new AgenciasENT();
 
 
+
+        //:METHODS
+
+
+
+
+        //:EVENTS
+        ///_______Form
         public frmAddAgencia(frmPrincipal frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-        }
-
-        public frmAddAgencia()
-        {
-            InitializeComponent();
         }
 
         public frmAddAgencia(string agencia)
@@ -33,8 +33,7 @@ namespace Arqueng.VIEW
             txtAgencia.Text = agencia;
         }
 
-
-        public frmAddAgencia (frmPrincipal frm1, string agencia, string nome, string endereco, string complemento, string bairro, string cidade, string cep, string uf, string contato, string telefone1, string telefone2, string email)
+        public frmAddAgencia(frmPrincipal frm1, string agencia, string nome, string endereco, string complemento, string bairro, string cidade, string cep, string uf, string contato, string telefone1, string telefone2, string email)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -52,7 +51,6 @@ namespace Arqueng.VIEW
             txtEmail.Text = email;
         }
 
-
         private void frmAddAgencia_Load(object sender, EventArgs e)
         {
             if (this.Text == "Alterar")
@@ -66,6 +64,10 @@ namespace Arqueng.VIEW
         }
 
 
+
+
+
+        ///_______Button
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             if (txtAgencia.Text == "")
@@ -73,7 +75,7 @@ namespace Arqueng.VIEW
                 MessageBox.Show("Campos com * são obrigatório", "Chave Primária", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            
+
             //POPULATE
             dado.Agencia = txtAgencia.Text;
             dado.Nome = txtNome.Text;
@@ -92,8 +94,7 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    model.InsertAgenciaModel(dado);
-                    DT.Agencias = model.ListarAgenciasModel();
+                    model.InsertAgenciaMODEL(dado);
                 }
                 catch (Exception ex)
                 {
@@ -113,8 +114,7 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    model.UpdateAgenciaModel(dado);
-                    DT.Agencias = model.ListarAgenciasModel();
+                    model.UpdateAgenciaMODEL(dado);
                 }
                 catch (Exception ex)
                 {
@@ -129,6 +129,22 @@ namespace Arqueng.VIEW
             }
         }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            if (this.FormBorderStyle != System.Windows.Forms.FormBorderStyle.FixedSingle)
+            {
+                frmAgencias formFilho = new frmAgencias(_frmPrincipal);
+                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            }
+        }
+
+
+
+
+
+        ///_______TextBox
         private void txtTelefone1_Enter(object sender, EventArgs e)
         {
             txtTelefone1.Mask = "(99) #########";
@@ -152,6 +168,8 @@ namespace Arqueng.VIEW
 
         }
 
+
+
         private void txtTelefone2_Enter(object sender, EventArgs e)
         {
             txtTelefone2.Mask = "(99) ##########";
@@ -172,6 +190,8 @@ namespace Arqueng.VIEW
                 txtTelefone2.Mask = "(99) ##########";
         }
 
+
+
         private void txtCEP_Enter(object sender, EventArgs e)
         {
             txtCEP.Mask = "#####-###";
@@ -183,23 +203,10 @@ namespace Arqueng.VIEW
                 txtCEP.Mask = "";
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-
-            if (this.FormBorderStyle != System.Windows.Forms.FormBorderStyle.FixedSingle)
-            {
-                frmAgencias formFilho = new frmAgencias(_frmPrincipal);
-                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
-            }
-        }
-
-        private void frmAddAgencia_Leave(object sender, EventArgs e)
-        {
-            GC.Collect();
-        }
+        
 
     }
+
 
 
 }

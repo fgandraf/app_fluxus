@@ -1,4 +1,4 @@
-﻿namespace Arqueng
+﻿namespace Fluxus
 {
     partial class frmLogin
     {
@@ -216,9 +216,9 @@
             this.label1.Location = new System.Drawing.Point(35, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 28);
+            this.label1.Size = new System.Drawing.Size(62, 28);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Arqueng";
+            this.label1.Text = "Fluxus";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblLoad
@@ -262,7 +262,7 @@
             this.Name = "frmLogin";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Arqueng";
+            this.Text = "Fluxus";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmLogin_MouseDown);
             this.pnlLogin.ResumeLayout(false);

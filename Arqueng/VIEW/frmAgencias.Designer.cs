@@ -1,4 +1,4 @@
-﻿namespace Arqueng.VIEW
+﻿namespace Fluxus.VIEW
 {
     partial class frmAgencias
     {

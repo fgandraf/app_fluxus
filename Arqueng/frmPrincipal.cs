@@ -1,32 +1,22 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using Arqueng.VIEW;
-using Arqueng.MODEL;
-using Arqueng.ENTIDADES;
-using System.Data;
+using Fluxus.VIEW;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng
+namespace Fluxus
 {
-
-
     public partial class frmPrincipal : Form
     {
-
-
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-
         Form FormAtivo = null;
 
 
 
-
-
-        //:MÉTODOS
-
+        //:METHODS
         public void AbrirFormInPanel(Form Formfilho, Panel pnl)
         {
             if (pnl.Controls.Count > 0)
@@ -59,14 +49,8 @@ namespace Arqueng
 
 
 
-
-
-
-
-        //:EVENTOS
-
-        ///_______FORMULÁRIO
-        
+        //:EVENTS
+        ///_______Form
         public frmPrincipal()
         {
             InitializeComponent();
@@ -88,10 +72,7 @@ namespace Arqueng
 
 
 
-
-
-        ///_______PAINEL
-        
+        ///_______Panel
         private void pnlTitulo_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -102,10 +83,7 @@ namespace Arqueng
 
 
 
-
-
-        ///_______BOTÕES DE CONTROLE
-
+        ///_______Button (Form Controls)
         private void btnAppFechar_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -134,31 +112,7 @@ namespace Arqueng
 
 
 
-
-
-        ///_______MENU
-
-        private void btnSlide_Click(object sender, EventArgs e)
-        {
-            if (pnlMenu.Width == 200)
-            {
-                pnlMenu.Width = 50;
-                ttpMenu.Active = true;
-                btnDadosCadastrais.Hide();
-
-
-                if (pnlCtrlDadosCadastrais.Visible == true)
-                    pnlCtrlDadosCadastrais.Width = 20;
-            }
-            else
-            {
-                pnlMenu.Width = 200;
-                ttpMenu.Active = false;
-                btnDadosCadastrais.Show();
-                pnlCtrlDadosCadastrais.Width = 150;
-            }
-        }
-
+        ///_______Button (Menu)
         private void btnDadosCadastrais_Click(object sender, EventArgs e)
         {
             OcultaControles();
@@ -238,9 +192,8 @@ namespace Arqueng
     
     
     
-    
-    
     }
+
 
 
 }

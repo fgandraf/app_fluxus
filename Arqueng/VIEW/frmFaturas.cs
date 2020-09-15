@@ -1,19 +1,16 @@
-﻿using Arqueng.ENTIDADES;
-using Arqueng.MODEL;
+﻿using Fluxus.ENTIDADES;
+using Fluxus.MODEL;
 using System;
 using System.Windows.Forms;
 using System.IO;
 using System.Data;
-using Arqueng.RELATORIOS;
+using Fluxus.RELATORIOS;
 using System.Linq;
 
-namespace Arqueng.VIEW
+namespace Fluxus.VIEW
 {
-
-
     public partial class frmFaturas : Form
     {
-        //FaturasMODEL model = new FaturasMODEL();
         OsMODEL modelOS = new OsMODEL();
         OsENT dado = new OsENT();
         FaturasENT dadofat = new FaturasENT();
@@ -22,13 +19,14 @@ namespace Arqueng.VIEW
         private decimal Total = 0;
 
 
+
         //:METHODS
         private void ListarFatura()
         {
             try
             {
                 FaturasMODEL model = new FaturasMODEL();
-                dgvFaturas.DataSource = model.ListarFaturaModel();
+                dgvFaturas.DataSource = model.ListarFaturaMODEL();
                 if (dgvFaturas.Rows.Count > 0)
                 {
                     tblFaturas.Show();
@@ -46,18 +44,8 @@ namespace Arqueng.VIEW
             {
                 try
                 {
-                    OsENT dado = new OsENT();
                     OsMODEL model = new OsMODEL();
-
-
-                    dgvOS.DataSource = model.ListarOSFaturaModel(dgvFaturas.CurrentRow.Cells[0].Value.ToString(), false);
-
-
-                    //DataView dvOS = new DataView(DT.OSFatura);
-                    //dvOS.RowFilter = String.Format("fatura_cod = '{0}'", dgvFaturas.CurrentRow.Cells[0].Value.ToString());
-                    //dgvOS.DataSource = dvOS;
-
-
+                    dgvOS.DataSource = model.ListarOrdensFaturadasDoCodigoMODEL(dgvFaturas.CurrentRow.Cells[0].Value.ToString());
 
                     txtData.Text = dgvFaturas.CurrentRow.Cells[2].Value.ToString();
                     txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);
@@ -79,20 +67,7 @@ namespace Arqueng.VIEW
             Subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_deslocamento.Name].Value ?? 0));
             Total = Subtotal_os + Subtotal_desloc;
         }
-        private DataTable Profissionais()
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                dado.Fatura_cod = dgvFaturas.CurrentRow.Cells[0].Value.ToString();
-                dt = modelOS.DistinctProOSFaturadaModel(dado);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return dt;
-        }
+
 
 
 
@@ -131,14 +106,14 @@ namespace Arqueng.VIEW
                 using (var stream = new MemoryStream(Globais.Logo))
                     logoImagem = System.Drawing.Image.FromStream(stream);
                 //CHAMAR O MÉTODO
-                itsFatura.GerarFaturaPDF
+                ITXFatura.GerarFaturaPDF
                 (
                 logoImagem,
                 Globais.Edital,
                 Globais.Contrato,
                 Globais.Razao,
                 Globais.Cnpj,
-                Profissionais(),
+                modelOS.ListarCodigoENomeidDosProfissionaisDaFaturaMODEL(dgvFaturas.CurrentRow.Cells[0].Value.ToString()),
                 (DataTable)dgvOS.DataSource,
                 caminho
                 );
@@ -156,7 +131,7 @@ namespace Arqueng.VIEW
                 {
                     //ALTERA PARA ZERO O FATURA_COD
                     OsMODEL modelOS = new OsMODEL();
-                    modelOS.UpdateOsFaturadaModel(dgvOS.CurrentRow.Cells[1].Value.ToString(), "0");
+                    modelOS.UpdateFaturaCodMODEL(dgvOS.CurrentRow.Cells[1].Value.ToString(), "0");
 
                     //APAGA DO DATAGRIDVIEW
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
@@ -175,7 +150,7 @@ namespace Arqueng.VIEW
                     dadofat.subtotal_os = Subtotal_os.ToString();
                     dadofat.subtotal_desloc = Subtotal_desloc.ToString();
                     dadofat.total = Total.ToString();
-                    modelFat.UpdateFaturaValoresModel(dadofat);
+                    modelFat.UpdateFaturaValoresMODEL(dadofat);
                 }
             }
         }
@@ -195,7 +170,7 @@ namespace Arqueng.VIEW
                     FaturasENT dadoFat = new FaturasENT();
                     FaturasMODEL modelFat = new FaturasMODEL();
                     dadoFat.id = Convert.ToInt32(dgvFaturas.CurrentRow.Cells[0].Value);
-                    modelFat.DeleteFaturaModel(dadoFat);
+                    modelFat.DeleteFaturaMODEL(dadoFat);
                     ListarFatura();
                 }
             }
@@ -210,6 +185,7 @@ namespace Arqueng.VIEW
         {
             ListarOS();
         }
+
 
 
     }

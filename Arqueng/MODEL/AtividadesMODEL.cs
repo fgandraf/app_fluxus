@@ -1,26 +1,22 @@
 ﻿using System;
 using System.Data;
-using Arqueng.DAO;
-using Arqueng.ENTIDADES;
+using Fluxus.DAO;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.MODEL
+namespace Fluxus.MODEL
 {
-
-
     public class AtividadesMODEL
     {
-
-
         AtividadesDAO dao = new AtividadesDAO();
 
 
-        public DataTable ListarAtividadesModel()
+
+        //:INSERT
+        public void InsertAtividadeMODEL(AtividadesENT dado)
         {
             try
             {
-                DataTable dt = new DataTable();
-                dt = dao.SelectAllDAO();
-                return dt;
+                dao.Insert(dado);
             }
             catch (Exception ex)
             {
@@ -29,11 +25,15 @@ namespace Arqueng.MODEL
         }
 
 
-        public void InsertAtividadeModel(AtividadesENT dado)
+
+
+
+        //:UPDATE
+        public void UpdateAtividadeMODEL(AtividadesENT dado)
         {
             try
             {
-                dao.InsertDAO(dado);
+                dao.Update(dado);
             }
             catch (Exception ex)
             {
@@ -42,11 +42,15 @@ namespace Arqueng.MODEL
         }
 
 
-        public void UpdateAtividadeModel(AtividadesENT dado)
+
+
+
+        //:DELETE
+        public void DeleteAtividadeMODEL(AtividadesENT dado)
         {
             try
             {
-                dao.UpdateDAO(dado);
+                dao.Delete(dado);
             }
             catch (Exception ex)
             {
@@ -55,21 +59,35 @@ namespace Arqueng.MODEL
         }
 
 
-        public void DeleteAtividadeModel(AtividadesENT dado)
+
+
+
+        //:SELECT
+        public DataTable ListarAtividadesMODEL(bool adicionaTitulo)
         {
+            DataTable dtAtividades = new DataTable();
             try
             {
-                dao.DeleteDAO(dado);
+                DataView dvAtividades = new DataView(dao.SelectAll());
+                dtAtividades = dvAtividades.ToTable("Selected", false, "codigo", "descricao", "valor_atividade", "valor_deslocamento");
+                if (adicionaTitulo)
+                {
+                    DataRow linha = dtAtividades.NewRow();
+                    linha[0] = "--TODAS--";
+                    dtAtividades.Rows.InsertAt(linha, 0);
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+            return dtAtividades;
         }
 
 
 
     }
+
 
 
 }

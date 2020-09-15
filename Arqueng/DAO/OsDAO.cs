@@ -1,59 +1,21 @@
 ﻿using System;
 using System.Data;
 using MySql.Data.MySqlClient;
-using Arqueng.ENTIDADES;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.DAO
+namespace Fluxus.DAO
 {
 
 
     public class OsDAO
     {
-
-
         MySqlCommand sql;
         CONEXAO con = new CONEXAO();
 
 
-        public DataTable SelectAllDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_os ORDER BY data_ordem", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
 
-
-        public DataTable NFaturadasDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_os WHERE fatura_cod = 0 ORDER BY data_ordem", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-        public void InsertDAO(OsENT dado)
+        //:INSERT
+        public void Insert(OsENT dado)
         {
             try
             {
@@ -90,7 +52,11 @@ namespace Arqueng.DAO
         }
 
 
-        public void UpdateDAO(OsENT dado)
+
+
+
+        //:UPDATE
+        public void Update(OsENT dado)
         {
             try
             {
@@ -123,8 +89,7 @@ namespace Arqueng.DAO
             }
         }
 
-
-        public void UpdateFaturada(string referencia, string fatura_cod)
+        public void UpdateFaturaCod(string referencia, string fatura_cod)
         {
             try
             {
@@ -142,152 +107,7 @@ namespace Arqueng.DAO
             }
         }
 
-
-        public void DeleteOsDAO(OsENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("DELETE FROM tb_os WHERE referencia = @referencia", con.con);
-                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
-                sql.ExecuteNonQuery();
-                con.FecharConexao();
-            }
-            catch (Exception)
-            {
-                con.FecharConexao();
-                throw;
-            }
-        }
-
-
-        public DataTable ListarOSFaturaDAO(string fatura_cod, bool status)
-        {
-            try
-            {
-                con.AbrirConexao();
-                if (status == false)
-                    sql = new MySqlCommand("SELECT t1.data_ordem, t1.referencia, t1.profissional_cod, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t1.fatura_cod, t1.status, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.fatura_cod = @fatura_cod ORDER BY t1.data_concluida", con.con);
-                else
-                    sql = new MySqlCommand("SELECT t1.data_ordem, t1.referencia, t1.profissional_cod, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t1.fatura_cod, t1.status, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.fatura_cod = 0 AND status = 'CONCLUÍDA' ORDER BY t1.data_concluida", con.con);
-
-                sql.Parameters.AddWithValue("@fatura_cod", fatura_cod);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-        public DataTable ListarOSFiltradaDAO(string sqlFiltro)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand(sqlFiltro, con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //***** LISTAR ORDENS DE SERVIÇO À SEREM FATURADAS *****//
-        public DataTable ListarOSAFaturarDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT t1.data_ordem, t1.referencia, t1.profissional_cod, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.status = 'CONCLUÍDA' AND t1.fatura_cod = 0 ORDER BY t1.data_concluida", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-
-        public DataTable DistinctProOSFaturadaDAO(OsENT dado)
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT DISTINCT t1.profissional_cod, t2.nomeid FROM tb_os t1 INNER JOIN tb_profissionais t2 on t1.profissional_cod = t2.codigo WHERE t1.fatura_cod = @fatura_cod ORDER BY t2.nomeid", con.con);
-                sql.Parameters.AddWithValue("@fatura_cod", dado.Fatura_cod);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-
-
-
-
-        public void UpdateStatusRecebida(OsENT dado)
+        public void UpdateStatusToRecebida(OsENT dado)
         {
             try
             {
@@ -304,8 +124,7 @@ namespace Arqueng.DAO
             }
         }
 
-
-        public void UpdateStatusPendente(OsENT dado)
+        public void UpdateStatusToPendente(OsENT dado)
         {
             try
             {
@@ -323,7 +142,7 @@ namespace Arqueng.DAO
             }
         }
 
-        public void UpdateStatusVistoriada(OsENT dado)
+        public void UpdateStatusToVistoriada(OsENT dado)
         {
             try
             {
@@ -341,7 +160,7 @@ namespace Arqueng.DAO
             }
         }
 
-        public void UpdateStatusConcluida(OsENT dado)
+        public void UpdateStatusToConcluida(OsENT dado)
         {
             try
             {
@@ -361,7 +180,124 @@ namespace Arqueng.DAO
 
 
 
-        public DataTable DistinctCidadesDAO()
+
+
+        //:DELETE
+        public void DeleteOs(OsENT dado)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("DELETE FROM tb_os WHERE referencia = @referencia", con.con);
+                sql.Parameters.AddWithValue("@referencia", dado.Referencia);
+                sql.ExecuteNonQuery();
+                con.FecharConexao();
+            }
+            catch (Exception)
+            {
+                con.FecharConexao();
+                throw;
+            }
+        }
+
+
+
+
+
+        //:SELECT
+        public DataTable SelectOrdensNaoFaturadas()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT * FROM tb_os WHERE fatura_cod = 0 ORDER BY data_ordem", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable SelectOrdensFaturadasDoCodigo(string fatura_cod)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT t1.data_ordem, t1.referencia, t1.profissional_cod, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t1.fatura_cod, t1.status, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.fatura_cod = @fatura_cod ORDER BY t1.data_concluida", con.con);
+                sql.Parameters.AddWithValue("@fatura_cod", fatura_cod);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable SelectOrdensConcluidasNaoFaturadas()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT t1.data_ordem, t1.referencia, t1.profissional_cod, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t1.fatura_cod, t1.status, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.fatura_cod = 0 AND status = 'CONCLUÍDA' ORDER BY t1.data_concluida", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable SelectOrdensComFiltro(string filtro)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand(filtro, con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable SelectCodigoENomeidDosProfissionaisDaFatura(string fatura_cod)
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT DISTINCT t1.profissional_cod, t2.nomeid FROM tb_os t1 INNER JOIN tb_profissionais t2 on t1.profissional_cod = t2.codigo WHERE t1.fatura_cod = @fatura_cod ORDER BY t2.nomeid", con.con);
+                sql.Parameters.AddWithValue("@fatura_cod", fatura_cod);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public DataTable SelectCidadesDasOrdens()
         {
             try
             {

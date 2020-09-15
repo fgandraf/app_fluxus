@@ -1,18 +1,17 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
 
-namespace Arqueng.DAO
+namespace Fluxus.DAO
 {
-
-
     public class CONEXAO
     {
         string dadoscon = "SERVER=localhost; DATABASE=cef_db; UID=root; PWD=; PORT=3308";
         //string dadoscon = "SERVER=ayearquitetura.com.br; DATABASE=ayearq02_cef_db; UID=ayearq02; PWD=452nyZRb7m;";
-        
         public MySqlConnection con = null;
 
 
+
+        //:METHODS
         public void AbrirConexao()
         {
             try
@@ -25,7 +24,6 @@ namespace Arqueng.DAO
                 throw ex;
             }
         }
-
 
         public void FecharConexao()
         {
@@ -41,7 +39,9 @@ namespace Arqueng.DAO
         }
 
 
+
     }
+
 
 
 }

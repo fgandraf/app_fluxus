@@ -1,4 +1,4 @@
-﻿namespace Arqueng
+﻿namespace Fluxus
 {
     partial class frmPrincipal
     {
@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.pnlCtrlOS = new System.Windows.Forms.Panel();
             this.pnlCtrlProfissionais = new System.Windows.Forms.Panel();
             this.btnProfissionais = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@
             this.pnlCtrlAtividades = new System.Windows.Forms.Panel();
             this.lblVersao = new System.Windows.Forms.Label();
             this.pnlCtrlAgencias = new System.Windows.Forms.Panel();
-            this.btnSlide = new System.Windows.Forms.Button();
             this.pnlCtrlDadosCadastrais = new System.Windows.Forms.Panel();
             this.pnlCtrlFaturas = new System.Windows.Forms.Panel();
             this.btnFaturas = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@
             this.btnAgencias = new System.Windows.Forms.Button();
             this.btnAtividades = new System.Windows.Forms.Button();
             this.pnlTitulo = new System.Windows.Forms.Panel();
-            this.lblUsuario = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnAppMinimizar = new System.Windows.Forms.Button();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnAppFechar = new System.Windows.Forms.Button();
@@ -56,7 +56,6 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.ttpMenu = new System.Windows.Forms.ToolTip(this.components);
             this.ttpSempre = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.pnlTitulo.SuspendLayout();
@@ -73,7 +72,6 @@
             this.pnlMenu.Controls.Add(this.pnlCtrlAtividades);
             this.pnlMenu.Controls.Add(this.lblVersao);
             this.pnlMenu.Controls.Add(this.pnlCtrlAgencias);
-            this.pnlMenu.Controls.Add(this.btnSlide);
             this.pnlMenu.Controls.Add(this.pnlCtrlDadosCadastrais);
             this.pnlMenu.Controls.Add(this.pnlCtrlFaturas);
             this.pnlMenu.Controls.Add(this.btnFaturas);
@@ -86,6 +84,18 @@
             this.pnlMenu.Name = "pnlMenu";
             this.pnlMenu.Size = new System.Drawing.Size(200, 630);
             this.pnlMenu.TabIndex = 160;
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 7F);
+            this.lblUsuario.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblUsuario.Location = new System.Drawing.Point(0, 614);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(134, 13);
+            this.lblUsuario.TabIndex = 126;
+            this.lblUsuario.Text = "Usuário: null";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlCtrlOS
             // 
@@ -188,25 +198,6 @@
             this.pnlCtrlAgencias.Size = new System.Drawing.Size(5, 50);
             this.pnlCtrlAgencias.TabIndex = 125;
             this.pnlCtrlAgencias.Visible = false;
-            // 
-            // btnSlide
-            // 
-            this.btnSlide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSlide.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSlide.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnSlide.FlatAppearance.BorderSize = 0;
-            this.btnSlide.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnSlide.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnSlide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSlide.Image = ((System.Drawing.Image)(resources.GetObject("btnSlide.Image")));
-            this.btnSlide.Location = new System.Drawing.Point(166, 13);
-            this.btnSlide.Name = "btnSlide";
-            this.btnSlide.Size = new System.Drawing.Size(20, 20);
-            this.btnSlide.TabIndex = 133;
-            this.ttpSempre.SetToolTip(this.btnSlide, "Recolher/Expandir Menu");
-            this.btnSlide.UseVisualStyleBackColor = true;
-            this.btnSlide.Visible = false;
-            this.btnSlide.Click += new System.EventHandler(this.btnSlide_Click);
             // 
             // pnlCtrlDadosCadastrais
             // 
@@ -351,17 +342,15 @@
             this.pnlTitulo.TabIndex = 2;
             this.pnlTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitulo_MouseDown);
             // 
-            // lblUsuario
+            // panel1
             // 
-            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 7F);
-            this.lblUsuario.ForeColor = System.Drawing.SystemColors.Window;
-            this.lblUsuario.Location = new System.Drawing.Point(0, 614);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(134, 13);
-            this.lblUsuario.TabIndex = 126;
-            this.lblUsuario.Text = "Usuário: null";
-            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(921, 5);
+            this.panel1.TabIndex = 125;
             // 
             // btnAppMinimizar
             // 
@@ -478,16 +467,6 @@
             this.ttpSempre.InitialDelay = 50;
             this.ttpSempre.ReshowDelay = 10;
             // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(921, 5);
-            this.panel1.TabIndex = 125;
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,7 +480,7 @@
             this.MaximizeBox = false;
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Arqueng";
+            this.Text = "Fluxus";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.pnlMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
@@ -532,7 +511,6 @@
         private System.Windows.Forms.Button btnAppMaximizar;
         private System.Windows.Forms.Button btnAppMinimizar;
         private System.Windows.Forms.Button btnAppRestaurar;
-        private System.Windows.Forms.Button btnSlide;
         private System.Windows.Forms.Button btnFaturas;
         private System.Windows.Forms.Panel pnlCtrlFaturas;
         public System.Windows.Forms.Button btnDadosCadastrais;

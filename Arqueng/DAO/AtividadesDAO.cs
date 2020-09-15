@@ -1,40 +1,21 @@
 ﻿using System;
 using System.Data;
 using MySql.Data.MySqlClient;
-using Arqueng.ENTIDADES;
+using Fluxus.ENTIDADES;
 
-namespace Arqueng.DAO
+namespace Fluxus.DAO
 {
 
 
     public class AtividadesDAO
     {
-
-
         MySqlCommand sql;
         CONEXAO con = new CONEXAO();
 
 
-        public DataTable SelectAllDAO()
-        {
-            try
-            {
-                con.AbrirConexao();
-                sql = new MySqlCommand("SELECT * FROM tb_atividades ORDER BY codigo", con.con);
-                MySqlDataAdapter da = new MySqlDataAdapter();
-                da.SelectCommand = sql;
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
- 
 
-        public void InsertDAO(AtividadesENT dado)
+        //:INSERT
+        public void Insert(AtividadesENT dado)
         {
             try
             {
@@ -55,7 +36,11 @@ namespace Arqueng.DAO
         }
 
 
-        public void UpdateDAO(AtividadesENT dado)
+
+
+
+        //:UPDATE
+        public void Update(AtividadesENT dado)
         {
             try
             {
@@ -76,7 +61,11 @@ namespace Arqueng.DAO
         }
 
 
-        public void DeleteDAO(AtividadesENT dado)
+
+
+
+        //:DELETE
+        public void Delete(AtividadesENT dado)
         {
             try
             {
@@ -92,6 +81,30 @@ namespace Arqueng.DAO
                 throw;
             }
         }
+
+
+
+
+
+        //:SELECT
+        public DataTable SelectAll()
+        {
+            try
+            {
+                con.AbrirConexao();
+                sql = new MySqlCommand("SELECT * FROM tb_atividades ORDER BY codigo", con.con);
+                MySqlDataAdapter da = new MySqlDataAdapter();
+                da.SelectCommand = sql;
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+ 
 
 
     }
