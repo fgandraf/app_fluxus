@@ -69,11 +69,12 @@ namespace Fluxus.MODEL
             try
             {
                 DataView dvAtividades = new DataView(dao.SelectAll());
-                dtAtividades = dvAtividades.ToTable("Selected", false, "codigo", "descricao", "valor_atividade", "valor_deslocamento");
+                dtAtividades = dvAtividades.ToTable("Selected", false, "id", "codigo", "descricao", "valor_atividade", "valor_deslocamento");
+                
                 if (adicionaTitulo)
                 {
                     DataRow linha = dtAtividades.NewRow();
-                    linha[0] = "--TODAS--";
+                    linha[1] = "--TODAS--";
                     dtAtividades.Rows.InsertAt(linha, 0);
                 }
             }

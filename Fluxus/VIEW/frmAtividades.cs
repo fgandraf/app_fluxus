@@ -43,7 +43,7 @@ namespace Fluxus.VIEW
             try
             {
                 ENTIDADES.AtividadesENT dado = new ENTIDADES.AtividadesENT();
-                dado.Codigo = dgvAtividades.CurrentRow.Cells[0].Value.ToString();
+                dado.Id = Convert.ToInt32(dgvAtividades.CurrentRow.Cells["id"].Value.ToString());
                 model.DeleteAtividadeMODEL(dado);
             }
             catch (Exception ex)
@@ -97,6 +97,7 @@ namespace Fluxus.VIEW
             frmAddAtividade formNeto = new frmAddAtividade
                 (
                 _frmPrincipal,
+                Convert.ToInt32(dgvAtividades.CurrentRow.Cells["id"].Value),
                 Convert.ToString(dgvAtividades.CurrentRow.Cells["codigo"].Value),
                 Convert.ToString(dgvAtividades.CurrentRow.Cells["descricao"].Value),
                 Convert.ToString(dgvAtividades.CurrentRow.Cells["valor_atividade"].Value),

@@ -45,11 +45,12 @@ namespace Fluxus.DAO
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("UPDATE tb_atividades SET descricao = @descricao, valor_atividade = @valor_atividade, valor_deslocamento = @valor_deslocamento WHERE codigo = @codigo", con.con);
+                sql = new MySqlCommand("UPDATE tb_atividades SET codigo = @codigo, descricao = @descricao, valor_atividade = @valor_atividade, valor_deslocamento = @valor_deslocamento WHERE id = @id", con.con);
                 sql.Parameters.AddWithValue("@codigo", dado.Codigo);
                 sql.Parameters.AddWithValue("@descricao", dado.Descricao);
                 sql.Parameters.AddWithValue("@valor_atividade", dado.Valor_atividade);
                 sql.Parameters.AddWithValue("@valor_deslocamento", dado.Valor_deslocamento);
+                sql.Parameters.AddWithValue("@id", dado.Id);
                 sql.ExecuteNonQuery();
                 con.FecharConexao();
             }
@@ -70,8 +71,8 @@ namespace Fluxus.DAO
             try
             {
                 con.AbrirConexao();
-                sql = new MySqlCommand("DELETE FROM tb_atividades WHERE codigo = @codigo", con.con);
-                sql.Parameters.AddWithValue("@codigo", dado.Codigo);
+                sql = new MySqlCommand("DELETE FROM tb_atividades WHERE id = @id", con.con);
+                sql.Parameters.AddWithValue("@id", dado.Id);
                 sql.ExecuteNonQuery();
                 con.FecharConexao();
             }

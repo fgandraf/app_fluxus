@@ -1,16 +1,16 @@
-﻿//using
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-namespace Fluxus.ENTIDADES
+namespace API.Model.Entities
 {
-
-    public class AtividadesENT
+    public class AtividadeENT
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Codigo { get; set; }
         public string Descricao { get; set; }
         public string Valor_atividade { get; set; }
         public string Valor_deslocamento { get; set; }
     }
-
-
 }

@@ -10,6 +10,7 @@ namespace Fluxus.VIEW
         frmPrincipal _frmPrincipal;
         AtividadesMODEL model = new AtividadesMODEL();
         AtividadesENT dado = new AtividadesENT();
+        private int Id = 0;
 
 
 
@@ -27,10 +28,11 @@ namespace Fluxus.VIEW
             _frmPrincipal = frm1;
         }
 
-        public frmAddAtividade(frmPrincipal frm1, string codigo, string descricao, string valor, string deslocamento)
+        public frmAddAtividade(frmPrincipal frm1, int id, string codigo, string descricao, string valor, string deslocamento)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
+            Id = id;
             txtCodigo.Text = codigo;
             txtDescricao.Text = descricao;
             txtValor.Text = valor;
@@ -63,6 +65,7 @@ namespace Fluxus.VIEW
             }
 
             //POPULATE
+            dado.Id = Id;
             dado.Codigo = txtCodigo.Text;
             dado.Descricao = txtDescricao.Text;
             dado.Valor_atividade = txtValor.Text.Replace(',', '.');

@@ -46,6 +46,7 @@
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.pnlLinha2 = new System.Windows.Forms.Panel();
             this.ttpAtividades = new System.Windows.Forms.ToolTip(this.components);
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor_atividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +73,7 @@
             this.dgvAtividades.ColumnHeadersHeight = 35;
             this.dgvAtividades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAtividades.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
             this.codigo,
             this.descricao,
             this.valor_atividade,
@@ -203,6 +205,14 @@
             this.pnlLinha2.TabIndex = 203;
             this.pnlLinha2.Visible = false;
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
             // codigo
             // 
             this.codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -286,6 +296,7 @@
         private System.Windows.Forms.TextBox txtPesquisar;
         private System.Windows.Forms.Panel pnlLinha2;
         private System.Windows.Forms.ToolTip ttpAtividades;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_atividade;
