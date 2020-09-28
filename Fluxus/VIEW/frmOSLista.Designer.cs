@@ -1,4 +1,4 @@
-﻿namespace Fluxus.VIEW
+﻿namespace Fluxus.View
 {
     partial class frmOSLista
     {
@@ -49,25 +49,6 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.dgvOS = new System.Windows.Forms.DataGridView();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Agencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.atividade_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coordenada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prazo_execucao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.profissional_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.siopi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.nome_contato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefone_contato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_vistoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data_concluida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.obs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fatura_cod = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.lblTitTotal = new System.Windows.Forms.Label();
             this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.ttpOS = new System.Windows.Forms.ToolTip(this.components);
@@ -87,6 +68,26 @@
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.salvar = new System.Windows.Forms.SaveFileDialog();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Agencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.atividade_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coordenada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prazo_execucao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.profissional_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.siopi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.nome_contato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefone_contato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_vistoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data_concluida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.obs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fatura_cod = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
             this.SuspendLayout();
@@ -180,6 +181,7 @@
             this.dgvOS.ColumnHeadersHeight = 35;
             this.dgvOS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvOS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
             this.status,
             this.data_ordem,
             this.titulo,
@@ -229,214 +231,6 @@
             this.dgvOS.TabIndex = 221;
             this.dgvOS.DoubleClick += new System.EventHandler(this.dgvOS_DoubleClick);
             this.dgvOS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvOS_KeyDown);
-            // 
-            // status
-            // 
-            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "Status";
-            this.status.MinimumWidth = 90;
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            this.status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.status.Width = 90;
-            // 
-            // data_ordem
-            // 
-            this.data_ordem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.data_ordem.DataPropertyName = "data_ordem";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_ordem.DefaultCellStyle = dataGridViewCellStyle2;
-            this.data_ordem.HeaderText = "Data Ordem";
-            this.data_ordem.MinimumWidth = 80;
-            this.data_ordem.Name = "data_ordem";
-            this.data_ordem.ReadOnly = true;
-            this.data_ordem.Width = 94;
-            // 
-            // titulo
-            // 
-            this.titulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.titulo.DataPropertyName = "titulo";
-            this.titulo.HeaderText = "Título";
-            this.titulo.Name = "titulo";
-            this.titulo.ReadOnly = true;
-            this.titulo.Visible = false;
-            this.titulo.Width = 61;
-            // 
-            // referencia
-            // 
-            this.referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.referencia.DataPropertyName = "referencia";
-            this.referencia.HeaderText = "Referência";
-            this.referencia.Name = "referencia";
-            this.referencia.ReadOnly = true;
-            this.referencia.Width = 85;
-            // 
-            // Agencia
-            // 
-            this.Agencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Agencia.DataPropertyName = "agencia";
-            this.Agencia.HeaderText = "Agencia";
-            this.Agencia.Name = "Agencia";
-            this.Agencia.ReadOnly = true;
-            this.Agencia.Visible = false;
-            this.Agencia.Width = 72;
-            // 
-            // atividade_cod
-            // 
-            this.atividade_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.atividade_cod.DataPropertyName = "atividade_cod";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.atividade_cod.DefaultCellStyle = dataGridViewCellStyle3;
-            this.atividade_cod.HeaderText = "Tipo";
-            this.atividade_cod.MinimumWidth = 45;
-            this.atividade_cod.Name = "atividade_cod";
-            this.atividade_cod.ReadOnly = true;
-            this.atividade_cod.Width = 55;
-            // 
-            // cidade
-            // 
-            this.cidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cidade.DataPropertyName = "cidade";
-            this.cidade.HeaderText = "Cidade";
-            this.cidade.MinimumWidth = 60;
-            this.cidade.Name = "cidade";
-            this.cidade.ReadOnly = true;
-            this.cidade.Width = 68;
-            // 
-            // nome_cliente
-            // 
-            this.nome_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nome_cliente.DataPropertyName = "nome_cliente";
-            this.nome_cliente.HeaderText = "Nome do Cliente";
-            this.nome_cliente.Name = "nome_cliente";
-            this.nome_cliente.ReadOnly = true;
-            this.nome_cliente.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.nome_cliente.Width = 118;
-            // 
-            // coordenada
-            // 
-            this.coordenada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.coordenada.DataPropertyName = "coordenada";
-            this.coordenada.HeaderText = "Coordenada";
-            this.coordenada.Name = "coordenada";
-            this.coordenada.ReadOnly = true;
-            this.coordenada.Visible = false;
-            this.coordenada.Width = 95;
-            // 
-            // prazo_execucao
-            // 
-            this.prazo_execucao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.prazo_execucao.DataPropertyName = "prazo_execucao";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.prazo_execucao.DefaultCellStyle = dataGridViewCellStyle4;
-            this.prazo_execucao.HeaderText = "Prazo Execução";
-            this.prazo_execucao.Name = "prazo_execucao";
-            this.prazo_execucao.ReadOnly = true;
-            this.prazo_execucao.Width = 110;
-            // 
-            // profissional_cod
-            // 
-            this.profissional_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.profissional_cod.DataPropertyName = "profissional_cod";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.profissional_cod.DefaultCellStyle = dataGridViewCellStyle5;
-            this.profissional_cod.HeaderText = "Pro.";
-            this.profissional_cod.MinimumWidth = 40;
-            this.profissional_cod.Name = "profissional_cod";
-            this.profissional_cod.ReadOnly = true;
-            this.profissional_cod.Width = 52;
-            // 
-            // siopi
-            // 
-            this.siopi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.siopi.DataPropertyName = "siopi";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.siopi.DefaultCellStyle = dataGridViewCellStyle6;
-            this.siopi.HeaderText = "Siopi";
-            this.siopi.Name = "siopi";
-            this.siopi.ReadOnly = true;
-            this.siopi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.siopi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.siopi.Visible = false;
-            this.siopi.Width = 58;
-            // 
-            // nome_contato
-            // 
-            this.nome_contato.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.nome_contato.DataPropertyName = "nome_contato";
-            this.nome_contato.HeaderText = "Nome do Contato";
-            this.nome_contato.Name = "nome_contato";
-            this.nome_contato.ReadOnly = true;
-            this.nome_contato.Width = 124;
-            // 
-            // telefone_contato
-            // 
-            this.telefone_contato.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.telefone_contato.DataPropertyName = "telefone_contato";
-            this.telefone_contato.HeaderText = "Telefone do Contato";
-            this.telefone_contato.Name = "telefone_contato";
-            this.telefone_contato.ReadOnly = true;
-            this.telefone_contato.Width = 136;
-            // 
-            // data_pendente
-            // 
-            this.data_pendente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.data_pendente.DataPropertyName = "data_pendente";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_pendente.DefaultCellStyle = dataGridViewCellStyle7;
-            this.data_pendente.HeaderText = "Data Pendente";
-            this.data_pendente.Name = "data_pendente";
-            this.data_pendente.ReadOnly = true;
-            this.data_pendente.Visible = false;
-            this.data_pendente.Width = 106;
-            // 
-            // data_vistoria
-            // 
-            this.data_vistoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.data_vistoria.DataPropertyName = "data_vistoria";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_vistoria.DefaultCellStyle = dataGridViewCellStyle8;
-            this.data_vistoria.HeaderText = "Data da Vistoria";
-            this.data_vistoria.Name = "data_vistoria";
-            this.data_vistoria.ReadOnly = true;
-            this.data_vistoria.Width = 114;
-            // 
-            // data_concluida
-            // 
-            this.data_concluida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.data_concluida.DataPropertyName = "data_concluida";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.data_concluida.DefaultCellStyle = dataGridViewCellStyle9;
-            this.data_concluida.HeaderText = "Dt. Conclusão";
-            this.data_concluida.MinimumWidth = 85;
-            this.data_concluida.Name = "data_concluida";
-            this.data_concluida.ReadOnly = true;
-            this.data_concluida.Width = 102;
-            // 
-            // obs
-            // 
-            this.obs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.obs.DataPropertyName = "obs";
-            this.obs.HeaderText = "Observações";
-            this.obs.Name = "obs";
-            this.obs.ReadOnly = true;
-            this.obs.Visible = false;
-            this.obs.Width = 97;
-            // 
-            // fatura_cod
-            // 
-            this.fatura_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.fatura_cod.DataPropertyName = "fatura_cod";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.fatura_cod.DefaultCellStyle = dataGridViewCellStyle10;
-            this.fatura_cod.HeaderText = "Faturada";
-            this.fatura_cod.MinimumWidth = 60;
-            this.fatura_cod.Name = "fatura_cod";
-            this.fatura_cod.ReadOnly = true;
-            this.fatura_cod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.fatura_cod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.fatura_cod.Width = 77;
             // 
             // lblTitTotal
             // 
@@ -689,6 +483,222 @@
             this.salvar.Filter = "Arquivo do Excel *.xls | *.xls";
             this.salvar.Title = "Exportar para Excel";
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // status
+            // 
+            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Status";
+            this.status.MinimumWidth = 90;
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            this.status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.status.Width = 90;
+            // 
+            // data_ordem
+            // 
+            this.data_ordem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.data_ordem.DataPropertyName = "data_ordem";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_ordem.DefaultCellStyle = dataGridViewCellStyle2;
+            this.data_ordem.HeaderText = "Data Ordem";
+            this.data_ordem.MinimumWidth = 80;
+            this.data_ordem.Name = "data_ordem";
+            this.data_ordem.ReadOnly = true;
+            this.data_ordem.Width = 94;
+            // 
+            // titulo
+            // 
+            this.titulo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.titulo.DataPropertyName = "titulo";
+            this.titulo.HeaderText = "Título";
+            this.titulo.Name = "titulo";
+            this.titulo.ReadOnly = true;
+            this.titulo.Visible = false;
+            this.titulo.Width = 61;
+            // 
+            // referencia
+            // 
+            this.referencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.referencia.DataPropertyName = "referencia";
+            this.referencia.HeaderText = "Referência";
+            this.referencia.Name = "referencia";
+            this.referencia.ReadOnly = true;
+            this.referencia.Width = 85;
+            // 
+            // Agencia
+            // 
+            this.Agencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Agencia.DataPropertyName = "agencia";
+            this.Agencia.HeaderText = "Agencia";
+            this.Agencia.Name = "Agencia";
+            this.Agencia.ReadOnly = true;
+            this.Agencia.Visible = false;
+            this.Agencia.Width = 72;
+            // 
+            // atividade_cod
+            // 
+            this.atividade_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.atividade_cod.DataPropertyName = "atividade_cod";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.atividade_cod.DefaultCellStyle = dataGridViewCellStyle3;
+            this.atividade_cod.HeaderText = "Tipo";
+            this.atividade_cod.MinimumWidth = 45;
+            this.atividade_cod.Name = "atividade_cod";
+            this.atividade_cod.ReadOnly = true;
+            this.atividade_cod.Width = 55;
+            // 
+            // cidade
+            // 
+            this.cidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cidade.DataPropertyName = "cidade";
+            this.cidade.HeaderText = "Cidade";
+            this.cidade.MinimumWidth = 60;
+            this.cidade.Name = "cidade";
+            this.cidade.ReadOnly = true;
+            this.cidade.Width = 68;
+            // 
+            // nome_cliente
+            // 
+            this.nome_cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nome_cliente.DataPropertyName = "nome_cliente";
+            this.nome_cliente.HeaderText = "Nome do Cliente";
+            this.nome_cliente.Name = "nome_cliente";
+            this.nome_cliente.ReadOnly = true;
+            this.nome_cliente.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.nome_cliente.Width = 118;
+            // 
+            // coordenada
+            // 
+            this.coordenada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.coordenada.DataPropertyName = "coordenada";
+            this.coordenada.HeaderText = "Coordenada";
+            this.coordenada.Name = "coordenada";
+            this.coordenada.ReadOnly = true;
+            this.coordenada.Visible = false;
+            this.coordenada.Width = 95;
+            // 
+            // prazo_execucao
+            // 
+            this.prazo_execucao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.prazo_execucao.DataPropertyName = "prazo_execucao";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.prazo_execucao.DefaultCellStyle = dataGridViewCellStyle4;
+            this.prazo_execucao.HeaderText = "Prazo Execução";
+            this.prazo_execucao.Name = "prazo_execucao";
+            this.prazo_execucao.ReadOnly = true;
+            this.prazo_execucao.Width = 110;
+            // 
+            // profissional_cod
+            // 
+            this.profissional_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.profissional_cod.DataPropertyName = "profissional_cod";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.profissional_cod.DefaultCellStyle = dataGridViewCellStyle5;
+            this.profissional_cod.HeaderText = "Pro.";
+            this.profissional_cod.MinimumWidth = 40;
+            this.profissional_cod.Name = "profissional_cod";
+            this.profissional_cod.ReadOnly = true;
+            this.profissional_cod.Width = 52;
+            // 
+            // siopi
+            // 
+            this.siopi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.siopi.DataPropertyName = "siopi";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.siopi.DefaultCellStyle = dataGridViewCellStyle6;
+            this.siopi.HeaderText = "Siopi";
+            this.siopi.Name = "siopi";
+            this.siopi.ReadOnly = true;
+            this.siopi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.siopi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.siopi.Visible = false;
+            this.siopi.Width = 58;
+            // 
+            // nome_contato
+            // 
+            this.nome_contato.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.nome_contato.DataPropertyName = "nome_contato";
+            this.nome_contato.HeaderText = "Nome do Contato";
+            this.nome_contato.Name = "nome_contato";
+            this.nome_contato.ReadOnly = true;
+            this.nome_contato.Width = 124;
+            // 
+            // telefone_contato
+            // 
+            this.telefone_contato.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.telefone_contato.DataPropertyName = "telefone_contato";
+            this.telefone_contato.HeaderText = "Telefone do Contato";
+            this.telefone_contato.Name = "telefone_contato";
+            this.telefone_contato.ReadOnly = true;
+            this.telefone_contato.Width = 136;
+            // 
+            // data_pendente
+            // 
+            this.data_pendente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.data_pendente.DataPropertyName = "data_pendente";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_pendente.DefaultCellStyle = dataGridViewCellStyle7;
+            this.data_pendente.HeaderText = "Data Pendente";
+            this.data_pendente.Name = "data_pendente";
+            this.data_pendente.ReadOnly = true;
+            this.data_pendente.Visible = false;
+            this.data_pendente.Width = 106;
+            // 
+            // data_vistoria
+            // 
+            this.data_vistoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.data_vistoria.DataPropertyName = "data_vistoria";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_vistoria.DefaultCellStyle = dataGridViewCellStyle8;
+            this.data_vistoria.HeaderText = "Data da Vistoria";
+            this.data_vistoria.Name = "data_vistoria";
+            this.data_vistoria.ReadOnly = true;
+            this.data_vistoria.Width = 114;
+            // 
+            // data_concluida
+            // 
+            this.data_concluida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.data_concluida.DataPropertyName = "data_concluida";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.data_concluida.DefaultCellStyle = dataGridViewCellStyle9;
+            this.data_concluida.HeaderText = "Dt. Conclusão";
+            this.data_concluida.MinimumWidth = 85;
+            this.data_concluida.Name = "data_concluida";
+            this.data_concluida.ReadOnly = true;
+            this.data_concluida.Width = 102;
+            // 
+            // obs
+            // 
+            this.obs.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.obs.DataPropertyName = "obs";
+            this.obs.HeaderText = "Observações";
+            this.obs.Name = "obs";
+            this.obs.ReadOnly = true;
+            this.obs.Visible = false;
+            this.obs.Width = 97;
+            // 
+            // fatura_cod
+            // 
+            this.fatura_cod.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.fatura_cod.DataPropertyName = "fatura_cod";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.fatura_cod.DefaultCellStyle = dataGridViewCellStyle10;
+            this.fatura_cod.HeaderText = "Faturada";
+            this.fatura_cod.MinimumWidth = 60;
+            this.fatura_cod.Name = "fatura_cod";
+            this.fatura_cod.ReadOnly = true;
+            this.fatura_cod.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.fatura_cod.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.fatura_cod.Width = 77;
+            // 
             // frmOSLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -756,6 +766,11 @@
         private System.Windows.Forms.ComboBox cboStatus;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnLimparFiltro;
+        private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.SaveFileDialog salvar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_ordem;
         private System.Windows.Forms.DataGridViewTextBoxColumn titulo;
@@ -775,9 +790,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn data_concluida;
         private System.Windows.Forms.DataGridViewTextBoxColumn obs;
         private System.Windows.Forms.DataGridViewCheckBoxColumn fatura_cod;
-        private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnExportar;
-        private System.Windows.Forms.SaveFileDialog salvar;
     }
 }

@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.MODEL;
-using Fluxus.ENTIDADES;
+using Fluxus.Controller;
+using Fluxus.Model.ENT;
 using System.Text.RegularExpressions;
 using System.Data;
 
-namespace Fluxus.VIEW
+namespace Fluxus.View
 {
     public partial class frmAddProfissional : Form
     {
         frmPrincipal _frmPrincipal;
-        ProfissionaisENT dado = new ProfissionaisENT();
-        private string NomeId = null;
-
-
-
-        //:METHODS
+        
+        private string _nomeId;
+        private long _id;
+        private string _usr_nome;
 
 
 
@@ -29,29 +27,32 @@ namespace Fluxus.VIEW
             _frmPrincipal = frm1;
         }
 
-        public frmAddProfissional(frmPrincipal frm1, string codigo, string nome, string nomeid, string cpf, string nascimento, string profissao, string carteira, string entidade, string telefone1, string telefone2, string email, bool rt, bool rl, bool usrativo, string usrnome, string usrsenha)
+        public frmAddProfissional(frmPrincipal frm1, ProfissionalENT dado)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            txtCodigo.Text = codigo;
-            txtNome.Text = nome;
-            NomeId = nomeid;
-            txtCPF.Text = cpf;
-            txtNascimento.Text = (Convert.ToDateTime(nascimento)).ToString("dd/MM/yyyy");
-            txtProfissao.Text = profissao;
-            txtCarteira.Text = carteira;
-            cboEntidade.Text = entidade;
-            txtTelefone1.Text = telefone1;
-            txtTelefone2.Text = telefone2;
-            txtEmail.Text = email;
-            chkRT.Checked = rt;
-            chkRL.Checked = rl;
-            chkUsrAtivo.Checked = usrativo;
-            txtUsrNome.Text = usrnome;
-            txtUsrSenha.Text = usrsenha;
-            txtUsrSenha2.Text = usrsenha;
 
-            if (Globais.Codpro == txtCodigo.Text && chkRL.Checked)
+            _id = dado.Id;
+            txtCodigo.Text = dado.Codigo;
+            txtNome.Text = dado.Nome;
+            _nomeId = dado.Nomeid;
+            txtCPF.Text = dado.Cpf;
+            txtNascimento.Text = (Convert.ToDateTime(dado.Nascimento)).ToString("dd/MM/yyyy");
+            txtProfissao.Text = dado.Profissao;
+            txtCarteira.Text = dado.Carteira;
+            cboEntidade.Text = dado.Entidade;
+            txtTelefone1.Text = dado.Telefone1;
+            txtTelefone2.Text = dado.Telefone2;
+            txtEmail.Text = dado.Email;
+            chkRT.Checked = dado.Rt;
+            chkRL.Checked = dado.Rl;
+            chkUsrAtivo.Checked = dado.Usr_ativo;
+            _usr_nome = dado.Usr_nome;
+            txtUsrNome.Text = dado.Usr_nome;
+            txtUsrSenha.Text = dado.Usr_senha;
+            txtUsrSenha2.Text = dado.Usr_senha;
+
+            if (Logged.Codpro == txtCodigo.Text && chkRL.Checked)
                 chkRL.Enabled = false;
         }
 
@@ -99,27 +100,36 @@ namespace Fluxus.VIEW
             {
                 txtUsrSenha.Text = "";
                 txtUsrSenha2.Text = "";
+                txtUsrNome.Text = "";
             }
 
-            ProfissionaisMODEL model = new ProfissionaisMODEL();
-            DataTable dtPro = model.BuscarUsuarioMODEL(txtUsrNome.Text);
 
-            if (dtPro.Rows.Count > 0)
+            ProfissionaisController proCtrl = new ProfissionaisController();
+            
+            if (txtUsrNome.Text != _usr_nome)
             {
-                MessageBox.Show("Nome de usuário já existente", "Nome de usuário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtUsrNome.Focus();
-                return;
+                DataTable dtPro = proCtrl.BuscarUsuario(txtUsrNome.Text);
+                
+                if (dtPro.Rows.Count > 0)
+                {
+                    MessageBox.Show("Nome de usuário já existente", "Nome de usuário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtUsrNome.Focus();
+                    return;
+                }
             }
+
+            
 
             //CRIAÇÃO DO NOME ID
             if (txtProfissao.Text != "")
-                NomeId = txtProfissao.Text.Substring(0, 3) + ". ";
+                _nomeId = txtProfissao.Text.Substring(0, 3) + ". ";
             string[] nomecomp = txtNome.Text.Split(' ');
-            NomeId = NomeId + nomecomp[0] + " " + nomecomp[nomecomp.Length - 1];
+            _nomeId = _nomeId + nomecomp[0] + " " + nomecomp[nomecomp.Length - 1];
 
             //POPULATE
+            ProfissionalENT dado = new ProfissionalENT();
             dado.Codigo = txtCodigo.Text;
-            dado.Nomeid = NomeId;
+            dado.Nomeid = _nomeId;
             dado.Nome = txtNome.Text;
             dado.Cpf = txtCPF.Text;
             if (txtNascimento.Text != "")
@@ -136,17 +146,17 @@ namespace Fluxus.VIEW
             dado.Usr_nome = txtUsrNome.Text;
             dado.Usr_senha = txtUsrSenha.Text;
             
-            if (Globais.Codpro == txtCodigo.Text)
+            if (Logged.Codpro == txtCodigo.Text)
             {
-                Globais.Rt = chkRT.Checked;
-                Globais.Rl = chkRL.Checked;
+                Logged.Rt = chkRT.Checked;
+                Logged.Rl = chkRL.Checked;
             }
 
             if (btnAddSave.Text == "&Adicionar")
             {
                 try
                 {
-                    model.InsertProfissionalMODEL(dado);
+                    proCtrl.InsertProfissional(dado);
                 }
                 catch (Exception ex)
                 {
@@ -166,7 +176,7 @@ namespace Fluxus.VIEW
             {
                 try
                 {
-                    model.UpdateProfissionalMODEL(dado);
+                    proCtrl.UpdateProfissional(_id, dado);
                 }
                 catch (Exception ex)
                 {

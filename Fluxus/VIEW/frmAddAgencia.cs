@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.MODEL;
-using Fluxus.ENTIDADES;
+using Fluxus.Controller;
+using Fluxus.Model.ENT;
 using System.Text.RegularExpressions;
+using MySql.Data.MySqlClient.Authentication;
 
-namespace Fluxus.VIEW
+namespace Fluxus.View
 {
     public partial class frmAddAgencia : Form
     {
+       
         frmPrincipal _frmPrincipal;
-        AgenciasMODEL model = new AgenciasMODEL();
-        AgenciasENT dado = new AgenciasENT();
-
-
-
-        //:METHODS
+        long _id;
 
 
 
@@ -33,22 +30,24 @@ namespace Fluxus.VIEW
             txtAgencia.Text = agencia;
         }
 
-        public frmAddAgencia(frmPrincipal frm1, string agencia, string nome, string endereco, string complemento, string bairro, string cidade, string cep, string uf, string contato, string telefone1, string telefone2, string email)
+        public frmAddAgencia(frmPrincipal frm1, AgenciaENT dado)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            txtAgencia.Text = agencia;
-            txtNome.Text = nome;
-            txtEndereco.Text = endereco;
-            txtComplemento.Text = complemento;
-            txtBairro.Text = bairro;
-            txtCidade.Text = cidade;
-            txtCEP.Text = cep;
-            cboUF.Text = uf;
-            txtContato.Text = contato;
-            txtTelefone1.Text = telefone1;
-            txtTelefone2.Text = telefone2;
-            txtEmail.Text = email;
+            
+            _id = dado.Id;
+            txtAgencia.Text = dado.Agencia;
+            txtNome.Text = dado.Nome;
+            txtEndereco.Text = dado.Endereco;
+            txtComplemento.Text = dado.Complemento;
+            txtBairro.Text = dado.Bairro;
+            txtCidade.Text = dado.Cidade;
+            txtCEP.Text = dado.CEP;
+            cboUF.Text = dado.UF;
+            txtContato.Text = dado.Contato;
+            txtTelefone1.Text = dado.Telefone1;
+            txtTelefone2.Text = dado.Telefone2;
+            txtEmail.Text = dado.Email;
         }
 
         private void frmAddAgencia_Load(object sender, EventArgs e)
@@ -77,24 +76,28 @@ namespace Fluxus.VIEW
             }
 
             //POPULATE
-            dado.Agencia = txtAgencia.Text;
-            dado.Nome = txtNome.Text;
-            dado.Endereco = txtEndereco.Text;
-            dado.Complemento = txtComplemento.Text;
-            dado.Bairro = txtBairro.Text;
-            dado.Cidade = txtCidade.Text;
-            dado.CEP = txtCEP.Text;
-            dado.UF = cboUF.Text;
-            dado.Contato = txtContato.Text;
-            dado.Telefone1 = txtTelefone1.Text;
-            dado.Telefone2 = txtTelefone2.Text;
-            dado.Email = txtEmail.Text;
+            AgenciaENT dado = new AgenciaENT
+            {
+                Agencia = txtAgencia.Text,
+                Nome = txtNome.Text,
+                Endereco = txtEndereco.Text,
+                Complemento = txtComplemento.Text,
+                Bairro = txtBairro.Text,
+                Cidade = txtCidade.Text,
+                CEP = txtCEP.Text,
+                UF = cboUF.Text,
+                Contato = txtContato.Text,
+                Telefone1 = txtTelefone1.Text,
+                Telefone2 = txtTelefone2.Text,
+                Email = txtEmail.Text
+            };
+
 
             if (btnAddSave.Text == "&Adicionar")
             {
                 try
                 {
-                    model.InsertAgenciaMODEL(dado);
+                    new AgenciaController().InsertAgencia(dado);
                 }
                 catch (Exception ex)
                 {
@@ -114,7 +117,7 @@ namespace Fluxus.VIEW
             {
                 try
                 {
-                    model.UpdateAgenciaMODEL(dado);
+                    new AgenciaController().UpdateAgencia(_id, dado);
                 }
                 catch (Exception ex)
                 {

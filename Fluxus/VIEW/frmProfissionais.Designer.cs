@@ -1,4 +1,4 @@
-﻿namespace Fluxus.VIEW
+﻿namespace Fluxus.View
 {
     partial class frmProfissionais
     {
@@ -51,6 +51,8 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.dgvProfissionais = new System.Windows.Forms.DataGridView();
+            this.ttpProfissionais = new System.Windows.Forms.ToolTip(this.components);
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,7 +69,6 @@
             this.usr_ativo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.usr_nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usr_senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ttpProfissionais = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfissionais)).BeginInit();
             this.SuspendLayout();
@@ -183,6 +184,7 @@
             this.dgvProfissionais.ColumnHeadersHeight = 35;
             this.dgvProfissionais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProfissionais.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
             this.codigo,
             this.nome,
             this.nomeid,
@@ -231,6 +233,14 @@
             this.dgvProfissionais.TabIndex = 214;
             this.dgvProfissionais.DoubleClick += new System.EventHandler(this.btnEditar_Click);
             this.dgvProfissionais.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvProfissionais_KeyDown);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
             // codigo
             // 
@@ -426,6 +436,7 @@
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.DataGridView dgvProfissionais;
         private System.Windows.Forms.ToolTip ttpProfissionais;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn nomeid;

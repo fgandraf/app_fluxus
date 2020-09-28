@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.ENTIDADES;
-using Fluxus.MODEL;
+using Fluxus.Model.ENT;
+using Fluxus.Controller;
 
-namespace Fluxus.VIEW
+namespace Fluxus.View
 {
     public partial class frmProfissionais : Form
     {
@@ -16,8 +16,8 @@ namespace Fluxus.VIEW
         {
             try
             {
-                ProfissionaisMODEL model = new ProfissionaisMODEL();
-                dgvProfissionais.DataSource = model.ListarProfissionaisMODEL();
+                ProfissionaisController proCtrl = new ProfissionaisController();
+                dgvProfissionais.DataSource = proCtrl.ListarProfissionais();
 
                 if (dgvProfissionais.Rows.Count == 0)
                 {
@@ -42,10 +42,8 @@ namespace Fluxus.VIEW
         {
             try
             {
-                ENTIDADES.ProfissionaisENT dado = new ENTIDADES.ProfissionaisENT();
-                ProfissionaisMODEL model = new ProfissionaisMODEL();
-                dado.Codigo = dgvProfissionais.CurrentRow.Cells[0].Value.ToString();
-                model.DeleteProfissionalMODEL(dado);
+                ProfissionaisController proCtrl = new ProfissionaisController();
+                proCtrl.DeleteProfissional(Convert.ToInt64(dgvProfissionais.CurrentRow.Cells[0].Value));
             }
             catch (Exception ex)
             {
@@ -67,7 +65,7 @@ namespace Fluxus.VIEW
         private void frmProfissionais_Load(object sender, EventArgs e)
         {
             Listar();
-            if (Globais.Rl == false)
+            if (Logged.Rl == false)
             {
                 btnAdicionar.Enabled = false;
                 btnEditar.Enabled = false;
@@ -92,30 +90,15 @@ namespace Fluxus.VIEW
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (Globais.Rl == false)
+            if (Logged.Rl == false)
                 return;
 
+            ProfissionaisController proCtrl = new ProfissionaisController();
+            ProfissionalENT profissional = proCtrl.GetBy(Convert.ToInt32(dgvProfissionais.CurrentRow.Cells["id"].Value));
 
-            frmAddProfissional formNeto = new frmAddProfissional
-                (
-                _frmPrincipal,
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["codigo"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["nome"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["nomeid"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["cpf"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["nascimento"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["profissao"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["carteira"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["entidade"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["telefone1"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["telefone2"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["email"].Value),
-                Convert.ToBoolean(dgvProfissionais.CurrentRow.Cells["rt"].Value),
-                Convert.ToBoolean(dgvProfissionais.CurrentRow.Cells["rl"].Value),
-                Convert.ToBoolean(dgvProfissionais.CurrentRow.Cells["usr_ativo"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["usr_nome"].Value),
-                Convert.ToString(dgvProfissionais.CurrentRow.Cells["usr_senha"].Value)
-                );
+            frmAddProfissional formNeto = new frmAddProfissional(_frmPrincipal, profissional);
+            
+            
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }

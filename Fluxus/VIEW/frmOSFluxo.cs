@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.MODEL;
-using Fluxus.ENTIDADES;
+using Fluxus.Controller;
+using Fluxus.Model.ENT;
 using System.Data;
 using System.Linq;
 
-namespace Fluxus.VIEW
+namespace Fluxus.View
 {
     public partial class frmOSFluxo : Form
     {
         frmPrincipal _frmPrincipal;
         Control _lastEnteredControl;
-        DataGridView dgvOrigem;
-        DataTable dtOSNFaturada = new DataTable();
+        DataGridView _dgvOrigem;
+        DataTable _dtOSNFaturada;
 
         
 
@@ -35,7 +35,7 @@ namespace Fluxus.VIEW
         {
             try
             {
-                DataView dvOS = new DataView(dtOSNFaturada);
+                DataView dvOS = new DataView(_dtOSNFaturada);
                 if (cboProfissional.SelectedIndex == 0)
                     dvOS.RowFilter = String.Format("status = '{0}'", dgv.Tag.ToString());
                 else
@@ -63,34 +63,17 @@ namespace Fluxus.VIEW
 
         }
 
+
         private void EditarOS(DataGridView dgv)
         {
             if (dgv != null)
             {
-                frmAddOS formNeto = new frmAddOS
-                (
-                _frmPrincipal,
-                this.Name,
-                dgv.CurrentRow.Cells[0].Value.ToString(),//referencia
-                dgv.CurrentRow.Cells[1].Value.ToString(),//agencia
-                dgv.CurrentRow.Cells[2].Value.ToString(),//titulo
-                dgv.CurrentRow.Cells[3].Value.ToString(),//data_ordem
-                dgv.CurrentRow.Cells[4].Value.ToString(),//prazo_execucao
-                dgv.CurrentRow.Cells[5].Value.ToString(),//profissional_cod
-                dgv.CurrentRow.Cells[6].Value.ToString(),//atividade_cod
-                Convert.ToBoolean(dgv.CurrentRow.Cells[7].Value),//siopi
-                dgv.CurrentRow.Cells[8].Value.ToString(),//nome_cliente
-                dgv.CurrentRow.Cells[9].Value.ToString(),//cidade
-                dgv.CurrentRow.Cells[10].Value.ToString(),//nome_contato
-                dgv.CurrentRow.Cells[11].Value.ToString(),//telefone_contato
-                dgv.CurrentRow.Cells[12].Value.ToString(),//coordenada
-                dgv.CurrentRow.Cells[13].Value.ToString(),//status
-                dgv.CurrentRow.Cells[14].Value.ToString(),//data_pendente
-                dgv.CurrentRow.Cells[15].Value.ToString(),//data_vistoria
-                dgv.CurrentRow.Cells[16].Value.ToString(),//data_concluida
-                dgv.CurrentRow.Cells[17].Value.ToString(),//obs
-                dgv.CurrentRow.Cells[18].Value.ToString()//fatura_cod
-                );
+                OsController osCtrl = new OsController();
+                OsENT ordemDeServico = osCtrl.GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+
+                frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
+                
+                
                 formNeto.Text = "Alterar";
                 _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
             }
@@ -105,11 +88,9 @@ namespace Fluxus.VIEW
                 {
                     try
                     {
-                        OsMODEL model = new OsMODEL();
-                        OsENT dado = new OsENT();
-                        dado.Referencia = dgv.CurrentRow.Cells[0].Value.ToString();
-                        model.DeleteOsMODEL(dado);
-                        dtOSNFaturada = model.ListarOrdensNaoFaturadasMODEL();
+                        OsController osCtrl = new OsController();
+                        osCtrl.DeleteOs(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+                        _dtOSNFaturada = osCtrl.GetOrdensDoFluxo();
                         ListarOS(dgv);
                     }
                     catch (Exception ex)
@@ -124,25 +105,26 @@ namespace Fluxus.VIEW
         {
             try
             {
-                OsMODEL model = new OsMODEL();
+                
                 int sourcerow = Convert.ToInt32(ev.Data.GetData(Type.GetType("System.Int32")));
 
                 if (sourcerow >= 0)
                 {
-                    OsENT dado = new OsENT();
 
-                    dado.Status = dgvDestino.Tag.ToString();
-                    dado.Referencia = dgvOrigem.Rows[sourcerow].Cells[0].Value.ToString();
+                    string status = dgvDestino.Tag.ToString();
+                    long id = Convert.ToInt64(_dgvOrigem.Rows[sourcerow].Cells[0].Value);
 
-                    DataRow linha = dtOSNFaturada.Select("referencia = '" + dado.Referencia + "'").FirstOrDefault();
-                    linha["status"] = dado.Status;
+                    DataRow linha = _dtOSNFaturada.Select("id = " + id).FirstOrDefault();
+                    linha["status"] = status;
 
-                    linha = dtOSNFaturada.Select("referencia = '" + dado.Referencia + "'").FirstOrDefault();
-                    linha["status"] = dado.Status;
-
-                    model.UpdateStatusMODEL(dado);
-                    ListarOS(dgvOrigem);
+                    ListarOS(_dgvOrigem);
                     ListarOS(dgvDestino);
+
+
+
+                    //AQUI DEVE SER ASYNC PARA NÃO GERAR DELAY NA VIEW
+                    OsController osCtrl = new OsController();
+                    osCtrl.UpdateStatus(id, status);
                 }
             }
             catch (Exception ex)
@@ -154,7 +136,7 @@ namespace Fluxus.VIEW
         private void CapturaDGVOrigem(DataGridView dgv, MouseEventArgs e)
         {
             int SourceRow;
-            dgvOrigem = dgv;
+            _dgvOrigem = dgv;
             SourceRow = dgv.HitTest(e.X, e.Y).RowIndex;
             dgv.DoDragDrop(SourceRow, DragDropEffects.Move);
         }
@@ -200,24 +182,28 @@ namespace Fluxus.VIEW
 
         private void frmOSFluxo_Load(object sender, EventArgs e)
         {
-            OsMODEL model = new OsMODEL();
-            ProfissionaisMODEL promodel = new ProfissionaisMODEL();
-            dtOSNFaturada = model.ListarOrdensNaoFaturadasMODEL();
-            cboProfissional.DataSource = promodel.ListarCodigoENomeidMODEL(true);
-            if (Globais.Rl)
+           
+            OsController osCtrl = new OsController();
+            _dtOSNFaturada = osCtrl.GetOrdensDoFluxo();
+
+
+
+            ProfissionaisController proCtrl = new ProfissionaisController();
+            cboProfissional.DataSource = proCtrl.ListarCodigoENomeid(true);
+            if (Logged.Rl)
             {
                 cboProfissional.Enabled = true;
                 pnlLinhaFaturar.Show();
                 pnlFaturar.Show();
 
 
-                if (Globais.Rt)
-                    cboProfissional.SelectedValue = Globais.Codpro;
+                if (Logged.Rt)
+                    cboProfissional.SelectedValue = Logged.Codpro;
                 else
                     cboProfissional.SelectedIndex = 0;
                 return;
             }
-            cboProfissional.SelectedValue = Globais.Codpro;
+            cboProfissional.SelectedValue = Logged.Codpro;
             ListarOS(dgvRecebidas);
             ListarOS(dgvPendentes);
             ListarOS(dgvVistoriadas);
@@ -304,7 +290,7 @@ namespace Fluxus.VIEW
         private void dgvRecebidas_DragDrop(object sender, DragEventArgs e)
         {
             AtualizaStatus((DataGridView)sender, e);
-            ContarRegistros(dgvOrigem);
+            ContarRegistros(_dgvOrigem);
             ContarRegistros((DataGridView)sender);
         }
 
@@ -348,7 +334,7 @@ namespace Fluxus.VIEW
         private void dgvPendentes_DragDrop(object sender, DragEventArgs e)
         {
             AtualizaStatus((DataGridView)sender, e);
-            ContarRegistros(dgvOrigem);
+            ContarRegistros(_dgvOrigem);
             ContarRegistros((DataGridView)sender);
         }
 
@@ -392,7 +378,7 @@ namespace Fluxus.VIEW
         private void dgvVistoriadas_DragDrop(object sender, DragEventArgs e)
         {
             AtualizaStatus((DataGridView)sender, e);
-            ContarRegistros(dgvOrigem);
+            ContarRegistros(_dgvOrigem);
             ContarRegistros((DataGridView)sender);
         }
 
@@ -436,7 +422,7 @@ namespace Fluxus.VIEW
         private void dgvConcluidas_DragDrop(object sender, DragEventArgs e)
         {
             AtualizaStatus((DataGridView)sender, e);
-            ContarRegistros(dgvOrigem);
+            ContarRegistros(_dgvOrigem);
             ContarRegistros((DataGridView)sender);
         }
 

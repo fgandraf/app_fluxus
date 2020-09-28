@@ -1,4 +1,4 @@
-﻿namespace Fluxus.VIEW
+﻿namespace Fluxus.View
 {
     partial class frmAddAtividade
     {

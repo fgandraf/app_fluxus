@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.ENTIDADES;
-using Fluxus.MODEL;
+using Fluxus.Model.ENT;
+using Fluxus.Controller;
 
-namespace Fluxus.VIEW
+namespace Fluxus.View
 {
     public partial class frmAtividades : Form
     {
         frmPrincipal _frmPrincipal;
-        AtividadesMODEL model = new AtividadesMODEL();
+        
 
 
 
         //:METHODS
         private void Listar()
         {
-            AtividadesMODEL model = new AtividadesMODEL();
+            AtividadeController ativCtrl = new AtividadeController();
             try
             {
-                dgvAtividades.DataSource = model.ListarAtividadesMODEL(false);
+                dgvAtividades.DataSource = ativCtrl.ListarAtividades(false);
                 if (dgvAtividades.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -42,9 +42,8 @@ namespace Fluxus.VIEW
         {
             try
             {
-                ENTIDADES.AtividadesENT dado = new ENTIDADES.AtividadesENT();
-                dado.Id = Convert.ToInt32(dgvAtividades.CurrentRow.Cells["id"].Value.ToString());
-                model.DeleteAtividadeMODEL(dado);
+                AtividadeController ativCtrl = new AtividadeController();
+                ativCtrl.DeleteAtividade(Convert.ToInt64(dgvAtividades.CurrentRow.Cells["id"].Value));
             }
             catch (Exception ex)
             {
@@ -67,7 +66,7 @@ namespace Fluxus.VIEW
         private void frmAtividades_Load(object sender, EventArgs e)
         {
             Listar();
-            if (Globais.Rl == false)
+            if (Logged.Rl == false)
             {
                 btnAdicionar.Enabled = false;
                 btnEditar.Enabled = false;
@@ -91,18 +90,15 @@ namespace Fluxus.VIEW
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (Globais.Rl == false)
+            if (Logged.Rl == false)
                 return;
 
-            frmAddAtividade formNeto = new frmAddAtividade
-                (
-                _frmPrincipal,
-                Convert.ToInt32(dgvAtividades.CurrentRow.Cells["id"].Value),
-                Convert.ToString(dgvAtividades.CurrentRow.Cells["codigo"].Value),
-                Convert.ToString(dgvAtividades.CurrentRow.Cells["descricao"].Value),
-                Convert.ToString(dgvAtividades.CurrentRow.Cells["valor_atividade"].Value),
-                Convert.ToString(dgvAtividades.CurrentRow.Cells["valor_deslocamento"].Value)
-                );
+            AtividadeController ativCtrl = new AtividadeController();
+            AtividadeENT atividade = ativCtrl.GetBy(Convert.ToInt32(dgvAtividades.CurrentRow.Cells["id"].Value));
+            
+            frmAddAtividade formNeto = new frmAddAtividade(_frmPrincipal, atividade);
+            
+            
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }

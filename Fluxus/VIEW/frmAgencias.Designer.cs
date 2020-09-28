@@ -1,4 +1,4 @@
-﻿namespace Fluxus.VIEW
+﻿namespace Fluxus.View
 {
     partial class frmAgencias
     {
@@ -46,6 +46,8 @@
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.pctLupa = new System.Windows.Forms.PictureBox();
             this.dgvAgencias = new System.Windows.Forms.DataGridView();
+            this.ttpAgencias = new System.Windows.Forms.ToolTip(this.components);
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.agencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +60,6 @@
             this.telefone1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ttpAgencias = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgencias)).BeginInit();
             this.SuspendLayout();
@@ -174,6 +175,7 @@
             this.dgvAgencias.ColumnHeadersHeight = 35;
             this.dgvAgencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAgencias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
             this.agencia,
             this.nome,
             this.endereco,
@@ -218,6 +220,14 @@
             this.dgvAgencias.TabIndex = 211;
             this.dgvAgencias.DoubleClick += new System.EventHandler(this.btnEditar_Click);
             this.dgvAgencias.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAgencias_KeyDown);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
             // agencia
             // 
@@ -371,6 +381,7 @@
         private System.Windows.Forms.PictureBox pctLupa;
         private System.Windows.Forms.DataGridView dgvAgencias;
         private System.Windows.Forms.ToolTip ttpAgencias;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn agencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn endereco;

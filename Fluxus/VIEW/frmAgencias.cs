@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.MODEL;
-using Fluxus.ENTIDADES;
+using Fluxus.Controller;
+using Fluxus.Model.ENT;
 
-namespace Fluxus.VIEW
+namespace Fluxus.View
 {
     public partial class frmAgencias : Form
     {
@@ -14,10 +14,10 @@ namespace Fluxus.VIEW
         //:METHODS
         private void Listar()
         {
-            AgenciasMODEL model = new AgenciasMODEL();
+            AgenciaController agCtrl = new AgenciaController();
             try
             {
-                dgvAgencias.DataSource = model.ListarAgenciasMODEL();
+                dgvAgencias.DataSource = agCtrl.ListarAgencias();
                 if (dgvAgencias.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -41,10 +41,8 @@ namespace Fluxus.VIEW
         {
             try
             {
-                AgenciasENT dado = new AgenciasENT();
-                AgenciasMODEL model = new AgenciasMODEL();
-                dado.Agencia = dgvAgencias.CurrentRow.Cells[0].Value.ToString();
-                model.DeleteAgenciaMODEL(dado);
+                AgenciaController agCtrl = new AgenciaController();
+                agCtrl.DeleteAgencia(Convert.ToInt64(dgvAgencias.CurrentRow.Cells["id"].Value));
             }
             catch (Exception ex)
             {
@@ -85,22 +83,12 @@ namespace Fluxus.VIEW
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            frmAddAgencia formNeto = new frmAddAgencia
-                (
-                _frmPrincipal,
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["agencia"].Value),
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["nome"].Value),
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["endereco"].Value),
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["complemento"].Value),
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["bairro"].Value),
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["cidade"].Value),
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["cep"].Value),
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["uf"].Value),
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["contato"].Value),
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["telefone1"].Value),
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["telefone2"].Value),
-                Convert.ToString(dgvAgencias.CurrentRow.Cells["email"].Value)
-                );
+
+            AgenciaController agCtrl = new AgenciaController();
+            AgenciaENT agencia = agCtrl.GetBy(Convert.ToInt32(dgvAgencias.CurrentRow.Cells["id"].Value));
+
+            frmAddAgencia formNeto = new frmAddAgencia (_frmPrincipal, agencia);
+            
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }

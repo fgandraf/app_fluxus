@@ -1,49 +1,35 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.MODEL;
-using Fluxus.ENTIDADES;
+using Fluxus.Controller;
+using Fluxus.Model.ENT;
 using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
 
-namespace Fluxus.VIEW
+namespace Fluxus.View
 {
     public partial class frmOSLista : Form
     {
         frmPrincipal _frmPrincipal;
-        DataView dvOSFiltrada;
-        DataTable dtOS = new DataTable();
+        DataView _dvOSFiltrada;
+        DataTable dtOS;
 
 
 
         //:METHODS
+
         private void EditarOS(DataGridView dgv)
         {
-            frmAddOS formNeto = new frmAddOS
-            (
-                _frmPrincipal, this.Name,
-                dgv.CurrentRow.Cells[0].Value.ToString(),//referencia
-                dgv.CurrentRow.Cells[1].Value.ToString(),//agencia
-                dgv.CurrentRow.Cells[2].Value.ToString(),//titulo
-                dgv.CurrentRow.Cells[3].Value.ToString(),//data_ordem
-                dgv.CurrentRow.Cells[4].Value.ToString(),//prazo_execucao
-                dgv.CurrentRow.Cells[5].Value.ToString(),//profissional_cod
-                dgv.CurrentRow.Cells[6].Value.ToString(),//atividade_cod
-                Convert.ToBoolean(dgv.CurrentRow.Cells[7].Value),//siopi
-                dgv.CurrentRow.Cells[8].Value.ToString(),//nome_cliente
-                dgv.CurrentRow.Cells[9].Value.ToString(),//cidade
-                dgv.CurrentRow.Cells[10].Value.ToString(),//nome_contato
-                dgv.CurrentRow.Cells[11].Value.ToString(),//telefone_contato
-                dgv.CurrentRow.Cells[12].Value.ToString(),//coordenada
-                dgv.CurrentRow.Cells[13].Value.ToString(),//status
-                dgv.CurrentRow.Cells[14].Value.ToString(),//data_pendente
-                dgv.CurrentRow.Cells[15].Value.ToString(),//data_vistoria
-                dgv.CurrentRow.Cells[16].Value.ToString(),//data_concluida
-                dgv.CurrentRow.Cells[17].Value.ToString(),//obs
-                dgv.CurrentRow.Cells[18].Value.ToString()//fatura_cod
-            );
+
+            OsController osCtrl = new OsController();
+            OsENT ordemDeServico = osCtrl.GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+
+            frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
+            
+            
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
+
 
         private void ExcluirOS(DataGridView dgv)
         {
@@ -52,10 +38,8 @@ namespace Fluxus.VIEW
             {
                 try
                 {
-                    OsMODEL model = new OsMODEL();
-                    ENTIDADES.OsENT dado = new ENTIDADES.OsENT();
-                    dado.Referencia = dgv.CurrentRow.Cells["referencia"].Value.ToString();
-                    model.DeleteOsMODEL(dado);
+                    OsController osCtrl = new OsController();
+                    osCtrl.DeleteOs(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
                 }
                 catch (Exception ex)
                 {
@@ -68,8 +52,8 @@ namespace Fluxus.VIEW
         {
             try
             {
-                OsMODEL model = new OsMODEL();
-                dtOS = model.ListarOrdensComFiltroMODEL(GerarStringSQL());
+                OsController osCtrl = new OsController();
+                dtOS = osCtrl.ListarOrdensComFiltro(GerarStringSQL());
                 dgvOS.DataSource = dtOS;
             }
             catch (Exception ex)
@@ -87,7 +71,7 @@ namespace Fluxus.VIEW
             cboFaturadas.SelectedIndex = 0;
             cboStatus.SelectedIndex = 0;
             txtPesquisar.Text = null;
-            dvOSFiltrada = new DataView();
+            _dvOSFiltrada = new DataView();
         }
 
         private string GerarStringSQL()
@@ -155,20 +139,20 @@ namespace Fluxus.VIEW
 
         private void frmOS_Load(object sender, EventArgs e)
         {
-            ProfissionaisMODEL promodel = new ProfissionaisMODEL();
-            cboProfissional.DataSource = promodel.ListarCodigoENomeidMODEL(true);
+            ProfissionaisController proCtrl = new ProfissionaisController();
+            cboProfissional.DataSource = proCtrl.ListarCodigoENomeid(true);
 
 
-            OsMODEL model = new OsMODEL();
-            cboCidade.DataSource = model.ListarCidadesDasOrdensMODEL(true);
+            OsController osCtrl = new OsController();
+            cboCidade.DataSource = osCtrl.ListarCidadesDasOrdens(true);
 
-            AtividadesMODEL atividadesModel = new AtividadesMODEL();
-            cboAtividade.DataSource = atividadesModel.ListarAtividadesMODEL(true);
+            AtividadeController ativCtrl = new AtividadeController();
+            cboAtividade.DataSource = ativCtrl.ListarAtividades(true);
 
             LimparFiltro();
 
-            if (Globais.Rt)
-                cboProfissional.SelectedValue = Globais.Codpro;
+            if (Logged.Rt)
+                cboProfissional.SelectedValue = Logged.Codpro;
             else
                 cboProfissional.SelectedIndex = 0;
 
@@ -195,7 +179,7 @@ namespace Fluxus.VIEW
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (dgvOS.CurrentRow.Cells["fatura_cod"].Value.ToString() != "0")
+            if (Convert.ToInt64(dgvOS.CurrentRow.Cells["fatura_cod"].Value) != 0)
             {
                 MessageBox.Show("Não é possível excluir uma Ordem de Serviço já faturada!", "OS já faturada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -327,7 +311,7 @@ namespace Fluxus.VIEW
         {
             if (e.KeyCode == Keys.Delete && dgvOS.CurrentCell.Selected)
             {
-                if (dgvOS.CurrentRow.Cells["fatura_cod"].Value.ToString() != "0")
+                if (Convert.ToInt64(dgvOS.CurrentRow.Cells["fatura_cod"].Value) != 0)
                 {
                     MessageBox.Show("Não é possível excluir uma Ordem de Serviço já faturada!", "OS já faturada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;

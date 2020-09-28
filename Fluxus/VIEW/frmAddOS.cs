@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.MODEL;
-using Fluxus.ENTIDADES;
+using Fluxus.Controller;
+using Fluxus.Model.ENT;
 using System.Text.RegularExpressions;
 using System.Data;
 
-namespace Fluxus.VIEW
+namespace Fluxus.View
 {
     public partial class frmAddOS : Form
     {
         frmPrincipal _frmPrincipal;
-        private string FormFilho;
-        private string Agencia = null;
-        OsENT dado = new OsENT();
-        OsMODEL osmodel = new OsMODEL();
-        ProfissionaisMODEL promodel = new ProfissionaisMODEL();
+        private string _formFilho;
+        private string _agencia;
+        private long _id;
+
         DataTable DtAtividades = new DataTable();
         DataTable DtProfissionais = new DataTable();
 
@@ -53,10 +52,7 @@ namespace Fluxus.VIEW
         {
             try
             {
-                AgenciasENT dado = new AgenciasENT();
-                AgenciasMODEL model = new AgenciasMODEL();
-                dado.Agencia = txtReferencia.Text.Substring(5, 4);
-                DataRow[] dataRowAgencia = (model.BuscarAgenciaMODEL(dado)).Select();
+                DataRow[] dataRowAgencia = (new AgenciaController().BuscarAgencia(txtReferencia.Text.Substring(5, 4))).Select();
                 if (dataRowAgencia.Length == 0)
                 {
                     txtAgenciaNome.Text = "Agência não cadastrado!";
@@ -69,7 +65,7 @@ namespace Fluxus.VIEW
                     txtAgenciaNome.Text = dataRowAgencia[0]["nome"].ToString();
                     txtAgenciaTelefone.Text = dataRowAgencia[0]["telefone1"].ToString();
                     txtAgenciaEmail.Text = dataRowAgencia[0]["email"].ToString();
-                    Agencia = txtReferencia.Text.Substring(5, 4);
+                    _agencia = txtReferencia.Text.Substring(5, 4);
                     btnAddAgencia.Hide();
                 }
             }
@@ -89,67 +85,68 @@ namespace Fluxus.VIEW
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            FormFilho = frmfilho;
-            
+            _formFilho = frmfilho;
 
-            DtProfissionais = promodel.ListarCodigoENomeidMODEL(false);
+
+            DtProfissionais = new ProfissionaisController().ListarCodigoENomeid(false);
             cboProfissional.DataSource = DtProfissionais;
 
 
-            AtividadesMODEL atividadesModel = new AtividadesMODEL();
-            DtAtividades = atividadesModel.ListarAtividadesMODEL(false);
+            DtAtividades = new AtividadeController().ListarAtividades(false);
             cboAtividade.DataSource = DtAtividades;
 
 
-            OsMODEL model = new OsMODEL();
-            cboCidade.DataSource = model.ListarCidadesDasOrdensMODEL(false);
+            cboCidade.DataSource = new OsController().ListarCidadesDasOrdens(false);
             cboCidade.SelectedIndex = -1;
         }
 
-        public frmAddOS(frmPrincipal frm1, string frmfilho, string referencia, string agencia, string titulo, string dataordem, string prazoexecucao, string profissionalcod, string atividadecod, bool siopi, string nomecliente, string cidade, string nomecontato, string telefonecontato, string coordenada, string status, string datapendente, string datavistoria, string dataconcluida, string obs, string faturacod)
+
+
+        public frmAddOS(frmPrincipal frm1, string frmfilho, OsENT dado)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            FormFilho = frmfilho;
+            _formFilho = frmfilho;
 
-            DtProfissionais = promodel.ListarCodigoENomeidMODEL(false);
-            
-            AtividadesMODEL atividadesModel = new AtividadesMODEL();
-            DtAtividades = atividadesModel.ListarAtividadesMODEL(false);
+            DtProfissionais = new ProfissionaisController().ListarCodigoENomeid(false);
 
-            OsMODEL model = new OsMODEL();
-            cboCidade.DataSource = model.ListarCidadesDasOrdensMODEL(false);
+            DtAtividades = new AtividadeController().ListarAtividades(false);
+
+
+            cboCidade.DataSource = new OsController().ListarCidadesDasOrdens(false);
             cboCidade.SelectedIndex = -1;
 
             //POPULATE
             cboProfissional.DataSource = DtProfissionais;
 
             cboAtividade.DataSource = DtAtividades;
-            dado.Titulo = titulo;
-            txtReferencia.Text = referencia;
-            Agencia = agencia;
-            txtDataOrdem.Text = dataordem;
-            dtpPrazo.Text = prazoexecucao;
-            cboProfissional.Text = profissionalcod;
-            cboAtividade.Text = atividadecod;
-            chkSiopi.Checked = siopi;
-            txtNomeCliente.Text = nomecliente;
-            cboCidade.Text = cidade;
-            txtNomeContato.Text = nomecontato;
-            txtTelefoneContato.Text = telefonecontato;
-            txtCoordenada.Text = coordenada;
-            if (status == "RECEBIDA")
+
+            _id = dado.Id;
+
+            txtReferencia.Text = dado.Referencia;
+            _agencia = dado.Agencia;
+            txtDataOrdem.Text = dado.Data_ordem.ToString();
+            dtpPrazo.Text = dado.Prazo_execucao.ToString();
+            cboProfissional.Text = dado.Profissional_cod;
+            cboAtividade.Text = dado.Atividade_cod;
+            chkSiopi.Checked = dado.Siopi;
+            txtNomeCliente.Text = dado.Nome_cliente;
+            cboCidade.Text = dado.Cidade;
+            txtNomeContato.Text = dado.Nome_contato;
+            txtTelefoneContato.Text = dado.Telefone_contato;
+            txtCoordenada.Text = dado.Coordenada;
+            if (dado.Status == "RECEBIDA")
                 rbtRecebida.Checked = true;
-            else if (status == "PENDENTE")
+            else if (dado.Status == "PENDENTE")
                 rbtPendente.Checked = true;
-            else if (status == "VISTORIADA")
+            else if (dado.Status == "VISTORIADA")
                 rbtVistoriada.Checked = true;
             else
                 rbtConcluida.Checked = true;
-            txtDataPendente.Text = datapendente;
-            txtDataVistoria.Text = datavistoria;
-            txtDataConcluida.Text = dataconcluida;
-            txtOBS.Text = obs;
+            txtDataPendente.Text = dado.Data_pendente.ToString();
+            txtDataVistoria.Text = dado.Data_vistoria.ToString();
+            txtDataConcluida.Text = dado.Data_concluida.ToString();
+            txtOBS.Text = dado.Obs;
 
 
 
@@ -158,11 +155,10 @@ namespace Fluxus.VIEW
             BuscarNomeAtividade();
             BuscarAgencia();
 
-            if (faturacod != "0")
+            if (dado.Fatura_cod != 0)
             {
-                FaturasMODEL modelFat = new FaturasMODEL();
                 lblFaturada.Show();
-                txtCodFatura.Text = "Fatura: " + modelFat.DescricaoFaturaMODEL(faturacod); 
+                txtCodFatura.Text = "Fatura: " + new FaturasController().DescricaoFatura(dado.Fatura_cod);
                 txtCodFatura.Show();
 
                 foreach (Control c in this.tabPage1.Controls)
@@ -202,13 +198,13 @@ namespace Fluxus.VIEW
                 dtpPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
             }
             cboProfissional.Focus();
-            
 
 
 
-            if (Globais.Rt && Globais.Rl == false)
+
+            if (Logged.Rt && Logged.Rl == false)
             {
-                cboProfissional.SelectedValue = Globais.Codpro;
+                cboProfissional.SelectedValue = Logged.Codpro;
                 BuscarNomeProfissional();
                 cboProfissional.Enabled = false;
 
@@ -234,42 +230,79 @@ namespace Fluxus.VIEW
 
             //POPULATE
             int refe = Convert.ToInt32(txtReferencia.Text.Substring(10, 9));
-            dado.Titulo = cboAtividade.Text + "-" + cboCidade.Text + "-" + Convert.ToString(refe) + "\n\n" + "● Prazo: " + dtpPrazo.Value.ToString("dd/MM/yyyy") + "\nCliente: " + txtNomeCliente.Text.Replace(" ", " ");
-            dado.Referencia = txtReferencia.Text;
-            dado.Agencia = Agencia;
+
+            string titulo = cboAtividade.Text + "-" + cboCidade.Text + "-" + Convert.ToString(refe) + "\n\n" + "● Prazo: " + dtpPrazo.Value.ToString("dd/MM/yyyy") + "\nCliente: " + txtNomeCliente.Text.Replace(" ", " ");
+
+            Nullable<DateTime> dataOrdem;
             if (txtDataOrdem.Text != "")
-                dado.Data_ordem = Convert.ToDateTime(txtDataOrdem.Text);
-            dado.Prazo_execucao = Convert.ToDateTime(dtpPrazo.Value);
-            dado.Profissional_cod = cboProfissional.Text;
-            dado.Atividade_cod = cboAtividade.Text;
-            dado.Siopi = chkSiopi.Checked;
-            dado.Nome_cliente = txtNomeCliente.Text;
-            dado.Cidade = cboCidade.Text;
-            dado.Nome_contato = txtNomeContato.Text;
-            dado.Telefone_contato = txtTelefoneContato.Text;
-            dado.Coordenada = txtCoordenada.Text;
-            if (rbtRecebida.Checked)
-                dado.Status = "RECEBIDA";
-            else if (rbtPendente.Checked)
-                dado.Status = "PENDENTE";
-            else if (rbtVistoriada.Checked)
-                dado.Status = "VISTORIADA";
+                dataOrdem = Convert.ToDateTime(txtDataOrdem.Text);
             else
-                dado.Status = "CONCLUÍDA";
+                dataOrdem = null;
+
+            string status;
+            if (rbtRecebida.Checked)
+                status = "RECEBIDA";
+            else if (rbtPendente.Checked)
+                status = "PENDENTE";
+            else if (rbtVistoriada.Checked)
+                status = "VISTORIADA";
+            else
+                status = "CONCLUÍDA";
+
+
+            Nullable<DateTime> dataPendente;
             if (txtDataPendente.Text != "  /  /")
-                dado.Data_pendente = Convert.ToDateTime(txtDataPendente.Text);
+                dataPendente = Convert.ToDateTime(txtDataPendente.Text);
+            else
+                dataPendente = null;
+
+            Nullable<DateTime> dataVistoria;
             if (txtDataVistoria.Text != "  /  /")
-                dado.Data_vistoria = Convert.ToDateTime(txtDataVistoria.Text);
+                dataVistoria = Convert.ToDateTime(txtDataVistoria.Text);
+            else
+                dataVistoria = null;
+
+
+            Nullable<DateTime> dataConcluida;
             if (txtDataConcluida.Text != "  /  /")
-                dado.Data_concluida = Convert.ToDateTime(txtDataConcluida.Text);
-            dado.Obs = txtOBS.Text;
+                dataConcluida = Convert.ToDateTime(txtDataConcluida.Text);
+            else
+                dataConcluida = null;
+
+
+            OsENT dado = new OsENT
+            {
+                Titulo = titulo,
+                Referencia = txtReferencia.Text,
+                Agencia = _agencia,
+                Data_ordem = Convert.ToDateTime(dataOrdem),
+                Prazo_execucao = Convert.ToDateTime(dtpPrazo.Value),
+                Profissional_cod = cboProfissional.Text,
+                Atividade_cod = cboAtividade.Text,
+                Siopi = chkSiopi.Checked,
+                Nome_cliente = txtNomeCliente.Text,
+                Cidade = cboCidade.Text,
+                Nome_contato = txtNomeContato.Text,
+                Telefone_contato = txtTelefoneContato.Text,
+                Coordenada = txtCoordenada.Text,
+                Status = status,
+                Data_pendente = Convert.ToDateTime(dataPendente),
+                Data_vistoria = Convert.ToDateTime(dataVistoria),
+                Data_concluida = Convert.ToDateTime(dataConcluida),
+                Obs = txtOBS.Text
+            };
+
+
+
+
+
 
             //INSERT OR UPDATE
             if (btnAddSave.Text == "&Adicionar")
             {
                 try
                 {
-                    osmodel.InsertOsMODEL(dado);
+                    new OsController().InsertOs(dado);
                 }
                 catch (Exception ex)
                 {
@@ -289,7 +322,7 @@ namespace Fluxus.VIEW
             {
                 try
                 {
-                    osmodel.UpdateOsMODEL(dado);
+                    new OsController().UpdateOs(_id, dado);
                 }
                 catch (Exception ex)
                 {
@@ -297,7 +330,7 @@ namespace Fluxus.VIEW
                 }
             }
             this.Close();
-            if (FormFilho == "frmOSLista")
+            if (_formFilho == "frmOSLista")
             {
                 frmOS formFilho = new frmOS(_frmPrincipal, 1);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
@@ -313,7 +346,7 @@ namespace Fluxus.VIEW
 
         private void btnAddAgencia_Click(object sender, EventArgs e)
         {
-            AgenciasENT dado = new AgenciasENT();
+            AgenciaENT dado = new AgenciaENT();
             dado.Agencia = txtReferencia.Text.Substring(5, 4);
 
             frmAddAgencia form = new frmAddAgencia(txtReferencia.Text.Substring(5, 4));
@@ -329,7 +362,7 @@ namespace Fluxus.VIEW
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            if (FormFilho == "frmOSLista")
+            if (_formFilho == "frmOSLista")
             {
                 frmOS formFilho = new frmOS(_frmPrincipal, 1);
                 _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
@@ -392,7 +425,7 @@ namespace Fluxus.VIEW
         {
             BuscarNomeAtividade();
         }
-        
+
         private void cboCidade_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsLetter(e.KeyChar))
@@ -413,7 +446,7 @@ namespace Fluxus.VIEW
                 txtAgenciaEmail.Text = "";
             }
             else
-                if (txtReferencia.Text.Substring(5, 4) != Agencia)
+                if (txtReferencia.Text.Substring(5, 4) != _agencia)
                 BuscarAgencia();
         }
 

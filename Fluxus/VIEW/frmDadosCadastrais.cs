@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.MODEL;
-using Fluxus.ENTIDADES;
+using Fluxus.Controller;
+using Fluxus.Model.ENT;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Data;
 
-namespace Fluxus.VIEW
+namespace Fluxus.View
 {
     public partial class frmDadosCadastrais : Form
     {
         frmPrincipal _frmPrincipal;
-        CadastraisENT dado = new CadastraisENT();
-        private Image LogoAtual = null;
+        private Image _logoAtual = null;
 
 
 
@@ -23,12 +22,13 @@ namespace Fluxus.VIEW
         {
             try
             {
-                CadastraisMODEL model = new CadastraisMODEL();
-                DataTable dtDados = model.ListarCadastraisMODEL();
+                CadastraisController cadCtrl = new CadastraisController();
+                DataTable dtDados = cadCtrl.ListarCadastrais();
                 if (dtDados.Rows.Count == 0)
                     txtCNPJ.Focus();
                 else
                 {
+                    btnCadastrarSalvar.Text = "&Salvar";
                     txtCNPJ.Text = dtDados.Rows[0]["cnpj"].ToString();
                     txtNomeFantasia.Text = dtDados.Rows[0]["fantasia"].ToString();
                     txtRazaoSocial.Text = dtDados.Rows[0]["razao"].ToString();
@@ -67,9 +67,14 @@ namespace Fluxus.VIEW
                     if (ct_termino.ToString() != "01/01/0001 00:00:00")
                         txtTermino.Text = ct_termino.ToString("dd/MM/yyyy");
 
-                    LogoAtual = ByteParaImagem((byte[])dtDados.Rows[0]["logo"]);
-                    picLogotipo.Image = ByteParaImagem((byte[])dtDados.Rows[0]["logo"]);
-                    btnCadastrarSalvar.Text = "&Salvar";
+                   
+
+                    if (dtDados.Rows[0]["logo"].ToString() != "")
+                    {
+                        _logoAtual = ByteParaImagem((byte[])dtDados.Rows[0]["logo"]);
+                        picLogotipo.Image = ByteParaImagem((byte[])dtDados.Rows[0]["logo"]);
+                    }
+
                     txtCNPJ.Focus();
                 }
             }
@@ -111,7 +116,7 @@ namespace Fluxus.VIEW
         private void frmDadosCadastrais_Load(object sender, EventArgs e)
         {
             PopulateFields();
-            if (Globais.Rl)
+            if (Logged.Rl)
             {
                 pnlBotton.Show();
             }
@@ -130,29 +135,17 @@ namespace Fluxus.VIEW
 
 
 
-            if (Globais.Fantasia != txtNomeFantasia.Text)
+            if (_frmPrincipal.btnDadosCadastrais.Text != txtNomeFantasia.Text)
             {
-                Globais.Fantasia = txtNomeFantasia.Text;
-                _frmPrincipal.btnDadosCadastrais.Text = Globais.Fantasia;
+                _frmPrincipal.btnDadosCadastrais.Text = txtNomeFantasia.Text;
                 _frmPrincipal.btnDadosCadastrais.Refresh();
             }
-
-            if (Globais.Razao != txtRazaoSocial.Text)
-                Globais.Razao = txtRazaoSocial.Text;
-
-            if (Globais.Cnpj != txtCNPJ.Text)
-                Globais.Cnpj = txtCNPJ.Text;
-
-            if (Globais.Edital != txtEdital.Text)
-                Globais.Edital = txtEdital.Text;
-
-            if (Globais.Contrato != txtContrato.Text)
-                Globais.Contrato = txtContrato.Text;
-
 
 
 
             //POPULATE
+            CadastraisENT dado = new CadastraisENT();
+
             dado.Cnpj = txtCNPJ.Text;
             dado.Cnpj = txtCNPJ.Text;
             dado.Fantasia = txtNomeFantasia.Text;
@@ -186,23 +179,19 @@ namespace Fluxus.VIEW
                 dado.Ct_termino = Convert.ToDateTime(txtTermino.Text);
 
 
-            if (picLogotipo.Image != LogoAtual && picLogotipo.ImageLocation != "")
+            if (picLogotipo.Image != _logoAtual && picLogotipo.ImageLocation != "")
             {
                 dado.Logo = ImagemParaByte(picLogotipo.Image);
-                Globais.Logo = ImagemParaByte(picLogotipo.Image);
             }
 
 
 
-            if (Globais.Logo != ImagemParaByte(picLogotipo.Image))
-                Globais.Logo = ImagemParaByte(picLogotipo.Image);
-
-            CadastraisMODEL model = new CadastraisMODEL();
+            CadastraisController cadCtrl = new CadastraisController();
             if (btnCadastrarSalvar.Text == "&Cadastrar")
             {
                 try
                 {
-                    model.InsertCadastraisMODEL(dado);
+                    cadCtrl.InsertCadastrais(dado);
                     MessageBox.Show("Dados cadastrados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -214,7 +203,7 @@ namespace Fluxus.VIEW
             {
                 try
                 {
-                    model.UpdateCadastraisMODEL(dado);
+                    cadCtrl.UpdateCadastrais(dado);
                     MessageBox.Show("Dados cadastrais alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)

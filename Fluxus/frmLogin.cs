@@ -2,8 +2,8 @@
 using System.Data;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Fluxus.ENTIDADES;
-using Fluxus.MODEL;
+using Fluxus.Model.ENT;
+using Fluxus.Controller;
 
 namespace Fluxus
 {
@@ -13,31 +13,6 @@ namespace Fluxus
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-
-
-
-        //:METHODS
-        public void BuscarDadosEmpresa()
-        {
-            try
-            {
-                CadastraisMODEL model = new CadastraisMODEL();
-                DataRow[] dadosDaEmpresa = (model.DadosParaImpressaoMODEL()).Select();
-
-                Globais.Cnpj = dadosDaEmpresa[0]["cnpj"].ToString();
-                Globais.Razao = dadosDaEmpresa[0]["razao"].ToString();
-                Globais.Edital = dadosDaEmpresa[0]["ct_edital"].ToString();
-                Globais.Contrato = dadosDaEmpresa[0]["ct_contrato"].ToString();
-                Globais.Fantasia = dadosDaEmpresa[0]["fantasia"].ToString();
-                Globais.Logo = (byte[])(dadosDaEmpresa[0]["logo"]);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
 
 
 
@@ -56,7 +31,7 @@ namespace Fluxus
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            lblVersao.Text = "v. " + Globais.Versao;
+            lblVersao.Text = "v. " + Logged.Versao;
         }
 
 
@@ -73,8 +48,8 @@ namespace Fluxus
         {
             lblLoad.Text = "Validando usuário";
 
-            ProfissionaisMODEL model = new ProfissionaisMODEL();
-            DataTable dtUsuario = model.BuscarUsuarioMODEL(txtUsuario.Text);
+            ProfissionaisController model = new ProfissionaisController();
+            DataTable dtUsuario = model.BuscarUsuario(txtUsuario.Text);
             DataRow[] dataRow;
 
             if (dtUsuario.Rows.Count == 0)
@@ -93,20 +68,10 @@ namespace Fluxus
                     return;
                 }
             }
-            Globais.Usr_nome = dataRow[0]["usr_nome"].ToString();
-            Globais.Codpro = dataRow[0]["codigo"].ToString();
-            Globais.Rt = Convert.ToBoolean(dataRow[0]["rt"]);
-            Globais.Rl = Convert.ToBoolean(dataRow[0]["rl"]);
-
-            BuscarDadosEmpresa();
-
-
-
-
-
-
-
-
+            Logged.Usr_nome = dataRow[0]["usr_nome"].ToString();
+            Logged.Codpro = dataRow[0]["codigo"].ToString();
+            Logged.Rt = Convert.ToBoolean(dataRow[0]["rt"]);
+            Logged.Rl = Convert.ToBoolean(dataRow[0]["rl"]);
 
 
 
@@ -138,23 +103,10 @@ namespace Fluxus
             //        return;
             //    }
             //}
-            //prbProgress.Value += 1;
-            //Globais.Usr_nome = dataRow[0]["usr_nome"].ToString();
-            //prbProgress.Value += 1;
-            //Globais.Codpro = dataRow[0]["codigo"].ToString();
-            //prbProgress.Value += 1;
-            //Globais.Rt = Convert.ToBoolean(dataRow[0]["rt"]);
-            //prbProgress.Value += 1;
-            //Globais.Rl = Convert.ToBoolean(dataRow[0]["rl"]);
-            //prbProgress.Value += 1;
-            ////FIM DA TABELA DE PROFISSIONAIS
-
            
-            //prbProgress.Value += 1;
 
 
             lblLoad.Text = "";
-            //prbProgress.Hide();
             this.Close();
         }
 

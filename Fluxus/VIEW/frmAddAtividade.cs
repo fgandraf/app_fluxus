@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.MODEL;
-using Fluxus.ENTIDADES;
+using Fluxus.Controller;
+using Fluxus.Model.ENT;
 
-namespace Fluxus.VIEW
+namespace Fluxus.View
 {
     public partial class frmAddAtividade : Form
     {
+
         frmPrincipal _frmPrincipal;
-        AtividadesMODEL model = new AtividadesMODEL();
-        AtividadesENT dado = new AtividadesENT();
-        private int Id = 0;
-
-
-
-        //:METHODS
-
-
+        long _id;
 
 
 
@@ -28,15 +21,15 @@ namespace Fluxus.VIEW
             _frmPrincipal = frm1;
         }
 
-        public frmAddAtividade(frmPrincipal frm1, int id, string codigo, string descricao, string valor, string deslocamento)
+        public frmAddAtividade(frmPrincipal frm1, AtividadeENT dado)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            Id = id;
-            txtCodigo.Text = codigo;
-            txtDescricao.Text = descricao;
-            txtValor.Text = valor;
-            txtDeslocamento.Text = deslocamento;
+            _id = dado.Id;
+            txtCodigo.Text = dado.Codigo;
+            txtDescricao.Text = dado.Descricao;
+            txtValor.Text = dado.Valor_atividade;
+            txtDeslocamento.Text = dado.Valor_deslocamento;
         }
 
         private void frmAddAtividade_Load(object sender, EventArgs e)
@@ -65,17 +58,19 @@ namespace Fluxus.VIEW
             }
 
             //POPULATE
-            dado.Id = Id;
-            dado.Codigo = txtCodigo.Text;
-            dado.Descricao = txtDescricao.Text;
-            dado.Valor_atividade = txtValor.Text.Replace(',', '.');
-            dado.Valor_deslocamento = txtDeslocamento.Text.Replace(',', '.');
+            AtividadeENT dado = new AtividadeENT
+            {
+                Codigo = txtCodigo.Text,
+                Descricao = txtDescricao.Text,
+                Valor_atividade = txtValor.Text.Replace(',', '.'),
+                Valor_deslocamento = txtDeslocamento.Text.Replace(',', '.')
+            };
 
             if (btnAddSave.Text == "&Adicionar")
             {
                 try
                 {
-                    model.InsertAtividadeMODEL(dado);
+                    new AtividadeController().InsertAtividade(dado);
                 }
                 catch (Exception ex)
                 {
@@ -95,7 +90,7 @@ namespace Fluxus.VIEW
             {
                 try
                 {
-                    model.UpdateAtividadeMODEL(dado);
+                    new AtividadeController().UpdateAtividade(_id, dado);
                 }
                 catch (Exception ex)
                 {
@@ -113,8 +108,6 @@ namespace Fluxus.VIEW
             frmAtividades formFilho = new frmAtividades(_frmPrincipal);
             _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
         }
-
-
 
     }
 

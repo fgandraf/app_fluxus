@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using Fluxus.VIEW;
-using Fluxus.ENTIDADES;
+using Fluxus.View;
+using Fluxus.Model.ENT;
+using Fluxus.Controller;
 
 namespace Fluxus
 {
@@ -12,15 +13,16 @@ namespace Fluxus
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
-        Form FormAtivo = null;
+        Form _formAtivo;
 
+        
 
 
         //:METHODS
         public void AbrirFormInPanel(Form Formfilho, Panel pnl)
         {
             if (pnl.Controls.Count > 0)
-                FormAtivo.Close();
+                _formAtivo.Close();
             
 
             Form fh = Formfilho as Form;
@@ -60,11 +62,16 @@ namespace Fluxus
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            lblUsuario.Text = "Usuário: " + Globais.Usr_nome;
-            if (Globais.Fantasia != null)
-                btnDadosCadastrais.Text = Globais.Fantasia;
+            lblUsuario.Text = "Usuário: " + Logged.Usr_nome;
 
-            lblVersao.Text = "v. " + Globais.Versao;
+
+            CadastraisController model = new CadastraisController();
+            string fantasia = model.GetFantasia();
+            if (fantasia != null)
+                btnDadosCadastrais.Text = fantasia;
+
+
+            lblVersao.Text = "v. " + Logged.Versao;
             btnOS.PerformClick();
         }
 
@@ -122,7 +129,7 @@ namespace Fluxus
 
             frmDadosCadastrais frm = new frmDadosCadastrais(this);
             AbrirFormInPanel(frm, pnlMain);
-            FormAtivo = frm;
+            _formAtivo = frm;
         }
 
         private void btnOS_Click(object sender, EventArgs e)
@@ -134,7 +141,7 @@ namespace Fluxus
 
             frmOS frm = new frmOS(this);
             AbrirFormInPanel(frm, pnlMain);
-            FormAtivo = frm;
+            _formAtivo = frm;
         }
 
         private void btnFaturas_Click(object sender, EventArgs e)
@@ -145,7 +152,7 @@ namespace Fluxus
             lblTitulo.Text = "Faturas";
             frmFaturas frm = new frmFaturas();
             AbrirFormInPanel(frm, pnlMain);
-            FormAtivo = frm;
+            _formAtivo = frm;
         }
 
         private void btnAtividades_Click(object sender, EventArgs e)
@@ -157,7 +164,7 @@ namespace Fluxus
 
             frmAtividades frm = new frmAtividades(this);
             AbrirFormInPanel(frm, pnlMain);
-            FormAtivo = frm;
+            _formAtivo = frm;
         }
 
         private void btnAgencias_Click(object sender, EventArgs e)
@@ -169,7 +176,7 @@ namespace Fluxus
 
             frmAgencias frm = new frmAgencias(this);
             AbrirFormInPanel(frm, pnlMain);
-            FormAtivo = frm;
+            _formAtivo = frm;
         }
 
         private void btnProfissionais_Click(object sender, EventArgs e)
@@ -182,13 +189,9 @@ namespace Fluxus
             frmProfissionais frm = new frmProfissionais(this);
             
             AbrirFormInPanel(frm, pnlMain);
-            FormAtivo = frm;
+            _formAtivo = frm;
         }
 
-        private void btnRelatorios_Click(object sender, EventArgs e)
-        {
-
-        }
     
     
     

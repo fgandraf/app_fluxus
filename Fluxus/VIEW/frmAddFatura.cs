@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.MODEL;
-using Fluxus.ENTIDADES;
+using Fluxus.Controller;
+using Fluxus.Model.ENT;
 using System.Globalization;
 using System.Linq;
 using System.Data;
 
-namespace Fluxus.VIEW
+namespace Fluxus.View
 {
     public partial class frmAddFatura : Form
     {
+
+
         frmPrincipal _frmPrincipal;
-        OsMODEL modelOS = new OsMODEL();
-        OsENT dadoOS = new OsENT();
-        FaturasMODEL modelFatura = new FaturasMODEL();
-        FaturasENT dadoFatura = new FaturasENT();
-        private decimal Subtotal_os = 0;
-        private decimal Subtotal_desloc = 0;
-        private decimal Total = 0;
+        private decimal _subtotal_os = 0;
+        private decimal _subtotal_desloc = 0;
+        private decimal _total = 0;
 
 
 
@@ -26,8 +24,7 @@ namespace Fluxus.VIEW
         {
             try
             {
-                OsMODEL model = new OsMODEL();
-                dgvOS.DataSource = model.ListarOrdensConcluidasNaoFaturadasMODEL();
+                dgvOS.DataSource = new OsController().ListarOrdensConcluidasNaoFaturadas();
 
                 if (dgvOS.Rows.Count == 0)
                 {
@@ -46,13 +43,13 @@ namespace Fluxus.VIEW
 
         private void SomarValores()
         {
-            Subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_atividade.Name].Value ?? 0));
-            Subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_deslocamento.Name].Value ?? 0));
-            Total = Subtotal_os + Subtotal_desloc;
+            _subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_atividade.Name].Value ?? 0));
+            _subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_deslocamento.Name].Value ?? 0));
+            _total = _subtotal_os + _subtotal_desloc;
 
-            txtValorOS.Text = string.Format("{0:0,0.00}", Subtotal_os);
-            txtValorDeslocamento.Text = string.Format("{0:0,0.00}", Subtotal_desloc);
-            txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", Total);
+            txtValorOS.Text = string.Format("{0:0,0.00}", _subtotal_os);
+            txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _subtotal_desloc);
+            txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _total);
         }
 
 
@@ -97,29 +94,22 @@ namespace Fluxus.VIEW
         private void btnFaturar_Click(object sender, EventArgs e)
         {
             //POPULATE
-            dadoFatura.descricao = txtDescricao.Text;
-            dadoFatura.data = dtpData.Value;
-            dadoFatura.subtotal_os = Subtotal_os.ToString().Replace(',', '.');
-            dadoFatura.subtotal_desloc = Subtotal_desloc.ToString().Replace(',', '.');
-            dadoFatura.total = Total.ToString().Replace(',', '.');
-
-            try
+            FaturaENT fatura = new FaturaENT
             {
-                modelFatura.InsertFaturaMODEL(dadoFatura);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                descricao = txtDescricao.Text,
+                data = dtpData.Value,
+                subtotal_os = _subtotal_os.ToString().Replace(',', '.'),
+                subtotal_desloc = _subtotal_desloc.ToString().Replace(',', '.'),
+                total = _total.ToString().Replace(',', '.')
+            };
 
+            long fatura_cod = new FaturasController().InsertFatura(fatura);
 
-            string referencia;
-            string fatura_cod = dadoFatura.id.ToString();
 
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
-                referencia = row.Cells["referencia"].Value.ToString();
-                modelOS.UpdateFaturaCodMODEL(referencia, fatura_cod);
+                long idOS = Convert.ToInt64(row.Cells["id"].Value);
+                new OsController().UpdateFaturaCod(idOS, fatura_cod);
             }
 
 
