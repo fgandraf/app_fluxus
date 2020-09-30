@@ -1,0 +1,5 @@
+﻿
+Acesso público da API
+
+http://191.239.253.8:8080/api
+
