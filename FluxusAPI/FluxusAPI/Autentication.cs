@@ -5,7 +5,7 @@ namespace FluxusAPI
 {
     public class Autentication
     {
-        public static string TOKEN = "345HDRgffg2#hjd!246@Úhdfjb02";
+        public static string TOKEN = "xz8wM6zr2RfF18GBM0B5yrkoo";
         public static string FALHA_AUTENTICACAO = "Falha na autenticação... O token informado é inválido!";
         IHttpContextAccessor contextAcessor;
 

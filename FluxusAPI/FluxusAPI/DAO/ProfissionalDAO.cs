@@ -146,6 +146,56 @@ namespace FluxusAPI.DAO
 
 
 
+        public ProfissionalENT GetBy(long id)
+        {
+            try
+            {
+                con.OpenConnection();
+                sql = new MySqlCommand("SELECT * FROM tb_profissionais WHERE id = @id", con.Conn);
+                sql.Parameters.AddWithValue("@id", id);
+                MySqlDataReader dr = sql.ExecuteReader();
+
+                if (dr.HasRows)
+                {
+                    ProfissionalENT profissional = new ProfissionalENT();
+                    if (dr.Read())
+                    {
+                        profissional.Id = Convert.ToInt64(dr["id"]);
+                        profissional.Codigo = Convert.ToString(dr["codigo"]);
+                        profissional.Nome = Convert.ToString(dr["nome"]);
+                        profissional.Nomeid = Convert.ToString(dr["nomeid"]);
+                        profissional.Cpf = Convert.ToString(dr["cpf"]);
+                        profissional.Nascimento = Convert.ToDateTime(dr["nascimento"]);
+                        profissional.Profissao = Convert.ToString(dr["profissao"]);
+                        profissional.Carteira = Convert.ToString(dr["carteira"]);
+                        profissional.Entidade = Convert.ToString(dr["entidade"]);
+                        profissional.Telefone1 = Convert.ToString(dr["telefone1"]);
+                        profissional.Telefone2 = Convert.ToString(dr["telefone2"]);
+                        profissional.Email = Convert.ToString(dr["email"]);
+                        profissional.Rt = Convert.ToBoolean(dr["rt"]);
+                        profissional.Rl = Convert.ToBoolean(dr["rl"]);
+                        profissional.Usr_ativo = Convert.ToBoolean(dr["usr_ativo"]);
+                        profissional.Usr_nome = Convert.ToString(dr["usr_nome"]);
+                        profissional.Usr_senha = Convert.ToString(dr["usr_senha"]);
+                    }
+                    return profissional;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.CloseConnection();
+            }
+        }
+
+
+
+
 
         public long Insert(ProfissionalENT dado)
         {

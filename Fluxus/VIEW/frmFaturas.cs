@@ -1,11 +1,11 @@
 ﻿using Fluxus.Model.ENT;
-using Fluxus.Controller;
 using System;
 using System.Windows.Forms;
 using System.IO;
 using System.Data;
 using Fluxus.View.Report;
 using System.Linq;
+using Fluxus.Model;
 
 namespace Fluxus.View
 {
@@ -23,8 +23,9 @@ namespace Fluxus.View
         {
             try
             {
-                FaturasController fatCtrl = new FaturasController();
-                dgvFaturas.DataSource = fatCtrl.ListarFatura();
+                dgvFaturas.DataSource = new FaturaModel().ListarFatura();
+                
+                
                 if (dgvFaturas.Rows.Count > 0)
                 {
                     tblFaturas.Show();
@@ -42,8 +43,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    OsController osCtrl = new OsController();
-                    dgvOS.DataSource = osCtrl.ListarOrdensFaturadasDoCodigo(Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value));
+                    dgvOS.DataSource = new OsModel().GetOrdensFaturadasDoCodigo(Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value));
 
                     txtData.Text = dgvFaturas.CurrentRow.Cells[2].Value.ToString();
                     txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);
@@ -99,12 +99,10 @@ namespace Fluxus.View
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 caminho = saveFileDialog.FileName;
-                OsController osCtrl = new OsController();
 
 
                 //BUSCAR DADOS DA EMPRESA PARA IMPRESSAO
-                CadastraisController cadCtrl = new CadastraisController();
-                DataRow[] dadosDaEmpresa = (cadCtrl.DadosParaImpressao()).Select();
+                DataRow[] dadosDaEmpresa = (new CadastraisModel().DadosParaImpressao()).Select();
                 string razao = dadosDaEmpresa[0]["razao"].ToString();
                 string edital = dadosDaEmpresa[0]["ct_edital"].ToString();
                 string contrato = dadosDaEmpresa[0]["ct_contrato"].ToString();
@@ -120,6 +118,7 @@ namespace Fluxus.View
 
 
                 long fatura_cod = Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value);
+                
                 //CHAMAR O MÉTODO
                 ITXFatura.GerarFaturaPDF
                 (
@@ -128,7 +127,7 @@ namespace Fluxus.View
                 contrato,
                 razao,
                 cnpj,
-                osCtrl.ListarCodigoENomeidDosProfissionaisDaFatura(fatura_cod),
+                new OsModel().GetProfissionaisDaFatura(fatura_cod),
                 (DataTable)dgvOS.DataSource,
                 caminho
                 );
@@ -145,8 +144,7 @@ namespace Fluxus.View
                 if (result == DialogResult.Yes)
                 {
                     //ALTERA PARA ZERO O FATURA_COD
-                    OsController osCtrl = new OsController();
-                    osCtrl.UpdateFaturaCod(Convert.ToInt64(dgvOS.CurrentRow.Cells["id_os"].Value), 0);
+                    new OsModel().UpdateFaturaCod(Convert.ToInt64(dgvOS.CurrentRow.Cells["id_os"].Value), 0);
 
                     //APAGA DO DATAGRIDVIEW
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
@@ -160,12 +158,14 @@ namespace Fluxus.View
 
                     //APLICA OS NOVOS VALORES À TABELA DE FATURA
                     FaturaENT dadofat = new FaturaENT();
-                    FaturasController fatCtrl = new FaturasController();
                     dadofat.id = Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value);
                     dadofat.subtotal_os = _subtotal_os.ToString();
                     dadofat.subtotal_desloc = _subtotal_desloc.ToString();
                     dadofat.total = _total.ToString();
-                    fatCtrl.UpdateFaturaValores(dadofat.id, dadofat);
+                    new FaturaModel().Update(dadofat.id, dadofat);
+
+                    //ATUALIZA O DATAGRIDVIEW
+                    ListarFatura();
                 }
             }
         }
@@ -182,8 +182,7 @@ namespace Fluxus.View
                 var result = MessageBox.Show("Deseja excluir a Fatura?" + "\n\n" + dgvFaturas.CurrentRow.Cells[1].Value.ToString(), "Remover O.S.", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (result == DialogResult.Yes)
                 {
-                    FaturasController fatCtrl = new FaturasController();
-                    fatCtrl.DeleteFatura(Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value));
+                    new FaturaModel().Delete((Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value)));
                     ListarFatura();
                 }
             }

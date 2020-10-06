@@ -87,7 +87,7 @@ namespace FluxusAPI.DAO
             {
                 ArrayList cadastraisArray = new ArrayList();
                 con.OpenConnection();
-                sql = new MySqlCommand("SELECT cnpj, razao, ct_edital, ct_contrato, logo FROM tb_dadoscadastrais WHERE codigo = 1", con.Conn);
+                sql = new MySqlCommand("SELECT cnpj, razao, ct_edital, ct_contrato, logo FROM tb_dadoscadastrais WHERE id = 1", con.Conn);
                 MySqlDataReader dr = sql.ExecuteReader();
 
                 if (dr.HasRows)
@@ -130,7 +130,7 @@ namespace FluxusAPI.DAO
             try
             {
                 con.OpenConnection();
-                sql = new MySqlCommand("SELECT fantasia FROM tb_dadoscadastrais WHERE codigo = 1", con.Conn);
+                sql = new MySqlCommand("SELECT fantasia FROM tb_dadoscadastrais WHERE id = 1", con.Conn);
                 MySqlDataReader dr = sql.ExecuteReader();
 
 
@@ -167,8 +167,8 @@ namespace FluxusAPI.DAO
             try
             {
                 con.OpenConnection();
-                sql = new MySqlCommand("INSERT INTO tb_dadoscadastrais(codigo, cnpj, fantasia, razao, ie, im, endereco, complemento, bairro, cidade, cep, uf, constituicao, telefone, telefone2, email, db_banco, db_tipo, db_agencia, db_operador, db_conta, ct_tomador, ct_edital, ct_contrato, ct_celebrado, ct_inicio, ct_termino, logo) VALUES (@codigo, @cnpj, @fantasia, @razao, @ie, @im, @endereco, @complemento, @bairro, @cidade, @cep, @uf, @constituicao, @telefone, @telefone2, @email, @db_banco, @db_tipo, @db_agencia, @db_operador, @db_conta, @ct_tomador, @ct_edital, @ct_contrato, @ct_celebrado, @ct_inicio, @ct_termino, @logo)", con.Conn);
-                sql.Parameters.AddWithValue("@codigo", "1");
+                sql = new MySqlCommand("INSERT INTO tb_dadoscadastrais(id, cnpj, fantasia, razao, ie, im, endereco, complemento, bairro, cidade, cep, uf, constituicao, telefone, telefone2, email, db_banco, db_tipo, db_agencia, db_operador, db_conta, ct_tomador, ct_edital, ct_contrato, ct_celebrado, ct_inicio, ct_termino, logo) VALUES (@id, @cnpj, @fantasia, @razao, @ie, @im, @endereco, @complemento, @bairro, @cidade, @cep, @uf, @constituicao, @telefone, @telefone2, @email, @db_banco, @db_tipo, @db_agencia, @db_operador, @db_conta, @ct_tomador, @ct_edital, @ct_contrato, @ct_celebrado, @ct_inicio, @ct_termino, @logo)", con.Conn);
+                sql.Parameters.AddWithValue("@id", "1");
                 sql.Parameters.AddWithValue("@cnpj", dado.Cnpj);
                 sql.Parameters.AddWithValue("@fantasia", dado.Fantasia);
                 sql.Parameters.AddWithValue("@razao", dado.Razao);
@@ -220,8 +220,8 @@ namespace FluxusAPI.DAO
             {
                 con.OpenConnection();
 
-                sql = new MySqlCommand("UPDATE tb_dadoscadastrais SET cnpj = @cnpj, fantasia = @fantasia, razao = @razao, ie = @ie, im = @im, endereco = @endereco, complemento = @complemento, bairro = @bairro, cidade = @cidade, cep = @cep, uf = @uf, constituicao = @constituicao, telefone = @telefone, telefone2 = @telefone2, email = @email, db_banco = @db_banco, db_tipo = @db_tipo, db_agencia = @db_agencia, db_operador = @db_operador, db_conta = @db_conta, ct_tomador = @ct_tomador, ct_edital = @ct_edital, ct_contrato = @ct_contrato, ct_celebrado = @ct_celebrado, ct_inicio = @ct_inicio, ct_termino = @ct_termino, logo = @logo WHERE codigo = @codigo", con.Conn);
-                sql.Parameters.AddWithValue("@codigo", "1");
+                sql = new MySqlCommand("UPDATE tb_dadoscadastrais SET cnpj = @cnpj, fantasia = @fantasia, razao = @razao, ie = @ie, im = @im, endereco = @endereco, complemento = @complemento, bairro = @bairro, cidade = @cidade, cep = @cep, uf = @uf, constituicao = @constituicao, telefone = @telefone, telefone2 = @telefone2, email = @email, db_banco = @db_banco, db_tipo = @db_tipo, db_agencia = @db_agencia, db_operador = @db_operador, db_conta = @db_conta, ct_tomador = @ct_tomador, ct_edital = @ct_edital, ct_contrato = @ct_contrato, ct_celebrado = @ct_celebrado, ct_inicio = @ct_inicio, ct_termino = @ct_termino, logo = @logo WHERE id = @id", con.Conn);
+                sql.Parameters.AddWithValue("@id", "1");
                 sql.Parameters.AddWithValue("@cnpj", dado.Cnpj);
                 sql.Parameters.AddWithValue("@fantasia", dado.Fantasia);
                 sql.Parameters.AddWithValue("@razao", dado.Razao);

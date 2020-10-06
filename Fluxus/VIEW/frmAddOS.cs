@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Controller;
 using Fluxus.Model.ENT;
 using System.Text.RegularExpressions;
 using System.Data;
+using Fluxus.Model;
 
 namespace Fluxus.View
 {
@@ -52,7 +52,8 @@ namespace Fluxus.View
         {
             try
             {
-                DataRow[] dataRowAgencia = (new AgenciaController().BuscarAgencia(txtReferencia.Text.Substring(5, 4))).Select();
+                DataRow[] dataRowAgencia = (new AgenciaModel().BuscarAgencia(txtReferencia.Text.Substring(5, 4))).Select();
+
                 if (dataRowAgencia.Length == 0)
                 {
                     txtAgenciaNome.Text = "Agência não cadastrado!";
@@ -87,16 +88,14 @@ namespace Fluxus.View
             _frmPrincipal = frm1;
             _formFilho = frmfilho;
 
-
-            DtProfissionais = new ProfissionaisController().ListarCodigoENomeid(false);
+            DtProfissionais = new ProfissionalModel().ListarCodigoENomeid(false);
             cboProfissional.DataSource = DtProfissionais;
 
-
-            DtAtividades = new AtividadeController().ListarAtividades(false);
+            DtAtividades = new AtividadeModel().ListarAtividades(false);
             cboAtividade.DataSource = DtAtividades;
 
-
-            cboCidade.DataSource = new OsController().ListarCidadesDasOrdens(false);
+            //cboCidade.DataSource = new OsController().GetCidadesDasOrdens(false);
+            cboCidade.DataSource = new OsModel().GetCidadesDasOrdens(false);
             cboCidade.SelectedIndex = -1;
         }
 
@@ -108,12 +107,11 @@ namespace Fluxus.View
             _frmPrincipal = frm1;
             _formFilho = frmfilho;
 
-            DtProfissionais = new ProfissionaisController().ListarCodigoENomeid(false);
+            DtProfissionais = new ProfissionalModel().ListarCodigoENomeid(false);
 
-            DtAtividades = new AtividadeController().ListarAtividades(false);
+            DtAtividades = new AtividadeModel().ListarAtividades(false);
 
-
-            cboCidade.DataSource = new OsController().ListarCidadesDasOrdens(false);
+            cboCidade.DataSource = new OsModel().GetCidadesDasOrdens(false);
             cboCidade.SelectedIndex = -1;
 
             //POPULATE
@@ -158,7 +156,9 @@ namespace Fluxus.View
             if (dado.Fatura_cod != 0)
             {
                 lblFaturada.Show();
-                txtCodFatura.Text = "Fatura: " + new FaturasController().DescricaoFatura(dado.Fatura_cod);
+                txtCodFatura.Text = "Fatura: " + new FaturaModel().DescricaoFatura(dado.Fatura_cod);
+
+
                 txtCodFatura.Show();
 
                 foreach (Control c in this.tabPage1.Controls)
@@ -302,7 +302,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new OsController().InsertOs(dado);
+                    new OsModel().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -322,7 +322,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new OsController().UpdateOs(_id, dado);
+                    new OsModel().Update(_id, dado);
                 }
                 catch (Exception ex)
                 {

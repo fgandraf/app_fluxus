@@ -2,8 +2,7 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Fluxus.View;
-using Fluxus.Model.ENT;
-using Fluxus.Controller;
+using Fluxus.Model;
 
 namespace Fluxus
 {
@@ -64,9 +63,8 @@ namespace Fluxus
         {
             lblUsuario.Text = "Usuário: " + Logged.Usr_nome;
 
-
-            CadastraisController model = new CadastraisController();
-            string fantasia = model.GetFantasia();
+            string fantasia = new CadastraisModel().GetFantasia();
+            
             if (fantasia != null)
                 btnDadosCadastrais.Text = fantasia;
 

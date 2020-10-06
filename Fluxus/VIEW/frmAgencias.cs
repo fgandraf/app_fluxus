@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Controller;
+using Fluxus.Model;
 using Fluxus.Model.ENT;
 
 namespace Fluxus.View
@@ -14,10 +14,11 @@ namespace Fluxus.View
         //:METHODS
         private void Listar()
         {
-            AgenciaController agCtrl = new AgenciaController();
             try
-            {
-                dgvAgencias.DataSource = agCtrl.ListarAgencias();
+            { 
+                dgvAgencias.DataSource = new AgenciaModel().ListarAgencias();
+
+
                 if (dgvAgencias.Rows.Count == 0)
                 {
                     btnEditar.Enabled = false;
@@ -41,8 +42,7 @@ namespace Fluxus.View
         {
             try
             {
-                AgenciaController agCtrl = new AgenciaController();
-                agCtrl.DeleteAgencia(Convert.ToInt64(dgvAgencias.CurrentRow.Cells["id"].Value));
+                new AgenciaModel().Delete((Convert.ToInt64(dgvAgencias.CurrentRow.Cells["id"].Value)));
             }
             catch (Exception ex)
             {
@@ -84,8 +84,7 @@ namespace Fluxus.View
         private void btnEditar_Click(object sender, EventArgs e)
         {
 
-            AgenciaController agCtrl = new AgenciaController();
-            AgenciaENT agencia = agCtrl.GetBy(Convert.ToInt32(dgvAgencias.CurrentRow.Cells["id"].Value));
+            AgenciaENT agencia = new AgenciaModel().GetBy(Convert.ToInt32(dgvAgencias.CurrentRow.Cells["id"].Value));
 
             frmAddAgencia formNeto = new frmAddAgencia (_frmPrincipal, agencia);
             

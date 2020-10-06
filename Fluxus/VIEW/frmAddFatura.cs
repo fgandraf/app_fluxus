@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Controller;
 using Fluxus.Model.ENT;
 using System.Globalization;
 using System.Linq;
 using System.Data;
+using Fluxus.Model;
 
 namespace Fluxus.View
 {
@@ -24,7 +24,7 @@ namespace Fluxus.View
         {
             try
             {
-                dgvOS.DataSource = new OsController().ListarOrdensConcluidasNaoFaturadas();
+                dgvOS.DataSource = new OsModel().GetOrdensConcluidasNaoFaturadas();
 
                 if (dgvOS.Rows.Count == 0)
                 {
@@ -103,13 +103,12 @@ namespace Fluxus.View
                 total = _total.ToString().Replace(',', '.')
             };
 
-            long fatura_cod = new FaturasController().InsertFatura(fatura);
-
+            long fatura_cod = new FaturaModel().Insert(fatura);
 
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
                 long idOS = Convert.ToInt64(row.Cells["id"].Value);
-                new OsController().UpdateFaturaCod(idOS, fatura_cod);
+                new OsModel().UpdateFaturaCod(idOS, fatura_cod);
             }
 
 

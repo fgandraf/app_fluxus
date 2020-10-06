@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Controller;
 using Fluxus.Model.ENT;
 using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
+using Fluxus.Model;
 
 namespace Fluxus.View
 {
@@ -19,9 +19,7 @@ namespace Fluxus.View
 
         private void EditarOS(DataGridView dgv)
         {
-
-            OsController osCtrl = new OsController();
-            OsENT ordemDeServico = osCtrl.GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+            OsENT ordemDeServico = new OsModel().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
 
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
             
@@ -38,8 +36,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    OsController osCtrl = new OsController();
-                    osCtrl.DeleteOs(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+                    new OsModel().Delete((Convert.ToInt64(dgv.CurrentRow.Cells[0].Value)));
                 }
                 catch (Exception ex)
                 {
@@ -52,8 +49,7 @@ namespace Fluxus.View
         {
             try
             {
-                OsController osCtrl = new OsController();
-                dtOS = osCtrl.ListarOrdensComFiltro(GerarStringSQL());
+                dtOS = new OsModel().GetOrdensComFiltro(GerarStringSQL());
                 dgvOS.DataSource = dtOS;
             }
             catch (Exception ex)
@@ -139,15 +135,12 @@ namespace Fluxus.View
 
         private void frmOS_Load(object sender, EventArgs e)
         {
-            ProfissionaisController proCtrl = new ProfissionaisController();
-            cboProfissional.DataSource = proCtrl.ListarCodigoENomeid(true);
+            
+            cboProfissional.DataSource = new ProfissionalModel().ListarCodigoENomeid(true);
 
+            cboCidade.DataSource = new OsModel().GetCidadesDasOrdens(true);
 
-            OsController osCtrl = new OsController();
-            cboCidade.DataSource = osCtrl.ListarCidadesDasOrdens(true);
-
-            AtividadeController ativCtrl = new AtividadeController();
-            cboAtividade.DataSource = ativCtrl.ListarAtividades(true);
+            cboAtividade.DataSource = new AtividadeModel().ListarAtividades(true);
 
             LimparFiltro();
 
@@ -247,7 +240,6 @@ namespace Fluxus.View
                     //Linhas
                     for (int i = 0; i < dgvOS.RowCount - 1; i++)
                     {
-                        //for (int j = 0; j < dgvOS.ColumnCount; j++)
                         XcelApp.Cells[i + 2, 1] = dgvOS.Rows[i].Cells["profissional_cod"].Value.ToString();
                         XcelApp.Cells[i + 2, 2] = dgvOS.Rows[i].Cells["status"].Value.ToString();
 
@@ -287,7 +279,6 @@ namespace Fluxus.View
 
                     //Configurações
                     XcelApp.Columns.AutoFit();
-                    //XcelApp.Columns.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     XcelApp.Rows.RowHeight = 15;
 
 

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Controller;
 using Fluxus.Model.ENT;
 using System.Data;
 using System.Linq;
+using Fluxus.Model;
 
 namespace Fluxus.View
 {
@@ -36,12 +36,18 @@ namespace Fluxus.View
             try
             {
                 DataView dvOS = new DataView(_dtOSNFaturada);
+                
+                
                 if (cboProfissional.SelectedIndex == 0)
                     dvOS.RowFilter = String.Format("status = '{0}'", dgv.Tag.ToString());
                 else
                     dvOS.RowFilter = String.Format("status = '{0}' AND profissional_cod = '{1}'", dgv.Tag.ToString(), cboProfissional.SelectedValue.ToString());
 
                 dgv.DataSource = dvOS;
+
+
+
+
 
                 if (dvOS.Count == 0)
                 {
@@ -68,8 +74,7 @@ namespace Fluxus.View
         {
             if (dgv != null)
             {
-                OsController osCtrl = new OsController();
-                OsENT ordemDeServico = osCtrl.GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+                OsENT ordemDeServico = new OsModel().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
 
                 frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
                 
@@ -88,9 +93,9 @@ namespace Fluxus.View
                 {
                     try
                     {
-                        OsController osCtrl = new OsController();
-                        osCtrl.DeleteOs(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
-                        _dtOSNFaturada = osCtrl.GetOrdensDoFluxo();
+                        new OsModel().Delete((Convert.ToInt64(dgv.CurrentRow.Cells[0].Value)));
+                        
+                        _dtOSNFaturada = new OsModel().GetOrdensDoFluxo();
                         ListarOS(dgv);
                     }
                     catch (Exception ex)
@@ -123,8 +128,8 @@ namespace Fluxus.View
 
 
                     //AQUI DEVE SER ASYNC PARA NÃO GERAR DELAY NA VIEW
-                    OsController osCtrl = new OsController();
-                    osCtrl.UpdateStatus(id, status);
+                    new OsModel().UpdateStatus(id, status);
+
                 }
             }
             catch (Exception ex)
@@ -183,13 +188,9 @@ namespace Fluxus.View
         private void frmOSFluxo_Load(object sender, EventArgs e)
         {
            
-            OsController osCtrl = new OsController();
-            _dtOSNFaturada = osCtrl.GetOrdensDoFluxo();
-
-
-
-            ProfissionaisController proCtrl = new ProfissionaisController();
-            cboProfissional.DataSource = proCtrl.ListarCodigoENomeid(true);
+            _dtOSNFaturada = new OsModel().GetOrdensDoFluxo();
+            cboProfissional.DataSource = new ProfissionalModel().ListarCodigoENomeid(true);
+            
             if (Logged.Rl)
             {
                 cboProfissional.Enabled = true;
@@ -203,6 +204,7 @@ namespace Fluxus.View
                     cboProfissional.SelectedIndex = 0;
                 return;
             }
+            
             cboProfissional.SelectedValue = Logged.Codpro;
             ListarOS(dgvRecebidas);
             ListarOS(dgvPendentes);
@@ -397,6 +399,7 @@ namespace Fluxus.View
             row.Selected = true;
             dataGrid.Focus();
         }
+
 
 
 

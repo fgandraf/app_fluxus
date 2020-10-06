@@ -197,8 +197,8 @@ namespace FluxusAPI.DAO
             {
                 con.OpenConnection();
 
-                sql = new MySqlCommand("UPDATE tb_agencias SET nome = @nome, endereco = @endereco, complemento = @complemento, bairro = @bairro, cidade = @cidade, CEP = @CEP, UF = @UF, contato = @contato, telefone1 = @telefone1, telefone2 = @telefone2, email = @email WHERE agencia = @agencia", con.Conn);
-                sql.Parameters.AddWithValue("@id", id);
+                sql = new MySqlCommand("UPDATE tb_agencias SET agencia = @agencia, nome = @nome, endereco = @endereco, complemento = @complemento, bairro = @bairro, cidade = @cidade, CEP = @CEP, UF = @UF, contato = @contato, telefone1 = @telefone1, telefone2 = @telefone2, email = @email WHERE id = @id", con.Conn);
+                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
                 sql.Parameters.AddWithValue("@nome", dado.Nome);
                 sql.Parameters.AddWithValue("@endereco", dado.Endereco);
                 sql.Parameters.AddWithValue("@complemento", dado.Complemento);
@@ -210,6 +210,7 @@ namespace FluxusAPI.DAO
                 sql.Parameters.AddWithValue("@telefone1", dado.Telefone1);
                 sql.Parameters.AddWithValue("@telefone2", dado.Telefone2);
                 sql.Parameters.AddWithValue("@email", dado.Email);
+                sql.Parameters.AddWithValue("@id", id);
                 sql.ExecuteNonQuery();
 
             }

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Controller;
 using Fluxus.Model.ENT;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Data;
+using Fluxus.Model;
+using System.Text;
 
 namespace Fluxus.View
 {
@@ -22,8 +23,8 @@ namespace Fluxus.View
         {
             try
             {
-                CadastraisController cadCtrl = new CadastraisController();
-                DataTable dtDados = cadCtrl.ListarCadastrais();
+                DataTable dtDados = new CadastraisModel().ListarCadastrais();
+
                 if (dtDados.Rows.Count == 0)
                     txtCNPJ.Focus();
                 else
@@ -69,11 +70,19 @@ namespace Fluxus.View
 
                    
 
+
+                    //Erro de conversao de String para byte[]
                     if (dtDados.Rows[0]["logo"].ToString() != "")
                     {
-                        _logoAtual = ByteParaImagem((byte[])dtDados.Rows[0]["logo"]);
-                        picLogotipo.Image = ByteParaImagem((byte[])dtDados.Rows[0]["logo"]);
-                    }
+                        string str = dtDados.Rows[0]["logo"].ToString();
+                        
+                       
+
+                        byte[] logobt = Encoding.ASCII.GetBytes(str);
+
+                        _logoAtual = ByteParaImagem(logobt);
+                        picLogotipo.Image = ByteParaImagem(logobt);
+                    }   
 
                     txtCNPJ.Focus();
                 }
@@ -184,14 +193,11 @@ namespace Fluxus.View
                 dado.Logo = ImagemParaByte(picLogotipo.Image);
             }
 
-
-
-            CadastraisController cadCtrl = new CadastraisController();
             if (btnCadastrarSalvar.Text == "&Cadastrar")
             {
                 try
                 {
-                    cadCtrl.InsertCadastrais(dado);
+                    new CadastraisModel().Insert(dado);
                     MessageBox.Show("Dados cadastrados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -203,7 +209,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    cadCtrl.UpdateCadastrais(dado);
+                    new CadastraisModel().Update(dado);
                     MessageBox.Show("Dados cadastrais alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)

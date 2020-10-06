@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Controller;
 using Fluxus.Model.ENT;
 using System.Text.RegularExpressions;
 using System.Data;
+using Fluxus.Model;
 
 namespace Fluxus.View
 {
@@ -104,12 +104,12 @@ namespace Fluxus.View
             }
 
 
-            ProfissionaisController proCtrl = new ProfissionaisController();
+            
             
             if (txtUsrNome.Text != _usr_nome)
             {
-                DataTable dtPro = proCtrl.BuscarUsuario(txtUsrNome.Text);
-                
+                DataTable dtPro = new ProfissionalModel().BuscarUsuario(txtUsrNome.Text);
+
                 if (dtPro.Rows.Count > 0)
                 {
                     MessageBox.Show("Nome de usuário já existente", "Nome de usuário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -156,7 +156,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    proCtrl.InsertProfissional(dado);
+                    new ProfissionalModel().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -176,7 +176,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    proCtrl.UpdateProfissional(_id, dado);
+                    new ProfissionalModel().Update(_id, dado);
                 }
                 catch (Exception ex)
                 {

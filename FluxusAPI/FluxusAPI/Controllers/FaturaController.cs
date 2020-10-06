@@ -70,32 +70,27 @@ namespace FluxusAPI.Controllers
         // POST api/fatura/post
         [HttpPost]
         [Route("post")]
-        public ReturnAllServices Post([FromBody] FaturaENT fatura)
+        public long Post([FromBody] FaturaENT fatura)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
-
-                new FaturaDAO().Insert(fatura);
-
-                retorno.Result = true;
-                retorno.ErrorMessage = "Fatura Cadastrada!";
+                return new FaturaDAO().Insert(fatura);
             }
-            catch (Exception ex)
+            catch
             {
-                retorno.Result = false;
-                retorno.ErrorMessage = ex.Message;
+                return 0;
             }
 
-            return retorno;
+            
         }
 
 
 
 
 
-        // PUT api/fatura/put/<id>
+        // PUT api/fatura/puttotals/<id>
         [HttpPut]
         [Route("puttotals/{id}")]
         public ReturnAllServices PutTotals(long id, [FromBody] FaturaENT fatura)

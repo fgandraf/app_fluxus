@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Fluxus.Model.ENT;
-using Fluxus.Controller;
+using Fluxus.Model;
 
 namespace Fluxus.View
 {
@@ -16,8 +16,7 @@ namespace Fluxus.View
         {
             try
             {
-                ProfissionaisController proCtrl = new ProfissionaisController();
-                dgvProfissionais.DataSource = proCtrl.ListarProfissionais();
+                dgvProfissionais.DataSource = new ProfissionalModel().ListarProfissionais();
 
                 if (dgvProfissionais.Rows.Count == 0)
                 {
@@ -42,8 +41,7 @@ namespace Fluxus.View
         {
             try
             {
-                ProfissionaisController proCtrl = new ProfissionaisController();
-                proCtrl.DeleteProfissional(Convert.ToInt64(dgvProfissionais.CurrentRow.Cells[0].Value));
+                new ProfissionalModel().Delete((Convert.ToInt64(dgvProfissionais.CurrentRow.Cells[0].Value)));
             }
             catch (Exception ex)
             {
@@ -93,8 +91,7 @@ namespace Fluxus.View
             if (Logged.Rl == false)
                 return;
 
-            ProfissionaisController proCtrl = new ProfissionaisController();
-            ProfissionalENT profissional = proCtrl.GetBy(Convert.ToInt32(dgvProfissionais.CurrentRow.Cells["id"].Value));
+            ProfissionalENT profissional = new ProfissionalModel().GetBy(Convert.ToInt32(dgvProfissionais.CurrentRow.Cells["id"].Value));
 
             frmAddProfissional formNeto = new frmAddProfissional(_frmPrincipal, profissional);
             

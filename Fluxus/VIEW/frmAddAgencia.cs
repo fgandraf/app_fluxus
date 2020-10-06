@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Controller;
 using Fluxus.Model.ENT;
 using System.Text.RegularExpressions;
-using MySql.Data.MySqlClient.Authentication;
+using Fluxus.Model;
 
 namespace Fluxus.View
 {
@@ -97,7 +96,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new AgenciaController().InsertAgencia(dado);
+                    new AgenciaModel().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -117,7 +116,8 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new AgenciaController().UpdateAgencia(_id, dado);
+                    new AgenciaModel().Update(_id, dado);
+
                 }
                 catch (Exception ex)
                 {

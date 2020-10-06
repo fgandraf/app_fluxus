@@ -47,7 +47,7 @@ namespace FluxusAPI.Controllers
 
 
 
-        // GET api/agencia/getby/<id>
+        // GET: api/agencia/getby/<id>
         [HttpGet]
         [Route("getby/{id}")]
         public AgenciaENT GetBy(long id)
@@ -67,7 +67,7 @@ namespace FluxusAPI.Controllers
 
 
 
-        // GET api/agencia/getsomeby/<agenciaCodigo>
+        // GET: api/agencia/getsomeby/<agenciaCodigo>
         [HttpGet]
         [Route("getsomeby/{agenciaCodigo}")]
         public ArrayList GetSomeBy(string agenciaCodigo)

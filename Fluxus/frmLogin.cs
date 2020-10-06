@@ -2,8 +2,7 @@
 using System.Data;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Fluxus.Model.ENT;
-using Fluxus.Controller;
+using Fluxus.Model;
 
 namespace Fluxus
 {
@@ -48,8 +47,8 @@ namespace Fluxus
         {
             lblLoad.Text = "Validando usuário";
 
-            ProfissionaisController model = new ProfissionaisController();
-            DataTable dtUsuario = model.BuscarUsuario(txtUsuario.Text);
+            DataTable dtUsuario = new ProfissionalModel().BuscarUsuario(txtUsuario.Text);
+
             DataRow[] dataRow;
 
             if (dtUsuario.Rows.Count == 0)
@@ -72,38 +71,6 @@ namespace Fluxus
             Logged.Codpro = dataRow[0]["codigo"].ToString();
             Logged.Rt = Convert.ToBoolean(dataRow[0]["rt"]);
             Logged.Rl = Convert.ToBoolean(dataRow[0]["rl"]);
-
-
-
-
-
-
-            ////TABELA DE PROFISSIONAIS
-            //Listar_profissionais();
-            //DataView dvUsr = new DataView(DT.Profissionais);
-            //dvUsr.RowFilter = String.Format("usr_nome = '{0}'", txtUsuario.Text);
-            //DataRow[] dataRow;
-            //prbProgress.Value += 1;
-
-            //if (dvUsr.Count == 0)
-            //{
-            //    MessageBox.Show("Usuário não encontrado", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    prbProgress.Value = 0;
-            //    lblLoad.Text = "";
-            //    return;
-            //}
-            //else
-            //{
-            //    dataRow = ((DataTable)dvUsr.ToTable()).Select(String.Format("usr_nome = '{0}'", txtUsuario.Text));
-            //    if (dataRow[0]["usr_senha"].ToString() != txtSenha.Text || Convert.ToBoolean(dataRow[0]["usr_ativo"]) == false)
-            //    {
-            //        MessageBox.Show("Senha incorreta ou usuário não está ativo", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        prbProgress.Value = 0;
-            //        lblLoad.Text = "";
-            //        return;
-            //    }
-            //}
-           
 
 
             lblLoad.Text = "";

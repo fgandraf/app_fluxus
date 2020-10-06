@@ -90,6 +90,24 @@ namespace FluxusAPI.Controllers
 
 
 
+        // GET api/profissional/getby/<id>
+        [HttpGet]
+        [Route("getby/{id}")]
+        public ProfissionalENT GetBy(long id)
+        {
+            try
+            {
+                AutenticacaoServico.Autenticar();
+                return new ProfissionalDAO().GetBy(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
 
 
 

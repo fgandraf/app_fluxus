@@ -283,9 +283,9 @@ namespace FluxusAPI.Controllers
 
 
 
-        // DELETE api/os/delete/<referencia>
+        // DELETE api/os/delete/<id>
         [HttpDelete]
-        [Route("delete/{referencia}")]
+        [Route("delete/{id}")]
         public ReturnAllServices Delete(long id)
         {
             ReturnAllServices retorno = new ReturnAllServices();

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <StartupObject>FluxusAPI.Program</StartupObject>
+    <UserSecretsId>ad888c40-e003-4198-9419-14b6183dfa9c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

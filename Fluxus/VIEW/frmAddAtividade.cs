@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Controller;
+using Fluxus.Model;
 using Fluxus.Model.ENT;
 
 namespace Fluxus.View
@@ -70,7 +70,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new AtividadeController().InsertAtividade(dado);
+                    new AtividadeModel().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -90,7 +90,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new AtividadeController().UpdateAtividade(_id, dado);
+                    new AtividadeModel().Update(_id, dado);
                 }
                 catch (Exception ex)
                 {
