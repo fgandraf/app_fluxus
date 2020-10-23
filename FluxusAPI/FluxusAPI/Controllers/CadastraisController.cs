@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using FluxusAPI.Model;
 using FluxusAPI.DAO;
 using Microsoft.AspNetCore.Http;
+using System.Text;
 
 namespace FluxusAPI.Controllers
 {
@@ -44,7 +45,24 @@ namespace FluxusAPI.Controllers
         }
 
 
+        // GET: api/cadastrais/getlogo
+        [HttpGet]
+        [Route("getlogo")]
+        public string GetLogo()
+        {
+            try
+            {
+                AutenticacaoServico.Autenticar();
+                byte[] pass = new CadastraisDAO().GetLogo();
+                
+                return Convert.ToBase64String(pass);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
+        }
 
 
         // GET api/cadastrais/gettoprint

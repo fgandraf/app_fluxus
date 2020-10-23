@@ -615,8 +615,9 @@
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(150, 23);
             this.txtTelefone.TabIndex = 6;
-            this.txtTelefone.Enter += new System.EventHandler(this.txtTelefone_Enter);
-            this.txtTelefone.Validated += new System.EventHandler(this.txtTelefone_Validated);
+            this.txtTelefone.Tag = "telefone";
+            this.txtTelefone.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtTelefone.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // txtCNPJ
             // 
@@ -629,8 +630,9 @@
             this.txtCNPJ.Name = "txtCNPJ";
             this.txtCNPJ.Size = new System.Drawing.Size(148, 23);
             this.txtCNPJ.TabIndex = 0;
-            this.txtCNPJ.Enter += new System.EventHandler(this.txtCNPJ_Enter);
-            this.txtCNPJ.Validated += new System.EventHandler(this.txtCNPJ_Validated);
+            this.txtCNPJ.Tag = "cnpj";
+            this.txtCNPJ.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtCNPJ.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // txtTelefone2
             // 
@@ -642,8 +644,9 @@
             this.txtTelefone2.Name = "txtTelefone2";
             this.txtTelefone2.Size = new System.Drawing.Size(150, 23);
             this.txtTelefone2.TabIndex = 7;
-            this.txtTelefone2.Enter += new System.EventHandler(this.txtTelefone2_Enter);
-            this.txtTelefone2.Validated += new System.EventHandler(this.txtTelefone2_Validated);
+            this.txtTelefone2.Tag = "telefone";
+            this.txtTelefone2.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtTelefone2.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // lblTelefone2
             // 
@@ -667,8 +670,9 @@
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(120, 23);
             this.txtCEP.TabIndex = 4;
-            this.txtCEP.Enter += new System.EventHandler(this.txtCEP_Enter);
-            this.txtCEP.Validated += new System.EventHandler(this.txtCEP_Validated);
+            this.txtCEP.Tag = "cep";
+            this.txtCEP.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtCEP.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // txtConstituicao
             // 
@@ -680,9 +684,10 @@
             this.txtConstituicao.Name = "txtConstituicao";
             this.txtConstituicao.Size = new System.Drawing.Size(150, 23);
             this.txtConstituicao.TabIndex = 3;
+            this.txtConstituicao.Tag = "data";
             this.txtConstituicao.ValidatingType = typeof(System.DateTime);
-            this.txtConstituicao.Enter += new System.EventHandler(this.txtConstituicao_Enter);
-            this.txtConstituicao.Validated += new System.EventHandler(this.txtConstituicao_Validated);
+            this.txtConstituicao.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtConstituicao.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // pnlBotton
             // 
@@ -868,9 +873,10 @@
             this.txtTermino.Name = "txtTermino";
             this.txtTermino.Size = new System.Drawing.Size(150, 23);
             this.txtTermino.TabIndex = 5;
+            this.txtTermino.Tag = "data";
             this.txtTermino.ValidatingType = typeof(System.DateTime);
-            this.txtTermino.Enter += new System.EventHandler(this.txtTermino_Enter);
-            this.txtTermino.Validated += new System.EventHandler(this.txtTermino_Validated);
+            this.txtTermino.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtTermino.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // lblInicio
             // 
@@ -894,9 +900,10 @@
             this.txtInicio.Name = "txtInicio";
             this.txtInicio.Size = new System.Drawing.Size(150, 23);
             this.txtInicio.TabIndex = 4;
+            this.txtInicio.Tag = "data";
             this.txtInicio.ValidatingType = typeof(System.DateTime);
-            this.txtInicio.Enter += new System.EventHandler(this.txtInicio_Enter);
-            this.txtInicio.Validated += new System.EventHandler(this.txtInicio_Validated);
+            this.txtInicio.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtInicio.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // txtEdital
             // 
@@ -982,9 +989,10 @@
             this.txtCelebrado.Name = "txtCelebrado";
             this.txtCelebrado.Size = new System.Drawing.Size(150, 23);
             this.txtCelebrado.TabIndex = 3;
+            this.txtCelebrado.Tag = "data";
             this.txtCelebrado.ValidatingType = typeof(System.DateTime);
-            this.txtCelebrado.Enter += new System.EventHandler(this.txtCelebrado_Enter);
-            this.txtCelebrado.Validated += new System.EventHandler(this.txtCelebrado_Validated);
+            this.txtCelebrado.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtCelebrado.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // tabPage5
             // 

@@ -56,6 +56,12 @@
             this.lblSubtotal = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.dgvFaturas = new System.Windows.Forms.DataGridView();
+            this.id_fat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotalos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotaldesloca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalsas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
@@ -75,12 +81,6 @@
             this.valor_deslocamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fatura_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_fat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotalos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotaldesloca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalsas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblFaturas.SuspendLayout();
             this.pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
@@ -401,6 +401,54 @@
             this.dgvFaturas.TabIndex = 223;
             this.dgvFaturas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvFaturas_MouseClick);
             // 
+            // id_fat
+            // 
+            this.id_fat.DataPropertyName = "id";
+            this.id_fat.HeaderText = "id";
+            this.id_fat.Name = "id_fat";
+            this.id_fat.ReadOnly = true;
+            this.id_fat.Visible = false;
+            // 
+            // descricao
+            // 
+            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricao.DataPropertyName = "descricao";
+            this.descricao.HeaderText = "descricao";
+            this.descricao.Name = "descricao";
+            this.descricao.ReadOnly = true;
+            // 
+            // data
+            // 
+            this.data.DataPropertyName = "data";
+            this.data.HeaderText = "data";
+            this.data.Name = "data";
+            this.data.ReadOnly = true;
+            this.data.Visible = false;
+            // 
+            // subtotalos
+            // 
+            this.subtotalos.DataPropertyName = "subtotal_os";
+            this.subtotalos.HeaderText = "subtotalos";
+            this.subtotalos.Name = "subtotalos";
+            this.subtotalos.ReadOnly = true;
+            this.subtotalos.Visible = false;
+            // 
+            // subtotaldesloca
+            // 
+            this.subtotaldesloca.DataPropertyName = "subtotal_desloc";
+            this.subtotaldesloca.HeaderText = "subtotaldesloca";
+            this.subtotaldesloca.Name = "subtotaldesloca";
+            this.subtotaldesloca.ReadOnly = true;
+            this.subtotaldesloca.Visible = false;
+            // 
+            // totalsas
+            // 
+            this.totalsas.DataPropertyName = "total";
+            this.totalsas.HeaderText = "totalsas";
+            this.totalsas.Name = "totalsas";
+            this.totalsas.ReadOnly = true;
+            this.totalsas.Visible = false;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnExcluir);
@@ -566,6 +614,8 @@
             this.valor_atividade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.valor_atividade.DataPropertyName = "valor_atividade";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
             dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.valor_atividade.DefaultCellStyle = dataGridViewCellStyle5;
             this.valor_atividade.HeaderText = "Valor OS";
@@ -579,6 +629,8 @@
             this.valor_deslocamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.valor_deslocamento.DataPropertyName = "valor_deslocamento";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
             dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.valor_deslocamento.DefaultCellStyle = dataGridViewCellStyle6;
             this.valor_deslocamento.HeaderText = "Desloca.";
@@ -602,54 +654,6 @@
             this.status.Name = "status";
             this.status.ReadOnly = true;
             this.status.Visible = false;
-            // 
-            // id_fat
-            // 
-            this.id_fat.DataPropertyName = "id";
-            this.id_fat.HeaderText = "id";
-            this.id_fat.Name = "id_fat";
-            this.id_fat.ReadOnly = true;
-            this.id_fat.Visible = false;
-            // 
-            // descricao
-            // 
-            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricao.DataPropertyName = "descricao";
-            this.descricao.HeaderText = "descricao";
-            this.descricao.Name = "descricao";
-            this.descricao.ReadOnly = true;
-            // 
-            // data
-            // 
-            this.data.DataPropertyName = "data";
-            this.data.HeaderText = "data";
-            this.data.Name = "data";
-            this.data.ReadOnly = true;
-            this.data.Visible = false;
-            // 
-            // subtotalos
-            // 
-            this.subtotalos.DataPropertyName = "subtotal_os";
-            this.subtotalos.HeaderText = "subtotalos";
-            this.subtotalos.Name = "subtotalos";
-            this.subtotalos.ReadOnly = true;
-            this.subtotalos.Visible = false;
-            // 
-            // subtotaldesloca
-            // 
-            this.subtotaldesloca.DataPropertyName = "subtotal_desloc";
-            this.subtotaldesloca.HeaderText = "subtotaldesloca";
-            this.subtotaldesloca.Name = "subtotaldesloca";
-            this.subtotaldesloca.ReadOnly = true;
-            this.subtotaldesloca.Visible = false;
-            // 
-            // totalsas
-            // 
-            this.totalsas.DataPropertyName = "total";
-            this.totalsas.HeaderText = "totalsas";
-            this.totalsas.Name = "totalsas";
-            this.totalsas.ReadOnly = true;
-            this.totalsas.Visible = false;
             // 
             // frmFaturas
             // 
@@ -698,6 +702,12 @@
         private System.Windows.Forms.ToolTip ttpFatura;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.DataGridView dgvFaturas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_fat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotalos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotaldesloca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalsas;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_os;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_ordem;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia;
@@ -711,11 +721,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_deslocamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn fatura_cod;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_fat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subtotalos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subtotaldesloca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalsas;
     }
 }

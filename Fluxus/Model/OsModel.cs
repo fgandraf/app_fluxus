@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Data;
+using System.Text;
 
 namespace Fluxus.Model
 {
@@ -72,7 +73,7 @@ namespace Fluxus.Model
         public DataTable GetOrdensDoFluxo()
         {
             DataTable retorno = new DataTable();
-            string json = WebAPI.RequestGET("os/getordensdofluxo", string.Empty);
+            string json = WebAPI.RequestGET("os/getordensdofluxo", string.Empty);            
             retorno = JsonConvert.DeserializeObject<DataTable>(json);
             return retorno;
         }

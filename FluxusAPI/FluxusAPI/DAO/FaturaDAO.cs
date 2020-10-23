@@ -24,7 +24,7 @@ namespace FluxusAPI.DAO
             {
                 ArrayList faturaArray = new ArrayList();
                 con.OpenConnection();
-                sql = new MySqlCommand("SELECT * FROM tb_fatura ORDER BY data", con.Conn);
+                sql = new MySqlCommand("SELECT * FROM tb_fatura ORDER BY data DESC", con.Conn);
                 MySqlDataReader dr = sql.ExecuteReader();
 
 
@@ -37,9 +37,9 @@ namespace FluxusAPI.DAO
                         fatura.id = Convert.ToInt32(dr["id"]);
                         fatura.descricao = Convert.ToString(dr["descricao"]);
                         fatura.data = Convert.ToDateTime(dr["data"]);
-                        fatura.subtotal_os = Convert.ToString(dr["subtotal_os"]);
-                        fatura.subtotal_desloc = Convert.ToString(dr["subtotal_desloc"]);
-                        fatura.total = Convert.ToString(dr["total"]);
+                        fatura.subtotal_os = Convert.ToDouble(dr["subtotal_os"]);
+                        fatura.subtotal_desloc = Convert.ToDouble(dr["subtotal_desloc"]);
+                        fatura.total = Convert.ToDouble(dr["total"]);
 
                         faturaArray.Add(fatura);
                     }

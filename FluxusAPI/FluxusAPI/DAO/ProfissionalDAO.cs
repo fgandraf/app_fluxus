@@ -165,7 +165,7 @@ namespace FluxusAPI.DAO
                         profissional.Nome = Convert.ToString(dr["nome"]);
                         profissional.Nomeid = Convert.ToString(dr["nomeid"]);
                         profissional.Cpf = Convert.ToString(dr["cpf"]);
-                        profissional.Nascimento = Convert.ToDateTime(dr["nascimento"]);
+                        profissional.Nascimento = Convert.ToString(dr["nascimento"]);
                         profissional.Profissao = Convert.ToString(dr["profissao"]);
                         profissional.Carteira = Convert.ToString(dr["carteira"]);
                         profissional.Entidade = Convert.ToString(dr["entidade"]);
@@ -207,7 +207,7 @@ namespace FluxusAPI.DAO
                 sql.Parameters.AddWithValue("@nome", dado.Nome);
                 sql.Parameters.AddWithValue("@nomeid", dado.Nomeid);
                 sql.Parameters.AddWithValue("@cpf", dado.Cpf);
-                sql.Parameters.AddWithValue("@nascimento", dado.Nascimento);
+                sql.Parameters.AddWithValue("@nascimento", Util.DateOrNull(dado.Nascimento));
                 sql.Parameters.AddWithValue("@profissao", dado.Profissao);
                 sql.Parameters.AddWithValue("@carteira", dado.Carteira);
                 sql.Parameters.AddWithValue("@entidade", dado.Entidade);
@@ -247,7 +247,7 @@ namespace FluxusAPI.DAO
                 sql.Parameters.AddWithValue("@nome", dado.Nome);
                 sql.Parameters.AddWithValue("@nomeid", dado.Nomeid);
                 sql.Parameters.AddWithValue("@cpf", dado.Cpf);
-                sql.Parameters.AddWithValue("@nascimento", dado.Nascimento);
+                sql.Parameters.AddWithValue("@nascimento", Util.DateOrNull(dado.Nascimento));
                 sql.Parameters.AddWithValue("@profissao", dado.Profissao);
                 sql.Parameters.AddWithValue("@carteira", dado.Carteira);
                 sql.Parameters.AddWithValue("@entidade", dado.Entidade);

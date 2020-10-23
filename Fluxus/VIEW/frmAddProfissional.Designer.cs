@@ -61,6 +61,9 @@
             this.chkRT = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pnlMainAddProfissional = new System.Windows.Forms.Panel();
+            this.cboEntidade = new System.Windows.Forms.ComboBox();
+            this.imgShowPwd = new System.Windows.Forms.PictureBox();
+            this.imgHidePwd = new System.Windows.Forms.PictureBox();
             this.txtUsrSenha2 = new System.Windows.Forms.TextBox();
             this.txtUsrSenha = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -76,10 +79,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.chkRL = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.imgShowPwd = new System.Windows.Forms.PictureBox();
-            this.imgHidePwd = new System.Windows.Forms.PictureBox();
             this.ttpAddProfissional = new System.Windows.Forms.ToolTip(this.components);
-            this.cboEntidade = new System.Windows.Forms.ComboBox();
             this.pnlLinha2.SuspendLayout();
             this.pnlMainAddProfissional.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgShowPwd)).BeginInit();
@@ -96,8 +96,9 @@
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(125, 23);
             this.txtCPF.TabIndex = 4;
-            this.txtCPF.Enter += new System.EventHandler(this.txtCPF_Enter);
-            this.txtCPF.Validated += new System.EventHandler(this.txtCPF_Validated);
+            this.txtCPF.Tag = "cpf";
+            this.txtCPF.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtCPF.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // lblDataNascimento
             // 
@@ -121,8 +122,9 @@
             this.txtTelefone2.Name = "txtTelefone2";
             this.txtTelefone2.Size = new System.Drawing.Size(120, 23);
             this.txtTelefone2.TabIndex = 10;
-            this.txtTelefone2.Enter += new System.EventHandler(this.txtTelefone2_Enter);
-            this.txtTelefone2.Validated += new System.EventHandler(this.txtTelefone2_Validated);
+            this.txtTelefone2.Tag = "telefone";
+            this.txtTelefone2.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtTelefone2.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // txtTelefone1
             // 
@@ -134,8 +136,9 @@
             this.txtTelefone1.Name = "txtTelefone1";
             this.txtTelefone1.Size = new System.Drawing.Size(120, 23);
             this.txtTelefone1.TabIndex = 9;
-            this.txtTelefone1.Enter += new System.EventHandler(this.txtTelefone1_Enter);
-            this.txtTelefone1.Validated += new System.EventHandler(this.txtTelefone1_Validated);
+            this.txtTelefone1.Tag = "telefone";
+            this.txtTelefone1.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtTelefone1.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // lblTelefone2
             // 
@@ -363,9 +366,10 @@
             this.txtNascimento.Name = "txtNascimento";
             this.txtNascimento.Size = new System.Drawing.Size(100, 23);
             this.txtNascimento.TabIndex = 5;
+            this.txtNascimento.Tag = "data";
             this.txtNascimento.ValidatingType = typeof(System.DateTime);
-            this.txtNascimento.Enter += new System.EventHandler(this.txtNascimento_Enter);
-            this.txtNascimento.Validated += new System.EventHandler(this.txtNascimento_Validated);
+            this.txtNascimento.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtNascimento.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // panel5
             // 
@@ -508,6 +512,52 @@
             this.pnlMainAddProfissional.Name = "pnlMainAddProfissional";
             this.pnlMainAddProfissional.Size = new System.Drawing.Size(920, 530);
             this.pnlMainAddProfissional.TabIndex = 0;
+            // 
+            // cboEntidade
+            // 
+            this.cboEntidade.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cboEntidade.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.cboEntidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEntidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboEntidade.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cboEntidade.FormattingEnabled = true;
+            this.cboEntidade.Items.AddRange(new object[] {
+            "C.A.U. - CONSELHO DE ARQUITETURA E URBANISMO",
+            "C.R.E.A. - CONSELHO DE ENGENHARIA E AGRONOMIA",
+            "OUTRO"});
+            this.cboEntidade.Location = new System.Drawing.Point(360, 460);
+            this.cboEntidade.MaxLength = 100;
+            this.cboEntidade.Name = "cboEntidade";
+            this.cboEntidade.Size = new System.Drawing.Size(331, 23);
+            this.cboEntidade.TabIndex = 8;
+            // 
+            // imgShowPwd
+            // 
+            this.imgShowPwd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.imgShowPwd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgShowPwd.Image = ((System.Drawing.Image)(resources.GetObject("imgShowPwd.Image")));
+            this.imgShowPwd.Location = new System.Drawing.Point(459, 811);
+            this.imgShowPwd.Name = "imgShowPwd";
+            this.imgShowPwd.Size = new System.Drawing.Size(15, 15);
+            this.imgShowPwd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgShowPwd.TabIndex = 234;
+            this.imgShowPwd.TabStop = false;
+            this.ttpAddProfissional.SetToolTip(this.imgShowPwd, "Mostrar senha");
+            this.imgShowPwd.Click += new System.EventHandler(this.imgShowPwd_Click);
+            // 
+            // imgHidePwd
+            // 
+            this.imgHidePwd.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.imgHidePwd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.imgHidePwd.Image = ((System.Drawing.Image)(resources.GetObject("imgHidePwd.Image")));
+            this.imgHidePwd.Location = new System.Drawing.Point(459, 811);
+            this.imgHidePwd.Name = "imgHidePwd";
+            this.imgHidePwd.Size = new System.Drawing.Size(15, 15);
+            this.imgHidePwd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgHidePwd.TabIndex = 235;
+            this.imgHidePwd.TabStop = false;
+            this.ttpAddProfissional.SetToolTip(this.imgHidePwd, "Ocultar senha");
+            this.imgHidePwd.Click += new System.EventHandler(this.imgHidePwd_Click);
             // 
             // txtUsrSenha2
             // 
@@ -681,52 +731,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(480, 1);
             this.panel1.TabIndex = 285;
-            // 
-            // imgShowPwd
-            // 
-            this.imgShowPwd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.imgShowPwd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgShowPwd.Image = ((System.Drawing.Image)(resources.GetObject("imgShowPwd.Image")));
-            this.imgShowPwd.Location = new System.Drawing.Point(459, 811);
-            this.imgShowPwd.Name = "imgShowPwd";
-            this.imgShowPwd.Size = new System.Drawing.Size(15, 15);
-            this.imgShowPwd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgShowPwd.TabIndex = 234;
-            this.imgShowPwd.TabStop = false;
-            this.ttpAddProfissional.SetToolTip(this.imgShowPwd, "Mostrar senha");
-            this.imgShowPwd.Click += new System.EventHandler(this.imgShowPwd_Click);
-            // 
-            // imgHidePwd
-            // 
-            this.imgHidePwd.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.imgHidePwd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgHidePwd.Image = ((System.Drawing.Image)(resources.GetObject("imgHidePwd.Image")));
-            this.imgHidePwd.Location = new System.Drawing.Point(459, 811);
-            this.imgHidePwd.Name = "imgHidePwd";
-            this.imgHidePwd.Size = new System.Drawing.Size(15, 15);
-            this.imgHidePwd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgHidePwd.TabIndex = 235;
-            this.imgHidePwd.TabStop = false;
-            this.ttpAddProfissional.SetToolTip(this.imgHidePwd, "Ocultar senha");
-            this.imgHidePwd.Click += new System.EventHandler(this.imgHidePwd_Click);
-            // 
-            // cboEntidade
-            // 
-            this.cboEntidade.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cboEntidade.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.cboEntidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEntidade.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboEntidade.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.cboEntidade.FormattingEnabled = true;
-            this.cboEntidade.Items.AddRange(new object[] {
-            "C.A.U. - CONSELHO DE ARQUITETURA E URBANISMO",
-            "C.R.E.A. - CONSELHO DE ENGENHARIA E AGRONOMIA",
-            "OUTRO"});
-            this.cboEntidade.Location = new System.Drawing.Point(360, 460);
-            this.cboEntidade.MaxLength = 100;
-            this.cboEntidade.Name = "cboEntidade";
-            this.cboEntidade.Size = new System.Drawing.Size(331, 23);
-            this.cboEntidade.TabIndex = 8;
             // 
             // frmAddProfissional
             // 

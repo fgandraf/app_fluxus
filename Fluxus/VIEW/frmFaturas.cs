@@ -6,15 +6,16 @@ using System.Data;
 using Fluxus.View.Report;
 using System.Linq;
 using Fluxus.Model;
+using System.Globalization;
+using System.Reflection;
 
 namespace Fluxus.View
 {
     public partial class frmFaturas : Form
     {
-        
-        private decimal _subtotal_os = 0;
-        private decimal _subtotal_desloc = 0;
-        private decimal _total = 0;
+
+        private double _subtotal_os = 0.00;
+        private double _subtotal_desloc = 0.00;
 
 
 
@@ -24,8 +25,8 @@ namespace Fluxus.View
             try
             {
                 dgvFaturas.DataSource = new FaturaModel().ListarFatura();
-                
-                
+
+
                 if (dgvFaturas.Rows.Count > 0)
                 {
                     tblFaturas.Show();
@@ -37,6 +38,7 @@ namespace Fluxus.View
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void ListarOS()
         {
             if (dgvFaturas.Rows.Count > 0)
@@ -48,7 +50,7 @@ namespace Fluxus.View
                     txtData.Text = dgvFaturas.CurrentRow.Cells[2].Value.ToString();
                     txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);
                     txtValorDeslocamento.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[4].Value);
-                    txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[5].Value);
+                    txtValorTotal.Text = String.Format(new CultureInfo("pt-BR"), "{0:c}", dgvFaturas.CurrentRow.Cells[5].Value);
 
                 }
                 catch (Exception ex)
@@ -59,11 +61,24 @@ namespace Fluxus.View
 
 
         }
+
         private void SomarValores()
         {
-            _subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_atividade.Name].Value ?? 0));
-            _subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_deslocamento.Name].Value ?? 0));
-            _total = _subtotal_os + _subtotal_desloc;
+            _subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[valor_atividade.Name].Value ?? 0));
+            _subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[valor_deslocamento.Name].Value ?? 0));
+        }
+
+        private FaturaENT PopulateObject()
+        {
+            FaturaENT dado = new FaturaENT
+            {
+                id = Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value),
+                subtotal_os = _subtotal_os,
+                subtotal_desloc = _subtotal_desloc,
+                total = _subtotal_os + _subtotal_desloc
+            };
+
+            return dado;
         }
 
 
@@ -107,7 +122,7 @@ namespace Fluxus.View
                 string edital = dadosDaEmpresa[0]["ct_edital"].ToString();
                 string contrato = dadosDaEmpresa[0]["ct_contrato"].ToString();
                 string cnpj = dadosDaEmpresa[0]["cnpj"].ToString();
-                byte[] logo = (byte[])(dadosDaEmpresa[0]["logo"]);
+                byte[] logo = Convert.FromBase64String(dadosDaEmpresa[0]["logo"].ToString());
 
 
 
@@ -118,7 +133,7 @@ namespace Fluxus.View
 
 
                 long fatura_cod = Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value);
-                
+
                 //CHAMAR O MÉTODO
                 ITXFatura.GerarFaturaPDF
                 (
@@ -146,30 +161,26 @@ namespace Fluxus.View
                     //ALTERA PARA ZERO O FATURA_COD
                     new OsModel().UpdateFaturaCod(Convert.ToInt64(dgvOS.CurrentRow.Cells["id_os"].Value), 0);
 
+
                     //APAGA DO DATAGRIDVIEW
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
+
 
                     //RE-SOMA E APLICA OS VALORES NA TELA
                     SomarValores();
                     txtValorOS.Text = string.Format("{0:0,0.00}", _subtotal_os);
                     txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _subtotal_desloc);
-                    txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _total);
+                    txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _subtotal_os + _subtotal_desloc);
 
 
                     //APLICA OS NOVOS VALORES À TABELA DE FATURA
-                    FaturaENT dadofat = new FaturaENT();
-                    dadofat.id = Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value);
-                    dadofat.subtotal_os = _subtotal_os.ToString();
-                    dadofat.subtotal_desloc = _subtotal_desloc.ToString();
-                    dadofat.total = _total.ToString();
-                    new FaturaModel().Update(dadofat.id, dadofat);
+                    FaturaENT dado = PopulateObject();
+                    new FaturaModel().Update(dado.id, dado);
 
-                    //ATUALIZA O DATAGRIDVIEW
-                    ListarFatura();
                 }
             }
         }
-        
+
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             if (dgvOS.Rows.Count > 0)
@@ -184,6 +195,7 @@ namespace Fluxus.View
                 {
                     new FaturaModel().Delete((Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value)));
                     ListarFatura();
+                    ListarOS();
                 }
             }
         }

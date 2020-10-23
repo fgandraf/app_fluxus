@@ -75,8 +75,9 @@
             this.txtTelefone2.Name = "txtTelefone2";
             this.txtTelefone2.Size = new System.Drawing.Size(150, 23);
             this.txtTelefone2.TabIndex = 10;
-            this.txtTelefone2.Enter += new System.EventHandler(this.txtTelefone2_Enter);
-            this.txtTelefone2.Validated += new System.EventHandler(this.txtTelefone2_Validated);
+            this.txtTelefone2.Tag = "telefone";
+            this.txtTelefone2.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtTelefone2.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // txtTelefone1
             // 
@@ -88,8 +89,9 @@
             this.txtTelefone1.Name = "txtTelefone1";
             this.txtTelefone1.Size = new System.Drawing.Size(150, 23);
             this.txtTelefone1.TabIndex = 9;
-            this.txtTelefone1.Enter += new System.EventHandler(this.txtTelefone1_Enter);
-            this.txtTelefone1.Validated += new System.EventHandler(this.txtTelefone1_Validated);
+            this.txtTelefone1.Tag = "telefone";
+            this.txtTelefone1.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtTelefone1.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // txtEmail
             // 
@@ -397,8 +399,9 @@
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(150, 23);
             this.txtCEP.TabIndex = 6;
-            this.txtCEP.Enter += new System.EventHandler(this.txtCEP_Enter);
-            this.txtCEP.Validated += new System.EventHandler(this.txtCEP_Validated);
+            this.txtCEP.Tag = "cep";
+            this.txtCEP.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
+            this.txtCEP.Validated += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // panel1
             // 

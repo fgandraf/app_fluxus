@@ -42,7 +42,7 @@ namespace FluxusAPI.DAO
                         cadastrais.Cidade = Convert.ToString(dr["cidade"]);
                         cadastrais.Cep = Convert.ToString(dr["cep"]);
                         cadastrais.Uf = Convert.ToString(dr["uf"]);
-                        cadastrais.Constituicao = Convert.ToDateTime(dr["constituicao"]);
+                        cadastrais.Constituicao = Convert.ToString(dr["constituicao"]);
                         cadastrais.Telefone = Convert.ToString(dr["telefone"]);
                         cadastrais.Telefone2 = Convert.ToString(dr["telefone2"]);
                         cadastrais.Email = Convert.ToString(dr["email"]);
@@ -54,10 +54,10 @@ namespace FluxusAPI.DAO
                         cadastrais.Ct_tomador = Convert.ToString(dr["ct_tomador"]);
                         cadastrais.Ct_edital = Convert.ToString(dr["ct_edital"]);
                         cadastrais.Ct_contrato = Convert.ToString(dr["ct_contrato"]);
-                        cadastrais.Ct_celebrado = Convert.ToDateTime(dr["ct_celebrado"]);
-                        cadastrais.Ct_inicio = Convert.ToDateTime(dr["ct_inicio"]);
-                        cadastrais.Ct_termino = Convert.ToDateTime(dr["ct_termino"]);
-                        cadastrais.Logo = (byte[])(dr["logo"]);
+                        cadastrais.Ct_celebrado = Convert.ToString(dr["ct_celebrado"]);
+                        cadastrais.Ct_inicio = Convert.ToString(dr["ct_inicio"]);
+                        cadastrais.Ct_termino = Convert.ToString(dr["ct_termino"]);
+                        cadastrais.Logo = Convert.ToBase64String((byte[])(dr["logo"]));
 
                         cadastraisArray.Add(cadastrais);
                     }
@@ -77,7 +77,32 @@ namespace FluxusAPI.DAO
             }
         }
 
+        public byte[] GetLogo()
+        {
+            try
+            {
 
+                con.OpenConnection();
+                sql = new MySqlCommand("SELECT logo FROM tb_dadoscadastrais WHERE id = 1", con.Conn);
+                MySqlDataReader dr = sql.ExecuteReader();
+
+                if (dr.HasRows)
+                {
+                    dr.Read();
+                    return (byte[])(dr["logo"]);
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                con.CloseConnection();
+            }
+        }
 
 
 
@@ -180,7 +205,7 @@ namespace FluxusAPI.DAO
                 sql.Parameters.AddWithValue("@cidade", dado.Cidade);
                 sql.Parameters.AddWithValue("@cep", dado.Cep);
                 sql.Parameters.AddWithValue("@uf", dado.Uf);
-                sql.Parameters.AddWithValue("@constituicao", dado.Constituicao);
+                sql.Parameters.AddWithValue("@constituicao", Util.DateOrNull(dado.Constituicao));
                 sql.Parameters.AddWithValue("@telefone", dado.Telefone);
                 sql.Parameters.AddWithValue("@telefone2", dado.Telefone);
                 sql.Parameters.AddWithValue("@email", dado.Email);
@@ -192,10 +217,10 @@ namespace FluxusAPI.DAO
                 sql.Parameters.AddWithValue("@ct_tomador", dado.Ct_tomador);
                 sql.Parameters.AddWithValue("@ct_edital", dado.Ct_edital);
                 sql.Parameters.AddWithValue("@ct_contrato", dado.Ct_contrato);
-                sql.Parameters.AddWithValue("@ct_celebrado", dado.Ct_celebrado);
-                sql.Parameters.AddWithValue("@ct_inicio", dado.Ct_inicio);
-                sql.Parameters.AddWithValue("@ct_termino", dado.Ct_termino);
-                sql.Parameters.AddWithValue("@logo", dado.Logo);
+                sql.Parameters.AddWithValue("@ct_celebrado", Util.DateOrNull(dado.Ct_celebrado));
+                sql.Parameters.AddWithValue("@ct_inicio", Util.DateOrNull(dado.Ct_inicio));
+                sql.Parameters.AddWithValue("@ct_termino", Util.DateOrNull(dado.Ct_termino));
+                sql.Parameters.AddWithValue("@logo", (byte[])Convert.FromBase64String(dado.Logo));
 
                 sql.ExecuteNonQuery();
                 return sql.LastInsertedId;
@@ -233,7 +258,7 @@ namespace FluxusAPI.DAO
                 sql.Parameters.AddWithValue("@cidade", dado.Cidade);
                 sql.Parameters.AddWithValue("@cep", dado.Cep);
                 sql.Parameters.AddWithValue("@uf", dado.Uf);
-                sql.Parameters.AddWithValue("@constituicao", dado.Constituicao);
+                sql.Parameters.AddWithValue("@constituicao", Util.DateOrNull(dado.Constituicao));
                 sql.Parameters.AddWithValue("@telefone", dado.Telefone);
                 sql.Parameters.AddWithValue("@telefone2", dado.Telefone2);
                 sql.Parameters.AddWithValue("@email", dado.Email);
@@ -245,10 +270,10 @@ namespace FluxusAPI.DAO
                 sql.Parameters.AddWithValue("@ct_tomador", dado.Ct_tomador);
                 sql.Parameters.AddWithValue("@ct_edital", dado.Ct_edital);
                 sql.Parameters.AddWithValue("@ct_contrato", dado.Ct_contrato);
-                sql.Parameters.AddWithValue("@ct_celebrado", dado.Ct_celebrado);
-                sql.Parameters.AddWithValue("@ct_inicio", dado.Ct_inicio);
-                sql.Parameters.AddWithValue("@ct_termino", dado.Ct_termino);
-                sql.Parameters.AddWithValue("@logo", dado.Logo);
+                sql.Parameters.AddWithValue("@ct_celebrado", Util.DateOrNull(dado.Ct_celebrado));
+                sql.Parameters.AddWithValue("@ct_inicio", Util.DateOrNull(dado.Ct_inicio));
+                sql.Parameters.AddWithValue("@ct_termino", Util.DateOrNull(dado.Ct_termino));
+                sql.Parameters.AddWithValue("@logo", (byte[])Convert.FromBase64String(dado.Logo));
 
                 sql.ExecuteNonQuery();
 

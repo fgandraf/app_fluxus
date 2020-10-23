@@ -1,24 +1,39 @@
 ﻿using System;
 using System.Windows.Forms;
 using Fluxus.Model.ENT;
-using System.Text.RegularExpressions;
-using System.IO;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.Data;
 using Fluxus.Model;
-using System.Text;
+
 
 namespace Fluxus.View
 {
     public partial class frmDadosCadastrais : Form
     {
+
+
         frmPrincipal _frmPrincipal;
         private Image _logoAtual = null;
 
 
 
+
+
         //:METHODS
+        private void OnValidated_MaskedTextBox(object sender, EventArgs e)
+        {
+            MaskedTextBox box = (MaskedTextBox)sender;
+            box.Mask = Util.MaskValidated(sender);
+        }
+
+
+        private void OnEnter_MaskedTextBox(object sender, EventArgs e)
+        {
+            MaskedTextBox box = (MaskedTextBox)sender;
+            box.Mask = Util.MaskEnter(sender);
+        }
+
+
         private void PopulateFields()
         {
             try
@@ -68,21 +83,16 @@ namespace Fluxus.View
                     if (ct_termino.ToString() != "01/01/0001 00:00:00")
                         txtTermino.Text = ct_termino.ToString("dd/MM/yyyy");
 
-                   
 
 
-                    //Erro de conversao de String para byte[]
-                    if (dtDados.Rows[0]["logo"].ToString() != "")
+
+                    byte[] logo = Convert.FromBase64String(dtDados.Rows[0]["logo"].ToString());
+
+                    if (logo.ToString() != "")
                     {
-                        string str = dtDados.Rows[0]["logo"].ToString();
-                        
-                       
-
-                        byte[] logobt = Encoding.ASCII.GetBytes(str);
-
-                        _logoAtual = ByteParaImagem(logobt);
-                        picLogotipo.Image = ByteParaImagem(logobt);
-                    }   
+                        _logoAtual = Util.ByteToImage(logo);
+                        picLogotipo.Image = Util.ByteToImage(logo);
+                    }
 
                     txtCNPJ.Focus();
                 }
@@ -93,21 +103,41 @@ namespace Fluxus.View
             }
         }
 
-        public static byte[] ImagemParaByte(Image logo)
-        {
-            using (var stream = new MemoryStream())
-            {
-                logo.Save(stream, ImageFormat.Png);
-                return stream.ToArray();
-            }
-        }
 
-        public static Image ByteParaImagem(byte[] bytes)
+        private CadastraisENT PopulateObject()
         {
-            using (var stream = new MemoryStream(bytes))
+            CadastraisENT dado = new CadastraisENT
             {
-                return Image.FromStream(stream);
-            }
+                Cnpj = txtCNPJ.Text,
+                Fantasia = txtNomeFantasia.Text,
+                Razao = txtRazaoSocial.Text,
+                Ie = txtInscricaoEstadual.Text,
+                Im = txtInscricaoMunicipal.Text,
+                Endereco = txtEndereco.Text,
+                Complemento = txtComplemento.Text,
+                Bairro = txtBairro.Text,
+                Cidade = txtCidade.Text,
+                Cep = txtCEP.Text,
+                Uf = cboUF.Text,
+                Constituicao = Util.ValidateDateString(txtConstituicao.Text),
+                Telefone = txtTelefone.Text,
+                Telefone2 = txtTelefone2.Text,
+                Email = txtEmail.Text,
+                Db_banco = txtBanco.Text,
+                Db_tipo = cboTipoDeConta.Text,
+                Db_agencia = txtAgencia.Text,
+                Db_operador = txtOperador.Text,
+                Db_conta = txtConta.Text,
+                Ct_tomador = cboTomador.Text,
+                Ct_edital = txtEdital.Text,
+                Ct_contrato = txtContrato.Text,
+                Ct_celebrado = Util.ValidateDateString(txtCelebrado.Text),
+                Ct_inicio = Util.ValidateDateString(txtInicio.Text),
+                Ct_termino = Util.ValidateDateString(txtTermino.Text),
+                Logo = Convert.ToBase64String(Util.ImageToByte(picLogotipo.Image))
+            };
+
+            return dado;
         }
 
 
@@ -115,12 +145,12 @@ namespace Fluxus.View
 
 
         //:EVENTS
-        //_______Form
         public frmDadosCadastrais(frmPrincipal frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
+
 
         private void frmDadosCadastrais_Load(object sender, EventArgs e)
         {
@@ -132,8 +162,6 @@ namespace Fluxus.View
         }
 
 
-
-        //_______Button
         private void btnCadastrarSalvar_Click(object sender, EventArgs e)
         {
             if (txtCNPJ.Text == "" || txtNomeFantasia.Text == "" || txtRazaoSocial.Text == "")
@@ -152,46 +180,9 @@ namespace Fluxus.View
 
 
 
-            //POPULATE
-            CadastraisENT dado = new CadastraisENT();
-
-            dado.Cnpj = txtCNPJ.Text;
-            dado.Cnpj = txtCNPJ.Text;
-            dado.Fantasia = txtNomeFantasia.Text;
-            dado.Razao = txtRazaoSocial.Text;
-            dado.Ie = txtInscricaoEstadual.Text;
-            dado.Im = txtInscricaoMunicipal.Text;
-            dado.Endereco = txtEndereco.Text;
-            dado.Complemento = txtComplemento.Text;
-            dado.Bairro = txtBairro.Text;
-            dado.Cidade = txtCidade.Text;
-            dado.Cep = txtCEP.Text;
-            dado.Uf = cboUF.Text;
-            if (txtConstituicao.Text != "")
-                dado.Constituicao = Convert.ToDateTime(txtConstituicao.Text);
-            dado.Telefone = txtTelefone.Text;
-            dado.Telefone2 = txtTelefone2.Text;
-            dado.Email = txtEmail.Text;
-            dado.Db_banco = txtBanco.Text;
-            dado.Db_tipo = cboTipoDeConta.Text;
-            dado.Db_agencia = txtAgencia.Text;
-            dado.Db_operador = txtOperador.Text;
-            dado.Db_conta = txtConta.Text;
-            dado.Ct_tomador = cboTomador.Text;
-            dado.Ct_edital = txtEdital.Text;
-            dado.Ct_contrato = txtContrato.Text;
-            if (txtCelebrado.Text != "")
-                dado.Ct_celebrado = Convert.ToDateTime(txtCelebrado.Text);
-            if (txtInicio.Text != "")
-                dado.Ct_inicio = Convert.ToDateTime(txtInicio.Text);
-            if (txtTermino.Text != "")
-                dado.Ct_termino = Convert.ToDateTime(txtTermino.Text);
+            CadastraisENT dado = PopulateObject();
 
 
-            if (picLogotipo.Image != _logoAtual && picLogotipo.ImageLocation != "")
-            {
-                dado.Logo = ImagemParaByte(picLogotipo.Image);
-            }
 
             if (btnCadastrarSalvar.Text == "&Cadastrar")
             {
@@ -219,6 +210,7 @@ namespace Fluxus.View
             }
         }
 
+
         private void btnCarregar_Click(object sender, EventArgs e)
         {
             if (openDialog.ShowDialog() == DialogResult.OK)
@@ -226,132 +218,7 @@ namespace Fluxus.View
         }
 
 
-
-        //_______MaskedTexttBox
-        private void txtCNPJ_Enter(object sender, EventArgs e)
-        {
-            txtCNPJ.Mask = "00,000,000/0000-00";
-        }
-
-        private void txtCNPJ_Validated(object sender, EventArgs e)
-        {
-            if (txtCNPJ.Text == "  .   .   /    -")
-                txtCNPJ.Mask = "";
-        }
-
-
-
-        private void txtTelefone_Enter(object sender, EventArgs e)
-        {
-            txtTelefone.Mask = "(99) ##########";
-        }
-
-        private void txtTelefone_Validated(object sender, EventArgs e)
-        {
-            if (txtTelefone.Text == "(  ) ")
-            {
-                txtTelefone.Mask = "";
-                return;
-            }
-
-            var apenasDigitos = new Regex(@"[^\d]");
-            if (apenasDigitos.Replace(txtTelefone.Text, "").Length == 10)
-                txtTelefone.Mask = "(99) #########";
-            else if (apenasDigitos.Replace(txtTelefone.Text, "").Length == 11)
-                txtTelefone.Mask = "(99) ##########";
-        }
-
-
-
-        private void txtTelefone2_Enter(object sender, EventArgs e)
-        {
-            txtTelefone2.Mask = "(99) ##########";
-        }
-
-        private void txtTelefone2_Validated(object sender, EventArgs e)
-        {
-            if (txtTelefone2.Text == "(  ) ")
-            {
-                txtTelefone2.Mask = "";
-                return;
-            }
-
-            var apenasDigitos = new Regex(@"[^\d]");
-            if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 10)
-                txtTelefone2.Mask = "(99) #########";
-            else if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 11)
-                txtTelefone2.Mask = "(99) ##########";
-        }
-
-
-
-        private void txtCEP_Enter(object sender, EventArgs e)
-        {
-            txtCEP.Mask = "#####-###";
-        }
-
-        private void txtCEP_Validated(object sender, EventArgs e)
-        {
-            if (txtCEP.Text == "     -")
-                txtCEP.Mask = "";
-        }
-
-
-
-        private void txtConstituicao_Enter(object sender, EventArgs e)
-        {
-            txtConstituicao.Mask = "00/00/0000";
-        }
-
-        private void txtConstituicao_Validated(object sender, EventArgs e)
-        {
-            if (txtConstituicao.Text == "  /  /")
-                txtConstituicao.Mask = "";
-        }
-
-
-
-        private void txtCelebrado_Enter(object sender, EventArgs e)
-        {
-            txtCelebrado.Mask = "00/00/0000";
-        }
-
-        private void txtCelebrado_Validated(object sender, EventArgs e)
-        {
-            if (txtCelebrado.Text == "  /  /")
-                txtCelebrado.Mask = "";
-        }
-
-
-
-        private void txtInicio_Enter(object sender, EventArgs e)
-        {
-            txtInicio.Mask = "00/00/0000";
-        }
-
-        private void txtInicio_Validated(object sender, EventArgs e)
-        {
-            if (txtInicio.Text == "  /  /")
-                txtInicio.Mask = "";
-        }
-
-
-
-        private void txtTermino_Enter(object sender, EventArgs e)
-        {
-            txtTermino.Mask = "00/00/0000";
-        }
-
-        private void txtTermino_Validated(object sender, EventArgs e)
-        {
-            if (txtTermino.Text == "  /  /")
-                txtTermino.Mask = "";
-        }
-
-
-
     }
-
 
 
 }

@@ -1,33 +1,91 @@
 ﻿using System;
 using System.Windows.Forms;
 using Fluxus.Model.ENT;
-using System.Text.RegularExpressions;
 using Fluxus.Model;
 
 namespace Fluxus.View
 {
     public partial class frmAddAgencia : Form
     {
-       
+
+
         frmPrincipal _frmPrincipal;
-        long _id;
+        private long _id;
+
+
+
+
+
+        //:METHODS
+        private void OnValidated_MaskedTextBox(object sender, EventArgs e)
+        {
+            MaskedTextBox box = (MaskedTextBox)sender;
+            box.Mask = Util.MaskValidated(sender);
+        }
+
+
+        private void OnEnter_MaskedTextBox(object sender, EventArgs e)
+        {
+            MaskedTextBox box = (MaskedTextBox)sender;
+            box.Mask = Util.MaskEnter(sender);
+        }
+
+
+        private AgenciaENT PopulateObject()
+        {
+            AgenciaENT dado = new AgenciaENT
+            {
+                Agencia = txtAgencia.Text,
+                Nome = txtNome.Text,
+                Endereco = txtEndereco.Text,
+                Complemento = txtComplemento.Text,
+                Bairro = txtBairro.Text,
+                Cidade = txtCidade.Text,
+                CEP = txtCEP.Text,
+                UF = cboUF.Text,
+                Contato = txtContato.Text,
+                Telefone1 = txtTelefone1.Text,
+                Telefone2 = txtTelefone2.Text,
+                Email = txtEmail.Text
+            };
+            return dado;
+        }
+
+
+        private void Back()
+        {
+            this.Close();
+            if (this.FormBorderStyle != System.Windows.Forms.FormBorderStyle.FixedSingle)
+            {
+                frmAgencias formFilho = new frmAgencias(_frmPrincipal);
+                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            }
+        }
+
 
 
 
 
         //:EVENTS
-        ///_______Form
         public frmAddAgencia(frmPrincipal frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
 
+
         public frmAddAgencia(string agencia)
         {
             InitializeComponent();
+           
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Size = new System.Drawing.Size(650, 600);
+            this.Text = "Adicionar";
+
             txtAgencia.Text = agencia;
+
         }
+
 
         public frmAddAgencia(frmPrincipal frm1, AgenciaENT dado)
         {
@@ -49,6 +107,7 @@ namespace Fluxus.View
             txtEmail.Text = dado.Email;
         }
 
+
         private void frmAddAgencia_Load(object sender, EventArgs e)
         {
             if (this.Text == "Alterar")
@@ -62,10 +121,6 @@ namespace Fluxus.View
         }
 
 
-
-
-
-        ///_______Button
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             if (txtAgencia.Text == "")
@@ -74,23 +129,8 @@ namespace Fluxus.View
                 return;
             }
 
-            //POPULATE
-            AgenciaENT dado = new AgenciaENT
-            {
-                Agencia = txtAgencia.Text,
-                Nome = txtNome.Text,
-                Endereco = txtEndereco.Text,
-                Complemento = txtComplemento.Text,
-                Bairro = txtBairro.Text,
-                Cidade = txtCidade.Text,
-                CEP = txtCEP.Text,
-                UF = cboUF.Text,
-                Contato = txtContato.Text,
-                Telefone1 = txtTelefone1.Text,
-                Telefone2 = txtTelefone2.Text,
-                Email = txtEmail.Text
-            };
 
+            AgenciaENT dado = PopulateObject();
 
             if (btnAddSave.Text == "&Adicionar")
             {
@@ -100,16 +140,8 @@ namespace Fluxus.View
                 }
                 catch (Exception ex)
                 {
-                    if (ex.Message.Contains("Duplicata du champ"))
-                    {
-                        MessageBox.Show($"Agência com o código '{txtAgencia.Text}' já cadastrada!", "Código existente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
             else
@@ -117,99 +149,25 @@ namespace Fluxus.View
                 try
                 {
                     new AgenciaModel().Update(_id, dado);
-
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            this.Close();
-            if (this.FormBorderStyle != System.Windows.Forms.FormBorderStyle.FixedSingle)
-            {
-                frmAgencias formFilho = new frmAgencias(_frmPrincipal);
-                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
-            }
+
+            Back();
+
         }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
-
-            if (this.FormBorderStyle != System.Windows.Forms.FormBorderStyle.FixedSingle)
-            {
-                frmAgencias formFilho = new frmAgencias(_frmPrincipal);
-                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
-            }
+            Back();
         }
 
-
-
-
-
-        ///_______TextBox
-        private void txtTelefone1_Enter(object sender, EventArgs e)
-        {
-            txtTelefone1.Mask = "(99) #########";
-        }
-
-        private void txtTelefone1_Validated(object sender, EventArgs e)
-        {
-            if (txtTelefone1.Text == "(  ) ")
-            {
-                txtTelefone1.Mask = "";
-                return;
-            }
-            
-            
-
-            var apenasDigitos = new Regex(@"[^\d]");
-            if (apenasDigitos.Replace(txtTelefone1.Text, "").Length == 10)
-                txtTelefone1.Mask = "(99) #########";
-            else if (apenasDigitos.Replace(txtTelefone1.Text, "").Length == 11)
-                txtTelefone1.Mask = "(99) ##########";
-
-        }
-
-
-
-        private void txtTelefone2_Enter(object sender, EventArgs e)
-        {
-            txtTelefone2.Mask = "(99) ##########";
-        }
-
-        private void txtTelefone2_Validated(object sender, EventArgs e)
-        {
-            if (txtTelefone2.Text == "(  ) ")
-            {
-                txtTelefone2.Mask = "";
-                return;
-            }
-
-            var apenasDigitos = new Regex(@"[^\d]");
-            if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 10)
-                txtTelefone2.Mask = "(99) #########";
-            else if (apenasDigitos.Replace(txtTelefone2.Text, "").Length == 11)
-                txtTelefone2.Mask = "(99) ##########";
-        }
-
-
-
-        private void txtCEP_Enter(object sender, EventArgs e)
-        {
-            txtCEP.Mask = "#####-###";
-        }
-
-        private void txtCEP_Validated(object sender, EventArgs e)
-        {
-            if (txtCEP.Text == "     -")
-                txtCEP.Mask = "";
-        }
-
-        
 
     }
-
 
 
 }

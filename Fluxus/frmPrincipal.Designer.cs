@@ -159,7 +159,7 @@
             this.btnOS.Name = "btnOS";
             this.btnOS.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.btnOS.Size = new System.Drawing.Size(200, 50);
-            this.btnOS.TabIndex = 2;
+            this.btnOS.TabIndex = 1;
             this.btnOS.Text = "    Ordens de Serviços";
             this.btnOS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -235,7 +235,7 @@
             this.btnFaturas.Name = "btnFaturas";
             this.btnFaturas.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.btnFaturas.Size = new System.Drawing.Size(200, 50);
-            this.btnFaturas.TabIndex = 3;
+            this.btnFaturas.TabIndex = 2;
             this.btnFaturas.Text = "    Faturas";
             this.btnFaturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFaturas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -257,7 +257,7 @@
             this.btnDadosCadastrais.Location = new System.Drawing.Point(0, 135);
             this.btnDadosCadastrais.Name = "btnDadosCadastrais";
             this.btnDadosCadastrais.Size = new System.Drawing.Size(200, 20);
-            this.btnDadosCadastrais.TabIndex = 128;
+            this.btnDadosCadastrais.TabIndex = 0;
             this.btnDadosCadastrais.Text = "Dados Cadastrais";
             this.btnDadosCadastrais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ttpMenu.SetToolTip(this.btnDadosCadastrais, "Dashboard");
@@ -293,7 +293,7 @@
             this.btnAgencias.Name = "btnAgencias";
             this.btnAgencias.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.btnAgencias.Size = new System.Drawing.Size(200, 50);
-            this.btnAgencias.TabIndex = 3;
+            this.btnAgencias.TabIndex = 4;
             this.btnAgencias.Text = "    Agências";
             this.btnAgencias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgencias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -318,7 +318,7 @@
             this.btnAtividades.Name = "btnAtividades";
             this.btnAtividades.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.btnAtividades.Size = new System.Drawing.Size(195, 50);
-            this.btnAtividades.TabIndex = 4;
+            this.btnAtividades.TabIndex = 3;
             this.btnAtividades.Text = "    Atividades";
             this.btnAtividades.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAtividades.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

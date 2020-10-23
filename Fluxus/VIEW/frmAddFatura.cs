@@ -2,8 +2,6 @@
 using System.Windows.Forms;
 using Fluxus.Model.ENT;
 using System.Globalization;
-using System.Linq;
-using System.Data;
 using Fluxus.Model;
 
 namespace Fluxus.View
@@ -13,9 +11,10 @@ namespace Fluxus.View
 
 
         frmPrincipal _frmPrincipal;
-        private decimal _subtotal_os = 0;
-        private decimal _subtotal_desloc = 0;
-        private decimal _total = 0;
+        private double _subtotal_os = 0.00;
+        private double _subtotal_desloc = 0.00;
+
+
 
 
 
@@ -25,15 +24,6 @@ namespace Fluxus.View
             try
             {
                 dgvOS.DataSource = new OsModel().GetOrdensConcluidasNaoFaturadas();
-
-                if (dgvOS.Rows.Count == 0)
-                {
-                    dgvOS.Enabled = false;
-                }
-                else
-                {
-                    dgvOS.Enabled = true;
-                }
             }
             catch (Exception ex)
             {
@@ -41,15 +31,39 @@ namespace Fluxus.View
             }
         }
 
+
         private void SomarValores()
         {
-            _subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_atividade.Name].Value ?? 0));
-            _subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[valor_deslocamento.Name].Value ?? 0));
-            _total = _subtotal_os + _subtotal_desloc;
+            _subtotal_os = Util.CellSum(dgvOS, "valor_atividade");
+            _subtotal_desloc = Util.CellSum(dgvOS, "valor_deslocamento");
 
             txtValorOS.Text = string.Format("{0:0,0.00}", _subtotal_os);
             txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _subtotal_desloc);
-            txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _total);
+            txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _subtotal_os + _subtotal_desloc);
+        }
+
+
+        private FaturaENT PopulateObject()
+        {
+            FaturaENT dado = new FaturaENT
+            {
+                descricao = txtDescricao.Text,
+                data = dtpData.Value,
+                subtotal_os = _subtotal_os,
+                subtotal_desloc = _subtotal_desloc,
+                total = _subtotal_os + _subtotal_desloc
+            };
+            return dado;
+        }
+
+
+        private void Back()
+        {
+            this.Close();
+            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços";
+            _frmPrincipal.lblTitulo.Refresh();
+            frmOS formFilho = new frmOS(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
         }
 
 
@@ -57,25 +71,21 @@ namespace Fluxus.View
 
 
         //:EVENTS
-        ///_______Form
         public frmAddFatura(frmPrincipal frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            ListarOS();
-            txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
+
 
         private void frmAddFatura_Load(object sender, EventArgs e)
         {
+            ListarOS();
             SomarValores();
+            txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
 
 
-
-
-
-        ///_______Button
         private void btnRemover_Click(object sender, EventArgs e)
         {
             if (dgvOS.SelectedRows.Count == 0)
@@ -91,62 +101,50 @@ namespace Fluxus.View
             }
         }
 
+
         private void btnFaturar_Click(object sender, EventArgs e)
         {
-            //POPULATE
-            FaturaENT fatura = new FaturaENT
+            try
             {
-                descricao = txtDescricao.Text,
-                data = dtpData.Value,
-                subtotal_os = _subtotal_os.ToString().Replace(',', '.'),
-                subtotal_desloc = _subtotal_desloc.ToString().Replace(',', '.'),
-                total = _total.ToString().Replace(',', '.')
-            };
 
-            long fatura_cod = new FaturaModel().Insert(fatura);
+                FaturaENT dado = PopulateObject();
+                long fatura_cod = new FaturaModel().Insert(dado);
 
-            foreach (DataGridViewRow row in dgvOS.Rows)
+
+                foreach (DataGridViewRow row in dgvOS.Rows)
+                {
+                    long idOS = Convert.ToInt64(row.Cells["id"].Value);
+                    new OsModel().UpdateFaturaCod(idOS, fatura_cod);
+                }
+
+                MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
             {
-                long idOS = Convert.ToInt64(row.Cells["id"].Value);
-                new OsModel().UpdateFaturaCod(idOS, fatura_cod);
+
+                MessageBox.Show("Erro ao tentar faturar. \n\n" + ex, "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
 
-
-            MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-            this.Close();
-            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços";
-            _frmPrincipal.lblTitulo.Refresh();
-
-            frmOS formFilho = new frmOS(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            Back();
 
         }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
-            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços";
-            _frmPrincipal.lblTitulo.Refresh();
-            frmOS formFilho = new frmOS(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            Back();
         }
 
 
-
-
-
-        ///_______DateTimePicker
         private void dtpData_ValueChanged(object sender, EventArgs e)
         {
             txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
 
 
-
     }
-
 
 
 }

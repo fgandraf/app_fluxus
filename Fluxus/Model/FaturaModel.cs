@@ -68,7 +68,7 @@ namespace Fluxus.Model
         public string DescricaoFatura(long id)
         {
             string json = WebAPI.RequestGET("fatura/getdescricao/", id.ToString());
-            return JsonConvert.DeserializeObject<string>(json);
+            return json;
         }
 
 

@@ -1,9 +1,0 @@
-﻿
-Acesso público da API
-
-http://191.239.253.8:8080/api
-
-
-Token:
-
-345HDRgffg2#hjd!246@Úhdfjb02

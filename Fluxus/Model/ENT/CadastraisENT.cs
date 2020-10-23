@@ -26,14 +26,14 @@ namespace Fluxus.Model.ENT
         public string Db_agencia { get; set; }
         public string Db_operador { get; set; }
         public string Db_conta { get; set; }
-        public DateTime Constituicao { get; set; }
+        public string Constituicao { get; set; }
         public string Ct_tomador { get; set; }
         public string Ct_edital { get; set; }
         public string Ct_contrato { get; set; }
-        public DateTime Ct_celebrado { get; set; }
-        public DateTime Ct_inicio { get; set; }
-        public DateTime Ct_termino { get; set; }
-        public byte[] Logo { get; set; }
+        public string Ct_celebrado { get; set; }
+        public string Ct_inicio { get; set; }
+        public string Ct_termino { get; set; }
+        public string Logo { get; set; }
         
     }
 

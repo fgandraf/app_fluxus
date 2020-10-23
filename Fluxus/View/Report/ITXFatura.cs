@@ -188,7 +188,7 @@ namespace Fluxus.View.Report
 
                         /////////////////CÉLULAS - POPULAR
                         {
-                            DataRow[] dataRow = dtOS.Select("profissional_cod = '" + dataRowPro[i - 1]["profissional_cod"].ToString() + "'");
+                            DataRow[] dataRow = dtOS.Select("profissional_cod = '" + dataRowPro[i - 1]["codigo"].ToString() + "'");
                             for (int l = 0; l < dataRow.Length; l++)
                             {
                                 //--célula
@@ -258,7 +258,7 @@ namespace Fluxus.View.Report
                                 celula = new PdfPCell(
                                     new Phrase(
                                         new Chunk(
-                                            dataRow[l]["valor_atividade"].ToString(),
+                                            string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", dataRow[l]["valor_atividade"]),
                                             FontFactory.GetFont("Calibre", 09, iTextSharp.text.Font.NORMAL, BaseColor.DARK_GRAY)
                                             )
                                     )
@@ -272,7 +272,7 @@ namespace Fluxus.View.Report
                                 celula = new PdfPCell(
                                     new Phrase(
                                         new Chunk(
-                                            dataRow[l]["valor_deslocamento"].ToString(),
+                                            string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", dataRow[l]["valor_deslocamento"]),
                                             FontFactory.GetFont("Calibre", 09, iTextSharp.text.Font.NORMAL, BaseColor.DARK_GRAY)
                                             )
                                     )
@@ -300,7 +300,7 @@ namespace Fluxus.View.Report
                             tabmain.AddCell(celula);
 
                             //--célula subtotal valor os
-                            double somavaloratividade = double.Parse(dtOS.Compute("Sum(valor_atividade)", "profissional_cod = '" + dataRowPro[i - 1]["profissional_cod"].ToString() + "'").ToString());
+                            double somavaloratividade = double.Parse(dtOS.Compute("Sum(valor_atividade)", "profissional_cod = '" + dataRowPro[i - 1]["codigo"].ToString() + "'").ToString());
                             subtotal_os += somavaloratividade;
                             celula = new PdfPCell(new Phrase(new Chunk(
                                         string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", somavaloratividade),
@@ -312,7 +312,7 @@ namespace Fluxus.View.Report
                             tabmain.AddCell(celula);
 
                             //--célula subtotal valor deslocamento
-                            double somavalordeslocamento = double.Parse(dtOS.Compute("Sum(valor_deslocamento)", "profissional_cod = '" + dataRowPro[i - 1]["profissional_cod"].ToString() + "'").ToString());
+                            double somavalordeslocamento = double.Parse(dtOS.Compute("Sum(valor_deslocamento)", "profissional_cod = '" + dataRowPro[i - 1]["codigo"].ToString() + "'").ToString());
                             subtotal_deslocamento += somavalordeslocamento;
                             celula = new PdfPCell(new Phrase(new Chunk(
                                         string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", somavalordeslocamento),

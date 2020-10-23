@@ -1,25 +1,42 @@
 ﻿using System;
 using System.Windows.Forms;
 using Fluxus.Model.ENT;
-using System.Text.RegularExpressions;
 using System.Data;
 using Fluxus.Model;
+using System.Text;
 
 namespace Fluxus.View
 {
     public partial class frmAddOS : Form
     {
+
+
         frmPrincipal _frmPrincipal;
         private string _formFilho;
         private string _agencia;
         private long _id;
-
         DataTable DtAtividades = new DataTable();
         DataTable DtProfissionais = new DataTable();
 
 
 
+
+
         //:METHODS
+        private void OnValidated_MaskedTextBox(object sender, EventArgs e)
+        {
+            MaskedTextBox box = (MaskedTextBox)sender;
+            box.Mask = Util.MaskValidated(sender);
+        }
+
+
+        private void OnEnter_MaskedTextBox(object sender, EventArgs e)
+        {
+            MaskedTextBox box = (MaskedTextBox)sender;
+            box.Mask = Util.MaskEnter(sender);
+        }
+
+
         private void BuscarNomeAtividade()
         {
             try
@@ -35,6 +52,7 @@ namespace Fluxus.View
             }
         }
 
+
         private void BuscarNomeProfissional()
         {
             try
@@ -48,13 +66,15 @@ namespace Fluxus.View
             }
         }
 
+
         private void BuscarAgencia()
         {
             try
             {
-                DataRow[] dataRowAgencia = (new AgenciaModel().BuscarAgencia(txtReferencia.Text.Substring(5, 4))).Select();
+                string agenciaCodigo = txtRef1.Text;
+                DataTable dtAgencia = new AgenciaModel().BuscarAgencia(agenciaCodigo);
 
-                if (dataRowAgencia.Length == 0)
+                if (dtAgencia == null )
                 {
                     txtAgenciaNome.Text = "Agência não cadastrado!";
                     txtAgenciaTelefone.Text = "";
@@ -63,10 +83,10 @@ namespace Fluxus.View
                 }
                 else
                 {
-                    txtAgenciaNome.Text = dataRowAgencia[0]["nome"].ToString();
-                    txtAgenciaTelefone.Text = dataRowAgencia[0]["telefone1"].ToString();
-                    txtAgenciaEmail.Text = dataRowAgencia[0]["email"].ToString();
-                    _agencia = txtReferencia.Text.Substring(5, 4);
+                    txtAgenciaNome.Text = dtAgencia.Rows[0]["nome"].ToString();
+                    txtAgenciaTelefone.Text = dtAgencia.Rows[0]["telefone1"].ToString();
+                    txtAgenciaEmail.Text = dtAgencia.Rows[0]["email"].ToString();
+                    _agencia = txtRef1.Text;
                     btnAddAgencia.Hide();
                 }
             }
@@ -77,53 +97,126 @@ namespace Fluxus.View
         }
 
 
-
-
-
-        //:EVENTS
-        ///_______Form
-        public frmAddOS(frmPrincipal frm1, string frmfilho)
+        private void Back()
         {
-            InitializeComponent();
-            _frmPrincipal = frm1;
-            _formFilho = frmfilho;
+            this.Close();
+            if (_formFilho == "frmOSLista")
+            {
+                frmOS formFilho = new frmOS(_frmPrincipal, 1);
+                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            }
+            else
+            {
+                frmOS formFilho = new frmOS(_frmPrincipal);
+                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            }
+        }
 
-            DtProfissionais = new ProfissionalModel().ListarCodigoENomeid(false);
-            cboProfissional.DataSource = DtProfissionais;
 
-            DtAtividades = new AtividadeModel().ListarAtividades(false);
-            cboAtividade.DataSource = DtAtividades;
+        private OsENT PopulateObject()
+        {
+            //CRIA O TÍTULO DA ORDEN DE SERVIÇO
+            int refe = Convert.ToInt32(txtRef2.Text);
+            string titulo = cboAtividade.Text + "-" + cboCidade.Text + "-" + Convert.ToString(refe) + "\n\n" + "● Prazo: " + dtpPrazo.Value.ToString("dd/MM/yyyy") + "\nCliente: " + txtNomeCliente.Text.Replace(" ", " ");
 
-            //cboCidade.DataSource = new OsController().GetCidadesDasOrdens(false);
-            cboCidade.DataSource = new OsModel().GetCidadesDasOrdens(false);
-            cboCidade.SelectedIndex = -1;
+
+            //CRIA/CONCATENA A REFERENCIA
+            string referencia = string.Format("{0}.{1}.{2}/{3}.{4}.{5}.{6}", txtRef0.Text, txtRef1.Text, txtRef2.Text, txtRef3.Text, txtRef4.Text, txtRef5.Text, txtRef6.Text);
+
+
+            //VALIDA O STATUS
+            string status;
+            if (rbtRecebida.Checked)
+                status = "RECEBIDA";
+            else if (rbtPendente.Checked)
+                status = "PENDENTE";
+            else if (rbtVistoriada.Checked)
+                status = "VISTORIADA";
+            else
+                status = "CONCLUÍDA";
+
+
+
+
+
+
+
+            //POPULATE OBJECT TO RETURN
+            OsENT dado = new OsENT
+            {
+                Titulo = titulo,
+                Referencia = referencia,
+                Agencia = _agencia,
+                Data_ordem = Util.ValidateDateString(txtDataOrdem.Text),
+                Prazo_execucao = Convert.ToDateTime(dtpPrazo.Value),
+                Profissional_cod = cboProfissional.Text,
+                Atividade_cod = cboAtividade.Text,
+                Valor_atividade = lblAtividadeValor.Text.Replace(',', '.'),
+                Valor_deslocamento = lblAtividadeDeslocamento.Text.Replace(',', '.'),
+                Siopi = chkSiopi.Checked,
+                Nome_cliente = txtNomeCliente.Text,
+                Cidade = cboCidade.Text,
+                Nome_contato = txtNomeContato.Text,
+                Telefone_contato = txtTelefoneContato.Text,
+                Coordenada = txtCoordenada.Text,
+                Status = status,
+                Data_pendente = Util.ValidateDateString(txtDataPendente.Text),
+                Data_vistoria = Util.ValidateDateString(txtDataVistoria.Text),
+                Data_concluida = Util.ValidateDateString(txtDataConcluida.Text),
+                Obs = txtOBS.Text
+            };
+            return dado;
+        }
+
+        private void NextControl(object sender, EventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            if (txt.Text.Length == txt.MaxLength)
+                SendKeys.Send("{TAB}");
+
         }
 
 
 
-        public frmAddOS(frmPrincipal frm1, string frmfilho, OsENT dado)
+        //:EVENTS
+        public frmAddOS(frmPrincipal frm1, string frmfilho)
         {
             InitializeComponent();
+
             _frmPrincipal = frm1;
             _formFilho = frmfilho;
 
             DtProfissionais = new ProfissionalModel().ListarCodigoENomeid(false);
-
             DtAtividades = new AtividadeModel().ListarAtividades(false);
 
+            cboProfissional.DataSource = DtProfissionais;
+            cboAtividade.DataSource = DtAtividades;
             cboCidade.DataSource = new OsModel().GetCidadesDasOrdens(false);
             cboCidade.SelectedIndex = -1;
 
+        }
+
+
+        public frmAddOS(frmPrincipal frm1, string frmfilho, OsENT dado) : this(frm1, frmfilho)
+        {
+
             //POPULATE
-            cboProfissional.DataSource = DtProfissionais;
-
-            cboAtividade.DataSource = DtAtividades;
-
             _id = dado.Id;
+            
 
-            txtReferencia.Text = dado.Referencia;
+            txtRef0.Text = dado.Referencia.Substring(0, 4);
+            txtRef1.Text = dado.Referencia.Substring(5, 4);
+            txtRef2.Text = dado.Referencia.Substring(10, 9);
+            txtRef3.Text = dado.Referencia.Substring(20, 4);
+            txtRef4.Text = dado.Referencia.Substring(25, 2);
+            txtRef5.Text = dado.Referencia.Substring(28, 2);
+            txtRef6.Text = dado.Referencia.Substring(31, 2);
+
+
+
+                        
             _agencia = dado.Agencia;
-            txtDataOrdem.Text = dado.Data_ordem.ToString();
+            txtDataOrdem.Text = dado.Data_ordem;
             dtpPrazo.Text = dado.Prazo_execucao.ToString();
             cboProfissional.Text = dado.Profissional_cod;
             cboAtividade.Text = dado.Atividade_cod;
@@ -141,54 +234,68 @@ namespace Fluxus.View
                 rbtVistoriada.Checked = true;
             else
                 rbtConcluida.Checked = true;
-            txtDataPendente.Text = dado.Data_pendente.ToString();
-            txtDataVistoria.Text = dado.Data_vistoria.ToString();
-            txtDataConcluida.Text = dado.Data_concluida.ToString();
+
+            txtDataPendente.Text = dado.Data_pendente;
+            txtDataVistoria.Text = dado.Data_vistoria;
+            txtDataConcluida.Text = dado.Data_concluida;
             txtOBS.Text = dado.Obs;
-
-
 
 
             BuscarNomeProfissional();
             BuscarNomeAtividade();
             BuscarAgencia();
 
+
             if (dado.Fatura_cod != 0)
             {
                 lblFaturada.Show();
                 txtCodFatura.Text = "Fatura: " + new FaturaModel().DescricaoFatura(dado.Fatura_cod);
-
-
                 txtCodFatura.Show();
 
+
+                //DISABLE CONTROLS
                 foreach (Control c in this.tabPage1.Controls)
                 {
-                    if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker || c is RadioButton)
+                    if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker || c is RadioButton || c is ComboBox)
                         c.Enabled = false;
                 }
-
-                foreach (Control c in this.tableLayoutPanel1.Controls)
+                foreach (Control c in this.tblStatus.Controls)
                 {
                     if (c is MaskedTextBox || c is RadioButton)
                         c.Enabled = false;
                 }
-
-                cboAtividade.Enabled = false;
-                cboProfissional.Enabled = false;
+                
                 txtOBS.Enabled = false;
+                
+                
+                
+               
+
                 btnAddSave.Hide();
                 btnCancelar.Size = new System.Drawing.Size(200, 25);
                 btnCancelar.Location = new System.Drawing.Point(696, 13);
+
             }
 
         }
+
 
         private void frmAddOS_Load(object sender, EventArgs e)
         {
             if (this.Text == "Alterar")
             {
                 btnAddSave.Text = "&Salvar";
-                txtReferencia.Enabled = false;
+
+                foreach (Control c in this.pnlReferencia.Controls)
+                {
+                    if (c is TextBox)
+                    {
+                        TextBox txt = (TextBox)c;
+                        txt.ReadOnly = true;
+                        txt.ForeColor = System.Drawing.Color.DarkSlateGray;
+                       
+                    }
+                }
             }
             else
             {
@@ -197,103 +304,37 @@ namespace Fluxus.View
                 txtDataOrdem.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 dtpPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
             }
-            cboProfissional.Focus();
 
-
-
-
-            if (Logged.Rt && Logged.Rl == false)
+            
+            if (Logged.Rt)
             {
                 cboProfissional.SelectedValue = Logged.Codpro;
                 BuscarNomeProfissional();
-                cboProfissional.Enabled = false;
+
+                if (Logged.Rl == false)
+                    cboProfissional.Enabled = false;
 
             }
 
+            txtRef0.Focus();
+            txtDataOrdem.SelectAll();
 
 
         }
 
 
-
-
-
-        ///_______Button
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             //CHECK PRIMARY KEY
-            if (txtReferencia.Text == "")
+            if (txtRef0.Text == "" || txtRef1.Text == "" || txtRef2.Text == "" || txtRef3.Text == "" || txtRef4.Text == "" || txtRef5.Text == "" || txtRef6.Text == "")
             {
                 MessageBox.Show("Campos com * são obrigatório", "Chave Primária", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
-            //POPULATE
-            int refe = Convert.ToInt32(txtReferencia.Text.Substring(10, 9));
-
-            string titulo = cboAtividade.Text + "-" + cboCidade.Text + "-" + Convert.ToString(refe) + "\n\n" + "● Prazo: " + dtpPrazo.Value.ToString("dd/MM/yyyy") + "\nCliente: " + txtNomeCliente.Text.Replace(" ", " ");
-
-            Nullable<DateTime> dataOrdem;
-            if (txtDataOrdem.Text != "")
-                dataOrdem = Convert.ToDateTime(txtDataOrdem.Text);
-            else
-                dataOrdem = null;
-
-            string status;
-            if (rbtRecebida.Checked)
-                status = "RECEBIDA";
-            else if (rbtPendente.Checked)
-                status = "PENDENTE";
-            else if (rbtVistoriada.Checked)
-                status = "VISTORIADA";
-            else
-                status = "CONCLUÍDA";
 
 
-            Nullable<DateTime> dataPendente;
-            if (txtDataPendente.Text != "  /  /")
-                dataPendente = Convert.ToDateTime(txtDataPendente.Text);
-            else
-                dataPendente = null;
-
-            Nullable<DateTime> dataVistoria;
-            if (txtDataVistoria.Text != "  /  /")
-                dataVistoria = Convert.ToDateTime(txtDataVistoria.Text);
-            else
-                dataVistoria = null;
-
-
-            Nullable<DateTime> dataConcluida;
-            if (txtDataConcluida.Text != "  /  /")
-                dataConcluida = Convert.ToDateTime(txtDataConcluida.Text);
-            else
-                dataConcluida = null;
-
-
-            OsENT dado = new OsENT
-            {
-                Titulo = titulo,
-                Referencia = txtReferencia.Text,
-                Agencia = _agencia,
-                Data_ordem = Convert.ToDateTime(dataOrdem),
-                Prazo_execucao = Convert.ToDateTime(dtpPrazo.Value),
-                Profissional_cod = cboProfissional.Text,
-                Atividade_cod = cboAtividade.Text,
-                Siopi = chkSiopi.Checked,
-                Nome_cliente = txtNomeCliente.Text,
-                Cidade = cboCidade.Text,
-                Nome_contato = txtNomeContato.Text,
-                Telefone_contato = txtTelefoneContato.Text,
-                Coordenada = txtCoordenada.Text,
-                Status = status,
-                Data_pendente = Convert.ToDateTime(dataPendente),
-                Data_vistoria = Convert.ToDateTime(dataVistoria),
-                Data_concluida = Convert.ToDateTime(dataConcluida),
-                Obs = txtOBS.Text
-            };
-
-
-
+            OsENT dado = PopulateObject();
 
 
 
@@ -306,16 +347,8 @@ namespace Fluxus.View
                 }
                 catch (Exception ex)
                 {
-                    if (ex.Message.Contains("Duplicata du champ"))
-                    {
-                        MessageBox.Show($"Ordem de Serviço '{txtReferencia.Text}' já cadastrada!", "Código existente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
             else
@@ -329,49 +362,25 @@ namespace Fluxus.View
                     MessageBox.Show(ex.Message);
                 }
             }
-            this.Close();
-            if (_formFilho == "frmOSLista")
-            {
-                frmOS formFilho = new frmOS(_frmPrincipal, 1);
-                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
-            }
-            else
-            {
-                frmOS formFilho = new frmOS(_frmPrincipal);
-                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
-            }
 
+            Back();
 
         }
+
 
         private void btnAddAgencia_Click(object sender, EventArgs e)
         {
-            AgenciaENT dado = new AgenciaENT();
-            dado.Agencia = txtReferencia.Text.Substring(5, 4);
-
-            frmAddAgencia form = new frmAddAgencia(txtReferencia.Text.Substring(5, 4));
-            form.Text = "Adicionar";
-
-            form.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            form.Size = new System.Drawing.Size(650, 600);
+            frmAddAgencia form = new frmAddAgencia(txtRef1.Text);
             form.ShowDialog();
+
             BuscarAgencia();
-            txtNomeCliente.Focus();
+            txtRef2.Focus();
         }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
-            if (_formFilho == "frmOSLista")
-            {
-                frmOS formFilho = new frmOS(_frmPrincipal, 1);
-                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
-            }
-            else
-            {
-                frmOS formFilho = new frmOS(_frmPrincipal);
-                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
-            }
+            Back();
         }
 
 
@@ -393,6 +402,7 @@ namespace Fluxus.View
             txtDataVistoria.Hide();
             txtDataConcluida.Hide();
             txtDataPendente.Focus();
+            txtDataPendente.SelectAll();
         }
 
         private void rbtVistoriada_CheckedChanged(object sender, EventArgs e)
@@ -401,6 +411,7 @@ namespace Fluxus.View
             txtDataPendente.Hide();
             txtDataConcluida.Hide();
             txtDataVistoria.Focus();
+            txtDataVistoria.SelectAll();
         }
 
         private void rbtConcluida_CheckedChanged(object sender, EventArgs e)
@@ -409,6 +420,7 @@ namespace Fluxus.View
             txtDataVistoria.Visible = true;
             txtDataPendente.Hide();
             txtDataConcluida.Focus();
+            txtDataConcluida.SelectAll();
         }
 
 
@@ -435,52 +447,11 @@ namespace Fluxus.View
 
 
 
-        ///_______TextBox
-        private void txtReferencia_Validated(object sender, EventArgs e)
-        {
-            if (txtReferencia.Text == "    .    .         /    .  .  .")
-            {
-                txtReferencia.Mask = "";
-                txtAgenciaNome.Text = "";
-                txtAgenciaTelefone.Text = "";
-                txtAgenciaEmail.Text = "";
-            }
-            else
-                if (txtReferencia.Text.Substring(5, 4) != _agencia)
-                BuscarAgencia();
-        }
-
-
 
 
 
         ///_______MaskedTextBox
-        private void txtTelefoneContato_Enter(object sender, EventArgs e)
-        {
-            txtTelefoneContato.Mask = "(99) ##########";
-        }
 
-        private void txtTelefoneContato_Validated(object sender, EventArgs e)
-        {
-            if (txtTelefoneContato.Text == "(  ) ")
-            {
-                txtTelefoneContato.Mask = "";
-                return;
-            }
-
-            var apenasDigitos = new Regex(@"[^\d]");
-            if (apenasDigitos.Replace(txtTelefoneContato.Text, "").Length == 10)
-                txtTelefoneContato.Mask = "(99) #########";
-            else if (apenasDigitos.Replace(txtTelefoneContato.Text, "").Length == 11)
-                txtTelefoneContato.Mask = "(99) ##########";
-        }
-
-
-
-        private void txtReferencia_Enter(object sender, EventArgs e)
-        {
-            txtReferencia.Mask = "0000,0000,000000000/0000,00,00,00";
-        }
 
         private void txtDataOrdem_Validated(object sender, EventArgs e)
         {
@@ -488,7 +459,46 @@ namespace Fluxus.View
         }
 
 
+        private void txtRef1_Validated(object sender, EventArgs e)
+        {
+            if (txtRef1.Text == "")
+            {
+                txtAgenciaNome.Text = "";
+                txtAgenciaTelefone.Text = "";
+                txtAgenciaEmail.Text = "";
+            }
+            else
+            {
+                if (txtRef1.Text != _agencia)
+                    BuscarAgencia();
+            }
+        }
 
+        private void txtRef2_Validated(object sender, EventArgs e)
+        {
+            string referencia = txtRef2.Text;
+            string zeros = "";
+            
+            
+            if (referencia.Length < 9)
+            {
+                for (int i = 0; i < 9 - referencia.Length; i++)
+                {
+                    zeros += "0";
+                }
+            }
+
+           txtRef2.Text = zeros + referencia;
+
+        }
+
+        private void pnlReferencia_Validated(object sender, EventArgs e)
+        {
+            string referencia = string.Format("{0}.{1}.{2}/{3}.{4}.{5}.{6}", txtRef0.Text, txtRef1.Text, txtRef2.Text, txtRef3.Text, txtRef4.Text, txtRef5.Text, txtRef6.Text);
+        //if (BuscarReferencia(referencia) == true)
+        // MessageBox("Referecia " + referencia + " já cadastrada!")
+        
+        }
     }
 
 

@@ -10,7 +10,7 @@ namespace FluxusAPI.Model
         public string Nome { get; set; }
         public string Nomeid { get; set; }
         public string Cpf { get; set; }
-        public DateTime Nascimento { get; set; }
+        public string Nascimento { get; set; }
         public string Profissao { get; set; }
         public string Carteira { get; set; }
         public string Entidade { get; set; }

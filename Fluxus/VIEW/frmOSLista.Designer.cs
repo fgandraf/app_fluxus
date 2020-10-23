@@ -507,6 +507,8 @@
             this.data_ordem.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.data_ordem.DataPropertyName = "data_ordem";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
             this.data_ordem.DefaultCellStyle = dataGridViewCellStyle2;
             this.data_ordem.HeaderText = "Data Ordem";
             this.data_ordem.MinimumWidth = 80;
@@ -657,6 +659,7 @@
             this.data_vistoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.data_vistoria.DataPropertyName = "data_vistoria";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.NullValue = null;
             this.data_vistoria.DefaultCellStyle = dataGridViewCellStyle8;
             this.data_vistoria.HeaderText = "Data da Vistoria";
             this.data_vistoria.Name = "data_vistoria";

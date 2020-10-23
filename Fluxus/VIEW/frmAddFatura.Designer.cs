@@ -54,6 +54,9 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblSubtotal = new System.Windows.Forms.Label();
             this.dgvOS = new System.Windows.Forms.DataGridView();
+            this.btnFaturar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.ttpFatura = new System.Windows.Forms.ToolTip(this.components);
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,9 +68,6 @@
             this.data_concluída = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor_atividade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor_deslocamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnFaturar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.ttpFatura = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -294,6 +294,38 @@
             this.dgvOS.Size = new System.Drawing.Size(860, 300);
             this.dgvOS.TabIndex = 223;
             // 
+            // btnFaturar
+            // 
+            this.btnFaturar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFaturar.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnFaturar.FlatAppearance.BorderColor = System.Drawing.SystemColors.HotTrack;
+            this.btnFaturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFaturar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFaturar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnFaturar.Location = new System.Drawing.Point(761, 530);
+            this.btnFaturar.Name = "btnFaturar";
+            this.btnFaturar.Size = new System.Drawing.Size(150, 25);
+            this.btnFaturar.TabIndex = 296;
+            this.btnFaturar.Text = "&Faturar";
+            this.btnFaturar.UseVisualStyleBackColor = false;
+            this.btnFaturar.Click += new System.EventHandler(this.btnFaturar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.BackColor = System.Drawing.SystemColors.Window;
+            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnCancelar.Location = new System.Drawing.Point(630, 530);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(125, 25);
+            this.btnCancelar.TabIndex = 297;
+            this.btnCancelar.Text = "&Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // id
             // 
             this.id.DataPropertyName = "id";
@@ -396,6 +428,7 @@
             this.valor_atividade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.valor_atividade.DataPropertyName = "valor_atividade";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N2";
             dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.valor_atividade.DefaultCellStyle = dataGridViewCellStyle7;
             this.valor_atividade.HeaderText = "Valor OS";
@@ -409,6 +442,7 @@
             this.valor_deslocamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.valor_deslocamento.DataPropertyName = "valor_deslocamento";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N2";
             dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.valor_deslocamento.DefaultCellStyle = dataGridViewCellStyle8;
             this.valor_deslocamento.HeaderText = "Desloca.";
@@ -416,38 +450,6 @@
             this.valor_deslocamento.Name = "valor_deslocamento";
             this.valor_deslocamento.ReadOnly = true;
             this.valor_deslocamento.Width = 55;
-            // 
-            // btnFaturar
-            // 
-            this.btnFaturar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFaturar.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnFaturar.FlatAppearance.BorderColor = System.Drawing.SystemColors.HotTrack;
-            this.btnFaturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFaturar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFaturar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnFaturar.Location = new System.Drawing.Point(761, 530);
-            this.btnFaturar.Name = "btnFaturar";
-            this.btnFaturar.Size = new System.Drawing.Size(150, 25);
-            this.btnFaturar.TabIndex = 296;
-            this.btnFaturar.Text = "&Faturar";
-            this.btnFaturar.UseVisualStyleBackColor = false;
-            this.btnFaturar.Click += new System.EventHandler(this.btnFaturar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.BackColor = System.Drawing.SystemColors.Window;
-            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnCancelar.Location = new System.Drawing.Point(630, 530);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(125, 25);
-            this.btnCancelar.TabIndex = 297;
-            this.btnCancelar.Text = "&Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmAddFatura
             // 

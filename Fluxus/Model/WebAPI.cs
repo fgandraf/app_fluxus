@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Fluxus.Model
 {
     class WebAPI
     {
         public static string URI = "http://localhost:8080/api/";
+        //public static string URI = "http://191.239.253.8:8080/api/";
         public static string TOKEN = "xz8wM6zr2RfF18GBM0B5yrkoo";
 
 
@@ -20,6 +17,7 @@ namespace Fluxus.Model
             var request = (HttpWebRequest)WebRequest.Create(URI + model + parametro);
             request.Headers.Add("Token", TOKEN);
             request.Method = metodo;
+            request.ContentType = "application/json";
             var response = (HttpWebResponse)request.GetResponse();
             var respondeString = new System.IO.StreamReader(response.GetResponseStream()).ReadToEnd();
 
@@ -32,7 +30,7 @@ namespace Fluxus.Model
         public static string RequestPUT_POST(string model, string jsonData, string metodo)
         {
             var request = (HttpWebRequest)WebRequest.Create(URI + model);
-            var data = Encoding.ASCII.GetBytes(jsonData);
+            var data = Encoding.UTF8.GetBytes(jsonData);
             request.Method = metodo;
             request.Headers.Add("Token", TOKEN);
             request.ContentType = "application/json";

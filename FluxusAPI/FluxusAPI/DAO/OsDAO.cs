@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using FluxusAPI.Model;
 using System.Collections;
+using System.Globalization;
 
 namespace FluxusAPI.DAO
 {
@@ -13,6 +14,9 @@ namespace FluxusAPI.DAO
 
         MySqlCommand sql;
         Connection con = new Connection();
+
+
+
 
 
 
@@ -68,7 +72,8 @@ namespace FluxusAPI.DAO
                 ArrayList osArray = new ArrayList();
 
                 con.OpenConnection();
-                sql = new MySqlCommand("SELECT t1.id, t1.data_ordem, t1.referencia, t1.profissional_cod, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t1.fatura_cod, t1.status, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.fatura_cod = @fatura_cod ORDER BY t1.data_concluida", con.Conn);
+                //sql = new MySqlCommand("SELECT t1.id, t1.data_ordem, t1.referencia, t1.profissional_cod, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t1.fatura_cod, t1.status, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.fatura_cod = @fatura_cod ORDER BY t1.data_concluida", con.Conn);
+                sql = new MySqlCommand("SELECT id, data_ordem, referencia, profissional_cod, atividade_cod, cidade, nome_cliente, data_vistoria, data_concluida, fatura_cod, status, valor_atividade, valor_deslocamento FROM tb_os WHERE fatura_cod = @fatura_cod ORDER BY data_concluida", con.Conn);
                 sql.Parameters.AddWithValue("@fatura_cod", fatura_cod);
                 MySqlDataReader dr = sql.ExecuteReader();
 
@@ -90,8 +95,8 @@ namespace FluxusAPI.DAO
                             Data_concluida = Convert.ToDateTime(dr["data_concluida"]),
                             Fatura_cod = Convert.ToInt64(dr["fatura_cod"]),
                             Status = Convert.ToString(dr["status"]),
-                            Valor_atividade = Convert.ToString(dr["valor_atividade"]),
-                            Valor_deslocamento = Convert.ToString(dr["valor_deslocamento"])
+                            Valor_atividade = Convert.ToDouble(dr["valor_atividade"]),
+                            Valor_deslocamento = Convert.ToDouble(dr["valor_deslocamento"])
                         };
 
                         osArray.Add(osFatura);
@@ -123,7 +128,8 @@ namespace FluxusAPI.DAO
                 ArrayList osArray = new ArrayList();
 
                 con.OpenConnection();
-                sql = new MySqlCommand("SELECT t1.id, t1.data_ordem, t1.referencia, t1.profissional_cod, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.fatura_cod = 0 AND status = 'CONCLUÍDA' ORDER BY t1.data_concluida", con.Conn);
+                //sql = new MySqlCommand("SELECT t1.id, t1.data_ordem, t1.referencia, t1.profissional_cod, t1.atividade_cod, t1.cidade, t1.nome_cliente, t1.data_vistoria, t1.data_concluida, t2.valor_atividade, t2.valor_deslocamento FROM tb_os t1 INNER JOIN tb_atividades t2 on t1.atividade_cod = t2.codigo WHERE t1.fatura_cod = 0 AND status = 'CONCLUÍDA' ORDER BY t1.data_concluida", con.Conn);
+                sql = new MySqlCommand("SELECT id, data_ordem, referencia, profissional_cod, atividade_cod, cidade, nome_cliente, data_vistoria, data_concluida, valor_atividade, valor_deslocamento FROM tb_os WHERE fatura_cod = 0 AND status = 'CONCLUÍDA' ORDER BY data_concluida", con.Conn);
                 MySqlDataReader dr = sql.ExecuteReader();
 
                 if (dr.HasRows)
@@ -141,8 +147,8 @@ namespace FluxusAPI.DAO
                             Nome_cliente = Convert.ToString(dr["nome_cliente"]),
                             Data_vistoria = Convert.ToDateTime(dr["data_vistoria"]),
                             Data_concluida = Convert.ToDateTime(dr["data_concluida"]),
-                            Valor_atividade = Convert.ToString(dr["valor_atividade"]),
-                            Valor_deslocamento = Convert.ToString(dr["valor_deslocamento"])
+                            Valor_atividade = Convert.ToDouble(dr["valor_atividade"]),
+                            Valor_deslocamento = Convert.ToDouble(dr["valor_deslocamento"])
                         };
 
                         osArray.Add(osFatura);
@@ -185,10 +191,12 @@ namespace FluxusAPI.DAO
                         os.Referencia = Convert.ToString(dr["referencia"]);
                         os.Agencia = Convert.ToString(dr["agencia"]);
                         os.Titulo = Convert.ToString(dr["titulo"]);
-                        os.Data_ordem = Convert.ToDateTime(dr["data_ordem"]);
+                        os.Data_ordem = Util.DateTimeToShortDateString(Convert.ToString(dr["data_ordem"]));
                         os.Prazo_execucao = Convert.ToDateTime(dr["prazo_execucao"]);
                         os.Profissional_cod = Convert.ToString(dr["profissional_cod"]);
                         os.Atividade_cod = Convert.ToString(dr["atividade_cod"]);
+                        os.Valor_atividade = Convert.ToString(dr["valor_atividade"]);
+                        os.Valor_deslocamento = Convert.ToString(dr["valor_deslocamento"]);
                         os.Siopi = Convert.ToBoolean(dr["siopi"]);
                         os.Nome_cliente = Convert.ToString(dr["nome_cliente"]);
                         os.Cidade = Convert.ToString(dr["cidade"]);
@@ -196,12 +204,11 @@ namespace FluxusAPI.DAO
                         os.Telefone_contato = Convert.ToString(dr["telefone_contato"]);
                         os.Coordenada = Convert.ToString(dr["coordenada"]);
                         os.Status = Convert.ToString(dr["status"]);
-                        os.Data_pendente = Convert.ToDateTime(dr["data_pendente"]);
-                        os.Data_vistoria = Convert.ToDateTime(dr["data_vistoria"]);
-                        os.Data_concluida = Convert.ToDateTime(dr["data_concluida"]);
+                        os.Data_pendente = Util.DateTimeToShortDateString(Convert.ToString(dr["data_pendente"]));
+                        os.Data_vistoria = Util.DateTimeToShortDateString(Convert.ToString(dr["data_vistoria"]));
+                        os.Data_concluida = Util.DateTimeToShortDateString(Convert.ToString(dr["data_concluida"]));
                         os.Obs = Convert.ToString(dr["obs"]);
                         os.Fatura_cod = Convert.ToInt64(dr["fatura_cod"]);
-
                         osArray.Add(os);
                     }
                     return osArray;
@@ -326,10 +333,12 @@ namespace FluxusAPI.DAO
                         os.Referencia = Convert.ToString(dr["referencia"]);
                         os.Agencia = Convert.ToString(dr["agencia"]);
                         os.Titulo = Convert.ToString(dr["titulo"]);
-                        os.Data_ordem = Convert.ToDateTime(dr["data_ordem"]);
+                        os.Data_ordem = Convert.ToString(dr["data_ordem"]);
                         os.Prazo_execucao = Convert.ToDateTime(dr["prazo_execucao"]);
                         os.Profissional_cod = Convert.ToString(dr["profissional_cod"]);
                         os.Atividade_cod = Convert.ToString(dr["atividade_cod"]);
+                        os.Valor_atividade = Convert.ToString(dr["valor_atividade"]);
+                        os.Valor_deslocamento = Convert.ToString(dr["valor_deslocamento"]);
                         os.Siopi = Convert.ToBoolean(dr["siopi"]);
                         os.Nome_cliente = Convert.ToString(dr["nome_cliente"]);
                         os.Cidade = Convert.ToString(dr["cidade"]);
@@ -337,12 +346,28 @@ namespace FluxusAPI.DAO
                         os.Telefone_contato = Convert.ToString(dr["telefone_contato"]);
                         os.Coordenada = Convert.ToString(dr["coordenada"]);
                         os.Status = Convert.ToString(dr["status"]);
-                        os.Data_pendente = Convert.ToDateTime(dr["data_pendente"]);
-                        os.Data_vistoria = Convert.ToDateTime(dr["data_vistoria"]);
-                        os.Data_concluida = Convert.ToDateTime(dr["data_concluida"]);
+                        os.Data_pendente = Convert.ToString(dr["data_pendente"]);
+                        os.Data_vistoria = Convert.ToString(dr["data_vistoria"]);
+                        os.Data_concluida = Convert.ToString(dr["data_concluida"]);
                         os.Obs = Convert.ToString(dr["obs"]);
                         os.Fatura_cod = Convert.ToInt64(dr["fatura_cod"]);
                     }
+
+                    if (os.Data_ordem == "01/01/0001 00:00:00")
+                        os.Data_ordem = string.Empty;
+
+                    if (os.Data_pendente == "01/01/0001 00:00:00")
+                        os.Data_pendente = string.Empty;
+
+                    if (os.Data_vistoria == "01/01/0001 00:00:00")
+                        os.Data_vistoria = string.Empty;
+
+                    if (os.Data_concluida == "01/01/0001 00:00:00")
+                        os.Data_concluida = string.Empty;
+
+
+
+
                     return os;
                 }
                 else
@@ -373,15 +398,17 @@ namespace FluxusAPI.DAO
             try
             {
                 con.OpenConnection();
-                sql = new MySqlCommand("INSERT INTO tb_os(titulo, referencia, agencia, data_ordem, prazo_execucao, profissional_cod, atividade_cod, siopi, nome_cliente, cidade, nome_contato, telefone_contato, coordenada, status, data_pendente, data_vistoria, data_concluida, obs) VALUES (@titulo, @referencia, @agencia, @data_ordem, @prazo_execucao, @profissional_cod, @atividade_cod, @siopi, @nome_cliente, @cidade, @nome_contato, @telefone_contato, @coordenada, @status, @data_pendente, @data_vistoria, @data_concluida, @obs)", con.Conn);
+                sql = new MySqlCommand("INSERT INTO tb_os(titulo, referencia, agencia, data_ordem, prazo_execucao, profissional_cod, atividade_cod, valor_atividade, valor_deslocamento, siopi, nome_cliente, cidade, nome_contato, telefone_contato, coordenada, status, data_pendente, data_vistoria, data_concluida, obs) VALUES (@titulo, @referencia, @agencia, @data_ordem, @prazo_execucao, @profissional_cod, @atividade_cod, @valor_atividade, @valor_deslocamento, @siopi, @nome_cliente, @cidade, @nome_contato, @telefone_contato, @coordenada, @status, @data_pendente, @data_vistoria, @data_concluida, @obs)", con.Conn);
 
                 sql.Parameters.AddWithValue("@titulo", dado.Titulo);
                 sql.Parameters.AddWithValue("@referencia", dado.Referencia);
                 sql.Parameters.AddWithValue("@agencia", dado.Agencia);
-                sql.Parameters.AddWithValue("@data_ordem", dado.Data_ordem);
+                sql.Parameters.AddWithValue("@data_ordem", Util.DateOrNull(dado.Data_ordem));
                 sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo_execucao);
                 sql.Parameters.AddWithValue("@profissional_cod", dado.Profissional_cod);
                 sql.Parameters.AddWithValue("@atividade_cod", dado.Atividade_cod);
+                sql.Parameters.AddWithValue("@valor_atividade", dado.Valor_atividade);
+                sql.Parameters.AddWithValue("@valor_deslocamento", dado.Valor_deslocamento);
                 sql.Parameters.AddWithValue("@siopi", dado.Siopi);
                 sql.Parameters.AddWithValue("@nome_cliente", dado.Nome_cliente);
                 sql.Parameters.AddWithValue("@cidade", dado.Cidade);
@@ -389,9 +416,9 @@ namespace FluxusAPI.DAO
                 sql.Parameters.AddWithValue("@telefone_contato", dado.Telefone_contato);
                 sql.Parameters.AddWithValue("@coordenada", dado.Coordenada);
                 sql.Parameters.AddWithValue("@status", dado.Status);
-                sql.Parameters.AddWithValue("@data_pendente", dado.Data_pendente);
-                sql.Parameters.AddWithValue("@data_vistoria", dado.Data_vistoria);
-                sql.Parameters.AddWithValue("@data_concluida", dado.Data_concluida);
+                sql.Parameters.AddWithValue("@data_pendente", Util.DateOrNull(dado.Data_pendente));
+                sql.Parameters.AddWithValue("@data_vistoria", Util.DateOrNull(dado.Data_vistoria));
+                sql.Parameters.AddWithValue("@data_concluida", Util.DateOrNull(dado.Data_concluida));
                 sql.Parameters.AddWithValue("@obs", dado.Obs);
 
                 sql.ExecuteNonQuery();
@@ -422,12 +449,14 @@ namespace FluxusAPI.DAO
             try
             {
                 con.OpenConnection();
-                sql = new MySqlCommand("UPDATE tb_os SET titulo = @titulo, data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, coordenada = @coordenada, status = @status, data_pendente = @data_pendente, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs WHERE id = @id", con.Conn);
+                sql = new MySqlCommand("UPDATE tb_os SET titulo = @titulo, data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, valor_atividade = valor_atividade, valor_deslocamento = valor_deslocamento, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, coordenada = @coordenada, status = @status, data_pendente = @data_pendente, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs WHERE id = @id", con.Conn);
                 sql.Parameters.AddWithValue("@titulo", dado.Titulo);
-                sql.Parameters.AddWithValue("@data_ordem", dado.Data_ordem);
+                sql.Parameters.AddWithValue("@data_ordem", Util.DateOrNull(dado.Data_ordem));
                 sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo_execucao);
                 sql.Parameters.AddWithValue("@profissional_cod", dado.Profissional_cod);
                 sql.Parameters.AddWithValue("@atividade_cod", dado.Atividade_cod);
+                sql.Parameters.AddWithValue("@valor_atividade", dado.Valor_atividade);
+                sql.Parameters.AddWithValue("@valor_deslocamento", dado.Valor_deslocamento);
                 sql.Parameters.AddWithValue("@siopi", dado.Siopi);
                 sql.Parameters.AddWithValue("@nome_cliente", dado.Nome_cliente);
                 sql.Parameters.AddWithValue("@cidade", dado.Cidade);
@@ -435,9 +464,9 @@ namespace FluxusAPI.DAO
                 sql.Parameters.AddWithValue("@telefone_contato", dado.Telefone_contato);
                 sql.Parameters.AddWithValue("@coordenada", dado.Coordenada);
                 sql.Parameters.AddWithValue("@status", dado.Status);
-                sql.Parameters.AddWithValue("@data_pendente", dado.Data_pendente);
-                sql.Parameters.AddWithValue("@data_vistoria", dado.Data_vistoria);
-                sql.Parameters.AddWithValue("@data_concluida", dado.Data_concluida);
+                sql.Parameters.AddWithValue("@data_pendente", Util.DateOrNull(dado.Data_pendente));
+                sql.Parameters.AddWithValue("@data_vistoria", Util.DateOrNull(dado.Data_vistoria));
+                sql.Parameters.AddWithValue("@data_concluida", Util.DateOrNull(dado.Data_concluida));
                 sql.Parameters.AddWithValue("@obs", dado.Obs);
                 sql.Parameters.AddWithValue("@id", id);
                 sql.ExecuteNonQuery();

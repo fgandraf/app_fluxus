@@ -8,18 +8,46 @@ namespace Fluxus.View
     public partial class frmAddAtividade : Form
     {
 
+
         frmPrincipal _frmPrincipal;
         long _id;
 
 
 
+
+
+        //:METHODS
+        private AtividadeENT PopulateObject()
+        {
+            AtividadeENT dado = new AtividadeENT
+            {
+                Codigo = txtCodigo.Text,
+                Descricao = txtDescricao.Text,
+                Valor_atividade = txtValor.Text.Replace(',', '.'),
+                Valor_deslocamento = txtDeslocamento.Text.Replace(',', '.')
+            };
+            return dado;
+        }
+
+
+        private void Back()
+        {
+            this.Close();
+            frmAtividades formFilho = new frmAtividades(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+        }
+
+
+
+
+
         //:EVENTS
-        ///_______Form
         public frmAddAtividade(frmPrincipal frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
+
 
         public frmAddAtividade(frmPrincipal frm1, AtividadeENT dado)
         {
@@ -31,6 +59,7 @@ namespace Fluxus.View
             txtValor.Text = dado.Valor_atividade;
             txtDeslocamento.Text = dado.Valor_deslocamento;
         }
+
 
         private void frmAddAtividade_Load(object sender, EventArgs e)
         {
@@ -45,10 +74,6 @@ namespace Fluxus.View
         }
 
 
-
-
-
-        ///_______Button
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             if (txtCodigo.Text == "")
@@ -57,14 +82,9 @@ namespace Fluxus.View
                 return;
             }
 
-            //POPULATE
-            AtividadeENT dado = new AtividadeENT
-            {
-                Codigo = txtCodigo.Text,
-                Descricao = txtDescricao.Text,
-                Valor_atividade = txtValor.Text.Replace(',', '.'),
-                Valor_deslocamento = txtDeslocamento.Text.Replace(',', '.')
-            };
+
+            AtividadeENT dado = PopulateObject();
+
 
             if (btnAddSave.Text == "&Adicionar")
             {
@@ -74,16 +94,8 @@ namespace Fluxus.View
                 }
                 catch (Exception ex)
                 {
-                    if (ex.Message.Contains("Duplicata du champ"))
-                    {
-                        MessageBox.Show($"Atividade com o código '{txtCodigo.Text}' já cadastrada!", "Código existente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
             else
@@ -97,20 +109,18 @@ namespace Fluxus.View
                     MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            this.Close();
-            frmAtividades formFilho = new frmAtividades(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+
+            Back();
         }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Close();
-            frmAtividades formFilho = new frmAtividades(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            Back();
         }
 
-    }
 
+    }
 
 
 }

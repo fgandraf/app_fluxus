@@ -189,6 +189,7 @@ namespace Fluxus.View
         {
            
             _dtOSNFaturada = new OsModel().GetOrdensDoFluxo();
+
             cboProfissional.DataSource = new ProfissionalModel().ListarCodigoENomeid(true);
             
             if (Logged.Rl)
