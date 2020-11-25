@@ -64,11 +64,9 @@
             this.txtOBS = new System.Windows.Forms.TextBox();
             this.pnlBotton = new System.Windows.Forms.Panel();
             this.pnlDados = new System.Windows.Forms.Panel();
-            this.tblStatus = new System.Windows.Forms.TableLayoutPanel();
             this.txtDataConcluida = new System.Windows.Forms.MaskedTextBox();
             this.txtDataVistoria = new System.Windows.Forms.MaskedTextBox();
             this.txtDataPendente = new System.Windows.Forms.MaskedTextBox();
-            this.txtDataOrdem = new System.Windows.Forms.MaskedTextBox();
             this.tabOS = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pnlReferencia = new System.Windows.Forms.Panel();
@@ -89,16 +87,18 @@
             this.dtpPrazo = new System.Windows.Forms.DateTimePicker();
             this.btnAddAgencia = new System.Windows.Forms.Button();
             this.txtCoordenada = new System.Windows.Forms.TextBox();
+            this.txtDataOrdem = new System.Windows.Forms.MaskedTextBox();
             this.lblCoordenada = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.pnlStatus = new System.Windows.Forms.Panel();
             this.pnlBotton.SuspendLayout();
             this.pnlDados.SuspendLayout();
-            this.tblStatus.SuspendLayout();
             this.tabOS.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.pnlReferencia.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.pnlStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -113,6 +113,7 @@
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(125, 25);
             this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.TabStop = false;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -129,6 +130,7 @@
             this.btnAddSave.Name = "btnAddSave";
             this.btnAddSave.Size = new System.Drawing.Size(200, 25);
             this.btnAddSave.TabIndex = 0;
+            this.btnAddSave.TabStop = false;
             this.btnAddSave.Text = "&Adicionar";
             this.btnAddSave.UseVisualStyleBackColor = false;
             this.btnAddSave.Click += new System.EventHandler(this.btnAddSave_Click);
@@ -138,12 +140,13 @@
             this.rbtRecebida.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rbtRecebida.AutoSize = true;
             this.rbtRecebida.Checked = true;
+            this.rbtRecebida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbtRecebida.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.rbtRecebida.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.rbtRecebida.Location = new System.Drawing.Point(38, 3);
             this.rbtRecebida.Name = "rbtRecebida";
-            this.rbtRecebida.Size = new System.Drawing.Size(72, 17);
-            this.rbtRecebida.TabIndex = 1;
+            this.rbtRecebida.Size = new System.Drawing.Size(71, 17);
+            this.rbtRecebida.TabIndex = 0;
             this.rbtRecebida.TabStop = true;
             this.rbtRecebida.Text = "Recebida";
             this.rbtRecebida.UseVisualStyleBackColor = true;
@@ -153,12 +156,13 @@
             // 
             this.rbtPendente.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rbtPendente.AutoSize = true;
+            this.rbtPendente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbtPendente.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.rbtPendente.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.rbtPendente.Location = new System.Drawing.Point(186, 3);
             this.rbtPendente.Name = "rbtPendente";
-            this.rbtPendente.Size = new System.Drawing.Size(74, 17);
-            this.rbtPendente.TabIndex = 2;
+            this.rbtPendente.Size = new System.Drawing.Size(73, 17);
+            this.rbtPendente.TabIndex = 1;
             this.rbtPendente.Text = "Pendente";
             this.rbtPendente.UseVisualStyleBackColor = true;
             this.rbtPendente.CheckedChanged += new System.EventHandler(this.rbtPendente_CheckedChanged);
@@ -167,12 +171,13 @@
             // 
             this.rbtConcluida.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rbtConcluida.AutoSize = true;
+            this.rbtConcluida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbtConcluida.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.rbtConcluida.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.rbtConcluida.Location = new System.Drawing.Point(483, 3);
             this.rbtConcluida.Name = "rbtConcluida";
-            this.rbtConcluida.Size = new System.Drawing.Size(77, 17);
-            this.rbtConcluida.TabIndex = 6;
+            this.rbtConcluida.Size = new System.Drawing.Size(76, 17);
+            this.rbtConcluida.TabIndex = 3;
             this.rbtConcluida.Text = "Concluída";
             this.rbtConcluida.UseVisualStyleBackColor = true;
             this.rbtConcluida.CheckedChanged += new System.EventHandler(this.rbtConcluida_CheckedChanged);
@@ -181,12 +186,13 @@
             // 
             this.rbtVistoriada.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rbtVistoriada.AutoSize = true;
+            this.rbtVistoriada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rbtVistoriada.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.rbtVistoriada.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.rbtVistoriada.Location = new System.Drawing.Point(334, 3);
             this.rbtVistoriada.Name = "rbtVistoriada";
-            this.rbtVistoriada.Size = new System.Drawing.Size(77, 17);
-            this.rbtVistoriada.TabIndex = 4;
+            this.rbtVistoriada.Size = new System.Drawing.Size(76, 17);
+            this.rbtVistoriada.TabIndex = 2;
             this.rbtVistoriada.Text = "Vistoriada";
             this.rbtVistoriada.UseVisualStyleBackColor = true;
             this.rbtVistoriada.CheckedChanged += new System.EventHandler(this.rbtVistoriada_CheckedChanged);
@@ -360,6 +366,7 @@
             this.txtAgenciaEmail.ReadOnly = true;
             this.txtAgenciaEmail.Size = new System.Drawing.Size(262, 15);
             this.txtAgenciaEmail.TabIndex = 402;
+            this.txtAgenciaEmail.TabStop = false;
             this.txtAgenciaEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAgenciaTelefone
@@ -374,6 +381,7 @@
             this.txtAgenciaTelefone.ReadOnly = true;
             this.txtAgenciaTelefone.Size = new System.Drawing.Size(178, 15);
             this.txtAgenciaTelefone.TabIndex = 401;
+            this.txtAgenciaTelefone.TabStop = false;
             this.txtAgenciaTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtAgenciaNome
@@ -388,6 +396,7 @@
             this.txtAgenciaNome.ReadOnly = true;
             this.txtAgenciaNome.Size = new System.Drawing.Size(440, 15);
             this.txtAgenciaNome.TabIndex = 400;
+            this.txtAgenciaNome.TabStop = false;
             this.txtAgenciaNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cboProfissional
@@ -525,7 +534,7 @@
             // 
             this.pnlDados.AutoScroll = true;
             this.pnlDados.BackColor = System.Drawing.Color.Gainsboro;
-            this.pnlDados.Controls.Add(this.tblStatus);
+            this.pnlDados.Controls.Add(this.pnlStatus);
             this.pnlDados.Controls.Add(this.tabOS);
             this.pnlDados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlDados.Location = new System.Drawing.Point(0, 0);
@@ -533,88 +542,53 @@
             this.pnlDados.Size = new System.Drawing.Size(920, 580);
             this.pnlDados.TabIndex = 1;
             // 
-            // tblStatus
-            // 
-            this.tblStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.tblStatus.BackColor = System.Drawing.SystemColors.Window;
-            this.tblStatus.ColumnCount = 4;
-            this.tblStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblStatus.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblStatus.Controls.Add(this.rbtRecebida, 0, 0);
-            this.tblStatus.Controls.Add(this.txtDataConcluida, 3, 1);
-            this.tblStatus.Controls.Add(this.rbtPendente, 1, 0);
-            this.tblStatus.Controls.Add(this.rbtConcluida, 3, 0);
-            this.tblStatus.Controls.Add(this.txtDataVistoria, 2, 1);
-            this.tblStatus.Controls.Add(this.txtDataPendente, 1, 1);
-            this.tblStatus.Controls.Add(this.rbtVistoriada, 2, 0);
-            this.tblStatus.Location = new System.Drawing.Point(161, 464);
-            this.tblStatus.Margin = new System.Windows.Forms.Padding(0);
-            this.tblStatus.Name = "tblStatus";
-            this.tblStatus.RowCount = 2;
-            this.tblStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tblStatus.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblStatus.Size = new System.Drawing.Size(596, 60);
-            this.tblStatus.TabIndex = 1;
-            // 
             // txtDataConcluida
             // 
-            this.txtDataConcluida.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtDataConcluida.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDataConcluida.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtDataConcluida.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataConcluida.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDataConcluida.Location = new System.Drawing.Point(503, 31);
+            this.txtDataConcluida.Location = new System.Drawing.Point(498, 25);
             this.txtDataConcluida.Mask = "00/00/0000";
             this.txtDataConcluida.Name = "txtDataConcluida";
             this.txtDataConcluida.Size = new System.Drawing.Size(90, 23);
-            this.txtDataConcluida.TabIndex = 7;
+            this.txtDataConcluida.TabIndex = 6;
+            this.txtDataConcluida.TabStop = false;
             this.txtDataConcluida.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.txtDataConcluida.ValidatingType = typeof(System.DateTime);
             this.txtDataConcluida.Visible = false;
             // 
             // txtDataVistoria
             // 
-            this.txtDataVistoria.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtDataVistoria.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDataVistoria.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtDataVistoria.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataVistoria.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDataVistoria.Location = new System.Drawing.Point(354, 31);
+            this.txtDataVistoria.Location = new System.Drawing.Point(349, 25);
             this.txtDataVistoria.Mask = "00/00/0000";
             this.txtDataVistoria.Name = "txtDataVistoria";
             this.txtDataVistoria.Size = new System.Drawing.Size(90, 23);
-            this.txtDataVistoria.TabIndex = 5;
+            this.txtDataVistoria.TabIndex = 4;
+            this.txtDataVistoria.TabStop = false;
             this.txtDataVistoria.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.txtDataVistoria.ValidatingType = typeof(System.DateTime);
             this.txtDataVistoria.Visible = false;
             // 
             // txtDataPendente
             // 
-            this.txtDataPendente.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtDataPendente.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDataPendente.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtDataPendente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataPendente.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDataPendente.Location = new System.Drawing.Point(205, 31);
+            this.txtDataPendente.Location = new System.Drawing.Point(200, 25);
             this.txtDataPendente.Mask = "00/00/0000";
             this.txtDataPendente.Name = "txtDataPendente";
             this.txtDataPendente.Size = new System.Drawing.Size(90, 23);
-            this.txtDataPendente.TabIndex = 3;
+            this.txtDataPendente.TabIndex = 2;
+            this.txtDataPendente.TabStop = false;
             this.txtDataPendente.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             this.txtDataPendente.ValidatingType = typeof(System.DateTime);
             this.txtDataPendente.Visible = false;
-            // 
-            // txtDataOrdem
-            // 
-            this.txtDataOrdem.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.txtDataOrdem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataOrdem.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtDataOrdem.Location = new System.Drawing.Point(127, 194);
-            this.txtDataOrdem.Mask = "00/00/0000";
-            this.txtDataOrdem.Name = "txtDataOrdem";
-            this.txtDataOrdem.Size = new System.Drawing.Size(90, 23);
-            this.txtDataOrdem.TabIndex = 4;
-            this.txtDataOrdem.ValidatingType = typeof(System.DateTime);
-            this.txtDataOrdem.Validated += new System.EventHandler(this.txtDataOrdem_Validated);
             // 
             // tabOS
             // 
@@ -633,6 +607,7 @@
             this.tabOS.Size = new System.Drawing.Size(600, 440);
             this.tabOS.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabOS.TabIndex = 0;
+            this.tabOS.TabStop = false;
             // 
             // tabPage1
             // 
@@ -920,6 +895,20 @@
             this.txtCoordenada.Size = new System.Drawing.Size(442, 23);
             this.txtCoordenada.TabIndex = 10;
             // 
+            // txtDataOrdem
+            // 
+            this.txtDataOrdem.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtDataOrdem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDataOrdem.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtDataOrdem.Location = new System.Drawing.Point(127, 194);
+            this.txtDataOrdem.Mask = "00/00/0000";
+            this.txtDataOrdem.Name = "txtDataOrdem";
+            this.txtDataOrdem.Size = new System.Drawing.Size(90, 23);
+            this.txtDataOrdem.TabIndex = 4;
+            this.txtDataOrdem.ValidatingType = typeof(System.DateTime);
+            this.txtDataOrdem.Enter += new System.EventHandler(this.txtDataOrdem_Enter);
+            this.txtDataOrdem.Validated += new System.EventHandler(this.txtDataOrdem_Validated);
+            // 
             // lblCoordenada
             // 
             this.lblCoordenada.AutoSize = true;
@@ -932,6 +921,17 @@
             this.lblCoordenada.TabIndex = 428;
             this.lblCoordenada.Text = "Coordenada";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(19, 198);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 13);
+            this.label1.TabIndex = 355;
+            this.label1.Text = "Data da Ordem";
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.txtOBS);
@@ -943,16 +943,21 @@
             this.tabPage3.Text = "Observações";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // pnlStatus
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(19, 198);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 355;
-            this.label1.Text = "Data da Ordem";
+            this.pnlStatus.BackColor = System.Drawing.Color.White;
+            this.pnlStatus.Controls.Add(this.txtDataConcluida);
+            this.pnlStatus.Controls.Add(this.rbtRecebida);
+            this.pnlStatus.Controls.Add(this.txtDataVistoria);
+            this.pnlStatus.Controls.Add(this.rbtConcluida);
+            this.pnlStatus.Controls.Add(this.txtDataPendente);
+            this.pnlStatus.Controls.Add(this.rbtPendente);
+            this.pnlStatus.Controls.Add(this.rbtVistoriada);
+            this.pnlStatus.Location = new System.Drawing.Point(161, 460);
+            this.pnlStatus.Name = "pnlStatus";
+            this.pnlStatus.Size = new System.Drawing.Size(599, 55);
+            this.pnlStatus.TabIndex = 1;
+            this.pnlStatus.TabStop = true;
             // 
             // frmAddOS
             // 
@@ -975,8 +980,6 @@
             this.pnlBotton.ResumeLayout(false);
             this.pnlBotton.PerformLayout();
             this.pnlDados.ResumeLayout(false);
-            this.tblStatus.ResumeLayout(false);
-            this.tblStatus.PerformLayout();
             this.tabOS.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -984,6 +987,8 @@
             this.pnlReferencia.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.pnlStatus.ResumeLayout(false);
+            this.pnlStatus.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1031,7 +1036,6 @@
         private System.Windows.Forms.MaskedTextBox txtDataVistoria;
         private System.Windows.Forms.MaskedTextBox txtDataPendente;
         private System.Windows.Forms.MaskedTextBox txtDataOrdem;
-        private System.Windows.Forms.TableLayoutPanel tblStatus;
         private System.Windows.Forms.TextBox txtCoordenada;
         private System.Windows.Forms.Label lblCoordenada;
         private System.Windows.Forms.DateTimePicker dtpPrazo;
@@ -1051,5 +1055,6 @@
         private System.Windows.Forms.TextBox txtRef4;
         private System.Windows.Forms.TextBox txtRef3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel pnlStatus;
     }
 }

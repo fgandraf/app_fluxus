@@ -16,7 +16,7 @@ namespace Fluxus.View
         {
             try
             { 
-                dgvAgencias.DataSource = new AgenciaModel().ListarAgencias();
+                dgvAgencias.DataSource = new AgenciaModel().GetAll();
 
 
                 if (dgvAgencias.Rows.Count == 0)

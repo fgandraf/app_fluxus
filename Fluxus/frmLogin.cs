@@ -47,6 +47,15 @@ namespace Fluxus
         {
             lblLoad.Text = "Validando usuário";
 
+
+            if (rbtDireto.Checked)
+                Util.LocalDB = true;
+            else
+                Util.LocalDB = false;
+
+
+
+
             DataTable dtUsuario = new ProfissionalModel().BuscarUsuario(txtUsuario.Text);
 
             DataRow[] dataRow;

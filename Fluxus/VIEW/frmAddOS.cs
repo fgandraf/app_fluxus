@@ -259,7 +259,7 @@ namespace Fluxus.View
                     if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker || c is RadioButton || c is ComboBox)
                         c.Enabled = false;
                 }
-                foreach (Control c in this.tblStatus.Controls)
+                foreach (Control c in this.pnlStatus.Controls)
                 {
                     if (c is MaskedTextBox || c is RadioButton)
                         c.Enabled = false;
@@ -393,7 +393,7 @@ namespace Fluxus.View
             txtDataPendente.Hide();
             txtDataVistoria.Hide();
             txtDataConcluida.Hide();
-            txtDataOrdem.Focus();
+            
         }
 
         private void rbtPendente_CheckedChanged(object sender, EventArgs e)
@@ -498,6 +498,12 @@ namespace Fluxus.View
         //if (BuscarReferencia(referencia) == true)
         // MessageBox("Referecia " + referencia + " já cadastrada!")
         
+        }
+
+        private void txtDataOrdem_Enter(object sender, EventArgs e)
+        {
+            txtDataOrdem.Focus();
+            txtDataOrdem.SelectAll();
         }
     }
 

@@ -11,6 +11,8 @@ namespace Fluxus
     public class Util
     {
 
+        public static bool LocalDB = true;
+
 
 
         public static string MaskValidated(object maskedTextBox)
