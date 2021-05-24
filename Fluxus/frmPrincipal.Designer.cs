@@ -258,7 +258,7 @@
             this.btnDadosCadastrais.Name = "btnDadosCadastrais";
             this.btnDadosCadastrais.Size = new System.Drawing.Size(200, 20);
             this.btnDadosCadastrais.TabIndex = 0;
-            this.btnDadosCadastrais.Text = "Dados Cadastrais";
+            this.btnDadosCadastrais.Text = "Carregando...";
             this.btnDadosCadastrais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ttpMenu.SetToolTip(this.btnDadosCadastrais, "Dashboard");
             this.ttpSempre.SetToolTip(this.btnDadosCadastrais, "Dados Cadastrais");
@@ -432,7 +432,7 @@
             this.btnAppRestaurar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppRestaurar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnAppRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppRestaurar.Image")));
-            this.btnAppRestaurar.Location = new System.Drawing.Point(831, -1);
+            this.btnAppRestaurar.Location = new System.Drawing.Point(831, 4);
             this.btnAppRestaurar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppRestaurar.Name = "btnAppRestaurar";
             this.btnAppRestaurar.Size = new System.Drawing.Size(45, 30);

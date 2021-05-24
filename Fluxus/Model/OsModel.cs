@@ -3,7 +3,7 @@ using Fluxus.Model.ENT;
 using Newtonsoft.Json;
 using System;
 using System.Data;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Fluxus.Model
 {
@@ -35,12 +35,12 @@ namespace Fluxus.Model
             else
                 UpdateFaturaCodAPI(id, fatura_cod);
         }
-        public void UpdateStatus(long id, string status)
+        public async void UpdateStatus(long id, string status)
         {
             if (localDataBase)
                 UpdateStatusLocal(id, status);
             else
-                UpdateStatusAPI(id, status);
+                await UpdateStatusAsyncAPI(id, status);
         }
         public void Delete(long id)
         {
@@ -176,7 +176,12 @@ namespace Fluxus.Model
         private void UpdateStatusAPI(long id, string status)
         {
             // PUT api/os/updatestatus/<id>,<status>
-            string json = WebAPI.RequestPUT("os/updatestatus/" + id + "," + status, string.Empty);
+            WebAPI.RequestPUT("os/updatestatus/" + id + "," + status, string.Empty);
+        }
+        private async Task UpdateStatusAsyncAPI(long id, string status)
+        {
+            // PUT api/os/updatestatus/<id>,<status>
+            await Task.Run(() => WebAPI.RequestPUT("os/updatestatus/" + id + "," + status, string.Empty));
         }
         //----------
         private void DeleteLocal(long id)

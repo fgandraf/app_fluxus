@@ -4,6 +4,7 @@ using Fluxus.Model.ENT;
 using System.Data;
 using System.Linq;
 using Fluxus.Model;
+using System.Threading.Tasks;
 
 namespace Fluxus.View
 {
@@ -125,9 +126,6 @@ namespace Fluxus.View
                     ListarOS(_dgvOrigem);
                     ListarOS(dgvDestino);
 
-
-
-                    //AQUI DEVE SER ASYNC PARA NÃO GERAR DELAY NA VIEW
                     new OsModel().UpdateStatus(id, status);
 
                 }
@@ -181,14 +179,13 @@ namespace Fluxus.View
             dgvConcluidas.Columns[1].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvConcluidas.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvConcluidas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            
+
+            _dtOSNFaturada = new OsModel().GetOrdensDoFluxo();
 
         }
 
         private void frmOSFluxo_Load(object sender, EventArgs e)
         {
-           
-            _dtOSNFaturada = new OsModel().GetOrdensDoFluxo();
 
             cboProfissional.DataSource = new ProfissionalModel().ListarCodigoENomeid(true);
             
@@ -206,7 +203,10 @@ namespace Fluxus.View
                 return;
             }
             
+
             cboProfissional.SelectedValue = Logged.Codpro;
+            
+
             ListarOS(dgvRecebidas);
             ListarOS(dgvPendentes);
             ListarOS(dgvVistoriadas);

@@ -4,7 +4,7 @@ using Fluxus.Model.ENT;
 using System.Drawing;
 using System.Data;
 using Fluxus.Model;
-
+using System.Threading.Tasks;
 
 namespace Fluxus.View
 {
@@ -38,64 +38,7 @@ namespace Fluxus.View
         {
             try
             {
-                //DataTable dtDados = new CadastraisModel().ListarCadastrais();
-
-                //if (dtDados.Rows.Count == 0)
-                //    txtCNPJ.Focus();
-                //else
-                //{
-                //    btnCadastrarSalvar.Text = "&Salvar";
-                //    txtCNPJ.Text = dtDados.Rows[0]["cnpj"].ToString();
-                //    txtNomeFantasia.Text = dtDados.Rows[0]["fantasia"].ToString();
-                //    txtRazaoSocial.Text = dtDados.Rows[0]["razao"].ToString();
-                //    txtInscricaoEstadual.Text = dtDados.Rows[0]["ie"].ToString();
-                //    txtInscricaoMunicipal.Text = dtDados.Rows[0]["im"].ToString();
-                //    txtEndereco.Text = dtDados.Rows[0]["endereco"].ToString();
-                //    txtComplemento.Text = dtDados.Rows[0]["complemento"].ToString();
-                //    txtBairro.Text = dtDados.Rows[0]["bairro"].ToString();
-                //    txtCidade.Text = dtDados.Rows[0]["cidade"].ToString();
-                //    txtCEP.Text = dtDados.Rows[0]["cep"].ToString();
-                //    cboUF.Text = dtDados.Rows[0]["uf"].ToString();
-                //    DateTime constituicao = Convert.ToDateTime(dtDados.Rows[0]["constituicao"]);
-                //    if (constituicao.ToString() != "01/01/0001 00:00:00")
-                //        txtConstituicao.Text = constituicao.ToString("dd/MM/yyyy");
-                //    txtTelefone.Text = dtDados.Rows[0]["telefone"].ToString();
-                //    txtTelefone2.Text = dtDados.Rows[0]["telefone2"].ToString();
-                //    txtEmail.Text = dtDados.Rows[0]["email"].ToString();
-                //    txtBanco.Text = dtDados.Rows[0]["db_banco"].ToString();
-                //    cboTipoDeConta.Text = dtDados.Rows[0]["db_tipo"].ToString();
-                //    txtAgencia.Text = dtDados.Rows[0]["db_agencia"].ToString();
-                //    txtOperador.Text = dtDados.Rows[0]["db_operador"].ToString();
-                //    txtConta.Text = dtDados.Rows[0]["db_conta"].ToString();
-                //    cboTomador.Text = dtDados.Rows[0]["ct_tomador"].ToString();
-                //    txtEdital.Text = dtDados.Rows[0]["ct_edital"].ToString();
-                //    txtContrato.Text = dtDados.Rows[0]["ct_contrato"].ToString();
-
-                //    DateTime ct_celebrado = Convert.ToDateTime(dtDados.Rows[0]["ct_celebrado"]);
-                //    if (ct_celebrado.ToString() != "01/01/0001 00:00:00")
-                //        txtCelebrado.Text = ct_celebrado.ToString("dd/MM/yyy");
-
-                //    DateTime ct_inicio = Convert.ToDateTime(dtDados.Rows[0]["ct_inicio"]);
-                //    if (ct_inicio.ToString() != "01/01/0001 00:00:00")
-                //        txtInicio.Text = ct_inicio.ToString("dd/MM/yyyy");
-
-                //    DateTime ct_termino = Convert.ToDateTime(dtDados.Rows[0]["ct_termino"]);
-                //    if (ct_termino.ToString() != "01/01/0001 00:00:00")
-                //        txtTermino.Text = ct_termino.ToString("dd/MM/yyyy");
-
-
-
-
-                //    byte[] logo = Convert.FromBase64String(dtDados.Rows[0]["logo"].ToString());
-
-                //    if (logo.ToString() != "")
-                //    {
-                //        _logoAtual = Util.ByteToImage(logo);
-                //        picLogotipo.Image = Util.ByteToImage(logo);
-                //    }
-
-                //    txtCNPJ.Focus();
-                //}
+                
                 CadastraisENT dados = new CadastraisModel().ListarCadastrais();
 
                 if (dados == null)

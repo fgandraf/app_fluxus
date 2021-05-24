@@ -4,6 +4,8 @@ using Fluxus.Model.ENT;
 using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
 using Fluxus.Model;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Fluxus.View
 {
@@ -50,13 +52,13 @@ namespace Fluxus.View
             try
             {
                 dtOS = new OsModel().GetOrdensComFiltro(GerarStringSQL());
-                dgvOS.DataSource = dtOS;
+                dgv.DataSource = dtOS;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
+            ;
         }
 
         private void LimparFiltro()
@@ -90,7 +92,7 @@ namespace Fluxus.View
                     faturadas = "= 0";
             }
 
-
+            
 
             string atividade;
             {
@@ -133,23 +135,23 @@ namespace Fluxus.View
             _frmPrincipal = frm1;
         }
 
-        private void frmOS_Load(object sender, EventArgs e)
+        private  void frmOS_Load(object sender, EventArgs e)
         {
             
             cboProfissional.DataSource = new ProfissionalModel().ListarCodigoENomeid(true);
-
             cboCidade.DataSource = new OsModel().GetCidadesDasOrdens(true);
-
             cboAtividade.DataSource = new AtividadeModel().ListarAtividades(true);
 
-            LimparFiltro();
 
+
+            LimparFiltro();
             if (Logged.Rt)
                 cboProfissional.SelectedValue = Logged.Codpro;
             else
                 cboProfissional.SelectedIndex = 0;
-
             cboFaturadas.SelectedIndex = 2;
+
+            
 
             ListarOS(dgvOS);
             lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();

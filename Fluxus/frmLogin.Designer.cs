@@ -249,26 +249,26 @@
             // rbtAPI
             // 
             this.rbtAPI.AutoSize = true;
+            this.rbtAPI.Checked = true;
             this.rbtAPI.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtAPI.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rbtAPI.Location = new System.Drawing.Point(336, 253);
             this.rbtAPI.Name = "rbtAPI";
             this.rbtAPI.Size = new System.Drawing.Size(43, 16);
             this.rbtAPI.TabIndex = 17;
+            this.rbtAPI.TabStop = true;
             this.rbtAPI.Text = "Web";
             this.rbtAPI.UseVisualStyleBackColor = true;
             // 
             // rbtDireto
             // 
             this.rbtDireto.AutoSize = true;
-            this.rbtDireto.Checked = true;
             this.rbtDireto.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbtDireto.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rbtDireto.Location = new System.Drawing.Point(284, 253);
             this.rbtDireto.Name = "rbtDireto";
             this.rbtDireto.Size = new System.Drawing.Size(46, 16);
             this.rbtDireto.TabIndex = 16;
-            this.rbtDireto.TabStop = true;
             this.rbtDireto.Text = "Local";
             this.rbtDireto.UseVisualStyleBackColor = true;
             // 

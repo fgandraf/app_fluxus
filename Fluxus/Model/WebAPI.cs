@@ -7,7 +7,7 @@ namespace Fluxus.Model
     class WebAPI
     {
         public static string URI = "http://localhost:8080/api/";
-        //public static string URI = "http://191.239.253.8:8080/api/";
+        //public static string URI = "http://191.239.253.8:8080/api/";  --Endereço Azure
         public static string TOKEN = "xz8wM6zr2RfF18GBM0B5yrkoo";
 
 

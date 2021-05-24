@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Fluxus.View;
 using Fluxus.Model;
+using System.Threading.Tasks;
 
 namespace Fluxus
 {
@@ -59,18 +60,25 @@ namespace Fluxus
             login.ShowDialog();
         }
 
-        private void frmPrincipal_Load(object sender, EventArgs e)
+        private async void frmPrincipal_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = "Usuário: " + Logged.Usr_nome;
+            lblVersao.Text = "v. " + Logged.Versao;
+            btnOS.PerformClick();
 
-            string fantasia = new CadastraisModel().GetFantasia();
+
+            string fantasia = null;
+            await Task.Run(() => fantasia = new CadastraisModel().GetFantasia());
+
             
             if (fantasia != null)
                 btnDadosCadastrais.Text = fantasia;
+            else
+                btnDadosCadastrais.Text = "Dados Cadastrais";
 
 
-            lblVersao.Text = "v. " + Logged.Versao;
-            btnOS.PerformClick();
+
+
         }
 
 
