@@ -3,11 +3,11 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Fluxus.Model.ENT;
 
-namespace Fluxus.DAO
+namespace Fluxus.Data.MySQL
 {
 
 
-    public class AgenciaDAO
+    public class Agencia
     {
         
         
@@ -136,7 +136,7 @@ namespace Fluxus.DAO
 
 
 
-        public DataTable GetNomeTelefone1EmailBy(string agenciaCodigo)
+        public DataTable BuscarAgencia(string agenciaCodigo)
         {
             try
             {

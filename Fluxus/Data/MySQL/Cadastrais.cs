@@ -4,11 +4,11 @@ using Fluxus.Model.ENT;
 using System.Data;
 using System.Collections;
 
-namespace Fluxus.DAO
+namespace Fluxus.Data.MySQL
 {
 
 
-    public class CadastraisDAO
+    public class Cadastrais
     {
         
         

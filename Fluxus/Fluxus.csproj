@@ -73,13 +73,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\AgenciaDAO.cs" />
-    <Compile Include="DAO\AtividadeDAO.cs" />
-    <Compile Include="DAO\CadastraisDAO.cs" />
-    <Compile Include="DAO\Connection.cs" />
-    <Compile Include="DAO\FaturaDAO.cs" />
-    <Compile Include="DAO\OsDAO.cs" />
-    <Compile Include="DAO\ProfissionalDAO.cs" />
+    <Compile Include="Data\Api\Agencia.cs" />
+    <Compile Include="Data\Api\Atividade.cs" />
+    <Compile Include="Data\Api\Cadastrais.cs" />
+    <Compile Include="Data\Api\Fatura.cs" />
+    <Compile Include="Data\Api\Os.cs" />
+    <Compile Include="Data\Api\Profissional.cs" />
+    <Compile Include="Data\Api\Connection.cs" />
+    <Compile Include="Data\MySQL\Agencia.cs" />
+    <Compile Include="Data\MySQL\Atividade.cs" />
+    <Compile Include="Data\MySQL\Cadastrais.cs" />
+    <Compile Include="Data\MySQL\Connection.cs" />
+    <Compile Include="Data\MySQL\Fatura.cs" />
+    <Compile Include="Data\MySQL\Os.cs" />
+    <Compile Include="Data\MySQL\Profissional.cs" />
     <Compile Include="Model\AgenciaModel.cs" />
     <Compile Include="Model\AtividadeModel.cs" />
     <Compile Include="Model\CadastraisModel.cs" />
@@ -93,7 +100,6 @@
     <Compile Include="Model\FaturaModel.cs" />
     <Compile Include="Model\OsModel.cs" />
     <Compile Include="Model\ProfissionalModel.cs" />
-    <Compile Include="Model\WebAPI.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="View\Report\ITXFatura.cs" />
     <Compile Include="View\frmAddAgencia.cs">
@@ -126,10 +132,10 @@
     <Compile Include="View\frmFaturas.Designer.cs">
       <DependentUpon>frmFaturas.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="View\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
+    <Compile Include="View\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmOS.cs">
@@ -174,10 +180,10 @@
     <Compile Include="View\frmDadosCadastrais.Designer.cs">
       <DependentUpon>frmDadosCadastrais.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrincipal.cs">
+    <Compile Include="View\frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPrincipal.Designer.cs">
+    <Compile Include="View\frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmProfissionais.cs">
@@ -206,7 +212,7 @@
     <EmbeddedResource Include="View\frmFaturas.resx">
       <DependentUpon>frmFaturas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
+    <EmbeddedResource Include="View\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmOS.resx">
@@ -228,7 +234,7 @@
     <EmbeddedResource Include="View\frmDadosCadastrais.resx">
       <DependentUpon>frmDadosCadastrais.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrincipal.resx">
+    <EmbeddedResource Include="View\frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmProfissionais.resx">
@@ -276,5 +282,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

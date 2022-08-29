@@ -2,9 +2,9 @@
 using System.Net;
 using System.Text;
 
-namespace Fluxus.Model
+namespace Fluxus.Data.Api
 {
-    class WebAPI
+    class Connection
     {
         public static string URI = "http://localhost:8080/api/";
         //public static string URI = "http://191.239.253.8:8080/api/";  --Endereço Azure
@@ -46,12 +46,6 @@ namespace Fluxus.Model
             return responseString;
 
         }
-
-
-
-
-
-
 
 
         public static string RequestGET(string model, string parametro)

@@ -3,34 +3,33 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Fluxus.Model.ENT;
 
-namespace Fluxus.DAO
+namespace Fluxus.Data.MySQL
 {
 
 
-    class FaturaDAO
+    public class Atividade
     {
+
+
         MySqlCommand sql;
         Connection con = new Connection();
 
 
 
 
-        //:INSERT
-        public long Insert(FaturaENT dado)
+
+        public long Insert(AtividadeENT dado)
         {
             try
             {
                 con.OpenConnection();
-                sql = new MySqlCommand("INSERT INTO tb_fatura(descricao, data, subtotal_os, subtotal_desloc, total) VALUES (@descricao, @data, @subtotal_os, @subtotal_desloc, @total)", con.Conn);
-                sql.Parameters.AddWithValue("@descricao", dado.descricao);
-                sql.Parameters.AddWithValue("@data", dado.data);
-                sql.Parameters.AddWithValue("@subtotal_os", dado.subtotal_os);
-                sql.Parameters.AddWithValue("@subtotal_desloc", dado.subtotal_desloc);
-                sql.Parameters.AddWithValue("@total", dado.total);
+                sql = new MySqlCommand("INSERT INTO tb_atividades(codigo, descricao, valor_atividade, valor_deslocamento) VALUES (@codigo, @descricao, @valor_atividade, @valor_deslocamento)", con.Conn);
+                sql.Parameters.AddWithValue("@codigo", dado.Codigo);
+                sql.Parameters.AddWithValue("@descricao", dado.Descricao);
+                sql.Parameters.AddWithValue("@valor_atividade", dado.Valor_atividade);
+                sql.Parameters.AddWithValue("@valor_deslocamento", dado.Valor_deslocamento);
                 sql.ExecuteNonQuery();
-
                 return sql.LastInsertedId;
-
             }
             catch (Exception ex)
             {
@@ -44,17 +43,18 @@ namespace Fluxus.DAO
 
 
 
-        //:UPDATE
-        public void UpdateTotals(long id, FaturaENT dado)
+
+
+        public void Update(long id, AtividadeENT dado)
         {
             try
             {
                 con.OpenConnection();
-                sql = new MySqlCommand("UPDATE tb_fatura SET subtotal_os = @subtotal_os, subtotal_desloc = @subtotal_desloc, total = @total WHERE id = @id", con.Conn);
+                sql = new MySqlCommand("UPDATE tb_atividades SET descricao = @descricao, valor_atividade = @valor_atividade, valor_deslocamento = @valor_deslocamento WHERE id = @id", con.Conn);
                 sql.Parameters.AddWithValue("@id", id);
-                sql.Parameters.AddWithValue("@subtotal_os", dado.subtotal_os);
-                sql.Parameters.AddWithValue("@subtotal_desloc", dado.subtotal_desloc);
-                sql.Parameters.AddWithValue("@total", dado.total);
+                sql.Parameters.AddWithValue("@descricao", dado.Descricao);
+                sql.Parameters.AddWithValue("@valor_atividade", dado.Valor_atividade);
+                sql.Parameters.AddWithValue("@valor_deslocamento", dado.Valor_deslocamento);
                 sql.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -69,13 +69,14 @@ namespace Fluxus.DAO
 
 
 
-        //:DELETE
+
+
         public void Delete(long id)
         {
             try
             {
                 con.OpenConnection();
-                sql = new MySqlCommand("DELETE FROM tb_fatura WHERE id = @id", con.Conn);
+                sql = new MySqlCommand("DELETE FROM tb_atividades WHERE id = @id", con.Conn);
                 sql.Parameters.AddWithValue("@id", id);
                 sql.ExecuteNonQuery();
             }
@@ -91,13 +92,14 @@ namespace Fluxus.DAO
 
 
 
-        //:SELECT
+
+
         public DataTable GetAll()
         {
             try
             {
                 con.OpenConnection();
-                sql = new MySqlCommand("SELECT * FROM tb_fatura ORDER BY data", con.Conn);
+                sql = new MySqlCommand("SELECT id, codigo, descricao, valor_atividade, valor_deslocamento FROM tb_atividades ORDER BY codigo", con.Conn);
                 MySqlDataAdapter da = new MySqlDataAdapter();
                 da.SelectCommand = sql;
                 DataTable dt = new DataTable();
@@ -112,22 +114,32 @@ namespace Fluxus.DAO
             {
                 con.CloseConnection();
             }
-
         }
 
-        public string GetDescricaoById(long id)
+
+
+
+
+        public AtividadeENT GetBy(long id)
         {
             try
             {
                 con.OpenConnection();
-                sql = new MySqlCommand("SELECT descricao FROM tb_fatura WHERE id = @id", con.Conn);
+                sql = new MySqlCommand("SELECT * FROM tb_atividades WHERE id = @id", con.Conn);
                 sql.Parameters.AddWithValue("@id", id);
                 MySqlDataReader dr = sql.ExecuteReader();
-                dr.Read();
-                if (dr.HasRows == false)
-                    return null;
-                else
-                    return Convert.ToString(dr["descricao"]);
+
+
+                AtividadeENT atividade = new AtividadeENT();
+                if (dr.Read())
+                {
+                    atividade.Id = Convert.ToInt32(dr["id"]);
+                    atividade.Codigo = Convert.ToString(dr["codigo"]);
+                    atividade.Descricao = Convert.ToString(dr["descricao"]);
+                    atividade.Valor_atividade = Convert.ToString(dr["valor_atividade"]);
+                    atividade.Valor_deslocamento = Convert.ToString(dr["valor_deslocamento"]);
+                }
+                return atividade;
             }
             catch (Exception ex)
             {
@@ -140,7 +152,9 @@ namespace Fluxus.DAO
         }
 
 
-        
+
+
+
     }
 
 

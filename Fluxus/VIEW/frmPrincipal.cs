@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using Fluxus.View;
 using Fluxus.Model;
 using System.Threading.Tasks;
 
-namespace Fluxus
+namespace Fluxus.View
 {
     public partial class frmPrincipal : Form
     {

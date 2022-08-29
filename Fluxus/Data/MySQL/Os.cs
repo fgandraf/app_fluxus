@@ -3,11 +3,11 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Fluxus.Model.ENT;
 
-namespace Fluxus.DAO
+namespace Fluxus.Data.MySQL
 {
 
 
-    public class OsDAO
+    public class Os
     {
         
         
@@ -127,7 +127,7 @@ namespace Fluxus.DAO
 
 
 
-        public void UpdateStatusTo(long id, string status)
+        public void UpdateStatus(long id, string status)
         {
             try
             {
@@ -302,7 +302,7 @@ namespace Fluxus.DAO
 
 
 
-        public DataTable GetCodigoENomeidDosProfissionaisDaFatura(long fatura_cod)
+        public DataTable GetProfissionaisDaFatura(long fatura_cod)
         {
             try
             {

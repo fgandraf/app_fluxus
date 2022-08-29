@@ -1,5 +1,4 @@
-﻿//using
-
+﻿
 namespace Fluxus.Model.ENT
 {
 

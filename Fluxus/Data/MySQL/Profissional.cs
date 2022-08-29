@@ -3,11 +3,11 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Fluxus.Model.ENT;
 
-namespace Fluxus.DAO
+namespace Fluxus.Data.MySQL
 {
 
 
-    public class ProfissionalDAO
+    public class Profissional
     {
         MySqlCommand sql;
         Connection con = new Connection();

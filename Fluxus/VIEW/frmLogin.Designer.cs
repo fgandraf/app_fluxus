@@ -1,4 +1,4 @@
-﻿namespace Fluxus
+﻿namespace Fluxus.View
 {
     partial class frmLogin
     {
@@ -47,7 +47,7 @@
             this.lblLoad = new System.Windows.Forms.Label();
             this.prbProgress = new System.Windows.Forms.ProgressBar();
             this.rbtAPI = new System.Windows.Forms.RadioButton();
-            this.rbtDireto = new System.Windows.Forms.RadioButton();
+            this.rbtMySQL = new System.Windows.Forms.RadioButton();
             this.pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgShowPwd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSenha)).BeginInit();
@@ -254,23 +254,23 @@
             this.rbtAPI.ForeColor = System.Drawing.SystemColors.ControlText;
             this.rbtAPI.Location = new System.Drawing.Point(336, 253);
             this.rbtAPI.Name = "rbtAPI";
-            this.rbtAPI.Size = new System.Drawing.Size(43, 16);
+            this.rbtAPI.Size = new System.Drawing.Size(38, 16);
             this.rbtAPI.TabIndex = 17;
             this.rbtAPI.TabStop = true;
-            this.rbtAPI.Text = "Web";
+            this.rbtAPI.Text = "API";
             this.rbtAPI.UseVisualStyleBackColor = true;
             // 
-            // rbtDireto
+            // rbtMySQL
             // 
-            this.rbtDireto.AutoSize = true;
-            this.rbtDireto.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtDireto.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.rbtDireto.Location = new System.Drawing.Point(284, 253);
-            this.rbtDireto.Name = "rbtDireto";
-            this.rbtDireto.Size = new System.Drawing.Size(46, 16);
-            this.rbtDireto.TabIndex = 16;
-            this.rbtDireto.Text = "Local";
-            this.rbtDireto.UseVisualStyleBackColor = true;
+            this.rbtMySQL.AutoSize = true;
+            this.rbtMySQL.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbtMySQL.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.rbtMySQL.Location = new System.Drawing.Point(275, 253);
+            this.rbtMySQL.Name = "rbtMySQL";
+            this.rbtMySQL.Size = new System.Drawing.Size(55, 16);
+            this.rbtMySQL.TabIndex = 16;
+            this.rbtMySQL.Text = "MySQL";
+            this.rbtMySQL.UseVisualStyleBackColor = true;
             // 
             // frmLogin
             // 
@@ -278,7 +278,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.ClientSize = new System.Drawing.Size(420, 300);
-            this.Controls.Add(this.rbtDireto);
+            this.Controls.Add(this.rbtMySQL);
             this.Controls.Add(this.rbtAPI);
             this.Controls.Add(this.lblLoad);
             this.Controls.Add(this.prbProgress);
@@ -324,6 +324,6 @@
         private System.Windows.Forms.Label lblLoad;
         private System.Windows.Forms.ProgressBar prbProgress;
         private System.Windows.Forms.RadioButton rbtAPI;
-        private System.Windows.Forms.RadioButton rbtDireto;
+        private System.Windows.Forms.RadioButton rbtMySQL;
     }
 }

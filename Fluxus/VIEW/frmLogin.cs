@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Fluxus.Model;
 
-namespace Fluxus
+namespace Fluxus.View
 {
     public partial class frmLogin : Form
     {
@@ -48,10 +48,10 @@ namespace Fluxus
             lblLoad.Text = "Validando usuário";
 
 
-            if (rbtDireto.Checked)
-                Util.LocalDB = true;
+            if (rbtMySQL.Checked)
+                Util.DataSource = "MySQL";
             else
-                Util.LocalDB = false;
+                Util.DataSource = "API";
 
 
 
