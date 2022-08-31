@@ -19,9 +19,9 @@ namespace Fluxus
         {
 
 
-            var apenasDigitos = new Regex(@"[^\d]");
+            var regex = new Regex(@"[^\d]");
             MaskedTextBox mtxtBox = (MaskedTextBox)maskedTextBox;
-            string text = apenasDigitos.Replace(mtxtBox.Text, "");
+            string text = regex.Replace(mtxtBox.Text, "");
             string tag = mtxtBox.Tag.ToString();
             string returnMask = string.Empty;
 
