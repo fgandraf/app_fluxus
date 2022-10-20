@@ -48,14 +48,6 @@ namespace Fluxus.View
             lblLoad.Text = "Validando usuário";
 
 
-            if (rbtMySQL.Checked)
-                Util.DataSource = "MySQL";
-            else
-                Util.DataSource = "API";
-
-
-
-
             DataTable dtUsuario = new ProfissionalModel().BuscarUsuario(txtUsuario.Text);
 
             DataRow[] dataRow;

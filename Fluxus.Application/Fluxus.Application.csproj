@@ -80,14 +80,6 @@
     <Compile Include="Data\Api\Os.cs" />
     <Compile Include="Data\Api\Profissional.cs" />
     <Compile Include="Data\Api\Connection.cs" />
-    <Compile Include="Data\MySQL\Agencia.cs" />
-    <Compile Include="Data\MySQL\Atividade.cs" />
-    <Compile Include="Data\MySQL\Cadastrais.cs" />
-    <Compile Include="Data\MySQL\Connection .cs" />
-    <Compile Include="Data\MySQL\ConnectionString.cs" />
-    <Compile Include="Data\MySQL\Fatura.cs" />
-    <Compile Include="Data\MySQL\Os.cs" />
-    <Compile Include="Data\MySQL\Profissional.cs" />
     <Compile Include="Model\AgenciaModel.cs" />
     <Compile Include="Model\AtividadeModel.cs" />
     <Compile Include="Model\CadastraisModel.cs" />
