@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Application.Model;
+using Fluxus.Domain.Models;
 using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
 using Fluxus.Application.Controller;

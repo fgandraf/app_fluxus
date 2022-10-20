@@ -1,9 +1,8 @@
-﻿using System;
-
-namespace FluxusAPI.Model
+﻿
+namespace Fluxus.Domain.Models
 {
 
-    public class CadastraisENT
+    public class Cadastrais
     {
         public long Id { get; set; }
         public string Cnpj { get; set; }

@@ -1,11 +1,11 @@
 ﻿
-namespace FluxusAPI.Model
+namespace Fluxus.Domain.Models
 {
 
-    public class AgenciaENT
+    public class Agencia
     {
         public long Id { get; set; }
-        public string Agencia { get; set; }
+        public string Digito { get; set; }
         public string Nome { get; set; }
         public string Endereco { get; set; }
         public string Complemento { get; set; }

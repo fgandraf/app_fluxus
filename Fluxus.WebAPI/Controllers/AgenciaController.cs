@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using Microsoft.AspNetCore.Mvc;
-using FluxusAPI.Model;
-using FluxusAPI.DAO;
+using Fluxus.Domain.Models;
+using Fluxus.API.Repositories;
 using Microsoft.AspNetCore.Http;
 
-namespace FluxusAPI.Controllers
+
+namespace Fluxus.API.Controllers
 {
 
 
@@ -35,7 +36,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new AgenciaDAO().GetAll();
+                return new AgenciaRepository().GetAll();
             }
             catch (Exception ex)
             {
@@ -50,12 +51,12 @@ namespace FluxusAPI.Controllers
         // GET: api/agencia/getby/<id>
         [HttpGet]
         [Route("getby/{id}")]
-        public AgenciaENT GetBy(long id)
+        public Agencia GetBy(long id)
         {
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new AgenciaDAO().GetBy(id);
+                return new AgenciaRepository().GetBy(id);
             }
             catch (Exception ex)
             {
@@ -75,7 +76,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new AgenciaDAO().GetNomeTelefone1EmailBy(agenciaCodigo);
+                return new AgenciaRepository().GetNomeTelefone1EmailBy(agenciaCodigo);
             }
             catch (Exception ex)
             {
@@ -91,14 +92,14 @@ namespace FluxusAPI.Controllers
         // POST api/agencia/post
         [HttpPost]
         [Route("post")]
-        public ReturnAllServices Post([FromBody] AgenciaENT agencia)
+        public ReturnAllServices Post([FromBody] Agencia agencia)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
 
-                new AgenciaDAO().Insert(agencia);
+                new AgenciaRepository().Insert(agencia);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Agencia Cadastrada!";
@@ -119,14 +120,14 @@ namespace FluxusAPI.Controllers
         // PUT api/agencia/put/<id>
         [HttpPut]
         [Route("put/{id}")]
-        public ReturnAllServices Put(long id, [FromBody] AgenciaENT agencia)
+        public ReturnAllServices Put(long id, [FromBody] Agencia agencia)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
 
-                new AgenciaDAO().Update(id, agencia);
+                new AgenciaRepository().Update(id, agencia);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Agencia Alterada!";
@@ -155,7 +156,7 @@ namespace FluxusAPI.Controllers
             {
                 AutenticacaoServico.Autenticar();
 
-                new AgenciaDAO().Delete(id);
+                new AgenciaRepository().Delete(id);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Agencia Excluída!";

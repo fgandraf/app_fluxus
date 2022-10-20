@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using MySql.Data.MySqlClient;
-using FluxusAPI.Model;
+using Fluxus.Domain.Models;
 
-namespace FluxusAPI.DAO
+namespace Fluxus.API.Repositories
 {
-    public class AtividadeDAO
+    public class AtividadeRepository
     {
 
 
@@ -32,7 +32,7 @@ namespace FluxusAPI.DAO
                 {
                     while (dr.Read())
                     {
-                        AtividadeENT atividade = new AtividadeENT();
+                        Atividade atividade = new Atividade();
 
                         atividade.Id = Convert.ToInt64(dr["id"]);
                         atividade.Codigo = Convert.ToString(dr["codigo"]);
@@ -62,7 +62,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public AtividadeENT GetBy(long id)
+        public Atividade GetBy(long id)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace FluxusAPI.DAO
 
                 if (dr.HasRows)
                 {
-                    AtividadeENT atividade = new AtividadeENT();
+                    Atividade atividade = new Atividade();
                     if (dr.Read())
                     {
                         atividade.Id = Convert.ToInt64(dr["id"]);
@@ -101,7 +101,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public long Insert(AtividadeENT dado)
+        public long Insert(Atividade dado)
         {
             try
             {
@@ -133,7 +133,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public void Update(long id, AtividadeENT dado)
+        public void Update(long id, Atividade dado)
         {
             try
             {

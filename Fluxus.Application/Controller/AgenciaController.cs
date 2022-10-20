@@ -1,6 +1,6 @@
-﻿using Fluxus.Application.Model;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Data;
+using Fluxus.Domain.Models;
 
 
 namespace Fluxus.Application.Controller

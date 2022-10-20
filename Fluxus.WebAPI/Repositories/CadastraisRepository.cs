@@ -1,13 +1,13 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
-using FluxusAPI.Model;
+using Fluxus.Domain.Models;
 using System.Collections;
 
-namespace FluxusAPI.DAO
+namespace Fluxus.API.Repositories
 {
 
 
-    public class CadastraisDAO
+    public class CadastraisRepository
     {
 
 
@@ -28,7 +28,7 @@ namespace FluxusAPI.DAO
 
                 if (dr.HasRows)
                 {
-                    CadastraisENT cadastrais = new CadastraisENT();
+                    Cadastrais cadastrais = new Cadastrais();
                     if (dr.Read())
                     {
                         cadastrais.Cnpj = Convert.ToString(dr["cnpj"]);
@@ -187,7 +187,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public long Insert(CadastraisENT dado)
+        public long Insert(Cadastrais dado)
         {
             try
             {
@@ -239,7 +239,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public void Update(CadastraisENT dado)
+        public void Update(Cadastrais dado)
         {
             try
             {

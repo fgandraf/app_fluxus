@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace FluxusAPI.Model
+namespace Fluxus.Domain.Models
 {
 
-    public class FaturaENT
+    public class Fatura
     {
         public long id { get; set; }
         public string descricao { get; set; }

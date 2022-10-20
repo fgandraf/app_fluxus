@@ -1,14 +1,14 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
-using FluxusAPI.Model;
+using Fluxus.Domain.Models;
 using System.Collections;
 using System.Globalization;
 
-namespace FluxusAPI.DAO
+namespace Fluxus.API.Repositories
 {
 
 
-    public class OsDAO
+    public class OsRepository
     {
 
 
@@ -185,7 +185,7 @@ namespace FluxusAPI.DAO
                 {
                     while (dr.Read())
                     {
-                        OsENT os = new OsENT();
+                        Os os = new Os();
 
                         os.Id = Convert.ToInt64(dr["id"]);
                         os.Referencia = Convert.ToString(dr["referencia"]);
@@ -315,7 +315,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public OsENT GetBy(long id)
+        public Os GetBy(long id)
         {
             try
             {
@@ -326,7 +326,7 @@ namespace FluxusAPI.DAO
 
                 if (dr.HasRows)
                 {
-                    OsENT os = new OsENT();
+                    Os os = new Os();
                     if (dr.Read())
                     {
                         os.Id = Convert.ToInt64(dr["id"]);
@@ -393,7 +393,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public long Insert(OsENT dado)
+        public long Insert(Os dado)
         {
             try
             {
@@ -444,7 +444,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public void Update(long id, OsENT dado)
+        public void Update(long id, Os dado)
         {
             try
             {

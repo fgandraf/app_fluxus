@@ -1,13 +1,13 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
-using FluxusAPI.Model;
+using Fluxus.Domain.Models;
 using System.Collections;
 
-namespace FluxusAPI.DAO
+namespace Fluxus.API.Repositories
 {
 
 
-    public class AgenciaDAO
+    public class AgenciaRepository
     {
 
 
@@ -34,10 +34,10 @@ namespace FluxusAPI.DAO
                 {
                     while (dr.Read())
                     {
-                        AgenciaENT agencia = new AgenciaENT();
+                        Agencia agencia = new Agencia();
 
                         agencia.Id = Convert.ToInt64(dr["id"]);
-                        agencia.Agencia = Convert.ToString(dr["agencia"]);
+                        agencia.Digito = Convert.ToString(dr["agencia"]);
                         agencia.Nome = Convert.ToString(dr["nome"]);
                         agencia.Cidade = Convert.ToString(dr["cidade"]);
                         agencia.Telefone1 = Convert.ToString(dr["telefone1"]);
@@ -65,7 +65,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public AgenciaENT GetBy(long id)
+        public Agencia GetBy(long id)
         {
             try
             {
@@ -76,11 +76,11 @@ namespace FluxusAPI.DAO
 
                 if (dr.HasRows)
                 {
-                    AgenciaENT agencia = new AgenciaENT();
+                    Agencia agencia = new Agencia();
                     if (dr.Read())
                     {
                         agencia.Id = Convert.ToInt64(dr["id"]);
-                        agencia.Agencia = Convert.ToString(dr["agencia"]);
+                        agencia.Digito = Convert.ToString(dr["agencia"]);
                         agencia.Nome = Convert.ToString(dr["nome"]);
                         agencia.Endereco = Convert.ToString(dr["endereco"]);
                         agencia.Complemento = Convert.ToString(dr["complemento"]);
@@ -156,13 +156,13 @@ namespace FluxusAPI.DAO
 
 
 
-        public long Insert(AgenciaENT dado)
+        public long Insert(Agencia dado)
         {
             try
             {
                 con.OpenConnection();
                 sql = new MySqlCommand("INSERT INTO  tb_agencias(agencia, nome, endereco, complemento, bairro, cidade, CEP, UF, contato, telefone1, telefone2, email) VALUES (@agencia, @nome, @endereco, @complemento, @bairro, @cidade, @CEP, @UF, @contato, @telefone1, @telefone2, @email)", con.Conn);
-                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
+                sql.Parameters.AddWithValue("@agencia", dado.Digito);
                 sql.Parameters.AddWithValue("@nome", dado.Nome);
                 sql.Parameters.AddWithValue("@endereco", dado.Endereco);
                 sql.Parameters.AddWithValue("@complemento", dado.Complemento);
@@ -192,14 +192,14 @@ namespace FluxusAPI.DAO
 
 
 
-        public void Update(long id, AgenciaENT dado)
+        public void Update(long id, Agencia dado)
         {
             try
             {
                 con.OpenConnection();
 
                 sql = new MySqlCommand("UPDATE tb_agencias SET agencia = @agencia, nome = @nome, endereco = @endereco, complemento = @complemento, bairro = @bairro, cidade = @cidade, CEP = @CEP, UF = @UF, contato = @contato, telefone1 = @telefone1, telefone2 = @telefone2, email = @email WHERE id = @id", con.Conn);
-                sql.Parameters.AddWithValue("@agencia", dado.Agencia);
+                sql.Parameters.AddWithValue("@agencia", dado.Digito);
                 sql.Parameters.AddWithValue("@nome", dado.Nome);
                 sql.Parameters.AddWithValue("@endereco", dado.Endereco);
                 sql.Parameters.AddWithValue("@complemento", dado.Complemento);

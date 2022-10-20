@@ -1,4 +1,4 @@
-﻿using Fluxus.Application.Model;
+﻿using Fluxus.Domain.Models;
 using Newtonsoft.Json;
 using System.Data;
 using System.Threading.Tasks;

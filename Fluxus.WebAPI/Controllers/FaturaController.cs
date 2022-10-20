@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using Microsoft.AspNetCore.Mvc;
-using FluxusAPI.Model;
-using FluxusAPI.DAO;
+using Fluxus.Domain.Models;
+using Fluxus.API.Repositories;
 using Microsoft.AspNetCore.Http;
 
-namespace FluxusAPI.Controllers
+namespace Fluxus.API.Controllers
 {
 
 
@@ -33,7 +33,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new FaturaDAO().GetAll();
+                return new FaturaRepository().GetAll();
             }
             catch (Exception ex)
             {
@@ -54,7 +54,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new FaturaDAO().GetDescricaoBy(id);
+                return new FaturaRepository().GetDescricaoBy(id);
             }
             catch (Exception ex)
             {
@@ -70,13 +70,13 @@ namespace FluxusAPI.Controllers
         // POST api/fatura/post
         [HttpPost]
         [Route("post")]
-        public long Post([FromBody] FaturaENT fatura)
+        public long Post([FromBody] Fatura fatura)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new FaturaDAO().Insert(fatura);
+                return new FaturaRepository().Insert(fatura);
             }
             catch
             {
@@ -93,14 +93,14 @@ namespace FluxusAPI.Controllers
         // PUT api/fatura/puttotals/<id>
         [HttpPut]
         [Route("puttotals/{id}")]
-        public ReturnAllServices PutTotals(long id, [FromBody] FaturaENT fatura)
+        public ReturnAllServices PutTotals(long id, [FromBody] Fatura fatura)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
 
-                new FaturaDAO().UpdateTotals(id, fatura);
+                new FaturaRepository().UpdateTotals(id, fatura);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Fatura Alterada!";
@@ -128,7 +128,7 @@ namespace FluxusAPI.Controllers
             {
                 AutenticacaoServico.Autenticar();
 
-                new FaturaDAO().Delete(id);
+                new FaturaRepository().Delete(id);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Fatura Excluída!";

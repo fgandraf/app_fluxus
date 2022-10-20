@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 
-namespace FluxusAPI
+namespace Fluxus.API
 {
     public class Autentication
     {

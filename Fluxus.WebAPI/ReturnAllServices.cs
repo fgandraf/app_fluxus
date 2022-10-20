@@ -1,5 +1,5 @@
 ﻿
-namespace FluxusAPI.Model
+namespace Fluxus.API
 {
     public class ReturnAllServices
     {

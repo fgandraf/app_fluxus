@@ -1,13 +1,13 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
-using FluxusAPI.Model;
+using Fluxus.Domain.Models;
 using System.Collections;
 
-namespace FluxusAPI.DAO
+namespace Fluxus.API.Repositories
 {
 
 
-    public class ProfissionalDAO
+    public class ProfissionalRepository
     {
 
 
@@ -30,7 +30,7 @@ namespace FluxusAPI.DAO
                 {
                     while (dr.Read())
                     {
-                        ProfissionalENT profissional = new ProfissionalENT();
+                        Profissional profissional = new Profissional();
 
                         profissional.Id = Convert.ToInt64(dr["id"]);
                         profissional.Codigo = Convert.ToString(dr["codigo"]);
@@ -146,7 +146,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public ProfissionalENT GetBy(long id)
+        public Profissional GetBy(long id)
         {
             try
             {
@@ -157,7 +157,7 @@ namespace FluxusAPI.DAO
 
                 if (dr.HasRows)
                 {
-                    ProfissionalENT profissional = new ProfissionalENT();
+                    Profissional profissional = new Profissional();
                     if (dr.Read())
                     {
                         profissional.Id = Convert.ToInt64(dr["id"]);
@@ -197,7 +197,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public long Insert(ProfissionalENT dado)
+        public long Insert(Profissional dado)
         {
             try
             {
@@ -237,7 +237,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public void Update(long id, ProfissionalENT dado)
+        public void Update(long id, Profissional dado)
         {
             try
             {

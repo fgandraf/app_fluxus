@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fluxus.Application.Model
+namespace Fluxus.Domain.Models
 {
 
     public class Os

@@ -1,13 +1,13 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
-using FluxusAPI.Model;
+using Fluxus.Domain.Models;
 using System.Collections;
 
-namespace FluxusAPI.DAO
+namespace Fluxus.API.Repositories
 {
 
 
-    class FaturaDAO
+    class FaturaRepository
     {
 
 
@@ -32,7 +32,7 @@ namespace FluxusAPI.DAO
                 {
                     while (dr.Read())
                     {
-                        FaturaENT fatura = new FaturaENT();
+                        Fatura fatura = new Fatura();
 
                         fatura.id = Convert.ToInt32(dr["id"]);
                         fatura.descricao = Convert.ToString(dr["descricao"]);
@@ -94,7 +94,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public long Insert(FaturaENT dado)
+        public long Insert(Fatura dado)
         {
             try
             {
@@ -126,7 +126,7 @@ namespace FluxusAPI.DAO
 
 
 
-        public void UpdateTotals(long id, FaturaENT dado)
+        public void UpdateTotals(long id, Fatura dado)
         {
             try
             {

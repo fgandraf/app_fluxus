@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
 using Microsoft.AspNetCore.Mvc;
-using FluxusAPI.Model;
-using FluxusAPI.DAO;
+using Fluxus.Domain.Models;
+using Fluxus.API.Repositories;
 using Microsoft.AspNetCore.Http;
 using System.Text;
 
-namespace FluxusAPI.Controllers
+namespace Fluxus.API.Controllers
 {
 
 
@@ -35,7 +35,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new CadastraisDAO().GetAll();
+                return new CadastraisRepository().GetAll();
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                byte[] pass = new CadastraisDAO().GetLogo();
+                byte[] pass = new CadastraisRepository().GetLogo();
                 
                 return Convert.ToBase64String(pass);
             }
@@ -73,7 +73,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new CadastraisDAO().GetToPrint();
+                return new CadastraisRepository().GetToPrint();
             }
             catch (Exception ex)
             {
@@ -95,7 +95,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new CadastraisDAO().GetFantasia();
+                return new CadastraisRepository().GetFantasia();
             }
             catch (Exception ex)
             {
@@ -111,14 +111,14 @@ namespace FluxusAPI.Controllers
         // POST api/cadastrais/post
         [HttpPost]
         [Route("post")]
-        public ReturnAllServices Post([FromBody] CadastraisENT cadastrais)
+        public ReturnAllServices Post([FromBody] Cadastrais cadastrais)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
 
-                new CadastraisDAO().Insert(cadastrais);
+                new CadastraisRepository().Insert(cadastrais);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Dados Cadastrais Cadastrados!";
@@ -139,14 +139,14 @@ namespace FluxusAPI.Controllers
         // PUT api/cadastrais/put
         [HttpPut]
         [Route("put")]
-        public ReturnAllServices Put([FromBody] CadastraisENT cadastrais)
+        public ReturnAllServices Put([FromBody] Cadastrais cadastrais)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
 
-                new CadastraisDAO().Update(cadastrais);
+                new CadastraisRepository().Update(cadastrais);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Dados Cadastrais Alterados!";

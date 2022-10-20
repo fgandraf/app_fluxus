@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using Microsoft.AspNetCore.Mvc;
-using FluxusAPI.Model;
-using FluxusAPI.DAO;
+using Fluxus.Domain.Models;
+using Fluxus.API.Repositories;
 using Microsoft.AspNetCore.Http;
 
-namespace FluxusAPI.Controllers
+namespace Fluxus.API.Controllers
 {
    
     
@@ -34,7 +34,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new AtividadeDAO().GetAll();
+                return new AtividadeRepository().GetAll();
             }
             catch (Exception ex)
             {
@@ -48,12 +48,12 @@ namespace FluxusAPI.Controllers
         // GET api/atividade/getby/<id>
         [HttpGet]
         [Route("getby/{id}")]
-        public AtividadeENT GetBy(long id)
+        public Atividade GetBy(long id)
         {
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new AtividadeDAO().GetBy(id);
+                return new AtividadeRepository().GetBy(id);
             }
             catch (Exception ex)
             {
@@ -67,15 +67,15 @@ namespace FluxusAPI.Controllers
         // POST api/atividade/post
         [HttpPost]
         [Route("post")]
-        public ReturnAllServices Post([FromBody] AtividadeENT atividade)
+        public ReturnAllServices Post([FromBody] Atividade atividade)
         {
             ReturnAllServices retorno = new ReturnAllServices();
-            AtividadeDAO atividadeDAO = new AtividadeDAO();
+            AtividadeRepository atividadeDAO = new AtividadeRepository();
             try
             {
                 AutenticacaoServico.Autenticar();
 
-                new AtividadeDAO().Insert(atividade);
+                new AtividadeRepository().Insert(atividade);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Atividade Cadastrada!";
@@ -96,14 +96,14 @@ namespace FluxusAPI.Controllers
         // PUT api/atividade/put/<id>
         [HttpPut]
         [Route("put/{id}")]
-        public ReturnAllServices Put(long id, [FromBody] AtividadeENT atividade)
+        public ReturnAllServices Put(long id, [FromBody] Atividade atividade)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
 
-                new AtividadeDAO().Update(id, atividade);
+                new AtividadeRepository().Update(id, atividade);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Atividade Alterada!";
@@ -132,7 +132,7 @@ namespace FluxusAPI.Controllers
             {
                 AutenticacaoServico.Autenticar();
 
-                new AtividadeDAO().Delete(id);
+                new AtividadeRepository().Delete(id);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Atividade Excluída!";

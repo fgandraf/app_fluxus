@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Fluxus.Application.Controller;
-using Fluxus.Application.Model;
+using Fluxus.Domain.Models;
 
 namespace Fluxus.Application.View
 {

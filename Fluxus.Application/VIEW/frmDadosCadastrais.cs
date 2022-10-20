@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Application.Model;
+using Fluxus.Domain.Models;
 using System.Drawing;
 using Fluxus.Application.Controller;
 

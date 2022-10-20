@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using Microsoft.AspNetCore.Mvc;
-using FluxusAPI.Model;
-using FluxusAPI.DAO;
+using Fluxus.Domain.Models;
+using Fluxus.API.Repositories;
 using Microsoft.AspNetCore.Http;
 
-namespace FluxusAPI.Controllers
+namespace Fluxus.API.Controllers
 {
 
 
@@ -35,7 +35,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new ProfissionalDAO().GetAll();
+                return new ProfissionalRepository().GetAll();
             }
             catch (Exception ex)
             {
@@ -56,7 +56,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new ProfissionalDAO().GetCodigoENomeid();
+                return new ProfissionalRepository().GetCodigoENomeid();
             }
             catch (Exception ex)
             {
@@ -78,7 +78,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new ProfissionalDAO().GetUserInfoBy(userName);
+                return new ProfissionalRepository().GetUserInfoBy(userName);
             }
             catch (Exception ex)
             {
@@ -93,12 +93,12 @@ namespace FluxusAPI.Controllers
         // GET api/profissional/getby/<id>
         [HttpGet]
         [Route("getby/{id}")]
-        public ProfissionalENT GetBy(long id)
+        public Profissional GetBy(long id)
         {
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new ProfissionalDAO().GetBy(id);
+                return new ProfissionalRepository().GetBy(id);
             }
             catch (Exception ex)
             {
@@ -114,14 +114,14 @@ namespace FluxusAPI.Controllers
         // POST api/profissional/post
         [HttpPost]
         [Route("post")]
-        public ReturnAllServices Post([FromBody] ProfissionalENT profissional)
+        public ReturnAllServices Post([FromBody] Profissional profissional)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
 
-                new ProfissionalDAO().Insert(profissional);
+                new ProfissionalRepository().Insert(profissional);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Profissional Cadastrado!";
@@ -142,14 +142,14 @@ namespace FluxusAPI.Controllers
         // PUT api/profissional/put/<id>
         [HttpPut]
         [Route("put/{id}")]
-        public ReturnAllServices Put(long id, [FromBody] ProfissionalENT profissional)
+        public ReturnAllServices Put(long id, [FromBody] Profissional profissional)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
 
-                new ProfissionalDAO().Update(id, profissional);
+                new ProfissionalRepository().Update(id, profissional);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Profissional Alterado!";
@@ -177,7 +177,7 @@ namespace FluxusAPI.Controllers
             {
                 AutenticacaoServico.Autenticar();
 
-                new ProfissionalDAO().Delete(id);
+                new ProfissionalRepository().Delete(id);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "Profissional Excluído!";

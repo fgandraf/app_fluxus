@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxus.Application", "Fluxus.Application\Fluxus.Application.csproj", "{84562FE5-3951-4E16-B713-95B6A6CB2CD4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxus.WebAPI", "Fluxus.WebAPI\Fluxus.WebAPI.csproj", "{845CD6F3-8309-46BC-B83A-8B2B24F25593}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxus.API", "Fluxus.WebAPI\Fluxus.API.csproj", "{845CD6F3-8309-46BC-B83A-8B2B24F25593}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxus.Domain", "Fluxus.Domain\Fluxus.Domain.csproj", "{37BF5B5E-298A-47C4-9C78-AF0AFD9393CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{845CD6F3-8309-46BC-B83A-8B2B24F25593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{845CD6F3-8309-46BC-B83A-8B2B24F25593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{845CD6F3-8309-46BC-B83A-8B2B24F25593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37BF5B5E-298A-47C4-9C78-AF0AFD9393CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37BF5B5E-298A-47C4-9C78-AF0AFD9393CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37BF5B5E-298A-47C4-9C78-AF0AFD9393CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37BF5B5E-298A-47C4-9C78-AF0AFD9393CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

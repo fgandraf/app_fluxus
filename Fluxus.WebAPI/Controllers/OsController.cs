@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
 using Microsoft.AspNetCore.Mvc;
-using FluxusAPI.Model;
-using FluxusAPI.DAO;
+using Fluxus.Domain.Models;
+using Fluxus.API.Repositories;
 using Microsoft.AspNetCore.Http;
 
-namespace FluxusAPI.Controllers
+namespace Fluxus.API.Controllers
 {
 
 
@@ -35,7 +35,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new OsDAO().GetOrdensDoFluxo();
+                return new OsRepository().GetOrdensDoFluxo();
             }
             catch (Exception ex)
             {
@@ -56,7 +56,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new OsDAO().GetCidadesDasOrdens();
+                return new OsRepository().GetCidadesDasOrdens();
             }
             catch (Exception ex)
             {
@@ -76,7 +76,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new OsDAO().GetOrdensConcluidasAFaturar();
+                return new OsRepository().GetOrdensConcluidasAFaturar();
             }
             catch (Exception ex)
             {
@@ -97,7 +97,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new OsDAO().GetFiltered(filtro);
+                return new OsRepository().GetFiltered(filtro);
             }
             catch (Exception ex)
             {
@@ -117,7 +117,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new OsDAO().GetOrdensFaturadasBy(fatura_cod);
+                return new OsRepository().GetOrdensFaturadasBy(fatura_cod);
             }
             catch (Exception ex)
             {
@@ -138,7 +138,7 @@ namespace FluxusAPI.Controllers
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new OsDAO().GetProfissionaisDaFatura(fatura_cod);
+                return new OsRepository().GetProfissionaisDaFatura(fatura_cod);
             }
             catch (Exception ex)
             {
@@ -154,12 +154,12 @@ namespace FluxusAPI.Controllers
         // GET api/os/getby/<id>
         [HttpGet]
         [Route("getby/{id}")]
-        public OsENT GetBy(long id)
+        public Os GetBy(long id)
         {
             try
             {
                 AutenticacaoServico.Autenticar();
-                return new OsDAO().GetBy(id);
+                return new OsRepository().GetBy(id);
             }
             catch (Exception ex)
             {
@@ -175,14 +175,14 @@ namespace FluxusAPI.Controllers
         // POST api/os/post
         [HttpPost]
         [Route("post")]
-        public ReturnAllServices Post([FromBody] OsENT os)
+        public ReturnAllServices Post([FromBody] Os os)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
 
-                new OsDAO().Insert(os);
+                new OsRepository().Insert(os);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "O.S. Cadastrada!";
@@ -203,14 +203,14 @@ namespace FluxusAPI.Controllers
         // PUT api/os/put/<id>
         [HttpPut]
         [Route("put/{id}")]
-        public ReturnAllServices Put(long id, [FromBody] OsENT os)
+        public ReturnAllServices Put(long id, [FromBody] Os os)
         {
             ReturnAllServices retorno = new ReturnAllServices();
             try
             {
                 AutenticacaoServico.Autenticar();
 
-                new OsDAO().Update(id, os);
+                new OsRepository().Update(id, os);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "O.S. Alterada!";
@@ -238,7 +238,7 @@ namespace FluxusAPI.Controllers
             {
                 AutenticacaoServico.Autenticar();
 
-                new OsDAO().UpdateFaturaCod(id, fatura_cod);
+                new OsRepository().UpdateFaturaCod(id, fatura_cod);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "O.S. Alterada!";
@@ -265,7 +265,7 @@ namespace FluxusAPI.Controllers
             {
                 AutenticacaoServico.Autenticar();
 
-                new OsDAO().UpdateStatus(id, status);
+                new OsRepository().UpdateStatus(id, status);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "O.S. Alterada!";
@@ -293,7 +293,7 @@ namespace FluxusAPI.Controllers
             {
                 AutenticacaoServico.Autenticar();
 
-                new OsDAO().Delete(id);
+                new OsRepository().Delete(id);
 
                 retorno.Result = true;
                 retorno.ErrorMessage = "O.S. Excluída!";

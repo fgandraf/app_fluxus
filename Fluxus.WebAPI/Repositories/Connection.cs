@@ -1,7 +1,7 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
 
-namespace FluxusAPI.DAO
+namespace Fluxus.API.Repositories
 {
     public class Connection
     {

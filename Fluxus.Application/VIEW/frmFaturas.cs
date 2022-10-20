@@ -1,4 +1,4 @@
-﻿using Fluxus.Application.Model;
+﻿using Fluxus.Domain.Models;
 using System;
 using System.Windows.Forms;
 using System.IO;
