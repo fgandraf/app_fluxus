@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Model.ENT;
-using Fluxus.Model;
+using Fluxus.Application.Model;
+using Fluxus.Application.Controller;
 
-namespace Fluxus.View
+namespace Fluxus.Application.View
 {
     public partial class frmAtividades : Form
     {
@@ -17,7 +17,7 @@ namespace Fluxus.View
         {
             try
             {
-                dgvAtividades.DataSource = new AtividadeModel().ListarAtividades(false);
+                dgvAtividades.DataSource = new AtividadeController().ListarAtividades(false);
 
                 if (dgvAtividades.Rows.Count == 0)
                 {
@@ -42,7 +42,7 @@ namespace Fluxus.View
         {
             try
             {
-                new AtividadeModel().Delete((Convert.ToInt64(dgvAtividades.CurrentRow.Cells["id"].Value)));
+                new AtividadeController().Delete((Convert.ToInt64(dgvAtividades.CurrentRow.Cells["id"].Value)));
             }
             catch (Exception ex)
             {
@@ -92,7 +92,7 @@ namespace Fluxus.View
             if (Logged.Rl == false)
                 return;
 
-            AtividadeENT atividade = new AtividadeModel().GetBy(Convert.ToInt32(dgvAtividades.CurrentRow.Cells["id"].Value));
+            Atividade atividade = new AtividadeController().GetBy(Convert.ToInt32(dgvAtividades.CurrentRow.Cells["id"].Value));
 
             frmAddAtividade formNeto = new frmAddAtividade(_frmPrincipal, atividade);
             

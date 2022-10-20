@@ -1,6 +1,6 @@
 ﻿//using
 
-namespace Fluxus
+namespace Fluxus.Application
 {
     public class Logged
     {

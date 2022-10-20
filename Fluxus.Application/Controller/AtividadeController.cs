@@ -1,13 +1,16 @@
-﻿using Fluxus.Model.ENT;
+﻿using Fluxus.Application.Model;
 using Newtonsoft.Json;
 using System.Data;
 
-namespace Fluxus.Data.Api
+
+namespace Fluxus.Application.Controller
 {
-    class Atividade
+    class AtividadeController
     {
 
-        public void Insert(AtividadeENT dado)
+
+
+        public void Insert(Atividade dado)
         {
             // POST: api/atividade/post
             string jsonData = JsonConvert.SerializeObject(dado);
@@ -17,7 +20,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public void Update(long id, AtividadeENT dado)
+
+        public void Update(long id, Atividade dado)
         {
             // PUT: api/atividade/put/<id>
             string jsonData = JsonConvert.SerializeObject(dado);
@@ -27,6 +31,7 @@ namespace Fluxus.Data.Api
         }
 
 
+
         public void Delete(long id)
         {
             // DELETE: api/atividade/delete/<id>
@@ -34,25 +39,44 @@ namespace Fluxus.Data.Api
         }
 
 
-        public DataTable GetAll()
+
+        public DataTable ListarAtividades(bool adicionaTitulo)
         {
+            DataView dvAtividades = new DataView();
+
             // GET: api/atividade
-            DataTable dtAtividades = new DataTable();
+            DataTable tabela = new DataTable();
             string json = Connection.RequestGET("atividade", string.Empty);
-            dtAtividades = JsonConvert.DeserializeObject<DataTable>(json);
+            tabela = JsonConvert.DeserializeObject<DataTable>(json);
+
+            dvAtividades = new DataView(tabela);
+
+            DataTable dtAtividades = dvAtividades.ToTable("Selected", false, "id", "codigo", "descricao", "valor_atividade", "valor_deslocamento");
+            if (adicionaTitulo)
+            {
+                DataRow linha = dtAtividades.NewRow();
+                linha[1] = "--TODAS--";
+                dtAtividades.Rows.InsertAt(linha, 0);
+            }
+
             return dtAtividades;
         }
 
 
-        public AtividadeENT GetBy(long id)
+
+        public Atividade GetBy(long id)
         {
             // GET: api/atividade/getby/<id>
-            AtividadeENT retorno = new AtividadeENT();
+            Atividade retorno = new Atividade();
             string json = Connection.RequestGET("atividade/getby/", id.ToString());
-            retorno = JsonConvert.DeserializeObject<AtividadeENT>(json);
+            retorno = JsonConvert.DeserializeObject<Atividade>(json);
             return retorno;
         }
 
 
+
     }
+
+
+
 }

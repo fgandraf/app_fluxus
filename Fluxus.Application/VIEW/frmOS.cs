@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 
 
-namespace Fluxus.View
+namespace Fluxus.Application.View
 {
     public partial class frmOS : Form
     {

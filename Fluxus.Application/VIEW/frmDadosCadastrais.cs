@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Model.ENT;
+using Fluxus.Application.Model;
 using System.Drawing;
-using Fluxus.Model;
+using Fluxus.Application.Controller;
 
 
-namespace Fluxus.View
+namespace Fluxus.Application.View
 {
     public partial class frmDadosCadastrais : Form
     {
@@ -38,7 +38,7 @@ namespace Fluxus.View
             try
             {
                 
-                CadastraisENT dados = new CadastraisModel().ListarCadastrais();
+                Cadastrais dados = new CadastraisController().ListarCadastrais();
 
                 if (dados == null)
                     txtCNPJ.Focus();
@@ -104,9 +104,9 @@ namespace Fluxus.View
         }
 
 
-        private CadastraisENT PopulateObject()
+        private Cadastrais PopulateObject()
         {
-            CadastraisENT dado = new CadastraisENT
+            Cadastrais dado = new Cadastrais
             {
                 Cnpj = txtCNPJ.Text,
                 Fantasia = txtNomeFantasia.Text,
@@ -180,7 +180,7 @@ namespace Fluxus.View
 
 
 
-            CadastraisENT dado = PopulateObject();
+            Cadastrais dado = PopulateObject();
 
 
 
@@ -188,7 +188,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new CadastraisModel().Insert(dado);
+                    new CadastraisController().Insert(dado);
                     MessageBox.Show("Dados cadastrados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -200,7 +200,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new CadastraisModel().Update(dado);
+                    new CadastraisController().Update(dado);
                     MessageBox.Show("Dados cadastrais alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)

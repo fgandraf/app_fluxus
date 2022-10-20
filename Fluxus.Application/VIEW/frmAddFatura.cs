@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Model.ENT;
+using Fluxus.Application.Model;
 using System.Globalization;
-using Fluxus.Model;
+using Fluxus.Application.Controller;
 
-namespace Fluxus.View
+namespace Fluxus.Application.View
 {
     public partial class frmAddFatura : Form
     {
@@ -23,7 +23,7 @@ namespace Fluxus.View
         {
             try
             {
-                dgvOS.DataSource = new OsModel().GetOrdensConcluidasNaoFaturadas();
+                dgvOS.DataSource = new OsController().GetOrdensConcluidasNaoFaturadas();
             }
             catch (Exception ex)
             {
@@ -43,9 +43,9 @@ namespace Fluxus.View
         }
 
 
-        private FaturaENT PopulateObject()
+        private Fatura PopulateObject()
         {
-            FaturaENT dado = new FaturaENT
+            Fatura dado = new Fatura
             {
                 descricao = txtDescricao.Text,
                 data = dtpData.Value,
@@ -107,14 +107,14 @@ namespace Fluxus.View
             try
             {
 
-                FaturaENT dado = PopulateObject();
-                long fatura_cod = new FaturaModel().Insert(dado);
+                Fatura dado = PopulateObject();
+                long fatura_cod = new FaturaController().Insert(dado);
 
 
                 foreach (DataGridViewRow row in dgvOS.Rows)
                 {
                     long idOS = Convert.ToInt64(row.Cells["id"].Value);
-                    new OsModel().UpdateFaturaCod(idOS, fatura_cod);
+                    new OsController().UpdateFaturaCod(idOS, fatura_cod);
                 }
 
                 MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);

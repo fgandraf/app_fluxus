@@ -6,7 +6,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 
 
-namespace Fluxus.View.Report
+namespace Fluxus.Application.View.Report
 {
     public class ITXFatura
     {

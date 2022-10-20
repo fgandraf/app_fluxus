@@ -1,8 +1,8 @@
 ﻿
-namespace Fluxus.Model.ENT
+namespace Fluxus.Application.Model
 {
 
-    public class CadastraisENT
+    public class Cadastrais
     {
         public long Id { get; set; }
         public string Cnpj { get; set; }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace Fluxus
+namespace Fluxus.Application
 {
     public class Util
     {

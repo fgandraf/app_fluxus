@@ -1,14 +1,16 @@
-﻿using Fluxus.Model.ENT;
+﻿using Fluxus.Application.Model;
 using Newtonsoft.Json;
 using System.Data;
 
-namespace Fluxus.Data.Api
+
+namespace Fluxus.Application.Controller
 {
-    class Cadastrais
+    class CadastraisController
     {
 
 
-        public void Insert(CadastraisENT dado)
+
+        public void Insert(Cadastrais dado)
         {
             // POST: api/cadastrais/post
             string jsonData = JsonConvert.SerializeObject(dado);
@@ -18,7 +20,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public void Update(CadastraisENT dado)
+
+        public void Update(Cadastrais dado)
         {
             // PUT api/cadastrais/put
             string jsonData = JsonConvert.SerializeObject(dado);
@@ -28,13 +31,14 @@ namespace Fluxus.Data.Api
         }
 
 
-        public CadastraisENT GetAll()
+
+        public Cadastrais ListarCadastrais()
         {
             // GET: api/cadastrais
             string json = Connection.RequestGET("cadastrais", string.Empty);
             DataTable dt = JsonConvert.DeserializeObject<DataTable>(json);
 
-            CadastraisENT retorno = new CadastraisENT
+            Cadastrais retorno = new Cadastrais
             {
                 Cnpj = dt.Rows[0]["cnpj"].ToString(),
                 Fantasia = dt.Rows[0]["fantasia"].ToString(),
@@ -68,7 +72,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public DataTable GetToPrint()
+
+        public DataTable DadosParaImpressao()
         {
             // GET: api/cadastrais/gettoprint
             DataTable retorno = new DataTable();
@@ -78,6 +83,7 @@ namespace Fluxus.Data.Api
         }
 
 
+
         public string GetFantasia()
         {
             // GET: api/cadastrais/getfantasia
@@ -85,6 +91,10 @@ namespace Fluxus.Data.Api
             return json;
         }
 
+
+
     }
+
+
 
 }

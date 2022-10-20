@@ -1,13 +1,16 @@
-﻿using Fluxus.Model.ENT;
+﻿using Fluxus.Application.Model;
 using Newtonsoft.Json;
 using System.Data;
 
-namespace Fluxus.Data.Api
+
+namespace Fluxus.Application.Controller
 {
-    class Profissional
+    class ProfissionalController
     {
 
-        public void Insert(ProfissionalENT dado)
+
+
+        public void Insert(Profissional dado)
         {
             // POST: api/profissional/post
             string jsonData = JsonConvert.SerializeObject(dado);
@@ -15,12 +18,14 @@ namespace Fluxus.Data.Api
         }
 
 
-        public void Update(long id, ProfissionalENT dado)
+
+        public void Update(long id, Profissional dado)
         {
             // PUT: api/profissional/put/<id>
             string jsonData = JsonConvert.SerializeObject(dado);
             string json = Connection.RequestPUT("profissional/put/" + id, jsonData);
         }
+
 
 
         public void Delete(long id)
@@ -30,7 +35,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public DataTable GetAll()
+
+        public DataTable ListarProfissionais()
         {
             // GET: api/profissional
             DataTable retorno = new DataTable();
@@ -40,7 +46,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public DataTable GetUserInfoBy(string nomeDeUsuario)
+
+        public DataTable BuscarUsuario(string nomeDeUsuario)
         {
             // GET: api/profissional/getuserinfo/<userName>
             DataTable retorno = new DataTable();
@@ -50,24 +57,40 @@ namespace Fluxus.Data.Api
         }
 
 
-        public DataTable GetCodigoENomeid()
+
+        public DataTable ListarCodigoENomeid(bool adicionaTitulo)
         {
             // GET: api/profissional/getcodigoenomeid
-            DataTable dtProfissionais = new DataTable();
+            DataTable dtPro = new DataTable();
             string json = Connection.RequestGET("profissional/getcodigoenomeid", string.Empty);
-            dtProfissionais = JsonConvert.DeserializeObject<DataTable>(json);
-            return dtProfissionais;
+            dtPro = JsonConvert.DeserializeObject<DataTable>(json);
+
+            if (adicionaTitulo)
+            {
+                DataRow linha = dtPro.NewRow();
+                linha[1] = "--TODOS--";
+                dtPro.Rows.InsertAt(linha, 0);
+            }
+
+            return dtPro;
+
         }
 
 
-        public ProfissionalENT GetBy(long id)
+
+        public Profissional GetBy(long id)
         {
             // GET: api/profissional/getby/<id>
-            ProfissionalENT retorno = new ProfissionalENT();
+            Profissional retorno = new Profissional();
             string json = Connection.RequestGET("profissional/getby/", id.ToString());
-            retorno = JsonConvert.DeserializeObject<ProfissionalENT>(json);
+            retorno = JsonConvert.DeserializeObject<Profissional>(json);
             return retorno;
         }
 
+
+
     }
+
+
+
 }

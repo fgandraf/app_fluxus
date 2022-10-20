@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Fluxus.Model.ENT
+namespace Fluxus.Application.Model
 {
 
-    public class OsENT
+    public class Os
     {
         public long Id { get; set; }
         public string Titulo { get; set; }

@@ -1,14 +1,17 @@
-﻿using Fluxus.Model.ENT;
+﻿using Fluxus.Application.Model;
 using Newtonsoft.Json;
 using System.Data;
 using System.Threading.Tasks;
 
-namespace Fluxus.Data.Api
+
+namespace Fluxus.Application.Controller
 {
-    class Os
+    class OsController
     {
 
-        public void Insert(OsENT dado)
+
+
+        public void Insert(Os dado)
         {
             // POST api/os/post
             string jsonData = JsonConvert.SerializeObject(dado);
@@ -18,7 +21,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public void Update(long id, OsENT dado)
+
+        public void Update(long id, Os dado)
         {
             // PUT api/os/put/<id>
             string jsonData = JsonConvert.SerializeObject(dado);
@@ -28,17 +32,21 @@ namespace Fluxus.Data.Api
         }
 
 
+
         public void UpdateFaturaCod(long id, long fatura_cod)
         {
             // PUT api/os/updatefaturacod/<id>,<fatura_cod>
             string json = Connection.RequestPUT("os/updatefaturacod/" + id + "," + fatura_cod, string.Empty);
         }
 
-        public async Task UpdateStatus(long id, string status)
+
+
+        public async void UpdateStatus(long id, string status)
         {
             // PUT api/os/updatestatus/<id>,<status>
             await Task.Run(() => Connection.RequestPUT("os/updatestatus/" + id + "," + status, string.Empty));
         }
+
 
 
         public void Delete(long id)
@@ -46,6 +54,7 @@ namespace Fluxus.Data.Api
             // DELETE api/os/delete/<id>
             string retorno = Connection.RequestDELETE("os/delete/", id.ToString());
         }
+
 
 
         public DataTable GetOrdensDoFluxo()
@@ -58,7 +67,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public DataTable GetOrdensConcluidasAFaturar()
+
+        public DataTable GetOrdensConcluidasNaoFaturadas()
         {
             // GET: api/os/getordensconcluidasafaturar
             DataTable retorno = new DataTable();
@@ -68,7 +78,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public DataTable GetOrdensFaturadasBy(long fatura_cod)
+
+        public DataTable GetOrdensFaturadasDoCodigo(long fatura_cod)
         {
             // GET api/os/getordensfaturadas/<fatura_cod>
             DataTable retorno = new DataTable();
@@ -78,7 +89,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public DataTable GetFiltered(string filtro)
+
+        public DataTable GetOrdensComFiltro(string filtro)
         {
             // GET: api/os/getfiltered/<filtro>
             DataTable retorno = new DataTable();
@@ -86,6 +98,7 @@ namespace Fluxus.Data.Api
             retorno = JsonConvert.DeserializeObject<DataTable>(json);
             return retorno;
         }
+
 
 
         public DataTable GetProfissionaisDaFatura(long fatura_cod)
@@ -98,24 +111,38 @@ namespace Fluxus.Data.Api
         }
 
 
-        public DataTable GetCidadesDasOrdens()
+
+        public DataTable GetCidadesDasOrdens(bool adicionaTitulo)
         {
             // GET: api/os/getcidadesdasordens
-            DataTable dtCidades = new DataTable();
+            DataTable distinctCidades = new DataTable();
             string json = Connection.RequestGET("os/getcidadesdasordens", string.Empty);
-            dtCidades = JsonConvert.DeserializeObject<DataTable>(json);
-            return dtCidades;
+            distinctCidades = JsonConvert.DeserializeObject<DataTable>(json);
+
+            if (adicionaTitulo)
+            {
+                DataRow linha = distinctCidades.NewRow();
+                linha[0] = "--TODAS--";
+                distinctCidades.Rows.InsertAt(linha, 0);
+            }
+            return distinctCidades;
         }
 
 
-        public OsENT GetBy(long id)
+
+        public Os GetBy(long id)
         {
             // GET api/os/getby/<id>
-            OsENT retorno = new OsENT();
+            Os retorno = new Os();
             string json = Connection.RequestGET("os/getby/", id.ToString());
-            retorno = JsonConvert.DeserializeObject<OsENT>(json);
+            retorno = JsonConvert.DeserializeObject<Os>(json);
             return retorno;
         }
 
+
+
     }
+
+
+
 }

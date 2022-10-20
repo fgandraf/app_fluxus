@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Model;
-using Fluxus.Model.ENT;
+using Fluxus.Application.Controller;
+using Fluxus.Application.Model;
 
-namespace Fluxus.View
+namespace Fluxus.Application.View
 {
     public partial class frmAddAtividade : Form
     {
@@ -17,9 +17,9 @@ namespace Fluxus.View
 
 
         //:METHODS
-        private AtividadeENT PopulateObject()
+        private Atividade PopulateObject()
         {
-            AtividadeENT dado = new AtividadeENT
+            Atividade dado = new Atividade
             {
                 Codigo = txtCodigo.Text,
                 Descricao = txtDescricao.Text,
@@ -49,7 +49,7 @@ namespace Fluxus.View
         }
 
 
-        public frmAddAtividade(frmPrincipal frm1, AtividadeENT dado)
+        public frmAddAtividade(frmPrincipal frm1, Atividade dado)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -83,14 +83,14 @@ namespace Fluxus.View
             }
 
 
-            AtividadeENT dado = PopulateObject();
+            Atividade dado = PopulateObject();
 
 
             if (btnAddSave.Text == "&Adicionar")
             {
                 try
                 {
-                    new AtividadeModel().Insert(dado);
+                    new AtividadeController().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -102,7 +102,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new AtividadeModel().Update(_id, dado);
+                    new AtividadeController().Update(_id, dado);
                 }
                 catch (Exception ex)
                 {

@@ -2,7 +2,7 @@
 using System.Net;
 using System.Text;
 
-namespace Fluxus.Data.Api
+namespace Fluxus.Application.Controller
 {
     class Connection
     {

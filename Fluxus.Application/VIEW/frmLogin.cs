@@ -2,9 +2,10 @@
 using System.Data;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Fluxus.Model;
+using Fluxus.Application.Controller;
 
-namespace Fluxus.View
+
+namespace Fluxus.Application.View
 {
     public partial class frmLogin : Form
     {
@@ -40,7 +41,7 @@ namespace Fluxus.View
         ///_______Button
         private void btnAppFechar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace Fluxus.View
             lblLoad.Text = "Validando usuário";
 
 
-            DataTable dtUsuario = new ProfissionalModel().BuscarUsuario(txtUsuario.Text);
+            DataTable dtUsuario = new ProfissionalController().BuscarUsuario(txtUsuario.Text);
 
             DataRow[] dataRow;
 

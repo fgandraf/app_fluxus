@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Model.ENT;
-using Fluxus.Model;
+using Fluxus.Application.Model;
+using Fluxus.Application.Controller;
 
-namespace Fluxus.View
+namespace Fluxus.Application.View
 {
     public partial class frmAddAgencia : Form
     {
@@ -31,11 +31,11 @@ namespace Fluxus.View
         }
 
 
-        private AgenciaENT PopulateObject()
+        private Agencia PopulateObject()
         {
-            AgenciaENT dado = new AgenciaENT
+            Agencia dado = new Agencia
             {
-                Agencia = txtAgencia.Text,
+                Digito = txtAgencia.Text,
                 Nome = txtNome.Text,
                 Endereco = txtEndereco.Text,
                 Complemento = txtComplemento.Text,
@@ -87,13 +87,13 @@ namespace Fluxus.View
         }
 
 
-        public frmAddAgencia(frmPrincipal frm1, AgenciaENT dado)
+        public frmAddAgencia(frmPrincipal frm1, Agencia dado)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
             
             _id = dado.Id;
-            txtAgencia.Text = dado.Agencia;
+            txtAgencia.Text = dado.Digito;
             txtNome.Text = dado.Nome;
             txtEndereco.Text = dado.Endereco;
             txtComplemento.Text = dado.Complemento;
@@ -130,13 +130,13 @@ namespace Fluxus.View
             }
 
 
-            AgenciaENT dado = PopulateObject();
+            Agencia dado = PopulateObject();
 
             if (btnAddSave.Text == "&Adicionar")
             {
                 try
                 {
-                    new AgenciaModel().Insert(dado);
+                    new AgenciaController().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -148,7 +148,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new AgenciaModel().Update(_id, dado);
+                    new AgenciaController().Update(_id, dado);
                 }
                 catch (Exception ex)
                 {

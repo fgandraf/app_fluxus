@@ -1,4 +1,4 @@
-﻿namespace Fluxus.View
+﻿namespace Fluxus.Application.View
 {
     partial class frmFaturas
     {

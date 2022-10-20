@@ -1,8 +1,8 @@
 ﻿
-namespace Fluxus.Model.ENT
+namespace Fluxus.Application.Model
 {
 
-    public class ProfissionalENT
+    public class Profissional
     {
         public long Id { get; set; }
         public string Codigo { get; set; }

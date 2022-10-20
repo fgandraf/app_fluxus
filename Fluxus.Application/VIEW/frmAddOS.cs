@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Model.ENT;
+using Fluxus.Application.Model;
 using System.Data;
-using Fluxus.Model;
+using Fluxus.Application.Controller;
 using System.Text;
 
-namespace Fluxus.View
+namespace Fluxus.Application.View
 {
     public partial class frmAddOS : Form
     {
@@ -72,7 +72,7 @@ namespace Fluxus.View
             try
             {
                 string agenciaCodigo = txtRef1.Text;
-                DataTable dtAgencia = new AgenciaModel().BuscarAgencia(agenciaCodigo);
+                DataTable dtAgencia = new AgenciaController().BuscarAgencia(agenciaCodigo);
 
                 if (dtAgencia == null )
                 {
@@ -113,7 +113,7 @@ namespace Fluxus.View
         }
 
 
-        private OsENT PopulateObject()
+        private Os PopulateObject()
         {
             //CRIA O TÍTULO DA ORDEN DE SERVIÇO
             int refe = Convert.ToInt32(txtRef2.Text);
@@ -142,7 +142,7 @@ namespace Fluxus.View
 
 
             //POPULATE OBJECT TO RETURN
-            OsENT dado = new OsENT
+            Os dado = new Os
             {
                 Titulo = titulo,
                 Referencia = referencia,
@@ -186,18 +186,18 @@ namespace Fluxus.View
             _frmPrincipal = frm1;
             _formFilho = frmfilho;
 
-            DtProfissionais = new ProfissionalModel().ListarCodigoENomeid(false);
-            DtAtividades = new AtividadeModel().ListarAtividades(false);
+            DtProfissionais = new ProfissionalController().ListarCodigoENomeid(false);
+            DtAtividades = new AtividadeController().ListarAtividades(false);
 
             cboProfissional.DataSource = DtProfissionais;
             cboAtividade.DataSource = DtAtividades;
-            cboCidade.DataSource = new OsModel().GetCidadesDasOrdens(false);
+            cboCidade.DataSource = new OsController().GetCidadesDasOrdens(false);
             cboCidade.SelectedIndex = -1;
 
         }
 
 
-        public frmAddOS(frmPrincipal frm1, string frmfilho, OsENT dado) : this(frm1, frmfilho)
+        public frmAddOS(frmPrincipal frm1, string frmfilho, Os dado) : this(frm1, frmfilho)
         {
 
             //POPULATE
@@ -249,7 +249,7 @@ namespace Fluxus.View
             if (dado.Fatura_cod != 0)
             {
                 lblFaturada.Show();
-                txtCodFatura.Text = "Fatura: " + new FaturaModel().DescricaoFatura(dado.Fatura_cod);
+                txtCodFatura.Text = "Fatura: " + new FaturaController().DescricaoFatura(dado.Fatura_cod);
                 txtCodFatura.Show();
 
 
@@ -334,7 +334,7 @@ namespace Fluxus.View
 
 
 
-            OsENT dado = PopulateObject();
+            Os dado = PopulateObject();
 
 
 
@@ -343,7 +343,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new OsModel().Insert(dado);
+                    new OsController().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -355,7 +355,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new OsModel().Update(_id, dado);
+                    new OsController().Update(_id, dado);
                 }
                 catch (Exception ex)
                 {

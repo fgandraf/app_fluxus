@@ -1,14 +1,17 @@
-﻿using Fluxus.Model.ENT;
+﻿using Fluxus.Application.Model;
 using Newtonsoft.Json;
 using System;
 using System.Data;
 
-namespace Fluxus.Data.Api
+
+namespace Fluxus.Application.Controller
 {
-    class Fatura
+    class FaturaController
     {
 
-        public long Insert(FaturaENT dado)
+
+
+        public long Insert(Fatura dado)
         {
             // POST: api/fatura/post
             string jsonData = JsonConvert.SerializeObject(dado);
@@ -20,7 +23,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public void Update(long id, FaturaENT dado)
+
+        public void Update(long id, Fatura dado)
         {
             // PUT: api/fatura/puttotals/<id>
             string jsonData = JsonConvert.SerializeObject(dado);
@@ -30,6 +34,7 @@ namespace Fluxus.Data.Api
         }
 
 
+
         public void Delete(long id)
         {
             // DELETE: api/fatura/delete/<id>
@@ -37,7 +42,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public string GetDescricaoById(long id)
+
+        public string DescricaoFatura(long id)
         {
             // GET: api/fatura/getdescricao/<id>
             string json = Connection.RequestGET("fatura/getdescricao/", id.ToString());
@@ -45,7 +51,8 @@ namespace Fluxus.Data.Api
         }
 
 
-        public DataTable GetAll()
+
+        public DataTable ListarFatura()
         {
             // GET: api/fatura
             DataTable retorno = new DataTable();
@@ -54,5 +61,10 @@ namespace Fluxus.Data.Api
             return retorno;
         }
 
+
+
     }
+
+
+
 }

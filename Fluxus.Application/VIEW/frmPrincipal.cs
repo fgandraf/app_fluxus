@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using Fluxus.Model;
+using Fluxus.Application.Controller;
 using System.Threading.Tasks;
 
-namespace Fluxus.View
+namespace Fluxus.Application.View
 {
     public partial class frmPrincipal : Form
     {
@@ -67,7 +67,7 @@ namespace Fluxus.View
 
 
             string fantasia = null;
-            await Task.Run(() => fantasia = new CadastraisModel().GetFantasia());
+            await Task.Run(() => fantasia = new CadastraisController().GetFantasia());
 
             
             if (fantasia != null)
@@ -98,7 +98,7 @@ namespace Fluxus.View
         ///_______Button (Form Controls)
         private void btnAppFechar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
 
         private void btnAppMinimizar_Click(object sender, EventArgs e)

@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{84562FE5-3951-4E16-B713-95B6A6CB2CD4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Fluxus</RootNamespace>
+    <RootNamespace>Fluxus.Application</RootNamespace>
     <AssemblyName>Fluxus</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -73,26 +73,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Api\Agencia.cs" />
-    <Compile Include="Data\Api\Atividade.cs" />
-    <Compile Include="Data\Api\Cadastrais.cs" />
-    <Compile Include="Data\Api\Fatura.cs" />
-    <Compile Include="Data\Api\Os.cs" />
-    <Compile Include="Data\Api\Profissional.cs" />
-    <Compile Include="Data\Api\Connection.cs" />
-    <Compile Include="Model\AgenciaModel.cs" />
-    <Compile Include="Model\AtividadeModel.cs" />
-    <Compile Include="Model\CadastraisModel.cs" />
-    <Compile Include="Model\ENT\AgenciaENT.cs" />
-    <Compile Include="Model\ENT\AtividadeENT.cs" />
-    <Compile Include="Model\ENT\CadastraisENT.cs" />
-    <Compile Include="Model\ENT\FaturaENT.cs" />
+    <Compile Include="Controller\Connection.cs" />
+    <Compile Include="Controller\AgenciaController.cs" />
+    <Compile Include="Controller\AtividadeController.cs" />
+    <Compile Include="Controller\CadastraisController.cs" />
+    <Compile Include="Model\Agencia.cs" />
+    <Compile Include="Model\Atividade.cs" />
+    <Compile Include="Model\Cadastrais.cs" />
+    <Compile Include="Model\Fatura.cs" />
     <Compile Include="Logged.cs" />
-    <Compile Include="Model\ENT\OsENT.cs" />
-    <Compile Include="Model\ENT\ProfissionalENT.cs" />
-    <Compile Include="Model\FaturaModel.cs" />
-    <Compile Include="Model\OsModel.cs" />
-    <Compile Include="Model\ProfissionalModel.cs" />
+    <Compile Include="Model\Os.cs" />
+    <Compile Include="Model\Profissional.cs" />
+    <Compile Include="Controller\FaturaController.cs" />
+    <Compile Include="Controller\OsController.cs" />
+    <Compile Include="Controller\ProfissionalController.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="View\Report\ITXFatura.cs" />
     <Compile Include="View\frmAddAgencia.cs">

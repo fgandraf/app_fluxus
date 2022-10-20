@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Model.ENT;
+using Fluxus.Application.Model;
 using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
-using Fluxus.Model;
+using Fluxus.Application.Controller;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
-namespace Fluxus.View
+namespace Fluxus.Application.View
 {
     public partial class frmOSLista : Form
     {
@@ -21,7 +21,7 @@ namespace Fluxus.View
 
         private void EditarOS(DataGridView dgv)
         {
-            OsENT ordemDeServico = new OsModel().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+            Os ordemDeServico = new OsController().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
 
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
             
@@ -38,7 +38,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new OsModel().Delete((Convert.ToInt64(dgv.CurrentRow.Cells[0].Value)));
+                    new OsController().Delete((Convert.ToInt64(dgv.CurrentRow.Cells[0].Value)));
                 }
                 catch (Exception ex)
                 {
@@ -51,7 +51,7 @@ namespace Fluxus.View
         {
             try
             {
-                dtOS = new OsModel().GetOrdensComFiltro(GerarStringSQL());
+                dtOS = new OsController().GetOrdensComFiltro(GerarStringSQL());
                 dgv.DataSource = dtOS;
             }
             catch (Exception ex)
@@ -138,9 +138,9 @@ namespace Fluxus.View
         private  void frmOS_Load(object sender, EventArgs e)
         {
             
-            cboProfissional.DataSource = new ProfissionalModel().ListarCodigoENomeid(true);
-            cboCidade.DataSource = new OsModel().GetCidadesDasOrdens(true);
-            cboAtividade.DataSource = new AtividadeModel().ListarAtividades(true);
+            cboProfissional.DataSource = new ProfissionalController().ListarCodigoENomeid(true);
+            cboCidade.DataSource = new OsController().GetCidadesDasOrdens(true);
+            cboAtividade.DataSource = new AtividadeController().ListarAtividades(true);
 
 
 

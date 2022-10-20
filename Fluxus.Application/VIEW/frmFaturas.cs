@@ -1,15 +1,15 @@
-﻿using Fluxus.Model.ENT;
+﻿using Fluxus.Application.Model;
 using System;
 using System.Windows.Forms;
 using System.IO;
 using System.Data;
-using Fluxus.View.Report;
+using Fluxus.Application.View.Report;
 using System.Linq;
-using Fluxus.Model;
+using Fluxus.Application.Controller;
 using System.Globalization;
 using System.Reflection;
 
-namespace Fluxus.View
+namespace Fluxus.Application.View
 {
     public partial class frmFaturas : Form
     {
@@ -24,7 +24,7 @@ namespace Fluxus.View
         {
             try
             {
-                dgvFaturas.DataSource = new FaturaModel().ListarFatura();
+                dgvFaturas.DataSource = new FaturaController().ListarFatura();
 
 
                 if (dgvFaturas.Rows.Count > 0)
@@ -45,7 +45,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    dgvOS.DataSource = new OsModel().GetOrdensFaturadasDoCodigo(Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value));
+                    dgvOS.DataSource = new OsController().GetOrdensFaturadasDoCodigo(Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value));
 
                     txtData.Text = dgvFaturas.CurrentRow.Cells[2].Value.ToString();
                     txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells[3].Value);
@@ -68,9 +68,9 @@ namespace Fluxus.View
             _subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[valor_deslocamento.Name].Value ?? 0));
         }
 
-        private FaturaENT PopulateObject()
+        private Fatura PopulateObject()
         {
-            FaturaENT dado = new FaturaENT
+            Fatura dado = new Fatura
             {
                 id = Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value),
                 subtotal_os = _subtotal_os,
@@ -117,7 +117,7 @@ namespace Fluxus.View
 
 
                 //BUSCAR DADOS DA EMPRESA PARA IMPRESSAO
-                DataRow[] dadosDaEmpresa = (new CadastraisModel().DadosParaImpressao()).Select();
+                DataRow[] dadosDaEmpresa = (new CadastraisController().DadosParaImpressao()).Select();
                 string razao = dadosDaEmpresa[0]["razao"].ToString();
                 string edital = dadosDaEmpresa[0]["ct_edital"].ToString();
                 string contrato = dadosDaEmpresa[0]["ct_contrato"].ToString();
@@ -142,7 +142,7 @@ namespace Fluxus.View
                 contrato,
                 razao,
                 cnpj,
-                new OsModel().GetProfissionaisDaFatura(fatura_cod),
+                new OsController().GetProfissionaisDaFatura(fatura_cod),
                 (DataTable)dgvOS.DataSource,
                 caminho
                 );
@@ -159,7 +159,7 @@ namespace Fluxus.View
                 if (result == DialogResult.Yes)
                 {
                     //ALTERA PARA ZERO O FATURA_COD
-                    new OsModel().UpdateFaturaCod(Convert.ToInt64(dgvOS.CurrentRow.Cells["id_os"].Value), 0);
+                    new OsController().UpdateFaturaCod(Convert.ToInt64(dgvOS.CurrentRow.Cells["id_os"].Value), 0);
 
 
                     //APAGA DO DATAGRIDVIEW
@@ -174,8 +174,8 @@ namespace Fluxus.View
 
 
                     //APLICA OS NOVOS VALORES À TABELA DE FATURA
-                    FaturaENT dado = PopulateObject();
-                    new FaturaModel().Update(dado.id, dado);
+                    Fatura dado = PopulateObject();
+                    new FaturaController().Update(dado.id, dado);
 
                 }
             }
@@ -193,7 +193,7 @@ namespace Fluxus.View
                 var result = MessageBox.Show("Deseja excluir a Fatura?" + "\n\n" + dgvFaturas.CurrentRow.Cells[1].Value.ToString(), "Remover O.S.", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (result == DialogResult.Yes)
                 {
-                    new FaturaModel().Delete((Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value)));
+                    new FaturaController().Delete((Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value)));
                     ListarFatura();
                     ListarOS();
                 }

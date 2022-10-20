@@ -1,15 +1,16 @@
-﻿using Fluxus.Model.ENT;
-using System.Data;
+﻿using Fluxus.Application.Model;
 using Newtonsoft.Json;
+using System.Data;
 
-namespace Fluxus.Data.Api
+
+namespace Fluxus.Application.Controller
 {
-    class Agencia
+    class AgenciaController
     {
 
 
 
-        public void Insert(AgenciaENT dado)
+        public void Insert(Agencia dado)
         {
             // POST: api/agencia/post
             string jsonData = JsonConvert.SerializeObject(dado);
@@ -20,8 +21,7 @@ namespace Fluxus.Data.Api
 
 
 
-
-        public void Update(long id, AgenciaENT dado)
+        public void Update(long id, Agencia dado)
         {
             // PUT: api/agencia/put/<id>
             string jsonData = JsonConvert.SerializeObject(dado);
@@ -32,15 +32,11 @@ namespace Fluxus.Data.Api
 
 
 
-
         public void Delete(long id)
         {
             // DELETE: api/agencia/delete/<id>
             string retorno = Connection.RequestDELETE("agencia/delete/", id.ToString());
         }
-
-
-
 
 
 
@@ -55,9 +51,6 @@ namespace Fluxus.Data.Api
 
 
 
-
-
-
         public DataTable BuscarAgencia(string agenciaCodigo)
         {
             // GET: api/agencia/getsomeby/<agenciaCodigo>
@@ -69,21 +62,19 @@ namespace Fluxus.Data.Api
 
 
 
-
-
-        public AgenciaENT GetBy(long id)
+        public Agencia GetBy(long id)
         {
             // GET: api/agencia/getby/<id>
-            AgenciaENT retorno = new AgenciaENT();
+            Agencia retorno = new Agencia();
             string json = Connection.RequestGET("agencia/getby/", id.ToString());
-            retorno = JsonConvert.DeserializeObject<AgenciaENT>(json);
+            retorno = JsonConvert.DeserializeObject<Agencia>(json);
             return retorno;
         }
 
 
 
-
-
-
     }
+
+
+
 }

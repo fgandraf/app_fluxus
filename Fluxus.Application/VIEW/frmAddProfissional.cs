@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Model.ENT;
+using Fluxus.Application.Model;
 using System.Data;
-using Fluxus.Model;
+using Fluxus.Application.Controller;
 
-namespace Fluxus.View
+namespace Fluxus.Application.View
 {
     public partial class frmAddProfissional : Form
     {
@@ -47,9 +47,9 @@ namespace Fluxus.View
         }
 
 
-        private ProfissionalENT PopulateObject()
+        private Profissional PopulateObject()
         {
-            ProfissionalENT dado = new ProfissionalENT
+            Profissional dado = new Profissional
             {
                 Codigo = txtCodigo.Text,
                 Nomeid = CreateNameId(txtProfissao.Text, txtNome.Text),
@@ -91,7 +91,7 @@ namespace Fluxus.View
             _frmPrincipal = frm1;
         }
 
-        public frmAddProfissional(frmPrincipal frm1, ProfissionalENT dado)
+        public frmAddProfissional(frmPrincipal frm1, Profissional dado)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -169,7 +169,7 @@ namespace Fluxus.View
             //VERIFICA SE NOME DE USUÁRIO JÁ EXISTE NO SISTEMA
             if (txtUsrNome.Text != _usr_nome)
             {
-                DataTable dtPro = new ProfissionalModel().BuscarUsuario(txtUsrNome.Text);
+                DataTable dtPro = new ProfissionalController().BuscarUsuario(txtUsrNome.Text);
 
                 if (dtPro.Rows.Count > 0)
                 {
@@ -182,7 +182,7 @@ namespace Fluxus.View
 
 
             //POPULATE
-            ProfissionalENT dado = PopulateObject();
+            Profissional dado = PopulateObject();
 
 
 
@@ -200,7 +200,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new ProfissionalModel().Insert(dado);
+                    new ProfissionalController().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -212,7 +212,7 @@ namespace Fluxus.View
             {
                 try
                 {
-                    new ProfissionalModel().Update(_id, dado);
+                    new ProfissionalController().Update(_id, dado);
                 }
                 catch (Exception ex)
                 {
