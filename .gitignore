@@ -10,8 +10,9 @@
 *.userosscache
 *.sln.docstates
 
-# ConnectionString Class
+# Sensitive content
 ConnectionString.cs
+[Dd]ump/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
