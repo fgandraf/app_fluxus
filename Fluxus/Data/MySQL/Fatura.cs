@@ -10,7 +10,7 @@ namespace Fluxus.Data.MySQL
     class Fatura
     {
         MySqlCommand sql;
-        ConnectionToServer con = new ConnectionToServer();
+        Connection con = new Connection();
 
 
 

@@ -12,7 +12,7 @@ namespace Fluxus.Data.MySQL
 
 
         MySqlCommand sql;
-        ConnectionToServer con = new ConnectionToServer();
+        Connection con = new Connection();
 
 
 

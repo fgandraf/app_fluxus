@@ -12,7 +12,7 @@ namespace FluxusAPI.DAO
 
 
         MySqlCommand sql;
-        ConnectionToServer con = new ConnectionToServer();
+        Connection con = new Connection();
 
 
 

@@ -10,7 +10,7 @@ namespace Fluxus.Data.MySQL
     public class Profissional
     {
         MySqlCommand sql;
-        ConnectionToServer con = new ConnectionToServer();
+        Connection con = new Connection();
 
 
 

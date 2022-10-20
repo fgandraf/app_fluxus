@@ -83,7 +83,7 @@
     <Compile Include="Data\MySQL\Agencia.cs" />
     <Compile Include="Data\MySQL\Atividade.cs" />
     <Compile Include="Data\MySQL\Cadastrais.cs" />
-    <Compile Include="Data\MySQL\ConnectionToServer .cs" />
+    <Compile Include="Data\MySQL\Connection .cs" />
     <Compile Include="Data\MySQL\ConnectionString.cs" />
     <Compile Include="Data\MySQL\Fatura.cs" />
     <Compile Include="Data\MySQL\Os.cs" />

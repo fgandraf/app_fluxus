@@ -3,7 +3,7 @@ using MySql.Data.MySqlClient;
 
 namespace Fluxus.Data.MySQL
 {
-    public class ConnectionToServer
+    public class Connection
     {
         
         public MySqlConnection Conn;
