@@ -11,8 +11,7 @@
 *.sln.docstates
 
 # ConnectionString Class
-Fluxus/Data/MySQL/ConnectionString.cs
-FluxusAPI/FluxusAPI/DAO/ConnectionString.cs
+ConnectionString.cs
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
