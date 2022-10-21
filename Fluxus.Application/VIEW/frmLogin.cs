@@ -3,6 +3,7 @@ using System.Data;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Fluxus.Application.Controller;
+using Fluxus.Domain.Models;
 
 
 namespace Fluxus.Application.View

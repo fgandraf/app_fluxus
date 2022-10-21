@@ -11,20 +11,14 @@ namespace Fluxus.Application
     public class Util
     {
 
-        public static string DataSource = "API";
-
-
 
         public static string MaskValidated(object maskedTextBox)
         {
-
-
             var regex = new Regex(@"[^\d]");
             MaskedTextBox mtxtBox = (MaskedTextBox)maskedTextBox;
             string text = regex.Replace(mtxtBox.Text, "");
             string tag = mtxtBox.Tag.ToString();
             string returnMask = string.Empty;
-
 
             if (text == "")
                 return string.Empty;
@@ -56,21 +50,13 @@ namespace Fluxus.Application
                     returnMask = "000,000,000-00";
                 }
 
-
-
-
                 return returnMask;
-
-
             }
         }
 
 
         public static string MaskEnter(object maskedTextBox)
         {
-
-
-
             MaskedTextBox mtxtBox = (MaskedTextBox)maskedTextBox;
             string tag = mtxtBox.Tag.ToString();
             string returnMask = string.Empty;

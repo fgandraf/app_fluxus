@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Fluxus.Application.Controller;
+using Fluxus.Domain.Models;
 using System.Threading.Tasks;
 
 namespace Fluxus.Application.View

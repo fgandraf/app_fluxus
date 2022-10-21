@@ -80,7 +80,6 @@
     <Compile Include="Controller\AgenciaController.cs" />
     <Compile Include="Controller\AtividadeController.cs" />
     <Compile Include="Controller\CadastraisController.cs" />
-    <Compile Include="Logged.cs" />
     <Compile Include="Controller\FaturaController.cs" />
     <Compile Include="Controller\OsController.cs" />
     <Compile Include="Controller\ProfissionalController.cs" />

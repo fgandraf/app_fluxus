@@ -45,6 +45,7 @@
     <Compile Include="Models\Atividade.cs" />
     <Compile Include="Models\Cadastrais.cs" />
     <Compile Include="Models\Fatura.cs" />
+    <Compile Include="Models\Logged.cs" />
     <Compile Include="Models\Os.cs" />
     <Compile Include="Models\Profissional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

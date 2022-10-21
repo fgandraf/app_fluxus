@@ -5,8 +5,8 @@ namespace Fluxus.API
 {
     public class Autentication
     {
-        public static string TOKEN = "xz8wM6zr2RfF18GBM0B5yrkoo";
-        public static string FALHA_AUTENTICACAO = "Falha na autenticação... O token informado é inválido!";
+        public const string TOKEN = "xz8wM6zr2RfF18GBM0B5yrkoo";
+        
         IHttpContextAccessor contextAcessor;
 
         public Autentication(IHttpContextAccessor context)
@@ -22,20 +22,15 @@ namespace Fluxus.API
                 string TokenRecebido = contextAcessor.HttpContext.Request.Headers["Token"].ToString();
 
                 if (String.Equals(TOKEN, TokenRecebido) == false)
-                {
-                    throw new Exception(FALHA_AUTENTICACAO);
-                }
+                    throw new Exception("Token inválido");
+
             }
             catch
             {
-                throw new Exception(FALHA_AUTENTICACAO);
+                throw new Exception("Não foi possível estabelecer a conexão!");
             }
 
         }
-
-
-
-
 
 
     }

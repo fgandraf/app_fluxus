@@ -1,6 +1,6 @@
 ﻿//using
 
-namespace Fluxus.Application
+namespace Fluxus.Domain.Models
 {
     public class Logged
     {
