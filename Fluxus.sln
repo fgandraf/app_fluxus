@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxus.Application", "Fluxu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fluxus.Domain", "Fluxus.Domain\Fluxus.Domain.csproj", "{37BF5B5E-298A-47C4-9C78-AF0AFD9393CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Fluxus.Api\Api\Api.csproj", "{77365C3C-ED8E-4754-910B-C759FE289446}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Fluxus.Api\Fluxus.Api.csproj", "{77365C3C-ED8E-4754-910B-C759FE289446}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

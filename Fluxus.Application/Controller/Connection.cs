@@ -6,7 +6,7 @@ namespace Fluxus.Application.Controller
 {
     class Connection
     {
-        public static string URI = "http://localhost:8080/api/";
+        public static string URI = "http://localhost:5000/api/";
         public static string TOKEN = "xz8wM6zr2RfF18GBM0B5yrkoo";
 
 
