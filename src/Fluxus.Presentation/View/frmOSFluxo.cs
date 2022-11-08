@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Domain.Models;
+using Fluxus.Domain.Entities;
 using System.Data;
 using System.Linq;
-using Fluxus.Presentation.Controller;
+using Fluxus.Services;
 using System.Threading.Tasks;
 
 namespace Fluxus.Presentation.View
@@ -75,7 +75,7 @@ namespace Fluxus.Presentation.View
         {
             if (dgv != null)
             {
-                Os ordemDeServico = new OsController().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+                Os ordemDeServico = new OsService().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
 
                 frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
                 
@@ -94,9 +94,9 @@ namespace Fluxus.Presentation.View
                 {
                     try
                     {
-                        new OsController().Delete((Convert.ToInt64(dgv.CurrentRow.Cells[0].Value)));
+                        new OsService().Delete((Convert.ToInt64(dgv.CurrentRow.Cells[0].Value)));
                         
-                        _dtOSNFaturada = new OsController().GetOrdensDoFluxo();
+                        _dtOSNFaturada = new OsService().GetOrdensDoFluxo();
                         ListarOS(dgv);
                     }
                     catch (Exception ex)
@@ -126,7 +126,7 @@ namespace Fluxus.Presentation.View
                     ListarOS(_dgvOrigem);
                     ListarOS(dgvDestino);
 
-                    new OsController().UpdateStatus(id, status);
+                    new OsService().UpdateStatus(id, status);
 
                 }
             }
@@ -180,14 +180,14 @@ namespace Fluxus.Presentation.View
             dgvConcluidas.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgvConcluidas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-            _dtOSNFaturada = new OsController().GetOrdensDoFluxo();
+            _dtOSNFaturada = new OsService().GetOrdensDoFluxo();
 
         }
 
         private void frmOSFluxo_Load(object sender, EventArgs e)
         {
 
-            cboProfissional.DataSource = new ProfissionalController().ListarCodigoENomeid(true);
+            cboProfissional.DataSource = new ProfissionalService().ListarCodigoENomeid(true);
             
             if (Logged.Rl)
             {

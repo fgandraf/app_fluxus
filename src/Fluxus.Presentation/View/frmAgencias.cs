@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Presentation.Controller;
-using Fluxus.Domain.Models;
+using Fluxus.Services;
+using Fluxus.Domain.Entities;
 
 namespace Fluxus.Presentation.View
 {
@@ -16,7 +16,7 @@ namespace Fluxus.Presentation.View
         {
             try
             { 
-                dgvAgencias.DataSource = new AgenciaController().GetAll();
+                dgvAgencias.DataSource = new AgenciaService().GetAll();
 
 
                 if (dgvAgencias.Rows.Count == 0)
@@ -42,7 +42,7 @@ namespace Fluxus.Presentation.View
         {
             try
             {
-                new AgenciaController().Delete((Convert.ToInt64(dgvAgencias.CurrentRow.Cells["id"].Value)));
+                new AgenciaService().Delete((Convert.ToInt64(dgvAgencias.CurrentRow.Cells["id"].Value)));
             }
             catch (Exception ex)
             {
@@ -84,7 +84,7 @@ namespace Fluxus.Presentation.View
         private void btnEditar_Click(object sender, EventArgs e)
         {
 
-            Agencia agencia = new AgenciaController().GetBy(Convert.ToInt32(dgvAgencias.CurrentRow.Cells["id"].Value));
+            Agencia agencia = new AgenciaService().GetBy(Convert.ToInt32(dgvAgencias.CurrentRow.Cells["id"].Value));
 
             frmAddAgencia formNeto = new frmAddAgencia (_frmPrincipal, agencia);
             

@@ -11,6 +11,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Fluxus.Domain\Fluxus.Domain.csproj" />
+  </ItemGroup>
+
   
 
 </Project>

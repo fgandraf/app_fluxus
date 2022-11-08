@@ -9,6 +9,7 @@
 
 ignore/
 ConnectionString.cs
+DumpSQL.sql
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using MySql.Data.MySqlClient;
-using Fluxus.Api.Entities;
+using Fluxus.Domain.Entities;
 
 namespace Fluxus.Api.Repositories
 {

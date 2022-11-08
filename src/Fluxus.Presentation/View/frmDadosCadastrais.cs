@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Domain.Models;
+using Fluxus.Domain.Entities;
 using System.Drawing;
-using Fluxus.Presentation.Controller;
+using Fluxus.Services;
 
 
 namespace Fluxus.Presentation.View
@@ -38,7 +38,7 @@ namespace Fluxus.Presentation.View
             try
             {
                 
-                Cadastrais dados = new CadastraisController().ListarCadastrais();
+                Cadastrais dados = new CadastraisService().ListarCadastrais();
 
                 if (dados == null)
                     txtCNPJ.Focus();
@@ -188,7 +188,7 @@ namespace Fluxus.Presentation.View
             {
                 try
                 {
-                    new CadastraisController().Insert(dado);
+                    new CadastraisService().Insert(dado);
                     MessageBox.Show("Dados cadastrados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -200,7 +200,7 @@ namespace Fluxus.Presentation.View
             {
                 try
                 {
-                    new CadastraisController().Update(dado);
+                    new CadastraisService().Update(dado);
                     MessageBox.Show("Dados cadastrais alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)

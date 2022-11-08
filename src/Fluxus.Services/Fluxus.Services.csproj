@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{37BF5B5E-298A-47C4-9C78-AF0AFD9393CE}</ProjectGuid>
+    <ProjectGuid>{F80D67B7-E908-411B-ABE5-ADD36DC18A56}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FluxusDomain</RootNamespace>
-    <AssemblyName>FluxusDomain</AssemblyName>
+    <RootNamespace>Fluxus.Services</RootNamespace>
+    <AssemblyName>Fluxus.Services</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,14 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Agencia.cs" />
-    <Compile Include="Entities\Atividade.cs" />
-    <Compile Include="Entities\Cadastrais.cs" />
-    <Compile Include="Entities\Fatura.cs" />
-    <Compile Include="Entities\Logged.cs" />
-    <Compile Include="Entities\Os.cs" />
-    <Compile Include="Entities\Profissional.cs" />
+    <Compile Include="Services\AgenciaService.cs" />
+    <Compile Include="Services\AtividadeService.cs" />
+    <Compile Include="Services\CadastraisService.cs" />
+    <Compile Include="Services\FaturaService.cs" />
+    <Compile Include="Services\OsService.cs" />
+    <Compile Include="Services\ProfissionalService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fluxus.Domain\Fluxus.Domain.csproj">
+      <Project>{37bf5b5e-298a-47c4-9c78-af0afd9393ce}</Project>
+      <Name>Fluxus.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fluxus.Infra\Fluxus.Infra.csproj">
+      <Project>{9640f4ea-31eb-471b-914a-9c5334bf44ef}</Project>
+      <Name>Fluxus.Infra</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

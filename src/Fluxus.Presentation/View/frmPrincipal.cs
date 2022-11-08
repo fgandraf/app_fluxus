@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using Fluxus.Presentation.Controller;
-using Fluxus.Domain.Models;
+using Fluxus.Services;
+using Fluxus.Domain.Entities;
 using System.Threading.Tasks;
 
 namespace Fluxus.Presentation.View
@@ -68,7 +68,7 @@ namespace Fluxus.Presentation.View
 
 
             string fantasia = null;
-            await Task.Run(() => fantasia = new CadastraisController().GetFantasia());
+            await Task.Run(() => fantasia = new CadastraisService().GetFantasia());
 
             
             if (fantasia != null)

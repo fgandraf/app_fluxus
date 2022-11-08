@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Domain.Models;
+using Fluxus.Domain.Entities;
 using System.Data;
-using Fluxus.Presentation.Controller;
+using Fluxus.Services;
 using System.Text;
 
 namespace Fluxus.Presentation.View
@@ -72,7 +72,7 @@ namespace Fluxus.Presentation.View
             try
             {
                 string agenciaCodigo = txtRef1.Text;
-                DataTable dtAgencia = new AgenciaController().BuscarAgencia(agenciaCodigo);
+                DataTable dtAgencia = new AgenciaService().BuscarAgencia(agenciaCodigo);
 
                 if (dtAgencia == null )
                 {
@@ -186,12 +186,12 @@ namespace Fluxus.Presentation.View
             _frmPrincipal = frm1;
             _formFilho = frmfilho;
 
-            DtProfissionais = new ProfissionalController().ListarCodigoENomeid(false);
-            DtAtividades = new AtividadeController().ListarAtividades(false);
+            DtProfissionais = new ProfissionalService().ListarCodigoENomeid(false);
+            DtAtividades = new AtividadeService().ListarAtividades(false);
 
             cboProfissional.DataSource = DtProfissionais;
             cboAtividade.DataSource = DtAtividades;
-            cboCidade.DataSource = new OsController().GetCidadesDasOrdens(false);
+            cboCidade.DataSource = new OsService().GetCidadesDasOrdens(false);
             cboCidade.SelectedIndex = -1;
 
         }
@@ -249,7 +249,7 @@ namespace Fluxus.Presentation.View
             if (dado.Fatura_cod != 0)
             {
                 lblFaturada.Show();
-                txtCodFatura.Text = "Fatura: " + new FaturaController().DescricaoFatura(dado.Fatura_cod);
+                txtCodFatura.Text = "Fatura: " + new FaturaService().DescricaoFatura(dado.Fatura_cod);
                 txtCodFatura.Show();
 
 
@@ -343,7 +343,7 @@ namespace Fluxus.Presentation.View
             {
                 try
                 {
-                    new OsController().Insert(dado);
+                    new OsService().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -355,7 +355,7 @@ namespace Fluxus.Presentation.View
             {
                 try
                 {
-                    new OsController().Update(_id, dado);
+                    new OsService().Update(_id, dado);
                 }
                 catch (Exception ex)
                 {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Domain.Models;
+using Fluxus.Domain.Entities;
 using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
-using Fluxus.Presentation.Controller;
+using Fluxus.Services;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -21,7 +21,7 @@ namespace Fluxus.Presentation.View
 
         private void EditarOS(DataGridView dgv)
         {
-            Os ordemDeServico = new OsController().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+            Os ordemDeServico = new OsService().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
 
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
             
@@ -38,7 +38,7 @@ namespace Fluxus.Presentation.View
             {
                 try
                 {
-                    new OsController().Delete((Convert.ToInt64(dgv.CurrentRow.Cells[0].Value)));
+                    new OsService().Delete((Convert.ToInt64(dgv.CurrentRow.Cells[0].Value)));
                 }
                 catch (Exception ex)
                 {
@@ -51,7 +51,7 @@ namespace Fluxus.Presentation.View
         {
             try
             {
-                dtOS = new OsController().GetOrdensComFiltro(GerarStringSQL());
+                dtOS = new OsService().GetOrdensComFiltro(GerarStringSQL());
                 dgv.DataSource = dtOS;
             }
             catch (Exception ex)
@@ -138,9 +138,9 @@ namespace Fluxus.Presentation.View
         private  void frmOS_Load(object sender, EventArgs e)
         {
             
-            cboProfissional.DataSource = new ProfissionalController().ListarCodigoENomeid(true);
-            cboCidade.DataSource = new OsController().GetCidadesDasOrdens(true);
-            cboAtividade.DataSource = new AtividadeController().ListarAtividades(true);
+            cboProfissional.DataSource = new ProfissionalService().ListarCodigoENomeid(true);
+            cboCidade.DataSource = new OsService().GetCidadesDasOrdens(true);
+            cboAtividade.DataSource = new AtividadeService().ListarAtividades(true);
 
 
 

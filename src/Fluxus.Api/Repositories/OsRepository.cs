@@ -1,6 +1,6 @@
 ﻿using System;
 using MySql.Data.MySqlClient;
-using Fluxus.Api.Entities;
+using Fluxus.Domain.Entities;
 using System.Collections;
 using System.Globalization;
 

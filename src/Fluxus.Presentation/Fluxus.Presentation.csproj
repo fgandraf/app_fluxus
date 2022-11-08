@@ -75,13 +75,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\Connection.cs" />
-    <Compile Include="Controller\AgenciaController.cs" />
-    <Compile Include="Controller\AtividadeController.cs" />
-    <Compile Include="Controller\CadastraisController.cs" />
-    <Compile Include="Controller\FaturaController.cs" />
-    <Compile Include="Controller\OsController.cs" />
-    <Compile Include="Controller\ProfissionalController.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="View\Report\ITXFatura.cs" />
     <Compile Include="View\frmAddAgencia.cs">
@@ -268,6 +261,10 @@
     <ProjectReference Include="..\Fluxus.Domain\Fluxus.Domain.csproj">
       <Project>{37bf5b5e-298a-47c4-9c78-af0afd9393ce}</Project>
       <Name>Fluxus.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fluxus.Services\Fluxus.Services.csproj">
+      <Project>{f80d67b7-e908-411b-abe5-add36dc18a56}</Project>
+      <Name>Fluxus.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

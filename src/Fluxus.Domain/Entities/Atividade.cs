@@ -1,5 +1,5 @@
 ﻿
-namespace Fluxus.Domain.Models
+namespace Fluxus.Domain.Entities
 {
 
     public class Atividade

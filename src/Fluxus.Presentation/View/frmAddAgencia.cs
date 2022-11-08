@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Domain.Models;
-using Fluxus.Presentation.Controller;
+using Fluxus.Domain.Entities;
+using Fluxus.Services;
 
 namespace Fluxus.Presentation.View
 {
@@ -14,9 +14,6 @@ namespace Fluxus.Presentation.View
 
 
 
-
-
-        //:METHODS
         private void OnValidated_MaskedTextBox(object sender, EventArgs e)
         {
             MaskedTextBox box = (MaskedTextBox)sender;
@@ -136,7 +133,7 @@ namespace Fluxus.Presentation.View
             {
                 try
                 {
-                    new AgenciaController().Insert(dado);
+                    new AgenciaService().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -148,7 +145,7 @@ namespace Fluxus.Presentation.View
             {
                 try
                 {
-                    new AgenciaController().Update(_id, dado);
+                    new AgenciaService().Update(_id, dado);
                 }
                 catch (Exception ex)
                 {

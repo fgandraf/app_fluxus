@@ -1,43 +1,32 @@
-﻿using Fluxus.Domain.Models;
-using Newtonsoft.Json;
+﻿using Fluxus.Domain.Entities;
+using Fluxus.Infra.Repositories;
 using System.Data;
 
 
-namespace Fluxus.Presentation.Controller
+namespace Fluxus.Services
 {
-    class CadastraisController
+    public class CadastraisService
     {
 
 
 
         public void Insert(Cadastrais dado)
         {
-            // POST: api/cadastrais/post
-            string jsonData = JsonConvert.SerializeObject(dado);
-            string json = string.Empty;
-
-            json = Connection.RequestPOST("cadastrais/post", jsonData);
+            new CompanyRepository().Insert(dado);
         }
 
 
 
         public void Update(Cadastrais dado)
         {
-            // PUT api/cadastrais/put
-            string jsonData = JsonConvert.SerializeObject(dado);
-            string json = string.Empty;
-
-            json = Connection.RequestPUT("cadastrais/put", jsonData);
+            new CompanyRepository().Update(dado);
         }
 
 
 
         public Cadastrais ListarCadastrais()
         {
-            // GET: api/cadastrais
-            string json = Connection.RequestGET("cadastrais", string.Empty);
-            DataTable dt = JsonConvert.DeserializeObject<DataTable>(json);
-
+            DataTable dt = new CompanyRepository().GetAll();
             Cadastrais retorno = new Cadastrais
             {
                 Cnpj = dt.Rows[0]["cnpj"].ToString(),
@@ -68,6 +57,7 @@ namespace Fluxus.Presentation.Controller
                 Ct_termino = dt.Rows[0]["ct_termino"].ToString(),
                 Logo = dt.Rows[0]["logo"].ToString()
             };
+
             return retorno;
         }
 
@@ -75,20 +65,14 @@ namespace Fluxus.Presentation.Controller
 
         public DataTable DadosParaImpressao()
         {
-            // GET: api/cadastrais/gettoprint
-            DataTable retorno = new DataTable();
-            string json = Connection.RequestGET("cadastrais/gettoprint", string.Empty);
-            retorno = JsonConvert.DeserializeObject<DataTable>(json);
-            return retorno;
+            return new CompanyRepository().GetToPrint();
         }
 
 
 
         public string GetFantasia()
         {
-            // GET: api/cadastrais/getfantasia
-            string json = Connection.RequestGET("cadastrais/getfantasia", string.Empty);
-            return json;
+            return new CompanyRepository().GetName();
         }
 
 

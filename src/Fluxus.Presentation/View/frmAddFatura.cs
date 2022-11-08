@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Domain.Models;
+using Fluxus.Domain.Entities;
 using System.Globalization;
-using Fluxus.Presentation.Controller;
+using Fluxus.Services;
 
 namespace Fluxus.Presentation.View
 {
@@ -23,7 +23,7 @@ namespace Fluxus.Presentation.View
         {
             try
             {
-                dgvOS.DataSource = new OsController().GetOrdensConcluidasNaoFaturadas();
+                dgvOS.DataSource = new OsService().GetOrdensConcluidasNaoFaturadas();
             }
             catch (Exception ex)
             {
@@ -108,13 +108,13 @@ namespace Fluxus.Presentation.View
             {
 
                 Fatura dado = PopulateObject();
-                long fatura_cod = new FaturaController().Insert(dado);
+                long fatura_cod = new FaturaService().Insert(dado);
 
 
                 foreach (DataGridViewRow row in dgvOS.Rows)
                 {
                     long idOS = Convert.ToInt64(row.Cells["id"].Value);
-                    new OsController().UpdateFaturaCod(idOS, fatura_cod);
+                    new OsService().UpdateFaturaCod(idOS, fatura_cod);
                 }
 
                 MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);

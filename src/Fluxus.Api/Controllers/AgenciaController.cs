@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Microsoft.AspNetCore.Mvc;
-using Fluxus.Api.Entities;
+using Fluxus.Domain.Entities;
 using Fluxus.Api.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;

@@ -1,5 +1,5 @@
 ﻿
-namespace Fluxus.Api.Entities
+namespace Fluxus.Domain.Entities
 {
 
     public class Cadastrais

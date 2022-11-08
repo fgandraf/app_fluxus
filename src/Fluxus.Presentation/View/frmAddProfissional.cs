@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Domain.Models;
+using Fluxus.Domain.Entities;
 using System.Data;
-using Fluxus.Presentation.Controller;
+using Fluxus.Services;
 
 namespace Fluxus.Presentation.View
 {
@@ -169,7 +169,7 @@ namespace Fluxus.Presentation.View
             //VERIFICA SE NOME DE USUÁRIO JÁ EXISTE NO SISTEMA
             if (txtUsrNome.Text != _usr_nome)
             {
-                DataTable dtPro = new ProfissionalController().BuscarUsuario(txtUsrNome.Text);
+                DataTable dtPro = new ProfissionalService().BuscarUsuario(txtUsrNome.Text);
 
                 if (dtPro.Rows.Count > 0)
                 {
@@ -200,7 +200,7 @@ namespace Fluxus.Presentation.View
             {
                 try
                 {
-                    new ProfissionalController().Insert(dado);
+                    new ProfissionalService().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -212,7 +212,7 @@ namespace Fluxus.Presentation.View
             {
                 try
                 {
-                    new ProfissionalController().Update(_id, dado);
+                    new ProfissionalService().Update(_id, dado);
                 }
                 catch (Exception ex)
                 {

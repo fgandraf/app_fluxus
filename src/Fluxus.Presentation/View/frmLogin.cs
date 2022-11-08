@@ -2,8 +2,8 @@
 using System.Data;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Fluxus.Presentation.Controller;
-using Fluxus.Domain.Models;
+using Fluxus.Services;
+using Fluxus.Domain.Entities;
 
 
 namespace Fluxus.Presentation.View
@@ -50,7 +50,7 @@ namespace Fluxus.Presentation.View
             lblLoad.Text = "Validando usuário";
 
 
-            DataTable dtUsuario = new ProfissionalController().BuscarUsuario(txtUsuario.Text);
+            DataTable dtUsuario = new ProfissionalService().BuscarUsuario(txtUsuario.Text);
 
             DataRow[] dataRow;
 

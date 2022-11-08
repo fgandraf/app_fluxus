@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using Fluxus.Domain.Models;
-using Fluxus.Presentation.Controller;
+using Fluxus.Domain.Entities;
+using Fluxus.Services;
 
 namespace Fluxus.Presentation.View
 {
@@ -17,7 +17,7 @@ namespace Fluxus.Presentation.View
         {
             try
             {
-                dgvAtividades.DataSource = new AtividadeController().ListarAtividades(false);
+                dgvAtividades.DataSource = new AtividadeService().ListarAtividades(false);
 
                 if (dgvAtividades.Rows.Count == 0)
                 {
@@ -42,7 +42,7 @@ namespace Fluxus.Presentation.View
         {
             try
             {
-                new AtividadeController().Delete((Convert.ToInt64(dgvAtividades.CurrentRow.Cells["id"].Value)));
+                new AtividadeService().Delete((Convert.ToInt64(dgvAtividades.CurrentRow.Cells["id"].Value)));
             }
             catch (Exception ex)
             {
@@ -92,7 +92,7 @@ namespace Fluxus.Presentation.View
             if (Logged.Rl == false)
                 return;
 
-            Atividade atividade = new AtividadeController().GetBy(Convert.ToInt32(dgvAtividades.CurrentRow.Cells["id"].Value));
+            Atividade atividade = new AtividadeService().GetBy(Convert.ToInt32(dgvAtividades.CurrentRow.Cells["id"].Value));
 
             frmAddAtividade formNeto = new frmAddAtividade(_frmPrincipal, atividade);
             
