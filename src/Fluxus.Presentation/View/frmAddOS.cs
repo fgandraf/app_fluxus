@@ -43,8 +43,8 @@ namespace Fluxus.Presentation.View
             {
                 DataRow[] dataRowAtividade = DtAtividades.Select(String.Format("codigo = '{0}'", cboAtividade.Text));
                 lblAtividadeNome.Text = dataRowAtividade[0]["descricao"].ToString();
-                lblAtividadeValor.Text = dataRowAtividade[0]["valor_atividade"].ToString();
-                lblAtividadeDeslocamento.Text = dataRowAtividade[0]["valor_deslocamento"].ToString();
+                lblAtividadeValor.Text = dataRowAtividade[0]["valorAtividade"].ToString();
+                lblAtividadeDeslocamento.Text = dataRowAtividade[0]["valorDeslocamento"].ToString();
             }
             catch (Exception ex)
             {
@@ -144,26 +144,27 @@ namespace Fluxus.Presentation.View
             //POPULATE OBJECT TO RETURN
             Os dado = new Os
             {
+                Id = _id,
                 Titulo = titulo,
                 Referencia = referencia,
                 Agencia = _agencia,
-                Data_ordem = Util.ValidateDateString(txtDataOrdem.Text),
-                Prazo_execucao = Convert.ToDateTime(dtpPrazo.Value),
-                Profissional_cod = cboProfissional.Text,
-                Atividade_cod = cboAtividade.Text,
-                Valor_atividade = lblAtividadeValor.Text.Replace(',', '.'),
-                Valor_deslocamento = lblAtividadeDeslocamento.Text.Replace(',', '.'),
+                DataOrdem = Util.ValidateDateString(txtDataOrdem.Text),
+                Prazo = Convert.ToDateTime(dtpPrazo.Value),
+                ProfissionalId = cboProfissional.Text,
+                AtividadeId = cboAtividade.Text,
+                ValorAtividade = lblAtividadeValor.Text.Replace(',', '.'),
+                ValorDeslocamento = lblAtividadeDeslocamento.Text.Replace(',', '.'),
                 Siopi = chkSiopi.Checked,
-                Nome_cliente = txtNomeCliente.Text,
+                ClienteNome = txtNomeCliente.Text,
                 Cidade = cboCidade.Text,
-                Nome_contato = txtNomeContato.Text,
-                Telefone_contato = txtTelefoneContato.Text,
+                ContatoNome = txtNomeContato.Text,
+                ContatoTelefone = txtTelefoneContato.Text,
                 Coordenada = txtCoordenada.Text,
                 Status = status,
-                Data_pendente = Util.ValidateDateString(txtDataPendente.Text),
-                Data_vistoria = Util.ValidateDateString(txtDataVistoria.Text),
-                Data_concluida = Util.ValidateDateString(txtDataConcluida.Text),
-                Obs = txtOBS.Text
+                DataPendente = Util.ValidateDateString(txtDataPendente.Text),
+                DataVistoria = Util.ValidateDateString(txtDataVistoria.Text),
+                DataConcluida = Util.ValidateDateString(txtDataConcluida.Text),
+                Observacoes = txtOBS.Text
             };
             return dado;
         }
@@ -216,15 +217,15 @@ namespace Fluxus.Presentation.View
 
                         
             _agencia = dado.Agencia;
-            txtDataOrdem.Text = dado.Data_ordem;
-            dtpPrazo.Text = dado.Prazo_execucao.ToString();
-            cboProfissional.Text = dado.Profissional_cod;
-            cboAtividade.Text = dado.Atividade_cod;
+            txtDataOrdem.Text = dado.DataOrdem;
+            dtpPrazo.Text = dado.Prazo.ToString();
+            cboProfissional.Text = dado.ProfissionalId;
+            cboAtividade.Text = dado.AtividadeId;
             chkSiopi.Checked = dado.Siopi;
-            txtNomeCliente.Text = dado.Nome_cliente;
+            txtNomeCliente.Text = dado.ClienteNome;
             cboCidade.Text = dado.Cidade;
-            txtNomeContato.Text = dado.Nome_contato;
-            txtTelefoneContato.Text = dado.Telefone_contato;
+            txtNomeContato.Text = dado.ContatoNome;
+            txtTelefoneContato.Text = dado.ContatoTelefone;
             txtCoordenada.Text = dado.Coordenada;
             if (dado.Status == "RECEBIDA")
                 rbtRecebida.Checked = true;
@@ -235,10 +236,10 @@ namespace Fluxus.Presentation.View
             else
                 rbtConcluida.Checked = true;
 
-            txtDataPendente.Text = dado.Data_pendente;
-            txtDataVistoria.Text = dado.Data_vistoria;
-            txtDataConcluida.Text = dado.Data_concluida;
-            txtOBS.Text = dado.Obs;
+            txtDataPendente.Text = dado.DataPendente;
+            txtDataVistoria.Text = dado.DataVistoria;
+            txtDataConcluida.Text = dado.DataConcluida;
+            txtOBS.Text = dado.Observacoes;
 
 
             BuscarNomeProfissional();
@@ -246,10 +247,10 @@ namespace Fluxus.Presentation.View
             BuscarAgencia();
 
 
-            if (dado.Fatura_cod != 0)
+            if (dado.FaturaId != 0)
             {
                 lblFaturada.Show();
-                txtCodFatura.Text = "Fatura: " + new FaturaService().DescricaoFatura(dado.Fatura_cod);
+                txtCodFatura.Text = "Fatura: " + new FaturaService().DescricaoFatura(dado.FaturaId);
                 txtCodFatura.Show();
 
 
@@ -355,7 +356,7 @@ namespace Fluxus.Presentation.View
             {
                 try
                 {
-                    new OsService().Update(_id, dado);
+                    new OsService().Update(dado);
                 }
                 catch (Exception ex)
                 {

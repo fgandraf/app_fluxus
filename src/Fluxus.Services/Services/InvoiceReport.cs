@@ -6,12 +6,12 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 
 
-namespace Fluxus.Presentation.View.Report
+namespace Fluxus.Services
 {
-    public class ITXFatura
+    public class InvoiceReport
     {
 
-        public static void GerarFaturaPDF (System.Drawing.Image logotipo, string edital, string contrato, string razaosocial, string cnpj, DataTable dtPro, DataTable dtOS, string caminho)
+        public static void PrintPDF (System.Drawing.Image logotipo, string edital, string contrato, string razaosocial, string cnpj, DataTable dtPro, DataTable dtOS, string caminho)
         {
 
             //////////////////-CRIAÇÃO DO PDF-///////////////////////

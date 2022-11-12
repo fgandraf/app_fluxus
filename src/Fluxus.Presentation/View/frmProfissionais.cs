@@ -16,7 +16,7 @@ namespace Fluxus.Presentation.View
         {
             try
             {
-                dgvProfissionais.DataSource = new ProfissionalService().ListarProfissionais();
+                dgvProfissionais.DataSource = new ProfissionalService().GetAll();
 
                 if (dgvProfissionais.Rows.Count == 0)
                 {

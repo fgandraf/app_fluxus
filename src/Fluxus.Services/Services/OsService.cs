@@ -11,23 +11,23 @@ namespace Fluxus.Services
 
 
 
-        public void Insert(Os dado)
+        public void Insert(Os body)
         {
-            new OrderRepository().Insert(dado);
+            new OrderRepository().Insert(body);
         }
 
 
 
-        public void Update(long id, Os dado)
+        public void Update(Os body)
         {
-            new OrderRepository().Update(id, dado);
+            new OrderRepository().Update(body);
         }
 
 
 
-        public void UpdateFaturaCod(long id, long fatura_cod)
+        public void UpdateFaturaCod(long id, long invoiceId)
         {
-            new OrderRepository().UpdateFaturaCod(id, fatura_cod);
+            new OrderRepository().UpdateInvoiceId(id, invoiceId);
         }
 
 
@@ -60,32 +60,32 @@ namespace Fluxus.Services
 
 
 
-        public DataTable GetOrdensFaturadasDoCodigo(long fatura_cod)
+        public DataTable GetOrdensFaturadasDoCodigo(long invoiceId)
         {
-            return new OrderRepository().GetClosedByInvoiceId(fatura_cod);
+            return new OrderRepository().GetClosedByInvoiceId(invoiceId);
         }
 
 
 
-        public DataTable GetOrdensComFiltro(string filtro)
+        public DataTable GetOrdensComFiltro(string parameters)
         {
-            return new OrderRepository().GetFiltered(filtro);
+            return new OrderRepository().GetFiltered(parameters);
         }
 
 
 
-        public DataTable GetProfissionaisDaFatura(long fatura_cod)
+        public DataTable GetProfissionaisDaFatura(long invoiceId)
         {
-            return new OrderRepository().GetProfessionalByInvoiceId(fatura_cod);
+            return new OrderRepository().GetProfessionalByInvoiceId(invoiceId);
         }
 
 
 
-        public DataTable GetCidadesDasOrdens(bool adicionaTitulo)
+        public DataTable GetCidadesDasOrdens(bool addHeader)
         {
             DataTable distinctCidades = new OrderRepository().GetCitiesFromOrders();
 
-            if (adicionaTitulo)
+            if (addHeader)
             {
                 DataRow linha = distinctCidades.NewRow();
                 linha[0] = "--TODAS--";

@@ -48,7 +48,7 @@
             this.dgvAgencias = new System.Windows.Forms.DataGridView();
             this.ttpAgencias = new System.Windows.Forms.ToolTip(this.components);
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.agencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.complemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -176,7 +176,7 @@
             this.dgvAgencias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAgencias.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
-            this.agencia,
+            this.numero,
             this.nome,
             this.endereco,
             this.complemento,
@@ -223,28 +223,28 @@
             // 
             // id
             // 
-            this.id.DataPropertyName = "id";
+            this.id.DataPropertyName = "Id";
             this.id.HeaderText = "Id";
             this.id.Name = "id";
             this.id.ReadOnly = true;
             this.id.Visible = false;
             // 
-            // agencia
+            // numero
             // 
-            this.agencia.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.agencia.DataPropertyName = "agencia";
+            this.numero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.numero.DataPropertyName = "Numero";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.agencia.DefaultCellStyle = dataGridViewCellStyle2;
-            this.agencia.HeaderText = "Agência";
-            this.agencia.Name = "agencia";
-            this.agencia.ReadOnly = true;
-            this.agencia.Width = 81;
+            this.numero.DefaultCellStyle = dataGridViewCellStyle2;
+            this.numero.HeaderText = "Número";
+            this.numero.Name = "numero";
+            this.numero.ReadOnly = true;
+            this.numero.Width = 83;
             // 
             // nome
             // 
             this.nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nome.DataPropertyName = "nome";
+            this.nome.DataPropertyName = "Nome";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.nome.DefaultCellStyle = dataGridViewCellStyle3;
@@ -254,7 +254,7 @@
             // 
             // endereco
             // 
-            this.endereco.DataPropertyName = "endereco";
+            this.endereco.DataPropertyName = "Endereco";
             this.endereco.HeaderText = "Endereço";
             this.endereco.Name = "endereco";
             this.endereco.ReadOnly = true;
@@ -262,7 +262,7 @@
             // 
             // complemento
             // 
-            this.complemento.DataPropertyName = "complemento";
+            this.complemento.DataPropertyName = "Complemento";
             this.complemento.HeaderText = "Complemento";
             this.complemento.Name = "complemento";
             this.complemento.ReadOnly = true;
@@ -270,7 +270,7 @@
             // 
             // bairro
             // 
-            this.bairro.DataPropertyName = "bairro";
+            this.bairro.DataPropertyName = "Bairro";
             this.bairro.HeaderText = "Bairro";
             this.bairro.Name = "bairro";
             this.bairro.ReadOnly = true;
@@ -279,7 +279,7 @@
             // cidade
             // 
             this.cidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cidade.DataPropertyName = "cidade";
+            this.cidade.DataPropertyName = "Cidade";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.cidade.DefaultCellStyle = dataGridViewCellStyle4;
             this.cidade.HeaderText = "Cidade";
@@ -289,7 +289,7 @@
             // 
             // cep
             // 
-            this.cep.DataPropertyName = "cep";
+            this.cep.DataPropertyName = "Cep";
             this.cep.HeaderText = "CEP";
             this.cep.Name = "cep";
             this.cep.ReadOnly = true;
@@ -297,7 +297,7 @@
             // 
             // uf
             // 
-            this.uf.DataPropertyName = "uf";
+            this.uf.DataPropertyName = "Uf";
             this.uf.HeaderText = "UF";
             this.uf.Name = "uf";
             this.uf.ReadOnly = true;
@@ -305,7 +305,7 @@
             // 
             // contato
             // 
-            this.contato.DataPropertyName = "contato";
+            this.contato.DataPropertyName = "Contato";
             this.contato.HeaderText = "Contato";
             this.contato.Name = "contato";
             this.contato.ReadOnly = true;
@@ -314,7 +314,7 @@
             // telefone1
             // 
             this.telefone1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.telefone1.DataPropertyName = "telefone1";
+            this.telefone1.DataPropertyName = "Telefone1";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.telefone1.DefaultCellStyle = dataGridViewCellStyle5;
             this.telefone1.HeaderText = "Telefone";
@@ -325,7 +325,7 @@
             // 
             // telefone2
             // 
-            this.telefone2.DataPropertyName = "telefone2";
+            this.telefone2.DataPropertyName = "Telefone2";
             this.telefone2.HeaderText = "Telefone2";
             this.telefone2.Name = "telefone2";
             this.telefone2.ReadOnly = true;
@@ -334,7 +334,7 @@
             // email
             // 
             this.email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.email.DataPropertyName = "email";
+            this.email.DataPropertyName = "Email";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.email.DefaultCellStyle = dataGridViewCellStyle6;
@@ -382,7 +382,7 @@
         private System.Windows.Forms.DataGridView dgvAgencias;
         private System.Windows.Forms.ToolTip ttpAgencias;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn agencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn endereco;
         private System.Windows.Forms.DataGridViewTextBoxColumn complemento;

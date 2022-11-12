@@ -24,8 +24,8 @@ namespace Fluxus.Presentation.View
             Os ordemDeServico = new OsService().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
 
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
-            
-            
+
+
             formNeto.Text = "Alterar";
             _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
         }
@@ -49,16 +49,10 @@ namespace Fluxus.Presentation.View
 
         private void ListarOS(DataGridView dgv)
         {
-            try
-            {
-                dtOS = new OsService().GetOrdensComFiltro(GerarStringSQL());
-                dgv.DataSource = dtOS;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            ;
+
+            dtOS = new OsService().GetOrdensComFiltro(GerarStringSQL());
+            dgv.DataSource = dtOS;
+
         }
 
         private void LimparFiltro()
@@ -92,7 +86,7 @@ namespace Fluxus.Presentation.View
                     faturadas = "= 0";
             }
 
-            
+
 
             string atividade;
             {
@@ -135,9 +129,9 @@ namespace Fluxus.Presentation.View
             _frmPrincipal = frm1;
         }
 
-        private  void frmOS_Load(object sender, EventArgs e)
+        private void frmOS_Load(object sender, EventArgs e)
         {
-            
+
             cboProfissional.DataSource = new ProfissionalService().ListarCodigoENomeid(true);
             cboCidade.DataSource = new OsService().GetCidadesDasOrdens(true);
             cboAtividade.DataSource = new AtividadeService().ListarAtividades(true);
@@ -151,7 +145,7 @@ namespace Fluxus.Presentation.View
                 cboProfissional.SelectedIndex = 0;
             cboFaturadas.SelectedIndex = 2;
 
-            
+
 
             ListarOS(dgvOS);
             lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();

@@ -7,16 +7,16 @@ namespace Fluxus.Infra.Repositories
 {
     public class ActivityRepository
     {
-        public void Insert(Atividade dado)
+        public void Insert(Atividade body)
         {
-            string json = JsonConvert.SerializeObject(dado);
+            string json = JsonConvert.SerializeObject(body);
             Request.Post("atividade/post", json);
         }
 
-        public void Update(long id, Atividade dado)
+        public void Update(Atividade body)
         {
-            string json = JsonConvert.SerializeObject(dado);
-            Request.Put("atividade/put/", json);
+            string json = JsonConvert.SerializeObject(body);
+            Request.Put("atividade/put/" + body.Id, json);
         }
 
         public void Delete(long id)

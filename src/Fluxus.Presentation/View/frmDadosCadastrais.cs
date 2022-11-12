@@ -46,10 +46,10 @@ namespace Fluxus.Presentation.View
                 {
                     btnCadastrarSalvar.Text = "&Salvar";
                     txtCNPJ.Text = dados.Cnpj;
-                    txtNomeFantasia.Text = dados.Fantasia;
-                    txtRazaoSocial.Text = dados.Razao;
-                    txtInscricaoEstadual.Text = dados.Ie;
-                    txtInscricaoMunicipal.Text = dados.Im;
+                    txtNomeFantasia.Text = dados.Nome;
+                    txtRazaoSocial.Text = dados.RazaoSocial;
+                    txtInscricaoEstadual.Text = dados.InscricaoEstadual;
+                    txtInscricaoMunicipal.Text = dados.InscricaoMunicipal;
                     txtEndereco.Text = dados.Endereco;
                     txtComplemento.Text = dados.Complemento;
                     txtBairro.Text = dados.Bairro;
@@ -62,31 +62,31 @@ namespace Fluxus.Presentation.View
                     txtTelefone.Text = dados.Telefone;
                     txtTelefone2.Text = dados.Telefone2;
                     txtEmail.Text = dados.Email;
-                    txtBanco.Text = dados.Db_banco;
-                    cboTipoDeConta.Text = dados.Db_tipo;
-                    txtAgencia.Text = dados.Db_agencia;
-                    txtOperador.Text = dados.Db_operador;
-                    txtConta.Text = dados.Db_conta;
-                    cboTomador.Text = dados.Ct_tomador;
-                    txtEdital.Text = dados.Ct_edital;
-                    txtContrato.Text = dados.Ct_contrato;
+                    txtBanco.Text = dados.BancoNome;
+                    cboTipoDeConta.Text = dados.BancoTipo;
+                    txtAgencia.Text = dados.BancoAgencia;
+                    txtOperador.Text = dados.BancoOperador;
+                    txtConta.Text = dados.BancoConta;
+                    cboTomador.Text = dados.ContratoTomador;
+                    txtEdital.Text = dados.ContratoEdital;
+                    txtContrato.Text = dados.ContratoNumero;
 
-                    DateTime ct_celebrado = Convert.ToDateTime(dados.Ct_celebrado);
+                    DateTime ct_celebrado = Convert.ToDateTime(dados.ContratoCelebrado);
                     if (ct_celebrado.ToString() != "01/01/0001 00:00:00")
                         txtCelebrado.Text = ct_celebrado.ToString("dd/MM/yyy");
 
-                    DateTime ct_inicio = Convert.ToDateTime(dados.Ct_inicio);
+                    DateTime ct_inicio = Convert.ToDateTime(dados.ContratoInicio);
                     if (ct_inicio.ToString() != "01/01/0001 00:00:00")
                         txtInicio.Text = ct_inicio.ToString("dd/MM/yyyy");
 
-                    DateTime ct_termino = Convert.ToDateTime(dados.Ct_termino);
+                    DateTime ct_termino = Convert.ToDateTime(dados.ContratoTermino);
                     if (ct_termino.ToString() != "01/01/0001 00:00:00")
                         txtTermino.Text = ct_termino.ToString("dd/MM/yyyy");
 
 
 
 
-                    byte[] logo = Convert.FromBase64String(dados.Logo);
+                    byte[] logo = Convert.FromBase64String(dados.Logotipo);
 
                     if (logo.ToString() != "")
                     {
@@ -109,10 +109,10 @@ namespace Fluxus.Presentation.View
             Cadastrais dado = new Cadastrais
             {
                 Cnpj = txtCNPJ.Text,
-                Fantasia = txtNomeFantasia.Text,
-                Razao = txtRazaoSocial.Text,
-                Ie = txtInscricaoEstadual.Text,
-                Im = txtInscricaoMunicipal.Text,
+                Nome = txtNomeFantasia.Text,
+                RazaoSocial = txtRazaoSocial.Text,
+                InscricaoEstadual = txtInscricaoEstadual.Text,
+                InscricaoMunicipal = txtInscricaoMunicipal.Text,
                 Endereco = txtEndereco.Text,
                 Complemento = txtComplemento.Text,
                 Bairro = txtBairro.Text,
@@ -123,18 +123,18 @@ namespace Fluxus.Presentation.View
                 Telefone = txtTelefone.Text,
                 Telefone2 = txtTelefone2.Text,
                 Email = txtEmail.Text,
-                Db_banco = txtBanco.Text,
-                Db_tipo = cboTipoDeConta.Text,
-                Db_agencia = txtAgencia.Text,
-                Db_operador = txtOperador.Text,
-                Db_conta = txtConta.Text,
-                Ct_tomador = cboTomador.Text,
-                Ct_edital = txtEdital.Text,
-                Ct_contrato = txtContrato.Text,
-                Ct_celebrado = Util.ValidateDateString(txtCelebrado.Text),
-                Ct_inicio = Util.ValidateDateString(txtInicio.Text),
-                Ct_termino = Util.ValidateDateString(txtTermino.Text),
-                Logo = Convert.ToBase64String(Util.ImageToByte(picLogotipo.Image))
+                BancoNome = txtBanco.Text,
+                BancoTipo = cboTipoDeConta.Text,
+                BancoAgencia = txtAgencia.Text,
+                BancoOperador = txtOperador.Text,
+                BancoConta = txtConta.Text,
+                ContratoTomador = cboTomador.Text,
+                ContratoEdital = txtEdital.Text,
+                ContratoNumero = txtContrato.Text,
+                ContratoCelebrado = Util.ValidateDateString(txtCelebrado.Text),
+                ContratoInicio = Util.ValidateDateString(txtInicio.Text),
+                ContratoTermino = Util.ValidateDateString(txtTermino.Text),
+                Logotipo = Convert.ToBase64String(Util.ImageToByte(picLogotipo.Image))
             };
 
             return dado;

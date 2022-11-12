@@ -9,16 +9,16 @@ namespace Fluxus.Services
     {
 
 
-        public void Insert(Atividade dado)
+        public void Insert(Atividade body)
         {
-            new ActivityRepository().Insert(dado);
+            new ActivityRepository().Insert(body);
         }
 
 
 
-        public void Update(long id, Atividade dado)
+        public void Update(Atividade body)
         {
-            new ActivityRepository().Update(id, dado);
+            new ActivityRepository().Update(body);
         }
 
 
@@ -30,15 +30,15 @@ namespace Fluxus.Services
 
 
 
-        public DataTable ListarAtividades(bool adicionaTitulo)
+        public DataTable ListarAtividades(bool addHeader)
         {
             DataTable table = new ActivityRepository().GetAll();
 
             DataView view = new DataView(table);
 
-            DataTable atividades = view.ToTable("Selected", false, "id", "codigo", "descricao", "valor_atividade", "valor_deslocamento");
+            DataTable atividades = view.ToTable("Selected", false, "id", "codigo", "descricao", "valorAtividade", "valorDeslocamento");
 
-            if (adicionaTitulo)
+            if (addHeader)
             {
                 DataRow linha = atividades.NewRow();
                 linha[1] = "--TODAS--";

@@ -239,7 +239,7 @@
             // valor_atividade
             // 
             this.valor_atividade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.valor_atividade.DataPropertyName = "valor_atividade";
+            this.valor_atividade.DataPropertyName = "valorAtividade";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.valor_atividade.DefaultCellStyle = dataGridViewCellStyle4;
             this.valor_atividade.HeaderText = "Atividade (R$)";
@@ -250,7 +250,7 @@
             // valor_deslocamento
             // 
             this.valor_deslocamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.valor_deslocamento.DataPropertyName = "valor_deslocamento";
+            this.valor_deslocamento.DataPropertyName = "valorDeslocamento";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.valor_deslocamento.DefaultCellStyle = dataGridViewCellStyle5;
             this.valor_deslocamento.HeaderText = "Deslocamento (R$)";

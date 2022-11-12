@@ -7,15 +7,15 @@ namespace Fluxus.Infra.Repositories
 {
     public class CompanyRepository
     {
-        public void Insert(Cadastrais dado)
+        public void Insert(Cadastrais body)
         {
-            string json = JsonConvert.SerializeObject(dado);
+            string json = JsonConvert.SerializeObject(body);
             Request.Post("cadastrais/post", json);
         }
 
-        public void Update(Cadastrais dado)
+        public void Update(Cadastrais body)
         {
-            string json = JsonConvert.SerializeObject(dado);
+            string json = JsonConvert.SerializeObject(body);
             Request.Put("cadastrais/put", json);
         }
 
@@ -35,5 +35,6 @@ namespace Fluxus.Infra.Repositories
         {
             return Request.Get("cadastrais/getfantasia", string.Empty);
         }
+        
     }
 }

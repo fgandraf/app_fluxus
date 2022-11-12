@@ -7,16 +7,16 @@ namespace Fluxus.Infra.Repositories
 {
     public class AgencyRepository
     {
-        public void Insert(Agencia dado)
+        public void Insert(Agencia body)
         {
-            string json = JsonConvert.SerializeObject(dado);
+            string json = JsonConvert.SerializeObject(body);
             Request.Post("agencia/post", json);
         }
 
-        public void Update(long id, Agencia dado)
+        public void Update(Agencia body)
         {
-            string json = JsonConvert.SerializeObject(dado);
-            Request.Put("agencia/put/" + id, json);
+            string json = JsonConvert.SerializeObject(body);
+            Request.Put("agencia/put/" + body.Id, json);
         }
 
         public void Delete(long id)
@@ -30,9 +30,9 @@ namespace Fluxus.Infra.Repositories
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public DataTable GetByCode(string agenciaCodigo)
+        public DataTable GetByCode(string agencyCode)
         {
-            string json = Request.Get("agencia/getsomeby/", agenciaCodigo);
+            string json = Request.Get("agencia/getsomeby/", agencyCode);
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 

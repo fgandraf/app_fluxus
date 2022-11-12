@@ -8,16 +8,16 @@ namespace Fluxus.Infra.Repositories
 {
     public class InvoiceRepository
     {
-        public long Insert(Fatura dado)
+        public long Insert(Fatura body)
         {
-            string json = JsonConvert.SerializeObject(dado);
+            string json = JsonConvert.SerializeObject(body);
             return Convert.ToInt64(Request.Post("fatura/post", json));
         }
 
-        public void Update(long id, Fatura dado)
+        public void Update(Fatura body)
         {
-            string json = JsonConvert.SerializeObject(dado);
-            Request.Put("fatura/puttotals/" + id, json);
+            string json = JsonConvert.SerializeObject(body);
+            Request.Put("fatura/puttotals/" + body.Id, json);
         }
 
         public void Delete(long id)

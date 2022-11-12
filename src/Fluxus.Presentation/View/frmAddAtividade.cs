@@ -16,32 +16,7 @@ namespace Fluxus.Presentation.View
 
 
 
-        //:METHODS
-        private Atividade PopulateObject()
-        {
-            Atividade dado = new Atividade
-            {
-                Codigo = txtCodigo.Text,
-                Descricao = txtDescricao.Text,
-                Valor_atividade = txtValor.Text.Replace(',', '.'),
-                Valor_deslocamento = txtDeslocamento.Text.Replace(',', '.')
-            };
-            return dado;
-        }
 
-
-        private void Back()
-        {
-            this.Close();
-            frmAtividades formFilho = new frmAtividades(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
-        }
-
-
-
-
-
-        //:EVENTS
         public frmAddAtividade(frmPrincipal frm1)
         {
             InitializeComponent();
@@ -56,8 +31,8 @@ namespace Fluxus.Presentation.View
             _id = dado.Id;
             txtCodigo.Text = dado.Codigo;
             txtDescricao.Text = dado.Descricao;
-            txtValor.Text = dado.Valor_atividade;
-            txtDeslocamento.Text = dado.Valor_deslocamento;
+            txtValor.Text = dado.ValorAtividade;
+            txtDeslocamento.Text = dado.ValorDeslocamento;
         }
 
 
@@ -74,6 +49,12 @@ namespace Fluxus.Presentation.View
         }
 
 
+
+
+
+
+
+
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             if (txtCodigo.Text == "")
@@ -83,32 +64,14 @@ namespace Fluxus.Presentation.View
             }
 
 
-            Atividade dado = PopulateObject();
+            Atividade activity = PopulateObject();
 
 
             if (btnAddSave.Text == "&Adicionar")
-            {
-                try
-                {
-                    new AtividadeService().Insert(dado);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
+                new AtividadeService().Insert(activity);
             else
-            {
-                try
-                {
-                    new AtividadeService().Update(_id, dado);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+                new AtividadeService().Update(activity);
+
 
             Back();
         }
@@ -119,6 +82,32 @@ namespace Fluxus.Presentation.View
             Back();
         }
 
+
+
+
+
+
+
+        private Atividade PopulateObject()
+        {
+            Atividade dado = new Atividade
+            {
+                Id = _id,
+                Codigo = txtCodigo.Text,
+                Descricao = txtDescricao.Text,
+                ValorAtividade = txtValor.Text.Replace(',', '.'),
+                ValorDeslocamento = txtDeslocamento.Text.Replace(',', '.')
+            };
+            return dado;
+        }
+
+
+        private void Back()
+        {
+            this.Close();
+            frmAtividades formFilho = new frmAtividades(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+        }
 
     }
 

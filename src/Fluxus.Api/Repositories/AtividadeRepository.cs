@@ -27,8 +27,8 @@ namespace Fluxus.Api.Repositories
                         atividade.Id = Convert.ToInt64(dr["id"]);
                         atividade.Codigo = Convert.ToString(dr["codigo"]);
                         atividade.Descricao = Convert.ToString(dr["descricao"]);
-                        atividade.Valor_atividade = Convert.ToString(dr["valor_atividade"]);
-                        atividade.Valor_deslocamento = Convert.ToString(dr["valor_deslocamento"]);
+                        atividade.ValorAtividade = Convert.ToString(dr["valor_atividade"]);
+                        atividade.ValorDeslocamento = Convert.ToString(dr["valor_deslocamento"]);
 
                         atividadesArray.Add(atividade);
                     }
@@ -70,8 +70,8 @@ namespace Fluxus.Api.Repositories
                         atividade.Id = Convert.ToInt64(dr["id"]);
                         atividade.Codigo = Convert.ToString(dr["codigo"]);
                         atividade.Descricao = Convert.ToString(dr["descricao"]);
-                        atividade.Valor_atividade = Convert.ToString(dr["valor_atividade"]);
-                        atividade.Valor_deslocamento = Convert.ToString(dr["valor_deslocamento"]);
+                        atividade.ValorAtividade = Convert.ToString(dr["valor_atividade"]);
+                        atividade.ValorDeslocamento = Convert.ToString(dr["valor_deslocamento"]);
                     }
                     conexao.Close();
                     return atividade;
@@ -101,8 +101,8 @@ namespace Fluxus.Api.Repositories
                 MySqlCommand sql = new MySqlCommand("INSERT INTO tb_atividades(codigo, descricao, valor_atividade, valor_deslocamento) VALUES (@codigo, @descricao, @valor_atividade, @valor_deslocamento)", conexao);
                 sql.Parameters.AddWithValue("@codigo", dado.Codigo);
                 sql.Parameters.AddWithValue("@descricao", dado.Descricao);
-                sql.Parameters.AddWithValue("@valor_atividade", dado.Valor_atividade);
-                sql.Parameters.AddWithValue("@valor_deslocamento", dado.Valor_deslocamento);
+                sql.Parameters.AddWithValue("@valor_atividade", dado.ValorAtividade);
+                sql.Parameters.AddWithValue("@valor_deslocamento", dado.ValorDeslocamento);
                 sql.ExecuteNonQuery();
 
                 conexao.Close();
@@ -127,8 +127,8 @@ namespace Fluxus.Api.Repositories
                 MySqlCommand sql = new MySqlCommand("UPDATE tb_atividades SET descricao = @descricao, valor_atividade = @valor_atividade, valor_deslocamento = @valor_deslocamento WHERE id = @id", conexao);
                 sql.Parameters.AddWithValue("@id", id);
                 sql.Parameters.AddWithValue("@descricao", dado.Descricao);
-                sql.Parameters.AddWithValue("@valor_atividade", dado.Valor_atividade);
-                sql.Parameters.AddWithValue("@valor_deslocamento", dado.Valor_deslocamento);
+                sql.Parameters.AddWithValue("@valor_atividade", dado.ValorAtividade);
+                sql.Parameters.AddWithValue("@valor_deslocamento", dado.ValorDeslocamento);
                 sql.ExecuteNonQuery();
                 conexao.Close();
             }

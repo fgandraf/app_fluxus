@@ -14,7 +14,7 @@ namespace Fluxus.Api.Repositories
                 MySqlConnection conexao = new MySqlConnection(ConnectionString.Conn);
                 conexao.Open();
                 MySqlCommand sql = new MySqlCommand("SELECT id, agencia, nome, cidade, telefone1, email FROM tb_agencias ORDER BY agencia", conexao);
-                
+
                 MySqlDataReader dr = sql.ExecuteReader();
 
                 ArrayList agenciaArray = new ArrayList();
@@ -23,21 +23,21 @@ namespace Fluxus.Api.Repositories
                 {
                     while (dr.Read())
                     {
-                        Agencia agencia = new Agencia();
-
-                        agencia.Id = Convert.ToInt64(dr["id"]);
-                        agencia.Digito = Convert.ToString(dr["agencia"]);
-                        agencia.Nome = Convert.ToString(dr["nome"]);
-                        agencia.Cidade = Convert.ToString(dr["cidade"]);
-                        agencia.Telefone1 = Convert.ToString(dr["telefone1"]);
-                        agencia.Email = Convert.ToString(dr["email"]);
-
+                        dynamic agencia = new
+                        {
+                            Id = Convert.ToInt64(dr["id"]),
+                            Numero = Convert.ToString(dr["agencia"]),
+                            Nome = Convert.ToString(dr["nome"]),
+                            Cidade = Convert.ToString(dr["cidade"]),
+                            Telefone1 = Convert.ToString(dr["telefone1"]),
+                            Email = Convert.ToString(dr["email"])
+                        };
                         agenciaArray.Add(agencia);
                     }
 
                     conexao.Close();
                     return agenciaArray;
-                
+
                 }
                 else
                 {
@@ -53,6 +53,7 @@ namespace Fluxus.Api.Repositories
 
         public Agencia GetBy(long id)
         {
+            
             try
             {
                 MySqlConnection conexao = new MySqlConnection(ConnectionString.Conn);
@@ -64,10 +65,11 @@ namespace Fluxus.Api.Repositories
                 if (dr.HasRows)
                 {
                     Agencia agencia = new Agencia();
+
                     if (dr.Read())
                     {
                         agencia.Id = Convert.ToInt64(dr["id"]);
-                        agencia.Digito = Convert.ToString(dr["agencia"]);
+                        agencia.Numero = Convert.ToString(dr["agencia"]);
                         agencia.Nome = Convert.ToString(dr["nome"]);
                         agencia.Endereco = Convert.ToString(dr["endereco"]);
                         agencia.Complemento = Convert.ToString(dr["complemento"]);
@@ -142,8 +144,8 @@ namespace Fluxus.Api.Repositories
                 MySqlConnection conexao = new MySqlConnection(ConnectionString.Conn);
                 conexao.Open();
                 MySqlCommand sql = new MySqlCommand("INSERT INTO  tb_agencias(agencia, nome, endereco, complemento, bairro, cidade, CEP, UF, contato, telefone1, telefone2, email) VALUES (@agencia, @nome, @endereco, @complemento, @bairro, @cidade, @CEP, @UF, @contato, @telefone1, @telefone2, @email)", conexao);
-                
-                sql.Parameters.AddWithValue("@agencia", dado.Digito);
+
+                sql.Parameters.AddWithValue("@agencia", dado.Numero);
                 sql.Parameters.AddWithValue("@nome", dado.Nome);
                 sql.Parameters.AddWithValue("@endereco", dado.Endereco);
                 sql.Parameters.AddWithValue("@complemento", dado.Complemento);
@@ -173,8 +175,8 @@ namespace Fluxus.Api.Repositories
                 MySqlConnection conexao = new MySqlConnection(ConnectionString.Conn);
                 conexao.Open();
                 MySqlCommand sql = new MySqlCommand("UPDATE tb_agencias SET agencia = @agencia, nome = @nome, endereco = @endereco, complemento = @complemento, bairro = @bairro, cidade = @cidade, CEP = @CEP, UF = @UF, contato = @contato, telefone1 = @telefone1, telefone2 = @telefone2, email = @email WHERE id = @id", conexao);
-                
-                sql.Parameters.AddWithValue("@agencia", dado.Digito);
+
+                sql.Parameters.AddWithValue("@agencia", dado.Numero);
                 sql.Parameters.AddWithValue("@nome", dado.Nome);
                 sql.Parameters.AddWithValue("@endereco", dado.Endereco);
                 sql.Parameters.AddWithValue("@complemento", dado.Complemento);

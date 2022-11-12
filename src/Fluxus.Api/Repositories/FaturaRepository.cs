@@ -26,12 +26,12 @@ namespace Fluxus.Api.Repositories
                     {
                         Fatura fatura = new Fatura();
 
-                        fatura.id = Convert.ToInt32(dr["id"]);
-                        fatura.descricao = Convert.ToString(dr["descricao"]);
-                        fatura.data = Convert.ToDateTime(dr["data"]);
-                        fatura.subtotal_os = Convert.ToDouble(dr["subtotal_os"]);
-                        fatura.subtotal_desloc = Convert.ToDouble(dr["subtotal_desloc"]);
-                        fatura.total = Convert.ToDouble(dr["total"]);
+                        fatura.Id = Convert.ToInt32(dr["id"]);
+                        fatura.Descricao = Convert.ToString(dr["descricao"]);
+                        fatura.Data = Convert.ToDateTime(dr["data"]);
+                        fatura.SubtotalOs = Convert.ToDouble(dr["subtotal_os"]);
+                        fatura.SubtotalDeslocamento = Convert.ToDouble(dr["subtotal_desloc"]);
+                        fatura.Total = Convert.ToDouble(dr["total"]);
 
                         faturaArray.Add(fatura);
                     }
@@ -84,11 +84,11 @@ namespace Fluxus.Api.Repositories
                 MySqlConnection conexao = new MySqlConnection(ConnectionString.Conn);
                 conexao.Open();
                 MySqlCommand sql = new MySqlCommand("INSERT INTO tb_fatura(descricao, data, subtotal_os, subtotal_desloc, total) VALUES (@descricao, @data, @subtotal_os, @subtotal_desloc, @total)", conexao);
-                sql.Parameters.AddWithValue("@descricao", dado.descricao);
-                sql.Parameters.AddWithValue("@data", dado.data);
-                sql.Parameters.AddWithValue("@subtotal_os", dado.subtotal_os);
-                sql.Parameters.AddWithValue("@subtotal_desloc", dado.subtotal_desloc);
-                sql.Parameters.AddWithValue("@total", dado.total);
+                sql.Parameters.AddWithValue("@descricao", dado.Descricao);
+                sql.Parameters.AddWithValue("@data", dado.Data);
+                sql.Parameters.AddWithValue("@subtotal_os", dado.SubtotalOs);
+                sql.Parameters.AddWithValue("@subtotal_desloc", dado.SubtotalDeslocamento);
+                sql.Parameters.AddWithValue("@total", dado.Total);
                 sql.ExecuteNonQuery();
                 conexao.Close();
                 return sql.LastInsertedId;
@@ -109,9 +109,9 @@ namespace Fluxus.Api.Repositories
 
                 MySqlCommand sql = new MySqlCommand("UPDATE tb_fatura SET subtotal_os = @subtotal_os, subtotal_desloc = @subtotal_desloc, total = @total WHERE id = @id", conexao);
                 sql.Parameters.AddWithValue("@id", id);
-                sql.Parameters.AddWithValue("@subtotal_os", dado.subtotal_os);
-                sql.Parameters.AddWithValue("@subtotal_desloc", dado.subtotal_desloc);
-                sql.Parameters.AddWithValue("@total", dado.total);
+                sql.Parameters.AddWithValue("@subtotal_os", dado.SubtotalOs);
+                sql.Parameters.AddWithValue("@subtotal_desloc", dado.SubtotalDeslocamento);
+                sql.Parameters.AddWithValue("@total", dado.Total);
                 sql.ExecuteNonQuery();
                 conexao.Close();
 

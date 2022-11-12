@@ -16,11 +16,11 @@ namespace Fluxus.Domain.Entities
         public string Telefone1 { get; set; }
         public string Telefone2 { get; set; }
         public string Email { get; set; }
-        public bool Rt { get; set; }
-        public bool Rl { get; set; }
+        public bool ResponsavelTecnico { get; set; }
+        public bool ResponsavelLegal { get; set; }
         public bool Usr_ativo { get; set; }
-        public string Usr_nome { get; set; }
-        public string Usr_senha { get; set; }
+        public string UsuarioNome { get; set; }
+        public string UsuarioSenha { get; set; }
     }
 
 

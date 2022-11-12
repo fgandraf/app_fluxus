@@ -156,11 +156,11 @@ namespace Fluxus.Api.Repositories
                         profissional.Telefone1 = Convert.ToString(dr["telefone1"]);
                         profissional.Telefone2 = Convert.ToString(dr["telefone2"]);
                         profissional.Email = Convert.ToString(dr["email"]);
-                        profissional.Rt = Convert.ToBoolean(dr["rt"]);
-                        profissional.Rl = Convert.ToBoolean(dr["rl"]);
+                        profissional.ResponsavelTecnico = Convert.ToBoolean(dr["rt"]);
+                        profissional.ResponsavelLegal = Convert.ToBoolean(dr["rl"]);
                         profissional.Usr_ativo = Convert.ToBoolean(dr["usr_ativo"]);
-                        profissional.Usr_nome = Convert.ToString(dr["usr_nome"]);
-                        profissional.Usr_senha = Convert.ToString(dr["usr_senha"]);
+                        profissional.UsuarioNome = Convert.ToString(dr["usr_nome"]);
+                        profissional.UsuarioSenha = Convert.ToString(dr["usr_senha"]);
                     }
                     conexao.Close();
                     return profissional;
@@ -195,11 +195,11 @@ namespace Fluxus.Api.Repositories
                 sql.Parameters.AddWithValue("@telefone1", dado.Telefone1);
                 sql.Parameters.AddWithValue("@telefone2", dado.Telefone2);
                 sql.Parameters.AddWithValue("@email", dado.Email);
-                sql.Parameters.AddWithValue("@rt", dado.Rt);
-                sql.Parameters.AddWithValue("@rl", dado.Rl);
+                sql.Parameters.AddWithValue("@rt", dado.ResponsavelTecnico);
+                sql.Parameters.AddWithValue("@rl", dado.ResponsavelLegal);
                 sql.Parameters.AddWithValue("@usr_ativo", dado.Usr_ativo);
-                sql.Parameters.AddWithValue("@usr_nome", dado.Usr_nome);
-                sql.Parameters.AddWithValue("@usr_senha", dado.Usr_senha);
+                sql.Parameters.AddWithValue("@usr_nome", dado.UsuarioNome);
+                sql.Parameters.AddWithValue("@usr_senha", dado.UsuarioSenha);
 
                 sql.ExecuteNonQuery();
                 conexao.Close();
@@ -229,11 +229,11 @@ namespace Fluxus.Api.Repositories
                 sql.Parameters.AddWithValue("@telefone1", dado.Telefone1);
                 sql.Parameters.AddWithValue("@telefone2", dado.Telefone2);
                 sql.Parameters.AddWithValue("@email", dado.Email);
-                sql.Parameters.AddWithValue("@rt", dado.Rt);
-                sql.Parameters.AddWithValue("@rl", dado.Rl);
+                sql.Parameters.AddWithValue("@rt", dado.ResponsavelTecnico);
+                sql.Parameters.AddWithValue("@rl", dado.ResponsavelLegal);
                 sql.Parameters.AddWithValue("@usr_ativo", dado.Usr_ativo);
-                sql.Parameters.AddWithValue("@usr_nome", dado.Usr_nome);
-                sql.Parameters.AddWithValue("@usr_senha", dado.Usr_senha);
+                sql.Parameters.AddWithValue("@usr_nome", dado.UsuarioNome);
+                sql.Parameters.AddWithValue("@usr_senha", dado.UsuarioSenha);
                 sql.ExecuteNonQuery();
                 conexao.Close();
             }

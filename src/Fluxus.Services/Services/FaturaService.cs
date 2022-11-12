@@ -10,16 +10,16 @@ namespace Fluxus.Services
 
 
 
-        public long Insert(Fatura dado)
+        public long Insert(Fatura body)
         {
-            return new InvoiceRepository().Insert(dado);
+            return new InvoiceRepository().Insert(body);
         }
 
 
 
-        public void Update(long id, Fatura dado)
+        public void Update(Fatura body)
         {
-            new InvoiceRepository().Update(id, dado);
+            new InvoiceRepository().Update(body);
         }
 
 

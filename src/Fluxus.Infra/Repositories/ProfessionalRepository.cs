@@ -7,16 +7,16 @@ namespace Fluxus.Infra.Repositories
 {
     public class ProfessionalRepository
     {
-        public void Insert(Profissional dado)
+        public void Insert(Profissional body)
         {
-            string json = JsonConvert.SerializeObject(dado);
+            string json = JsonConvert.SerializeObject(body);
             Request.Post("profissional/post", json);
         }
 
-        public void Update(long id, Profissional dado)
+        public void Update(Profissional body)
         {
-            string json = JsonConvert.SerializeObject(dado);
-            Request.Put("profissional/put/" + id, json);
+            string json = JsonConvert.SerializeObject(body);
+            Request.Put("profissional/put/" + body.Id, json);
         }
 
         public void Delete(long id)
@@ -30,9 +30,9 @@ namespace Fluxus.Infra.Repositories
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public DataTable GetUser(string nomeDeUsuario)
+        public DataTable GetUser(string userName)
         {
-            string json = Request.Get("profissional/getuserinfo/", nomeDeUsuario);
+            string json = Request.Get("profissional/getuserinfo/", userName);
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 

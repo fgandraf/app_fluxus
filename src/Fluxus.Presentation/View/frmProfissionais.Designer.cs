@@ -64,11 +64,11 @@
             this.telefone1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefone2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rt = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.rl = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.responsavelTecnico = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.responsavelLegal = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.usr_ativo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.usr_nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usr_senha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usurioNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.usuarioSenha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pctLupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProfissionais)).BeginInit();
             this.SuspendLayout();
@@ -196,11 +196,11 @@
             this.telefone1,
             this.telefone2,
             this.email,
-            this.rt,
-            this.rl,
+            this.responsavelTecnico,
+            this.responsavelLegal,
             this.usr_ativo,
-            this.usr_nome,
-            this.usr_senha});
+            this.usurioNome,
+            this.usuarioSenha});
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -355,23 +355,23 @@
             this.email.ReadOnly = true;
             this.email.Visible = false;
             // 
-            // rt
+            // responsavelTecnico
             // 
-            this.rt.DataPropertyName = "rt";
-            this.rt.HeaderText = "Rt";
-            this.rt.Name = "rt";
-            this.rt.ReadOnly = true;
-            this.rt.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.rt.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.rt.Visible = false;
+            this.responsavelTecnico.DataPropertyName = "ResponsavelTecnico";
+            this.responsavelTecnico.HeaderText = "Rt";
+            this.responsavelTecnico.Name = "responsavelTecnico";
+            this.responsavelTecnico.ReadOnly = true;
+            this.responsavelTecnico.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.responsavelTecnico.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.responsavelTecnico.Visible = false;
             // 
-            // rl
+            // responsavelLegal
             // 
-            this.rl.DataPropertyName = "rl";
-            this.rl.HeaderText = "Rl";
-            this.rl.Name = "rl";
-            this.rl.ReadOnly = true;
-            this.rl.Visible = false;
+            this.responsavelLegal.DataPropertyName = "ResponsavelLegal";
+            this.responsavelLegal.HeaderText = "Rl";
+            this.responsavelLegal.Name = "responsavelLegal";
+            this.responsavelLegal.ReadOnly = true;
+            this.responsavelLegal.Visible = false;
             // 
             // usr_ativo
             // 
@@ -380,21 +380,21 @@
             this.usr_ativo.Name = "usr_ativo";
             this.usr_ativo.ReadOnly = true;
             // 
-            // usr_nome
+            // usurioNome
             // 
-            this.usr_nome.DataPropertyName = "usr_nome";
-            this.usr_nome.HeaderText = "usr_nome";
-            this.usr_nome.Name = "usr_nome";
-            this.usr_nome.ReadOnly = true;
-            this.usr_nome.Visible = false;
+            this.usurioNome.DataPropertyName = "UsuarioNome";
+            this.usurioNome.HeaderText = "usr_nome";
+            this.usurioNome.Name = "usurioNome";
+            this.usurioNome.ReadOnly = true;
+            this.usurioNome.Visible = false;
             // 
-            // usr_senha
+            // usuarioSenha
             // 
-            this.usr_senha.DataPropertyName = "usr_senha";
-            this.usr_senha.HeaderText = "usr_senha";
-            this.usr_senha.Name = "usr_senha";
-            this.usr_senha.ReadOnly = true;
-            this.usr_senha.Visible = false;
+            this.usuarioSenha.DataPropertyName = "UsuarioSenha";
+            this.usuarioSenha.HeaderText = "usr_senha";
+            this.usuarioSenha.Name = "usuarioSenha";
+            this.usuarioSenha.ReadOnly = true;
+            this.usuarioSenha.Visible = false;
             // 
             // frmProfissionais
             // 
@@ -448,10 +448,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone1;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone2;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn rt;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn rl;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn responsavelTecnico;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn responsavelLegal;
         private System.Windows.Forms.DataGridViewCheckBoxColumn usr_ativo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usr_nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usr_senha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usurioNome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn usuarioSenha;
     }
 }

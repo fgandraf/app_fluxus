@@ -125,10 +125,6 @@ namespace Fluxus.Presentation
         }
 
 
-        public static double CellSum(DataGridView dgv, string cellName)
-        {
-            return dgv.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[cellName].Value ?? 0));
-        }
 
 
     }

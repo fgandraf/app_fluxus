@@ -10,16 +10,16 @@ namespace Fluxus.Services
 
 
 
-        public void Insert(Cadastrais dado)
+        public void Insert(Cadastrais body)
         {
-            new CompanyRepository().Insert(dado);
+            new CompanyRepository().Insert(body);
         }
 
 
 
-        public void Update(Cadastrais dado)
+        public void Update(Cadastrais body)
         {
-            new CompanyRepository().Update(dado);
+            new CompanyRepository().Update(body);
         }
 
 
@@ -29,33 +29,33 @@ namespace Fluxus.Services
             DataTable dt = new CompanyRepository().GetAll();
             Cadastrais retorno = new Cadastrais
             {
-                Cnpj = dt.Rows[0]["cnpj"].ToString(),
-                Fantasia = dt.Rows[0]["fantasia"].ToString(),
-                Razao = dt.Rows[0]["razao"].ToString(),
-                Ie = dt.Rows[0]["ie"].ToString(),
-                Im = dt.Rows[0]["im"].ToString(),
-                Endereco = dt.Rows[0]["endereco"].ToString(),
-                Complemento = dt.Rows[0]["complemento"].ToString(),
-                Bairro = dt.Rows[0]["bairro"].ToString(),
-                Cidade = dt.Rows[0]["cidade"].ToString(),
-                Cep = dt.Rows[0]["cep"].ToString(),
-                Uf = dt.Rows[0]["uf"].ToString(),
-                Constituicao = dt.Rows[0]["constituicao"].ToString(),
-                Telefone = dt.Rows[0]["telefone"].ToString(),
-                Telefone2 = dt.Rows[0]["telefone2"].ToString(),
-                Email = dt.Rows[0]["email"].ToString(),
-                Db_banco = dt.Rows[0]["db_banco"].ToString(),
-                Db_tipo = dt.Rows[0]["db_tipo"].ToString(),
-                Db_agencia = dt.Rows[0]["db_agencia"].ToString(),
-                Db_operador = dt.Rows[0]["db_operador"].ToString(),
-                Db_conta = dt.Rows[0]["db_conta"].ToString(),
-                Ct_tomador = dt.Rows[0]["ct_tomador"].ToString(),
-                Ct_edital = dt.Rows[0]["ct_edital"].ToString(),
-                Ct_contrato = dt.Rows[0]["ct_contrato"].ToString(),
-                Ct_celebrado = dt.Rows[0]["ct_celebrado"].ToString(),
-                Ct_inicio = dt.Rows[0]["ct_inicio"].ToString(),
-                Ct_termino = dt.Rows[0]["ct_termino"].ToString(),
-                Logo = dt.Rows[0]["logo"].ToString()
+                Cnpj = dt.Rows[0]["Cnpj"].ToString(),
+                Nome = dt.Rows[0]["Nome"].ToString(),
+                RazaoSocial = dt.Rows[0]["RazaoSocial"].ToString(),
+                InscricaoEstadual = dt.Rows[0]["InscricaoEstadual"].ToString(),
+                InscricaoMunicipal = dt.Rows[0]["InscricaoMunicipal"].ToString(),
+                Endereco = dt.Rows[0]["Endereco"].ToString(),
+                Complemento = dt.Rows[0]["Complemento"].ToString(),
+                Bairro = dt.Rows[0]["Bairro"].ToString(),
+                Cidade = dt.Rows[0]["Cidade"].ToString(),
+                Cep = dt.Rows[0]["Cep"].ToString(),
+                Uf = dt.Rows[0]["Uf"].ToString(),
+                Constituicao = dt.Rows[0]["Constituicao"].ToString(),
+                Telefone = dt.Rows[0]["Telefone"].ToString(),
+                Telefone2 = dt.Rows[0]["Telefone2"].ToString(),
+                Email = dt.Rows[0]["Email"].ToString(),
+                BancoNome = dt.Rows[0]["BancoNome"].ToString(),
+                BancoTipo = dt.Rows[0]["BancoTipo"].ToString(),
+                BancoAgencia = dt.Rows[0]["BancoAgencia"].ToString(),
+                BancoOperador = dt.Rows[0]["BancoOperador"].ToString(),
+                BancoConta = dt.Rows[0]["BancoConta"].ToString(),
+                ContratoTomador = dt.Rows[0]["ContratoTomador"].ToString(),
+                ContratoEdital = dt.Rows[0]["ContratoEdital"].ToString(),
+                ContratoNumero = dt.Rows[0]["ContratoNumero"].ToString(),
+                ContratoCelebrado = dt.Rows[0]["ContratoCelebrado"].ToString(),
+                ContratoInicio = dt.Rows[0]["ContratoInicio"].ToString(),
+                ContratoTermino = dt.Rows[0]["ContratoTermino"].ToString(),
+                Logotipo = dt.Rows[0]["Logotipo"].ToString()
             };
 
             return retorno;

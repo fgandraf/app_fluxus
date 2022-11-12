@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Fluxus.Domain.Entities;
 using System.Globalization;
 using Fluxus.Services;
+using System.Linq;
 
 namespace Fluxus.Presentation.View
 {
@@ -16,61 +17,6 @@ namespace Fluxus.Presentation.View
 
 
 
-
-
-        //:METHODS
-        private void ListarOS()
-        {
-            try
-            {
-                dgvOS.DataSource = new OsService().GetOrdensConcluidasNaoFaturadas();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Mensagem de erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-        private void SomarValores()
-        {
-            _subtotal_os = Util.CellSum(dgvOS, "valor_atividade");
-            _subtotal_desloc = Util.CellSum(dgvOS, "valor_deslocamento");
-
-            txtValorOS.Text = string.Format("{0:0,0.00}", _subtotal_os);
-            txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _subtotal_desloc);
-            txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _subtotal_os + _subtotal_desloc);
-        }
-
-
-        private Fatura PopulateObject()
-        {
-            Fatura dado = new Fatura
-            {
-                descricao = txtDescricao.Text,
-                data = dtpData.Value,
-                subtotal_os = _subtotal_os,
-                subtotal_desloc = _subtotal_desloc,
-                total = _subtotal_os + _subtotal_desloc
-            };
-            return dado;
-        }
-
-
-        private void Back()
-        {
-            this.Close();
-            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços";
-            _frmPrincipal.lblTitulo.Refresh();
-            frmOS formFilho = new frmOS(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
-        }
-
-
-
-
-
-        //:EVENTS
         public frmAddFatura(frmPrincipal frm1)
         {
             InitializeComponent();
@@ -80,7 +26,7 @@ namespace Fluxus.Presentation.View
 
         private void frmAddFatura_Load(object sender, EventArgs e)
         {
-            ListarOS();
+            dgvOS.DataSource = new OsService().GetOrdensConcluidasNaoFaturadas();
             SomarValores();
             txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
@@ -93,6 +39,7 @@ namespace Fluxus.Presentation.View
             else
             {
                 var result = MessageBox.Show("Deseja remover a O.S. da Fatura?" + "\n\n" + dgvOS.CurrentRow.Cells[2].Value.ToString() + "\n" + dgvOS.CurrentRow.Cells[6].Value.ToString(), "Não Faturar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                
                 if (result == DialogResult.Yes)
                 {
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
@@ -104,31 +51,18 @@ namespace Fluxus.Presentation.View
 
         private void btnFaturar_Click(object sender, EventArgs e)
         {
-            try
+            Fatura invoice = PopulateToObject();
+            long invoiceId = new FaturaService().Insert(invoice);
+
+            foreach (DataGridViewRow row in dgvOS.Rows)
             {
-
-                Fatura dado = PopulateObject();
-                long fatura_cod = new FaturaService().Insert(dado);
-
-
-                foreach (DataGridViewRow row in dgvOS.Rows)
-                {
-                    long idOS = Convert.ToInt64(row.Cells["id"].Value);
-                    new OsService().UpdateFaturaCod(idOS, fatura_cod);
-                }
-
-                MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                long idOS = Convert.ToInt64(row.Cells["id"].Value);
+                new OsService().UpdateFaturaCod(idOS, invoiceId);
             }
-            catch (Exception ex)
-            {
 
-                MessageBox.Show("Erro ao tentar faturar. \n\n" + ex, "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
+            MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             Back();
-
         }
 
 
@@ -144,6 +78,46 @@ namespace Fluxus.Presentation.View
         }
 
 
+
+
+
+
+
+
+
+        private void SomarValores()
+        {
+            _subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells["valor_atividade"].Value ?? 0));
+            _subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells["valor_deslocamento"].Value ?? 0));
+
+            txtValorOS.Text = string.Format("{0:0,0.00}", _subtotal_os);
+            txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _subtotal_desloc);
+            txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _subtotal_os + _subtotal_desloc);
+        }
+
+
+        private Fatura PopulateToObject()
+        {
+            Fatura dado = new Fatura
+            {
+                Descricao = txtDescricao.Text,
+                Data = dtpData.Value,
+                SubtotalOs = _subtotal_os,
+                SubtotalDeslocamento = _subtotal_desloc,
+                Total = _subtotal_os + _subtotal_desloc
+            };
+            return dado;
+        }
+
+
+        private void Back()
+        {
+            this.Close();
+            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços";
+            _frmPrincipal.lblTitulo.Refresh();
+            frmOS formFilho = new frmOS(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+        }
     }
 
 

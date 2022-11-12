@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using Fluxus.Domain.Entities;
 using System.Collections;
 using System.Globalization;
+using Microsoft.AspNetCore.Components.Routing;
 
 namespace Fluxus.Api.Repositories
 {
@@ -171,24 +172,24 @@ namespace Fluxus.Api.Repositories
                         os.Referencia = Convert.ToString(dr["referencia"]);
                         os.Agencia = Convert.ToString(dr["agencia"]);
                         os.Titulo = Convert.ToString(dr["titulo"]);
-                        os.Data_ordem = Util.DateTimeToShortDateString(Convert.ToString(dr["data_ordem"]));
-                        os.Prazo_execucao = Convert.ToDateTime(dr["prazo_execucao"]);
-                        os.Profissional_cod = Convert.ToString(dr["profissional_cod"]);
-                        os.Atividade_cod = Convert.ToString(dr["atividade_cod"]);
-                        os.Valor_atividade = Convert.ToString(dr["valor_atividade"]);
-                        os.Valor_deslocamento = Convert.ToString(dr["valor_deslocamento"]);
+                        os.DataOrdem = Util.DateTimeToShortDateString(Convert.ToString(dr["data_ordem"]));
+                        os.Prazo = Convert.ToDateTime(dr["prazo_execucao"]);
+                        os.ProfissionalId = Convert.ToString(dr["profissional_cod"]);
+                        os.AtividadeId = Convert.ToString(dr["atividade_cod"]);
+                        os.ValorAtividade = Convert.ToString(dr["valor_atividade"]);
+                        os.ValorDeslocamento = Convert.ToString(dr["valor_deslocamento"]);
                         os.Siopi = Convert.ToBoolean(dr["siopi"]);
-                        os.Nome_cliente = Convert.ToString(dr["nome_cliente"]);
+                        os.ClienteNome = Convert.ToString(dr["nome_cliente"]);
                         os.Cidade = Convert.ToString(dr["cidade"]);
-                        os.Nome_contato = Convert.ToString(dr["nome_contato"]);
-                        os.Telefone_contato = Convert.ToString(dr["telefone_contato"]);
+                        os.ContatoNome = Convert.ToString(dr["nome_contato"]);
+                        os.ContatoTelefone = Convert.ToString(dr["telefone_contato"]);
                         os.Coordenada = Convert.ToString(dr["coordenada"]);
                         os.Status = Convert.ToString(dr["status"]);
-                        os.Data_pendente = Util.DateTimeToShortDateString(Convert.ToString(dr["data_pendente"]));
-                        os.Data_vistoria = Util.DateTimeToShortDateString(Convert.ToString(dr["data_vistoria"]));
-                        os.Data_concluida = Util.DateTimeToShortDateString(Convert.ToString(dr["data_concluida"]));
-                        os.Obs = Convert.ToString(dr["obs"]);
-                        os.Fatura_cod = Convert.ToInt64(dr["fatura_cod"]);
+                        os.DataPendente = Util.DateTimeToShortDateString(Convert.ToString(dr["data_pendente"]));
+                        os.DataVistoria = Util.DateTimeToShortDateString(Convert.ToString(dr["data_vistoria"]));
+                        os.DataConcluida = Util.DateTimeToShortDateString(Convert.ToString(dr["data_concluida"]));
+                        os.Observacoes = Convert.ToString(dr["obs"]);
+                        os.FaturaId = Convert.ToInt64(dr["fatura_cod"]);
                         osArray.Add(os);
                     }
                     conexao.Close();
@@ -304,37 +305,37 @@ namespace Fluxus.Api.Repositories
                         os.Referencia = Convert.ToString(dr["referencia"]);
                         os.Agencia = Convert.ToString(dr["agencia"]);
                         os.Titulo = Convert.ToString(dr["titulo"]);
-                        os.Data_ordem = Convert.ToString(dr["data_ordem"]);
-                        os.Prazo_execucao = Convert.ToDateTime(dr["prazo_execucao"]);
-                        os.Profissional_cod = Convert.ToString(dr["profissional_cod"]);
-                        os.Atividade_cod = Convert.ToString(dr["atividade_cod"]);
-                        os.Valor_atividade = Convert.ToString(dr["valor_atividade"]);
-                        os.Valor_deslocamento = Convert.ToString(dr["valor_deslocamento"]);
+                        os.DataOrdem = Convert.ToString(dr["data_ordem"]);
+                        os.Prazo = Convert.ToDateTime(dr["prazo_execucao"]);
+                        os.ProfissionalId = Convert.ToString(dr["profissional_cod"]);
+                        os.AtividadeId = Convert.ToString(dr["atividade_cod"]);
+                        os.ValorAtividade = Convert.ToString(dr["valor_atividade"]);
+                        os.ValorDeslocamento = Convert.ToString(dr["valor_deslocamento"]);
                         os.Siopi = Convert.ToBoolean(dr["siopi"]);
-                        os.Nome_cliente = Convert.ToString(dr["nome_cliente"]);
+                        os.ClienteNome = Convert.ToString(dr["nome_cliente"]);
                         os.Cidade = Convert.ToString(dr["cidade"]);
-                        os.Nome_contato = Convert.ToString(dr["nome_contato"]);
-                        os.Telefone_contato = Convert.ToString(dr["telefone_contato"]);
+                        os.ContatoNome = Convert.ToString(dr["nome_contato"]);
+                        os.ContatoTelefone = Convert.ToString(dr["telefone_contato"]);
                         os.Coordenada = Convert.ToString(dr["coordenada"]);
                         os.Status = Convert.ToString(dr["status"]);
-                        os.Data_pendente = Convert.ToString(dr["data_pendente"]);
-                        os.Data_vistoria = Convert.ToString(dr["data_vistoria"]);
-                        os.Data_concluida = Convert.ToString(dr["data_concluida"]);
-                        os.Obs = Convert.ToString(dr["obs"]);
-                        os.Fatura_cod = Convert.ToInt64(dr["fatura_cod"]);
+                        os.DataPendente = Convert.ToString(dr["data_pendente"]);
+                        os.DataVistoria = Convert.ToString(dr["data_vistoria"]);
+                        os.DataConcluida = Convert.ToString(dr["data_concluida"]);
+                        os.Observacoes = Convert.ToString(dr["obs"]);
+                        os.FaturaId = Convert.ToInt64(dr["fatura_cod"]);
                     }
 
-                    if (os.Data_ordem == "01/01/0001 00:00:00")
-                        os.Data_ordem = string.Empty;
+                    if (os.DataOrdem == "01/01/0001 00:00:00")
+                        os.DataOrdem = string.Empty;
 
-                    if (os.Data_pendente == "01/01/0001 00:00:00")
-                        os.Data_pendente = string.Empty;
+                    if (os.DataPendente == "01/01/0001 00:00:00")
+                        os.DataPendente = string.Empty;
 
-                    if (os.Data_vistoria == "01/01/0001 00:00:00")
-                        os.Data_vistoria = string.Empty;
+                    if (os.DataVistoria == "01/01/0001 00:00:00")
+                        os.DataVistoria = string.Empty;
 
-                    if (os.Data_concluida == "01/01/0001 00:00:00")
-                        os.Data_concluida = string.Empty;
+                    if (os.DataConcluida == "01/01/0001 00:00:00")
+                        os.DataConcluida = string.Empty;
 
                     conexao.Close();
                     return os;
@@ -362,23 +363,23 @@ namespace Fluxus.Api.Repositories
                 sql.Parameters.AddWithValue("@titulo", dado.Titulo);
                 sql.Parameters.AddWithValue("@referencia", dado.Referencia);
                 sql.Parameters.AddWithValue("@agencia", dado.Agencia);
-                sql.Parameters.AddWithValue("@data_ordem", Util.DateOrNull(dado.Data_ordem));
-                sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo_execucao);
-                sql.Parameters.AddWithValue("@profissional_cod", dado.Profissional_cod);
-                sql.Parameters.AddWithValue("@atividade_cod", dado.Atividade_cod);
-                sql.Parameters.AddWithValue("@valor_atividade", dado.Valor_atividade);
-                sql.Parameters.AddWithValue("@valor_deslocamento", dado.Valor_deslocamento);
+                sql.Parameters.AddWithValue("@data_ordem", Util.DateOrNull(dado.DataOrdem));
+                sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo);
+                sql.Parameters.AddWithValue("@profissional_cod", dado.ProfissionalId);
+                sql.Parameters.AddWithValue("@atividade_cod", dado.AtividadeId);
+                sql.Parameters.AddWithValue("@valor_atividade", dado.ValorAtividade);
+                sql.Parameters.AddWithValue("@valor_deslocamento", dado.ValorDeslocamento);
                 sql.Parameters.AddWithValue("@siopi", dado.Siopi);
-                sql.Parameters.AddWithValue("@nome_cliente", dado.Nome_cliente);
+                sql.Parameters.AddWithValue("@nome_cliente", dado.ClienteNome);
                 sql.Parameters.AddWithValue("@cidade", dado.Cidade);
-                sql.Parameters.AddWithValue("@nome_contato", dado.Nome_contato);
-                sql.Parameters.AddWithValue("@telefone_contato", dado.Telefone_contato);
+                sql.Parameters.AddWithValue("@nome_contato", dado.ContatoNome);
+                sql.Parameters.AddWithValue("@telefone_contato", dado.ContatoTelefone);
                 sql.Parameters.AddWithValue("@coordenada", dado.Coordenada);
                 sql.Parameters.AddWithValue("@status", dado.Status);
-                sql.Parameters.AddWithValue("@data_pendente", Util.DateOrNull(dado.Data_pendente));
-                sql.Parameters.AddWithValue("@data_vistoria", Util.DateOrNull(dado.Data_vistoria));
-                sql.Parameters.AddWithValue("@data_concluida", Util.DateOrNull(dado.Data_concluida));
-                sql.Parameters.AddWithValue("@obs", dado.Obs);
+                sql.Parameters.AddWithValue("@data_pendente", Util.DateOrNull(dado.DataPendente));
+                sql.Parameters.AddWithValue("@data_vistoria", Util.DateOrNull(dado.DataVistoria));
+                sql.Parameters.AddWithValue("@data_concluida", Util.DateOrNull(dado.DataConcluida));
+                sql.Parameters.AddWithValue("@obs", dado.Observacoes);
 
                 sql.ExecuteNonQuery();
                 conexao.Close();
@@ -398,23 +399,23 @@ namespace Fluxus.Api.Repositories
                 conexao.Open();
                 MySqlCommand sql = new MySqlCommand("UPDATE tb_os SET titulo = @titulo, data_ordem = @data_ordem, prazo_execucao = @prazo_execucao, profissional_cod = @profissional_cod, atividade_cod = @atividade_cod, valor_atividade = valor_atividade, valor_deslocamento = valor_deslocamento, siopi = @siopi, nome_cliente = @nome_cliente, cidade = @cidade, nome_contato = @nome_contato, telefone_contato = @telefone_contato, coordenada = @coordenada, status = @status, data_pendente = @data_pendente, data_vistoria = @data_vistoria, data_concluida = @data_concluida, obs = @obs WHERE id = @id", conexao);
                 sql.Parameters.AddWithValue("@titulo", dado.Titulo);
-                sql.Parameters.AddWithValue("@data_ordem", Util.DateOrNull(dado.Data_ordem));
-                sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo_execucao);
-                sql.Parameters.AddWithValue("@profissional_cod", dado.Profissional_cod);
-                sql.Parameters.AddWithValue("@atividade_cod", dado.Atividade_cod);
-                sql.Parameters.AddWithValue("@valor_atividade", dado.Valor_atividade);
-                sql.Parameters.AddWithValue("@valor_deslocamento", dado.Valor_deslocamento);
+                sql.Parameters.AddWithValue("@data_ordem", Util.DateOrNull(dado.DataOrdem));
+                sql.Parameters.AddWithValue("@prazo_execucao", dado.Prazo);
+                sql.Parameters.AddWithValue("@profissional_cod", dado.ProfissionalId);
+                sql.Parameters.AddWithValue("@atividade_cod", dado.AtividadeId);
+                sql.Parameters.AddWithValue("@valor_atividade", dado.ValorAtividade);
+                sql.Parameters.AddWithValue("@valor_deslocamento", dado.ValorDeslocamento);
                 sql.Parameters.AddWithValue("@siopi", dado.Siopi);
-                sql.Parameters.AddWithValue("@nome_cliente", dado.Nome_cliente);
+                sql.Parameters.AddWithValue("@nome_cliente", dado.ClienteNome);
                 sql.Parameters.AddWithValue("@cidade", dado.Cidade);
-                sql.Parameters.AddWithValue("@nome_contato", dado.Nome_contato);
-                sql.Parameters.AddWithValue("@telefone_contato", dado.Telefone_contato);
+                sql.Parameters.AddWithValue("@nome_contato", dado.ContatoNome);
+                sql.Parameters.AddWithValue("@telefone_contato", dado.ContatoTelefone);
                 sql.Parameters.AddWithValue("@coordenada", dado.Coordenada);
                 sql.Parameters.AddWithValue("@status", dado.Status);
-                sql.Parameters.AddWithValue("@data_pendente", Util.DateOrNull(dado.Data_pendente));
-                sql.Parameters.AddWithValue("@data_vistoria", Util.DateOrNull(dado.Data_vistoria));
-                sql.Parameters.AddWithValue("@data_concluida", Util.DateOrNull(dado.Data_concluida));
-                sql.Parameters.AddWithValue("@obs", dado.Obs);
+                sql.Parameters.AddWithValue("@data_pendente", Util.DateOrNull(dado.DataPendente));
+                sql.Parameters.AddWithValue("@data_vistoria", Util.DateOrNull(dado.DataVistoria));
+                sql.Parameters.AddWithValue("@data_concluida", Util.DateOrNull(dado.DataConcluida));
+                sql.Parameters.AddWithValue("@obs", dado.Observacoes);
                 sql.Parameters.AddWithValue("@id", id);
                 sql.ExecuteNonQuery();
                 conexao.Close();
@@ -450,30 +451,30 @@ namespace Fluxus.Api.Repositories
                 MySqlConnection conexao = new MySqlConnection(ConnectionString.Conn);
                 conexao.Open();
                 MySqlCommand sql = new MySqlCommand();
+                string changeDate = "";
 
-                if (status == "RECEBIDA")
+                switch (status)
                 {
-                    sql = new MySqlCommand("UPDATE tb_os SET status = 'RECEBIDA' WHERE id = @id", conexao);
-                    sql.Parameters.AddWithValue("@id", id);
+                    case "RECEBIDA":
+                        break;
+
+                    case "PENDENTE":
+                        changeDate = ", data_pendente = @data";
+                        break;
+
+                    case "VISTORIADA":
+                        changeDate = ", data_vistoria = @data";
+                        break;
+
+                    case "CONCLUÍDA":
+                        changeDate = ", data_concluida = @data";
+                        break;
                 }
-                else if (status == "PENDENTE")
-                {
-                    sql = new MySqlCommand("UPDATE tb_os SET status = 'PENDENTE', data_pendente = @data_pendente WHERE id = @id", conexao);
-                    sql.Parameters.AddWithValue("@id", id);
-                    sql.Parameters.AddWithValue("@data_pendente", DateTime.Now);
-                }
-                else if (status == "VISTORIADA")
-                {
-                    sql = new MySqlCommand("UPDATE tb_os SET status = 'VISTORIADA', data_vistoria = @data_vistoria WHERE id = @id", conexao);
-                    sql.Parameters.AddWithValue("@id", id);
-                    sql.Parameters.AddWithValue("@data_vistoria", DateTime.Now);
-                }
-                else
-                {
-                    sql = new MySqlCommand("UPDATE tb_os SET status = 'CONCLUÍDA', data_concluida = @data_concluida WHERE id = @id", conexao);
-                    sql.Parameters.AddWithValue("@id", id);
-                    sql.Parameters.AddWithValue("@data_concluida", DateTime.Now);
-                }
+
+                sql = new MySqlCommand($"UPDATE tb_os SET status = @status {changeDate} WHERE id = @id", conexao);
+                sql.Parameters.AddWithValue("@status", status);
+                sql.Parameters.AddWithValue("@data", DateTime.Now);
+                sql.Parameters.AddWithValue("@id", id);
 
                 sql.ExecuteNonQuery();
                 conexao.Close();
@@ -499,7 +500,7 @@ namespace Fluxus.Api.Repositories
             {
                 throw;
             }
-            
+
         }
 
     }

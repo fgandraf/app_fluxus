@@ -3,11 +3,9 @@ using System;
 using System.Windows.Forms;
 using System.IO;
 using System.Data;
-using Fluxus.Presentation.View.Report;
 using System.Linq;
 using Fluxus.Services;
 using System.Globalization;
-using System.Reflection;
 
 namespace Fluxus.Presentation.View
 {
@@ -72,10 +70,10 @@ namespace Fluxus.Presentation.View
         {
             Fatura dado = new Fatura
             {
-                id = Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value),
-                subtotal_os = _subtotal_os,
-                subtotal_desloc = _subtotal_desloc,
-                total = _subtotal_os + _subtotal_desloc
+                Id = Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value),
+                SubtotalOs = _subtotal_os,
+                SubtotalDeslocamento = _subtotal_desloc,
+                Total = _subtotal_os + _subtotal_desloc
             };
 
             return dado;
@@ -135,7 +133,7 @@ namespace Fluxus.Presentation.View
                 long fatura_cod = Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value);
 
                 //CHAMAR O MÉTODO
-                ITXFatura.GerarFaturaPDF
+                InvoiceReport.PrintPDF
                 (
                 logoImagem,
                 edital,
@@ -175,7 +173,7 @@ namespace Fluxus.Presentation.View
 
                     //APLICA OS NOVOS VALORES À TABELA DE FATURA
                     Fatura dado = PopulateObject();
-                    new FaturaService().Update(dado.id, dado);
+                    new FaturaService().Update(dado);
 
                 }
             }

@@ -51,6 +51,7 @@ namespace Fluxus.Presentation.View
         {
             Profissional dado = new Profissional
             {
+                Id = _id,
                 Codigo = txtCodigo.Text,
                 Nomeid = CreateNameId(txtProfissao.Text, txtNome.Text),
                 Nome = txtNome.Text,
@@ -62,11 +63,11 @@ namespace Fluxus.Presentation.View
                 Telefone1 = txtTelefone1.Text,
                 Telefone2 = txtTelefone2.Text,
                 Email = txtEmail.Text,
-                Rt = chkRT.Checked,
-                Rl = chkRL.Checked,
+                ResponsavelTecnico = chkRT.Checked,
+                ResponsavelLegal = chkRL.Checked,
                 Usr_ativo = chkUsrAtivo.Checked,
-                Usr_nome = txtUsrNome.Text,
-                Usr_senha = txtUsrSenha.Text
+                UsuarioNome = txtUsrNome.Text,
+                UsuarioSenha = txtUsrSenha.Text
             };
 
             return dado;
@@ -107,13 +108,13 @@ namespace Fluxus.Presentation.View
             txtTelefone1.Text = dado.Telefone1;
             txtTelefone2.Text = dado.Telefone2;
             txtEmail.Text = dado.Email;
-            chkRT.Checked = dado.Rt;
-            chkRL.Checked = dado.Rl;
+            chkRT.Checked = dado.ResponsavelTecnico;
+            chkRL.Checked = dado.ResponsavelLegal;
             chkUsrAtivo.Checked = dado.Usr_ativo;
-            _usr_nome = dado.Usr_nome;
-            txtUsrNome.Text = dado.Usr_nome;
-            txtUsrSenha.Text = dado.Usr_senha;
-            txtUsrSenha2.Text = dado.Usr_senha;
+            _usr_nome = dado.UsuarioNome;
+            txtUsrNome.Text = dado.UsuarioNome;
+            txtUsrSenha.Text = dado.UsuarioSenha;
+            txtUsrSenha2.Text = dado.UsuarioSenha;
         }
 
         private void frmAddProfissional_Load(object sender, EventArgs e)
@@ -169,7 +170,7 @@ namespace Fluxus.Presentation.View
             //VERIFICA SE NOME DE USUÁRIO JÁ EXISTE NO SISTEMA
             if (txtUsrNome.Text != _usr_nome)
             {
-                DataTable dtPro = new ProfissionalService().BuscarUsuario(txtUsrNome.Text);
+                DataTable dtPro = new ProfissionalService().GetUser(txtUsrNome.Text);
 
                 if (dtPro.Rows.Count > 0)
                 {
@@ -212,7 +213,7 @@ namespace Fluxus.Presentation.View
             {
                 try
                 {
-                    new ProfissionalService().Update(_id, dado);
+                    new ProfissionalService().Update(dado);
                 }
                 catch (Exception ex)
                 {

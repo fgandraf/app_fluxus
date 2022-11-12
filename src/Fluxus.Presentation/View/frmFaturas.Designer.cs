@@ -34,40 +34,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tblFaturas = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlFaturaMain = new System.Windows.Forms.Panel();
             this.btnRemoverOs = new System.Windows.Forms.Button();
             this.dgvOS = new System.Windows.Forms.DataGridView();
-            this.pnlLinha2 = new System.Windows.Forms.Panel();
-            this.lbData = new System.Windows.Forms.Label();
-            this.txtValorDeslocamento = new System.Windows.Forms.TextBox();
-            this.txtData = new System.Windows.Forms.TextBox();
-            this.txtValorOS = new System.Windows.Forms.TextBox();
-            this.txtValorTotal = new System.Windows.Forms.TextBox();
-            this.lblSubtotal = new System.Windows.Forms.Label();
-            this.lblTotal = new System.Windows.Forms.Label();
-            this.dgvFaturas = new System.Windows.Forms.DataGridView();
-            this.id_fat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotalos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotaldesloca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalsas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.lblNenhuma = new System.Windows.Forms.Label();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.ttpFatura = new System.Windows.Forms.ToolTip(this.components);
             this.id_os = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_ordem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +60,27 @@
             this.valor_deslocamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fatura_cod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlLinha2 = new System.Windows.Forms.Panel();
+            this.lbData = new System.Windows.Forms.Label();
+            this.txtValorDeslocamento = new System.Windows.Forms.TextBox();
+            this.txtData = new System.Windows.Forms.TextBox();
+            this.txtValorOS = new System.Windows.Forms.TextBox();
+            this.txtValorTotal = new System.Windows.Forms.TextBox();
+            this.lblSubtotal = new System.Windows.Forms.Label();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.dgvFaturas = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.lblNenhuma = new System.Windows.Forms.Label();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.ttpFatura = new System.Windows.Forms.ToolTip(this.components);
+            this.id_fat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotalos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotalDeslocamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalsas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblFaturas.SuspendLayout();
             this.pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOS)).BeginInit();
@@ -91,7 +91,7 @@
             // tblFaturas
             // 
             this.tblFaturas.ColumnCount = 3;
-            this.tblFaturas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tblFaturas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 180F));
             this.tblFaturas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tblFaturas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblFaturas.Controls.Add(this.panel3, 0, 1);
@@ -115,16 +115,16 @@
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(204, 58);
+            this.panel3.Location = new System.Drawing.Point(184, 58);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(713, 1);
+            this.panel3.Size = new System.Drawing.Size(733, 1);
             this.panel3.TabIndex = 435;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(203, 3);
+            this.panel1.Location = new System.Drawing.Point(183, 3);
             this.panel1.Name = "panel1";
             this.tblFaturas.SetRowSpan(this.panel1, 3);
             this.panel1.Size = new System.Drawing.Size(1, 574);
@@ -143,10 +143,10 @@
             this.pnlFaturaMain.Controls.Add(this.lblSubtotal);
             this.pnlFaturaMain.Controls.Add(this.lblTotal);
             this.pnlFaturaMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFaturaMain.Location = new System.Drawing.Point(201, 56);
+            this.pnlFaturaMain.Location = new System.Drawing.Point(181, 56);
             this.pnlFaturaMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnlFaturaMain.Name = "pnlFaturaMain";
-            this.pnlFaturaMain.Size = new System.Drawing.Size(719, 524);
+            this.pnlFaturaMain.Size = new System.Drawing.Size(739, 524);
             this.pnlFaturaMain.TabIndex = 432;
             // 
             // btnRemoverOs
@@ -228,294 +228,8 @@
             this.dgvOS.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvOS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOS.ShowEditingIcon = false;
-            this.dgvOS.Size = new System.Drawing.Size(679, 414);
+            this.dgvOS.Size = new System.Drawing.Size(699, 414);
             this.dgvOS.TabIndex = 224;
-            // 
-            // pnlLinha2
-            // 
-            this.pnlLinha2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlLinha2.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pnlLinha2.Location = new System.Drawing.Point(510, 477);
-            this.pnlLinha2.Name = "pnlLinha2";
-            this.pnlLinha2.Size = new System.Drawing.Size(190, 1);
-            this.pnlLinha2.TabIndex = 430;
-            // 
-            // lbData
-            // 
-            this.lbData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbData.AutoSize = true;
-            this.lbData.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbData.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lbData.Location = new System.Drawing.Point(557, 10);
-            this.lbData.Name = "lbData";
-            this.lbData.Size = new System.Drawing.Size(46, 20);
-            this.lbData.TabIndex = 420;
-            this.lbData.Text = "Data:";
-            this.lbData.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtValorDeslocamento
-            // 
-            this.txtValorDeslocamento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValorDeslocamento.BackColor = System.Drawing.SystemColors.Window;
-            this.txtValorDeslocamento.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtValorDeslocamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtValorDeslocamento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorDeslocamento.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtValorDeslocamento.Location = new System.Drawing.Point(644, 456);
-            this.txtValorDeslocamento.MaxLength = 100;
-            this.txtValorDeslocamento.Name = "txtValorDeslocamento";
-            this.txtValorDeslocamento.ReadOnly = true;
-            this.txtValorDeslocamento.Size = new System.Drawing.Size(55, 15);
-            this.txtValorDeslocamento.TabIndex = 429;
-            this.txtValorDeslocamento.Text = "00.000,00";
-            this.txtValorDeslocamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtData
-            // 
-            this.txtData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtData.BackColor = System.Drawing.SystemColors.Window;
-            this.txtData.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtData.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtData.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtData.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtData.Location = new System.Drawing.Point(609, 10);
-            this.txtData.MaxLength = 100;
-            this.txtData.Name = "txtData";
-            this.txtData.ReadOnly = true;
-            this.txtData.Size = new System.Drawing.Size(90, 20);
-            this.txtData.TabIndex = 421;
-            this.txtData.Text = "00/00/0000";
-            this.txtData.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtValorOS
-            // 
-            this.txtValorOS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValorOS.BackColor = System.Drawing.SystemColors.Window;
-            this.txtValorOS.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtValorOS.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtValorOS.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorOS.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtValorOS.Location = new System.Drawing.Point(583, 456);
-            this.txtValorOS.MaxLength = 100;
-            this.txtValorOS.Name = "txtValorOS";
-            this.txtValorOS.ReadOnly = true;
-            this.txtValorOS.Size = new System.Drawing.Size(55, 15);
-            this.txtValorOS.TabIndex = 428;
-            this.txtValorOS.Text = "00.000,00";
-            this.txtValorOS.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtValorTotal
-            // 
-            this.txtValorTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValorTotal.BackColor = System.Drawing.SystemColors.Window;
-            this.txtValorTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtValorTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtValorTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorTotal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtValorTotal.Location = new System.Drawing.Point(583, 481);
-            this.txtValorTotal.MaxLength = 100;
-            this.txtValorTotal.Name = "txtValorTotal";
-            this.txtValorTotal.ReadOnly = true;
-            this.txtValorTotal.Size = new System.Drawing.Size(116, 20);
-            this.txtValorTotal.TabIndex = 427;
-            this.txtValorTotal.Text = "R$00.000,00";
-            this.txtValorTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblSubtotal
-            // 
-            this.lblSubtotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSubtotal.AutoSize = true;
-            this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubtotal.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lblSubtotal.Location = new System.Drawing.Point(523, 456);
-            this.lblSubtotal.Name = "lblSubtotal";
-            this.lblSubtotal.Size = new System.Drawing.Size(54, 13);
-            this.lblSubtotal.TabIndex = 425;
-            this.lblSubtotal.Text = "Subtotal:";
-            this.lblSubtotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.lblTotal.Location = new System.Drawing.Point(520, 481);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(58, 20);
-            this.lblTotal.TabIndex = 426;
-            this.lblTotal.Text = "TOTAL:";
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // dgvFaturas
-            // 
-            this.dgvFaturas.AllowUserToAddRows = false;
-            this.dgvFaturas.AllowUserToDeleteRows = false;
-            this.dgvFaturas.AllowUserToResizeColumns = false;
-            this.dgvFaturas.AllowUserToResizeRows = false;
-            this.dgvFaturas.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dgvFaturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvFaturas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvFaturas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvFaturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvFaturas.ColumnHeadersHeight = 35;
-            this.dgvFaturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvFaturas.ColumnHeadersVisible = false;
-            this.dgvFaturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_fat,
-            this.descricao,
-            this.data,
-            this.subtotalos,
-            this.subtotaldesloca,
-            this.totalsas});
-            this.dgvFaturas.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFaturas.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvFaturas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvFaturas.EnableHeadersVisualStyles = false;
-            this.dgvFaturas.GridColor = System.Drawing.SystemColors.Window;
-            this.dgvFaturas.Location = new System.Drawing.Point(3, 20);
-            this.dgvFaturas.Margin = new System.Windows.Forms.Padding(3, 20, 0, 20);
-            this.dgvFaturas.MultiSelect = false;
-            this.dgvFaturas.Name = "dgvFaturas";
-            this.dgvFaturas.ReadOnly = true;
-            this.dgvFaturas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvFaturas.RowHeadersVisible = false;
-            this.dgvFaturas.RowHeadersWidth = 60;
-            this.dgvFaturas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.tblFaturas.SetRowSpan(this.dgvFaturas, 3);
-            this.dgvFaturas.RowTemplate.Height = 50;
-            this.dgvFaturas.RowTemplate.ReadOnly = true;
-            this.dgvFaturas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvFaturas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvFaturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFaturas.ShowEditingIcon = false;
-            this.dgvFaturas.Size = new System.Drawing.Size(197, 540);
-            this.dgvFaturas.TabIndex = 223;
-            this.dgvFaturas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvFaturas_MouseClick);
-            // 
-            // id_fat
-            // 
-            this.id_fat.DataPropertyName = "id";
-            this.id_fat.HeaderText = "id";
-            this.id_fat.Name = "id_fat";
-            this.id_fat.ReadOnly = true;
-            this.id_fat.Visible = false;
-            // 
-            // descricao
-            // 
-            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descricao.DataPropertyName = "descricao";
-            this.descricao.HeaderText = "descricao";
-            this.descricao.Name = "descricao";
-            this.descricao.ReadOnly = true;
-            // 
-            // data
-            // 
-            this.data.DataPropertyName = "data";
-            this.data.HeaderText = "data";
-            this.data.Name = "data";
-            this.data.ReadOnly = true;
-            this.data.Visible = false;
-            // 
-            // subtotalos
-            // 
-            this.subtotalos.DataPropertyName = "subtotal_os";
-            this.subtotalos.HeaderText = "subtotalos";
-            this.subtotalos.Name = "subtotalos";
-            this.subtotalos.ReadOnly = true;
-            this.subtotalos.Visible = false;
-            // 
-            // subtotaldesloca
-            // 
-            this.subtotaldesloca.DataPropertyName = "subtotal_desloc";
-            this.subtotaldesloca.HeaderText = "subtotaldesloca";
-            this.subtotaldesloca.Name = "subtotaldesloca";
-            this.subtotaldesloca.ReadOnly = true;
-            this.subtotaldesloca.Visible = false;
-            // 
-            // totalsas
-            // 
-            this.totalsas.DataPropertyName = "total";
-            this.totalsas.HeaderText = "totalsas";
-            this.totalsas.Name = "totalsas";
-            this.totalsas.ReadOnly = true;
-            this.totalsas.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnExcluir);
-            this.panel2.Controls.Add(this.btnImprimir);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(204, 20);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(713, 32);
-            this.panel2.TabIndex = 434;
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.BackColor = System.Drawing.SystemColors.Window;
-            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcluir.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.btnExcluir.FlatAppearance.BorderSize = 0;
-            this.btnExcluir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
-            this.btnExcluir.Location = new System.Drawing.Point(17, 1);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(30, 30);
-            this.btnExcluir.TabIndex = 432;
-            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpFatura.SetToolTip(this.btnExcluir, "Excluir Fatura");
-            this.btnExcluir.UseVisualStyleBackColor = false;
-            this.btnExcluir.Visible = false;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // btnImprimir
-            // 
-            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimir.BackColor = System.Drawing.SystemColors.Window;
-            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnImprimir.FlatAppearance.BorderSize = 0;
-            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
-            this.btnImprimir.Location = new System.Drawing.Point(665, 1);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(0);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(30, 30);
-            this.btnImprimir.TabIndex = 431;
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // lblNenhuma
-            // 
-            this.lblNenhuma.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblNenhuma.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblNenhuma.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.lblNenhuma.Location = new System.Drawing.Point(0, 0);
-            this.lblNenhuma.Margin = new System.Windows.Forms.Padding(0);
-            this.lblNenhuma.Name = "lblNenhuma";
-            this.lblNenhuma.Size = new System.Drawing.Size(920, 580);
-            this.lblNenhuma.TabIndex = 432;
-            this.lblNenhuma.Text = "Nenhuma fatura gerada!";
-            this.lblNenhuma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // saveFileDialog
-            // 
-            this.saveFileDialog.FileName = "Relacao_OS.pdf";
-            this.saveFileDialog.Filter = "Arquivos PDF|*.pdf";
             // 
             // id_os
             // 
@@ -655,6 +369,292 @@
             this.status.ReadOnly = true;
             this.status.Visible = false;
             // 
+            // pnlLinha2
+            // 
+            this.pnlLinha2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlLinha2.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pnlLinha2.Location = new System.Drawing.Point(530, 477);
+            this.pnlLinha2.Name = "pnlLinha2";
+            this.pnlLinha2.Size = new System.Drawing.Size(190, 1);
+            this.pnlLinha2.TabIndex = 430;
+            // 
+            // lbData
+            // 
+            this.lbData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbData.AutoSize = true;
+            this.lbData.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbData.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lbData.Location = new System.Drawing.Point(577, 10);
+            this.lbData.Name = "lbData";
+            this.lbData.Size = new System.Drawing.Size(46, 20);
+            this.lbData.TabIndex = 420;
+            this.lbData.Text = "Data:";
+            this.lbData.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtValorDeslocamento
+            // 
+            this.txtValorDeslocamento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtValorDeslocamento.BackColor = System.Drawing.SystemColors.Window;
+            this.txtValorDeslocamento.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtValorDeslocamento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtValorDeslocamento.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorDeslocamento.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtValorDeslocamento.Location = new System.Drawing.Point(664, 456);
+            this.txtValorDeslocamento.MaxLength = 100;
+            this.txtValorDeslocamento.Name = "txtValorDeslocamento";
+            this.txtValorDeslocamento.ReadOnly = true;
+            this.txtValorDeslocamento.Size = new System.Drawing.Size(55, 15);
+            this.txtValorDeslocamento.TabIndex = 429;
+            this.txtValorDeslocamento.Text = "00.000,00";
+            this.txtValorDeslocamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtData
+            // 
+            this.txtData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtData.BackColor = System.Drawing.SystemColors.Window;
+            this.txtData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtData.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtData.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtData.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtData.Location = new System.Drawing.Point(629, 10);
+            this.txtData.MaxLength = 100;
+            this.txtData.Name = "txtData";
+            this.txtData.ReadOnly = true;
+            this.txtData.Size = new System.Drawing.Size(90, 20);
+            this.txtData.TabIndex = 421;
+            this.txtData.Text = "00/00/0000";
+            this.txtData.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtValorOS
+            // 
+            this.txtValorOS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtValorOS.BackColor = System.Drawing.SystemColors.Window;
+            this.txtValorOS.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtValorOS.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtValorOS.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorOS.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtValorOS.Location = new System.Drawing.Point(603, 456);
+            this.txtValorOS.MaxLength = 100;
+            this.txtValorOS.Name = "txtValorOS";
+            this.txtValorOS.ReadOnly = true;
+            this.txtValorOS.Size = new System.Drawing.Size(55, 15);
+            this.txtValorOS.TabIndex = 428;
+            this.txtValorOS.Text = "00.000,00";
+            this.txtValorOS.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtValorTotal
+            // 
+            this.txtValorTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtValorTotal.BackColor = System.Drawing.SystemColors.Window;
+            this.txtValorTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtValorTotal.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtValorTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorTotal.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtValorTotal.Location = new System.Drawing.Point(603, 481);
+            this.txtValorTotal.MaxLength = 100;
+            this.txtValorTotal.Name = "txtValorTotal";
+            this.txtValorTotal.ReadOnly = true;
+            this.txtValorTotal.Size = new System.Drawing.Size(116, 20);
+            this.txtValorTotal.TabIndex = 427;
+            this.txtValorTotal.Text = "R$00.000,00";
+            this.txtValorTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblSubtotal
+            // 
+            this.lblSubtotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSubtotal.AutoSize = true;
+            this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubtotal.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.lblSubtotal.Location = new System.Drawing.Point(543, 456);
+            this.lblSubtotal.Name = "lblSubtotal";
+            this.lblSubtotal.Size = new System.Drawing.Size(54, 13);
+            this.lblSubtotal.TabIndex = 425;
+            this.lblSubtotal.Text = "Subtotal:";
+            this.lblSubtotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lblTotal.Location = new System.Drawing.Point(540, 481);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(58, 20);
+            this.lblTotal.TabIndex = 426;
+            this.lblTotal.Text = "TOTAL:";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // dgvFaturas
+            // 
+            this.dgvFaturas.AllowUserToAddRows = false;
+            this.dgvFaturas.AllowUserToDeleteRows = false;
+            this.dgvFaturas.AllowUserToResizeColumns = false;
+            this.dgvFaturas.AllowUserToResizeRows = false;
+            this.dgvFaturas.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgvFaturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvFaturas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvFaturas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvFaturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvFaturas.ColumnHeadersHeight = 35;
+            this.dgvFaturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvFaturas.ColumnHeadersVisible = false;
+            this.dgvFaturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_fat,
+            this.descricao,
+            this.data,
+            this.subtotalos,
+            this.subtotalDeslocamento,
+            this.totalsas});
+            this.dgvFaturas.Cursor = System.Windows.Forms.Cursors.Default;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFaturas.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvFaturas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvFaturas.EnableHeadersVisualStyles = false;
+            this.dgvFaturas.GridColor = System.Drawing.SystemColors.Window;
+            this.dgvFaturas.Location = new System.Drawing.Point(3, 20);
+            this.dgvFaturas.Margin = new System.Windows.Forms.Padding(3, 20, 0, 20);
+            this.dgvFaturas.MultiSelect = false;
+            this.dgvFaturas.Name = "dgvFaturas";
+            this.dgvFaturas.ReadOnly = true;
+            this.dgvFaturas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvFaturas.RowHeadersVisible = false;
+            this.dgvFaturas.RowHeadersWidth = 60;
+            this.dgvFaturas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.tblFaturas.SetRowSpan(this.dgvFaturas, 3);
+            this.dgvFaturas.RowTemplate.Height = 50;
+            this.dgvFaturas.RowTemplate.ReadOnly = true;
+            this.dgvFaturas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvFaturas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvFaturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFaturas.ShowEditingIcon = false;
+            this.dgvFaturas.Size = new System.Drawing.Size(177, 540);
+            this.dgvFaturas.TabIndex = 223;
+            this.dgvFaturas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvFaturas_MouseClick);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnExcluir);
+            this.panel2.Controls.Add(this.btnImprimir);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(184, 20);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(733, 32);
+            this.panel2.TabIndex = 434;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.BackColor = System.Drawing.SystemColors.Window;
+            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluir.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.btnExcluir.FlatAppearance.BorderSize = 0;
+            this.btnExcluir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnExcluir.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluir.Image")));
+            this.btnExcluir.Location = new System.Drawing.Point(17, 1);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(30, 30);
+            this.btnExcluir.TabIndex = 432;
+            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ttpFatura.SetToolTip(this.btnExcluir, "Excluir Fatura");
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Visible = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimir.BackColor = System.Drawing.SystemColors.Window;
+            this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImprimir.FlatAppearance.BorderSize = 0;
+            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnImprimir.Image = ((System.Drawing.Image)(resources.GetObject("btnImprimir.Image")));
+            this.btnImprimir.Location = new System.Drawing.Point(685, 1);
+            this.btnImprimir.Margin = new System.Windows.Forms.Padding(0);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(30, 30);
+            this.btnImprimir.TabIndex = 431;
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // lblNenhuma
+            // 
+            this.lblNenhuma.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblNenhuma.Font = new System.Drawing.Font("Segoe UI", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblNenhuma.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.lblNenhuma.Location = new System.Drawing.Point(0, 0);
+            this.lblNenhuma.Margin = new System.Windows.Forms.Padding(0);
+            this.lblNenhuma.Name = "lblNenhuma";
+            this.lblNenhuma.Size = new System.Drawing.Size(920, 580);
+            this.lblNenhuma.TabIndex = 432;
+            this.lblNenhuma.Text = "Nenhuma fatura gerada!";
+            this.lblNenhuma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.FileName = "Relacao_OS.pdf";
+            this.saveFileDialog.Filter = "Arquivos PDF|*.pdf";
+            // 
+            // id_fat
+            // 
+            this.id_fat.DataPropertyName = "Id";
+            this.id_fat.HeaderText = "id";
+            this.id_fat.Name = "id_fat";
+            this.id_fat.ReadOnly = true;
+            this.id_fat.Visible = false;
+            // 
+            // descricao
+            // 
+            this.descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descricao.DataPropertyName = "Descricao";
+            this.descricao.HeaderText = "descricao";
+            this.descricao.Name = "descricao";
+            this.descricao.ReadOnly = true;
+            // 
+            // data
+            // 
+            this.data.DataPropertyName = "Data";
+            this.data.HeaderText = "data";
+            this.data.Name = "data";
+            this.data.ReadOnly = true;
+            this.data.Visible = false;
+            // 
+            // subtotalos
+            // 
+            this.subtotalos.DataPropertyName = "SubtotalOs";
+            this.subtotalos.HeaderText = "Subtotal Os";
+            this.subtotalos.Name = "subtotalos";
+            this.subtotalos.ReadOnly = true;
+            this.subtotalos.Visible = false;
+            // 
+            // subtotalDeslocamento
+            // 
+            this.subtotalDeslocamento.DataPropertyName = "SubtotalDeslocamento";
+            this.subtotalDeslocamento.HeaderText = "subtotaldesloca";
+            this.subtotalDeslocamento.Name = "subtotalDeslocamento";
+            this.subtotalDeslocamento.ReadOnly = true;
+            this.subtotalDeslocamento.Visible = false;
+            // 
+            // totalsas
+            // 
+            this.totalsas.DataPropertyName = "Total";
+            this.totalsas.HeaderText = "totalsas";
+            this.totalsas.Name = "totalsas";
+            this.totalsas.ReadOnly = true;
+            this.totalsas.Visible = false;
+            // 
             // frmFaturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -702,12 +702,6 @@
         private System.Windows.Forms.ToolTip ttpFatura;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.DataGridView dgvFaturas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_fat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subtotalos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subtotaldesloca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalsas;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_os;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_ordem;
         private System.Windows.Forms.DataGridViewTextBoxColumn referencia;
@@ -721,5 +715,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn valor_deslocamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn fatura_cod;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_fat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotalos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotalDeslocamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalsas;
     }
 }

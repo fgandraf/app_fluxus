@@ -10,16 +10,16 @@ namespace Fluxus.Services
 
 
 
-        public void Insert(Profissional dado)
+        public void Insert(Profissional body)
         {
-            new ProfessionalRepository().Insert(dado);
+            new ProfessionalRepository().Insert(body);
         }
 
 
 
-        public void Update(long id, Profissional dado)
+        public void Update(Profissional body)
         {
-            new ProfessionalRepository().Update(id, dado);
+            new ProfessionalRepository().Update(body);
         }
 
 
@@ -31,25 +31,25 @@ namespace Fluxus.Services
 
 
 
-        public DataTable ListarProfissionais()
+        public DataTable GetAll()
         {
             return new ProfessionalRepository().GetAll();
         }
 
 
 
-        public DataTable BuscarUsuario(string nomeDeUsuario)
+        public DataTable GetUser(string userName)
         {
-            return new ProfessionalRepository().GetUser(nomeDeUsuario);
+            return new ProfessionalRepository().GetUser(userName);
         }
 
 
 
-        public DataTable ListarCodigoENomeid(bool adicionaTitulo)
+        public DataTable ListarCodigoENomeid(bool addHeader)
         {
             DataTable dtPro = new ProfessionalRepository().GetCodeNameid();
 
-            if (adicionaTitulo)
+            if (addHeader)
             {
                 DataRow linha = dtPro.NewRow();
                 linha[1] = "--TODOS--";

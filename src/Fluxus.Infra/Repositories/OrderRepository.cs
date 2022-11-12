@@ -8,21 +8,21 @@ namespace Fluxus.Infra.Repositories
 {
     public class OrderRepository
     {
-        public void Insert(Os dado)
+        public void Insert(Os body)
         {
-            string json = JsonConvert.SerializeObject(dado);
+            string json = JsonConvert.SerializeObject(body);
             Request.Post("os/post", json);
         }
 
-        public void Update(long id, Os dado)
+        public void Update(Os body)
         {
-            string json = JsonConvert.SerializeObject(dado);
-            Request.Put("os/put/" + id, json);
+            string json = JsonConvert.SerializeObject(body);
+            Request.Put("os/put/" + body.Id, json);
         }
 
-        public void UpdateFaturaCod(long id, long fatura_cod)
+        public void UpdateInvoiceId(long id, long invoiceId)
         {
-            Request.Put("os/updatefaturacod/" + id + "," + fatura_cod, string.Empty);
+            Request.Put("os/updatefaturacod/" + id + "," + invoiceId, string.Empty);
         }
 
         public async void UpdateStatus(long id, string status)
@@ -47,21 +47,21 @@ namespace Fluxus.Infra.Repositories
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public DataTable GetClosedByInvoiceId(long fatura_cod)
+        public DataTable GetClosedByInvoiceId(long invoiceId)
         {
-            string json = Request.Get("os/getordensfaturadas/", fatura_cod.ToString());
+            string json = Request.Get("os/getordensfaturadas/", invoiceId.ToString());
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public DataTable GetFiltered(string filtro)
+        public DataTable GetFiltered(string parameters)
         {
-            string json = Request.Get("os/getfiltered/", filtro);
+            string json = Request.Get("os/getfiltered/", parameters);
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public DataTable GetProfessionalByInvoiceId(long fatura_cod)
+        public DataTable GetProfessionalByInvoiceId(long invoiceId)
         {
-            string json = Request.Get("os/getprofissionaisdafatura/", fatura_cod.ToString());
+            string json = Request.Get("os/getprofissionaisdafatura/", invoiceId.ToString());
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 

@@ -6,10 +6,10 @@ namespace Fluxus.Domain.Entities
     {
         public long Id { get; set; }
         public string Cnpj { get; set; }
-        public string Fantasia { get; set; }
-        public string Razao { get; set; }
-        public string Ie { get; set; }
-        public string Im { get; set; }
+        public string Nome { get; set; }
+        public string RazaoSocial { get; set; }
+        public string InscricaoEstadual { get; set; }
+        public string InscricaoMunicipal { get; set; }
         public string Endereco { get; set; }
         public string Complemento { get; set; }
         public string Bairro { get; set; }
@@ -19,19 +19,19 @@ namespace Fluxus.Domain.Entities
         public string Telefone { get; set; }
         public string Telefone2 { get; set; }
         public string Email { get; set; }
-        public string Db_banco { get; set; }
-        public string Db_tipo { get; set; }
-        public string Db_agencia { get; set; }
-        public string Db_operador { get; set; }
-        public string Db_conta { get; set; }
+        public string BancoNome { get; set; }
+        public string BancoTipo { get; set; }
+        public string BancoAgencia { get; set; }
+        public string BancoOperador { get; set; }
+        public string BancoConta { get; set; }
         public string Constituicao { get; set; }
-        public string Ct_tomador { get; set; }
-        public string Ct_edital { get; set; }
-        public string Ct_contrato { get; set; }
-        public string Ct_celebrado { get; set; }
-        public string Ct_inicio { get; set; }
-        public string Ct_termino { get; set; }
-        public string Logo { get; set; }
+        public string ContratoTomador { get; set; }
+        public string ContratoEdital { get; set; }
+        public string ContratoNumero { get; set; }
+        public string ContratoCelebrado { get; set; }
+        public string ContratoInicio { get; set; }
+        public string ContratoTermino { get; set; }
+        public string Logotipo { get; set; }
         
     }
 

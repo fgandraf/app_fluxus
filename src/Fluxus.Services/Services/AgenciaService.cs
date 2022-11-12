@@ -9,16 +9,16 @@ namespace Fluxus.Services
     {
 
 
-        public void Insert(Agencia dado)
+        public void Insert(Agencia body)
         {
-            new AgencyRepository().Insert(dado);
+            new AgencyRepository().Insert(body);
         }
 
 
 
-        public void Update(long id, Agencia dado)
+        public void Update(Agencia body)
         {
-            new AgencyRepository().Update(id, dado);
+            new AgencyRepository().Update(body);
         }
 
 

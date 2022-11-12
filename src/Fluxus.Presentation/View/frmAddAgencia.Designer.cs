@@ -385,7 +385,7 @@
             this.btnAddSave.Name = "btnAddSave";
             this.btnAddSave.Size = new System.Drawing.Size(200, 25);
             this.btnAddSave.TabIndex = 0;
-            this.btnAddSave.Text = "&Adicionar";
+            this.btnAddSave.Text = "&Salvar";
             this.btnAddSave.UseVisualStyleBackColor = false;
             this.btnAddSave.Click += new System.EventHandler(this.btnAddSave_Click);
             // 
