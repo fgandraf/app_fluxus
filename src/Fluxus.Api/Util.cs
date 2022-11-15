@@ -10,21 +10,19 @@ namespace Fluxus.Api
 
         public static dynamic DateOrNull(string data)
         {
-            if (data != null)
-                return Convert.ToDateTime(data);
-            else
-                return null;
+            if (data is null)
+                return null; 
+            
+            return Convert.ToDateTime(data);                
         }
 
         public static string DateTimeToShortDateString(string date)
         {
-            if (date != "")
-                return Convert.ToDateTime(date).ToString("dd/MM/yyyy");
-            else
+            if (date is "" || date is null)
                 return null;
+            
+            return Convert.ToDateTime(date).ToString("dd/MM/yyyy");   
         }
-
-
 
     }
 }
