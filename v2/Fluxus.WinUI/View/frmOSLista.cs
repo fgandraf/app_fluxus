@@ -21,7 +21,7 @@ namespace Fluxus.WinUI.View
 
         private void EditarOS(DataGridView dgv)
         {
-            Domain.Entities.ServiceOrder ordemDeServico = new Services.ServiceOrderService().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+            ServiceOrder ordemDeServico = new Services.ServiceOrderService().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
 
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
 
@@ -51,6 +51,7 @@ namespace Fluxus.WinUI.View
         {
             dtOS = new Services.ServiceOrderService().GetOrdensComFiltro(GerarStringSQL());
             dgv.DataSource = dtOS;
+
         }
 
         private void LimparFiltro()
@@ -66,52 +67,21 @@ namespace Fluxus.WinUI.View
 
         private string GerarStringSQL()
         {
-            string profissional;
-            {
-                if (cboProfissional.SelectedIndex == 0)
-                    profissional = "!= 0";
-                else
-                    profissional = "= " + cboProfissional.SelectedIndex.ToString();
-            }
+            string profissional = cboProfissional.SelectedIndex == 0 ? "!= ''" : $"= '{cboProfissional.SelectedValue.ToString()}'";
+            string status = cboStatus.SelectedIndex == 0 ? "!= ' '" : $"= '{cboStatus.Text}'";
+            string cidade = cboCidade.SelectedIndex == 0 ? "!= ' '" : $"= '{cboCidade.Text}'";
+            string atividade = cboAtividade.SelectedIndex == 0 ? "!= ''" : $"= '{cboAtividade.Text}'";
 
             string faturadas;
+            switch (cboFaturadas.SelectedIndex)
             {
-                if (cboFaturadas.SelectedIndex == 0)
-                    faturadas = ">= 0";
-                else if (cboFaturadas.SelectedIndex == 1)
-                    faturadas = "> 0";
-                else
-                    faturadas = "= 0";
+                case 1: faturadas = "> 0"; break;
+                case 2: faturadas = "= 0"; break;
+                default: faturadas = ">= 0"; break;
             }
 
+            string filtro = String.Format($"pr.tag {profissional} AND sr.tag {atividade} AND os.city {cidade} AND os.status {status} AND os.invoice_id {faturadas}");
 
-
-            string atividade;
-            {
-                if (cboAtividade.SelectedIndex == 0)
-                    atividade = "!= ''";
-                else
-                    atividade = "= '" + cboAtividade.Text + "'";
-            }
-
-            string cidade;
-            {
-                if (cboCidade.SelectedIndex == 0)
-                    cidade = "!= ' '";
-                else
-                    cidade = "= '" + cboCidade.Text + "'";
-            }
-
-            string status;
-            {
-                if (cboStatus.SelectedIndex == 0)
-                    status = "!= ' '";
-                else
-                    status = "= '" + cboStatus.Text + "'";
-            }
-
-            //string filtro = String.Format($"professional {profissional} AND service {atividade} AND city {cidade} AND status {status} AND invoice_id {faturadas}");
-            string filtro = String.Format($"pr.tag != '' AND sr.tag {atividade} AND os.city {cidade} AND os.status {status} AND os.invoice_id {faturadas}");
             return filtro;
         }
 
@@ -166,7 +136,7 @@ namespace Fluxus.WinUI.View
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (Convert.ToInt64(dgvOS.CurrentRow.Cells["fatura_cod"].Value) != 0)
+            if (Convert.ToInt64(dgvOS.CurrentRow.Cells["invoiceId"].Value) != 0)
             {
                 MessageBox.Show("Não é possível excluir uma Ordem de Serviço já faturada!", "OS já faturada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -212,7 +182,7 @@ namespace Fluxus.WinUI.View
 
 
                     ////Titulo das células
-                    
+
                     XcelApp.Cells[1, 1] = dgvOS.Columns["status"].HeaderText;
                     XcelApp.Cells[1, 2] = dgvOS.Columns["professional"].HeaderText;
                     XcelApp.Cells[1, 3] = dgvOS.Columns["orderDate"].HeaderText;
@@ -223,7 +193,7 @@ namespace Fluxus.WinUI.View
                     XcelApp.Cells[1, 8] = dgvOS.Columns["surveyDate"].HeaderText;
                     XcelApp.Cells[1, 9] = dgvOS.Columns["doneDate"].HeaderText;
 
-                    
+
                     //Linhas
                     for (int i = 0; i < dgvOS.RowCount - 1; i++)
                     {
@@ -238,7 +208,7 @@ namespace Fluxus.WinUI.View
                         XcelApp.Cells[i + 2, 9] = dgvOS.Rows[i].Cells["doneDate"].Value.ToString();
                     }
 
-                    
+
                     //Configurações
                     XcelApp.Columns.AutoFit();
                     XcelApp.Rows.RowHeight = 15;
@@ -264,7 +234,7 @@ namespace Fluxus.WinUI.View
         {
             if (e.KeyCode == Keys.Delete && dgvOS.CurrentCell.Selected)
             {
-                if (Convert.ToInt64(dgvOS.CurrentRow.Cells["fatura_cod"].Value) != 0)
+                if (Convert.ToInt64(dgvOS.CurrentRow.Cells["invoiceId"].Value) != 0)
                 {
                     MessageBox.Show("Não é possível excluir uma Ordem de Serviço já faturada!", "OS já faturada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;

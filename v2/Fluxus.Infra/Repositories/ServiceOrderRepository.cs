@@ -1,9 +1,10 @@
 ﻿using Fluxus.Domain.Entities;
 using Newtonsoft.Json;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
-
 
 namespace Fluxus.Infra.Repositories
 {
@@ -59,6 +60,7 @@ namespace Fluxus.Infra.Repositories
             string json = Request.Get("ServiceOrder/Filtered/", parameters);
             if (json != null)
                 return JsonConvert.DeserializeObject<DataTable>(json);
+
             return null;
         }
 

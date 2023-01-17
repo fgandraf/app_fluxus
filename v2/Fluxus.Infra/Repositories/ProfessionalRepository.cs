@@ -42,9 +42,9 @@ namespace Fluxus.Infra.Repositories
             return retorno;
         }
 
-        public DataTable GetIdNameid()
+        public DataTable GetTagNameid()
         {
-            string json = Request.Get("Professional/IdNameId", string.Empty);
+            string json = Request.Get("Professional/TagNameId", string.Empty);
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 

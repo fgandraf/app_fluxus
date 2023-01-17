@@ -42,7 +42,7 @@ namespace Fluxus.WinUI.View
                 if (cboProfissional.SelectedIndex == 0)
                     dvOS.RowFilter = String.Format("status = '{0}'", dgv.Tag.ToString());
                 else
-                    dvOS.RowFilter = String.Format("status = '{0}' AND professionalId = '{1}'", dgv.Tag.ToString(), cboProfissional.SelectedIndex);
+                    dvOS.RowFilter = String.Format("status = '{0}' AND professionalId = '{1}'", dgv.Tag.ToString(), cboProfissional.SelectedValue.ToString());
 
                 dgv.DataSource = dvOS;
 
@@ -197,14 +197,14 @@ namespace Fluxus.WinUI.View
 
 
                 if (Logged.Rt)
-                    cboProfissional.SelectedIndex = Convert.ToInt32(Logged.ProfessionalId);
+                    cboProfissional.SelectedValue = Convert.ToInt32(Logged.ProfessionalId);
                 else
                     cboProfissional.SelectedIndex = 0;
                 return;
             }
 
 
-            cboProfissional.SelectedIndex = Convert.ToInt32(Logged.ProfessionalId);
+            cboProfissional.SelectedValue = Convert.ToInt32(Logged.ProfessionalId);
 
 
             ListarOS(dgvRecebidas);

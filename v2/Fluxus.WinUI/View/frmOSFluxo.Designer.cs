@@ -878,7 +878,7 @@
             this.cboProfissional.Name = "cboProfissional";
             this.cboProfissional.Size = new System.Drawing.Size(234, 21);
             this.cboProfissional.TabIndex = 16;
-            this.cboProfissional.ValueMember = "codigo";
+            this.cboProfissional.ValueMember = "id";
             this.cboProfissional.SelectedIndexChanged += new System.EventHandler(this.cboProfissional_SelectedIndexChanged);
             // 
             // lblProfissional

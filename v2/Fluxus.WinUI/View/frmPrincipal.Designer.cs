@@ -83,7 +83,7 @@
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(233, 650);
+            this.pnlMenu.Size = new System.Drawing.Size(233, 700);
             this.pnlMenu.TabIndex = 160;
             // 
             // lblUsuario
@@ -91,7 +91,7 @@
             this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(0, 631);
+            this.lblUsuario.Location = new System.Drawing.Point(0, 681);
             this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(156, 15);
@@ -184,7 +184,7 @@
             this.lblVersao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblVersao.ForeColor = System.Drawing.Color.White;
-            this.lblVersao.Location = new System.Drawing.Point(163, 631);
+            this.lblVersao.Location = new System.Drawing.Point(163, 681);
             this.lblVersao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVersao.Name = "lblVersao";
             this.lblVersao.Size = new System.Drawing.Size(70, 15);
@@ -345,7 +345,7 @@
             this.pnlTitulo.Location = new System.Drawing.Point(233, 0);
             this.pnlTitulo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.pnlTitulo.Name = "pnlTitulo";
-            this.pnlTitulo.Size = new System.Drawing.Size(967, 35);
+            this.pnlTitulo.Size = new System.Drawing.Size(1017, 35);
             this.pnlTitulo.TabIndex = 2;
             this.pnlTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitulo_MouseDown);
             // 
@@ -357,7 +357,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(968, 6);
+            this.panel1.Size = new System.Drawing.Size(1018, 6);
             this.panel1.TabIndex = 125;
             // 
             // btnAppMinimizar
@@ -370,7 +370,7 @@
             this.btnAppMinimizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAppMinimizar.ForeColor = System.Drawing.Color.Black;
             this.btnAppMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMinimizar.Image")));
-            this.btnAppMinimizar.Location = new System.Drawing.Point(811, 5);
+            this.btnAppMinimizar.Location = new System.Drawing.Point(861, 5);
             this.btnAppMinimizar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppMinimizar.Name = "btnAppMinimizar";
             this.btnAppMinimizar.Size = new System.Drawing.Size(52, 30);
@@ -403,7 +403,7 @@
             this.btnAppFechar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAppFechar.ForeColor = System.Drawing.Color.Black;
             this.btnAppFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppFechar.Image")));
-            this.btnAppFechar.Location = new System.Drawing.Point(916, 5);
+            this.btnAppFechar.Location = new System.Drawing.Point(966, 5);
             this.btnAppFechar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppFechar.Name = "btnAppFechar";
             this.btnAppFechar.Size = new System.Drawing.Size(52, 30);
@@ -422,7 +422,7 @@
             this.btnAppMaximizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAppMaximizar.ForeColor = System.Drawing.Color.Black;
             this.btnAppMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMaximizar.Image")));
-            this.btnAppMaximizar.Location = new System.Drawing.Point(863, 5);
+            this.btnAppMaximizar.Location = new System.Drawing.Point(913, 5);
             this.btnAppMaximizar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppMaximizar.Name = "btnAppMaximizar";
             this.btnAppMaximizar.Size = new System.Drawing.Size(52, 30);
@@ -441,7 +441,7 @@
             this.btnAppRestaurar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAppRestaurar.ForeColor = System.Drawing.Color.Black;
             this.btnAppRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppRestaurar.Image")));
-            this.btnAppRestaurar.Location = new System.Drawing.Point(863, 5);
+            this.btnAppRestaurar.Location = new System.Drawing.Point(913, 5);
             this.btnAppRestaurar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppRestaurar.Name = "btnAppRestaurar";
             this.btnAppRestaurar.Size = new System.Drawing.Size(52, 35);
@@ -458,7 +458,7 @@
             this.pnlMain.Location = new System.Drawing.Point(233, 35);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(967, 615);
+            this.pnlMain.Size = new System.Drawing.Size(1017, 665);
             this.pnlMain.TabIndex = 161;
             // 
             // ttpMenu
@@ -481,7 +481,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumBlue;
-            this.ClientSize = new System.Drawing.Size(1200, 650);
+            this.ClientSize = new System.Drawing.Size(1250, 700);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlTitulo);
             this.Controls.Add(this.pnlMenu);

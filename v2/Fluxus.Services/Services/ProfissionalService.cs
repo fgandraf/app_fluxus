@@ -47,12 +47,12 @@ namespace Fluxus.Services
 
         public DataTable ListarCodigoENomeid(bool addHeader)
         {
-            DataTable dtPro = new ProfessionalRepository().GetIdNameid();
+            DataTable dtPro = new ProfessionalRepository().GetTagNameid();
 
             if (addHeader)
             {
                 DataRow linha = dtPro.NewRow();
-                linha[1] = "--TODOS--";
+                linha[2] = "--TODOS--";
                 dtPro.Rows.InsertAt(linha, 0);
             }
 

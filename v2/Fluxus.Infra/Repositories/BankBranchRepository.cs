@@ -33,7 +33,9 @@ namespace Fluxus.Infra.Repositories
         public DataTable GetByCode(string agencyCode)
         {
             string json = Request.Get("BankBranch/Contacts/", agencyCode);
-            return JsonConvert.DeserializeObject<DataTable>(json);
+            if (json != null)
+                return JsonConvert.DeserializeObject<DataTable>(json);
+            return null;
         }
 
         public BankBranch GetById(long id)
