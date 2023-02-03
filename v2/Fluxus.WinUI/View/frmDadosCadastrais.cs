@@ -94,7 +94,7 @@ namespace Fluxus.WinUI.View
                         picLogotipo.Image = Util.ByteToImage(logo);
                     }
 
-                    txtCNPJ.Focus();
+                    //txtCNPJ.Focus();
                 }
             }
             catch (Exception ex)
@@ -119,7 +119,7 @@ namespace Fluxus.WinUI.View
                 City = txtCidade.Text,
                 Zip = txtCEP.Text,
                 State = cboUF.Text,
-                EstablishmentDate = Util.ValidateDateString(txtConstituicao.Text),
+                EstablishmentDate = Util.ValidateDate(txtConstituicao.Text),
                 Phone1 = txtTelefone.Text,
                 Phone2 = txtTelefone2.Text,
                 Email = txtEmail.Text,
@@ -131,9 +131,9 @@ namespace Fluxus.WinUI.View
                 ContractorName = cboTomador.Text,
                 ContractNotice = txtEdital.Text,
                 ContractNumber = txtContrato.Text,
-                ContractEstablished = Util.ValidateDateString(txtCelebrado.Text),
-                ContractStart = Util.ValidateDateString(txtInicio.Text),
-                ContractEnd = Util.ValidateDateString(txtTermino.Text),
+                ContractEstablished = Util.ValidateDate(txtCelebrado.Text),
+                ContractStart = Util.ValidateDate(txtInicio.Text),
+                ContractEnd = Util.ValidateDate(txtTermino.Text),
                 Logo = Convert.ToBase64String(Util.ImageToByte(picLogotipo.Image))
             };
 

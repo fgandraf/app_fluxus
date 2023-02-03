@@ -23,7 +23,7 @@ namespace Fluxus.Services
 
 
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             new BankBranchRepository().Delete(id);
         }
@@ -44,7 +44,7 @@ namespace Fluxus.Services
 
 
 
-        public BankBranch GetBy(long id)
+        public BankBranch GetBy(int id)
         {
             return new BankBranchRepository().GetById(id);
         }

@@ -24,14 +24,14 @@ namespace Fluxus.Services
 
 
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             new InvoiceRepository().Delete(id);
         }
 
 
 
-        public string DescricaoFatura(long id)
+        public string DescricaoFatura(int id)
         {
             return new InvoiceRepository().GetDescription(id);
         }

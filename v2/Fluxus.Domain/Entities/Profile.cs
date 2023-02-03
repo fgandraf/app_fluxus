@@ -1,10 +1,12 @@
 ﻿
+using System;
+
 namespace Fluxus.Domain.Entities
 {
 
     public class Profile
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Cnpj { get; set; }
         public string TradingName { get; set; }
         public string CompanyName { get; set; }
@@ -24,13 +26,13 @@ namespace Fluxus.Domain.Entities
         public string BankAccountBranch { get; set; }
         public string BankAccountDigit { get; set; }
         public string BankAccountNumber { get; set; }
-        public string EstablishmentDate { get; set; }
+        public DateTime EstablishmentDate { get; set; }
         public string ContractorName { get; set; }
         public string ContractNotice { get; set; }
         public string ContractNumber { get; set; }
-        public string ContractEstablished { get; set; }
-        public string ContractStart { get; set; }
-        public string ContractEnd { get; set; }
+        public DateTime ContractEstablished { get; set; }
+        public DateTime ContractStart { get; set; }
+        public DateTime ContractEnd { get; set; }
         public string Logo { get; set; }
         
     }

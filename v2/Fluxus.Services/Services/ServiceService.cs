@@ -23,7 +23,7 @@ namespace Fluxus.Services
 
 
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             new ServiceRepository().Delete(id);
         }
@@ -50,7 +50,7 @@ namespace Fluxus.Services
 
 
 
-        public Service GetBy(long id)
+        public Service GetBy(int id)
         {
             return new ServiceRepository().GetById(id);
         }

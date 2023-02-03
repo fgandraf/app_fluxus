@@ -19,7 +19,7 @@ namespace Fluxus.Infra.Repositories
         public void Update(ServiceOrder body)
         {
             string json = JsonConvert.SerializeObject(body);
-            Request.Put("ServiceOrder/" + body.Id, json);
+            Request.Put("ServiceOrder", json);
         }
 
         public void UpdateInvoiceId(int id, int invoiceId)
@@ -27,7 +27,7 @@ namespace Fluxus.Infra.Repositories
             Request.Put("ServiceOrder/UpdateInvoiceId/" + id + "," + invoiceId, string.Empty);
         }
 
-        public async void UpdateStatus(long id, string status)
+        public async void UpdateStatus(int id, string status)
         {
             await Task.Run(() => Request.Put("ServiceOrder/UpdateStatus/" + id + "," + status, string.Empty));
         }
@@ -49,22 +49,22 @@ namespace Fluxus.Infra.Repositories
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public DataTable GetClosedByInvoiceId(long invoiceId)
+        public DataTable GetClosedByInvoiceId(int invoiceId)
         {
             string json = Request.Get("ServiceOrder/Invoiced/", invoiceId.ToString());
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public DataTable GetFiltered(string parameters)
+        public DataTable GetFiltered(string filter)
         {
-            string json = Request.Get("ServiceOrder/Filtered/", parameters);
+            string json = Request.Get("ServiceOrder/Filtered/", filter);
             if (json != null)
                 return JsonConvert.DeserializeObject<DataTable>(json);
 
             return null;
         }
 
-        public DataTable GetProfessionalByInvoiceId(long invoiceId)
+        public DataTable GetProfessionalByInvoiceId(int invoiceId)
         {
             string json = Request.Get("ServiceOrder/Professionals/", invoiceId.ToString());
             return JsonConvert.DeserializeObject<DataTable>(json);
@@ -76,7 +76,7 @@ namespace Fluxus.Infra.Repositories
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public ServiceOrder GetById(long id)
+        public ServiceOrder GetById(int id)
         {
             string json = Request.Get("ServiceOrder/", id.ToString());
             return JsonConvert.DeserializeObject<ServiceOrder>(json);

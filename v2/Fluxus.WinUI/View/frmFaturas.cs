@@ -43,7 +43,7 @@ namespace Fluxus.WinUI.View
             {
                 try
                 {
-                    dgvOS.DataSource = new ServiceOrderService().GetOrdensFaturadasDoCodigo(Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id"].Value));
+                    dgvOS.DataSource = new ServiceOrderService().GetOrdensFaturadasDoCodigo(Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value));
 
                     txtData.Text = dgvFaturas.CurrentRow.Cells[2].Value.ToString();
                     txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);
@@ -130,7 +130,7 @@ namespace Fluxus.WinUI.View
                     logoImagem = System.Drawing.Image.FromStream(stream);
 
 
-                long fatura_cod = Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id"].Value);
+                int fatura_cod = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
 
                 //CHAMAR O MÉTODO
                 InvoiceReport.PrintPDF
@@ -194,7 +194,7 @@ namespace Fluxus.WinUI.View
                 var result = MessageBox.Show("Deseja excluir a Fatura?" + "\n\n" + dgvFaturas.CurrentRow.Cells[1].Value.ToString(), "Remover O.S.", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (result == DialogResult.Yes)
                 {
-                    new FaturaService().Delete((Convert.ToInt64(dgvFaturas.CurrentRow.Cells["id_fat"].Value)));
+                    new FaturaService().Delete((Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id_fat"].Value)));
                     ListarFatura();
                     ListarOS();
                 }

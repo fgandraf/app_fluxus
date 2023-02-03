@@ -24,7 +24,7 @@ namespace Fluxus.Services
 
 
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             new ProfessionalRepository().Delete(id);
         }
@@ -61,7 +61,7 @@ namespace Fluxus.Services
 
 
 
-        public Professional GetBy(long id)
+        public Professional GetBy(int id)
         {
             return new ProfessionalRepository().GetById(id);
         }

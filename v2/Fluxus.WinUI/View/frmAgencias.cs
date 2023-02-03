@@ -42,7 +42,7 @@ namespace Fluxus.WinUI.View
         {
             try
             {
-                new BankBranchService().Delete((Convert.ToInt64(dgvAgencias.CurrentRow.Cells["id"].Value)));
+                new BankBranchService().Delete((Convert.ToInt32(dgvAgencias.CurrentRow.Cells["id"].Value)));
             }
             catch (Exception ex)
             {

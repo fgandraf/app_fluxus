@@ -17,10 +17,10 @@ namespace Fluxus.Infra.Repositories
         public void Update(Professional body)
         {
             string json = JsonConvert.SerializeObject(body);
-            Request.Put("Professional/" + body.Id, json);
+            Request.Put("Professional", json);
         }
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             Request.Delete("Professional/", id.ToString());
         }
@@ -48,7 +48,7 @@ namespace Fluxus.Infra.Repositories
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public Professional GetById(long id)
+        public Professional GetById(int id)
         {
             string json = Request.Get("Professional/", id.ToString());
             return JsonConvert.DeserializeObject<Professional>(json);

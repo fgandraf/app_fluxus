@@ -42,7 +42,7 @@ namespace Fluxus.WinUI.View
         {
             try
             {
-                new ServiceService().Delete((Convert.ToInt64(dgvAtividades.CurrentRow.Cells["id"].Value)));
+                new ServiceService().Delete((Convert.ToInt32(dgvAtividades.CurrentRow.Cells["id"].Value)));
             }
             catch (Exception ex)
             {

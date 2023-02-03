@@ -16,10 +16,10 @@ namespace Fluxus.Infra.Repositories
         public void Update(Service body)
         {
             string json = JsonConvert.SerializeObject(body);
-            Request.Put("Service/" + body.Id, json);
+            Request.Put("Service", json);
         }
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             Request.Delete("Service/", id.ToString());
         }
@@ -30,7 +30,7 @@ namespace Fluxus.Infra.Repositories
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public Service GetById(long id)
+        public Service GetById(int id)
         {
             string json = Request.Get("Service/", id.ToString());
             return JsonConvert.DeserializeObject<Service>(json);

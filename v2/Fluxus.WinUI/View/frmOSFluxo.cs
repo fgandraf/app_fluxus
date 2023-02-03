@@ -40,9 +40,9 @@ namespace Fluxus.WinUI.View
 
 
                 if (cboProfissional.SelectedIndex == 0)
-                    dvOS.RowFilter = String.Format("status = '{0}'", dgv.Tag.ToString());
+                    dvOS.RowFilter = String.Format("Status = '{0}'", dgv.Tag.ToString());
                 else
-                    dvOS.RowFilter = String.Format("status = '{0}' AND professionalId = '{1}'", dgv.Tag.ToString(), cboProfissional.SelectedValue.ToString());
+                    dvOS.RowFilter = String.Format("Status = '{0}' AND ProfessionalId = '{1}'", dgv.Tag.ToString(), cboProfissional.SelectedValue.ToString());
 
                 dgv.DataSource = dvOS;
 
@@ -75,7 +75,7 @@ namespace Fluxus.WinUI.View
         {
             if (dgv != null)
             {
-                Domain.Entities.ServiceOrder ordemDeServico = new Services.ServiceOrderService().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+                Domain.Entities.ServiceOrder ordemDeServico = new Services.ServiceOrderService().GetBy(Convert.ToInt32(dgv.CurrentRow.Cells[0].Value));
 
                 frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
 
@@ -94,7 +94,7 @@ namespace Fluxus.WinUI.View
                 {
                     try
                     {
-                        new Services.ServiceOrderService().Delete((Convert.ToInt64(dgv.CurrentRow.Cells[0].Value)));
+                        new Services.ServiceOrderService().Delete((Convert.ToInt32(dgv.CurrentRow.Cells[0].Value)));
 
                         _dtOSNFaturada = new Services.ServiceOrderService().GetOrdensDoFluxo();
                         ListarOS(dgv);
@@ -118,10 +118,10 @@ namespace Fluxus.WinUI.View
                 {
 
                     string status = dgvDestino.Tag.ToString();
-                    long id = Convert.ToInt64(_dgvOrigem.Rows[sourcerow].Cells[0].Value);
+                    int id = Convert.ToInt32(_dgvOrigem.Rows[sourcerow].Cells[0].Value);
 
-                    DataRow linha = _dtOSNFaturada.Select("id = " + id).FirstOrDefault();
-                    linha["status"] = status;
+                    DataRow linha = _dtOSNFaturada.Select("Id = " + id).FirstOrDefault();
+                    linha["Status"] = status;
 
                     ListarOS(_dgvOrigem);
                     ListarOS(dgvDestino);

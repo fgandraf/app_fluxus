@@ -11,7 +11,17 @@ namespace Fluxus.WinUI
     public class Util
     {
 
-        
+        public static DateTime ValidateDate(string dateString)
+        {
+            if (dateString != "__/__/____" || !string.IsNullOrEmpty(dateString))
+                return Convert.ToDateTime(dateString);
+            else
+            {
+                return new DateTime();
+            }
+
+        }
+
         public static string MaskValidated(object maskedTextBox)
         {
             var regex = new Regex(@"[^\d]");
@@ -89,21 +99,10 @@ namespace Fluxus.WinUI
             }
 
 
-
             return returnMask;
-
-
-
         }
 
 
-        public static string ValidateDateString(string dateString)
-        {
-            if (dateString != "__/__/____")
-                return dateString;
-            else
-                return null;
-        }
 
 
         public static byte[] ImageToByte(Image logo)

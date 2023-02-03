@@ -21,7 +21,7 @@ namespace Fluxus.WinUI.View
 
         private void EditarOS(DataGridView dgv)
         {
-            ServiceOrder ordemDeServico = new Services.ServiceOrderService().GetBy(Convert.ToInt64(dgv.CurrentRow.Cells[0].Value));
+            ServiceOrder ordemDeServico = new Services.ServiceOrderService().GetBy(Convert.ToInt32(dgv.CurrentRow.Cells[0].Value));
 
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
 
@@ -38,7 +38,7 @@ namespace Fluxus.WinUI.View
             {
                 try
                 {
-                    new Services.ServiceOrderService().Delete((Convert.ToInt64(dgv.CurrentRow.Cells[0].Value)));
+                    new Services.ServiceOrderService().Delete((Convert.ToInt32(dgv.CurrentRow.Cells[0].Value)));
                 }
                 catch (Exception ex)
                 {
@@ -67,22 +67,21 @@ namespace Fluxus.WinUI.View
 
         private string GerarStringSQL()
         {
-            string profissional = cboProfissional.SelectedIndex == 0 ? "!= ''" : $"= '{cboProfissional.SelectedValue.ToString()}'";
-            string status = cboStatus.SelectedIndex == 0 ? "!= ' '" : $"= '{cboStatus.Text}'";
-            string cidade = cboCidade.SelectedIndex == 0 ? "!= ' '" : $"= '{cboCidade.Text}'";
-            string atividade = cboAtividade.SelectedIndex == 0 ? "!= ''" : $"= '{cboAtividade.Text}'";
+            string professional = cboProfissional.SelectedIndex == 0 ? "%" : $"{cboProfissional.SelectedValue.ToString()}";
+            string status = cboStatus.SelectedIndex == 0 ? "%" : $"{cboStatus.Text}";
+            string city = cboCidade.SelectedIndex == 0 ? "%" : $"{cboCidade.Text}";
+            string service = cboAtividade.SelectedIndex == 0 ? "%" : $"{cboAtividade.Text}";
 
-            string faturadas;
-            switch (cboFaturadas.SelectedIndex)
-            {
-                case 1: faturadas = "> 0"; break;
-                case 2: faturadas = "= 0"; break;
-                default: faturadas = ">= 0"; break;
-            }
+            string invoiced = cboFaturadas.SelectedIndex.ToString();
 
-            string filtro = String.Format($"pr.tag {profissional} AND sr.tag {atividade} AND os.city {cidade} AND os.status {status} AND os.invoice_id {faturadas}");
+            //switch (cboFaturadas.SelectedIndex)
+            //{
+            //    case 1: invoiced = "1"; break;
+            //    case 2: invoiced = "0"; break;
+            //    default: invoiced = "%"; break;
+            //}
 
-            return filtro;
+            return $"{professional},{service},{city},{status},{invoiced}";
         }
 
 
@@ -111,7 +110,7 @@ namespace Fluxus.WinUI.View
                 cboProfissional.SelectedIndex = Convert.ToInt32(Logged.ProfessionalId);
             else
                 cboProfissional.SelectedIndex = 0;
-            cboFaturadas.SelectedIndex = 2;
+            cboFaturadas.SelectedIndex = 0;
 
 
 

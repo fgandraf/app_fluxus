@@ -41,7 +41,7 @@ namespace Fluxus.WinUI.View
         {
             try
             {
-                new ProfissionalService().Delete((Convert.ToInt64(dgvProfissionais.CurrentRow.Cells[0].Value)));
+                new ProfissionalService().Delete((Convert.ToInt32(dgvProfissionais.CurrentRow.Cells[0].Value)));
             }
             catch (Exception ex)
             {

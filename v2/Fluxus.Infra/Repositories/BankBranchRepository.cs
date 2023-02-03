@@ -16,10 +16,10 @@ namespace Fluxus.Infra.Repositories
         public void Update(BankBranch body)
         {
             string json = JsonConvert.SerializeObject(body);
-            Request.Put("BankBranch/" + body.Id, json);
+            Request.Put("BankBranch", json);
         }
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             Request.Delete("BankBranch/", id.ToString());
         }
@@ -38,7 +38,7 @@ namespace Fluxus.Infra.Repositories
             return null;
         }
 
-        public BankBranch GetById(long id)
+        public BankBranch GetById(int id)
         {
             string json = Request.Get("BankBranch/", id.ToString());
             return  JsonConvert.DeserializeObject<BankBranch>(json);

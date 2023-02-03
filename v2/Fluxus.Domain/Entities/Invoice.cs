@@ -5,7 +5,7 @@ namespace Fluxus.Domain.Entities
 
     public class Invoice
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public DateTime IssueDate { get; set; }
         public double SubtotalService { get; set; }

@@ -11,7 +11,7 @@ namespace Fluxus.WinUI.View
 
 
         frmPrincipal _frmPrincipal;
-        private long _id;
+        private int _id;
         private string _usr_nome;
 
 
@@ -56,7 +56,7 @@ namespace Fluxus.WinUI.View
                 Nameid = CreateNameId(txtProfissao.Text, txtNome.Text),
                 Name = txtNome.Text,
                 Cpf = txtCPF.Text,
-                Birthday = Util.ValidateDateString(txtNascimento.Text),
+                Birthday = Util.ValidateDate(txtNascimento.Text),
                 Profession = txtProfissao.Text,
                 PermitNumber = txtCarteira.Text,
                 Association = cboEntidade.Text,
@@ -245,7 +245,10 @@ namespace Fluxus.WinUI.View
             imgShowPwd.Show();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 
 

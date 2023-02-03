@@ -4,7 +4,7 @@ namespace Fluxus.Domain.Entities
 
     public class BankBranch
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string BranchNumber { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }

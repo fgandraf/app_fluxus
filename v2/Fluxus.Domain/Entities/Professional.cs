@@ -1,15 +1,17 @@
 ﻿
+using System;
+
 namespace Fluxus.Domain.Entities
 {
 
     public class Professional
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string Tag { get; set; }
         public string Name { get; set; }
         public string Nameid { get; set; }
         public string Cpf { get; set; }
-        public string Birthday { get; set; }
+        public DateTime Birthday { get; set; }
         public string Profession { get; set; }
         public string PermitNumber { get; set; }
         public string Association { get; set; }

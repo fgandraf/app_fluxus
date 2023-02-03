@@ -81,9 +81,9 @@
             this.pnlMenu.Controls.Add(this.btnAtividades);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
-            this.pnlMenu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pnlMenu.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(233, 700);
+            this.pnlMenu.Size = new System.Drawing.Size(433, 1493);
             this.pnlMenu.TabIndex = 160;
             // 
             // lblUsuario
@@ -91,10 +91,10 @@
             this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(0, 681);
-            this.lblUsuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUsuario.Location = new System.Drawing.Point(0, 1453);
+            this.lblUsuario.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(156, 15);
+            this.lblUsuario.Size = new System.Drawing.Size(290, 32);
             this.lblUsuario.TabIndex = 126;
             this.lblUsuario.Text = "Usuário: null";
             this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -102,20 +102,20 @@
             // pnlCtrlOS
             // 
             this.pnlCtrlOS.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlOS.Location = new System.Drawing.Point(0, 248);
+            this.pnlCtrlOS.Location = new System.Drawing.Point(0, 529);
             this.pnlCtrlOS.Margin = new System.Windows.Forms.Padding(0);
             this.pnlCtrlOS.Name = "pnlCtrlOS";
-            this.pnlCtrlOS.Size = new System.Drawing.Size(6, 58);
+            this.pnlCtrlOS.Size = new System.Drawing.Size(11, 124);
             this.pnlCtrlOS.TabIndex = 126;
             this.pnlCtrlOS.Visible = false;
             // 
             // pnlCtrlProfissionais
             // 
             this.pnlCtrlProfissionais.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlProfissionais.Location = new System.Drawing.Point(0, 479);
+            this.pnlCtrlProfissionais.Location = new System.Drawing.Point(0, 1022);
             this.pnlCtrlProfissionais.Margin = new System.Windows.Forms.Padding(0);
             this.pnlCtrlProfissionais.Name = "pnlCtrlProfissionais";
-            this.pnlCtrlProfissionais.Size = new System.Drawing.Size(6, 58);
+            this.pnlCtrlProfissionais.Size = new System.Drawing.Size(11, 124);
             this.pnlCtrlProfissionais.TabIndex = 123;
             this.pnlCtrlProfissionais.Visible = false;
             // 
@@ -131,11 +131,11 @@
             this.btnProfissionais.ForeColor = System.Drawing.Color.White;
             this.btnProfissionais.Image = ((System.Drawing.Image)(resources.GetObject("btnProfissionais.Image")));
             this.btnProfissionais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProfissionais.Location = new System.Drawing.Point(0, 479);
+            this.btnProfissionais.Location = new System.Drawing.Point(0, 1022);
             this.btnProfissionais.Margin = new System.Windows.Forms.Padding(0);
             this.btnProfissionais.Name = "btnProfissionais";
-            this.btnProfissionais.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.btnProfissionais.Size = new System.Drawing.Size(233, 58);
+            this.btnProfissionais.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnProfissionais.Size = new System.Drawing.Size(433, 124);
             this.btnProfissionais.TabIndex = 5;
             this.btnProfissionais.Text = "    Profissionais";
             this.btnProfissionais.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -156,11 +156,11 @@
             this.btnOS.ForeColor = System.Drawing.Color.White;
             this.btnOS.Image = ((System.Drawing.Image)(resources.GetObject("btnOS.Image")));
             this.btnOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOS.Location = new System.Drawing.Point(0, 248);
+            this.btnOS.Location = new System.Drawing.Point(0, 529);
             this.btnOS.Margin = new System.Windows.Forms.Padding(0);
             this.btnOS.Name = "btnOS";
-            this.btnOS.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.btnOS.Size = new System.Drawing.Size(233, 58);
+            this.btnOS.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnOS.Size = new System.Drawing.Size(433, 124);
             this.btnOS.TabIndex = 1;
             this.btnOS.Text = "    Ordens de Serviços";
             this.btnOS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -172,10 +172,10 @@
             // pnlCtrlAtividades
             // 
             this.pnlCtrlAtividades.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlAtividades.Location = new System.Drawing.Point(0, 363);
+            this.pnlCtrlAtividades.Location = new System.Drawing.Point(0, 774);
             this.pnlCtrlAtividades.Margin = new System.Windows.Forms.Padding(0);
             this.pnlCtrlAtividades.Name = "pnlCtrlAtividades";
-            this.pnlCtrlAtividades.Size = new System.Drawing.Size(6, 58);
+            this.pnlCtrlAtividades.Size = new System.Drawing.Size(11, 124);
             this.pnlCtrlAtividades.TabIndex = 124;
             this.pnlCtrlAtividades.Visible = false;
             // 
@@ -184,10 +184,10 @@
             this.lblVersao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblVersao.ForeColor = System.Drawing.Color.White;
-            this.lblVersao.Location = new System.Drawing.Point(163, 681);
-            this.lblVersao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVersao.Location = new System.Drawing.Point(303, 1453);
+            this.lblVersao.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(70, 15);
+            this.lblVersao.Size = new System.Drawing.Size(130, 32);
             this.lblVersao.TabIndex = 134;
             this.lblVersao.Text = "v. ---";
             this.lblVersao.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -195,10 +195,10 @@
             // pnlCtrlAgencias
             // 
             this.pnlCtrlAgencias.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlAgencias.Location = new System.Drawing.Point(0, 421);
+            this.pnlCtrlAgencias.Location = new System.Drawing.Point(0, 898);
             this.pnlCtrlAgencias.Margin = new System.Windows.Forms.Padding(0);
             this.pnlCtrlAgencias.Name = "pnlCtrlAgencias";
-            this.pnlCtrlAgencias.Size = new System.Drawing.Size(6, 58);
+            this.pnlCtrlAgencias.Size = new System.Drawing.Size(11, 124);
             this.pnlCtrlAgencias.TabIndex = 125;
             this.pnlCtrlAgencias.Visible = false;
             // 
@@ -206,19 +206,19 @@
             // 
             this.pnlCtrlDadosCadastrais.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlCtrlDadosCadastrais.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlDadosCadastrais.Location = new System.Drawing.Point(29, 180);
-            this.pnlCtrlDadosCadastrais.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pnlCtrlDadosCadastrais.Location = new System.Drawing.Point(54, 384);
+            this.pnlCtrlDadosCadastrais.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pnlCtrlDadosCadastrais.Name = "pnlCtrlDadosCadastrais";
-            this.pnlCtrlDadosCadastrais.Size = new System.Drawing.Size(175, 2);
+            this.pnlCtrlDadosCadastrais.Size = new System.Drawing.Size(325, 4);
             this.pnlCtrlDadosCadastrais.TabIndex = 129;
             // 
             // pnlCtrlFaturas
             // 
             this.pnlCtrlFaturas.BackColor = System.Drawing.Color.LimeGreen;
-            this.pnlCtrlFaturas.Location = new System.Drawing.Point(0, 306);
-            this.pnlCtrlFaturas.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
+            this.pnlCtrlFaturas.Location = new System.Drawing.Point(0, 653);
+            this.pnlCtrlFaturas.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.pnlCtrlFaturas.Name = "pnlCtrlFaturas";
-            this.pnlCtrlFaturas.Size = new System.Drawing.Size(6, 57);
+            this.pnlCtrlFaturas.Size = new System.Drawing.Size(11, 122);
             this.pnlCtrlFaturas.TabIndex = 125;
             this.pnlCtrlFaturas.Visible = false;
             // 
@@ -234,11 +234,11 @@
             this.btnFaturas.ForeColor = System.Drawing.Color.White;
             this.btnFaturas.Image = ((System.Drawing.Image)(resources.GetObject("btnFaturas.Image")));
             this.btnFaturas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFaturas.Location = new System.Drawing.Point(0, 306);
+            this.btnFaturas.Location = new System.Drawing.Point(0, 653);
             this.btnFaturas.Margin = new System.Windows.Forms.Padding(0);
             this.btnFaturas.Name = "btnFaturas";
-            this.btnFaturas.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.btnFaturas.Size = new System.Drawing.Size(233, 58);
+            this.btnFaturas.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnFaturas.Size = new System.Drawing.Size(433, 124);
             this.btnFaturas.TabIndex = 2;
             this.btnFaturas.Text = "    Faturas";
             this.btnFaturas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -258,10 +258,10 @@
             this.btnDadosCadastrais.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.btnDadosCadastrais.ForeColor = System.Drawing.Color.White;
             this.btnDadosCadastrais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDadosCadastrais.Location = new System.Drawing.Point(0, 156);
-            this.btnDadosCadastrais.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.btnDadosCadastrais.Location = new System.Drawing.Point(0, 333);
+            this.btnDadosCadastrais.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnDadosCadastrais.Name = "btnDadosCadastrais";
-            this.btnDadosCadastrais.Size = new System.Drawing.Size(233, 23);
+            this.btnDadosCadastrais.Size = new System.Drawing.Size(433, 49);
             this.btnDadosCadastrais.TabIndex = 0;
             this.btnDadosCadastrais.Text = "Carregando...";
             this.btnDadosCadastrais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -274,10 +274,10 @@
             // 
             this.imgLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.imgLogo.Image = ((System.Drawing.Image)(resources.GetObject("imgLogo.Image")));
-            this.imgLogo.Location = new System.Drawing.Point(70, 63);
-            this.imgLogo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.imgLogo.Location = new System.Drawing.Point(130, 134);
+            this.imgLogo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.imgLogo.Name = "imgLogo";
-            this.imgLogo.Size = new System.Drawing.Size(93, 92);
+            this.imgLogo.Size = new System.Drawing.Size(173, 196);
             this.imgLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgLogo.TabIndex = 17;
             this.imgLogo.TabStop = false;
@@ -294,11 +294,11 @@
             this.btnAgencias.ForeColor = System.Drawing.Color.White;
             this.btnAgencias.Image = ((System.Drawing.Image)(resources.GetObject("btnAgencias.Image")));
             this.btnAgencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgencias.Location = new System.Drawing.Point(0, 421);
+            this.btnAgencias.Location = new System.Drawing.Point(0, 898);
             this.btnAgencias.Margin = new System.Windows.Forms.Padding(0);
             this.btnAgencias.Name = "btnAgencias";
-            this.btnAgencias.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.btnAgencias.Size = new System.Drawing.Size(233, 58);
+            this.btnAgencias.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnAgencias.Size = new System.Drawing.Size(433, 124);
             this.btnAgencias.TabIndex = 4;
             this.btnAgencias.Text = "    Agências";
             this.btnAgencias.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -319,11 +319,11 @@
             this.btnAtividades.ForeColor = System.Drawing.Color.White;
             this.btnAtividades.Image = ((System.Drawing.Image)(resources.GetObject("btnAtividades.Image")));
             this.btnAtividades.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAtividades.Location = new System.Drawing.Point(0, 363);
+            this.btnAtividades.Location = new System.Drawing.Point(0, 774);
             this.btnAtividades.Margin = new System.Windows.Forms.Padding(0);
             this.btnAtividades.Name = "btnAtividades";
-            this.btnAtividades.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
-            this.btnAtividades.Size = new System.Drawing.Size(227, 58);
+            this.btnAtividades.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
+            this.btnAtividades.Size = new System.Drawing.Size(422, 124);
             this.btnAtividades.TabIndex = 3;
             this.btnAtividades.Text = "    Atividades";
             this.btnAtividades.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -342,10 +342,10 @@
             this.pnlTitulo.Controls.Add(this.btnAppMaximizar);
             this.pnlTitulo.Controls.Add(this.btnAppRestaurar);
             this.pnlTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitulo.Location = new System.Drawing.Point(233, 0);
-            this.pnlTitulo.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.pnlTitulo.Location = new System.Drawing.Point(433, 0);
+            this.pnlTitulo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.pnlTitulo.Name = "pnlTitulo";
-            this.pnlTitulo.Size = new System.Drawing.Size(1017, 35);
+            this.pnlTitulo.Size = new System.Drawing.Size(1888, 75);
             this.pnlTitulo.TabIndex = 2;
             this.pnlTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitulo_MouseDown);
             // 
@@ -355,9 +355,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.DarkSlateBlue;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.panel1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1018, 6);
+            this.panel1.Size = new System.Drawing.Size(1890, 13);
             this.panel1.TabIndex = 125;
             // 
             // btnAppMinimizar
@@ -370,10 +370,10 @@
             this.btnAppMinimizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAppMinimizar.ForeColor = System.Drawing.Color.Black;
             this.btnAppMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMinimizar.Image")));
-            this.btnAppMinimizar.Location = new System.Drawing.Point(861, 5);
+            this.btnAppMinimizar.Location = new System.Drawing.Point(1598, 11);
             this.btnAppMinimizar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppMinimizar.Name = "btnAppMinimizar";
-            this.btnAppMinimizar.Size = new System.Drawing.Size(52, 30);
+            this.btnAppMinimizar.Size = new System.Drawing.Size(97, 64);
             this.btnAppMinimizar.TabIndex = 123;
             this.ttpSempre.SetToolTip(this.btnAppMinimizar, "Minimizar");
             this.btnAppMinimizar.UseVisualStyleBackColor = false;
@@ -386,10 +386,10 @@
             this.lblTitulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTitulo.ForeColor = System.Drawing.Color.Black;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 3);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(0, 6);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(97, 28);
+            this.lblTitulo.Size = new System.Drawing.Size(196, 57);
             this.lblTitulo.TabIndex = 120;
             this.lblTitulo.Text = "Dashboard";
             // 
@@ -403,10 +403,10 @@
             this.btnAppFechar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAppFechar.ForeColor = System.Drawing.Color.Black;
             this.btnAppFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppFechar.Image")));
-            this.btnAppFechar.Location = new System.Drawing.Point(966, 5);
+            this.btnAppFechar.Location = new System.Drawing.Point(1793, 11);
             this.btnAppFechar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppFechar.Name = "btnAppFechar";
-            this.btnAppFechar.Size = new System.Drawing.Size(52, 30);
+            this.btnAppFechar.Size = new System.Drawing.Size(97, 64);
             this.btnAppFechar.TabIndex = 114;
             this.ttpSempre.SetToolTip(this.btnAppFechar, "Fechar");
             this.btnAppFechar.UseVisualStyleBackColor = false;
@@ -422,10 +422,10 @@
             this.btnAppMaximizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAppMaximizar.ForeColor = System.Drawing.Color.Black;
             this.btnAppMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMaximizar.Image")));
-            this.btnAppMaximizar.Location = new System.Drawing.Point(913, 5);
+            this.btnAppMaximizar.Location = new System.Drawing.Point(1695, 11);
             this.btnAppMaximizar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppMaximizar.Name = "btnAppMaximizar";
-            this.btnAppMaximizar.Size = new System.Drawing.Size(52, 30);
+            this.btnAppMaximizar.Size = new System.Drawing.Size(97, 64);
             this.btnAppMaximizar.TabIndex = 122;
             this.ttpSempre.SetToolTip(this.btnAppMaximizar, "Maximizar");
             this.btnAppMaximizar.UseVisualStyleBackColor = false;
@@ -441,10 +441,10 @@
             this.btnAppRestaurar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAppRestaurar.ForeColor = System.Drawing.Color.Black;
             this.btnAppRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppRestaurar.Image")));
-            this.btnAppRestaurar.Location = new System.Drawing.Point(913, 5);
+            this.btnAppRestaurar.Location = new System.Drawing.Point(1695, 11);
             this.btnAppRestaurar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAppRestaurar.Name = "btnAppRestaurar";
-            this.btnAppRestaurar.Size = new System.Drawing.Size(52, 35);
+            this.btnAppRestaurar.Size = new System.Drawing.Size(97, 75);
             this.btnAppRestaurar.TabIndex = 124;
             this.ttpSempre.SetToolTip(this.btnAppRestaurar, "Restaurar");
             this.btnAppRestaurar.UseVisualStyleBackColor = false;
@@ -455,10 +455,10 @@
             // 
             this.pnlMain.BackColor = System.Drawing.Color.White;
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(233, 35);
+            this.pnlMain.Location = new System.Drawing.Point(433, 75);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1017, 665);
+            this.pnlMain.Size = new System.Drawing.Size(1888, 1418);
             this.pnlMain.TabIndex = 161;
             // 
             // ttpMenu
@@ -478,16 +478,17 @@
             // 
             // frmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumBlue;
-            this.ClientSize = new System.Drawing.Size(1250, 700);
+            this.ClientSize = new System.Drawing.Size(2321, 1493);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlTitulo);
             this.Controls.Add(this.pnlMenu);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fluxus";

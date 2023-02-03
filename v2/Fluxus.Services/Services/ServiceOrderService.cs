@@ -11,14 +11,14 @@ namespace Fluxus.Services
 
 
 
-        public void Insert(Domain.Entities.ServiceOrder body)
+        public void Insert(ServiceOrder body)
         {
             new ServiceOrderRepository().Insert(body);
         }
 
 
 
-        public void Update(Domain.Entities.ServiceOrder body)
+        public void Update(ServiceOrder body)
         {
             new ServiceOrderRepository().Update(body);
         }
@@ -32,14 +32,14 @@ namespace Fluxus.Services
 
 
 
-        public async void UpdateStatus(long id, string status)
+        public async void UpdateStatus(int id, string status)
         {
             await Task.Run(() => new ServiceOrderRepository().UpdateStatus(id, status));
         }
 
 
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             new ServiceOrderRepository().Delete(id);
         }
@@ -60,21 +60,21 @@ namespace Fluxus.Services
 
 
 
-        public DataTable GetOrdensFaturadasDoCodigo(long invoiceId)
+        public DataTable GetOrdensFaturadasDoCodigo(int invoiceId)
         {
             return new ServiceOrderRepository().GetClosedByInvoiceId(invoiceId);
         }
 
 
 
-        public DataTable GetOrdensComFiltro(string parameters)
+        public DataTable GetOrdensComFiltro(string filter)
         {
-            return new ServiceOrderRepository().GetFiltered(parameters);
+            return new ServiceOrderRepository().GetFiltered(filter);
         }
 
 
 
-        public DataTable GetProfissionaisDaFatura(long invoiceId)
+        public DataTable GetProfissionaisDaFatura(int invoiceId)
         {
             return new ServiceOrderRepository().GetProfessionalByInvoiceId(invoiceId);
         }
@@ -97,7 +97,7 @@ namespace Fluxus.Services
 
 
 
-        public Domain.Entities.ServiceOrder GetBy(long id)
+        public Domain.Entities.ServiceOrder GetBy(int id)
         {
             return new ServiceOrderRepository().GetById(id);
         }

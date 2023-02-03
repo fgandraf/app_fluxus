@@ -1,5 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
+using System;
 using System.Data;
 
 
@@ -29,7 +30,7 @@ namespace Fluxus.Services
             DataTable dt = new ProfileRepository().GetAll();
             Profile retorno = new Profile
             {
-                Cnpj = dt.Rows[0]["Cnpj"].ToString(),
+                Cnpj = dt.Rows[0]["cnpj"].ToString(),
                 TradingName = dt.Rows[0]["tradingName"].ToString(),
                 CompanyName = dt.Rows[0]["companyName"].ToString(),
                 StateId = dt.Rows[0]["stateId"].ToString(),
@@ -40,7 +41,7 @@ namespace Fluxus.Services
                 City = dt.Rows[0]["city"].ToString(),
                 Zip = dt.Rows[0]["zip"].ToString(),
                 State = dt.Rows[0]["state"].ToString(),
-                EstablishmentDate = dt.Rows[0]["establishmentDate"].ToString(),
+                EstablishmentDate = Convert.ToDateTime(dt.Rows[0]["establishmentDate"]),
                 Phone1 = dt.Rows[0]["phone1"].ToString(),
                 Phone2 = dt.Rows[0]["phone2"].ToString(),
                 Email = dt.Rows[0]["email"].ToString(),
@@ -52,9 +53,9 @@ namespace Fluxus.Services
                 ContractorName = dt.Rows[0]["contractorName"].ToString(),
                 ContractNotice = dt.Rows[0]["contractNotice"].ToString(),
                 ContractNumber = dt.Rows[0]["contractNumber"].ToString(),
-                ContractEstablished = dt.Rows[0]["contractEstablished"].ToString(),
-                ContractStart = dt.Rows[0]["contractStart"].ToString(),
-                ContractEnd = dt.Rows[0]["contractEnd"].ToString(),
+                ContractEstablished = Convert.ToDateTime(dt.Rows[0]["contractEstablished"]),
+                ContractStart = Convert.ToDateTime(dt.Rows[0]["contractStart"]),
+                ContractEnd = Convert.ToDateTime(dt.Rows[0]["contractEnd"]),
                 Logo = dt.Rows[0]["logo"].ToString()
             };
 

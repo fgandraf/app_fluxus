@@ -17,15 +17,15 @@ namespace Fluxus.Infra.Repositories
         public void Update(Invoice body)
         {
             string json = JsonConvert.SerializeObject(body);
-            Request.Put("Invoice/Totals/" + body.Id, json);
+            Request.Put("Invoice/Totals", json);
         }
 
-        public void Delete(long id)
+        public void Delete(int id)
         {
             Request.Delete("Invoice/", id.ToString());
         }
 
-        public string GetDescription(long id)
+        public string GetDescription(int id)
         {
             return Request.Get("Invoice/Description/", id.ToString());
         }

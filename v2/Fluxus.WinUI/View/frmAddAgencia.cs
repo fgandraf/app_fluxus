@@ -9,7 +9,7 @@ namespace Fluxus.WinUI.View
     {
 
         frmPrincipal _frmPrincipal;
-        private long _id;
+        private int _id;
 
 
 

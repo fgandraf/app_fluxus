@@ -12,7 +12,7 @@ namespace Fluxus.WinUI.View
         frmPrincipal _frmPrincipal;
         private string _formFilho;
         private string _agencia;
-        private long _id;
+        private int _id;
         DataTable DtAtividades = new DataTable();
         DataTable DtProfissionais = new DataTable();
 
@@ -113,7 +113,7 @@ namespace Fluxus.WinUI.View
                 Title = titulo,
                 ReferenceCode = referencia,
                 Branch = _agencia,
-                OrderDate = Util.ValidateDateString(txtDataOrdem.Text),
+                OrderDate = Util.ValidateDate(txtDataOrdem.Text),
                 Deadline = Convert.ToDateTime(dtpPrazo.Value),
                 ProfessionalId = cboProfissional.SelectedValue.ToString(),
                 ServiceId = cboAtividade.SelectedValue.ToString(),
@@ -126,9 +126,9 @@ namespace Fluxus.WinUI.View
                 ContactPhone = txtTelefoneContato.Text,
                 Coordinates = txtCoordenada.Text,
                 Status = status,
-                PendingDate = Util.ValidateDateString(txtDataPendente.Text),
-                SurveyDate = Util.ValidateDateString(txtDataVistoria.Text),
-                DoneDate = Util.ValidateDateString(txtDataConcluida.Text),
+                PendingDate = Util.ValidateDate(txtDataPendente.Text),
+                SurveyDate = Util.ValidateDate(txtDataVistoria.Text),
+                DoneDate = Util.ValidateDate(txtDataConcluida.Text),
                 Comments = txtOBS.Text
             };
 
@@ -176,7 +176,7 @@ namespace Fluxus.WinUI.View
             txtRef6.Text = dado.ReferenceCode.Substring(31, 2);
 
             _agencia = dado.Branch;
-            txtDataOrdem.Text = dado.OrderDate;
+            txtDataOrdem.Text = dado.OrderDate.ToString();
             dtpPrazo.Text = dado.Deadline.ToString();
             cboProfissional.SelectedValue = dado.ProfessionalId;
             cboAtividade.SelectedValue = dado.ServiceId;
@@ -195,9 +195,9 @@ namespace Fluxus.WinUI.View
             else
                 rbtConcluida.Checked = true;
 
-            txtDataPendente.Text = dado.PendingDate;
-            txtDataVistoria.Text = dado.SurveyDate;
-            txtDataConcluida.Text = dado.DoneDate;
+            txtDataPendente.Text = dado.PendingDate.ToString();
+            txtDataVistoria.Text = dado.SurveyDate.ToString();
+            txtDataConcluida.Text = dado.DoneDate.ToString();
             txtOBS.Text = dado.Comments;
 
 
