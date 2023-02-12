@@ -18,7 +18,7 @@ namespace Fluxus.Domain.Entities
         public string ContactName { get; set; }
         public string ContactPhone { get; set; }
         public string Coordinates { get; set; }
-        public string Status { get; set; }
+        public EnumStatus Status { get; set; }
         public string Comments { get; set; }
         public int InvoiceId { get; set; }
         public DateTime OrderDate { get; set; }

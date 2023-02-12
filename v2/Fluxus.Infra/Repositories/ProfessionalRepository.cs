@@ -33,7 +33,7 @@ namespace Fluxus.Infra.Repositories
 
         public DataTable GetUser(string userName)
         {
-            string json = Request.Get("Professional/UserInfo/", userName);
+            var json = Request.Get("Professional/UserInfo/", userName);
             var retorno = new DataTable();
             if (json != null)
             {

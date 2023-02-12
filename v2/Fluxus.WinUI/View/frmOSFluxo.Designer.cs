@@ -32,10 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOSFluxo));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.linhaRecebidas = new System.Windows.Forms.Panel();
             this.lblTitRecebidas = new System.Windows.Forms.Label();
@@ -52,13 +52,28 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dgvPendentes = new System.Windows.Forms.DataGridView();
+            this.id_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.referencia_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titulo_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.profissional_cod_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuContext = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuEditar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExcluir = new System.Windows.Forms.ToolStripMenuItem();
             this.panel5 = new System.Windows.Forms.Panel();
             this.dgvRecebidas = new System.Windows.Forms.DataGridView();
+            this.id_recebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.referencia_recebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titulo_recebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status_recebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.profissional_cod_recebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7 = new System.Windows.Forms.Panel();
             this.dgvVistoriadas = new System.Windows.Forms.DataGridView();
+            this.id_vistoriada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.referencia_vistoriada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titulo_vistoriada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status_vistoriada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.profissional_cod_vistoriada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel8 = new System.Windows.Forms.Panel();
             this.dgvConcluidas = new System.Windows.Forms.DataGridView();
             this.id_concluida = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,21 +88,6 @@
             this.pnlLinhaFaturar = new System.Windows.Forms.Panel();
             this.cboProfissional = new System.Windows.Forms.ComboBox();
             this.lblProfissional = new System.Windows.Forms.Label();
-            this.id_recebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.referencia_recebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titulo_recebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status_recebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.profissional_cod_recebida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.referencia_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titulo_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.profissional_cod_pendente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_vistoriada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.referencia_vistoriada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titulo_vistoriada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status_vistoriada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.profissional_cod_vistoriada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -113,19 +113,19 @@
             this.panel1.Controls.Add(this.linhaRecebidas);
             this.panel1.Controls.Add(this.lblTitRecebidas);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(43, 111);
+            this.panel1.Location = new System.Drawing.Point(23, 52);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(434, 62);
+            this.panel1.Size = new System.Drawing.Size(179, 29);
             this.panel1.TabIndex = 6;
             // 
             // linhaRecebidas
             // 
             this.linhaRecebidas.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.linhaRecebidas.Location = new System.Drawing.Point(0, 60);
-            this.linhaRecebidas.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.linhaRecebidas.Location = new System.Drawing.Point(0, 28);
+            this.linhaRecebidas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.linhaRecebidas.Name = "linhaRecebidas";
-            this.linhaRecebidas.Size = new System.Drawing.Size(434, 2);
+            this.linhaRecebidas.Size = new System.Drawing.Size(179, 1);
             this.linhaRecebidas.TabIndex = 1;
             // 
             // lblTitRecebidas
@@ -135,10 +135,10 @@
             this.lblTitRecebidas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTitRecebidas.ForeColor = System.Drawing.Color.Black;
             this.lblTitRecebidas.Location = new System.Drawing.Point(0, 0);
-            this.lblTitRecebidas.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblTitRecebidas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitRecebidas.Name = "lblTitRecebidas";
-            this.lblTitRecebidas.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.lblTitRecebidas.Size = new System.Drawing.Size(434, 62);
+            this.lblTitRecebidas.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.lblTitRecebidas.Size = new System.Drawing.Size(179, 29);
             this.lblTitRecebidas.TabIndex = 0;
             this.lblTitRecebidas.Text = "RECEBIDAS [0]";
             this.lblTitRecebidas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -150,19 +150,19 @@
             this.panel2.Controls.Add(this.linhaPendentes);
             this.panel2.Controls.Add(this.lblTitPendentes);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(510, 111);
+            this.panel2.Location = new System.Drawing.Point(220, 52);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(434, 62);
+            this.panel2.Size = new System.Drawing.Size(179, 29);
             this.panel2.TabIndex = 7;
             // 
             // linhaPendentes
             // 
             this.linhaPendentes.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.linhaPendentes.Location = new System.Drawing.Point(0, 60);
-            this.linhaPendentes.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.linhaPendentes.Location = new System.Drawing.Point(0, 28);
+            this.linhaPendentes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.linhaPendentes.Name = "linhaPendentes";
-            this.linhaPendentes.Size = new System.Drawing.Size(434, 2);
+            this.linhaPendentes.Size = new System.Drawing.Size(179, 1);
             this.linhaPendentes.TabIndex = 1;
             // 
             // lblTitPendentes
@@ -172,10 +172,10 @@
             this.lblTitPendentes.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTitPendentes.ForeColor = System.Drawing.Color.Black;
             this.lblTitPendentes.Location = new System.Drawing.Point(0, 0);
-            this.lblTitPendentes.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblTitPendentes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitPendentes.Name = "lblTitPendentes";
-            this.lblTitPendentes.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.lblTitPendentes.Size = new System.Drawing.Size(434, 62);
+            this.lblTitPendentes.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.lblTitPendentes.Size = new System.Drawing.Size(179, 29);
             this.lblTitPendentes.TabIndex = 1;
             this.lblTitPendentes.Text = "PENDENTES [0]";
             this.lblTitPendentes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -187,19 +187,19 @@
             this.panel3.Controls.Add(this.linhaConcluidas);
             this.panel3.Controls.Add(this.lblTitConcluidas);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(1444, 111);
+            this.panel3.Location = new System.Drawing.Point(614, 52);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(434, 62);
+            this.panel3.Size = new System.Drawing.Size(179, 29);
             this.panel3.TabIndex = 8;
             // 
             // linhaConcluidas
             // 
             this.linhaConcluidas.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.linhaConcluidas.Location = new System.Drawing.Point(0, 60);
-            this.linhaConcluidas.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.linhaConcluidas.Location = new System.Drawing.Point(0, 28);
+            this.linhaConcluidas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.linhaConcluidas.Name = "linhaConcluidas";
-            this.linhaConcluidas.Size = new System.Drawing.Size(434, 2);
+            this.linhaConcluidas.Size = new System.Drawing.Size(179, 1);
             this.linhaConcluidas.TabIndex = 1;
             // 
             // lblTitConcluidas
@@ -209,10 +209,10 @@
             this.lblTitConcluidas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTitConcluidas.ForeColor = System.Drawing.Color.Black;
             this.lblTitConcluidas.Location = new System.Drawing.Point(0, 0);
-            this.lblTitConcluidas.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblTitConcluidas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitConcluidas.Name = "lblTitConcluidas";
-            this.lblTitConcluidas.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.lblTitConcluidas.Size = new System.Drawing.Size(434, 62);
+            this.lblTitConcluidas.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.lblTitConcluidas.Size = new System.Drawing.Size(179, 29);
             this.lblTitConcluidas.TabIndex = 1;
             this.lblTitConcluidas.Text = "CONCLUÍDAS [0]";
             this.lblTitConcluidas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -224,19 +224,19 @@
             this.panel4.Controls.Add(this.linhaVistoriadas);
             this.panel4.Controls.Add(this.lblTitVistoriadas);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(977, 111);
+            this.panel4.Location = new System.Drawing.Point(417, 52);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(434, 62);
+            this.panel4.Size = new System.Drawing.Size(179, 29);
             this.panel4.TabIndex = 9;
             // 
             // linhaVistoriadas
             // 
             this.linhaVistoriadas.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.linhaVistoriadas.Location = new System.Drawing.Point(0, 60);
-            this.linhaVistoriadas.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.linhaVistoriadas.Location = new System.Drawing.Point(0, 28);
+            this.linhaVistoriadas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.linhaVistoriadas.Name = "linhaVistoriadas";
-            this.linhaVistoriadas.Size = new System.Drawing.Size(434, 2);
+            this.linhaVistoriadas.Size = new System.Drawing.Size(179, 1);
             this.linhaVistoriadas.TabIndex = 1;
             // 
             // lblTitVistoriadas
@@ -246,10 +246,10 @@
             this.lblTitVistoriadas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTitVistoriadas.ForeColor = System.Drawing.Color.Black;
             this.lblTitVistoriadas.Location = new System.Drawing.Point(0, 0);
-            this.lblTitVistoriadas.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblTitVistoriadas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitVistoriadas.Name = "lblTitVistoriadas";
-            this.lblTitVistoriadas.Padding = new System.Windows.Forms.Padding(22, 0, 0, 0);
-            this.lblTitVistoriadas.Size = new System.Drawing.Size(434, 62);
+            this.lblTitVistoriadas.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.lblTitVistoriadas.Size = new System.Drawing.Size(179, 29);
             this.lblTitVistoriadas.TabIndex = 1;
             this.lblTitVistoriadas.Text = "VISTORIADAS [0]";
             this.lblTitVistoriadas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -259,15 +259,15 @@
             this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.tableLayoutPanel1.ColumnCount = 9;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Controls.Add(this.panel11, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel6, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
@@ -284,26 +284,26 @@
             this.tableLayoutPanel1.Controls.Add(this.lblProfissional, 5, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 2F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1933, 1261);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(825, 452);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // panel11
             // 
             this.panel11.BackColor = System.Drawing.Color.SteelBlue;
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(43, 1135);
+            this.panel11.Location = new System.Drawing.Point(23, 393);
             this.panel11.Margin = new System.Windows.Forms.Padding(0);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(434, 2);
+            this.panel11.Size = new System.Drawing.Size(179, 1);
             this.panel11.TabIndex = 1;
             // 
             // panel6
@@ -312,11 +312,11 @@
             this.panel6.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel6.Controls.Add(this.dgvPendentes);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(510, 173);
+            this.panel6.Location = new System.Drawing.Point(220, 81);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Padding = new System.Windows.Forms.Padding(17, 19, 17, 19);
-            this.panel6.Size = new System.Drawing.Size(434, 962);
+            this.panel6.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.panel6.Size = new System.Drawing.Size(179, 312);
             this.panel6.TabIndex = 11;
             // 
             // dgvPendentes
@@ -351,8 +351,8 @@
             this.dgvPendentes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPendentes.EnableHeadersVisualStyles = false;
             this.dgvPendentes.GridColor = System.Drawing.Color.LightSteelBlue;
-            this.dgvPendentes.Location = new System.Drawing.Point(17, 19);
-            this.dgvPendentes.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.dgvPendentes.Location = new System.Drawing.Point(9, 9);
+            this.dgvPendentes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvPendentes.MultiSelect = false;
             this.dgvPendentes.Name = "dgvPendentes";
             this.dgvPendentes.ReadOnly = true;
@@ -367,15 +367,64 @@
             this.dgvPendentes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvPendentes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPendentes.ShowEditingIcon = false;
-            this.dgvPendentes.Size = new System.Drawing.Size(400, 924);
+            this.dgvPendentes.Size = new System.Drawing.Size(161, 294);
             this.dgvPendentes.TabIndex = 223;
-            this.dgvPendentes.Tag = "PENDENTE";
+            this.dgvPendentes.Tag = "2";
             this.dgvPendentes.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPendentes_CellMouseLeave);
             this.dgvPendentes.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPendentes_CellMouseMove);
             this.dgvPendentes.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPendentes_CellMouseUp);
             this.dgvPendentes.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvPendentes_DragDrop);
             this.dgvPendentes.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvPendentes_DragOver);
             this.dgvPendentes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvPendentes_MouseDown);
+            // 
+            // id_pendente
+            // 
+            this.id_pendente.DataPropertyName = "Id";
+            this.id_pendente.HeaderText = "Id";
+            this.id_pendente.MinimumWidth = 10;
+            this.id_pendente.Name = "id_pendente";
+            this.id_pendente.ReadOnly = true;
+            this.id_pendente.Visible = false;
+            this.id_pendente.Width = 200;
+            // 
+            // referencia_pendente
+            // 
+            this.referencia_pendente.DataPropertyName = "ReferenceCode";
+            this.referencia_pendente.HeaderText = "Referência";
+            this.referencia_pendente.MinimumWidth = 10;
+            this.referencia_pendente.Name = "referencia_pendente";
+            this.referencia_pendente.ReadOnly = true;
+            this.referencia_pendente.Visible = false;
+            this.referencia_pendente.Width = 200;
+            // 
+            // titulo_pendente
+            // 
+            this.titulo_pendente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.titulo_pendente.DataPropertyName = "Title";
+            this.titulo_pendente.HeaderText = "Título";
+            this.titulo_pendente.MinimumWidth = 120;
+            this.titulo_pendente.Name = "titulo_pendente";
+            this.titulo_pendente.ReadOnly = true;
+            // 
+            // status_pendente
+            // 
+            this.status_pendente.DataPropertyName = "Status";
+            this.status_pendente.HeaderText = "Status";
+            this.status_pendente.MinimumWidth = 10;
+            this.status_pendente.Name = "status_pendente";
+            this.status_pendente.ReadOnly = true;
+            this.status_pendente.Visible = false;
+            this.status_pendente.Width = 200;
+            // 
+            // profissional_cod_pendente
+            // 
+            this.profissional_cod_pendente.DataPropertyName = "ProfessionalId";
+            this.profissional_cod_pendente.HeaderText = "Profissional_cod";
+            this.profissional_cod_pendente.MinimumWidth = 10;
+            this.profissional_cod_pendente.Name = "profissional_cod_pendente";
+            this.profissional_cod_pendente.ReadOnly = true;
+            this.profissional_cod_pendente.Visible = false;
+            this.profissional_cod_pendente.Width = 200;
             // 
             // menuContext
             // 
@@ -384,19 +433,19 @@
             this.mnuEditar,
             this.mnuExcluir});
             this.menuContext.Name = "menuConcluida";
-            this.menuContext.Size = new System.Drawing.Size(157, 80);
+            this.menuContext.Size = new System.Drawing.Size(110, 48);
             // 
             // mnuEditar
             // 
             this.mnuEditar.Name = "mnuEditar";
-            this.mnuEditar.Size = new System.Drawing.Size(156, 38);
+            this.mnuEditar.Size = new System.Drawing.Size(109, 22);
             this.mnuEditar.Text = "Editar";
             this.mnuEditar.Click += new System.EventHandler(this.mnuEditar_Click);
             // 
             // mnuExcluir
             // 
             this.mnuExcluir.Name = "mnuExcluir";
-            this.mnuExcluir.Size = new System.Drawing.Size(156, 38);
+            this.mnuExcluir.Size = new System.Drawing.Size(109, 22);
             this.mnuExcluir.Text = "Excluir";
             this.mnuExcluir.Click += new System.EventHandler(this.mnuExcluir_Click);
             // 
@@ -406,11 +455,11 @@
             this.panel5.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel5.Controls.Add(this.dgvRecebidas);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(43, 173);
+            this.panel5.Location = new System.Drawing.Point(23, 81);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
-            this.panel5.Padding = new System.Windows.Forms.Padding(17, 19, 17, 19);
-            this.panel5.Size = new System.Drawing.Size(434, 962);
+            this.panel5.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.panel5.Size = new System.Drawing.Size(179, 312);
             this.panel5.TabIndex = 10;
             // 
             // dgvRecebidas
@@ -446,8 +495,8 @@
             this.dgvRecebidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRecebidas.EnableHeadersVisualStyles = false;
             this.dgvRecebidas.GridColor = System.Drawing.Color.LightSteelBlue;
-            this.dgvRecebidas.Location = new System.Drawing.Point(17, 19);
-            this.dgvRecebidas.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.dgvRecebidas.Location = new System.Drawing.Point(9, 9);
+            this.dgvRecebidas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvRecebidas.MultiSelect = false;
             this.dgvRecebidas.Name = "dgvRecebidas";
             this.dgvRecebidas.ReadOnly = true;
@@ -462,9 +511,9 @@
             this.dgvRecebidas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvRecebidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRecebidas.ShowEditingIcon = false;
-            this.dgvRecebidas.Size = new System.Drawing.Size(400, 924);
+            this.dgvRecebidas.Size = new System.Drawing.Size(161, 294);
             this.dgvRecebidas.TabIndex = 222;
-            this.dgvRecebidas.Tag = "RECEBIDA";
+            this.dgvRecebidas.Tag = "1";
             this.dgvRecebidas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecebidas_CellMouseLeave);
             this.dgvRecebidas.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRecebidas_CellMouseMove);
             this.dgvRecebidas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRecebidas_CellMouseUp);
@@ -472,17 +521,69 @@
             this.dgvRecebidas.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvRecebidas_DragOver);
             this.dgvRecebidas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvRecebidas_MouseDown);
             // 
+            // id_recebida
+            // 
+            this.id_recebida.DataPropertyName = "Id";
+            this.id_recebida.HeaderText = "Id";
+            this.id_recebida.MinimumWidth = 10;
+            this.id_recebida.Name = "id_recebida";
+            this.id_recebida.ReadOnly = true;
+            this.id_recebida.Visible = false;
+            this.id_recebida.Width = 200;
+            // 
+            // referencia_recebida
+            // 
+            this.referencia_recebida.DataPropertyName = "ReferenceCode";
+            this.referencia_recebida.HeaderText = "Referência";
+            this.referencia_recebida.MinimumWidth = 10;
+            this.referencia_recebida.Name = "referencia_recebida";
+            this.referencia_recebida.ReadOnly = true;
+            this.referencia_recebida.Visible = false;
+            this.referencia_recebida.Width = 200;
+            // 
+            // titulo_recebida
+            // 
+            this.titulo_recebida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.titulo_recebida.DataPropertyName = "Title";
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.titulo_recebida.DefaultCellStyle = dataGridViewCellStyle3;
+            this.titulo_recebida.HeaderText = "Título";
+            this.titulo_recebida.MinimumWidth = 120;
+            this.titulo_recebida.Name = "titulo_recebida";
+            this.titulo_recebida.ReadOnly = true;
+            // 
+            // status_recebida
+            // 
+            this.status_recebida.DataPropertyName = "Status";
+            this.status_recebida.HeaderText = "Status";
+            this.status_recebida.MinimumWidth = 10;
+            this.status_recebida.Name = "status_recebida";
+            this.status_recebida.ReadOnly = true;
+            this.status_recebida.Visible = false;
+            this.status_recebida.Width = 200;
+            // 
+            // profissional_cod_recebida
+            // 
+            this.profissional_cod_recebida.DataPropertyName = "ProfessionalId";
+            this.profissional_cod_recebida.HeaderText = "Profissional_cod";
+            this.profissional_cod_recebida.MinimumWidth = 10;
+            this.profissional_cod_recebida.Name = "profissional_cod_recebida";
+            this.profissional_cod_recebida.ReadOnly = true;
+            this.profissional_cod_recebida.Visible = false;
+            this.profissional_cod_recebida.Width = 200;
+            // 
             // panel7
             // 
             this.panel7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel7.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel7.Controls.Add(this.dgvVistoriadas);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(977, 173);
+            this.panel7.Location = new System.Drawing.Point(417, 81);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
             this.panel7.Name = "panel7";
-            this.panel7.Padding = new System.Windows.Forms.Padding(17, 19, 17, 19);
-            this.panel7.Size = new System.Drawing.Size(434, 962);
+            this.panel7.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.panel7.Size = new System.Drawing.Size(179, 312);
             this.panel7.TabIndex = 12;
             // 
             // dgvVistoriadas
@@ -517,8 +618,8 @@
             this.dgvVistoriadas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvVistoriadas.EnableHeadersVisualStyles = false;
             this.dgvVistoriadas.GridColor = System.Drawing.Color.LightSteelBlue;
-            this.dgvVistoriadas.Location = new System.Drawing.Point(17, 19);
-            this.dgvVistoriadas.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.dgvVistoriadas.Location = new System.Drawing.Point(9, 9);
+            this.dgvVistoriadas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvVistoriadas.MultiSelect = false;
             this.dgvVistoriadas.Name = "dgvVistoriadas";
             this.dgvVistoriadas.ReadOnly = true;
@@ -533,9 +634,9 @@
             this.dgvVistoriadas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvVistoriadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvVistoriadas.ShowEditingIcon = false;
-            this.dgvVistoriadas.Size = new System.Drawing.Size(400, 924);
+            this.dgvVistoriadas.Size = new System.Drawing.Size(161, 294);
             this.dgvVistoriadas.TabIndex = 223;
-            this.dgvVistoriadas.Tag = "VISTORIADA";
+            this.dgvVistoriadas.Tag = "3";
             this.dgvVistoriadas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVistoriadas_CellMouseLeave);
             this.dgvVistoriadas.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVistoriadas_CellMouseMove);
             this.dgvVistoriadas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvVistoriadas_CellMouseUp);
@@ -543,17 +644,66 @@
             this.dgvVistoriadas.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvVistoriadas_DragOver);
             this.dgvVistoriadas.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvVistoriadas_MouseDown);
             // 
+            // id_vistoriada
+            // 
+            this.id_vistoriada.DataPropertyName = "Id";
+            this.id_vistoriada.HeaderText = "Id";
+            this.id_vistoriada.MinimumWidth = 10;
+            this.id_vistoriada.Name = "id_vistoriada";
+            this.id_vistoriada.ReadOnly = true;
+            this.id_vistoriada.Visible = false;
+            this.id_vistoriada.Width = 200;
+            // 
+            // referencia_vistoriada
+            // 
+            this.referencia_vistoriada.DataPropertyName = "ReferenceCode";
+            this.referencia_vistoriada.HeaderText = "Referencia";
+            this.referencia_vistoriada.MinimumWidth = 10;
+            this.referencia_vistoriada.Name = "referencia_vistoriada";
+            this.referencia_vistoriada.ReadOnly = true;
+            this.referencia_vistoriada.Visible = false;
+            this.referencia_vistoriada.Width = 200;
+            // 
+            // titulo_vistoriada
+            // 
+            this.titulo_vistoriada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.titulo_vistoriada.DataPropertyName = "Title";
+            this.titulo_vistoriada.HeaderText = "Título";
+            this.titulo_vistoriada.MinimumWidth = 120;
+            this.titulo_vistoriada.Name = "titulo_vistoriada";
+            this.titulo_vistoriada.ReadOnly = true;
+            // 
+            // status_vistoriada
+            // 
+            this.status_vistoriada.DataPropertyName = "Status";
+            this.status_vistoriada.HeaderText = "Status";
+            this.status_vistoriada.MinimumWidth = 10;
+            this.status_vistoriada.Name = "status_vistoriada";
+            this.status_vistoriada.ReadOnly = true;
+            this.status_vistoriada.Visible = false;
+            this.status_vistoriada.Width = 200;
+            // 
+            // profissional_cod_vistoriada
+            // 
+            this.profissional_cod_vistoriada.DataPropertyName = "ProfessionalId";
+            this.profissional_cod_vistoriada.HeaderText = "Profissional_cod";
+            this.profissional_cod_vistoriada.MinimumWidth = 10;
+            this.profissional_cod_vistoriada.Name = "profissional_cod_vistoriada";
+            this.profissional_cod_vistoriada.ReadOnly = true;
+            this.profissional_cod_vistoriada.Visible = false;
+            this.profissional_cod_vistoriada.Width = 200;
+            // 
             // panel8
             // 
             this.panel8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel8.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel8.Controls.Add(this.dgvConcluidas);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(1444, 173);
+            this.panel8.Location = new System.Drawing.Point(614, 81);
             this.panel8.Margin = new System.Windows.Forms.Padding(0);
             this.panel8.Name = "panel8";
-            this.panel8.Padding = new System.Windows.Forms.Padding(17, 19, 17, 19);
-            this.panel8.Size = new System.Drawing.Size(434, 962);
+            this.panel8.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.panel8.Size = new System.Drawing.Size(179, 312);
             this.panel8.TabIndex = 13;
             // 
             // dgvConcluidas
@@ -588,8 +738,8 @@
             this.dgvConcluidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvConcluidas.EnableHeadersVisualStyles = false;
             this.dgvConcluidas.GridColor = System.Drawing.Color.LightSteelBlue;
-            this.dgvConcluidas.Location = new System.Drawing.Point(17, 19);
-            this.dgvConcluidas.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.dgvConcluidas.Location = new System.Drawing.Point(9, 9);
+            this.dgvConcluidas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvConcluidas.MultiSelect = false;
             this.dgvConcluidas.Name = "dgvConcluidas";
             this.dgvConcluidas.ReadOnly = true;
@@ -604,9 +754,9 @@
             this.dgvConcluidas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvConcluidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvConcluidas.ShowEditingIcon = false;
-            this.dgvConcluidas.Size = new System.Drawing.Size(400, 924);
+            this.dgvConcluidas.Size = new System.Drawing.Size(161, 294);
             this.dgvConcluidas.TabIndex = 223;
-            this.dgvConcluidas.Tag = "CONCLUÍDA";
+            this.dgvConcluidas.Tag = "4";
             this.dgvConcluidas.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcluidas_CellMouseLeave);
             this.dgvConcluidas.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvConcluidas_CellMouseMove);
             this.dgvConcluidas.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvConcluidas_CellMouseUp);
@@ -669,11 +819,11 @@
             this.panel9.BackColor = System.Drawing.Color.LightSteelBlue;
             this.panel9.Controls.Add(this.btnAdicionar);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(43, 1137);
+            this.panel9.Location = new System.Drawing.Point(23, 394);
             this.panel9.Margin = new System.Windows.Forms.Padding(0);
             this.panel9.Name = "panel9";
-            this.panel9.Padding = new System.Windows.Forms.Padding(17, 19, 17, 19);
-            this.panel9.Size = new System.Drawing.Size(434, 98);
+            this.panel9.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.panel9.Size = new System.Drawing.Size(179, 46);
             this.panel9.TabIndex = 14;
             // 
             // btnAdicionar
@@ -688,10 +838,10 @@
             this.btnAdicionar.ForeColor = System.Drawing.Color.Black;
             this.btnAdicionar.Image = ((System.Drawing.Image)(resources.GetObject("btnAdicionar.Image")));
             this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdicionar.Location = new System.Drawing.Point(17, 19);
+            this.btnAdicionar.Location = new System.Drawing.Point(9, 9);
             this.btnAdicionar.Margin = new System.Windows.Forms.Padding(0);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(400, 60);
+            this.btnAdicionar.Size = new System.Drawing.Size(161, 28);
             this.btnAdicionar.TabIndex = 219;
             this.btnAdicionar.Text = "  Adicionar ordem de serviço";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -705,11 +855,11 @@
             this.pnlFaturar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.pnlFaturar.Controls.Add(this.btnFaturar);
             this.pnlFaturar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFaturar.Location = new System.Drawing.Point(1444, 1137);
+            this.pnlFaturar.Location = new System.Drawing.Point(614, 394);
             this.pnlFaturar.Margin = new System.Windows.Forms.Padding(0);
             this.pnlFaturar.Name = "pnlFaturar";
-            this.pnlFaturar.Padding = new System.Windows.Forms.Padding(17, 19, 17, 19);
-            this.pnlFaturar.Size = new System.Drawing.Size(434, 98);
+            this.pnlFaturar.Padding = new System.Windows.Forms.Padding(9, 9, 9, 9);
+            this.pnlFaturar.Size = new System.Drawing.Size(179, 46);
             this.pnlFaturar.TabIndex = 15;
             this.pnlFaturar.Visible = false;
             // 
@@ -724,10 +874,10 @@
             this.btnFaturar.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnFaturar.ForeColor = System.Drawing.Color.Black;
             this.btnFaturar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFaturar.Location = new System.Drawing.Point(17, 19);
+            this.btnFaturar.Location = new System.Drawing.Point(9, 9);
             this.btnFaturar.Margin = new System.Windows.Forms.Padding(0);
             this.btnFaturar.Name = "btnFaturar";
-            this.btnFaturar.Size = new System.Drawing.Size(400, 60);
+            this.btnFaturar.Size = new System.Drawing.Size(161, 28);
             this.btnFaturar.TabIndex = 219;
             this.btnFaturar.Text = "Faturar";
             this.btnFaturar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -739,10 +889,10 @@
             // 
             this.pnlLinhaFaturar.BackColor = System.Drawing.Color.SteelBlue;
             this.pnlLinhaFaturar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlLinhaFaturar.Location = new System.Drawing.Point(1444, 1135);
+            this.pnlLinhaFaturar.Location = new System.Drawing.Point(614, 393);
             this.pnlLinhaFaturar.Margin = new System.Windows.Forms.Padding(0);
             this.pnlLinhaFaturar.Name = "pnlLinhaFaturar";
-            this.pnlLinhaFaturar.Size = new System.Drawing.Size(434, 2);
+            this.pnlLinhaFaturar.Size = new System.Drawing.Size(179, 1);
             this.pnlLinhaFaturar.TabIndex = 1;
             this.pnlLinhaFaturar.Visible = false;
             // 
@@ -756,10 +906,10 @@
             this.cboProfissional.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cboProfissional.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cboProfissional.FormattingEnabled = true;
-            this.cboProfissional.Location = new System.Drawing.Point(1444, 36);
+            this.cboProfissional.Location = new System.Drawing.Point(614, 15);
             this.cboProfissional.Margin = new System.Windows.Forms.Padding(0);
             this.cboProfissional.Name = "cboProfissional";
-            this.cboProfissional.Size = new System.Drawing.Size(434, 38);
+            this.cboProfissional.Size = new System.Drawing.Size(179, 21);
             this.cboProfissional.TabIndex = 16;
             this.cboProfissional.ValueMember = "id";
             this.cboProfissional.SelectedIndexChanged += new System.EventHandler(this.cboProfissional_SelectedIndexChanged);
@@ -770,172 +920,22 @@
             this.lblProfissional.AutoSize = true;
             this.tableLayoutPanel1.SetColumnSpan(this.lblProfissional, 2);
             this.lblProfissional.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblProfissional.Location = new System.Drawing.Point(1281, 39);
-            this.lblProfissional.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblProfissional.Location = new System.Drawing.Point(537, 18);
+            this.lblProfissional.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProfissional.Name = "lblProfissional";
-            this.lblProfissional.Size = new System.Drawing.Size(156, 32);
+            this.lblProfissional.Size = new System.Drawing.Size(73, 15);
             this.lblProfissional.TabIndex = 17;
             this.lblProfissional.Text = "Profissional:";
             // 
-            // id_recebida
-            // 
-            this.id_recebida.DataPropertyName = "Id";
-            this.id_recebida.HeaderText = "Id";
-            this.id_recebida.MinimumWidth = 10;
-            this.id_recebida.Name = "id_recebida";
-            this.id_recebida.ReadOnly = true;
-            this.id_recebida.Visible = false;
-            this.id_recebida.Width = 200;
-            // 
-            // referencia_recebida
-            // 
-            this.referencia_recebida.DataPropertyName = "ReferenceCode";
-            this.referencia_recebida.HeaderText = "Referência";
-            this.referencia_recebida.MinimumWidth = 10;
-            this.referencia_recebida.Name = "referencia_recebida";
-            this.referencia_recebida.ReadOnly = true;
-            this.referencia_recebida.Visible = false;
-            this.referencia_recebida.Width = 200;
-            // 
-            // titulo_recebida
-            // 
-            this.titulo_recebida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.titulo_recebida.DataPropertyName = "Title";
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.titulo_recebida.DefaultCellStyle = dataGridViewCellStyle3;
-            this.titulo_recebida.HeaderText = "Título";
-            this.titulo_recebida.MinimumWidth = 120;
-            this.titulo_recebida.Name = "titulo_recebida";
-            this.titulo_recebida.ReadOnly = true;
-            // 
-            // status_recebida
-            // 
-            this.status_recebida.DataPropertyName = "Status";
-            this.status_recebida.HeaderText = "Status";
-            this.status_recebida.MinimumWidth = 10;
-            this.status_recebida.Name = "status_recebida";
-            this.status_recebida.ReadOnly = true;
-            this.status_recebida.Visible = false;
-            this.status_recebida.Width = 200;
-            // 
-            // profissional_cod_recebida
-            // 
-            this.profissional_cod_recebida.DataPropertyName = "ProfessionalId";
-            this.profissional_cod_recebida.HeaderText = "Profissional_cod";
-            this.profissional_cod_recebida.MinimumWidth = 10;
-            this.profissional_cod_recebida.Name = "profissional_cod_recebida";
-            this.profissional_cod_recebida.ReadOnly = true;
-            this.profissional_cod_recebida.Visible = false;
-            this.profissional_cod_recebida.Width = 200;
-            // 
-            // id_pendente
-            // 
-            this.id_pendente.DataPropertyName = "Id";
-            this.id_pendente.HeaderText = "Id";
-            this.id_pendente.MinimumWidth = 10;
-            this.id_pendente.Name = "id_pendente";
-            this.id_pendente.ReadOnly = true;
-            this.id_pendente.Visible = false;
-            this.id_pendente.Width = 200;
-            // 
-            // referencia_pendente
-            // 
-            this.referencia_pendente.DataPropertyName = "ReferenceCode";
-            this.referencia_pendente.HeaderText = "Referência";
-            this.referencia_pendente.MinimumWidth = 10;
-            this.referencia_pendente.Name = "referencia_pendente";
-            this.referencia_pendente.ReadOnly = true;
-            this.referencia_pendente.Visible = false;
-            this.referencia_pendente.Width = 200;
-            // 
-            // titulo_pendente
-            // 
-            this.titulo_pendente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.titulo_pendente.DataPropertyName = "Title";
-            this.titulo_pendente.HeaderText = "Título";
-            this.titulo_pendente.MinimumWidth = 120;
-            this.titulo_pendente.Name = "titulo_pendente";
-            this.titulo_pendente.ReadOnly = true;
-            // 
-            // status_pendente
-            // 
-            this.status_pendente.DataPropertyName = "Status";
-            this.status_pendente.HeaderText = "Status";
-            this.status_pendente.MinimumWidth = 10;
-            this.status_pendente.Name = "status_pendente";
-            this.status_pendente.ReadOnly = true;
-            this.status_pendente.Visible = false;
-            this.status_pendente.Width = 200;
-            // 
-            // profissional_cod_pendente
-            // 
-            this.profissional_cod_pendente.DataPropertyName = "ProfessionalId";
-            this.profissional_cod_pendente.HeaderText = "Profissional_cod";
-            this.profissional_cod_pendente.MinimumWidth = 10;
-            this.profissional_cod_pendente.Name = "profissional_cod_pendente";
-            this.profissional_cod_pendente.ReadOnly = true;
-            this.profissional_cod_pendente.Visible = false;
-            this.profissional_cod_pendente.Width = 200;
-            // 
-            // id_vistoriada
-            // 
-            this.id_vistoriada.DataPropertyName = "Id";
-            this.id_vistoriada.HeaderText = "Id";
-            this.id_vistoriada.MinimumWidth = 10;
-            this.id_vistoriada.Name = "id_vistoriada";
-            this.id_vistoriada.ReadOnly = true;
-            this.id_vistoriada.Visible = false;
-            this.id_vistoriada.Width = 200;
-            // 
-            // referencia_vistoriada
-            // 
-            this.referencia_vistoriada.DataPropertyName = "ReferenceCode";
-            this.referencia_vistoriada.HeaderText = "Referencia";
-            this.referencia_vistoriada.MinimumWidth = 10;
-            this.referencia_vistoriada.Name = "referencia_vistoriada";
-            this.referencia_vistoriada.ReadOnly = true;
-            this.referencia_vistoriada.Visible = false;
-            this.referencia_vistoriada.Width = 200;
-            // 
-            // titulo_vistoriada
-            // 
-            this.titulo_vistoriada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.titulo_vistoriada.DataPropertyName = "Title";
-            this.titulo_vistoriada.HeaderText = "Título";
-            this.titulo_vistoriada.MinimumWidth = 120;
-            this.titulo_vistoriada.Name = "titulo_vistoriada";
-            this.titulo_vistoriada.ReadOnly = true;
-            // 
-            // status_vistoriada
-            // 
-            this.status_vistoriada.DataPropertyName = "Status";
-            this.status_vistoriada.HeaderText = "Status";
-            this.status_vistoriada.MinimumWidth = 10;
-            this.status_vistoriada.Name = "status_vistoriada";
-            this.status_vistoriada.ReadOnly = true;
-            this.status_vistoriada.Visible = false;
-            this.status_vistoriada.Width = 200;
-            // 
-            // profissional_cod_vistoriada
-            // 
-            this.profissional_cod_vistoriada.DataPropertyName = "ProfessionalId";
-            this.profissional_cod_vistoriada.HeaderText = "Profissional_cod";
-            this.profissional_cod_vistoriada.MinimumWidth = 10;
-            this.profissional_cod_vistoriada.Name = "profissional_cod_vistoriada";
-            this.profissional_cod_vistoriada.ReadOnly = true;
-            this.profissional_cod_vistoriada.Visible = false;
-            this.profissional_cod_vistoriada.Width = 200;
-            // 
             // frmOSFluxo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1933, 1261);
+            this.ClientSize = new System.Drawing.Size(825, 452);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "frmOSFluxo";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

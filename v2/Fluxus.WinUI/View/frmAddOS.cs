@@ -95,15 +95,15 @@ namespace Fluxus.WinUI.View
             string referencia = string.Format("{0}.{1}.{2}/{3}.{4}.{5}.{6}", txtRef0.Text, txtRef1.Text, txtRef2.Text, txtRef3.Text, txtRef4.Text, txtRef5.Text, txtRef6.Text);
 
             //VALIDA O STATUS
-            string status;
+            EnumStatus status;
             if (rbtRecebida.Checked)
-                status = "RECEBIDA";
+                status = EnumStatus.RECEIVED;
             else if (rbtPendente.Checked)
-                status = "PENDENTE";
+                status = EnumStatus.PENDING;
             else if (rbtVistoriada.Checked)
-                status = "VISTORIADA";
+                status = EnumStatus.SURVEYED;
             else
-                status = "CONCLUÍDA";
+                status = EnumStatus.DONE;
 
 
             //POPULATE OBJECT TO RETURN
@@ -186,11 +186,11 @@ namespace Fluxus.WinUI.View
             txtNomeContato.Text = dado.ContactName;
             txtTelefoneContato.Text = dado.ContactPhone;
             txtCoordenada.Text = dado.Coordinates;
-            if (dado.Status == "RECEBIDA")
+            if (dado.Status == EnumStatus.RECEIVED)
                 rbtRecebida.Checked = true;
-            else if (dado.Status == "PENDENTE")
+            else if (dado.Status == EnumStatus.PENDING)
                 rbtPendente.Checked = true;
-            else if (dado.Status == "VISTORIADA")
+            else if (dado.Status == EnumStatus.SURVEYED)
                 rbtVistoriada.Checked = true;
             else
                 rbtConcluida.Checked = true;

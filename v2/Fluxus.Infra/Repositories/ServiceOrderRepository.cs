@@ -58,9 +58,10 @@ namespace Fluxus.Infra.Repositories
         public DataTable GetFiltered(string filter)
         {
             string json = Request.Get("ServiceOrder/Filtered/", filter);
+
             if (json != null)
                 return JsonConvert.DeserializeObject<DataTable>(json);
-
+            
             return null;
         }
 

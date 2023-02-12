@@ -40,9 +40,9 @@ namespace Fluxus.WinUI.View
 
 
                 if (cboProfissional.SelectedIndex == 0)
-                    dvOS.RowFilter = String.Format("Status = '{0}'", dgv.Tag.ToString());
+                    dvOS.RowFilter = String.Format("Status = '{0}'", Convert.ToInt32(dgv.Tag.ToString()));
                 else
-                    dvOS.RowFilter = String.Format("Status = '{0}' AND ProfessionalId = '{1}'", dgv.Tag.ToString(), cboProfissional.SelectedValue.ToString());
+                    dvOS.RowFilter = String.Format("Status = '{0}' AND ProfessionalId = '{1}'", Convert.ToInt32(dgv.Tag.ToString()), cboProfissional.SelectedValue.ToString());
 
                 dgv.DataSource = dvOS;
 
