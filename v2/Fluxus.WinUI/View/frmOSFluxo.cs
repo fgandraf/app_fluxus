@@ -81,7 +81,7 @@ namespace Fluxus.WinUI.View
 
 
                 formNeto.Text = "Alterar";
-                _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+                _frmPrincipal.AbrirFormInPanel(formNeto);
             }
         }
 
@@ -223,17 +223,15 @@ namespace Fluxus.WinUI.View
         {
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
             formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+            _frmPrincipal.AbrirFormInPanel(formNeto);
         }
 
         private void btnFaturar_Click(object sender, EventArgs e)
         {
             if (dgvConcluidas.Rows.Count > 0)
             {
-                _frmPrincipal.lblTitulo.Text = "Fatura";
-                _frmPrincipal.lblTitulo.Refresh();
                 frmAddFatura formNeto = new frmAddFatura(_frmPrincipal);
-                _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+                _frmPrincipal.AbrirFormInPanel(formNeto);
             }
             else
                 MessageBox.Show("Não há ordens concluídas à faturar!", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);

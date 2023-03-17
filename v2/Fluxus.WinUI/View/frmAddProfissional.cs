@@ -77,8 +77,8 @@ namespace Fluxus.WinUI.View
         private void Back()
         {
             this.Close();
-            frmProfissionais formfilho = new frmProfissionais(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formfilho, _frmPrincipal.pnlMain);
+            frmProfissionais formFilho = new frmProfissionais(_frmPrincipal);
+            _frmPrincipal.AbrirFormInPanel(formFilho);
         }
 
 

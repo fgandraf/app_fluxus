@@ -1,7 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using Newtonsoft.Json;
 using System.Data;
-
+using System.Threading.Tasks;
 
 namespace Fluxus.Infra.Repositories
 {
@@ -19,10 +19,11 @@ namespace Fluxus.Infra.Repositories
             Request.Put("Profile", json);
         }
 
+
         public DataTable GetAll()
         {
-            string json = Request.Get("Profile", string.Empty);
-            return JsonConvert.DeserializeObject<DataTable>(json);
+            string resposta = Request.Get("Profile", string.Empty);
+            return JsonConvert.DeserializeObject<DataTable>(resposta.ToString());
         }
 
         public DataTable GetToPrint()
@@ -35,6 +36,6 @@ namespace Fluxus.Infra.Repositories
         {
             return Request.Get("Profile/TradingName", string.Empty);
         }
-        
+
     }
 }

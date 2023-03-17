@@ -46,19 +46,11 @@
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.btnAgencias = new System.Windows.Forms.Button();
             this.btnAtividades = new System.Windows.Forms.Button();
-            this.pnlTitulo = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAppMinimizar = new System.Windows.Forms.Button();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnAppFechar = new System.Windows.Forms.Button();
-            this.btnAppMaximizar = new System.Windows.Forms.Button();
-            this.btnAppRestaurar = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.ttpMenu = new System.Windows.Forms.ToolTip(this.components);
             this.ttpSempre = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
-            this.pnlTitulo.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlMenu
@@ -142,7 +134,7 @@
             this.btnProfissionais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ttpMenu.SetToolTip(this.btnProfissionais, "Profissionais");
             this.btnProfissionais.UseVisualStyleBackColor = false;
-            this.btnProfissionais.Click += new System.EventHandler(this.btnProfissionais_Click);
+            this.btnProfissionais.Click += new System.EventHandler(this.MenuButtonClick);
             // 
             // btnOS
             // 
@@ -167,7 +159,7 @@
             this.btnOS.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ttpMenu.SetToolTip(this.btnOS, "Ordens de Serviço");
             this.btnOS.UseVisualStyleBackColor = false;
-            this.btnOS.Click += new System.EventHandler(this.btnOS_Click);
+            this.btnOS.Click += new System.EventHandler(this.MenuButtonClick);
             // 
             // pnlCtrlAtividades
             // 
@@ -245,7 +237,7 @@
             this.btnFaturas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ttpMenu.SetToolTip(this.btnFaturas, "Faturas");
             this.btnFaturas.UseVisualStyleBackColor = false;
-            this.btnFaturas.Click += new System.EventHandler(this.btnFaturas_Click);
+            this.btnFaturas.Click += new System.EventHandler(this.MenuButtonClick);
             // 
             // btnDadosCadastrais
             // 
@@ -268,7 +260,7 @@
             this.ttpMenu.SetToolTip(this.btnDadosCadastrais, "Dashboard");
             this.ttpSempre.SetToolTip(this.btnDadosCadastrais, "Dados Cadastrais");
             this.btnDadosCadastrais.UseVisualStyleBackColor = false;
-            this.btnDadosCadastrais.Click += new System.EventHandler(this.btnDadosCadastrais_Click);
+            this.btnDadosCadastrais.Click += new System.EventHandler(this.MenuButtonClick);
             // 
             // imgLogo
             // 
@@ -305,7 +297,7 @@
             this.btnAgencias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ttpMenu.SetToolTip(this.btnAgencias, "Agências");
             this.btnAgencias.UseVisualStyleBackColor = false;
-            this.btnAgencias.Click += new System.EventHandler(this.btnAgencias_Click);
+            this.btnAgencias.Click += new System.EventHandler(this.MenuButtonClick);
             // 
             // btnAtividades
             // 
@@ -330,135 +322,16 @@
             this.btnAtividades.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ttpMenu.SetToolTip(this.btnAtividades, "Atividades");
             this.btnAtividades.UseVisualStyleBackColor = false;
-            this.btnAtividades.Click += new System.EventHandler(this.btnAtividades_Click);
-            // 
-            // pnlTitulo
-            // 
-            this.pnlTitulo.BackColor = System.Drawing.Color.Lavender;
-            this.pnlTitulo.Controls.Add(this.panel1);
-            this.pnlTitulo.Controls.Add(this.btnAppMinimizar);
-            this.pnlTitulo.Controls.Add(this.lblTitulo);
-            this.pnlTitulo.Controls.Add(this.btnAppFechar);
-            this.pnlTitulo.Controls.Add(this.btnAppMaximizar);
-            this.pnlTitulo.Controls.Add(this.btnAppRestaurar);
-            this.pnlTitulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitulo.Location = new System.Drawing.Point(433, 0);
-            this.pnlTitulo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.pnlTitulo.Name = "pnlTitulo";
-            this.pnlTitulo.Size = new System.Drawing.Size(1888, 75);
-            this.pnlTitulo.TabIndex = 2;
-            this.pnlTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlTitulo_MouseDown);
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1890, 13);
-            this.panel1.TabIndex = 125;
-            // 
-            // btnAppMinimizar
-            // 
-            this.btnAppMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAppMinimizar.BackColor = System.Drawing.Color.Transparent;
-            this.btnAppMinimizar.FlatAppearance.BorderSize = 0;
-            this.btnAppMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnAppMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAppMinimizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAppMinimizar.ForeColor = System.Drawing.Color.Black;
-            this.btnAppMinimizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMinimizar.Image")));
-            this.btnAppMinimizar.Location = new System.Drawing.Point(1598, 11);
-            this.btnAppMinimizar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAppMinimizar.Name = "btnAppMinimizar";
-            this.btnAppMinimizar.Size = new System.Drawing.Size(97, 64);
-            this.btnAppMinimizar.TabIndex = 123;
-            this.ttpSempre.SetToolTip(this.btnAppMinimizar, "Minimizar");
-            this.btnAppMinimizar.UseVisualStyleBackColor = false;
-            this.btnAppMinimizar.Click += new System.EventHandler(this.btnAppMinimizar_Click);
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.BackColor = System.Drawing.Color.Transparent;
-            this.lblTitulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblTitulo.ForeColor = System.Drawing.Color.Black;
-            this.lblTitulo.Location = new System.Drawing.Point(0, 6);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(196, 57);
-            this.lblTitulo.TabIndex = 120;
-            this.lblTitulo.Text = "Dashboard";
-            // 
-            // btnAppFechar
-            // 
-            this.btnAppFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAppFechar.BackColor = System.Drawing.Color.Transparent;
-            this.btnAppFechar.FlatAppearance.BorderSize = 0;
-            this.btnAppFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnAppFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAppFechar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAppFechar.ForeColor = System.Drawing.Color.Black;
-            this.btnAppFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppFechar.Image")));
-            this.btnAppFechar.Location = new System.Drawing.Point(1793, 11);
-            this.btnAppFechar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAppFechar.Name = "btnAppFechar";
-            this.btnAppFechar.Size = new System.Drawing.Size(97, 64);
-            this.btnAppFechar.TabIndex = 114;
-            this.ttpSempre.SetToolTip(this.btnAppFechar, "Fechar");
-            this.btnAppFechar.UseVisualStyleBackColor = false;
-            this.btnAppFechar.Click += new System.EventHandler(this.btnAppFechar_Click);
-            // 
-            // btnAppMaximizar
-            // 
-            this.btnAppMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAppMaximizar.BackColor = System.Drawing.Color.Transparent;
-            this.btnAppMaximizar.FlatAppearance.BorderSize = 0;
-            this.btnAppMaximizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnAppMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAppMaximizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAppMaximizar.ForeColor = System.Drawing.Color.Black;
-            this.btnAppMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppMaximizar.Image")));
-            this.btnAppMaximizar.Location = new System.Drawing.Point(1695, 11);
-            this.btnAppMaximizar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAppMaximizar.Name = "btnAppMaximizar";
-            this.btnAppMaximizar.Size = new System.Drawing.Size(97, 64);
-            this.btnAppMaximizar.TabIndex = 122;
-            this.ttpSempre.SetToolTip(this.btnAppMaximizar, "Maximizar");
-            this.btnAppMaximizar.UseVisualStyleBackColor = false;
-            this.btnAppMaximizar.Click += new System.EventHandler(this.btnAppMaximizar_Click);
-            // 
-            // btnAppRestaurar
-            // 
-            this.btnAppRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAppRestaurar.BackColor = System.Drawing.Color.Transparent;
-            this.btnAppRestaurar.FlatAppearance.BorderSize = 0;
-            this.btnAppRestaurar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnAppRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAppRestaurar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAppRestaurar.ForeColor = System.Drawing.Color.Black;
-            this.btnAppRestaurar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppRestaurar.Image")));
-            this.btnAppRestaurar.Location = new System.Drawing.Point(1695, 11);
-            this.btnAppRestaurar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAppRestaurar.Name = "btnAppRestaurar";
-            this.btnAppRestaurar.Size = new System.Drawing.Size(97, 75);
-            this.btnAppRestaurar.TabIndex = 124;
-            this.ttpSempre.SetToolTip(this.btnAppRestaurar, "Restaurar");
-            this.btnAppRestaurar.UseVisualStyleBackColor = false;
-            this.btnAppRestaurar.Visible = false;
-            this.btnAppRestaurar.Click += new System.EventHandler(this.btnAppRestaurar_Click);
+            this.btnAtividades.Click += new System.EventHandler(this.MenuButtonClick);
             // 
             // pnlMain
             // 
             this.pnlMain.BackColor = System.Drawing.Color.White;
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlMain.Location = new System.Drawing.Point(433, 75);
+            this.pnlMain.Location = new System.Drawing.Point(433, 0);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1888, 1418);
+            this.pnlMain.Size = new System.Drawing.Size(1888, 1493);
             this.pnlMain.TabIndex = 161;
             // 
             // ttpMenu
@@ -483,20 +356,15 @@
             this.BackColor = System.Drawing.Color.MediumBlue;
             this.ClientSize = new System.Drawing.Size(2321, 1493);
             this.Controls.Add(this.pnlMain);
-            this.Controls.Add(this.pnlTitulo);
             this.Controls.Add(this.pnlMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fluxus";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.pnlMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).EndInit();
-            this.pnlTitulo.ResumeLayout(false);
-            this.pnlTitulo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -508,8 +376,6 @@
         private System.Windows.Forms.Button btnAtividades;
         private System.Windows.Forms.Button btnAgencias;
         private System.Windows.Forms.Button btnOS;
-        private System.Windows.Forms.Panel pnlTitulo;
-        private System.Windows.Forms.Button btnAppFechar;
         private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.ToolTip ttpMenu;
         private System.Windows.Forms.ToolTip ttpSempre;
@@ -519,16 +385,11 @@
         private System.Windows.Forms.Panel pnlCtrlProfissionais;
         public System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Panel pnlCtrlDadosCadastrais;
-        private System.Windows.Forms.Button btnAppMaximizar;
-        private System.Windows.Forms.Button btnAppMinimizar;
-        private System.Windows.Forms.Button btnAppRestaurar;
         private System.Windows.Forms.Button btnFaturas;
         private System.Windows.Forms.Panel pnlCtrlFaturas;
         public System.Windows.Forms.Button btnDadosCadastrais;
-        public System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblVersao;
-        private System.Windows.Forms.Panel panel1;
     }
 }
 

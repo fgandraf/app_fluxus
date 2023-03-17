@@ -75,12 +75,12 @@ namespace Fluxus.WinUI.View
             if (_formFilho == "frmOSLista")
             {
                 frmOS formFilho = new frmOS(_frmPrincipal, 1);
-                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+                _frmPrincipal.AbrirFormInPanel(formFilho);
             }
             else
             {
                 frmOS formFilho = new frmOS(_frmPrincipal);
-                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+                _frmPrincipal.AbrirFormInPanel(formFilho);
             }
         }
 

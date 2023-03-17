@@ -131,7 +131,7 @@ namespace Fluxus.WinUI.View
             if (this.FormBorderStyle != FormBorderStyle.FixedSingle)
             {
                 frmAgencias formFilho = new frmAgencias(_frmPrincipal);
-                _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+                _frmPrincipal.AbrirFormInPanel(formFilho);
             }
         }
 

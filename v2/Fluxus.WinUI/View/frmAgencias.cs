@@ -89,14 +89,14 @@ namespace Fluxus.WinUI.View
             frmAddAgencia formNeto = new frmAddAgencia (_frmPrincipal, agencia);
             
             formNeto.Text = "Alterar";
-            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+            _frmPrincipal.AbrirFormInPanel(formNeto);
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddAgencia formNeto = new frmAddAgencia(_frmPrincipal);
             formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+            _frmPrincipal.AbrirFormInPanel(formNeto);
         }
 
 

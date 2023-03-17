@@ -2,7 +2,7 @@
 using Fluxus.Infra.Repositories;
 using System;
 using System.Data;
-
+using System.Threading.Tasks;
 
 namespace Fluxus.Services
 {
@@ -28,6 +28,8 @@ namespace Fluxus.Services
         public Profile ListarCadastrais()
         {
             DataTable dt = new ProfileRepository().GetAll();
+
+
             Profile retorno = new Profile
             {
                 Cnpj = dt.Rows[0]["cnpj"].ToString(),
@@ -56,7 +58,7 @@ namespace Fluxus.Services
                 ContractEstablished = Convert.ToDateTime(dt.Rows[0]["contractEstablished"]),
                 ContractStart = Convert.ToDateTime(dt.Rows[0]["contractStart"]),
                 ContractEnd = Convert.ToDateTime(dt.Rows[0]["contractEnd"]),
-                Logo = dt.Rows[0]["logo"].ToString()
+                //Logo = dt.Rows[0]["logo"].ToString()
             };
 
             return retorno;

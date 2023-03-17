@@ -101,30 +101,5 @@ namespace Fluxus.WinUI
 
             return returnMask;
         }
-
-
-
-
-        public static byte[] ImageToByte(Image logo)
-        {
-            using (var stream = new MemoryStream())
-            {
-                logo.Save(stream, ImageFormat.Png);
-                return stream.ToArray();
-            }
-        }
-
-
-        public static Image ByteToImage(byte[] bytes)
-        {
-            using (var stream = new MemoryStream(bytes))
-            {
-                return Image.FromStream(stream);
-            }
-        }
-
-
-        
-
     }
 }

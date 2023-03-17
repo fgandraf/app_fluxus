@@ -106,7 +106,7 @@ namespace Fluxus.WinUI.View
         {
             this.Close();
             frmAtividades formFilho = new frmAtividades(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            _frmPrincipal.AbrirFormInPanel(formFilho);
         }
 
     }

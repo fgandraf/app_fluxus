@@ -27,7 +27,7 @@ namespace Fluxus.WinUI.View
 
 
             formNeto.Text = "Alterar";
-            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+            _frmPrincipal.AbrirFormInPanel(formNeto);
         }
 
 
@@ -130,7 +130,7 @@ namespace Fluxus.WinUI.View
         {
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
             formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirFormInPanel(formNeto, _frmPrincipal.pnlMain);
+            _frmPrincipal.AbrirFormInPanel(formNeto);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)

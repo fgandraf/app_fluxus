@@ -113,10 +113,8 @@ namespace Fluxus.WinUI.View
         private void Back()
         {
             this.Close();
-            _frmPrincipal.lblTitulo.Text = "Ordens de Serviços";
-            _frmPrincipal.lblTitulo.Refresh();
             frmOS formFilho = new frmOS(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formFilho, _frmPrincipal.pnlMain);
+            _frmPrincipal.AbrirFormInPanel(formFilho);
         }
     }
 
