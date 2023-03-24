@@ -1,7 +1,8 @@
 ﻿using Fluxus.Domain.Entities;
-using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Data;
-using System.Threading.Tasks;
+using System.Linq;
+using System.Text.Json;
 
 namespace Fluxus.Infra.Repositories
 {
@@ -9,27 +10,28 @@ namespace Fluxus.Infra.Repositories
     {
         public void Insert(Profile body)
         {
-            string json = JsonConvert.SerializeObject(body);
+            string json = JsonSerializer.Serialize(body);
             Request.Post("Profile", json);
         }
 
         public void Update(Profile body)
         {
-            string json = JsonConvert.SerializeObject(body);
+            string json = JsonSerializer.Serialize(body);
             Request.Put("Profile", json);
         }
 
 
-        public DataTable GetAll()
+        public Profile GetAll()
         {
-            string resposta = Request.Get("Profile", string.Empty);
-            return JsonConvert.DeserializeObject<DataTable>(resposta.ToString());
+            string json = Request.Get("Profile", string.Empty);
+            Profile profile = JsonSerializer.Deserialize<List<Profile>>(json).ToList().First();
+            return profile;
         }
 
         public DataTable GetToPrint()
         {
             string json = Request.Get("Profile/ToPrint", string.Empty);
-            return JsonConvert.DeserializeObject<DataTable>(json);
+            return JsonSerializer.Deserialize<DataTable>(json);
         }
 
         public string GetName()

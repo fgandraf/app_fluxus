@@ -1,6 +1,6 @@
 ﻿namespace Fluxus.WinUI.View
 {
-    partial class frmDadosCadastrais
+    partial class frmProfile
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCadastrarSalvar = new System.Windows.Forms.Button();
+            this.btnAddSave = new System.Windows.Forms.Button();
             this.pnlLinha2 = new System.Windows.Forms.Panel();
             this.pnlBotton = new System.Windows.Forms.Panel();
             this.openDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtpTermino = new System.Windows.Forms.DateTimePicker();
+            this.dtpInicio = new System.Windows.Forms.DateTimePicker();
+            this.dtpCelebrado = new System.Windows.Forms.DateTimePicker();
+            this.dtpConstituicao = new System.Windows.Forms.DateTimePicker();
             this.lblConta = new System.Windows.Forms.Label();
             this.txtConta = new System.Windows.Forms.TextBox();
             this.picLogotipo = new System.Windows.Forms.PictureBox();
@@ -41,16 +45,13 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cboTomador = new System.Windows.Forms.ComboBox();
             this.lblTermino = new System.Windows.Forms.Label();
-            this.txtTermino = new System.Windows.Forms.MaskedTextBox();
             this.lblInicio = new System.Windows.Forms.Label();
-            this.txtInicio = new System.Windows.Forms.MaskedTextBox();
             this.txtEdital = new System.Windows.Forms.TextBox();
             this.lblEdital = new System.Windows.Forms.Label();
             this.lblCelebrado = new System.Windows.Forms.Label();
             this.txtContrato = new System.Windows.Forms.TextBox();
             this.lblContrato = new System.Windows.Forms.Label();
             this.lblTomador = new System.Windows.Forms.Label();
-            this.txtCelebrado = new System.Windows.Forms.MaskedTextBox();
             this.pnlLinhaContrato = new System.Windows.Forms.Panel();
             this.lblTituloContrato = new System.Windows.Forms.Label();
             this.txtBanco = new System.Windows.Forms.TextBox();
@@ -90,7 +91,6 @@
             this.txtNomeFantasia = new System.Windows.Forms.TextBox();
             this.lblNomeFantasia = new System.Windows.Forms.Label();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
-            this.txtConstituicao = new System.Windows.Forms.MaskedTextBox();
             this.lblCNPJ = new System.Windows.Forms.Label();
             this.lblTelefone2 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -103,21 +103,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.picLogotipo)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnCadastrarSalvar
+            // btnAddSave
             // 
-            this.btnCadastrarSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCadastrarSalvar.BackColor = System.Drawing.Color.MediumBlue;
-            this.btnCadastrarSalvar.FlatAppearance.BorderColor = System.Drawing.Color.MediumBlue;
-            this.btnCadastrarSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCadastrarSalvar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnCadastrarSalvar.Location = new System.Drawing.Point(1508, 32);
-            this.btnCadastrarSalvar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.btnCadastrarSalvar.Name = "btnCadastrarSalvar";
-            this.btnCadastrarSalvar.Size = new System.Drawing.Size(433, 62);
-            this.btnCadastrarSalvar.TabIndex = 0;
-            this.btnCadastrarSalvar.Text = "&Cadastrar";
-            this.btnCadastrarSalvar.UseVisualStyleBackColor = false;
-            this.btnCadastrarSalvar.Click += new System.EventHandler(this.btnCadastrarSalvar_Click);
+            this.btnAddSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddSave.BackColor = System.Drawing.Color.MediumBlue;
+            this.btnAddSave.FlatAppearance.BorderColor = System.Drawing.Color.MediumBlue;
+            this.btnAddSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddSave.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAddSave.Location = new System.Drawing.Point(1508, 32);
+            this.btnAddSave.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.btnAddSave.Name = "btnAddSave";
+            this.btnAddSave.Size = new System.Drawing.Size(433, 62);
+            this.btnAddSave.TabIndex = 0;
+            this.btnAddSave.Text = "&Cadastrar";
+            this.btnAddSave.UseVisualStyleBackColor = false;
+            this.btnAddSave.Click += new System.EventHandler(this.btnAddSave_Click);
             // 
             // pnlLinha2
             // 
@@ -132,7 +132,7 @@
             // pnlBotton
             // 
             this.pnlBotton.BackColor = System.Drawing.Color.LightBlue;
-            this.pnlBotton.Controls.Add(this.btnCadastrarSalvar);
+            this.pnlBotton.Controls.Add(this.btnAddSave);
             this.pnlBotton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBotton.Location = new System.Drawing.Point(0, 1305);
             this.pnlBotton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
@@ -150,6 +150,10 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.dtpTermino);
+            this.panel1.Controls.Add(this.dtpInicio);
+            this.panel1.Controls.Add(this.dtpCelebrado);
+            this.panel1.Controls.Add(this.dtpConstituicao);
             this.panel1.Controls.Add(this.lblConta);
             this.panel1.Controls.Add(this.txtConta);
             this.panel1.Controls.Add(this.picLogotipo);
@@ -158,16 +162,13 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.cboTomador);
             this.panel1.Controls.Add(this.lblTermino);
-            this.panel1.Controls.Add(this.txtTermino);
             this.panel1.Controls.Add(this.lblInicio);
-            this.panel1.Controls.Add(this.txtInicio);
             this.panel1.Controls.Add(this.txtEdital);
             this.panel1.Controls.Add(this.lblEdital);
             this.panel1.Controls.Add(this.lblCelebrado);
             this.panel1.Controls.Add(this.txtContrato);
             this.panel1.Controls.Add(this.lblContrato);
             this.panel1.Controls.Add(this.lblTomador);
-            this.panel1.Controls.Add(this.txtCelebrado);
             this.panel1.Controls.Add(this.pnlLinhaContrato);
             this.panel1.Controls.Add(this.lblTituloContrato);
             this.panel1.Controls.Add(this.txtBanco);
@@ -207,7 +208,6 @@
             this.panel1.Controls.Add(this.txtNomeFantasia);
             this.panel1.Controls.Add(this.lblNomeFantasia);
             this.panel1.Controls.Add(this.txtTelefone);
-            this.panel1.Controls.Add(this.txtConstituicao);
             this.panel1.Controls.Add(this.lblCNPJ);
             this.panel1.Controls.Add(this.lblTelefone2);
             this.panel1.Controls.Add(this.txtEmail);
@@ -219,7 +219,43 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1993, 1305);
-            this.panel1.TabIndex = 149;
+            this.panel1.TabIndex = 0;
+            // 
+            // dtpTermino
+            // 
+            this.dtpTermino.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtpTermino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTermino.Location = new System.Drawing.Point(800, 2835);
+            this.dtpTermino.Name = "dtpTermino";
+            this.dtpTermino.Size = new System.Drawing.Size(320, 39);
+            this.dtpTermino.TabIndex = 25;
+            // 
+            // dtpInicio
+            // 
+            this.dtpInicio.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtpInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpInicio.Location = new System.Drawing.Point(800, 2745);
+            this.dtpInicio.Name = "dtpInicio";
+            this.dtpInicio.Size = new System.Drawing.Size(320, 39);
+            this.dtpInicio.TabIndex = 24;
+            // 
+            // dtpCelebrado
+            // 
+            this.dtpCelebrado.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtpCelebrado.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpCelebrado.Location = new System.Drawing.Point(800, 2655);
+            this.dtpCelebrado.Name = "dtpCelebrado";
+            this.dtpCelebrado.Size = new System.Drawing.Size(320, 39);
+            this.dtpCelebrado.TabIndex = 23;
+            // 
+            // dtpConstituicao
+            // 
+            this.dtpConstituicao.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtpConstituicao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpConstituicao.Location = new System.Drawing.Point(800, 480);
+            this.dtpConstituicao.Name = "dtpConstituicao";
+            this.dtpConstituicao.Size = new System.Drawing.Size(320, 39);
+            this.dtpConstituicao.TabIndex = 3;
             // 
             // lblConta
             // 
@@ -245,7 +281,7 @@
             this.txtConta.MaxLength = 6;
             this.txtConta.Name = "txtConta";
             this.txtConta.Size = new System.Drawing.Size(320, 39);
-            this.txtConta.TabIndex = 335;
+            this.txtConta.TabIndex = 19;
             // 
             // picLogotipo
             // 
@@ -268,10 +304,10 @@
             this.btnCarregar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnCarregar.Name = "btnCarregar";
             this.btnCarregar.Size = new System.Drawing.Size(542, 79);
-            this.btnCarregar.TabIndex = 355;
+            this.btnCarregar.TabIndex = 26;
             this.btnCarregar.Text = "Selecionar arquivo";
             this.btnCarregar.UseVisualStyleBackColor = true;
-            this.btnCarregar.Click += new System.EventHandler(this.btnCarregar_Click);
+            this.btnCarregar.Click += new System.EventHandler(this.btnLoadImage_Click);
             // 
             // pnlLinhaLogotipo
             // 
@@ -326,7 +362,7 @@
             this.cboTomador.MaxLength = 100;
             this.cboTomador.Name = "cboTomador";
             this.cboTomador.Size = new System.Drawing.Size(645, 40);
-            this.cboTomador.TabIndex = 341;
+            this.cboTomador.TabIndex = 20;
             // 
             // lblTermino
             // 
@@ -341,20 +377,6 @@
             this.lblTermino.TabIndex = 352;
             this.lblTermino.Text = "Previsão do Término";
             // 
-            // txtTermino
-            // 
-            this.txtTermino.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtTermino.BackColor = System.Drawing.Color.White;
-            this.txtTermino.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTermino.ForeColor = System.Drawing.Color.Black;
-            this.txtTermino.Location = new System.Drawing.Point(800, 2835);
-            this.txtTermino.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.txtTermino.Name = "txtTermino";
-            this.txtTermino.Size = new System.Drawing.Size(320, 39);
-            this.txtTermino.TabIndex = 346;
-            this.txtTermino.Tag = "data";
-            this.txtTermino.ValidatingType = typeof(System.DateTime);
-            // 
             // lblInicio
             // 
             this.lblInicio.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -368,20 +390,6 @@
             this.lblInicio.TabIndex = 351;
             this.lblInicio.Text = "Data de Início";
             // 
-            // txtInicio
-            // 
-            this.txtInicio.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtInicio.BackColor = System.Drawing.Color.White;
-            this.txtInicio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtInicio.ForeColor = System.Drawing.Color.Black;
-            this.txtInicio.Location = new System.Drawing.Point(800, 2745);
-            this.txtInicio.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.txtInicio.Name = "txtInicio";
-            this.txtInicio.Size = new System.Drawing.Size(320, 39);
-            this.txtInicio.TabIndex = 345;
-            this.txtInicio.Tag = "data";
-            this.txtInicio.ValidatingType = typeof(System.DateTime);
-            // 
             // txtEdital
             // 
             this.txtEdital.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -394,7 +402,7 @@
             this.txtEdital.MaxLength = 50;
             this.txtEdital.Name = "txtEdital";
             this.txtEdital.Size = new System.Drawing.Size(645, 39);
-            this.txtEdital.TabIndex = 342;
+            this.txtEdital.TabIndex = 21;
             // 
             // lblEdital
             // 
@@ -434,7 +442,7 @@
             this.txtContrato.MaxLength = 50;
             this.txtContrato.Name = "txtContrato";
             this.txtContrato.Size = new System.Drawing.Size(645, 39);
-            this.txtContrato.TabIndex = 343;
+            this.txtContrato.TabIndex = 22;
             // 
             // lblContrato
             // 
@@ -461,20 +469,6 @@
             this.lblTomador.Size = new System.Drawing.Size(100, 30);
             this.lblTomador.TabIndex = 347;
             this.lblTomador.Text = "Tomador";
-            // 
-            // txtCelebrado
-            // 
-            this.txtCelebrado.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtCelebrado.BackColor = System.Drawing.Color.White;
-            this.txtCelebrado.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCelebrado.ForeColor = System.Drawing.Color.Black;
-            this.txtCelebrado.Location = new System.Drawing.Point(800, 2655);
-            this.txtCelebrado.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.txtCelebrado.Name = "txtCelebrado";
-            this.txtCelebrado.Size = new System.Drawing.Size(320, 39);
-            this.txtCelebrado.TabIndex = 344;
-            this.txtCelebrado.Tag = "data";
-            this.txtCelebrado.ValidatingType = typeof(System.DateTime);
             // 
             // pnlLinhaContrato
             // 
@@ -511,7 +505,7 @@
             this.txtBanco.MaxLength = 100;
             this.txtBanco.Name = "txtBanco";
             this.txtBanco.Size = new System.Drawing.Size(645, 39);
-            this.txtBanco.TabIndex = 331;
+            this.txtBanco.TabIndex = 15;
             // 
             // lblAgencia
             // 
@@ -550,7 +544,7 @@
             this.txtAgencia.MaxLength = 6;
             this.txtAgencia.Name = "txtAgencia";
             this.txtAgencia.Size = new System.Drawing.Size(320, 39);
-            this.txtAgencia.TabIndex = 333;
+            this.txtAgencia.TabIndex = 17;
             // 
             // lblOperador
             // 
@@ -621,7 +615,7 @@
             this.cboTipoDeConta.MaxLength = 100;
             this.cboTipoDeConta.Name = "cboTipoDeConta";
             this.cboTipoDeConta.Size = new System.Drawing.Size(645, 40);
-            this.cboTipoDeConta.TabIndex = 332;
+            this.cboTipoDeConta.TabIndex = 16;
             // 
             // txtOperador
             // 
@@ -634,7 +628,7 @@
             this.txtOperador.MaxLength = 3;
             this.txtOperador.Name = "txtOperador";
             this.txtOperador.Size = new System.Drawing.Size(158, 39);
-            this.txtOperador.TabIndex = 334;
+            this.txtOperador.TabIndex = 18;
             // 
             // panel5
             // 
@@ -697,7 +691,7 @@
             this.txtComplemento.MaxLength = 100;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(645, 39);
-            this.txtComplemento.TabIndex = 318;
+            this.txtComplemento.TabIndex = 10;
             // 
             // txtBairro
             // 
@@ -711,7 +705,7 @@
             this.txtBairro.MaxLength = 100;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(645, 39);
-            this.txtBairro.TabIndex = 319;
+            this.txtBairro.TabIndex = 11;
             // 
             // txtCEP
             // 
@@ -723,7 +717,7 @@
             this.txtCEP.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(255, 39);
-            this.txtCEP.TabIndex = 321;
+            this.txtCEP.TabIndex = 13;
             this.txtCEP.Tag = "cep";
             // 
             // txtEndereco
@@ -738,7 +732,7 @@
             this.txtEndereco.MaxLength = 100;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(645, 39);
-            this.txtEndereco.TabIndex = 317;
+            this.txtEndereco.TabIndex = 9;
             // 
             // txtCidade
             // 
@@ -752,7 +746,7 @@
             this.txtCidade.MaxLength = 100;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(645, 39);
-            this.txtCidade.TabIndex = 320;
+            this.txtCidade.TabIndex = 12;
             // 
             // cboUF
             // 
@@ -794,7 +788,7 @@
             this.cboUF.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.cboUF.Name = "cboUF";
             this.cboUF.Size = new System.Drawing.Size(158, 40);
-            this.cboUF.TabIndex = 322;
+            this.cboUF.TabIndex = 14;
             // 
             // lblBairro
             // 
@@ -852,7 +846,7 @@
             // 
             this.panel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(377, 3957);
+            this.panel4.Location = new System.Drawing.Point(377, 3904);
             this.panel4.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1192, 2);
@@ -892,7 +886,7 @@
             this.txtCNPJ.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtCNPJ.Name = "txtCNPJ";
             this.txtCNPJ.Size = new System.Drawing.Size(316, 39);
-            this.txtCNPJ.TabIndex = 296;
+            this.txtCNPJ.TabIndex = 0;
             this.txtCNPJ.Tag = "cnpj";
             this.txtCNPJ.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
             this.txtCNPJ.Leave += new System.EventHandler(this.OnValidated_MaskedTextBox);
@@ -922,7 +916,7 @@
             this.txtInscricaoMunicipal.MaxLength = 50;
             this.txtInscricaoMunicipal.Name = "txtInscricaoMunicipal";
             this.txtInscricaoMunicipal.Size = new System.Drawing.Size(320, 39);
-            this.txtInscricaoMunicipal.TabIndex = 301;
+            this.txtInscricaoMunicipal.TabIndex = 5;
             // 
             // txtInscricaoEstadual
             // 
@@ -936,7 +930,7 @@
             this.txtInscricaoEstadual.MaxLength = 50;
             this.txtInscricaoEstadual.Name = "txtInscricaoEstadual";
             this.txtInscricaoEstadual.Size = new System.Drawing.Size(461, 39);
-            this.txtInscricaoEstadual.TabIndex = 300;
+            this.txtInscricaoEstadual.TabIndex = 4;
             // 
             // lblInscricaoMunicipal
             // 
@@ -989,7 +983,7 @@
             this.txtRazaoSocial.MaxLength = 100;
             this.txtRazaoSocial.Name = "txtRazaoSocial";
             this.txtRazaoSocial.Size = new System.Drawing.Size(645, 39);
-            this.txtRazaoSocial.TabIndex = 297;
+            this.txtRazaoSocial.TabIndex = 1;
             // 
             // lblTelefone
             // 
@@ -1016,7 +1010,7 @@
             this.txtNomeFantasia.MaxLength = 50;
             this.txtNomeFantasia.Name = "txtNomeFantasia";
             this.txtNomeFantasia.Size = new System.Drawing.Size(645, 39);
-            this.txtNomeFantasia.TabIndex = 298;
+            this.txtNomeFantasia.TabIndex = 2;
             // 
             // lblNomeFantasia
             // 
@@ -1041,24 +1035,8 @@
             this.txtTelefone.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(320, 39);
-            this.txtTelefone.TabIndex = 302;
+            this.txtTelefone.TabIndex = 6;
             this.txtTelefone.Tag = "telefone";
-            // 
-            // txtConstituicao
-            // 
-            this.txtConstituicao.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtConstituicao.BackColor = System.Drawing.Color.White;
-            this.txtConstituicao.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtConstituicao.ForeColor = System.Drawing.Color.Black;
-            this.txtConstituicao.Location = new System.Drawing.Point(800, 480);
-            this.txtConstituicao.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.txtConstituicao.Name = "txtConstituicao";
-            this.txtConstituicao.Size = new System.Drawing.Size(320, 39);
-            this.txtConstituicao.TabIndex = 299;
-            this.txtConstituicao.Tag = "data";
-            this.txtConstituicao.ValidatingType = typeof(System.DateTime);
-            this.txtConstituicao.Enter += new System.EventHandler(this.OnEnter_MaskedTextBox);
-            this.txtConstituicao.Leave += new System.EventHandler(this.OnValidated_MaskedTextBox);
             // 
             // lblCNPJ
             // 
@@ -1098,7 +1076,7 @@
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(645, 39);
-            this.txtEmail.TabIndex = 304;
+            this.txtEmail.TabIndex = 8;
             // 
             // lblEmail
             // 
@@ -1123,7 +1101,7 @@
             this.txtTelefone2.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtTelefone2.Name = "txtTelefone2";
             this.txtTelefone2.Size = new System.Drawing.Size(320, 39);
-            this.txtTelefone2.TabIndex = 303;
+            this.txtTelefone2.TabIndex = 7;
             this.txtTelefone2.Tag = "telefone";
             // 
             // panel3
@@ -1149,7 +1127,7 @@
             this.lblTituloGeral.TabIndex = 294;
             this.lblTituloGeral.Text = "Geral";
             // 
-            // frmDadosCadastrais
+            // frmProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1162,7 +1140,7 @@
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmDadosCadastrais";
+            this.Name = "frmProfile";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1176,7 +1154,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnCadastrarSalvar;
+        private System.Windows.Forms.Button btnAddSave;
         private System.Windows.Forms.Panel pnlLinha2;
         private System.Windows.Forms.Panel pnlBotton;
         private System.Windows.Forms.OpenFileDialog openDialog;
@@ -1195,7 +1173,6 @@
         private TextBox txtNomeFantasia;
         private Label lblNomeFantasia;
         private MaskedTextBox txtTelefone;
-        private MaskedTextBox txtConstituicao;
         private Label lblCNPJ;
         private Label lblTelefone2;
         private TextBox txtEmail;
@@ -1209,16 +1186,13 @@
         private Label label5;
         private ComboBox cboTomador;
         private Label lblTermino;
-        private MaskedTextBox txtTermino;
         private Label lblInicio;
-        private MaskedTextBox txtInicio;
         private TextBox txtEdital;
         private Label lblEdital;
         private Label lblCelebrado;
         private TextBox txtContrato;
         private Label lblContrato;
         private Label lblTomador;
-        private MaskedTextBox txtCelebrado;
         private Panel pnlLinhaContrato;
         private Label lblTituloContrato;
         private TextBox txtBanco;
@@ -1246,5 +1220,9 @@
         private Panel panel4;
         private Label lblConta;
         private TextBox txtConta;
+        private DateTimePicker dtpConstituicao;
+        private DateTimePicker dtpTermino;
+        private DateTimePicker dtpInicio;
+        private DateTimePicker dtpCelebrado;
     }
 }

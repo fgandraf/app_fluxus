@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace Fluxus.Domain.Entities
 {
@@ -33,8 +32,8 @@ namespace Fluxus.Domain.Entities
         public DateTime ContractEstablished { get; set; }
         public DateTime ContractStart { get; set; }
         public DateTime ContractEnd { get; set; }
-        public string Logo { get; set; }
-        
+        public byte[] Logo { get; set; }
+
     }
 
 

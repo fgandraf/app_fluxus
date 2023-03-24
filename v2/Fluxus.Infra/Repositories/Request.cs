@@ -1,14 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.IO;
-using System.Net;
+﻿using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
-using System.Reflection.Metadata;
 using System.Text;
-using System.Threading.Tasks;
-
 
 namespace Fluxus.Infra.Repositories
 {
@@ -18,7 +10,8 @@ namespace Fluxus.Infra.Repositories
         const string URI = "http://localhost:8080/api/";
         const string TOKEN = "xz8wM6zr2RfF18GBM0B5yrkoo";
 
-        public static string Get(string model, string parametro)
+
+        public static string Get(string model, string param)
         {
             try
             {
@@ -26,25 +19,20 @@ namespace Fluxus.Infra.Repositories
                 {
                     httpClient.BaseAddress = new Uri(URI);
                     httpClient.DefaultRequestHeaders.Add("Token", TOKEN);
+                    var response = httpClient.GetAsync(model + param).Result;
 
-                    var response = httpClient.GetAsync(model + parametro).Result;
-
-                    response.EnsureSuccessStatusCode();
-
-                    return response.Content.ReadAsStringAsync().Result;
+                    if (response.IsSuccessStatusCode)
+                        return response.Content.ReadAsStringAsync().Result;
+                    else
+                        throw new Exception("Request error: " + response.Content.ReadAsStringAsync().Result);
                 }
-            }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Erro de rede: {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro: {ex.Message}");
+                throw new Exception("Connection error: " + ex);
             }
-
-            return null;
         }
+
 
         public static bool Put(string model, string json)
         {
@@ -54,25 +42,21 @@ namespace Fluxus.Infra.Repositories
                 {
                     httpClient.BaseAddress = new Uri(URI);
                     httpClient.DefaultRequestHeaders.Add("Token", TOKEN);
-
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                    var response = httpClient.PutAsync($"{model}", content).Result;
-
+                    var response = httpClient.PutAsync(model, content).Result;
+                    
+                    if (response.IsSuccessStatusCode == false)
+                        throw new Exception("Request error: " + response.Content.ReadAsStringAsync().Result);
+                    
                     return response.IsSuccessStatusCode;
                 }
             }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Erro de rede: {ex.Message}");
-            }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro: {ex.Message}");
+                throw new Exception("Connection error: " + ex);
             }
-
-            return false;
         }
+
 
         public static bool Delete(string model, string parametro)
         {
@@ -82,23 +66,20 @@ namespace Fluxus.Infra.Repositories
                 {
                     httpClient.BaseAddress = new Uri(URI);
                     httpClient.DefaultRequestHeaders.Add("Token", TOKEN);
-
                     var response = httpClient.DeleteAsync(model + parametro).Result;
 
-                    return response.IsSuccessStatusCode;
+                    if (response.IsSuccessStatusCode == false)
+                        throw new Exception("Request error: " + response.Content.ReadAsStringAsync().Result);
+
+                    return true;
                 }
-            }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Erro de rede: {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro: {ex.Message}");
+                throw new Exception("Connection error: " + ex);
             }
-
-            return false;
         }
+
 
         public static bool Post(string model, string json)
         {
@@ -108,24 +89,21 @@ namespace Fluxus.Infra.Repositories
                 {
                     httpClient.BaseAddress = new Uri(URI);
                     httpClient.DefaultRequestHeaders.Add("Token", TOKEN);
-
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
-
                     var response = httpClient.PostAsync(model, content).Result;
 
-                    return response.IsSuccessStatusCode;
+                    if (response.IsSuccessStatusCode == false)
+                        throw new Exception("Request error: " + response.Content.ReadAsStringAsync().Result);
+
+                    return true;
                 }
-            }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"Erro de rede: {ex.Message}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro: {ex.Message}");
+                throw new Exception("Connection error: " + ex);
             }
-
-            return false;
         }
+
+
     }
 }
