@@ -8,51 +8,29 @@ namespace Fluxus.Services
     public class BankBranchService
     {
 
-
-        public void Insert(BankBranch body)
-        {
-            new BankBranchRepository().Insert(body);
-        }
-
+        public void Insert(BankBranch body) 
+            => new BankBranchRepository().Insert(body);
 
 
         public void Update(BankBranch body)
-        {
-            new BankBranchRepository().Update(body);
-        }
+            => new BankBranchRepository().Update(body);
 
 
-
-        public void Delete(int id)
-        {
-            new BankBranchRepository().Delete(id);
-        }
+        public void Delete(int id) 
+            => new BankBranchRepository().Delete(id);
 
 
-
-        public DataTable GetAll()
-        {
-            return new BankBranchRepository().GetAll();
-        }
-
+        public DataTable GetAll() 
+            => new BankBranchRepository().GetAll();
 
 
         public DataTable BuscarAgencia(string agenciaCodigo)
-        {
-            return new BankBranchRepository().GetByCode(agenciaCodigo);
-        }
+            => new BankBranchRepository().GetByCode(agenciaCodigo);
 
 
-
-        public BankBranch GetBy(int id)
-        {
-            return new BankBranchRepository().GetById(id);
-        }
-
-
+        public BankBranch GetBy(int id) 
+            => new BankBranchRepository().GetById(id);
 
     }
-
-
 
 }

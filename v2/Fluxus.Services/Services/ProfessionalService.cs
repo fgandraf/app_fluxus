@@ -8,22 +8,28 @@ namespace Fluxus.Services
     public class ProfessionalService
     {
 
-        public void Insert(Professional body) => new ProfessionalRepository().Insert(body);
+        public void Insert(Professional body) 
+            => new ProfessionalRepository().Insert(body);
 
 
-        public void Update(Professional body) => new ProfessionalRepository().Update(body);
+        public void Update(Professional body) 
+            => new ProfessionalRepository().Update(body);
 
 
-        public void Delete(int id) => new ProfessionalRepository().Delete(id);
+        public void Delete(int id) 
+            => new ProfessionalRepository().Delete(id);
 
 
-        public DataTable GetAll() => new ProfessionalRepository().GetAll();
+        public DataTable GetAll() 
+            => new ProfessionalRepository().GetAll();
 
 
-        public DataTable GetUser(string userName) => new ProfessionalRepository().GetUser(userName);
+        public DataTable GetUser(string userName) 
+            => new ProfessionalRepository().GetUser(userName);
 
 
-        public Professional GetBy(int id) => new ProfessionalRepository().GetById(id);
+        public Professional GetBy(int id) 
+            => new ProfessionalRepository().GetById(id);
 
 
         public DataTable GetCodeNameid(bool addHeader)

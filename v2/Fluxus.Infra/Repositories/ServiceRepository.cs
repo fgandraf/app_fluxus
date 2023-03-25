@@ -1,6 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
-using Newtonsoft.Json;
 using System.Data;
+using Newtonsoft.Json;
 
 
 namespace Fluxus.Infra.Repositories

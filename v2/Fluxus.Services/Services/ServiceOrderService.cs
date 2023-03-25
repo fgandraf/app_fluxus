@@ -9,76 +9,44 @@ namespace Fluxus.Services
     public class ServiceOrderService
     {
 
-
-
         public void Insert(ServiceOrder body)
-        {
-            new ServiceOrderRepository().Insert(body);
-        }
-
+            => new ServiceOrderRepository().Insert(body);
 
 
         public void Update(ServiceOrder body)
-        {
-            new ServiceOrderRepository().Update(body);
-        }
-
+            => new ServiceOrderRepository().Update(body);
 
 
         public void UpdateFaturaCod(int id, int invoiceId)
-        {
-            new ServiceOrderRepository().UpdateInvoiceId(id, invoiceId);
-        }
-
+            => new ServiceOrderRepository().UpdateInvoiceId(id, invoiceId);
 
 
         public async void UpdateStatus(int id, string status)
-        {
-            await Task.Run(() => new ServiceOrderRepository().UpdateStatus(id, status));
-        }
-
+            => await Task.Run(() => new ServiceOrderRepository().UpdateStatus(id, status));
 
 
         public void Delete(int id)
-        {
-            new ServiceOrderRepository().Delete(id);
-        }
-
+            => new ServiceOrderRepository().Delete(id);
 
 
         public DataTable GetOrdensDoFluxo()
-        {
-            return new ServiceOrderRepository().GetIndexOpen();
-        }
-
+            => new ServiceOrderRepository().GetIndexOpen();
 
 
         public DataTable GetOrdensConcluidasNaoFaturadas()
-        {
-            return new ServiceOrderRepository().GetOpenDone();
-        }
-
+            => new ServiceOrderRepository().GetOpenDone();
 
 
         public DataTable GetOrdensFaturadasDoCodigo(int invoiceId)
-        {
-            return new ServiceOrderRepository().GetClosedByInvoiceId(invoiceId);
-        }
-
+            => new ServiceOrderRepository().GetClosedByInvoiceId(invoiceId);
 
 
         public DataTable GetOrdensComFiltro(string filter)
-        {
-            return new ServiceOrderRepository().GetFiltered(filter);
-        }
-
+            => new ServiceOrderRepository().GetFiltered(filter);
 
 
         public DataTable GetProfessionalByInvoiceId(int invoiceId)
-        {
-            return new ServiceOrderRepository().GetProfessionalByInvoiceId(invoiceId);
-        }
-
+            => new ServiceOrderRepository().GetProfessionalByInvoiceId(invoiceId);
 
 
         public DataTable GetCidadesDasOrdens(bool addHeader)
@@ -96,16 +64,9 @@ namespace Fluxus.Services
         }
 
 
-
         public Domain.Entities.ServiceOrder GetBy(int id)
-        {
-            return new ServiceOrderRepository().GetById(id);
-        }
-
-
+            => new ServiceOrderRepository().GetById(id);
 
     }
-
-
 
 }

@@ -15,14 +15,16 @@ namespace Fluxus.Services
         }
 
 
-        public Profile GetAll() => new ProfileRepository().GetAll();
+        public Profile GetAll() 
+            => new ProfileRepository().GetAll();
 
 
-        public Profile GetToPrint() => new ProfileRepository().GetToPrint();
+        public Profile GetToPrint() 
+            => new ProfileRepository().GetToPrint();
 
 
-        public string GetTradingName() => new ProfileRepository().GetName();
-
+        public string GetTradingName() 
+            => new ProfileRepository().GetName();
 
     }
 }

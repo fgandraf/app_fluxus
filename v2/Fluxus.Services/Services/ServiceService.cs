@@ -7,35 +7,22 @@ namespace Fluxus.Services
 {
     public class ServiceService
     {
-
-
         public void Insert(Service body)
-        {
-            new ServiceRepository().Insert(body);
-        }
-
+            => new ServiceRepository().Insert(body);
 
 
         public void Update(Service body)
-        {
-            new ServiceRepository().Update(body);
-        }
-
+            => new ServiceRepository().Update(body);
 
 
         public void Delete(int id)
-        {
-            new ServiceRepository().Delete(id);
-        }
-
+            => new ServiceRepository().Delete(id);
 
 
         public DataTable ListarAtividades(bool addHeader)
         {
             DataTable table = new ServiceRepository().GetAll();
-
             DataView view = new DataView(table);
-
             DataTable atividades = view.ToTable("Selected", false, "id", "tag", "description", "serviceAmount", "mileageAllowance");
 
             if (addHeader)
@@ -49,16 +36,9 @@ namespace Fluxus.Services
         }
 
 
-
         public Service GetBy(int id)
-        {
-            return new ServiceRepository().GetById(id);
-        }
-
-
+            => new ServiceRepository().GetById(id);
 
     }
-
-
 
 }
