@@ -3,6 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using Fluxus.Domain.Entities;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
@@ -12,7 +13,7 @@ namespace Fluxus.Services
     public class InvoiceReport
     {
 
-        public static void PrintPDF (System.Drawing.Image logotipo, string edital, string contrato, string razaosocial, string cnpj, DataTable dtPro, DataTable dtOS, string caminho)
+        public static void PrintPDF (System.Drawing.Image logo, Profile profile, DataTable professionals, DataTable serviceOrders, string path)
         {
 
             //////////////////-CRIAÇÃO DO PDF-///////////////////////
@@ -21,7 +22,7 @@ namespace Fluxus.Services
                 Document doc = new Document(PageSize.A4);
                 doc.SetMargins(40, 40, 30, 30);
                 doc.AddCreationDate();
-                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(caminho, FileMode.Create));
+                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(path, FileMode.Create));
                 doc.Open();
                 Paragraph espaco = new Paragraph();
                 espaco.Add("\n");
@@ -41,7 +42,7 @@ namespace Fluxus.Services
                     float[] widths = new float[] { 30f, 40f, 30f };
                     tabhead.SetWidths(widths);
                     //--célula do logotipo
-                    iTextSharp.text.Image imagem = iTextSharp.text.Image.GetInstance(logotipo, System.Drawing.Imaging.ImageFormat.Png);
+                    iTextSharp.text.Image imagem = iTextSharp.text.Image.GetInstance(logo, System.Drawing.Imaging.ImageFormat.Png);
                     imagem.ScaleAbsolute(50, 50);
                     PdfPCell celLogo = new PdfPCell(new Phrase());
                     celLogo.Border = 2;
@@ -61,7 +62,7 @@ namespace Fluxus.Services
                     tabhead.AddCell(celtitulo);
                     //---célula razao
                     Phrase prazao = new Phrase();
-                    prazao.Add(new Chunk(razaosocial, FontFactory.GetFont("Calibre", 9, iTextSharp.text.Font.BOLD, BaseColor.DARK_GRAY)));
+                    prazao.Add(new Chunk(profile.CompanyName, FontFactory.GetFont("Calibre", 9, iTextSharp.text.Font.BOLD, BaseColor.DARK_GRAY)));
                     PdfPCell celrazao = new PdfPCell(prazao);
                     celrazao.Border = 2;
                     celrazao.BorderColor = BaseColor.LIGHT_GRAY;
@@ -71,7 +72,7 @@ namespace Fluxus.Services
                     tabhead.AddCell(celrazao);
                     //--célula cnpj
                     Phrase pncpj = new Phrase();
-                    pncpj.Add(new Chunk("CNPJ: " + cnpj, FontFactory.GetFont("Calibre", 9, iTextSharp.text.Font.BOLD, BaseColor.DARK_GRAY)));
+                    pncpj.Add(new Chunk("CNPJ: " + profile.Cnpj, FontFactory.GetFont("Calibre", 9, iTextSharp.text.Font.BOLD, BaseColor.DARK_GRAY)));
                     PdfPCell celcnpj = new PdfPCell(pncpj);
                     celcnpj.HorizontalAlignment = Element.ALIGN_RIGHT;
                     celcnpj.Border = 2;
@@ -83,7 +84,7 @@ namespace Fluxus.Services
                     //---célula edital
                     Phrase pedital = new Phrase();
                     pedital.Add(new Chunk("Edital: ", FontFactory.GetFont("Calibre", 9, iTextSharp.text.Font.BOLD, BaseColor.GRAY)));
-                    pedital.Add(new Chunk(edital, FontFactory.GetFont("Calibre", 9, iTextSharp.text.Font.BOLD, BaseColor.GRAY)));
+                    pedital.Add(new Chunk(profile.ContractNotice, FontFactory.GetFont("Calibre", 9, iTextSharp.text.Font.BOLD, BaseColor.GRAY)));
                     PdfPCell celedital = new PdfPCell(pedital);
                     celedital.Border = 0;
                     celedital.BorderColor = BaseColor.LIGHT_GRAY;
@@ -94,7 +95,7 @@ namespace Fluxus.Services
                     //--célula contrato
                     Phrase pcontrato = new Phrase();
                     pcontrato.Add(new Chunk("Contrato: ", FontFactory.GetFont("Calibre", 9, iTextSharp.text.Font.BOLD, BaseColor.GRAY)));
-                    pcontrato.Add(new Chunk(contrato, FontFactory.GetFont("Calibre", 9, iTextSharp.text.Font.BOLD, BaseColor.GRAY)));
+                    pcontrato.Add(new Chunk(profile.ContractNumber, FontFactory.GetFont("Calibre", 9, iTextSharp.text.Font.BOLD, BaseColor.GRAY)));
                     PdfPCell celcontrato = new PdfPCell(pcontrato);
                     celcontrato.HorizontalAlignment = Element.ALIGN_RIGHT;
                     celcontrato.Border = 0;
@@ -111,7 +112,7 @@ namespace Fluxus.Services
 
                 //////////-TABELA PARA CADA PROFISSIONAL-///////////////
                 {
-                    for (int i = 1; i <= dtPro.Rows.Count; i++)
+                    for (int i = 1; i <= professionals.Rows.Count; i++)
                     {
                         PdfPTable tabmain = new PdfPTable(7);
                         tabmain.WidthPercentage = 100;
@@ -120,7 +121,7 @@ namespace Fluxus.Services
                         tabmain.SetWidths(widths);
                         tabmain.DefaultCell.FixedHeight = 20;
                         tabmain.DefaultCell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                        DataRow[] dataRowPro = dtPro.Select();
+                        DataRow[] dataRowPro = professionals.Select();
 
 
                         /////////////////LINHA - NOME DO PROFISSIONAL
@@ -189,7 +190,7 @@ namespace Fluxus.Services
                         
                         /////////////////CÉLULAS - POPULAR
                         {
-                            DataRow[] dataRow = dtOS.Select("professionalId = '" + dataRowPro[i - 1]["professionalId"].ToString() + "'");
+                            DataRow[] dataRow = serviceOrders.Select("professionalId = '" + dataRowPro[i - 1]["professionalId"].ToString() + "'");
                             for (int l = 0; l < dataRow.Length; l++)
                             {
                                 //--célula
@@ -301,7 +302,7 @@ namespace Fluxus.Services
                             tabmain.AddCell(celula);
 
                             //--célula subtotal valor os
-                            double somavaloratividade = double.Parse(dtOS.Compute("Sum(serviceAmount)", "professionalId = '" + dataRowPro[i - 1]["professionalId"].ToString() + "'").ToString());
+                            double somavaloratividade = double.Parse(serviceOrders.Compute("Sum(serviceAmount)", "professionalId = '" + dataRowPro[i - 1]["professionalId"].ToString() + "'").ToString());
                             subtotal_os += somavaloratividade;
                             celula = new PdfPCell(new Phrase(new Chunk(
                                         string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", somavaloratividade),
@@ -313,7 +314,7 @@ namespace Fluxus.Services
                             tabmain.AddCell(celula);
 
                             //--célula subtotal valor deslocamento
-                            double somavalordeslocamento = double.Parse(dtOS.Compute("Sum(mileageAllowance)", "professionalId = '" + dataRowPro[i - 1]["professionalId"].ToString() + "'").ToString());
+                            double somavalordeslocamento = double.Parse(serviceOrders.Compute("Sum(mileageAllowance)", "professionalId = '" + dataRowPro[i - 1]["professionalId"].ToString() + "'").ToString());
                             subtotal_deslocamento += somavalordeslocamento;
                             celula = new PdfPCell(new Phrase(new Chunk(
                                         string.Format(CultureInfo.GetCultureInfo("pt-BR"), "{0:N}", somavalordeslocamento),
@@ -453,7 +454,7 @@ namespace Fluxus.Services
 
                 doc.Close();
 
-                Process.Start(new ProcessStartInfo { FileName = caminho, UseShellExecute = true });
+                Process.Start(new ProcessStartInfo { FileName = path, UseShellExecute = true });
             }
         }
 
