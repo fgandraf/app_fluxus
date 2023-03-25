@@ -5,9 +5,9 @@ namespace Fluxus.WinUI.View
 {
     public partial class frmBankBranch : Form
     {
-        frmPrincipal _frmPrincipal;
+        frmMain _frmPrincipal;
 
-        public frmBankBranch(frmPrincipal frm1)
+        public frmBankBranch(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;

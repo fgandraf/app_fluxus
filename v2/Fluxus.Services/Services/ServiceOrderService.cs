@@ -74,7 +74,7 @@ namespace Fluxus.Services
 
 
 
-        public DataTable GetProfissionaisDaFatura(int invoiceId)
+        public DataTable GetProfessionalByInvoiceId(int invoiceId)
         {
             return new ServiceOrderRepository().GetProfessionalByInvoiceId(invoiceId);
         }

@@ -11,7 +11,7 @@ namespace Fluxus.WinUI.View
 {
     public partial class frmOSLista : Form
     {
-        frmPrincipal _frmPrincipal;
+        frmMain _frmPrincipal;
         DataView _dvOSFiltrada;
         DataTable dtOS;
 
@@ -90,7 +90,7 @@ namespace Fluxus.WinUI.View
 
         //:EVENTS
         ///_______Form
-        public frmOSLista(frmPrincipal frm1)
+        public frmOSLista(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -99,7 +99,7 @@ namespace Fluxus.WinUI.View
         private void frmOS_Load(object sender, EventArgs e)
         {
 
-            cboProfissional.DataSource = new ProfissionalService().ListarCodigoENomeid(true);
+            cboProfissional.DataSource = new ProfessionalService().GetCodeNameid(true);
             cboCidade.DataSource = new Services.ServiceOrderService().GetCidadesDasOrdens(true);
             cboAtividade.DataSource = new ServiceService().ListarAtividades(true);
 

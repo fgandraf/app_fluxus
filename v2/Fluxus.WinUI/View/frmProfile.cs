@@ -6,11 +6,11 @@ namespace Fluxus.WinUI.View
 {
     public partial class frmProfile : Form
     {
-        frmPrincipal _frmPrincipal;
+        frmMain _frmPrincipal;
         private Image _actualLogo;
         private string _method;
 
-        public frmProfile(frmPrincipal frm1)
+        public frmProfile(frmMain frm1)
         {
             InitializeComponent();
             

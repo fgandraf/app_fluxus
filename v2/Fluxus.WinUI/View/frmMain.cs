@@ -3,11 +3,11 @@ using Fluxus.Domain.Entities;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmPrincipal : Form
+    public partial class frmMain : Form
     {
         Form _formAtivo;
 
-        public frmPrincipal()
+        public frmMain()
         {
             InitializeComponent();
             frmLogin login = new frmLogin();
@@ -22,7 +22,7 @@ namespace Fluxus.WinUI.View
             btnOS.PerformClick();
 
             string fantasia = null;
-            await Task.Run(() => fantasia = new ProfileService().GetFantasia());
+            await Task.Run(() => fantasia = new ProfileService().GetTradingName());
 
             if (fantasia != null)
                 btnDadosCadastrais.Text = fantasia;
@@ -40,7 +40,7 @@ namespace Fluxus.WinUI.View
                 case "btnDadosCadastrais":
                     {
                         pnlCtrlDadosCadastrais.Show();
-                        form = new frmDadosCadastrais(this);
+                        form = new frmProfile(this);
                         break;
                     }
                 case "btnOS":
@@ -52,25 +52,25 @@ namespace Fluxus.WinUI.View
                 case "btnFaturas":
                     {
                         pnlCtrlFaturas.Show();
-                        form = new frmFaturas();
+                        form = new frmInvoice();
                         break;
                     }
                 case "btnAtividades":
                     {
                         pnlCtrlAtividades.Show();
-                        form = new frmAtividades(this);
+                        form = new frmService(this);
                         break;
                     }
                 case "btnAgencias":
                     {
                         pnlCtrlAgencias.Show();
-                        form = new frmAgencias(this);
+                        form = new frmBankBranch(this);
                         break;
                     }
                 case "btnProfissionais":
                     {
                         pnlCtrlProfissionais.Show();
-                        form = new frmProfissionais(this);
+                        form = new frmProfessional(this);
                         break;
                     }
                 default:break;

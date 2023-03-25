@@ -10,7 +10,7 @@ namespace Fluxus.WinUI.View
     {
 
 
-        frmPrincipal _frmPrincipal;
+        frmMain _frmPrincipal;
         private int _id;
         private string _usr_nome;
 
@@ -77,7 +77,7 @@ namespace Fluxus.WinUI.View
         private void Back()
         {
             this.Close();
-            frmProfissionais formFilho = new frmProfissionais(_frmPrincipal);
+            frmProfessional formFilho = new frmProfessional(_frmPrincipal);
             _frmPrincipal.AbrirFormInPanel(formFilho);
         }
 
@@ -86,13 +86,13 @@ namespace Fluxus.WinUI.View
 
 
         //:EVENTS
-        public frmAddProfissional(frmPrincipal frm1)
+        public frmAddProfissional(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
 
-        public frmAddProfissional(frmPrincipal frm1, Professional dado)
+        public frmAddProfissional(frmMain frm1, Professional dado)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -170,7 +170,7 @@ namespace Fluxus.WinUI.View
             //VERIFICA SE NOME DE USUÁRIO JÁ EXISTE NO SISTEMA
             if (txtUsrNome.Text != _usr_nome)
             {
-                DataTable dtPro = new ProfissionalService().GetUser(txtUsrNome.Text);
+                DataTable dtPro = new ProfessionalService().GetUser(txtUsrNome.Text);
 
                 if (dtPro.Rows.Count > 0)
                 {
@@ -201,7 +201,7 @@ namespace Fluxus.WinUI.View
             {
                 try
                 {
-                    new ProfissionalService().Insert(dado);
+                    new ProfessionalService().Insert(dado);
                 }
                 catch (Exception ex)
                 {
@@ -213,7 +213,7 @@ namespace Fluxus.WinUI.View
             {
                 try
                 {
-                    new ProfissionalService().Update(dado);
+                    new ProfessionalService().Update(dado);
                 }
                 catch (Exception ex)
                 {

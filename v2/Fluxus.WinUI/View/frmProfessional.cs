@@ -5,9 +5,9 @@ namespace Fluxus.WinUI.View
 {
     public partial class frmProfessional : Form
     {
-        frmPrincipal _frmPrincipal;
+        frmMain _frmPrincipal;
 
-        public frmProfessional(frmPrincipal frm1)
+        public frmProfessional(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;

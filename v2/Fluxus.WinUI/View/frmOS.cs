@@ -6,7 +6,7 @@ namespace Fluxus.WinUI.View
 {
     public partial class frmOS : Form
     {
-        frmPrincipal _frmPrincipal;
+        frmMain _frmPrincipal;
 
 
 
@@ -30,13 +30,13 @@ namespace Fluxus.WinUI.View
 
         //:EVENTS
         ///_______Form
-        public frmOS(frmPrincipal frm1)
+        public frmOS(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
 
-        public frmOS(frmPrincipal frm1, int index)
+        public frmOS(frmMain frm1, int index)
         {
             InitializeComponent();
             _frmPrincipal = frm1;

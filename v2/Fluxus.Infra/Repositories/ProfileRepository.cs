@@ -28,7 +28,13 @@ namespace Fluxus.Infra.Repositories
             return profile;
         }
 
-        public DataTable GetToPrint()
+        public Profile GetToPrint()
+        {
+            string json = Request.Get("Profile/ToPrint", string.Empty);
+            return JsonSerializer.Deserialize<Profile>(json);
+        }
+
+        public DataTable GetToPrintOld()
         {
             string json = Request.Get("Profile/ToPrint", string.Empty);
             return JsonSerializer.Deserialize<DataTable>(json);

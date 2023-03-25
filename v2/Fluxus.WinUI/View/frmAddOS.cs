@@ -9,7 +9,7 @@ namespace Fluxus.WinUI.View
 {
     public partial class frmAddOS : Form
     {
-        frmPrincipal _frmPrincipal;
+        frmMain _frmPrincipal;
         private string _formFilho;
         private string _agencia;
         private int _id;
@@ -145,14 +145,14 @@ namespace Fluxus.WinUI.View
 
 
         //:EVENTS
-        public frmAddOS(frmPrincipal frm1, string frmfilho)
+        public frmAddOS(frmMain frm1, string frmfilho)
         {
             InitializeComponent();
 
             _frmPrincipal = frm1;
             _formFilho = frmfilho;
 
-            DtProfissionais = new ProfissionalService().ListarCodigoENomeid(false);
+            DtProfissionais = new ProfessionalService().GetCodeNameid(false);
             DtAtividades = new ServiceService().ListarAtividades(false);
 
             cboProfissional.DataSource = DtProfissionais;
@@ -162,7 +162,7 @@ namespace Fluxus.WinUI.View
         }
 
 
-        public frmAddOS(frmPrincipal frm1, string frmfilho, ServiceOrder dado) : this(frm1, frmfilho)
+        public frmAddOS(frmMain frm1, string frmfilho, ServiceOrder dado) : this(frm1, frmfilho)
         {
             //POPULATE
             _id = dado.Id;

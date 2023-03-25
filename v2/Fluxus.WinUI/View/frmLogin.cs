@@ -50,7 +50,7 @@ namespace Fluxus.WinUI.View
             lblLoad.Text = "Validando usuário";
 
 
-            DataTable dtUsuario = new ProfissionalService().GetUser(txtUsuario.Text);
+            DataTable dtUsuario = new ProfessionalService().GetUser(txtUsuario.Text);
 
             DataRow[] dataRow;
 

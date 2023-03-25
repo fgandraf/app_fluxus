@@ -9,7 +9,7 @@ namespace Fluxus.WinUI.View
     {
 
 
-        frmPrincipal _frmPrincipal;
+        frmMain _frmPrincipal;
         int _id;
 
 
@@ -17,14 +17,14 @@ namespace Fluxus.WinUI.View
 
 
 
-        public frmAddAtividade(frmPrincipal frm1)
+        public frmAddAtividade(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
 
 
-        public frmAddAtividade(frmPrincipal frm1, Service dado)
+        public frmAddAtividade(frmMain frm1, Service dado)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -105,7 +105,7 @@ namespace Fluxus.WinUI.View
         private void Back()
         {
             this.Close();
-            frmAtividades formFilho = new frmAtividades(_frmPrincipal);
+            frmService formFilho = new frmService(_frmPrincipal);
             _frmPrincipal.AbrirFormInPanel(formFilho);
         }
 

@@ -1,10 +1,11 @@
 ﻿using Fluxus.Domain.Entities;
-using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Linq;
+using System.Collections.Generic;
+using System;
+using System.ComponentModel;
 
 namespace Fluxus.Infra.Repositories
 {
@@ -61,14 +62,15 @@ namespace Fluxus.Infra.Repositories
 
             if (json != null)
                 return JsonConvert.DeserializeObject<DataTable>(json);
-            
+
             return null;
         }
 
         public DataTable GetProfessionalByInvoiceId(int invoiceId)
         {
             string json = Request.Get("ServiceOrder/Professionals/", invoiceId.ToString());
-            return JsonConvert.DeserializeObject<DataTable>(json);
+            string novo = "[" + json + "]";
+            return JsonConvert.DeserializeObject<DataTable>(novo);
         }
 
         public DataTable GetCitiesFromOrders()

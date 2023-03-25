@@ -8,12 +8,12 @@ namespace Fluxus.WinUI.View
     public partial class frmAddAgencia : Form
     {
 
-        frmPrincipal _frmPrincipal;
+        frmMain _frmPrincipal;
         private int _id;
 
 
 
-        public frmAddAgencia(frmPrincipal frm1)
+        public frmAddAgencia(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -35,7 +35,7 @@ namespace Fluxus.WinUI.View
         }
 
 
-        public frmAddAgencia(frmPrincipal frm1, BankBranch dado) //Editar agencia
+        public frmAddAgencia(frmMain frm1, BankBranch dado) //Editar agencia
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -130,7 +130,7 @@ namespace Fluxus.WinUI.View
             this.Close();
             if (this.FormBorderStyle != FormBorderStyle.FixedSingle)
             {
-                frmAgencias formFilho = new frmAgencias(_frmPrincipal);
+                frmBankBranch formFilho = new frmBankBranch(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formFilho);
             }
         }

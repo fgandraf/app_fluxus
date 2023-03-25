@@ -11,13 +11,13 @@ namespace Fluxus.WinUI.View
     {
 
 
-        frmPrincipal _frmPrincipal;
+        frmMain _frmPrincipal;
         private double _subtotal_os = 0.00;
         private double _subtotal_desloc = 0.00;
 
 
 
-        public frmAddFatura(frmPrincipal frm1)
+        public frmAddFatura(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;

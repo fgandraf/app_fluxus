@@ -1,12 +1,10 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
-using System.Data;
 
 namespace Fluxus.Services
 {
     public class ProfileService
     {
-
 
         public void InsertOrUpdate(string method, Profile profile)
         {
@@ -20,9 +18,7 @@ namespace Fluxus.Services
         public Profile GetAll() => new ProfileRepository().GetAll();
 
 
-
-        public DataTable GetToPrint() => new ProfileRepository().GetToPrint();
-
+        public Profile GetToPrint() => new ProfileRepository().GetToPrint();
 
 
         public string GetTradingName() => new ProfileRepository().GetName();

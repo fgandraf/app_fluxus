@@ -10,7 +10,7 @@ namespace Fluxus.WinUI.View
 {
     public partial class frmOSFluxo : Form
     {
-        frmPrincipal _frmPrincipal;
+        frmMain _frmPrincipal;
         Control _lastEnteredControl;
         DataGridView _dgvOrigem;
         DataTable _dtOSNFaturada;
@@ -150,7 +150,7 @@ namespace Fluxus.WinUI.View
 
         //:EVENTS
         ///_______Form
-        public frmOSFluxo(frmPrincipal frm1)
+        public frmOSFluxo(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -187,7 +187,7 @@ namespace Fluxus.WinUI.View
         private void frmOSFluxo_Load(object sender, EventArgs e)
         {
 
-            cboProfissional.DataSource = new ProfissionalService().ListarCodigoENomeid(true);
+            cboProfissional.DataSource = new ProfessionalService().GetCodeNameid(true);
 
             if (Logged.Rl)
             {

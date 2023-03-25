@@ -1,6 +1,6 @@
 ﻿namespace Fluxus.WinUI.View
 {
-    partial class frmPrincipal
+    partial class frmMain
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.pnlCtrlOS = new System.Windows.Forms.Panel();
@@ -55,7 +55,7 @@
             // 
             // pnlMenu
             // 
-            this.pnlMenu.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.pnlMenu.BackColor = System.Drawing.Color.SteelBlue;
             this.pnlMenu.Controls.Add(this.lblUsuario);
             this.pnlMenu.Controls.Add(this.pnlCtrlOS);
             this.pnlMenu.Controls.Add(this.pnlCtrlProfissionais);
@@ -113,14 +113,14 @@
             // 
             // btnProfissionais
             // 
-            this.btnProfissionais.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnProfissionais.BackColor = System.Drawing.Color.SteelBlue;
             this.btnProfissionais.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnProfissionais.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
             this.btnProfissionais.FlatAppearance.BorderSize = 0;
-            this.btnProfissionais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnProfissionais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnProfissionais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfissionais.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnProfissionais.ForeColor = System.Drawing.Color.White;
+            this.btnProfissionais.ForeColor = System.Drawing.Color.Black;
             this.btnProfissionais.Image = ((System.Drawing.Image)(resources.GetObject("btnProfissionais.Image")));
             this.btnProfissionais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProfissionais.Location = new System.Drawing.Point(0, 1022);
@@ -138,14 +138,14 @@
             // 
             // btnOS
             // 
-            this.btnOS.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnOS.BackColor = System.Drawing.Color.SteelBlue;
             this.btnOS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOS.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
             this.btnOS.FlatAppearance.BorderSize = 0;
-            this.btnOS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnOS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOS.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnOS.ForeColor = System.Drawing.Color.White;
+            this.btnOS.ForeColor = System.Drawing.Color.Black;
             this.btnOS.Image = ((System.Drawing.Image)(resources.GetObject("btnOS.Image")));
             this.btnOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOS.Location = new System.Drawing.Point(0, 529);
@@ -216,14 +216,14 @@
             // 
             // btnFaturas
             // 
-            this.btnFaturas.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnFaturas.BackColor = System.Drawing.Color.SteelBlue;
             this.btnFaturas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFaturas.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
             this.btnFaturas.FlatAppearance.BorderSize = 0;
-            this.btnFaturas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnFaturas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnFaturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFaturas.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnFaturas.ForeColor = System.Drawing.Color.White;
+            this.btnFaturas.ForeColor = System.Drawing.Color.Black;
             this.btnFaturas.Image = ((System.Drawing.Image)(resources.GetObject("btnFaturas.Image")));
             this.btnFaturas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFaturas.Location = new System.Drawing.Point(0, 653);
@@ -241,14 +241,14 @@
             // 
             // btnDadosCadastrais
             // 
-            this.btnDadosCadastrais.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnDadosCadastrais.BackColor = System.Drawing.Color.SteelBlue;
             this.btnDadosCadastrais.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDadosCadastrais.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
             this.btnDadosCadastrais.FlatAppearance.BorderSize = 0;
-            this.btnDadosCadastrais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnDadosCadastrais.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnDadosCadastrais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDadosCadastrais.Font = new System.Drawing.Font("Segoe UI Semibold", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.btnDadosCadastrais.ForeColor = System.Drawing.Color.White;
+            this.btnDadosCadastrais.ForeColor = System.Drawing.Color.Black;
             this.btnDadosCadastrais.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDadosCadastrais.Location = new System.Drawing.Point(0, 333);
             this.btnDadosCadastrais.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
@@ -276,14 +276,14 @@
             // 
             // btnAgencias
             // 
-            this.btnAgencias.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAgencias.BackColor = System.Drawing.Color.SteelBlue;
             this.btnAgencias.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgencias.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
             this.btnAgencias.FlatAppearance.BorderSize = 0;
-            this.btnAgencias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnAgencias.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnAgencias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgencias.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAgencias.ForeColor = System.Drawing.Color.White;
+            this.btnAgencias.ForeColor = System.Drawing.Color.Black;
             this.btnAgencias.Image = ((System.Drawing.Image)(resources.GetObject("btnAgencias.Image")));
             this.btnAgencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgencias.Location = new System.Drawing.Point(0, 898);
@@ -301,21 +301,21 @@
             // 
             // btnAtividades
             // 
-            this.btnAtividades.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnAtividades.BackColor = System.Drawing.Color.SteelBlue;
             this.btnAtividades.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAtividades.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
             this.btnAtividades.FlatAppearance.BorderSize = 0;
-            this.btnAtividades.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.btnAtividades.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnAtividades.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAtividades.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAtividades.ForeColor = System.Drawing.Color.White;
+            this.btnAtividades.ForeColor = System.Drawing.Color.Black;
             this.btnAtividades.Image = ((System.Drawing.Image)(resources.GetObject("btnAtividades.Image")));
             this.btnAtividades.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAtividades.Location = new System.Drawing.Point(0, 774);
             this.btnAtividades.Margin = new System.Windows.Forms.Padding(0);
             this.btnAtividades.Name = "btnAtividades";
             this.btnAtividades.Padding = new System.Windows.Forms.Padding(17, 0, 0, 0);
-            this.btnAtividades.Size = new System.Drawing.Size(422, 124);
+            this.btnAtividades.Size = new System.Drawing.Size(433, 124);
             this.btnAtividades.TabIndex = 3;
             this.btnAtividades.Text = "    Atividades";
             this.btnAtividades.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
