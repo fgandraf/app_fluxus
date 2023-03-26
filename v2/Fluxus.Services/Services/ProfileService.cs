@@ -1,5 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
+using System.Data;
 
 namespace Fluxus.Services
 {
@@ -21,6 +22,10 @@ namespace Fluxus.Services
 
         public Profile GetToPrint() 
             => new ProfileRepository().GetToPrint();
+
+
+        public byte[] GetLogo()
+            => new ProfileRepository().GetLogo();
 
 
         public string GetTradingName() 

@@ -49,7 +49,8 @@ namespace Fluxus.WinUI.View
 
                 //OBTER PROFISSIONAIS DA FATURA
                 int invoiceId = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
-                DataTable professionals = new ServiceOrderService().GetProfessionalByInvoiceId(invoiceId);
+                var professionals = new ServiceOrderService().GetProfessionalByInvoiceId(invoiceId);
+
 
                 //CONVERTER DATAGRIDVIEW EM DATATABLE
                 DataTable serviceOrders = (DataTable)dgvOS.DataSource;

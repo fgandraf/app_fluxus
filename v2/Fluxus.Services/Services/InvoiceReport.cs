@@ -13,7 +13,7 @@ namespace Fluxus.Services
     public class InvoiceReport
     {
 
-        public static void PrintPDF (System.Drawing.Image logo, Profile profile, DataTable professionals, DataTable serviceOrders, string path)
+        public static void PrintPDF(System.Drawing.Image logo, Profile profile, DataTable professionals, DataTable serviceOrders, string path)
         {
 
             //////////////////-CRIAÇÃO DO PDF-///////////////////////
@@ -112,6 +112,8 @@ namespace Fluxus.Services
 
                 //////////-TABELA PARA CADA PROFISSIONAL-///////////////
                 {
+
+
                     for (int i = 1; i <= professionals.Rows.Count; i++)
                     {
                         PdfPTable tabmain = new PdfPTable(7);
@@ -187,7 +189,7 @@ namespace Fluxus.Services
                             tabmain.AddCell(celula);
                         }
 
-                        
+
                         /////////////////CÉLULAS - POPULAR
                         {
                             DataRow[] dataRow = serviceOrders.Select("professionalId = '" + dataRowPro[i - 1]["professionalId"].ToString() + "'");
@@ -354,10 +356,10 @@ namespace Fluxus.Services
 
                         doc.Add(tabmain);
                         doc.Add(espaco);
-                        
+
                     }
                 }
-                        
+
 
                 /////////////-TABELA COM VALOR TOTAL-//////////////////
                 {

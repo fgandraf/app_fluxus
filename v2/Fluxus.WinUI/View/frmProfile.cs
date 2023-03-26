@@ -13,9 +13,9 @@ namespace Fluxus.WinUI.View
         public frmProfile(frmMain frm1)
         {
             InitializeComponent();
-            
+
             _frmPrincipal = frm1;
-            
+
             var profile = new ProfileService().GetAll();
             if (profile != null)
             {
@@ -23,14 +23,14 @@ namespace Fluxus.WinUI.View
                 btnAddSave.Text = "&Salvar";
                 _method = "Update";
             }
-            
+
             if (Logged.Rl)
                 pnlBotton.Show();
         }
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            if (RequiredFieldsIsInvalid()) 
+            if (RequiredFieldsIsInvalid())
                 return;
 
             var profile = PopulateObject();
@@ -38,6 +38,7 @@ namespace Fluxus.WinUI.View
             new ProfileService().InsertOrUpdate(_method, profile);
 
             UpdateTradingNameButton();
+            UpdateMainLogo();
 
             MessageBox.Show("Dados alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -82,6 +83,15 @@ namespace Fluxus.WinUI.View
             }
         }
 
+        private void UpdateMainLogo()
+        {
+            if (picLogotipo.Image != _actualLogo)
+            {
+                _frmPrincipal.imgLogo.Image = picLogotipo.Image;
+                _frmPrincipal.imgLogo.Refresh();
+            }
+        }
+
         private void PopulateFields(Profile profile)
         {
             txtCNPJ.Text = profile.Cnpj;
@@ -115,9 +125,8 @@ namespace Fluxus.WinUI.View
             {
                 using (var stream = new MemoryStream(profile.Logo))
                     _actualLogo = Image.FromStream(stream);
-
-                picLogotipo.Image = _actualLogo;
             }
+            picLogotipo.Image = _actualLogo;
         }
 
         private Profile PopulateObject()

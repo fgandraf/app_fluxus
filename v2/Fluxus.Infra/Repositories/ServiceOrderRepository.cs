@@ -2,6 +2,7 @@
 using System.Data;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Collections.Generic;
 using System;
@@ -69,8 +70,7 @@ namespace Fluxus.Infra.Repositories
         public DataTable GetProfessionalByInvoiceId(int invoiceId)
         {
             string json = Request.Get("ServiceOrder/Professionals/", invoiceId.ToString());
-            string novo = "[" + json + "]";
-            return JsonConvert.DeserializeObject<DataTable>(novo);
+            return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
         public DataTable GetCitiesFromOrders()

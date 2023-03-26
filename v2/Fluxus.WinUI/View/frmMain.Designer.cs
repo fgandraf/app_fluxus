@@ -349,7 +349,7 @@
             this.ttpSempre.InitialDelay = 50;
             this.ttpSempre.ReshowDelay = 10;
             // 
-            // frmPrincipal
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -359,7 +359,7 @@
             this.Controls.Add(this.pnlMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.Name = "frmPrincipal";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fluxus";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
@@ -376,7 +376,6 @@
         private System.Windows.Forms.Button btnAtividades;
         private System.Windows.Forms.Button btnAgencias;
         private System.Windows.Forms.Button btnOS;
-        private System.Windows.Forms.PictureBox imgLogo;
         private System.Windows.Forms.ToolTip ttpMenu;
         private System.Windows.Forms.ToolTip ttpSempre;
         private System.Windows.Forms.Panel pnlCtrlOS;
@@ -390,6 +389,7 @@
         public System.Windows.Forms.Button btnDadosCadastrais;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblVersao;
+        public PictureBox imgLogo;
     }
 }
 

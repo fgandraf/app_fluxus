@@ -23,11 +23,18 @@ namespace Fluxus.WinUI.View
 
             string fantasia = null;
             await Task.Run(() => fantasia = new ProfileService().GetTradingName());
-
             if (fantasia != null)
                 btnDadosCadastrais.Text = fantasia;
             else
                 btnDadosCadastrais.Text = "Dados Cadastrais";
+
+            byte[] logoByte = null; 
+            await Task.Run(() => logoByte = new ProfileService().GetLogo());
+            if (logoByte != null)
+            {
+                using (var stream = new MemoryStream(logoByte))
+                    imgLogo.Image = System.Drawing.Image.FromStream(stream);
+            }
         }
 
         private void MenuButtonClick(object sender, EventArgs e)

@@ -1,22 +1,20 @@
 ﻿using Fluxus.Domain.Entities;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace Fluxus.Infra.Repositories
 {
     public class ProfileRepository
     {
-        public void Insert(Profile body)
+        public void Insert(Profile profile)
         {
-            string json = JsonSerializer.Serialize(body);
+            string json = JsonConvert.SerializeObject(profile);
             Request.Post("Profile", json);
         }
 
-        public void Update(Profile body)
+        public void Update(Profile profile)
         {
-            string json = JsonSerializer.Serialize(body);
+            string json = JsonConvert.SerializeObject(profile);
             Request.Put("Profile", json);
         }
 
@@ -24,20 +22,20 @@ namespace Fluxus.Infra.Repositories
         public Profile GetAll()
         {
             string json = Request.Get("Profile", string.Empty);
-            Profile profile = JsonSerializer.Deserialize<List<Profile>>(json).ToList().First();
+            var profile = JsonConvert.DeserializeObject<Profile>(json);
             return profile;
         }
 
         public Profile GetToPrint()
         {
             string json = Request.Get("Profile/ToPrint", string.Empty);
-            return JsonSerializer.Deserialize<Profile>(json);
+            return JsonConvert.DeserializeObject<Profile>(json);
         }
 
-        public DataTable GetToPrintOld()
+        public byte[] GetLogo()
         {
-            string json = Request.Get("Profile/ToPrint", string.Empty);
-            return JsonSerializer.Deserialize<DataTable>(json);
+            string json = Request.Get("Profile/Logo", string.Empty);
+            return JsonConvert.DeserializeObject<byte[]>(json);
         }
 
         public string GetName()

@@ -1,5 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
+using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 
@@ -47,6 +48,7 @@ namespace Fluxus.Services
 
         public DataTable GetProfessionalByInvoiceId(int invoiceId)
             => new ServiceOrderRepository().GetProfessionalByInvoiceId(invoiceId);
+            
 
 
         public DataTable GetCidadesDasOrdens(bool addHeader)
