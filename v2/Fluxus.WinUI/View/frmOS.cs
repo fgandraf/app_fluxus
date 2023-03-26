@@ -51,7 +51,7 @@ namespace Fluxus.WinUI.View
         {
             if (tabFluxo.Controls.Count > 0)
                 tabFluxo.Controls.RemoveAt(0);
-            frmOSFluxo formFluxo = new frmOSFluxo(_frmPrincipal);
+            frmOrderFlow formFluxo = new frmOrderFlow(_frmPrincipal);
             formFluxo.TopLevel = false;
             formFluxo.Dock = DockStyle.Fill;
             tabFluxo.Controls.Clear();
