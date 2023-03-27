@@ -28,252 +28,261 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            this.btnEntrar = new System.Windows.Forms.Button();
-            this.pnlLogin = new System.Windows.Forms.Panel();
-            this.imgShowPwd = new System.Windows.Forms.PictureBox();
-            this.pnlLinhaSenha = new System.Windows.Forms.Panel();
-            this.imgSenha = new System.Windows.Forms.PictureBox();
-            this.txtSenha = new System.Windows.Forms.TextBox();
-            this.pnlLinhaUsuario = new System.Windows.Forms.Panel();
-            this.imgUsuario = new System.Windows.Forms.PictureBox();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.imgHidePwd = new System.Windows.Forms.PictureBox();
-            this.btnAppFechar = new System.Windows.Forms.Button();
-            this.lblVersao = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ttpLogin = new System.Windows.Forms.ToolTip(this.components);
-            this.lblLoad = new System.Windows.Forms.Label();
-            this.prbProgress = new System.Windows.Forms.ProgressBar();
-            this.pnlLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgShowPwd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgSenha)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgUsuario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHidePwd)).BeginInit();
-            this.SuspendLayout();
+            btnEntrar = new Button();
+            pnlLogin = new Panel();
+            imgShowPwd = new PictureBox();
+            pnlLinhaSenha = new Panel();
+            imgSenha = new PictureBox();
+            txtSenha = new TextBox();
+            pnlLinhaUsuario = new Panel();
+            imgUsuario = new PictureBox();
+            txtUsuario = new TextBox();
+            imgHidePwd = new PictureBox();
+            btnAppFechar = new Button();
+            lblVersao = new Label();
+            label1 = new Label();
+            ttpLogin = new ToolTip(components);
+            lblLoad = new Label();
+            prbProgress = new ProgressBar();
+            pnlLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgShowPwd).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgSenha).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgUsuario).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgHidePwd).BeginInit();
+            SuspendLayout();
             // 
             // btnEntrar
             // 
-            this.btnEntrar.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.btnEntrar.FlatAppearance.BorderSize = 0;
-            this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEntrar.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEntrar.ForeColor = System.Drawing.Color.White;
-            this.btnEntrar.Location = new System.Drawing.Point(30, 149);
-            this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Size = new System.Drawing.Size(280, 23);
-            this.btnEntrar.TabIndex = 2;
-            this.btnEntrar.Text = "Entrar";
-            this.btnEntrar.UseVisualStyleBackColor = false;
-            this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
+            btnEntrar.BackColor = Color.DarkSlateBlue;
+            btnEntrar.FlatAppearance.BorderSize = 0;
+            btnEntrar.FlatStyle = FlatStyle.Flat;
+            btnEntrar.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEntrar.ForeColor = Color.White;
+            btnEntrar.Location = new Point(65, 367);
+            btnEntrar.Margin = new Padding(6, 7, 6, 7);
+            btnEntrar.Name = "btnEntrar";
+            btnEntrar.Size = new Size(607, 57);
+            btnEntrar.TabIndex = 2;
+            btnEntrar.Text = "Entrar";
+            btnEntrar.UseVisualStyleBackColor = false;
+            btnEntrar.Click += btnEntrar_Click;
             // 
             // pnlLogin
             // 
-            this.pnlLogin.BackColor = System.Drawing.Color.White;
-            this.pnlLogin.Controls.Add(this.imgShowPwd);
-            this.pnlLogin.Controls.Add(this.pnlLinhaSenha);
-            this.pnlLogin.Controls.Add(this.imgSenha);
-            this.pnlLogin.Controls.Add(this.txtSenha);
-            this.pnlLogin.Controls.Add(this.pnlLinhaUsuario);
-            this.pnlLogin.Controls.Add(this.imgUsuario);
-            this.pnlLogin.Controls.Add(this.txtUsuario);
-            this.pnlLogin.Controls.Add(this.btnEntrar);
-            this.pnlLogin.Controls.Add(this.imgHidePwd);
-            this.pnlLogin.Location = new System.Drawing.Point(40, 50);
-            this.pnlLogin.Name = "pnlLogin";
-            this.pnlLogin.Size = new System.Drawing.Size(340, 200);
-            this.pnlLogin.TabIndex = 0;
+            pnlLogin.BackColor = Color.White;
+            pnlLogin.Controls.Add(imgShowPwd);
+            pnlLogin.Controls.Add(pnlLinhaSenha);
+            pnlLogin.Controls.Add(imgSenha);
+            pnlLogin.Controls.Add(txtSenha);
+            pnlLogin.Controls.Add(pnlLinhaUsuario);
+            pnlLogin.Controls.Add(imgUsuario);
+            pnlLogin.Controls.Add(txtUsuario);
+            pnlLogin.Controls.Add(btnEntrar);
+            pnlLogin.Controls.Add(imgHidePwd);
+            pnlLogin.Location = new Point(87, 123);
+            pnlLogin.Margin = new Padding(6, 7, 6, 7);
+            pnlLogin.Name = "pnlLogin";
+            pnlLogin.Size = new Size(737, 492);
+            pnlLogin.TabIndex = 0;
             // 
             // imgShowPwd
             // 
-            this.imgShowPwd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgShowPwd.Image = ((System.Drawing.Image)(resources.GetObject("imgShowPwd.Image")));
-            this.imgShowPwd.Location = new System.Drawing.Point(291, 98);
-            this.imgShowPwd.Name = "imgShowPwd";
-            this.imgShowPwd.Size = new System.Drawing.Size(15, 15);
-            this.imgShowPwd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgShowPwd.TabIndex = 232;
-            this.imgShowPwd.TabStop = false;
-            this.ttpLogin.SetToolTip(this.imgShowPwd, "Mostrar senha");
-            this.imgShowPwd.Click += new System.EventHandler(this.imgShowPwd_Click);
+            imgShowPwd.Cursor = Cursors.Hand;
+            imgShowPwd.Image = (Image)resources.GetObject("imgShowPwd.Image");
+            imgShowPwd.Location = new Point(630, 241);
+            imgShowPwd.Margin = new Padding(6, 7, 6, 7);
+            imgShowPwd.Name = "imgShowPwd";
+            imgShowPwd.Size = new Size(32, 37);
+            imgShowPwd.SizeMode = PictureBoxSizeMode.Zoom;
+            imgShowPwd.TabIndex = 232;
+            imgShowPwd.TabStop = false;
+            ttpLogin.SetToolTip(imgShowPwd, "Mostrar senha");
+            imgShowPwd.Click += imgShowPwd_Click;
             // 
             // pnlLinhaSenha
             // 
-            this.pnlLinhaSenha.BackColor = System.Drawing.Color.SteelBlue;
-            this.pnlLinhaSenha.Location = new System.Drawing.Point(33, 114);
-            this.pnlLinhaSenha.Name = "pnlLinhaSenha";
-            this.pnlLinhaSenha.Size = new System.Drawing.Size(280, 1);
-            this.pnlLinhaSenha.TabIndex = 231;
+            pnlLinhaSenha.BackColor = Color.SteelBlue;
+            pnlLinhaSenha.Location = new Point(72, 281);
+            pnlLinhaSenha.Margin = new Padding(6, 7, 6, 7);
+            pnlLinhaSenha.Name = "pnlLinhaSenha";
+            pnlLinhaSenha.Size = new Size(607, 2);
+            pnlLinhaSenha.TabIndex = 231;
             // 
             // imgSenha
             // 
-            this.imgSenha.Image = ((System.Drawing.Image)(resources.GetObject("imgSenha.Image")));
-            this.imgSenha.Location = new System.Drawing.Point(40, 97);
-            this.imgSenha.Name = "imgSenha";
-            this.imgSenha.Size = new System.Drawing.Size(15, 15);
-            this.imgSenha.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgSenha.TabIndex = 230;
-            this.imgSenha.TabStop = false;
+            imgSenha.Image = (Image)resources.GetObject("imgSenha.Image");
+            imgSenha.Location = new Point(87, 239);
+            imgSenha.Margin = new Padding(6, 7, 6, 7);
+            imgSenha.Name = "imgSenha";
+            imgSenha.Size = new Size(32, 37);
+            imgSenha.SizeMode = PictureBoxSizeMode.Zoom;
+            imgSenha.TabIndex = 230;
+            imgSenha.TabStop = false;
             // 
             // txtSenha
             // 
-            this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSenha.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenha.ForeColor = System.Drawing.Color.SteelBlue;
-            this.txtSenha.Location = new System.Drawing.Point(65, 91);
-            this.txtSenha.Margin = new System.Windows.Forms.Padding(0);
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PasswordChar = '*';
-            this.txtSenha.Size = new System.Drawing.Size(225, 24);
-            this.txtSenha.TabIndex = 1;
-            this.txtSenha.Text = "123456";
-            this.ttpLogin.SetToolTip(this.txtSenha, "Senha");
-            this.txtSenha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSenha_KeyDown);
+            txtSenha.BorderStyle = BorderStyle.None;
+            txtSenha.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSenha.ForeColor = Color.SteelBlue;
+            txtSenha.Location = new Point(141, 224);
+            txtSenha.Margin = new Padding(0);
+            txtSenha.Name = "txtSenha";
+            txtSenha.PasswordChar = '*';
+            txtSenha.Size = new Size(488, 47);
+            txtSenha.TabIndex = 1;
+            txtSenha.Text = "123456";
+            ttpLogin.SetToolTip(txtSenha, "Senha");
+            txtSenha.KeyDown += txtSenha_KeyDown;
             // 
             // pnlLinhaUsuario
             // 
-            this.pnlLinhaUsuario.BackColor = System.Drawing.Color.SteelBlue;
-            this.pnlLinhaUsuario.Location = new System.Drawing.Point(30, 58);
-            this.pnlLinhaUsuario.Name = "pnlLinhaUsuario";
-            this.pnlLinhaUsuario.Size = new System.Drawing.Size(280, 1);
-            this.pnlLinhaUsuario.TabIndex = 227;
+            pnlLinhaUsuario.BackColor = Color.SteelBlue;
+            pnlLinhaUsuario.Location = new Point(65, 143);
+            pnlLinhaUsuario.Margin = new Padding(6, 7, 6, 7);
+            pnlLinhaUsuario.Name = "pnlLinhaUsuario";
+            pnlLinhaUsuario.Size = new Size(607, 2);
+            pnlLinhaUsuario.TabIndex = 227;
             // 
             // imgUsuario
             // 
-            this.imgUsuario.Image = ((System.Drawing.Image)(resources.GetObject("imgUsuario.Image")));
-            this.imgUsuario.Location = new System.Drawing.Point(40, 41);
-            this.imgUsuario.Name = "imgUsuario";
-            this.imgUsuario.Size = new System.Drawing.Size(15, 15);
-            this.imgUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgUsuario.TabIndex = 226;
-            this.imgUsuario.TabStop = false;
+            imgUsuario.Image = (Image)resources.GetObject("imgUsuario.Image");
+            imgUsuario.Location = new Point(87, 101);
+            imgUsuario.Margin = new Padding(6, 7, 6, 7);
+            imgUsuario.Name = "imgUsuario";
+            imgUsuario.Size = new Size(32, 37);
+            imgUsuario.SizeMode = PictureBoxSizeMode.Zoom;
+            imgUsuario.TabIndex = 226;
+            imgUsuario.TabStop = false;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.ForeColor = System.Drawing.Color.SteelBlue;
-            this.txtUsuario.Location = new System.Drawing.Point(65, 35);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(0);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(240, 24);
-            this.txtUsuario.TabIndex = 0;
-            this.txtUsuario.Text = "fgandraf";
-            this.ttpLogin.SetToolTip(this.txtUsuario, "Nome de usuário");
-            this.txtUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSenha_KeyDown);
+            txtUsuario.BorderStyle = BorderStyle.None;
+            txtUsuario.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsuario.ForeColor = Color.SteelBlue;
+            txtUsuario.Location = new Point(141, 86);
+            txtUsuario.Margin = new Padding(0);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(520, 47);
+            txtUsuario.TabIndex = 0;
+            txtUsuario.Text = "fgandraf";
+            ttpLogin.SetToolTip(txtUsuario, "Nome de usuário");
+            txtUsuario.KeyDown += txtSenha_KeyDown;
             // 
             // imgHidePwd
             // 
-            this.imgHidePwd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.imgHidePwd.Image = ((System.Drawing.Image)(resources.GetObject("imgHidePwd.Image")));
-            this.imgHidePwd.Location = new System.Drawing.Point(291, 98);
-            this.imgHidePwd.Name = "imgHidePwd";
-            this.imgHidePwd.Size = new System.Drawing.Size(15, 15);
-            this.imgHidePwd.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgHidePwd.TabIndex = 233;
-            this.imgHidePwd.TabStop = false;
-            this.ttpLogin.SetToolTip(this.imgHidePwd, "Ocultar senha");
-            this.imgHidePwd.Click += new System.EventHandler(this.imgHidePwd_Click);
+            imgHidePwd.Cursor = Cursors.Hand;
+            imgHidePwd.Image = (Image)resources.GetObject("imgHidePwd.Image");
+            imgHidePwd.Location = new Point(630, 241);
+            imgHidePwd.Margin = new Padding(6, 7, 6, 7);
+            imgHidePwd.Name = "imgHidePwd";
+            imgHidePwd.Size = new Size(32, 37);
+            imgHidePwd.SizeMode = PictureBoxSizeMode.Zoom;
+            imgHidePwd.TabIndex = 233;
+            imgHidePwd.TabStop = false;
+            ttpLogin.SetToolTip(imgHidePwd, "Ocultar senha");
+            imgHidePwd.Click += imgHidePwd_Click;
             // 
             // btnAppFechar
             // 
-            this.btnAppFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAppFechar.BackColor = System.Drawing.Color.Transparent;
-            this.btnAppFechar.FlatAppearance.BorderSize = 0;
-            this.btnAppFechar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkRed;
-            this.btnAppFechar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnAppFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAppFechar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAppFechar.ForeColor = System.Drawing.Color.Black;
-            this.btnAppFechar.Image = ((System.Drawing.Image)(resources.GetObject("btnAppFechar.Image")));
-            this.btnAppFechar.Location = new System.Drawing.Point(380, -1);
-            this.btnAppFechar.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAppFechar.Name = "btnAppFechar";
-            this.btnAppFechar.Size = new System.Drawing.Size(40, 25);
-            this.btnAppFechar.TabIndex = 10;
-            this.btnAppFechar.UseVisualStyleBackColor = false;
-            this.btnAppFechar.Click += new System.EventHandler(this.btnAppFechar_Click);
+            btnAppFechar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAppFechar.BackColor = Color.Transparent;
+            btnAppFechar.FlatAppearance.BorderSize = 0;
+            btnAppFechar.FlatAppearance.MouseDownBackColor = Color.DarkRed;
+            btnAppFechar.FlatAppearance.MouseOverBackColor = Color.Red;
+            btnAppFechar.FlatStyle = FlatStyle.Flat;
+            btnAppFechar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAppFechar.ForeColor = Color.Black;
+            btnAppFechar.Image = (Image)resources.GetObject("btnAppFechar.Image");
+            btnAppFechar.Location = new Point(823, -2);
+            btnAppFechar.Margin = new Padding(0);
+            btnAppFechar.Name = "btnAppFechar";
+            btnAppFechar.Size = new Size(87, 62);
+            btnAppFechar.TabIndex = 10;
+            btnAppFechar.UseVisualStyleBackColor = false;
+            btnAppFechar.Click += btnAppFechar_Click;
             // 
             // lblVersao
             // 
-            this.lblVersao.AutoSize = true;
-            this.lblVersao.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersao.ForeColor = System.Drawing.Color.White;
-            this.lblVersao.Location = new System.Drawing.Point(41, 253);
-            this.lblVersao.Margin = new System.Windows.Forms.Padding(0);
-            this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(30, 13);
-            this.lblVersao.TabIndex = 12;
-            this.lblVersao.Text = "v. ---";
-            this.lblVersao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            lblVersao.AutoSize = true;
+            lblVersao.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblVersao.ForeColor = Color.Black;
+            lblVersao.Location = new Point(89, 623);
+            lblVersao.Margin = new Padding(0);
+            lblVersao.Name = "lblVersao";
+            lblVersao.Size = new Size(62, 30);
+            lblVersao.TabIndex = 12;
+            lblVersao.Text = "v. ---";
+            lblVersao.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe Print", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(35, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 28);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Fluxus";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe Print", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(76, 34);
+            label1.Margin = new Padding(0);
+            label1.Name = "label1";
+            label1.Size = new Size(122, 57);
+            label1.TabIndex = 13;
+            label1.Text = "Fluxus";
+            label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // lblLoad
             // 
-            this.lblLoad.Font = new System.Drawing.Font("Segoe UI", 7F);
-            this.lblLoad.ForeColor = System.Drawing.Color.White;
-            this.lblLoad.Location = new System.Drawing.Point(0, 278);
-            this.lblLoad.Margin = new System.Windows.Forms.Padding(0);
-            this.lblLoad.Name = "lblLoad";
-            this.lblLoad.Size = new System.Drawing.Size(420, 13);
-            this.lblLoad.TabIndex = 14;
-            this.lblLoad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblLoad.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
+            lblLoad.ForeColor = Color.White;
+            lblLoad.Location = new Point(0, 684);
+            lblLoad.Margin = new Padding(0);
+            lblLoad.Name = "lblLoad";
+            lblLoad.Size = new Size(910, 32);
+            lblLoad.TabIndex = 14;
+            lblLoad.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // prbProgress
             // 
-            this.prbProgress.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.prbProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.prbProgress.Location = new System.Drawing.Point(0, 296);
-            this.prbProgress.Maximum = 9;
-            this.prbProgress.Name = "prbProgress";
-            this.prbProgress.Size = new System.Drawing.Size(420, 4);
-            this.prbProgress.Step = 8;
-            this.prbProgress.TabIndex = 15;
-            this.prbProgress.Visible = false;
+            prbProgress.BackColor = Color.DarkSlateBlue;
+            prbProgress.Dock = DockStyle.Bottom;
+            prbProgress.Location = new Point(0, 728);
+            prbProgress.Margin = new Padding(6, 7, 6, 7);
+            prbProgress.Maximum = 9;
+            prbProgress.Name = "prbProgress";
+            prbProgress.Size = new Size(910, 10);
+            prbProgress.Step = 8;
+            prbProgress.TabIndex = 15;
+            prbProgress.Visible = false;
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkSlateBlue;
-            this.ClientSize = new System.Drawing.Size(420, 300);
-            this.Controls.Add(this.lblLoad);
-            this.Controls.Add(this.prbProgress);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblVersao);
-            this.Controls.Add(this.btnAppFechar);
-            this.Controls.Add(this.pnlLogin);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "frmLogin";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Fluxus";
-            this.Load += new System.EventHandler(this.frmLogin_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmLogin_MouseDown);
-            this.pnlLogin.ResumeLayout(false);
-            this.pnlLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgShowPwd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgSenha)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgUsuario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgHidePwd)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.SteelBlue;
+            ClientSize = new Size(910, 738);
+            Controls.Add(lblLoad);
+            Controls.Add(prbProgress);
+            Controls.Add(label1);
+            Controls.Add(lblVersao);
+            Controls.Add(btnAppFechar);
+            Controls.Add(pnlLogin);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(6, 7, 6, 7);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "frmLogin";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Fluxus";
+            Load += frmLogin_Load;
+            MouseDown += frmLogin_MouseDown;
+            pnlLogin.ResumeLayout(false);
+            pnlLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)imgShowPwd).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgSenha).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgUsuario).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgHidePwd).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

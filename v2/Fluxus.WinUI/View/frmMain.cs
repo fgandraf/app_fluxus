@@ -53,7 +53,7 @@ namespace Fluxus.WinUI.View
                 case "btnOS":
                     {
                         pnlCtrlOS.Show();
-                        form = new frmOS(this);
+                        form = new frmServiceOrder(this);
                         break;
                     }
                 case "btnFaturas":

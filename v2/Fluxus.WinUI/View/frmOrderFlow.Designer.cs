@@ -134,7 +134,7 @@
             // 
             // lblTitRecebidas
             // 
-            lblTitRecebidas.BackColor = Color.Silver;
+            lblTitRecebidas.BackColor = Color.LightSteelBlue;
             lblTitRecebidas.Dock = DockStyle.Fill;
             lblTitRecebidas.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitRecebidas.ForeColor = Color.Black;
@@ -172,7 +172,7 @@
             // 
             // lblTitPendentes
             // 
-            lblTitPendentes.BackColor = Color.Silver;
+            lblTitPendentes.BackColor = Color.LightSteelBlue;
             lblTitPendentes.Dock = DockStyle.Fill;
             lblTitPendentes.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitPendentes.ForeColor = Color.Black;
@@ -210,7 +210,7 @@
             // 
             // lblTitConcluidas
             // 
-            lblTitConcluidas.BackColor = Color.Silver;
+            lblTitConcluidas.BackColor = Color.LightSteelBlue;
             lblTitConcluidas.Dock = DockStyle.Fill;
             lblTitConcluidas.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitConcluidas.ForeColor = Color.Black;
@@ -248,7 +248,7 @@
             // 
             // lblTitVistoriadas
             // 
-            lblTitVistoriadas.BackColor = Color.Silver;
+            lblTitVistoriadas.BackColor = Color.LightSteelBlue;
             lblTitVistoriadas.Dock = DockStyle.Fill;
             lblTitVistoriadas.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             lblTitVistoriadas.ForeColor = Color.Black;
@@ -316,7 +316,7 @@
             // panel6
             // 
             panel6.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel6.BackColor = Color.Silver;
+            panel6.BackColor = Color.LightSteelBlue;
             panel6.Controls.Add(dgvPendentes);
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(525, 173);
@@ -333,7 +333,7 @@
             dgvPendentes.AllowUserToDeleteRows = false;
             dgvPendentes.AllowUserToResizeColumns = false;
             dgvPendentes.AllowUserToResizeRows = false;
-            dgvPendentes.BackgroundColor = Color.Silver;
+            dgvPendentes.BackgroundColor = Color.LightSteelBlue;
             dgvPendentes.BorderStyle = BorderStyle.None;
             dgvPendentes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvPendentes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -352,7 +352,7 @@
             dgvPendentes.DefaultCellStyle = dataGridViewCellStyle2;
             dgvPendentes.Dock = DockStyle.Fill;
             dgvPendentes.EnableHeadersVisualStyles = false;
-            dgvPendentes.GridColor = Color.Silver;
+            dgvPendentes.GridColor = Color.LightSteelBlue;
             dgvPendentes.Location = new Point(17, 19);
             dgvPendentes.Margin = new Padding(7, 6, 7, 6);
             dgvPendentes.MultiSelect = false;
@@ -431,7 +431,7 @@
             // panel5
             // 
             panel5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel5.BackColor = Color.Silver;
+            panel5.BackColor = Color.LightSteelBlue;
             panel5.Controls.Add(dgvRecebidas);
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(43, 173);
@@ -448,7 +448,7 @@
             dgvRecebidas.AllowUserToDeleteRows = false;
             dgvRecebidas.AllowUserToResizeColumns = false;
             dgvRecebidas.AllowUserToResizeRows = false;
-            dgvRecebidas.BackgroundColor = Color.Silver;
+            dgvRecebidas.BackgroundColor = Color.LightSteelBlue;
             dgvRecebidas.BorderStyle = BorderStyle.None;
             dgvRecebidas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvRecebidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
@@ -467,7 +467,7 @@
             dgvRecebidas.DefaultCellStyle = dataGridViewCellStyle5;
             dgvRecebidas.Dock = DockStyle.Fill;
             dgvRecebidas.EnableHeadersVisualStyles = false;
-            dgvRecebidas.GridColor = Color.Silver;
+            dgvRecebidas.GridColor = Color.LightSteelBlue;
             dgvRecebidas.Location = new Point(17, 19);
             dgvRecebidas.Margin = new Padding(7, 6, 7, 6);
             dgvRecebidas.MultiSelect = false;
@@ -549,7 +549,7 @@
             // panel7
             // 
             panel7.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel7.BackColor = Color.Silver;
+            panel7.BackColor = Color.LightSteelBlue;
             panel7.Controls.Add(dgvVistoriadas);
             panel7.Dock = DockStyle.Fill;
             panel7.Location = new Point(1007, 173);
@@ -566,7 +566,7 @@
             dgvVistoriadas.AllowUserToDeleteRows = false;
             dgvVistoriadas.AllowUserToResizeColumns = false;
             dgvVistoriadas.AllowUserToResizeRows = false;
-            dgvVistoriadas.BackgroundColor = Color.Silver;
+            dgvVistoriadas.BackgroundColor = Color.LightSteelBlue;
             dgvVistoriadas.BorderStyle = BorderStyle.None;
             dgvVistoriadas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvVistoriadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
@@ -585,7 +585,7 @@
             dgvVistoriadas.DefaultCellStyle = dataGridViewCellStyle7;
             dgvVistoriadas.Dock = DockStyle.Fill;
             dgvVistoriadas.EnableHeadersVisualStyles = false;
-            dgvVistoriadas.GridColor = Color.Silver;
+            dgvVistoriadas.GridColor = Color.LightSteelBlue;
             dgvVistoriadas.Location = new Point(17, 19);
             dgvVistoriadas.Margin = new Padding(7, 6, 7, 6);
             dgvVistoriadas.MultiSelect = false;
@@ -664,7 +664,7 @@
             // panel8
             // 
             panel8.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel8.BackColor = Color.Silver;
+            panel8.BackColor = Color.LightSteelBlue;
             panel8.Controls.Add(dgvConcluidas);
             panel8.Dock = DockStyle.Fill;
             panel8.Location = new Point(1489, 173);
@@ -681,7 +681,7 @@
             dgvConcluidas.AllowUserToDeleteRows = false;
             dgvConcluidas.AllowUserToResizeColumns = false;
             dgvConcluidas.AllowUserToResizeRows = false;
-            dgvConcluidas.BackgroundColor = Color.Silver;
+            dgvConcluidas.BackgroundColor = Color.LightSteelBlue;
             dgvConcluidas.BorderStyle = BorderStyle.None;
             dgvConcluidas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvConcluidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
@@ -700,7 +700,7 @@
             dgvConcluidas.DefaultCellStyle = dataGridViewCellStyle9;
             dgvConcluidas.Dock = DockStyle.Fill;
             dgvConcluidas.EnableHeadersVisualStyles = false;
-            dgvConcluidas.GridColor = Color.Silver;
+            dgvConcluidas.GridColor = Color.LightSteelBlue;
             dgvConcluidas.Location = new Point(17, 19);
             dgvConcluidas.Margin = new Padding(7, 6, 7, 6);
             dgvConcluidas.MultiSelect = false;
@@ -779,7 +779,7 @@
             // panel9
             // 
             panel9.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel9.BackColor = Color.Silver;
+            panel9.BackColor = Color.LightSteelBlue;
             panel9.Controls.Add(btnAdicionar);
             panel9.Dock = DockStyle.Fill;
             panel9.Location = new Point(43, 1276);
@@ -791,7 +791,7 @@
             // 
             // btnAdicionar
             // 
-            btnAdicionar.BackColor = Color.Silver;
+            btnAdicionar.BackColor = Color.LightSteelBlue;
             btnAdicionar.Cursor = Cursors.Hand;
             btnAdicionar.Dock = DockStyle.Fill;
             btnAdicionar.FlatAppearance.BorderSize = 0;
@@ -806,7 +806,7 @@
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(415, 60);
             btnAdicionar.TabIndex = 219;
-            btnAdicionar.Text = "  Adicionar ordem de serviço";
+            btnAdicionar.Text = "  Adicionar";
             btnAdicionar.TextAlign = ContentAlignment.MiddleLeft;
             btnAdicionar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAdicionar.UseVisualStyleBackColor = false;
@@ -815,7 +815,7 @@
             // pnlFaturar
             // 
             pnlFaturar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            pnlFaturar.BackColor = Color.Silver;
+            pnlFaturar.BackColor = Color.LightSteelBlue;
             pnlFaturar.Controls.Add(btnFaturar);
             pnlFaturar.Dock = DockStyle.Fill;
             pnlFaturar.Location = new Point(1489, 1276);
@@ -828,7 +828,7 @@
             // 
             // btnFaturar
             // 
-            btnFaturar.BackColor = Color.Silver;
+            btnFaturar.BackColor = Color.LightSteelBlue;
             btnFaturar.Cursor = Cursors.Hand;
             btnFaturar.Dock = DockStyle.Fill;
             btnFaturar.FlatAppearance.BorderSize = 0;
@@ -836,7 +836,8 @@
             btnFaturar.FlatStyle = FlatStyle.Flat;
             btnFaturar.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnFaturar.ForeColor = Color.Black;
-            btnFaturar.ImageAlign = ContentAlignment.MiddleLeft;
+            btnFaturar.Image = (Image)resources.GetObject("btnFaturar.Image");
+            btnFaturar.ImageAlign = ContentAlignment.MiddleRight;
             btnFaturar.Location = new Point(17, 19);
             btnFaturar.Margin = new Padding(0);
             btnFaturar.Name = "btnFaturar";
@@ -911,7 +912,7 @@
             mnuExcluir.Text = "Excluir";
             mnuExcluir.Click += mnuExcluir_Click;
             // 
-            // frmOSFluxo
+            // frmOrderFlow
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -920,7 +921,7 @@
             Controls.Add(tableLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(7, 6, 7, 6);
-            Name = "frmOSFluxo";
+            Name = "frmOrderFlow";
             ShowIcon = false;
             ShowInTaskbar = false;
             Text = "frmOSFluxo";

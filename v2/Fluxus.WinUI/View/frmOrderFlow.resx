@@ -120,13 +120,20 @@
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnAdicionar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
-        CAABFVgAADqXAAAXb9daH5AAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAEfSURBVChTlVJNT4QwEJ00gv9I
-        k0WlFiiQ3V+gfJz3soellL0s4F8WPdd5JBjQxMRDk86bNzPvTUtxLG+Wo9STSJJnUZavx6oqTlorT6lH
-        sebQOgjDgNI0puu1d8MwujxP/DDcbTibQMoH0joiY8xn13Uuy2IP2GYCyyB0ljKgILinKAqpbdt3FDCR
-        sbs5Bw7LI+6oRJYlxN3QifJcY8JkrXX7fTpjyIHD0wUVxcux74eJu4I0GdNOTdM4LnLAFhycui7PxBs5
-        wSAk4FjbzWRjGr7bb3wc3xxzL5DksQwfG8FKWYZYJB0O+S0w5MDhu8dGYHo3m4JBxD9NIwcOcr/WmqYR
-        Cj4gjc362NA/H+6PAnwNrLmuqzN/jQs0A1tP+AK4urCo89D8FwAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAJtJREFUaEPt
+        1lEKgCAQhGGP3s06WrVQEfQ0zFgZvyD5oAt+I7GtMRBAAAEEEEDgnwLTdq1ln7UebnCBtyMjARIwBXhC
+        JqB9nARsQrMACZiAt+Mlqsz50gvVWjnbpXc6GrOnvukAzs5y2AuoT+BzT0iNlL+QKpbeTwJpUbUeCahi
+        6f0kkBZV65GAKpbeTwJpUeohgAACCCCAQFpgBdvknpG3ZmjFAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnFaturar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAPRJREFUaEPt
+        lksKwzAMBXO0HK0369GaCiowwh+hCsuLCZQuopjRyHnOdXFhAAMYwAAGMIABDFQbuB0AnhrHMvklAvb5
+        /t6TpV+/Gvk/6lJ4aWDUhMJrzTGTsPACaOEs/DETAL7qRcA85gMGSraNJ2u9NZrfoxxPj0rPqSenZi+3
+        2wGVmW+N9Q4OhZ+djCXwam810gjc9hM2s4nt8JmTKIPPbMK7ViChfY9kbid98bd/Vf7TxOpZn8aEqhVI
+        L51s5G43b/uONFG2bUZDizRRbn42CRuVUttup+Pg21jswet9uXcsfEImsAQGMIABDGAAAxgoN/AA7jTk
+        iMf1kggAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="menuContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

@@ -113,7 +113,7 @@ namespace Fluxus.WinUI.View
         private void Back()
         {
             this.Close();
-            frmOS formFilho = new frmOS(_frmPrincipal);
+            frmServiceOrder formFilho = new frmServiceOrder(_frmPrincipal);
             _frmPrincipal.AbrirFormInPanel(formFilho);
         }
     }

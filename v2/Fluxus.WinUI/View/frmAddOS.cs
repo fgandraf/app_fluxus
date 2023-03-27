@@ -74,12 +74,12 @@ namespace Fluxus.WinUI.View
             this.Close();
             if (_formFilho == "frmOSLista")
             {
-                frmOS formFilho = new frmOS(_frmPrincipal, 1);
+                frmServiceOrder formFilho = new frmServiceOrder(_frmPrincipal, 1);
                 _frmPrincipal.AbrirFormInPanel(formFilho);
             }
             else
             {
-                frmOS formFilho = new frmOS(_frmPrincipal);
+                frmServiceOrder formFilho = new frmServiceOrder(_frmPrincipal);
                 _frmPrincipal.AbrirFormInPanel(formFilho);
             }
         }

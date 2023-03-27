@@ -28,341 +28,309 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBankBranch));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.dgvBankBranches = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.complemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bairro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.uf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefone1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefone2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ttpAgencias = new System.Windows.Forms.ToolTip(this.components);
-            this.lblTitulo = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBankBranches)).BeginInit();
-            this.SuspendLayout();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            btnAdd = new Button();
+            btnDelete = new Button();
+            btnUpdate = new Button();
+            dgvBankBranches = new DataGridView();
+            id = new DataGridViewTextBoxColumn();
+            numero = new DataGridViewTextBoxColumn();
+            nome = new DataGridViewTextBoxColumn();
+            endereco = new DataGridViewTextBoxColumn();
+            complemento = new DataGridViewTextBoxColumn();
+            bairro = new DataGridViewTextBoxColumn();
+            cidade = new DataGridViewTextBoxColumn();
+            cep = new DataGridViewTextBoxColumn();
+            uf = new DataGridViewTextBoxColumn();
+            contato = new DataGridViewTextBoxColumn();
+            telefone1 = new DataGridViewTextBoxColumn();
+            telefone2 = new DataGridViewTextBoxColumn();
+            email = new DataGridViewTextBoxColumn();
+            ttpAgencias = new ToolTip(components);
+            ((System.ComponentModel.ISupportInitialize)dgvBankBranches).BeginInit();
+            SuspendLayout();
             // 
             // btnAdd
             // 
-            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdd.BackColor = System.Drawing.Color.White;
-            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnAdd.FlatAppearance.BorderSize = 0;
-            this.btnAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.ForeColor = System.Drawing.Color.Black;
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(65, 1236);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(0);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(76, 86);
-            this.btnAdd.TabIndex = 204;
-            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpAgencias.SetToolTip(this.btnAdd, "Adicionar Agência");
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            btnAdd.BackColor = Color.White;
+            btnAdd.Cursor = Cursors.Hand;
+            btnAdd.FlatAppearance.BorderColor = Color.White;
+            btnAdd.FlatAppearance.BorderSize = 0;
+            btnAdd.FlatAppearance.MouseDownBackColor = Color.LightBlue;
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.ForeColor = Color.Black;
+            btnAdd.Image = (Image)resources.GetObject("btnAdd.Image");
+            btnAdd.Location = new Point(65, 75);
+            btnAdd.Margin = new Padding(0);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(76, 86);
+            btnAdd.TabIndex = 204;
+            btnAdd.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ttpAgencias.SetToolTip(btnAdd, "Adicionar Agência");
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btnDelete
             // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDelete.BackColor = System.Drawing.Color.White;
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.Location = new System.Drawing.Point(236, 1236);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(76, 86);
-            this.btnDelete.TabIndex = 206;
-            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpAgencias.SetToolTip(this.btnDelete, "Excluir Agência");
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            btnDelete.BackColor = Color.White;
+            btnDelete.Cursor = Cursors.Hand;
+            btnDelete.FlatAppearance.BorderColor = Color.White;
+            btnDelete.FlatAppearance.BorderSize = 0;
+            btnDelete.FlatAppearance.MouseDownBackColor = Color.LightBlue;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.ForeColor = Color.Black;
+            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
+            btnDelete.Location = new Point(235, 75);
+            btnDelete.Margin = new Padding(6, 7, 6, 7);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(76, 86);
+            btnDelete.TabIndex = 206;
+            btnDelete.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ttpAgencias.SetToolTip(btnDelete, "Excluir Agência");
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnUpdate.BackColor = System.Drawing.Color.White;
-            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnUpdate.FlatAppearance.BorderSize = 0;
-            this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.ForeColor = System.Drawing.Color.Black;
-            this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
-            this.btnUpdate.Location = new System.Drawing.Point(147, 1236);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(76, 86);
-            this.btnUpdate.TabIndex = 205;
-            this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ttpAgencias.SetToolTip(this.btnUpdate, "Editar Agência");
-            this.btnUpdate.UseVisualStyleBackColor = false;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            btnUpdate.BackColor = Color.White;
+            btnUpdate.Cursor = Cursors.Hand;
+            btnUpdate.FlatAppearance.BorderColor = Color.White;
+            btnUpdate.FlatAppearance.BorderSize = 0;
+            btnUpdate.FlatAppearance.MouseDownBackColor = Color.LightBlue;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.ForeColor = Color.Black;
+            btnUpdate.Image = (Image)resources.GetObject("btnUpdate.Image");
+            btnUpdate.Location = new Point(147, 75);
+            btnUpdate.Margin = new Padding(6, 7, 6, 7);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(76, 86);
+            btnUpdate.TabIndex = 205;
+            btnUpdate.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ttpAgencias.SetToolTip(btnUpdate, "Editar Agência");
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // dgvBankBranches
             // 
-            this.dgvBankBranches.AllowUserToAddRows = false;
-            this.dgvBankBranches.AllowUserToDeleteRows = false;
-            this.dgvBankBranches.AllowUserToOrderColumns = true;
-            this.dgvBankBranches.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvBankBranches.BackgroundColor = System.Drawing.Color.White;
-            this.dgvBankBranches.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvBankBranches.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvBankBranches.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBankBranches.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvBankBranches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBankBranches.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.numero,
-            this.nome,
-            this.endereco,
-            this.complemento,
-            this.bairro,
-            this.cidade,
-            this.cep,
-            this.uf,
-            this.contato,
-            this.telefone1,
-            this.telefone2,
-            this.email});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBankBranches.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvBankBranches.GridColor = System.Drawing.SystemColors.InactiveCaption;
-            this.dgvBankBranches.Location = new System.Drawing.Point(65, 178);
-            this.dgvBankBranches.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.dgvBankBranches.MultiSelect = false;
-            this.dgvBankBranches.Name = "dgvBankBranches";
-            this.dgvBankBranches.ReadOnly = true;
-            this.dgvBankBranches.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBankBranches.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvBankBranches.RowHeadersVisible = false;
-            this.dgvBankBranches.RowHeadersWidth = 82;
-            this.dgvBankBranches.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgvBankBranches.RowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvBankBranches.RowTemplate.Height = 60;
-            this.dgvBankBranches.RowTemplate.ReadOnly = true;
-            this.dgvBankBranches.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvBankBranches.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgvBankBranches.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBankBranches.ShowEditingIcon = false;
-            this.dgvBankBranches.Size = new System.Drawing.Size(1870, 1051);
-            this.dgvBankBranches.TabIndex = 211;
+            dgvBankBranches.AllowUserToAddRows = false;
+            dgvBankBranches.AllowUserToDeleteRows = false;
+            dgvBankBranches.AllowUserToOrderColumns = true;
+            dgvBankBranches.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvBankBranches.BackgroundColor = Color.White;
+            dgvBankBranches.BorderStyle = BorderStyle.Fixed3D;
+            dgvBankBranches.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvBankBranches.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvBankBranches.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvBankBranches.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvBankBranches.Columns.AddRange(new DataGridViewColumn[] { id, numero, nome, endereco, complemento, bairro, cidade, cep, uf, contato, telefone1, telefone2, email });
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dgvBankBranches.DefaultCellStyle = dataGridViewCellStyle7;
+            dgvBankBranches.GridColor = SystemColors.InactiveCaption;
+            dgvBankBranches.Location = new Point(65, 178);
+            dgvBankBranches.Margin = new Padding(6, 7, 6, 7);
+            dgvBankBranches.MultiSelect = false;
+            dgvBankBranches.Name = "dgvBankBranches";
+            dgvBankBranches.ReadOnly = true;
+            dgvBankBranches.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvBankBranches.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dgvBankBranches.RowHeadersVisible = false;
+            dgvBankBranches.RowHeadersWidth = 82;
+            dgvBankBranches.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle9.SelectionBackColor = Color.LightBlue;
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dgvBankBranches.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dgvBankBranches.RowTemplate.Height = 60;
+            dgvBankBranches.RowTemplate.ReadOnly = true;
+            dgvBankBranches.RowTemplate.Resizable = DataGridViewTriState.False;
+            dgvBankBranches.ScrollBars = ScrollBars.Vertical;
+            dgvBankBranches.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvBankBranches.ShowEditingIcon = false;
+            dgvBankBranches.Size = new Size(1870, 1160);
+            dgvBankBranches.TabIndex = 211;
             // 
             // id
             // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "Id";
-            this.id.MinimumWidth = 10;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            this.id.Width = 200;
+            id.DataPropertyName = "id";
+            id.HeaderText = "Id";
+            id.MinimumWidth = 10;
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Visible = false;
+            id.Width = 200;
             // 
             // numero
             // 
-            this.numero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.numero.DataPropertyName = "branchNumber";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.numero.DefaultCellStyle = dataGridViewCellStyle2;
-            this.numero.HeaderText = "Número";
-            this.numero.MinimumWidth = 10;
-            this.numero.Name = "numero";
-            this.numero.ReadOnly = true;
-            this.numero.Width = 158;
+            numero.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            numero.DataPropertyName = "branchNumber";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Padding = new Padding(5, 0, 0, 0);
+            numero.DefaultCellStyle = dataGridViewCellStyle2;
+            numero.HeaderText = "Número";
+            numero.MinimumWidth = 10;
+            numero.Name = "numero";
+            numero.ReadOnly = true;
+            numero.Width = 158;
             // 
             // nome
             // 
-            this.nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nome.DataPropertyName = "name";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.nome.DefaultCellStyle = dataGridViewCellStyle3;
-            this.nome.HeaderText = "Nome";
-            this.nome.MinimumWidth = 10;
-            this.nome.Name = "nome";
-            this.nome.ReadOnly = true;
+            nome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nome.DataPropertyName = "name";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Padding = new Padding(5, 0, 0, 0);
+            nome.DefaultCellStyle = dataGridViewCellStyle3;
+            nome.HeaderText = "Nome";
+            nome.MinimumWidth = 10;
+            nome.Name = "nome";
+            nome.ReadOnly = true;
             // 
             // endereco
             // 
-            this.endereco.DataPropertyName = "address";
-            this.endereco.HeaderText = "Endereco";
-            this.endereco.MinimumWidth = 10;
-            this.endereco.Name = "endereco";
-            this.endereco.ReadOnly = true;
-            this.endereco.Visible = false;
-            this.endereco.Width = 200;
+            endereco.DataPropertyName = "address";
+            endereco.HeaderText = "Endereco";
+            endereco.MinimumWidth = 10;
+            endereco.Name = "endereco";
+            endereco.ReadOnly = true;
+            endereco.Visible = false;
+            endereco.Width = 200;
             // 
             // complemento
             // 
-            this.complemento.DataPropertyName = "complement";
-            this.complemento.HeaderText = "Complemento";
-            this.complemento.MinimumWidth = 10;
-            this.complemento.Name = "complemento";
-            this.complemento.ReadOnly = true;
-            this.complemento.Visible = false;
-            this.complemento.Width = 200;
+            complemento.DataPropertyName = "complement";
+            complemento.HeaderText = "Complemento";
+            complemento.MinimumWidth = 10;
+            complemento.Name = "complemento";
+            complemento.ReadOnly = true;
+            complemento.Visible = false;
+            complemento.Width = 200;
             // 
             // bairro
             // 
-            this.bairro.DataPropertyName = "district";
-            this.bairro.HeaderText = "Bairro";
-            this.bairro.MinimumWidth = 10;
-            this.bairro.Name = "bairro";
-            this.bairro.ReadOnly = true;
-            this.bairro.Visible = false;
-            this.bairro.Width = 200;
+            bairro.DataPropertyName = "district";
+            bairro.HeaderText = "Bairro";
+            bairro.MinimumWidth = 10;
+            bairro.Name = "bairro";
+            bairro.ReadOnly = true;
+            bairro.Visible = false;
+            bairro.Width = 200;
             // 
             // cidade
             // 
-            this.cidade.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cidade.DataPropertyName = "city";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.cidade.DefaultCellStyle = dataGridViewCellStyle4;
-            this.cidade.HeaderText = "Cidade";
-            this.cidade.MinimumWidth = 100;
-            this.cidade.Name = "cidade";
-            this.cidade.ReadOnly = true;
-            this.cidade.Width = 143;
+            cidade.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cidade.DataPropertyName = "city";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            cidade.DefaultCellStyle = dataGridViewCellStyle4;
+            cidade.HeaderText = "Cidade";
+            cidade.MinimumWidth = 100;
+            cidade.Name = "cidade";
+            cidade.ReadOnly = true;
+            cidade.Width = 143;
             // 
             // cep
             // 
-            this.cep.DataPropertyName = "zip";
-            this.cep.HeaderText = "CEP";
-            this.cep.MinimumWidth = 10;
-            this.cep.Name = "cep";
-            this.cep.ReadOnly = true;
-            this.cep.Visible = false;
-            this.cep.Width = 200;
+            cep.DataPropertyName = "zip";
+            cep.HeaderText = "CEP";
+            cep.MinimumWidth = 10;
+            cep.Name = "cep";
+            cep.ReadOnly = true;
+            cep.Visible = false;
+            cep.Width = 200;
             // 
             // uf
             // 
-            this.uf.DataPropertyName = "state";
-            this.uf.HeaderText = "UF";
-            this.uf.MinimumWidth = 10;
-            this.uf.Name = "uf";
-            this.uf.ReadOnly = true;
-            this.uf.Visible = false;
-            this.uf.Width = 200;
+            uf.DataPropertyName = "state";
+            uf.HeaderText = "UF";
+            uf.MinimumWidth = 10;
+            uf.Name = "uf";
+            uf.ReadOnly = true;
+            uf.Visible = false;
+            uf.Width = 200;
             // 
             // contato
             // 
-            this.contato.DataPropertyName = "contactName";
-            this.contato.HeaderText = "Contato";
-            this.contato.MinimumWidth = 10;
-            this.contato.Name = "contato";
-            this.contato.ReadOnly = true;
-            this.contato.Visible = false;
-            this.contato.Width = 200;
+            contato.DataPropertyName = "contactName";
+            contato.HeaderText = "Contato";
+            contato.MinimumWidth = 10;
+            contato.Name = "contato";
+            contato.ReadOnly = true;
+            contato.Visible = false;
+            contato.Width = 200;
             // 
             // telefone1
             // 
-            this.telefone1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.telefone1.DataPropertyName = "phone1";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.telefone1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.telefone1.HeaderText = "Telefone";
-            this.telefone1.MinimumWidth = 130;
-            this.telefone1.Name = "telefone1";
-            this.telefone1.ReadOnly = true;
-            this.telefone1.Width = 160;
+            telefone1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            telefone1.DataPropertyName = "phone1";
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            telefone1.DefaultCellStyle = dataGridViewCellStyle5;
+            telefone1.HeaderText = "Telefone";
+            telefone1.MinimumWidth = 130;
+            telefone1.Name = "telefone1";
+            telefone1.ReadOnly = true;
+            telefone1.Width = 160;
             // 
             // telefone2
             // 
-            this.telefone2.DataPropertyName = "phone2";
-            this.telefone2.HeaderText = "Telefone2";
-            this.telefone2.MinimumWidth = 10;
-            this.telefone2.Name = "telefone2";
-            this.telefone2.ReadOnly = true;
-            this.telefone2.Visible = false;
-            this.telefone2.Width = 200;
+            telefone2.DataPropertyName = "phone2";
+            telefone2.HeaderText = "Telefone2";
+            telefone2.MinimumWidth = 10;
+            telefone2.Name = "telefone2";
+            telefone2.ReadOnly = true;
+            telefone2.Visible = false;
+            telefone2.Width = 200;
             // 
             // email
             // 
-            this.email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.email.DataPropertyName = "email";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.email.DefaultCellStyle = dataGridViewCellStyle6;
-            this.email.HeaderText = "Email";
-            this.email.MinimumWidth = 10;
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Width = 124;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Segoe Print", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTitulo.Location = new System.Drawing.Point(65, 64);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(218, 75);
-            this.lblTitulo.TabIndex = 212;
-            this.lblTitulo.Text = "Agências";
+            email.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            email.DataPropertyName = "email";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.Padding = new Padding(5, 0, 0, 0);
+            email.DefaultCellStyle = dataGridViewCellStyle6;
+            email.HeaderText = "Email";
+            email.MinimumWidth = 10;
+            email.Name = "email";
+            email.ReadOnly = true;
+            email.Width = 124;
             // 
             // frmBankBranch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(2000, 1400);
-            this.Controls.Add(this.lblTitulo);
-            this.Controls.Add(this.dgvBankBranches);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAdd);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "frmBankBranch";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Agências Demandantes";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvBankBranches)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(2000, 1400);
+            Controls.Add(dgvBankBranches);
+            Controls.Add(btnUpdate);
+            Controls.Add(btnDelete);
+            Controls.Add(btnAdd);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(6, 7, 6, 7);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "frmBankBranch";
+            ShowIcon = false;
+            ShowInTaskbar = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Agências Demandantes";
+            ((System.ComponentModel.ISupportInitialize)dgvBankBranches).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -384,6 +352,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone1;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefone2;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
-        private Label lblTitulo;
     }
 }
