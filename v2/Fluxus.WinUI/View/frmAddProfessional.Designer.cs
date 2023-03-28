@@ -777,14 +777,8 @@
             ClientSize = new Size(1993, 1428);
             Controls.Add(pnlMainAddProfissional);
             Controls.Add(pnlLinha2);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(6, 7, 6, 7);
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "frmAddProfessional";
-            ShowIcon = false;
-            ShowInTaskbar = false;
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Adicionar Profissional";
             Load += frmAddProfissional_Load;
             pnlLinha2.ResumeLayout(false);

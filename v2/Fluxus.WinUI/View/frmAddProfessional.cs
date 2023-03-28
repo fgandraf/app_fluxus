@@ -3,7 +3,7 @@ using Fluxus.Services;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmAddProfessional : Form
+    public partial class frmAddProfessional : UserControl
     {
         frmMain _frmPrincipal;
         private int _id;
@@ -109,9 +109,8 @@ namespace Fluxus.WinUI.View
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Close();
             frmProfessional formFilho = new frmProfessional(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formFilho);
+            _frmPrincipal.AbrirUserControlInPanel(formFilho);
         }
 
         private void imgShowPwd_Click(object sender, EventArgs e)

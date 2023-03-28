@@ -4,7 +4,7 @@ using Fluxus.Services;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmOrderFlow : Form
+    public partial class frmOrderFlow : UserControl
     {
         private frmMain _frmPrincipal;
         private Control _lastEnteredControl;
@@ -62,13 +62,13 @@ namespace Fluxus.WinUI.View
         {
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
             formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirFormInPanel(formNeto);
+            _frmPrincipal.AbrirUserControlInPanel(formNeto);
         }
 
         private void btnFaturar_Click(object sender, EventArgs e)
         {
             frmAddFatura formNeto = new frmAddFatura(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formNeto);
+            _frmPrincipal.AbrirUserControlInPanel(formNeto);
         }
 
         private void DataGridView_DragOver(object sender, DragEventArgs e)
@@ -146,7 +146,7 @@ namespace Fluxus.WinUI.View
 
                 frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
                 formNeto.Text = "Alterar";
-                _frmPrincipal.AbrirFormInPanel(formNeto);
+                _frmPrincipal.AbrirUserControlInPanel(formNeto);
             }
         }
 

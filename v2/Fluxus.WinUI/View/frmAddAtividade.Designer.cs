@@ -214,13 +214,7 @@
             this.ClientSize = new System.Drawing.Size(920, 580);
             this.Controls.Add(this.pnlMainAddAtividade);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmAddAtividade";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar Atividade";
             this.Load += new System.EventHandler(this.frmAddAtividade_Load);
             this.panel1.ResumeLayout(false);

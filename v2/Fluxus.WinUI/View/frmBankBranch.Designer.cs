@@ -319,14 +319,8 @@
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(6, 7, 6, 7);
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "frmBankBranch";
-            ShowIcon = false;
-            ShowInTaskbar = false;
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Agências Demandantes";
             ((System.ComponentModel.ISupportInitialize)dgvBankBranches).EndInit();
             ResumeLayout(false);

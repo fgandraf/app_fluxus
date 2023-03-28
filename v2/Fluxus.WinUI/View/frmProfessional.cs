@@ -3,7 +3,7 @@ using Fluxus.Services;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmProfessional : Form
+    public partial class frmProfessional : UserControl
     {
         frmMain _frmPrincipal;
 
@@ -32,7 +32,7 @@ namespace Fluxus.WinUI.View
         {
             frmAddProfessional formNeto = new frmAddProfessional(_frmPrincipal);
             formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirFormInPanel(formNeto);
+            _frmPrincipal.AbrirUserControlInPanel(formNeto);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace Fluxus.WinUI.View
             var formNeto = new frmAddProfessional(_frmPrincipal, professional);
             formNeto.Text = "Alterar";
 
-            _frmPrincipal.AbrirFormInPanel(formNeto);
+            _frmPrincipal.AbrirUserControlInPanel(formNeto);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

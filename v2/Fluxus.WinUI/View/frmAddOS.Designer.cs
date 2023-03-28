@@ -1019,14 +1019,8 @@
             this.ClientSize = new System.Drawing.Size(1073, 669);
             this.Controls.Add(this.pnlBotton);
             this.Controls.Add(this.pnlDados);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmAddOS";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Adicionar";
             this.Load += new System.EventHandler(this.frmAddOS_Load);
             this.pnlBotton.ResumeLayout(false);

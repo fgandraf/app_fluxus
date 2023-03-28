@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmInvoice : Form
+    public partial class frmInvoice : UserControl
     {
         private double _subtotalOs = 0.00;
         private double _subtotalDesloc = 0.00;

@@ -79,13 +79,7 @@
             BackColor = Color.White;
             ClientSize = new Size(920, 580);
             Controls.Add(tabOS);
-            FormBorderStyle = FormBorderStyle.None;
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "frmOS";
-            ShowIcon = false;
-            ShowInTaskbar = false;
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Ordens de Serviços";
             Load += frmOS_Load;
             tabOS.ResumeLayout(false);

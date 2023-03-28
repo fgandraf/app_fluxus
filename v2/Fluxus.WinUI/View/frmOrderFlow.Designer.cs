@@ -918,11 +918,8 @@
             BackColor = Color.White;
             ClientSize = new Size(2000, 1400);
             Controls.Add(tableLayoutPanel1);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(7, 6, 7, 6);
             Name = "frmOrderFlow";
-            ShowIcon = false;
-            ShowInTaskbar = false;
             Text = "frmOSFluxo";
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

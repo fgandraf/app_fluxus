@@ -3,7 +3,7 @@ using Fluxus.Domain.Entities;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmBankBranch : Form
+    public partial class frmBankBranch : UserControl
     {
         frmMain _frmPrincipal;
 
@@ -32,7 +32,7 @@ namespace Fluxus.WinUI.View
         {
             frmAddAgencia formNeto = new frmAddAgencia(_frmPrincipal);
             formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirFormInPanel(formNeto);
+            _frmPrincipal.AbrirUserControlInPanel(formNeto);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace Fluxus.WinUI.View
             var formNeto = new frmAddAgencia(_frmPrincipal, branch);
             formNeto.Text = "Alterar";
 
-            _frmPrincipal.AbrirFormInPanel(formNeto);
+            _frmPrincipal.AbrirUserControlInPanel(formNeto);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

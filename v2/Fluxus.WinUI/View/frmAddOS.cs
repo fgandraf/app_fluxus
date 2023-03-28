@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmAddOS : Form
+    public partial class frmAddOS : UserControl
     {
         frmMain _frmPrincipal;
         private string _formFilho;
@@ -71,16 +71,16 @@ namespace Fluxus.WinUI.View
 
         private void Back()
         {
-            this.Close();
+            //this.Close();
             if (_formFilho == "frmOSLista")
             {
                 frmServiceOrder formFilho = new frmServiceOrder(_frmPrincipal, 1);
-                _frmPrincipal.AbrirFormInPanel(formFilho);
+                _frmPrincipal.AbrirUserControlInPanel(formFilho);
             }
             else
             {
                 frmServiceOrder formFilho = new frmServiceOrder(_frmPrincipal);
-                _frmPrincipal.AbrirFormInPanel(formFilho);
+                _frmPrincipal.AbrirUserControlInPanel(formFilho);
             }
         }
 
@@ -300,8 +300,8 @@ namespace Fluxus.WinUI.View
 
         private void btnAddAgencia_Click(object sender, EventArgs e)
         {
-            frmAddAgencia form = new frmAddAgencia(txtRef1.Text);
-            form.ShowDialog();
+            var form = new frmAddAgencia(txtRef1.Text);
+            //form.ShowDialog();
 
             BuscarAgencia();
             txtRef2.Focus();

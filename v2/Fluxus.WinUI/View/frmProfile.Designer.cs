@@ -1136,14 +1136,8 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlBotton);
             this.Controls.Add(this.pnlLinha2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmProfile";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dados Cadastrais";
             this.pnlBotton.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

@@ -1,7 +1,7 @@
 ﻿
 namespace Fluxus.WinUI.View
 {
-    public partial class frmServiceOrder : Form
+    public partial class frmServiceOrder : UserControl
     {
         frmMain _frmPrincipal;
 
@@ -28,7 +28,6 @@ namespace Fluxus.WinUI.View
                 tabFluxo.Controls.RemoveAt(0);
 
             frmOrderFlow formFluxo = new frmOrderFlow(_frmPrincipal);
-            formFluxo.TopLevel = false;
             formFluxo.Dock = DockStyle.Fill;
             tabFluxo.Controls.Clear();
             tabFluxo.Controls.Add(formFluxo);
@@ -48,7 +47,6 @@ namespace Fluxus.WinUI.View
                 tabList.Controls.RemoveAt(0);
 
             frmOSLista formList = new frmOSLista(_frmPrincipal);
-            formList.TopLevel = false;
             formList.Dock = DockStyle.Fill;
             tabList.Controls.Clear();
             tabList.Controls.Add(formList);

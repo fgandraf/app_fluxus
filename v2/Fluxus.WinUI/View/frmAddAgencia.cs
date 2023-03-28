@@ -5,7 +5,7 @@ using Fluxus.Services;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmAddAgencia : Form
+    public partial class frmAddAgencia : UserControl
     {
 
         frmMain _frmPrincipal;
@@ -26,7 +26,6 @@ namespace Fluxus.WinUI.View
         {
             InitializeComponent();
 
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.Size = new System.Drawing.Size(650, 600);
             this.Text = "Adicionar";
 
@@ -127,12 +126,12 @@ namespace Fluxus.WinUI.View
 
         private void Back()
         {
-            this.Close();
-            if (this.FormBorderStyle != FormBorderStyle.FixedSingle)
-            {
+            //this.Close();
+            //if (this.FormBorderStyle != FormBorderStyle.FixedSingle)
+            //{
                 frmBankBranch formFilho = new frmBankBranch(_frmPrincipal);
-                _frmPrincipal.AbrirFormInPanel(formFilho);
-            }
+                _frmPrincipal.AbrirUserControlInPanel(formFilho);
+            //}
         }
 
     }

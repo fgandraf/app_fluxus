@@ -574,14 +574,8 @@
             this.ClientSize = new System.Drawing.Size(1993, 1428);
             this.Controls.Add(this.pnlMainAddAgencia);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmAddAgencia";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "";
             this.Text = "Adicionar Agência";
             this.Load += new System.EventHandler(this.frmAddAgencia_Load);

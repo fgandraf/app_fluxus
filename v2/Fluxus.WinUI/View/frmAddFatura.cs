@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmAddFatura : Form
+    public partial class frmAddFatura : UserControl
     {
 
 
@@ -112,9 +112,9 @@ namespace Fluxus.WinUI.View
 
         private void Back()
         {
-            this.Close();
+            //this.Close();
             frmServiceOrder formFilho = new frmServiceOrder(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formFilho);
+            _frmPrincipal.AbrirUserControlInPanel(formFilho);
         }
     }
 

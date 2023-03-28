@@ -675,12 +675,8 @@
             ClientSize = new Size(2000, 1400);
             Controls.Add(tblFaturas);
             Controls.Add(lblNenhuma);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(7, 6, 7, 6);
             Name = "frmInvoice";
-            ShowIcon = false;
-            ShowInTaskbar = false;
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmFaturas";
             Load += frmInvoice_Load;
             tblFaturas.ResumeLayout(false);

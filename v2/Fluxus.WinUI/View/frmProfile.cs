@@ -4,7 +4,7 @@ using System.Drawing.Imaging;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmProfile : Form
+    public partial class frmProfile : UserControl
     {
         frmMain _frmPrincipal;
         private Image _actualLogo;

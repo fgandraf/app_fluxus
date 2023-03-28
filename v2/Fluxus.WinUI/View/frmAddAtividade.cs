@@ -5,7 +5,7 @@ using Fluxus.Domain.Entities;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmAddAtividade : Form
+    public partial class frmAddAtividade : UserControl
     {
 
 
@@ -104,9 +104,9 @@ namespace Fluxus.WinUI.View
 
         private void Back()
         {
-            this.Close();
+            //this.Close();
             frmService formFilho = new frmService(_frmPrincipal);
-            _frmPrincipal.AbrirFormInPanel(formFilho);
+            _frmPrincipal.AbrirUserControlInPanel(formFilho);
         }
 
     }

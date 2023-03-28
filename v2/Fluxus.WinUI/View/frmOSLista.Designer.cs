@@ -615,14 +615,8 @@
             Controls.Add(label3);
             Controls.Add(btnExcluir);
             Controls.Add(dgvOS);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(7, 6, 7, 6);
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "frmOSLista";
-            ShowIcon = false;
-            ShowInTaskbar = false;
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Ordem de Serviço";
             Load += frmOS_Load;
             ((System.ComponentModel.ISupportInitialize)pctLupa).EndInit();

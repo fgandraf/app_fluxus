@@ -228,14 +228,8 @@
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
             Controls.Add(dgvServices);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(7, 6, 7, 6);
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "frmService";
-            ShowIcon = false;
-            ShowInTaskbar = false;
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Atividades";
             ((System.ComponentModel.ISupportInitialize)dgvServices).EndInit();
             ResumeLayout(false);

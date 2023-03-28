@@ -380,14 +380,8 @@
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
             Controls.Add(dgvProfessionals);
-            FormBorderStyle = FormBorderStyle.None;
             Margin = new Padding(6, 7, 6, 7);
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "frmProfessional";
-            ShowIcon = false;
-            ShowInTaskbar = false;
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Profissionais";
             ((System.ComponentModel.ISupportInitialize)dgvProfessionals).EndInit();
             ResumeLayout(false);

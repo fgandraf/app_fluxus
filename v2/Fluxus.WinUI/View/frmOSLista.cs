@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmOSLista : Form
+    public partial class frmOSLista : UserControl
     {
         frmMain _frmPrincipal;
         DataView _dvOSFiltrada;
@@ -27,7 +27,7 @@ namespace Fluxus.WinUI.View
 
 
             formNeto.Text = "Alterar";
-            _frmPrincipal.AbrirFormInPanel(formNeto);
+            _frmPrincipal.AbrirUserControlInPanel(formNeto);
         }
 
 
@@ -130,7 +130,7 @@ namespace Fluxus.WinUI.View
         {
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
             formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirFormInPanel(formNeto);
+            _frmPrincipal.AbrirUserControlInPanel(formNeto);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
