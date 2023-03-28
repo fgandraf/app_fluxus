@@ -38,7 +38,6 @@
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrderFlow));
             panel1 = new Panel();
             linhaRecebidas = new Panel();
             lblTitRecebidas = new Label();
@@ -799,7 +798,7 @@
             btnAdicionar.FlatStyle = FlatStyle.Flat;
             btnAdicionar.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnAdicionar.ForeColor = Color.Black;
-            btnAdicionar.Image = (Image)resources.GetObject("btnAdicionar.Image");
+            btnAdicionar.Image = Properties.Resources.addIcon;
             btnAdicionar.ImageAlign = ContentAlignment.MiddleLeft;
             btnAdicionar.Location = new Point(17, 19);
             btnAdicionar.Margin = new Padding(0);
@@ -836,7 +835,7 @@
             btnFaturar.FlatStyle = FlatStyle.Flat;
             btnFaturar.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnFaturar.ForeColor = Color.Black;
-            btnFaturar.Image = (Image)resources.GetObject("btnFaturar.Image");
+            btnFaturar.Image = Properties.Resources.doneIcon;
             btnFaturar.ImageAlign = ContentAlignment.MiddleRight;
             btnFaturar.Location = new Point(17, 19);
             btnFaturar.Margin = new Padding(0);

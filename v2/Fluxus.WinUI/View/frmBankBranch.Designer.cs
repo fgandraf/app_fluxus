@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBankBranch));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
@@ -69,7 +68,7 @@
             btnAdd.FlatAppearance.MouseDownBackColor = Color.LightBlue;
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.ForeColor = Color.Black;
-            btnAdd.Image = (Image)resources.GetObject("btnAdd.Image");
+            btnAdd.Image = Properties.Resources.addIcon;
             btnAdd.Location = new Point(65, 75);
             btnAdd.Margin = new Padding(0);
             btnAdd.Name = "btnAdd";
@@ -89,7 +88,7 @@
             btnDelete.FlatAppearance.MouseDownBackColor = Color.LightBlue;
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.ForeColor = Color.Black;
-            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
+            btnDelete.Image = Properties.Resources.deleteIcon;
             btnDelete.Location = new Point(235, 75);
             btnDelete.Margin = new Padding(6, 7, 6, 7);
             btnDelete.Name = "btnDelete";
@@ -109,7 +108,7 @@
             btnUpdate.FlatAppearance.MouseDownBackColor = Color.LightBlue;
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnUpdate.ForeColor = Color.Black;
-            btnUpdate.Image = (Image)resources.GetObject("btnUpdate.Image");
+            btnUpdate.Image = Properties.Resources.editIcon;
             btnUpdate.Location = new Point(147, 75);
             btnUpdate.Margin = new Padding(6, 7, 6, 7);
             btnUpdate.Name = "btnUpdate";

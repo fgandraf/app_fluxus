@@ -30,7 +30,7 @@ namespace Fluxus.WinUI.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmAddProfissional formNeto = new frmAddProfissional(_frmPrincipal);
+            frmAddProfessional formNeto = new frmAddProfessional(_frmPrincipal);
             formNeto.Text = "Adicionar";
             _frmPrincipal.AbrirFormInPanel(formNeto);
         }
@@ -40,7 +40,7 @@ namespace Fluxus.WinUI.View
             int id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
             var professional = new ProfessionalService().GetBy(id);
 
-            var formNeto = new frmAddProfissional(_frmPrincipal, professional);
+            var formNeto = new frmAddProfessional(_frmPrincipal, professional);
             formNeto.Text = "Alterar";
 
             _frmPrincipal.AbrirFormInPanel(formNeto);

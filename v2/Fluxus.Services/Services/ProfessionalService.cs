@@ -8,27 +8,26 @@ namespace Fluxus.Services
     public class ProfessionalService
     {
 
-        public void Insert(Professional body) 
+        public void Insert(Professional body)
             => new ProfessionalRepository().Insert(body);
 
 
-        public void Update(Professional body) 
+        public void Update(Professional body)
             => new ProfessionalRepository().Update(body);
 
 
-        public void Delete(int id) 
+        public void Delete(int id)
             => new ProfessionalRepository().Delete(id);
 
 
-        public DataTable GetAll() 
+        public DataTable GetAll()
             => new ProfessionalRepository().GetAll();
 
 
-        public DataTable GetUser(string userName) 
+        public DataTable GetUser(string userName)
             => new ProfessionalRepository().GetUser(userName);
 
-
-        public Professional GetBy(int id) 
+        public Professional GetBy(int id)
             => new ProfessionalRepository().GetById(id);
 
 
@@ -45,5 +44,29 @@ namespace Fluxus.Services
 
             return dtPro;
         }
+
+        public bool IsValid(string userName, string password, string passwordConfirmation, string currentUserName)
+        {
+            bool isValid = (
+                userName != "" &&
+                password != "" &&
+                passwordConfirmation != "" &&
+                password == passwordConfirmation
+                );
+
+            //bool isNotCurrentUser = userName != currentUserName;
+
+            return isValid; //&& isNotCurrentUser;
+        }
+
+        public bool UserExists(string userName)
+        {
+            var dtPro = new ProfessionalService().GetUser(userName);
+            if (dtPro.Rows.Count > 0)
+                return true;
+
+            return false;
+        }
+
     }
 }

@@ -37,7 +37,6 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmService));
             dgvServices = new DataGridView();
             id = new DataGridViewTextBoxColumn();
             codigo = new DataGridViewTextBoxColumn();
@@ -168,7 +167,7 @@
             btnAdd.FlatAppearance.MouseOverBackColor = Color.LightBlue;
             btnAdd.FlatStyle = FlatStyle.Flat;
             btnAdd.ForeColor = Color.Black;
-            btnAdd.Image = (Image)resources.GetObject("btnAdd.Image");
+            btnAdd.Image = Properties.Resources.addIcon;
             btnAdd.Location = new Point(65, 77);
             btnAdd.Margin = new Padding(0);
             btnAdd.Name = "btnAdd";
@@ -188,7 +187,7 @@
             btnDelete.FlatAppearance.MouseOverBackColor = Color.LightBlue;
             btnDelete.FlatStyle = FlatStyle.Flat;
             btnDelete.ForeColor = Color.Black;
-            btnDelete.Image = (Image)resources.GetObject("btnDelete.Image");
+            btnDelete.Image = Properties.Resources.deleteIcon;
             btnDelete.Location = new Point(238, 77);
             btnDelete.Margin = new Padding(7, 6, 7, 6);
             btnDelete.Name = "btnDelete";
@@ -208,7 +207,7 @@
             btnUpdate.FlatAppearance.MouseOverBackColor = Color.LightBlue;
             btnUpdate.FlatStyle = FlatStyle.Flat;
             btnUpdate.ForeColor = Color.Black;
-            btnUpdate.Image = (Image)resources.GetObject("btnUpdate.Image");
+            btnUpdate.Image = Properties.Resources.editIcon;
             btnUpdate.Location = new Point(148, 77);
             btnUpdate.Margin = new Padding(7, 6, 7, 6);
             btnUpdate.Name = "btnUpdate";

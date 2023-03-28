@@ -57,27 +57,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnExcluir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAQtJREFUaEPt
-        WEEOxCAI7NP6tP5sn7brNCU1jQQVaMxmTLy0ODAjQu22cVABKkAF/kGBo5D4Dk6seWXAkTU/g8GDLNZY
-        uCEkR5WNtnfvUnRAo3huArLNteOerZ+xaflwExCAGjwM9AGU6iMV/CKS6iMVfAUCewlCppZilk2qSBZ4
-        3QsQ6HPgmWDAtjUsH66zZ4GTQLVDECt8cAd4BpxJxRRiCjGF7k7a0oKNjI3MOCMsoyyjLKMso2vfyI6S
-        omhmmNqVUt7DdrkrpfOIncutUu3ykQp+RZbqIxWcBDqSCwdv9M/yrL3236gjTN3kTQKtKuYKXhYDuP7u
-        n1VYWweRtBIbQoAgVIAKUIFYBX6z3+LGmHT6FwAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="ttpFatura.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>118, 17</value>
   </metadata>
-  <data name="btnRemoverOs.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAFZJREFUaEPt
-        0jkOACAIBECe7s8VW2uzoRiSbTkmVCkCBAgQIECAAAECBAgQIECAwHSB1Qsm891jd8dkHPAKJN/nzlIE
-        CBAgQIAAAQIECBAgQIAAgcECB+oJU8n7UVnkAAAAAElFTkSuQmCC
-</value>
-  </data>
   <metadata name="id_os.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -138,6 +120,7 @@
   <metadata name="total.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnImprimir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAWtJREFUaEPt

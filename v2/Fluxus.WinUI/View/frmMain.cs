@@ -28,7 +28,7 @@ namespace Fluxus.WinUI.View
             else
                 btnDadosCadastrais.Text = "Dados Cadastrais";
 
-            byte[] logoByte = null; 
+            byte[] logoByte = null;
             await Task.Run(() => logoByte = new ProfileService().GetLogo());
             if (logoByte != null)
             {
@@ -80,11 +80,11 @@ namespace Fluxus.WinUI.View
                         form = new frmProfessional(this);
                         break;
                     }
-                default:break;
+                default: break;
             }
             AbrirFormInPanel(form);
         }
-        
+
         public void AbrirFormInPanel(Form activeForm)
         {
             if (pnlMain.Controls.Count > 0)

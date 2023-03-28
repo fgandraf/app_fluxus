@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvoice));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
@@ -42,6 +41,7 @@
             DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInvoice));
             tblFaturas = new TableLayoutPanel();
             panel1 = new Panel();
             pnlFaturaMain = new Panel();
@@ -149,8 +149,8 @@
             btnExcluir.FlatAppearance.MouseOverBackColor = Color.LightBlue;
             btnExcluir.FlatStyle = FlatStyle.Flat;
             btnExcluir.ForeColor = Color.Black;
-            btnExcluir.Image = (Image)resources.GetObject("btnExcluir.Image");
-            btnExcluir.Location = new Point(104, 981);
+            btnExcluir.Image = Properties.Resources.deleteIcon;
+            btnExcluir.Location = new Point(115, 981);
             btnExcluir.Margin = new Padding(7, 6, 7, 6);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(65, 75);
@@ -167,14 +167,13 @@
             btnRemoverOs.Cursor = Cursors.Hand;
             btnRemoverOs.FlatAppearance.BorderColor = Color.White;
             btnRemoverOs.FlatAppearance.BorderSize = 0;
-            btnRemoverOs.FlatAppearance.MouseDownBackColor = Color.LightBlue;
             btnRemoverOs.FlatAppearance.MouseOverBackColor = Color.LightBlue;
             btnRemoverOs.FlatStyle = FlatStyle.Flat;
-            btnRemoverOs.Image = (Image)resources.GetObject("btnRemoverOs.Image");
+            btnRemoverOs.Image = Properties.Resources.removeIcon;
             btnRemoverOs.Location = new Point(43, 981);
             btnRemoverOs.Margin = new Padding(0);
             btnRemoverOs.Name = "btnRemoverOs";
-            btnRemoverOs.Size = new Size(54, 62);
+            btnRemoverOs.Size = new Size(65, 75);
             btnRemoverOs.TabIndex = 431;
             btnRemoverOs.TextImageRelation = TextImageRelation.ImageBeforeText;
             ttpFatura.SetToolTip(btnRemoverOs, "Remover Ordem de Serviço da Fatura");
@@ -606,10 +605,10 @@
             btnImprimir.BackColor = Color.White;
             btnImprimir.Cursor = Cursors.Hand;
             btnImprimir.FlatAppearance.BorderSize = 0;
-            btnImprimir.FlatAppearance.MouseOverBackColor = Color.Silver;
+            btnImprimir.FlatAppearance.MouseOverBackColor = Color.LightBlue;
             btnImprimir.FlatStyle = FlatStyle.Flat;
             btnImprimir.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnImprimir.ForeColor = Color.DarkSlateBlue;
+            btnImprimir.ForeColor = Color.Black;
             btnImprimir.Image = (Image)resources.GetObject("btnImprimir.Image");
             btnImprimir.Location = new Point(1350, 2);
             btnImprimir.Margin = new Padding(0);
