@@ -74,13 +74,13 @@ namespace Fluxus.WinUI.View
             //this.Close();
             if (_formFilho == "frmOSLista")
             {
-                frmServiceOrder formFilho = new frmServiceOrder(_frmPrincipal, 1);
-                _frmPrincipal.AbrirUserControlInPanel(formFilho);
+                uctServiceOrder formFilho = new uctServiceOrder(_frmPrincipal, 1);
+                _frmPrincipal.OpenUserControl(formFilho);
             }
             else
             {
-                frmServiceOrder formFilho = new frmServiceOrder(_frmPrincipal);
-                _frmPrincipal.AbrirUserControlInPanel(formFilho);
+                uctServiceOrder formFilho = new uctServiceOrder(_frmPrincipal);
+                _frmPrincipal.OpenUserControl(formFilho);
             }
         }
 
@@ -153,7 +153,7 @@ namespace Fluxus.WinUI.View
             _formFilho = frmfilho;
 
             DtProfissionais = new ProfessionalService().GetCodeNameid(false);
-            DtAtividades = new ServiceService().ListarAtividades(false);
+            DtAtividades = new ServiceService().GetAll(false);
 
             cboProfissional.DataSource = DtProfissionais;
             cboAtividade.DataSource = DtAtividades;
@@ -209,7 +209,7 @@ namespace Fluxus.WinUI.View
             if (dado.InvoiceId != 0)
             {
                 lblFaturada.Show();
-                txtCodFatura.Text = "Fatura: " + new FaturaService().DescricaoFatura(dado.InvoiceId);
+                txtCodFatura.Text = "Fatura: " + new InvoiceService().GetDescription(dado.InvoiceId);
                 txtCodFatura.Show();
 
 
@@ -300,7 +300,7 @@ namespace Fluxus.WinUI.View
 
         private void btnAddAgencia_Click(object sender, EventArgs e)
         {
-            var form = new frmAddAgencia(txtRef1.Text);
+            var form = new uctAddBankBranch(txtRef1.Text);
             //form.ShowDialog();
 
             BuscarAgencia();

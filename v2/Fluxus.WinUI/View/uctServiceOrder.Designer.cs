@@ -1,6 +1,6 @@
 ﻿namespace Fluxus.WinUI.View
 {
-    partial class frmServiceOrder
+    partial class uctServiceOrder
     {
         /// <summary>
         /// Required designer variable.

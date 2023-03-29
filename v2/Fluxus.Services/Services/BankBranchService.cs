@@ -8,6 +8,20 @@ namespace Fluxus.Services
     public class BankBranchService
     {
 
+        public string InsertOrUpdate(BankBranch bankBranch, string method)
+        {
+            if (bankBranch.BranchNumber == "")
+                return "Campos com * são obrigatório";
+
+            if (method == "Alterar")
+                new BankBranchRepository().Update(bankBranch);
+            else
+                new BankBranchRepository().Insert(bankBranch);
+
+            return "Dados cadastrados com sucesso!";
+        }
+
+
         public void Insert(BankBranch body) 
             => new BankBranchRepository().Insert(body);
 

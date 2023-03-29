@@ -1,12 +1,11 @@
 ﻿using Fluxus.Services;
 using Fluxus.Domain.Entities;
-using System.Security.Policy;
 
 namespace Fluxus.WinUI.View
 {
     public partial class frmMain : Form
     {
-        UserControl _uclAtivo;
+        private UserControl _userControlActive;
 
         public frmMain()
         {
@@ -18,7 +17,6 @@ namespace Fluxus.WinUI.View
         private async void frmPrincipal_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = "Usuário: " + Logged.Usr_nome;
-            lblVersao.Text = "v. " + Logged.Versao;
 
             btnOS.PerformClick();
 
@@ -40,69 +38,67 @@ namespace Fluxus.WinUI.View
 
         private void MenuButtonClick(object sender, EventArgs e)
         {
-            OcultaControles();
-            var uct = new UserControl();
+            HideControls();
 
+            var uct = new UserControl();
             switch (((Button)sender).Name)
             {
                 case "btnDadosCadastrais":
                     {
                         pnlCtrlDadosCadastrais.Show();
-                        uct = new frmProfile(this);
+                        uct = new uctProfile(this);
                         break;
                     }
                 case "btnOS":
                     {
                         pnlCtrlOS.Show();
-                        uct = new frmServiceOrder(this);
+                        uct = new uctServiceOrder(this);
                         break;
                     }
                 case "btnFaturas":
                     {
                         pnlCtrlFaturas.Show();
-                        uct = new frmInvoice();
+                        uct = new uctInvoice();
                         break;
                     }
                 case "btnAtividades":
                     {
                         pnlCtrlAtividades.Show();
-                        uct = new frmService(this);
+                        uct = new uctService(this);
                         break;
                     }
                 case "btnAgencias":
                     {
                         pnlCtrlAgencias.Show();
-                        uct = new frmBankBranch(this);
+                        uct = new uctBankBranch(this);
                         break;
                     }
                 case "btnProfissionais":
                     {
                         pnlCtrlProfissionais.Show();
-                        uct = new frmProfessional(this);
+                        uct = new uctProfessional(this);
                         break;
                     }
                 default: break;
             }
-            AbrirUserControlInPanel(uct);
+
+            OpenUserControl(uct);
         }
 
-        public void AbrirUserControlInPanel(UserControl activeUserControl)
+        public void OpenUserControl(UserControl userControl)
         {
-            //if (pnlMain.Controls.Count > 0)
-            //_uclAtivo.Close();
+            userControl.Dock = DockStyle.Fill;
 
-            activeUserControl.Dock = DockStyle.Fill;
             pnlMain.Controls.Clear();
+            pnlMain.Controls.Add(userControl);
+            userControl.Show();
 
-            pnlMain.Controls.Add(activeUserControl);
-            pnlMain.Tag = activeUserControl;
+            _userControlActive = userControl;
 
-            activeUserControl.Show();
-            _uclAtivo = activeUserControl;
             GC.Collect();
         }
 
-        private void OcultaControles()
+        private void HideControls()
         {
             pnlCtrlOS.Hide();
             pnlCtrlAgencias.Hide();

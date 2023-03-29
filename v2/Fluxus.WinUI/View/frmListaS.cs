@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmOSLista : UserControl
+    public partial class frmListaS : UserControl
     {
         frmMain _frmPrincipal;
         DataView _dvOSFiltrada;
@@ -27,7 +27,7 @@ namespace Fluxus.WinUI.View
 
 
             formNeto.Text = "Alterar";
-            _frmPrincipal.AbrirUserControlInPanel(formNeto);
+            _frmPrincipal.OpenUserControl(formNeto);
         }
 
 
@@ -90,7 +90,7 @@ namespace Fluxus.WinUI.View
 
         //:EVENTS
         ///_______Form
-        public frmOSLista(frmMain frm1)
+        public frmListaS(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -101,7 +101,7 @@ namespace Fluxus.WinUI.View
 
             cboProfissional.DataSource = new ProfessionalService().GetCodeNameid(true);
             cboCidade.DataSource = new Services.ServiceOrderService().GetCidadesDasOrdens(true);
-            cboAtividade.DataSource = new ServiceService().ListarAtividades(true);
+            cboAtividade.DataSource = new ServiceService().GetAll(true);
 
 
 
@@ -130,7 +130,7 @@ namespace Fluxus.WinUI.View
         {
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
             formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirUserControlInPanel(formNeto);
+            _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)

@@ -180,7 +180,7 @@
             lblVersao.Name = "lblVersao";
             lblVersao.Size = new Size(130, 32);
             lblVersao.TabIndex = 134;
-            lblVersao.Text = "v. ---";
+            lblVersao.Text = "v. 1.0.0.";
             lblVersao.TextAlign = ContentAlignment.MiddleRight;
             // 
             // pnlCtrlAgencias

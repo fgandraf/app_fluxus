@@ -1,6 +1,6 @@
 ﻿namespace Fluxus.WinUI.View
 {
-    partial class frmAddProfessional
+    partial class uctAddProfessional
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddProfessional));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctAddProfessional));
             txtCPF = new MaskedTextBox();
             lblDataNascimento = new Label();
             txtTelefone2 = new MaskedTextBox();

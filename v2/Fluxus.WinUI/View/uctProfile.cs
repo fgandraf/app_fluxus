@@ -4,13 +4,13 @@ using System.Drawing.Imaging;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmProfile : UserControl
+    public partial class uctProfile : UserControl
     {
         frmMain _frmPrincipal;
         private Image _actualLogo;
         private string _method;
 
-        public frmProfile(frmMain frm1)
+        public uctProfile(frmMain frm1)
         {
             InitializeComponent();
 

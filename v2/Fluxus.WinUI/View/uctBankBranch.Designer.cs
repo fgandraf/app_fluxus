@@ -1,6 +1,6 @@
 ﻿namespace Fluxus.WinUI.View
 {
-    partial class frmBankBranch
+    partial class uctBankBranch
     {
         /// <summary>
         /// Required designer variable.

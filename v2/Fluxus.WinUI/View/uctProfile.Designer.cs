@@ -1,6 +1,6 @@
 ﻿namespace Fluxus.WinUI.View
 {
-    partial class frmProfile
+    partial class uctProfile
     {
         /// <summary>
         /// Required designer variable.

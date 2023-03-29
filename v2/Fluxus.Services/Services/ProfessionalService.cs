@@ -1,20 +1,13 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
+using System;
 using System.Data;
-
+using System.Transactions;
 
 namespace Fluxus.Services
 {
     public class ProfessionalService
     {
-
-        public void Insert(Professional body)
-            => new ProfessionalRepository().Insert(body);
-
-
-        public void Update(Professional body)
-            => new ProfessionalRepository().Update(body);
-
 
         public void Delete(int id)
             => new ProfessionalRepository().Delete(id);
@@ -45,27 +38,50 @@ namespace Fluxus.Services
             return dtPro;
         }
 
-        public bool IsValid(string userName, string password, string passwordConfirmation, string currentUserName)
+        public string InsertOrUpdate(Professional professional, string passwordConfirmation, string method)
         {
-            bool isValid = (
-                userName != "" &&
-                password != "" &&
+            if (professional.Tag == "" || professional.Name == "" || professional.UserName == "")
+                return "Campos com * são obrigatório";
+
+
+            bool userIsValid = (
+                professional.UserName != "" &&
+                professional.UserPassword != "" &&
                 passwordConfirmation != "" &&
-                password == passwordConfirmation
+                professional.UserPassword == passwordConfirmation
                 );
+            if (!userIsValid)
+                return "Verifique os campos Nome de Usuário e Senha";
 
-            //bool isNotCurrentUser = userName != currentUserName;
 
-            return isValid; //&& isNotCurrentUser;
-        }
+            if (method == "&Adicionar")
+            {
+                var userExists = new ProfessionalService().GetUser(professional.UserName);
+                if (userExists.Rows.Count > 0)
+                    return "Nome de usuário já existente";
 
-        public bool UserExists(string userName)
-        {
-            var dtPro = new ProfessionalService().GetUser(userName);
-            if (dtPro.Rows.Count > 0)
-                return true;
 
-            return false;
+                new ProfessionalRepository().Insert(professional);
+
+                if (Logged.ProfessionalId == professional.Tag)
+                {
+                    Logged.Rt = professional.TechnicianResponsible;
+                    Logged.Rl = professional.LegalResponsible;
+                }
+                return "Dados cadastrados com sucesso!";
+            }
+            else
+            {
+                new ProfessionalRepository().Update(professional);
+
+                if (Logged.ProfessionalId == professional.Tag)
+                {
+                    Logged.Rt = professional.TechnicianResponsible;
+                    Logged.Rl = professional.LegalResponsible;
+                }
+                return "Dados atualizados com sucesso!";
+            }
+
         }
 
     }

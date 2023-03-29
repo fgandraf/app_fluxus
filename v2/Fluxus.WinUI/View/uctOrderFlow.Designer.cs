@@ -1,6 +1,6 @@
 ﻿namespace Fluxus.WinUI.View
 {
-    partial class frmOrderFlow
+    partial class uctOrderFlow
     {
         /// <summary>
         /// Required designer variable.

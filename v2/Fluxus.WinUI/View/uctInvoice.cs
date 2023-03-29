@@ -5,12 +5,12 @@ using System.Globalization;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmInvoice : UserControl
+    public partial class uctInvoice : UserControl
     {
         private double _subtotalOs = 0.00;
         private double _subtotalDesloc = 0.00;
 
-        public frmInvoice()
+        public uctInvoice()
         {
             InitializeComponent();
 
@@ -20,7 +20,7 @@ namespace Fluxus.WinUI.View
                 btnExcluir.Show();
             }
 
-            dgvFaturas.DataSource = new FaturaService().ListarFatura();
+            dgvFaturas.DataSource = new InvoiceService().GetAll();
         }
 
         private void frmInvoice_Load(object sender, EventArgs e)
@@ -51,12 +51,11 @@ namespace Fluxus.WinUI.View
                 int invoiceId = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
                 var professionals = new ServiceOrderService().GetProfessionalByInvoiceId(invoiceId);
 
-
                 //CONVERTER DATAGRIDVIEW EM DATATABLE
                 DataTable serviceOrders = (DataTable)dgvOS.DataSource;
 
                 //CHAMAR O MÉTODO
-                InvoiceReport.PrintPDF(logo, profile, professionals, serviceOrders, path);
+                new InvoiceService().PrintPDF(logo, profile, professionals, serviceOrders, path);
             }
         }
 
@@ -73,10 +72,8 @@ namespace Fluxus.WinUI.View
                 var idServiceOrder = Convert.ToInt32(dgvOS.CurrentRow.Cells["id_os"].Value);
                 new ServiceOrderService().UpdateFaturaCod(idServiceOrder, 0);//implementar async
 
-
                 //APAGA DO DATAGRIDVIEW
                 dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
-
 
                 //RECALCULA E APLICA OS VALORES NA TELA
                 _subtotalOs = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[serviceAmount.Name].Value ?? 0));
@@ -86,16 +83,14 @@ namespace Fluxus.WinUI.View
                 txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _subtotalDesloc);
                 txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _subtotalOs + _subtotalDesloc);
 
-
                 //ATUALIZA AS INFORMAÇÕES DA VIEW
                 dgvFaturas.CurrentRow.Cells["subtotalService"].Value = _subtotalOs;
                 dgvFaturas.CurrentRow.Cells["subtotalMileageAllowance"].Value = _subtotalDesloc;
                 dgvFaturas.CurrentRow.Cells["total"].Value = _subtotalOs + _subtotalDesloc;
 
-
                 //APLICA OS NOVOS VALORES À TABELA DE FATURA
                 Invoice invoice = PopulateObject();
-                new FaturaService().Update(invoice); //implementar async
+                new InvoiceService().Update(invoice); //implementar async
             }
         }
 
@@ -111,7 +106,7 @@ namespace Fluxus.WinUI.View
             var result = MessageBox.Show("Deseja excluir a Fatura?" + "\n\n" + dgvFaturas.CurrentRow.Cells[1].Value.ToString(), "Remover O.S.", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                new FaturaService().Delete((Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id_fat"].Value)));
+                new InvoiceService().Delete((Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id_fat"].Value)));
                 dgvFaturas.Rows.RemoveAt(dgvFaturas.CurrentRow.Index);
                 ListarOS();
             }

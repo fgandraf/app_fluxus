@@ -52,7 +52,7 @@ namespace Fluxus.WinUI.View
         private void btnFaturar_Click(object sender, EventArgs e)
         {
             Invoice invoice = PopulateToObject();
-            int invoiceId = new FaturaService().Insert(invoice);
+            int invoiceId = new InvoiceService().Insert(invoice);
 
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
@@ -113,8 +113,8 @@ namespace Fluxus.WinUI.View
         private void Back()
         {
             //this.Close();
-            frmServiceOrder formFilho = new frmServiceOrder(_frmPrincipal);
-            _frmPrincipal.AbrirUserControlInPanel(formFilho);
+            uctServiceOrder formFilho = new uctServiceOrder(_frmPrincipal);
+            _frmPrincipal.OpenUserControl(formFilho);
         }
     }
 

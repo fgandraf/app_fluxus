@@ -5,7 +5,7 @@ using System.Data;
 
 namespace Fluxus.Services
 {
-    public class FaturaService
+    public class InvoiceService
     {
 
         public int Insert(Invoice body)
@@ -20,12 +20,16 @@ namespace Fluxus.Services
             => new InvoiceRepository().Delete(id);
 
 
-        public string DescricaoFatura(int id)
+        public string GetDescription(int id)
             => new InvoiceRepository().GetDescription(id);
 
 
-        public DataTable ListarFatura()
+        public DataTable GetAll()
             => new InvoiceRepository().GetAll();
+
+
+        public void PrintPDF(System.Drawing.Image logo, Profile profile, DataTable professionals, DataTable serviceOrders, string path)
+            => new ReportRepository().PrintPDF(logo, profile, professionals, serviceOrders, path);
 
     }
 

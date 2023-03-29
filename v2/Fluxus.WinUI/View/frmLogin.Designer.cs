@@ -41,7 +41,6 @@
             txtUsuario = new TextBox();
             imgHidePwd = new PictureBox();
             btnAppFechar = new Button();
-            lblVersao = new Label();
             label1 = new Label();
             ttpLogin = new ToolTip(components);
             lblLoad = new Label();
@@ -203,19 +202,6 @@
             btnAppFechar.UseVisualStyleBackColor = false;
             btnAppFechar.Click += btnAppFechar_Click;
             // 
-            // lblVersao
-            // 
-            lblVersao.AutoSize = true;
-            lblVersao.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblVersao.ForeColor = Color.Black;
-            lblVersao.Location = new Point(89, 623);
-            lblVersao.Margin = new Padding(0);
-            lblVersao.Name = "lblVersao";
-            lblVersao.Size = new Size(62, 30);
-            lblVersao.TabIndex = 12;
-            lblVersao.Text = "v. ---";
-            lblVersao.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -262,7 +248,6 @@
             Controls.Add(lblLoad);
             Controls.Add(prbProgress);
             Controls.Add(label1);
-            Controls.Add(lblVersao);
             Controls.Add(btnAppFechar);
             Controls.Add(pnlLogin);
             FormBorderStyle = FormBorderStyle.None;
@@ -273,7 +258,6 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Fluxus";
-            Load += frmLogin_Load;
             MouseDown += frmLogin_MouseDown;
             pnlLogin.ResumeLayout(false);
             pnlLogin.PerformLayout();
@@ -295,7 +279,6 @@
         private System.Windows.Forms.PictureBox imgSenha;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Button btnAppFechar;
-        private System.Windows.Forms.Label lblVersao;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolTip ttpLogin;
         private System.Windows.Forms.PictureBox imgShowPwd;

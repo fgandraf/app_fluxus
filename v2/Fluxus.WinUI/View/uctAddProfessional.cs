@@ -3,19 +3,18 @@ using Fluxus.Services;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmAddProfessional : UserControl
+    public partial class uctAddProfessional : UserControl
     {
-        frmMain _frmPrincipal;
-        private int _id;
-        private string _usr_nome;
+        private readonly frmMain _frmPrincipal;
+        private readonly int _id;
 
-        public frmAddProfessional(frmMain frm1)
+        public uctAddProfessional(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
 
-        public frmAddProfessional(frmMain frm1, Professional professional)
+        public uctAddProfessional(frmMain frm1, Professional professional)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -34,7 +33,6 @@ namespace Fluxus.WinUI.View
             chkRT.Checked = professional.TechnicianResponsible;
             chkRL.Checked = professional.LegalResponsible;
             chkUsrAtivo.Checked = professional.UserActive;
-            _usr_nome = professional.UserName;
             txtUsrNome.Text = professional.UserName;
             txtUsrSenha.Text = professional.UserPassword;
             txtUsrSenha2.Text = professional.UserPassword;
@@ -56,61 +54,18 @@ namespace Fluxus.WinUI.View
                 chkRL.Enabled = false;
         }
 
-
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            if (txtCodigo.Text == "" || txtNome.Text == "" || txtUsrNome.Text == "")
-            {
-                MessageBox.Show("Campos com * são obrigatório", "Chave Primária", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-
-
             Professional professional = PopulateObject();
-            bool isValid = new ProfessionalService().IsValid(txtUsrNome.Text, txtUsrSenha.Text, txtUsrSenha2.Text, _usr_nome);
-           
-            if (btnAddSave.Text == "&Adicionar")
-            {
-                if (!isValid)
-                {
-                    MessageBox.Show("Verifique os campos Nome de Usuário e Senha", "Usuário ou senha inválida", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-
-                bool userExists = new ProfessionalService().UserExists(txtUsrNome.Text);
-                if (userExists)
-                {
-                    MessageBox.Show("Nome de usuário já existente", "Nome de usuário", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-
-                new ProfessionalService().Insert(professional);
-            }
-            else
-            {
-                if (!isValid)
-                {
-                    MessageBox.Show("Verifique os campos Nome de Usuário e Senha", "Usuário ou senha inválida", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
-                }
-
-                new ProfessionalService().Update(professional);
-            }
-
-            //ATUALIZA RT E RL DO USUÁRIO LOGADO
-            if (Logged.ProfessionalId == txtCodigo.Text)
-            {
-                Logged.Rt = chkRT.Checked;
-                Logged.Rl = chkRL.Checked;
-            }
-
-            btnCancelar_Click(sender, e);
+            var result = new ProfessionalService().InsertOrUpdate(professional, txtUsrSenha2.Text, btnAddSave.Text);
+            
+            MessageBox.Show(result, "Profissionais", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            frmProfessional formFilho = new frmProfessional(_frmPrincipal);
-            _frmPrincipal.AbrirUserControlInPanel(formFilho);
+            uctProfessional formFilho = new uctProfessional(_frmPrincipal);
+            _frmPrincipal.OpenUserControl(formFilho);
         }
 
         private void imgShowPwd_Click(object sender, EventArgs e)

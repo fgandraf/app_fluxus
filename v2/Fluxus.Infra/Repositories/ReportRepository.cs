@@ -8,12 +8,12 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 
 
-namespace Fluxus.Services
+namespace Fluxus.Infra.Repositories
 {
-    public class InvoiceReport
+    public class ReportRepository
     {
 
-        public static void PrintPDF(System.Drawing.Image logo, Profile profile, DataTable professionals, DataTable serviceOrders, string path)
+        public void PrintPDF(System.Drawing.Image logo, Profile profile, DataTable professionals, DataTable serviceOrders, string path)
         {
 
             //////////////////-CRIAÇÃO DO PDF-///////////////////////

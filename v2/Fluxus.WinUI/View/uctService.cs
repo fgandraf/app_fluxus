@@ -3,11 +3,11 @@ using Fluxus.Services;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmProfessional : UserControl
+    public partial class uctService : UserControl
     {
         frmMain _frmPrincipal;
 
-        public frmProfessional(frmMain frm1)
+        public uctService(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -19,9 +19,9 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvProfessionals.DataSource = new ProfessionalService().GetAll();
+            dgvServices.DataSource = new ServiceService().GetAll(false);
 
-            if (dgvProfessionals.Rows.Count == 0)
+            if (dgvServices.Rows.Count == 0)
             {
                 btnUpdate.Enabled = false;
                 btnDelete.Enabled = false;
@@ -30,20 +30,20 @@ namespace Fluxus.WinUI.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmAddProfessional formNeto = new frmAddProfessional(_frmPrincipal);
+            uctAddService formNeto = new uctAddService(_frmPrincipal);
             formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirUserControlInPanel(formNeto);
+            _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-            var professional = new ProfessionalService().GetBy(id);
+            int id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
+            var service = new ServiceService().GetBy(id);
 
-            var formNeto = new frmAddProfessional(_frmPrincipal, professional);
+            var formNeto = new uctAddService(_frmPrincipal, service);
             formNeto.Text = "Alterar";
 
-            _frmPrincipal.AbrirUserControlInPanel(formNeto);
+            _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -51,9 +51,9 @@ namespace Fluxus.WinUI.View
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-                new ProfessionalService().Delete(id);
-                dgvProfessionals.Rows.RemoveAt(dgvProfessionals.CurrentRow.Index);
+                int id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
+                new ServiceService().Delete(id);
+                dgvServices.Rows.RemoveAt(dgvServices.CurrentRow.Index);
             }
         }
 

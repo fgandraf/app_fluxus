@@ -1,13 +1,13 @@
-﻿using Fluxus.Domain.Entities;
-using Fluxus.Services;
+﻿using Fluxus.Services;
+using Fluxus.Domain.Entities;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmService : UserControl
+    public partial class uctBankBranch : UserControl
     {
         frmMain _frmPrincipal;
 
-        public frmService(frmMain frm1)
+        public uctBankBranch(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -19,9 +19,9 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvServices.DataSource = new ServiceService().ListarAtividades(false);
+            dgvBankBranches.DataSource = new BankBranchService().GetAll();
 
-            if (dgvServices.Rows.Count == 0)
+            if (dgvBankBranches.Rows.Count == 0)
             {
                 btnUpdate.Enabled = false;
                 btnDelete.Enabled = false;
@@ -30,20 +30,20 @@ namespace Fluxus.WinUI.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            frmAddAtividade formNeto = new frmAddAtividade(_frmPrincipal);
+            uctAddBankBranch formNeto = new uctAddBankBranch(_frmPrincipal);
             formNeto.Text = "Adicionar";
-            _frmPrincipal.AbrirUserControlInPanel(formNeto);
+            _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
-            var service = new ServiceService().GetBy(id);
+            int id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
+            var branch = new BankBranchService().GetBy(id);
 
-            var formNeto = new frmAddAtividade(_frmPrincipal, service);
+            var formNeto = new uctAddBankBranch(_frmPrincipal, branch);
             formNeto.Text = "Alterar";
 
-            _frmPrincipal.AbrirUserControlInPanel(formNeto);
+            _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -51,9 +51,9 @@ namespace Fluxus.WinUI.View
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
-                new ProfessionalService().Delete(id);
-                dgvServices.Rows.RemoveAt(dgvServices.CurrentRow.Index);
+                int id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
+                new BankBranchService().Delete(id);
+                dgvBankBranches.Rows.RemoveAt(dgvBankBranches.CurrentRow.Index);
             }
         }
 
