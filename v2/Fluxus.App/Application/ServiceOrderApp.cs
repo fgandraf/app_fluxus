@@ -1,13 +1,14 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
-using System.Collections.Generic;
+using Fluxus.Infra.Services;
+using System;
 using System.Data;
 using System.Threading.Tasks;
 
 
-namespace Fluxus.Services
+namespace Fluxus.App
 {
-    public class ServiceOrderService
+    public class ServiceOrderApp
     {
 
         public void Insert(ServiceOrder body)
@@ -26,9 +27,14 @@ namespace Fluxus.Services
             => await Task.Run(() => new ServiceOrderRepository().UpdateStatus(id, status));
 
 
-        public void Delete(int id)
-            => new ServiceOrderRepository().Delete(id);
+        public string Delete(ServiceOrder order)
+        {
+            if (order.Invoiced)
+                return "Não é possível excluir uma Ordem de Serviço já faturada!";
 
+            new ServiceOrderRepository().Delete(order.Id);
+            return "Ordem de Serviço excluída!";
+        }
 
         public DataTable GetOrdensDoFluxo()
             => new ServiceOrderRepository().GetIndexOpen();
@@ -50,7 +56,6 @@ namespace Fluxus.Services
             => new ServiceOrderRepository().GetProfessionalByInvoiceId(invoiceId);
             
 
-
         public DataTable GetCidadesDasOrdens(bool addHeader)
         {
             DataTable distinctCidades = new ServiceOrderRepository().GetCitiesFromOrders();
@@ -66,8 +71,12 @@ namespace Fluxus.Services
         }
 
 
-        public Domain.Entities.ServiceOrder GetBy(int id)
+        public ServiceOrder GetBy(int id)
             => new ServiceOrderRepository().GetById(id);
+
+
+        public void ExportToSheet(DataTable serviceOrders)
+            => new ExcelService().ExportToExcel(serviceOrders);
 
     }
 

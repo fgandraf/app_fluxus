@@ -1,5 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Services;
+using Fluxus.App;
 
 namespace Fluxus.WinUI.View
 {
@@ -57,7 +57,7 @@ namespace Fluxus.WinUI.View
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             BankBranch branch = PopulateObject();
-            var result = new BankBranchService().InsertOrUpdate(branch, btnAddSave.Text);
+            var result = new BankBranchApp().InsertOrUpdate(branch, btnAddSave.Text);
             
             MessageBox.Show(result, "Atividades", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }

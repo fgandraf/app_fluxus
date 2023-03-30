@@ -8,9 +8,9 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 
 
-namespace Fluxus.Infra.Repositories
+namespace Fluxus.Infra.Services
 {
-    public class ReportRepository
+    public class ReportService
     {
         public void PrintPDF(System.Drawing.Image logo, Profile profile, DataTable professionals, DataTable serviceOrders, string path)
         {

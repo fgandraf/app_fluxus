@@ -1,4 +1,4 @@
-﻿using Fluxus.Services;
+﻿using Fluxus.App;
 using Fluxus.Domain.Entities;
 
 namespace Fluxus.WinUI.View
@@ -19,7 +19,7 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvBankBranches.DataSource = new BankBranchService().GetAll();
+            dgvBankBranches.DataSource = new BankBranchApp().GetAll();
 
             if (dgvBankBranches.Rows.Count == 0)
             {
@@ -38,7 +38,7 @@ namespace Fluxus.WinUI.View
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
-            var branch = new BankBranchService().GetBy(id);
+            var branch = new BankBranchApp().GetBy(id);
 
             var formNeto = new uctAddBankBranch(_frmPrincipal, branch);
             formNeto.Text = "Alterar";
@@ -52,7 +52,7 @@ namespace Fluxus.WinUI.View
             if (result == DialogResult.Yes)
             {
                 int id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
-                new BankBranchService().Delete(id);
+                new BankBranchApp().Delete(id);
                 dgvBankBranches.Rows.RemoveAt(dgvBankBranches.CurrentRow.Index);
             }
         }

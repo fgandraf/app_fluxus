@@ -1,8 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Data;
-using Fluxus.Services;
+using Fluxus.App;
 using System.Globalization;
-using System.ComponentModel.DataAnnotations;
 
 namespace Fluxus.WinUI.View
 {
@@ -21,7 +20,7 @@ namespace Fluxus.WinUI.View
                 btnExcluir.Show();
             }
 
-            dgvFaturas.DataSource = new InvoiceService().GetAll();
+            dgvFaturas.DataSource = new InvoiceApp().GetAll();
         }
 
         private void frmInvoice_Load(object sender, EventArgs e)
@@ -40,18 +39,18 @@ namespace Fluxus.WinUI.View
             {
                 string path = saveFileDialog.FileName;
 
-                Profile profile = new ProfileService().GetToPrint();
+                Profile profile = new ProfileApp().GetToPrint();
 
                 Image logo;
                 using (var stream = new MemoryStream(profile.Logo))
                     logo = System.Drawing.Image.FromStream(stream);
 
                 int invoiceId = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
-                var professionals = new ServiceOrderService().GetProfessionalByInvoiceId(invoiceId);
+                var professionals = new ServiceOrderApp().GetProfessionalByInvoiceId(invoiceId);
 
                 DataTable serviceOrders = (DataTable)dgvOS.DataSource;
 
-                new InvoiceService().PrintPDF(logo, profile, professionals, serviceOrders, path);
+                new InvoiceApp().PrintPDF(logo, profile, professionals, serviceOrders, path);
             }
         }
 
@@ -65,8 +64,8 @@ namespace Fluxus.WinUI.View
             {
                 var idServiceOrder = Convert.ToInt32(dgvOS.CurrentRow.Cells["id_os"].Value);
                 Invoice invoice = PopulateObject();
-                
-                var result = new InvoiceService().RemoveOrder(idServiceOrder, invoice);
+
+                var result = new InvoiceApp().RemoveOrder(idServiceOrder, invoice);
 
                 if (result)
                 {
@@ -100,7 +99,7 @@ namespace Fluxus.WinUI.View
             var result = MessageBox.Show("Deseja excluir a Fatura?" + "\n\n" + dgvFaturas.CurrentRow.Cells[1].Value.ToString(), "Remover O.S.", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                new InvoiceService().Delete((Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id_fat"].Value)));
+                new InvoiceApp().Delete((Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id_fat"].Value)));
                 dgvFaturas.Rows.RemoveAt(dgvFaturas.CurrentRow.Index);
                 ListarOS();
             }
@@ -115,7 +114,7 @@ namespace Fluxus.WinUI.View
         {
             if (dgvFaturas.Rows.Count > 0)
             {
-                dgvOS.DataSource = new ServiceOrderService().GetOrdensFaturadasDoCodigo(Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value));
+                dgvOS.DataSource = new ServiceOrderApp().GetOrdensFaturadasDoCodigo(Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value));
 
                 txtData.Text = Convert.ToDateTime(dgvFaturas.CurrentRow.Cells[2].Value).ToShortDateString();
                 txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);

@@ -3,9 +3,9 @@ using Fluxus.Infra.Repositories;
 using System.Data;
 
 
-namespace Fluxus.Services
+namespace Fluxus.App
 {
-    public class ServiceService
+    public class ServiceApp
     {
         public string InsertOrUpdate (Service service, string method)
         {

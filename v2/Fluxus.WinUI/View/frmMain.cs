@@ -1,4 +1,4 @@
-﻿using Fluxus.Services;
+﻿using Fluxus.App;
 using Fluxus.Domain.Entities;
 
 namespace Fluxus.WinUI.View
@@ -21,14 +21,14 @@ namespace Fluxus.WinUI.View
             btnOS.PerformClick();
 
             string fantasia = null;
-            await Task.Run(() => fantasia = new ProfileService().GetTradingName());
+            await Task.Run(() => fantasia = new ProfileApp().GetTradingName());
             if (fantasia != null)
                 btnDadosCadastrais.Text = fantasia;
             else
                 btnDadosCadastrais.Text = "Dados Cadastrais";
 
             byte[] logoByte = null;
-            await Task.Run(() => logoByte = new ProfileService().GetLogo());
+            await Task.Run(() => logoByte = new ProfileApp().GetLogo());
             if (logoByte != null)
             {
                 using (var stream = new MemoryStream(logoByte))

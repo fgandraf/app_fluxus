@@ -1,5 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Services;
+using Fluxus.App;
 
 namespace Fluxus.WinUI.View
 {
@@ -19,7 +19,7 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvProfessionals.DataSource = new ProfessionalService().GetAll();
+            dgvProfessionals.DataSource = new ProfessionalApp().GetAll();
 
             if (dgvProfessionals.Rows.Count == 0)
             {
@@ -38,7 +38,7 @@ namespace Fluxus.WinUI.View
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-            var professional = new ProfessionalService().GetBy(id);
+            var professional = new ProfessionalApp().GetBy(id);
 
             var formNeto = new uctAddProfessional(_frmPrincipal, professional);
             formNeto.Text = "Alterar";
@@ -52,7 +52,7 @@ namespace Fluxus.WinUI.View
             if (result == DialogResult.Yes)
             {
                 int id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-                new ProfessionalService().Delete(id);
+                new ProfessionalApp().Delete(id);
                 dgvProfessionals.Rows.RemoveAt(dgvProfessionals.CurrentRow.Index);
             }
         }

@@ -3,9 +3,9 @@ using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
 
 
-namespace Fluxus.Services
+namespace Fluxus.App
 {
-    public class BankBranchService
+    public class BankBranchApp
     {
 
         public string InsertOrUpdate(BankBranch bankBranch, string method)

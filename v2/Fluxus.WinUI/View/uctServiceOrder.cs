@@ -46,7 +46,7 @@ namespace Fluxus.WinUI.View
             if (tabList.Controls.Count > 0)
                 tabList.Controls.RemoveAt(0);
 
-            frmListaS formList = new frmListaS(_frmPrincipal);
+            uctOrderList formList = new uctOrderList(_frmPrincipal);
             formList.Dock = DockStyle.Fill;
             tabList.Controls.Clear();
             tabList.Controls.Add(formList);

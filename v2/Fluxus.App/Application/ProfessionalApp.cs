@@ -1,12 +1,10 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
-using System;
 using System.Data;
-using System.Transactions;
 
-namespace Fluxus.Services
+namespace Fluxus.App
 {
-    public class ProfessionalService
+    public class ProfessionalApp
     {
 
         public void Delete(int id)
@@ -56,7 +54,7 @@ namespace Fluxus.Services
 
             if (method == "&Adicionar")
             {
-                var userExists = new ProfessionalService().GetUser(professional.UserName);
+                var userExists = new ProfessionalApp().GetUser(professional.UserName);
                 if (userExists.Rows.Count > 0)
                     return "Nome de usuário já existente";
 

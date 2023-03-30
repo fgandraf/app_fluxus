@@ -2,7 +2,7 @@
 using System.Data;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Fluxus.Services;
+using Fluxus.App;
 using Fluxus.Domain.Entities;
 
 
@@ -45,7 +45,7 @@ namespace Fluxus.WinUI.View
             lblLoad.Text = "Validando usuário";
 
 
-            DataTable dtUsuario = new ProfessionalService().GetUser(txtUsuario.Text);
+            DataTable dtUsuario = new ProfessionalApp().GetUser(txtUsuario.Text);
 
             DataRow[] dataRow;
 

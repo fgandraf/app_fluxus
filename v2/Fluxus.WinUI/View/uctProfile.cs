@@ -1,5 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Services;
+using Fluxus.App;
 using System.Drawing.Imaging;
 
 namespace Fluxus.WinUI.View
@@ -16,7 +16,7 @@ namespace Fluxus.WinUI.View
 
             _frmPrincipal = frm1;
 
-            var profile = new ProfileService().GetAll();
+            var profile = new ProfileApp().GetAll();
             if (profile != null)
             {
                 PopulateFields(profile);
@@ -35,7 +35,7 @@ namespace Fluxus.WinUI.View
 
             var profile = PopulateObject();
 
-            new ProfileService().InsertOrUpdate(_method, profile);
+            new ProfileApp().InsertOrUpdate(_method, profile);
 
             UpdateTradingNameButton();
             UpdateMainLogo();

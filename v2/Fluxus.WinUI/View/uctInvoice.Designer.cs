@@ -100,25 +100,26 @@
             tblFaturas.Controls.Add(pnlFaturaMain, 2, 2);
             tblFaturas.Controls.Add(dgvFaturas, 0, 0);
             tblFaturas.Controls.Add(panel2, 2, 0);
-            tblFaturas.Location = new Point(33, 61);
+            tblFaturas.Location = new Point(33, 43);
             tblFaturas.Margin = new Padding(0);
             tblFaturas.Name = "tblFaturas";
             tblFaturas.RowCount = 3;
             tblFaturas.RowStyles.Add(new RowStyle(SizeType.Absolute, 134F));
             tblFaturas.RowStyles.Add(new RowStyle(SizeType.Absolute, 2F));
             tblFaturas.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tblFaturas.Size = new Size(1878, 1272);
+            tblFaturas.Size = new Size(1932, 1326);
             tblFaturas.TabIndex = 424;
             tblFaturas.Visible = false;
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panel1.BackColor = SystemColors.ControlDark;
             panel1.Location = new Point(397, 6);
             panel1.Margin = new Padding(7, 6, 7, 6);
             panel1.Name = "panel1";
             tblFaturas.SetRowSpan(panel1, 3);
-            panel1.Size = new Size(2, 1260);
+            panel1.Size = new Size(2, 1314);
             panel1.TabIndex = 433;
             // 
             // pnlFaturaMain
@@ -136,7 +137,7 @@
             pnlFaturaMain.Location = new Point(410, 136);
             pnlFaturaMain.Margin = new Padding(0);
             pnlFaturaMain.Name = "pnlFaturaMain";
-            pnlFaturaMain.Size = new Size(1468, 1136);
+            pnlFaturaMain.Size = new Size(1522, 1190);
             pnlFaturaMain.TabIndex = 432;
             // 
             // btnExcluir
@@ -150,7 +151,7 @@
             btnExcluir.FlatStyle = FlatStyle.Flat;
             btnExcluir.ForeColor = Color.Black;
             btnExcluir.Image = Properties.Resources.deleteIcon;
-            btnExcluir.Location = new Point(115, 981);
+            btnExcluir.Location = new Point(115, 1035);
             btnExcluir.Margin = new Padding(7, 6, 7, 6);
             btnExcluir.Name = "btnExcluir";
             btnExcluir.Size = new Size(65, 75);
@@ -170,7 +171,7 @@
             btnRemoverOs.FlatAppearance.MouseOverBackColor = Color.LightBlue;
             btnRemoverOs.FlatStyle = FlatStyle.Flat;
             btnRemoverOs.Image = Properties.Resources.removeIcon;
-            btnRemoverOs.Location = new Point(43, 981);
+            btnRemoverOs.Location = new Point(43, 1035);
             btnRemoverOs.Margin = new Padding(0);
             btnRemoverOs.Name = "btnRemoverOs";
             btnRemoverOs.Size = new Size(65, 75);
@@ -228,7 +229,7 @@
             dgvOS.ScrollBars = ScrollBars.Vertical;
             dgvOS.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvOS.ShowEditingIcon = false;
-            dgvOS.Size = new Size(1382, 950);
+            dgvOS.Size = new Size(1436, 1004);
             dgvOS.TabIndex = 224;
             // 
             // id_os
@@ -389,7 +390,7 @@
             // 
             pnlLinha2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             pnlLinha2.BackColor = SystemColors.ControlDark;
-            pnlLinha2.Location = new Point(1015, 1064);
+            pnlLinha2.Location = new Point(1069, 1118);
             pnlLinha2.Margin = new Padding(7, 6, 7, 6);
             pnlLinha2.Name = "pnlLinha2";
             pnlLinha2.Size = new Size(412, 2);
@@ -403,7 +404,7 @@
             txtValorDeslocamento.CharacterCasing = CharacterCasing.Upper;
             txtValorDeslocamento.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtValorDeslocamento.ForeColor = Color.Black;
-            txtValorDeslocamento.Location = new Point(1306, 1013);
+            txtValorDeslocamento.Location = new Point(1360, 1067);
             txtValorDeslocamento.Margin = new Padding(7, 6, 7, 6);
             txtValorDeslocamento.MaxLength = 100;
             txtValorDeslocamento.Name = "txtValorDeslocamento";
@@ -421,7 +422,7 @@
             txtValorOS.CharacterCasing = CharacterCasing.Upper;
             txtValorOS.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             txtValorOS.ForeColor = Color.Black;
-            txtValorOS.Location = new Point(1174, 1013);
+            txtValorOS.Location = new Point(1228, 1067);
             txtValorOS.Margin = new Padding(7, 6, 7, 6);
             txtValorOS.MaxLength = 100;
             txtValorOS.Name = "txtValorOS";
@@ -439,7 +440,7 @@
             txtValorTotal.CharacterCasing = CharacterCasing.Upper;
             txtValorTotal.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             txtValorTotal.ForeColor = Color.Black;
-            txtValorTotal.Location = new Point(1174, 1075);
+            txtValorTotal.Location = new Point(1228, 1129);
             txtValorTotal.Margin = new Padding(7, 6, 7, 6);
             txtValorTotal.MaxLength = 100;
             txtValorTotal.Name = "txtValorTotal";
@@ -455,7 +456,7 @@
             lblSubtotal.AutoSize = true;
             lblSubtotal.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblSubtotal.ForeColor = SystemColors.MenuText;
-            lblSubtotal.Location = new Point(1044, 1013);
+            lblSubtotal.Location = new Point(1098, 1067);
             lblSubtotal.Margin = new Padding(7, 0, 7, 0);
             lblSubtotal.Name = "lblSubtotal";
             lblSubtotal.Size = new Size(98, 30);
@@ -469,7 +470,7 @@
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             lblTotal.ForeColor = Color.Black;
-            lblTotal.Location = new Point(1037, 1075);
+            lblTotal.Location = new Point(1091, 1129);
             lblTotal.Margin = new Padding(7, 0, 7, 0);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(117, 41);
@@ -505,7 +506,7 @@
             dgvFaturas.EnableHeadersVisualStyles = false;
             dgvFaturas.GridColor = Color.White;
             dgvFaturas.Location = new Point(7, 49);
-            dgvFaturas.Margin = new Padding(7, 49, 0, 49);
+            dgvFaturas.Margin = new Padding(7, 49, 20, 49);
             dgvFaturas.MultiSelect = false;
             dgvFaturas.Name = "dgvFaturas";
             dgvFaturas.ReadOnly = true;
@@ -524,7 +525,7 @@
             dgvFaturas.ScrollBars = ScrollBars.Vertical;
             dgvFaturas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvFaturas.ShowEditingIcon = false;
-            dgvFaturas.Size = new Size(383, 1174);
+            dgvFaturas.Size = new Size(363, 1228);
             dgvFaturas.TabIndex = 223;
             dgvFaturas.MouseClick += dgvFaturas_MouseClick;
             // 
@@ -596,7 +597,7 @@
             panel2.Location = new Point(417, 49);
             panel2.Margin = new Padding(7, 49, 7, 6);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1454, 79);
+            panel2.Size = new Size(1508, 79);
             panel2.TabIndex = 434;
             // 
             // btnImprimir
@@ -610,7 +611,7 @@
             btnImprimir.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btnImprimir.ForeColor = Color.Black;
             btnImprimir.Image = (Image)resources.GetObject("btnImprimir.Image");
-            btnImprimir.Location = new Point(1350, 2);
+            btnImprimir.Location = new Point(1404, 2);
             btnImprimir.Margin = new Padding(0);
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new Size(65, 75);
@@ -667,17 +668,16 @@
             saveFileDialog.FileName = "Relacao_OS.pdf";
             saveFileDialog.Filter = "Arquivos PDF|*.pdf";
             // 
-            // frmInvoice
+            // uctInvoice
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(2000, 1400);
             Controls.Add(tblFaturas);
             Controls.Add(lblNenhuma);
             Margin = new Padding(7, 6, 7, 6);
-            Name = "frmInvoice";
-            Text = "frmFaturas";
+            Name = "uctInvoice";
+            Size = new Size(2000, 1400);
             Load += frmInvoice_Load;
             tblFaturas.ResumeLayout(false);
             pnlFaturaMain.ResumeLayout(false);

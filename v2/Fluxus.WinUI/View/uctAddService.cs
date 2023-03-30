@@ -1,4 +1,4 @@
-﻿using Fluxus.Services;
+﻿using Fluxus.App;
 using Fluxus.Domain.Entities;
 
 namespace Fluxus.WinUI.View
@@ -41,7 +41,7 @@ namespace Fluxus.WinUI.View
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             var service = PopulateObject();
-            var result = new ServiceService().InsertOrUpdate(service, btnAddSave.Text);
+            var result = new ServiceApp().InsertOrUpdate(service, btnAddSave.Text);
             
             MessageBox.Show(result, "Atividades", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }

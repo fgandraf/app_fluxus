@@ -39,48 +39,49 @@
             tabOS.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabOS.Controls.Add(tabFluxo);
             tabOS.Controls.Add(tabList);
-            tabOS.Font = new Font("Segoe UI", 10.125F);
+            tabOS.Font = new Font("Segoe UI", 10.125F, FontStyle.Regular, GraphicsUnit.Point);
             tabOS.HotTrack = true;
             tabOS.ItemSize = new Size(300, 60);
-            tabOS.Location = new Point(10, 10);
+            tabOS.Location = new Point(22, 25);
             tabOS.Margin = new Padding(0);
             tabOS.Name = "tabOS";
             tabOS.Padding = new Point(0, 0);
             tabOS.SelectedIndex = 0;
-            tabOS.Size = new Size(900, 561);
+            tabOS.Size = new Size(1950, 1380);
             tabOS.SizeMode = TabSizeMode.Fixed;
             tabOS.TabIndex = 0;
             tabOS.SelectedIndexChanged += tabOS_SelectedIndexChanged;
             // 
             // tabFluxo
             // 
-            tabFluxo.Location = new Point(4, 44);
+            tabFluxo.Location = new Point(8, 68);
             tabFluxo.Margin = new Padding(0);
             tabFluxo.Name = "tabFluxo";
-            tabFluxo.Size = new Size(892, 512);
+            tabFluxo.Size = new Size(1934, 1304);
             tabFluxo.TabIndex = 0;
             tabFluxo.Text = "Fluxo";
             tabFluxo.UseVisualStyleBackColor = true;
             // 
             // tabList
             // 
-            tabList.Location = new Point(4, 44);
+            tabList.Location = new Point(8, 68);
+            tabList.Margin = new Padding(6, 7, 6, 7);
             tabList.Name = "tabList";
-            tabList.Padding = new Padding(3);
-            tabList.Size = new Size(892, 513);
+            tabList.Padding = new Padding(6, 7, 6, 7);
+            tabList.Size = new Size(1934, 1304);
             tabList.TabIndex = 1;
             tabList.Text = "Lista";
             tabList.UseVisualStyleBackColor = true;
             // 
-            // frmOS
+            // uctServiceOrder
             // 
-            AutoScaleDimensions = new SizeF(6F, 13F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(920, 580);
             Controls.Add(tabOS);
-            Name = "frmOS";
-            Text = "Ordens de Serviços";
+            Margin = new Padding(6, 7, 6, 7);
+            Name = "uctServiceOrder";
+            Size = new Size(1993, 1428);
             Load += frmOS_Load;
             tabOS.ResumeLayout(false);
             ResumeLayout(false);

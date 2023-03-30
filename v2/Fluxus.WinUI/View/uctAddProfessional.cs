@@ -1,5 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Services;
+using Fluxus.App;
 
 namespace Fluxus.WinUI.View
 {
@@ -57,7 +57,7 @@ namespace Fluxus.WinUI.View
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             Professional professional = PopulateObject();
-            var result = new ProfessionalService().InsertOrUpdate(professional, txtUsrSenha2.Text, btnAddSave.Text);
+            var result = new ProfessionalApp().InsertOrUpdate(professional, txtUsrSenha2.Text, btnAddSave.Text);
             
             MessageBox.Show(result, "Profissionais", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }

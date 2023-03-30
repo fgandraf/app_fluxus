@@ -1,10 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
 
 namespace Fluxus.WinUI
 {
@@ -19,7 +13,6 @@ namespace Fluxus.WinUI
             {
                 return new DateTime();
             }
-
         }
 
         public static string MaskValidated(object maskedTextBox)

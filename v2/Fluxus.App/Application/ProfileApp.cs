@@ -2,9 +2,9 @@
 using Fluxus.Infra.Repositories;
 using System.Data;
 
-namespace Fluxus.Services
+namespace Fluxus.App
 {
-    public class ProfileService
+    public class ProfileApp
     {
 
         public void InsertOrUpdate(string method, Profile profile)

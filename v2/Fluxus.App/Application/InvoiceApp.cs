@@ -1,11 +1,12 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
+using Fluxus.Infra.Services;
 using System.Data;
 
 
-namespace Fluxus.Services
+namespace Fluxus.App
 {
-    public class InvoiceService
+    public class InvoiceApp
     {
 
         public int Insert(Invoice body)
@@ -29,13 +30,13 @@ namespace Fluxus.Services
 
 
         public void PrintPDF(System.Drawing.Image logo, Profile profile, DataTable professionals, DataTable serviceOrders, string path)
-            => new ReportRepository().PrintPDF(logo, profile, professionals, serviceOrders, path);
+            => new ReportService().PrintPDF(logo, profile, professionals, serviceOrders, path);
 
 
         public bool RemoveOrder(int idServiceOrder, Invoice invoice)
         {
-            new ServiceOrderService().UpdateFaturaCod(idServiceOrder, 0);
-            new InvoiceService().Update(invoice);
+            new ServiceOrderApp().UpdateFaturaCod(idServiceOrder, 0);
+            new InvoiceApp().Update(invoice);
             return true;
         }
     }

@@ -1,6 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Data;
-using Fluxus.Services;
+using Fluxus.App;
 
 namespace Fluxus.WinUI.View
 {
@@ -34,9 +34,9 @@ namespace Fluxus.WinUI.View
                 view.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             }
 
-            _dtOSNFaturada = new Services.ServiceOrderService().GetOrdensDoFluxo();
+            _dtOSNFaturada = new App.ServiceOrderApp().GetOrdensDoFluxo();
 
-            cboProfissional.DataSource = new ProfessionalService().GetCodeNameid(true);
+            cboProfissional.DataSource = new ProfessionalApp().GetCodeNameid(true);
 
             if (Logged.Rl)
             {
@@ -108,7 +108,7 @@ namespace Fluxus.WinUI.View
                 else
                     btnFaturar.Enabled = true;
 
-                new Services.ServiceOrderService().UpdateStatus(id, status);
+                new App.ServiceOrderApp().UpdateStatus(id, status);
             }
 
             ContarRegistros(_dgvOrigem);
@@ -142,7 +142,7 @@ namespace Fluxus.WinUI.View
             if (dgv != null)
             {
                 int serviceOrderId = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
-                var ordemDeServico = new ServiceOrderService().GetBy(serviceOrderId);
+                var ordemDeServico = new ServiceOrderApp().GetBy(serviceOrderId);
 
                 frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
                 formNeto.Text = "Alterar";
@@ -155,12 +155,16 @@ namespace Fluxus.WinUI.View
             var dgv = (DataGridView)_lastEnteredControl;
             if (dgv != null)
             {
-                var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                if (result == DialogResult.Yes)
-                {
-                    new Services.ServiceOrderService().Delete((Convert.ToInt32(dgv.CurrentRow.Cells[0].Value)));
+                var id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
+                var serviceOrder = new App.ServiceOrderApp().GetBy(id);
 
-                    _dtOSNFaturada = new Services.ServiceOrderService().GetOrdensDoFluxo();
+                var dialog = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dialog == DialogResult.Yes)
+                {
+                    var result = new App.ServiceOrderApp().Delete(serviceOrder);
+                    MessageBox.Show(result, "Ordem de Serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    _dtOSNFaturada = new App.ServiceOrderApp().GetOrdensDoFluxo();
                     GetOrdersTo(dgv);
                 }
             }

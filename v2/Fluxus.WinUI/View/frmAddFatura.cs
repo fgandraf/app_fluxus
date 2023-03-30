@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Fluxus.Domain.Entities;
 using System.Globalization;
-using Fluxus.Services;
+using Fluxus.App;
 using System.Linq;
 
 namespace Fluxus.WinUI.View
@@ -26,7 +26,7 @@ namespace Fluxus.WinUI.View
 
         private void frmAddFatura_Load(object sender, EventArgs e)
         {
-            dgvOS.DataSource = new ServiceOrderService().GetOrdensConcluidasNaoFaturadas();
+            dgvOS.DataSource = new ServiceOrderApp().GetOrdensConcluidasNaoFaturadas();
             SomarValores();
             txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
@@ -52,12 +52,12 @@ namespace Fluxus.WinUI.View
         private void btnFaturar_Click(object sender, EventArgs e)
         {
             Invoice invoice = PopulateToObject();
-            int invoiceId = new InvoiceService().Insert(invoice);
+            int invoiceId = new InvoiceApp().Insert(invoice);
 
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
                 int idOS = Convert.ToInt32(row.Cells["id"].Value);
-                new ServiceOrderService().UpdateFaturaCod(idOS, invoiceId);
+                new ServiceOrderApp().UpdateFaturaCod(idOS, invoiceId);
             }
 
             MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);

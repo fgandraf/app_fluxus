@@ -356,7 +356,6 @@
             ClientSize = new Size(2321, 1493);
             Controls.Add(pnlMain);
             Controls.Add(pnlMenu);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(7, 6, 7, 6);
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;

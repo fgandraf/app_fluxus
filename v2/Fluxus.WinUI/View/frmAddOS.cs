@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Fluxus.Domain.Entities;
 using System.Data;
-using Fluxus.Services;
+using Fluxus.App;
 using System.Text;
 
 namespace Fluxus.WinUI.View
@@ -49,7 +49,7 @@ namespace Fluxus.WinUI.View
 
         private void BuscarAgencia()
         {
-            DataTable dtAgencia = new BankBranchService().BuscarAgencia(txtRef1.Text);
+            DataTable dtAgencia = new BankBranchApp().BuscarAgencia(txtRef1.Text);
 
             if (dtAgencia == null)
             {
@@ -152,12 +152,12 @@ namespace Fluxus.WinUI.View
             _frmPrincipal = frm1;
             _formFilho = frmfilho;
 
-            DtProfissionais = new ProfessionalService().GetCodeNameid(false);
-            DtAtividades = new ServiceService().GetAll(false);
+            DtProfissionais = new ProfessionalApp().GetCodeNameid(false);
+            DtAtividades = new ServiceApp().GetAll(false);
 
             cboProfissional.DataSource = DtProfissionais;
             cboAtividade.DataSource = DtAtividades;
-            cboCidade.DataSource = new Services.ServiceOrderService().GetCidadesDasOrdens(false);
+            cboCidade.DataSource = new App.ServiceOrderApp().GetCidadesDasOrdens(false);
             cboCidade.SelectedIndex = -1;
         }
 
@@ -209,7 +209,7 @@ namespace Fluxus.WinUI.View
             if (dado.InvoiceId != 0)
             {
                 lblFaturada.Show();
-                txtCodFatura.Text = "Fatura: " + new InvoiceService().GetDescription(dado.InvoiceId);
+                txtCodFatura.Text = "Fatura: " + new InvoiceApp().GetDescription(dado.InvoiceId);
                 txtCodFatura.Show();
 
 
@@ -290,9 +290,9 @@ namespace Fluxus.WinUI.View
 
             //INSERT OR UPDATE
             if (btnAddSave.Text == "&Adicionar")
-                new Services.ServiceOrderService().Insert(dado);
+                new App.ServiceOrderApp().Insert(dado);
             else
-                new Services.ServiceOrderService().Update(dado);
+                new App.ServiceOrderApp().Update(dado);
 
             Back();
         }
