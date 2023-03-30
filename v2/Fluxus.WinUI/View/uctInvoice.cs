@@ -2,6 +2,7 @@
 using System.Data;
 using Fluxus.Services;
 using System.Globalization;
+using System.ComponentModel.DataAnnotations;
 
 namespace Fluxus.WinUI.View
 {
@@ -39,22 +40,17 @@ namespace Fluxus.WinUI.View
             {
                 string path = saveFileDialog.FileName;
 
-                //BUSCAR DADOS DA EMPRESA PARA IMPRESSAO
                 Profile profile = new ProfileService().GetToPrint();
 
-                //CONVERTER ARRAY DE BYTES EM IMAGEM
                 Image logo;
                 using (var stream = new MemoryStream(profile.Logo))
                     logo = System.Drawing.Image.FromStream(stream);
 
-                //OBTER PROFISSIONAIS DA FATURA
                 int invoiceId = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
                 var professionals = new ServiceOrderService().GetProfessionalByInvoiceId(invoiceId);
 
-                //CONVERTER DATAGRIDVIEW EM DATATABLE
                 DataTable serviceOrders = (DataTable)dgvOS.DataSource;
 
-                //CHAMAR O MÉTODO
                 new InvoiceService().PrintPDF(logo, profile, professionals, serviceOrders, path);
             }
         }
@@ -64,33 +60,31 @@ namespace Fluxus.WinUI.View
             if (dgvOS.SelectedRows.Count == 0)
                 return;
 
-
-            var result = MessageBox.Show("Deseja remover a O.S. da Fatura?" + "\n\n" + dgvOS.CurrentRow.Cells["referenceCode"].Value.ToString() + "\n" + dgvOS.CurrentRow.Cells["customerName"].Value.ToString() + "\n\n" + "A fatura será recalculada e a Ordem de Serviço retornará ao fluxo de trabalho.", "Remover O.S.", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
+            var dialog = MessageBox.Show("Deseja remover a O.S. da Fatura?" + "\n\n" + dgvOS.CurrentRow.Cells["referenceCode"].Value.ToString() + "\n" + dgvOS.CurrentRow.Cells["customerName"].Value.ToString() + "\n\n" + "A fatura será recalculada e a Ordem de Serviço retornará ao fluxo de trabalho.", "Remover O.S.", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialog == DialogResult.Yes)
             {
-                //ALTERA PARA ZERO O FATURA_COD
                 var idServiceOrder = Convert.ToInt32(dgvOS.CurrentRow.Cells["id_os"].Value);
-                new ServiceOrderService().UpdateFaturaCod(idServiceOrder, 0);//implementar async
-
-                //APAGA DO DATAGRIDVIEW
-                dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
-
-                //RECALCULA E APLICA OS VALORES NA TELA
-                _subtotalOs = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[serviceAmount.Name].Value ?? 0));
-                _subtotalDesloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[mileageAllowance.Name].Value ?? 0));
-
-                txtValorOS.Text = string.Format("{0:0,0.00}", _subtotalOs);
-                txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _subtotalDesloc);
-                txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _subtotalOs + _subtotalDesloc);
-
-                //ATUALIZA AS INFORMAÇÕES DA VIEW
-                dgvFaturas.CurrentRow.Cells["subtotalService"].Value = _subtotalOs;
-                dgvFaturas.CurrentRow.Cells["subtotalMileageAllowance"].Value = _subtotalDesloc;
-                dgvFaturas.CurrentRow.Cells["total"].Value = _subtotalOs + _subtotalDesloc;
-
-                //APLICA OS NOVOS VALORES À TABELA DE FATURA
                 Invoice invoice = PopulateObject();
-                new InvoiceService().Update(invoice); //implementar async
+                
+                var result = new InvoiceService().RemoveOrder(idServiceOrder, invoice);
+
+                if (result)
+                {
+                    dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
+
+                    txtValorOS.Text = string.Format("{0:0,0.00}", invoice.SubtotalService);
+                    txtValorDeslocamento.Text = string.Format("{0:0,0.00}", invoice.SubtotalMileageAllowance);
+                    txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", invoice.Total);
+
+                    dgvFaturas.CurrentRow.Cells["subtotalService"].Value = invoice.SubtotalService;
+                    dgvFaturas.CurrentRow.Cells["subtotalMileageAllowance"].Value = invoice.SubtotalMileageAllowance;
+                    dgvFaturas.CurrentRow.Cells["total"].Value = invoice.Total;
+
+                    _subtotalOs = invoice.SubtotalService;
+                    _subtotalDesloc = invoice.SubtotalMileageAllowance;
+                }
+                else
+                    MessageBox.Show("Não é possível remover a Ordem de Serviço da fatura", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -132,12 +126,17 @@ namespace Fluxus.WinUI.View
 
         private Invoice PopulateObject()
         {
+            var totalServiceAmount = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[this.serviceAmount.Name].Value ?? 0));
+            var totalMileageAllowance = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[this.mileageAllowance.Name].Value ?? 0));
+            totalServiceAmount -= Convert.ToDouble(dgvOS.CurrentRow.Cells["serviceAmount"].Value);
+            totalMileageAllowance -= Convert.ToDouble(dgvOS.CurrentRow.Cells["MileageAllowance"].Value);
+
             var invoice = new Invoice
             {
                 Id = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value),
-                SubtotalService = _subtotalOs,
-                SubtotalMileageAllowance = _subtotalDesloc,
-                Total = _subtotalOs + _subtotalDesloc
+                SubtotalService = totalServiceAmount,
+                SubtotalMileageAllowance = totalMileageAllowance,
+                Total = totalServiceAmount + totalMileageAllowance
             };
 
             return invoice;

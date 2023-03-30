@@ -31,6 +31,13 @@ namespace Fluxus.Services
         public void PrintPDF(System.Drawing.Image logo, Profile profile, DataTable professionals, DataTable serviceOrders, string path)
             => new ReportRepository().PrintPDF(logo, profile, professionals, serviceOrders, path);
 
+
+        public bool RemoveOrder(int idServiceOrder, Invoice invoice)
+        {
+            new ServiceOrderService().UpdateFaturaCod(idServiceOrder, 0);
+            new InvoiceService().Update(invoice);
+            return true;
+        }
     }
 
 }
