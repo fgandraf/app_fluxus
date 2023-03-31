@@ -1,6 +1,8 @@
 ﻿using Fluxus.Domain.Entities;
+using iTextSharp.text;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 
@@ -30,10 +32,10 @@ namespace Fluxus.Infra.Repositories
             return Request.Get("Invoice/Description/", id.ToString());
         }
 
-        public DataTable GetAll()
+        public List<Invoice> GetAll()
         {
             string json = Request.Get("Invoice", string.Empty);
-            return JsonConvert.DeserializeObject<DataTable>(json);
+            return JsonConvert.DeserializeObject<List<Invoice>>(json);
         }
     }
 }

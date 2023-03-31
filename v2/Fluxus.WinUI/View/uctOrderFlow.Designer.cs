@@ -33,11 +33,11 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             linhaRecebidas = new Panel();
             lblTitRecebidas = new Label();
@@ -61,11 +61,6 @@
             profissional_cod_pendente = new DataGridViewTextBoxColumn();
             panel5 = new Panel();
             dgvRecebidas = new DataGridView();
-            id_recebida = new DataGridViewTextBoxColumn();
-            referencia_recebida = new DataGridViewTextBoxColumn();
-            titulo_recebida = new DataGridViewTextBoxColumn();
-            status_recebida = new DataGridViewTextBoxColumn();
-            profissional_cod_recebida = new DataGridViewTextBoxColumn();
             panel7 = new Panel();
             dgvVistoriadas = new DataGridView();
             id_vistoriada = new DataGridViewTextBoxColumn();
@@ -90,6 +85,11 @@
             menuContext = new ContextMenuStrip(components);
             mnuEditar = new ToolStripMenuItem();
             mnuExcluir = new ToolStripMenuItem();
+            id_recebidas = new DataGridViewTextBoxColumn();
+            referencia_recebida = new DataGridViewTextBoxColumn();
+            titulo_recebida = new DataGridViewTextBoxColumn();
+            status_recebida = new DataGridViewTextBoxColumn();
+            profissional_cod_recebida = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -454,7 +454,7 @@
             dgvRecebidas.ColumnHeadersHeight = 35;
             dgvRecebidas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvRecebidas.ColumnHeadersVisible = false;
-            dgvRecebidas.Columns.AddRange(new DataGridViewColumn[] { id_recebida, referencia_recebida, titulo_recebida, status_recebida, profissional_cod_recebida });
+            dgvRecebidas.Columns.AddRange(new DataGridViewColumn[] { id_recebidas, referencia_recebida, titulo_recebida, status_recebida, profissional_cod_recebida });
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = Color.White;
             dataGridViewCellStyle5.Font = new Font("Segoe UI", 7.5F, FontStyle.Regular, GraphicsUnit.Point);
@@ -492,58 +492,6 @@
             dgvRecebidas.DragDrop += DataGridView_DragDrop;
             dgvRecebidas.DragOver += DataGridView_DragOver;
             dgvRecebidas.MouseDown += DataGridView_MouseDown;
-            // 
-            // id_recebida
-            // 
-            id_recebida.DataPropertyName = "Id";
-            id_recebida.HeaderText = "Id";
-            id_recebida.MinimumWidth = 10;
-            id_recebida.Name = "id_recebida";
-            id_recebida.ReadOnly = true;
-            id_recebida.Visible = false;
-            id_recebida.Width = 200;
-            // 
-            // referencia_recebida
-            // 
-            referencia_recebida.DataPropertyName = "ReferenceCode";
-            referencia_recebida.HeaderText = "Referência";
-            referencia_recebida.MinimumWidth = 10;
-            referencia_recebida.Name = "referencia_recebida";
-            referencia_recebida.ReadOnly = true;
-            referencia_recebida.Visible = false;
-            referencia_recebida.Width = 200;
-            // 
-            // titulo_recebida
-            // 
-            titulo_recebida.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            titulo_recebida.DataPropertyName = "Title";
-            dataGridViewCellStyle4.NullValue = null;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            titulo_recebida.DefaultCellStyle = dataGridViewCellStyle4;
-            titulo_recebida.HeaderText = "Título";
-            titulo_recebida.MinimumWidth = 120;
-            titulo_recebida.Name = "titulo_recebida";
-            titulo_recebida.ReadOnly = true;
-            // 
-            // status_recebida
-            // 
-            status_recebida.DataPropertyName = "Status";
-            status_recebida.HeaderText = "Status";
-            status_recebida.MinimumWidth = 10;
-            status_recebida.Name = "status_recebida";
-            status_recebida.ReadOnly = true;
-            status_recebida.Visible = false;
-            status_recebida.Width = 200;
-            // 
-            // profissional_cod_recebida
-            // 
-            profissional_cod_recebida.DataPropertyName = "ProfessionalId";
-            profissional_cod_recebida.HeaderText = "Profissional_cod";
-            profissional_cod_recebida.MinimumWidth = 10;
-            profissional_cod_recebida.Name = "profissional_cod_recebida";
-            profissional_cod_recebida.ReadOnly = true;
-            profissional_cod_recebida.Visible = false;
-            profissional_cod_recebida.Width = 200;
             // 
             // panel7
             // 
@@ -911,16 +859,67 @@
             mnuExcluir.Text = "Excluir";
             mnuExcluir.Click += mnuExcluir_Click;
             // 
-            // frmOrderFlow
+            // id_recebidas
+            // 
+            id_recebidas.DataPropertyName = "Id";
+            id_recebidas.HeaderText = "Id";
+            id_recebidas.MinimumWidth = 10;
+            id_recebidas.Name = "id_recebidas";
+            id_recebidas.ReadOnly = true;
+            id_recebidas.Visible = false;
+            id_recebidas.Width = 200;
+            // 
+            // referencia_recebida
+            // 
+            referencia_recebida.DataPropertyName = "ReferenceCode";
+            referencia_recebida.HeaderText = "ReferenceCode";
+            referencia_recebida.MinimumWidth = 10;
+            referencia_recebida.Name = "referencia_recebida";
+            referencia_recebida.ReadOnly = true;
+            referencia_recebida.Visible = false;
+            referencia_recebida.Width = 200;
+            // 
+            // titulo_recebida
+            // 
+            titulo_recebida.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            titulo_recebida.DataPropertyName = "Title";
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            titulo_recebida.DefaultCellStyle = dataGridViewCellStyle4;
+            titulo_recebida.HeaderText = "Title";
+            titulo_recebida.MinimumWidth = 120;
+            titulo_recebida.Name = "titulo_recebida";
+            titulo_recebida.ReadOnly = true;
+            // 
+            // status_recebida
+            // 
+            status_recebida.DataPropertyName = "Status";
+            status_recebida.HeaderText = "Status";
+            status_recebida.MinimumWidth = 10;
+            status_recebida.Name = "status_recebida";
+            status_recebida.ReadOnly = true;
+            status_recebida.Visible = false;
+            status_recebida.Width = 200;
+            // 
+            // profissional_cod_recebida
+            // 
+            profissional_cod_recebida.DataPropertyName = "ProfessionalId";
+            profissional_cod_recebida.HeaderText = "ProfessionalId";
+            profissional_cod_recebida.MinimumWidth = 10;
+            profissional_cod_recebida.Name = "profissional_cod_recebida";
+            profissional_cod_recebida.ReadOnly = true;
+            profissional_cod_recebida.Visible = false;
+            profissional_cod_recebida.Width = 200;
+            // 
+            // uctOrderFlow
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(2000, 1400);
             Controls.Add(tableLayoutPanel1);
             Margin = new Padding(7, 6, 7, 6);
-            Name = "frmOrderFlow";
-            Text = "frmOSFluxo";
+            Name = "uctOrderFlow";
+            Size = new Size(2000, 1400);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
@@ -986,15 +985,15 @@
         private DataGridViewTextBoxColumn titulo_pendente;
         private DataGridViewTextBoxColumn status_pendente;
         private DataGridViewTextBoxColumn profissional_cod_pendente;
-        private DataGridViewTextBoxColumn id_recebida;
-        private DataGridViewTextBoxColumn referencia_recebida;
-        private DataGridViewTextBoxColumn titulo_recebida;
-        private DataGridViewTextBoxColumn status_recebida;
-        private DataGridViewTextBoxColumn profissional_cod_recebida;
         private DataGridViewTextBoxColumn id_vistoriada;
         private DataGridViewTextBoxColumn referencia_vistoriada;
         private DataGridViewTextBoxColumn titulo_vistoriada;
         private DataGridViewTextBoxColumn status_vistoriada;
         private DataGridViewTextBoxColumn profissional_cod_vistoriada;
+        private DataGridViewTextBoxColumn id_recebidas;
+        private DataGridViewTextBoxColumn referencia_recebida;
+        private DataGridViewTextBoxColumn titulo_recebida;
+        private DataGridViewTextBoxColumn status_recebida;
+        private DataGridViewTextBoxColumn profissional_cod_recebida;
     }
 }

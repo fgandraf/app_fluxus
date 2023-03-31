@@ -1,7 +1,10 @@
 ﻿using Fluxus.Domain.Entities;
+using Fluxus.Domain.Struct;
 using Fluxus.Infra.Repositories;
 using Fluxus.Infra.Services;
+using iTextSharp.text;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 
@@ -36,9 +39,11 @@ namespace Fluxus.App
             return "Ordem de Serviço excluída!";
         }
 
-        public DataTable GetOrdensDoFluxo()
+        public List<ServiceOrder> GetOrdensDoFluxo()
             => new ServiceOrderRepository().GetIndexOpen();
 
+        public DataTable GetOrdensDoFluxoEmTabela()
+            => new ServiceOrderRepository().GetIndexOpenEmTabela();
 
         public DataTable GetOrdensConcluidasNaoFaturadas()
             => new ServiceOrderRepository().GetOpenDone();
@@ -48,7 +53,7 @@ namespace Fluxus.App
             => new ServiceOrderRepository().GetClosedByInvoiceId(invoiceId);
 
 
-        public DataTable GetOrdensComFiltro(string filter)
+        public List<ServiceOrderFiltered> GetOrdensComFiltro(string filter)
             => new ServiceOrderRepository().GetFiltered(filter);
 
 
@@ -75,7 +80,7 @@ namespace Fluxus.App
             => new ServiceOrderRepository().GetById(id);
 
 
-        public void ExportToSheet(DataTable serviceOrders)
+        public void ExportToSheet(List<ServiceOrderFiltered> serviceOrders)
             => new ExcelService().ExportToExcel(serviceOrders);
 
     }

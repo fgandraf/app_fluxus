@@ -1,4 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
+using Fluxus.Domain.Struct;
 using System.Data;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -39,7 +40,13 @@ namespace Fluxus.Infra.Repositories
             Request.Delete("ServiceOrder/", id.ToString());
         }
 
-        public DataTable GetIndexOpen()
+        public List<ServiceOrder> GetIndexOpen()
+        {
+            string json = Request.Get("ServiceOrder/OrdersFlow", string.Empty);
+            return JsonConvert.DeserializeObject<List<ServiceOrder>>(json);
+        }
+
+        public DataTable GetIndexOpenEmTabela()
         {
             string json = Request.Get("ServiceOrder/OrdersFlow", string.Empty);
             return JsonConvert.DeserializeObject<DataTable>(json);
@@ -57,12 +64,12 @@ namespace Fluxus.Infra.Repositories
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public DataTable GetFiltered(string filter)
+        public List<ServiceOrderFiltered> GetFiltered(string filter)
         {
             string json = Request.Get("ServiceOrder/Filtered/", filter);
 
             if (json != null)
-                return JsonConvert.DeserializeObject<DataTable>(json);
+                return JsonConvert.DeserializeObject<List<ServiceOrderFiltered>>(json);
 
             return null;
         }

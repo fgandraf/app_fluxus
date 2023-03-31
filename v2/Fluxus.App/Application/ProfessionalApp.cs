@@ -1,5 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
+using iTextSharp.text;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Fluxus.App
@@ -11,7 +13,7 @@ namespace Fluxus.App
             => new ProfessionalRepository().Delete(id);
 
 
-        public DataTable GetAll()
+        public List<Professional> GetAll()
             => new ProfessionalRepository().GetAll();
 
 

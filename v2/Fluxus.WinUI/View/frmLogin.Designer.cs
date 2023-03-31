@@ -89,11 +89,11 @@
             // imgShowPwd
             // 
             imgShowPwd.Cursor = Cursors.Hand;
-            imgShowPwd.Image = (Image)resources.GetObject("imgShowPwd.Image");
+            imgShowPwd.Image = Properties.Resources.showPasswordIcon;
             imgShowPwd.Location = new Point(630, 241);
             imgShowPwd.Margin = new Padding(6, 7, 6, 7);
             imgShowPwd.Name = "imgShowPwd";
-            imgShowPwd.Size = new Size(32, 37);
+            imgShowPwd.Size = new Size(35, 35);
             imgShowPwd.SizeMode = PictureBoxSizeMode.Zoom;
             imgShowPwd.TabIndex = 232;
             imgShowPwd.TabStop = false;
@@ -111,11 +111,11 @@
             // 
             // imgSenha
             // 
-            imgSenha.Image = (Image)resources.GetObject("imgSenha.Image");
-            imgSenha.Location = new Point(87, 239);
+            imgSenha.Image = Properties.Resources.passwordIcon;
+            imgSenha.Location = new Point(73, 225);
             imgSenha.Margin = new Padding(6, 7, 6, 7);
             imgSenha.Name = "imgSenha";
-            imgSenha.Size = new Size(32, 37);
+            imgSenha.Size = new Size(50, 50);
             imgSenha.SizeMode = PictureBoxSizeMode.Zoom;
             imgSenha.TabIndex = 230;
             imgSenha.TabStop = false;
@@ -123,13 +123,14 @@
             // txtSenha
             // 
             txtSenha.BorderStyle = BorderStyle.None;
-            txtSenha.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSenha.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             txtSenha.ForeColor = Color.SteelBlue;
-            txtSenha.Location = new Point(141, 224);
+            txtSenha.Location = new Point(141, 232);
             txtSenha.Margin = new Padding(0);
             txtSenha.Name = "txtSenha";
             txtSenha.PasswordChar = '*';
-            txtSenha.Size = new Size(488, 47);
+            txtSenha.PlaceholderText = "Senha";
+            txtSenha.Size = new Size(488, 40);
             txtSenha.TabIndex = 1;
             txtSenha.Text = "123456";
             ttpLogin.SetToolTip(txtSenha, "Senha");
@@ -138,7 +139,7 @@
             // pnlLinhaUsuario
             // 
             pnlLinhaUsuario.BackColor = Color.SteelBlue;
-            pnlLinhaUsuario.Location = new Point(65, 143);
+            pnlLinhaUsuario.Location = new Point(72, 143);
             pnlLinhaUsuario.Margin = new Padding(6, 7, 6, 7);
             pnlLinhaUsuario.Name = "pnlLinhaUsuario";
             pnlLinhaUsuario.Size = new Size(607, 2);
@@ -146,11 +147,11 @@
             // 
             // imgUsuario
             // 
-            imgUsuario.Image = (Image)resources.GetObject("imgUsuario.Image");
-            imgUsuario.Location = new Point(87, 101);
+            imgUsuario.Image = Properties.Resources.userIcon;
+            imgUsuario.Location = new Point(73, 87);
             imgUsuario.Margin = new Padding(6, 7, 6, 7);
             imgUsuario.Name = "imgUsuario";
-            imgUsuario.Size = new Size(32, 37);
+            imgUsuario.Size = new Size(50, 50);
             imgUsuario.SizeMode = PictureBoxSizeMode.Zoom;
             imgUsuario.TabIndex = 226;
             imgUsuario.TabStop = false;
@@ -158,12 +159,13 @@
             // txtUsuario
             // 
             txtUsuario.BorderStyle = BorderStyle.None;
-            txtUsuario.Font = new Font("Segoe UI", 13F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsuario.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             txtUsuario.ForeColor = Color.SteelBlue;
-            txtUsuario.Location = new Point(141, 86);
+            txtUsuario.Location = new Point(141, 94);
             txtUsuario.Margin = new Padding(0);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(520, 47);
+            txtUsuario.PlaceholderText = "Usuário";
+            txtUsuario.Size = new Size(520, 40);
             txtUsuario.TabIndex = 0;
             txtUsuario.Text = "fgandraf";
             ttpLogin.SetToolTip(txtUsuario, "Nome de usuário");
@@ -172,11 +174,11 @@
             // imgHidePwd
             // 
             imgHidePwd.Cursor = Cursors.Hand;
-            imgHidePwd.Image = (Image)resources.GetObject("imgHidePwd.Image");
+            imgHidePwd.Image = Properties.Resources.hidePasswordIcon;
             imgHidePwd.Location = new Point(630, 241);
             imgHidePwd.Margin = new Padding(6, 7, 6, 7);
             imgHidePwd.Name = "imgHidePwd";
-            imgHidePwd.Size = new Size(32, 37);
+            imgHidePwd.Size = new Size(35, 35);
             imgHidePwd.SizeMode = PictureBoxSizeMode.Zoom;
             imgHidePwd.TabIndex = 233;
             imgHidePwd.TabStop = false;

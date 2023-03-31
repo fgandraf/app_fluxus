@@ -1,13 +1,14 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Data;
 using Fluxus.App;
+using Fluxus.Domain.Struct;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctOrderList : UserControl
     {
         frmMain _frmPrincipal;
-        DataTable _dtOS;
+        List<ServiceOrderFiltered> _dtOS;
         private string _currentFilter;
 
 
@@ -34,7 +35,6 @@ namespace Fluxus.WinUI.View
             dgvOS.DataSource = _dtOS;
 
             lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
-            btnLimparFiltro.Show();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -76,10 +76,14 @@ namespace Fluxus.WinUI.View
                 dgvOS.DataSource = _dtOS;
             else
             {
-                DataTable dtFiltrada = _dtOS.Copy();
-                DataView dvPesquisa = new DataView(dtFiltrada);
-                dvPesquisa.RowFilter = String.Format("customerName LIKE '%{0}%' OR referenceCode LIKE '%{0}%' OR service LIKE '%{0}%' OR city LIKE '%{0}%' OR professional LIKE '%{0}%'", txtSearch.Text);
-                dgvOS.DataSource = dvPesquisa;
+                var a = txtSearch.Text.ToUpper();
+                var dtFiltrada = _dtOS.Where(item => item.CustomerName.Contains(a) ||
+                                                     item.ReferenceCode.Contains(a) ||
+                                                     item.Service.Contains(a) ||
+                                                     item.City.Contains(a) ||
+                                                     item.Professional.Contains(a)
+                                                     ).ToList();
+                dgvOS.DataSource = dtFiltrada;
             }
             lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
         }
@@ -90,27 +94,13 @@ namespace Fluxus.WinUI.View
             _dtOS = new App.ServiceOrderApp().GetOrdensComFiltro(_currentFilter);
             dgvOS.DataSource = _dtOS;
             lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
-            btnLimparFiltro.Show();
-        }
-
-        private void btnLimparFiltro_Click(object sender, EventArgs e)
-        {
-            var dialog = MessageBox.Show("Deseja realmente prosseguir?" + "\n\n" + "Isto irá retornar todas as ordens de serviços existentes no banco de dados." + "\n\n" + "O processo pode ser lento dependendo do tamanho da base.", "Limpar filtro", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (dialog == DialogResult.Yes)
-            {
-                CleanFilter();
-                RefreshFilter();
-                _dtOS = new App.ServiceOrderApp().GetOrdensComFiltro(_currentFilter);
-                dgvOS.DataSource = _dtOS;
-                btnLimparFiltro.Hide();
-            }
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
             if (dgvOS.Rows.Count > 0)
             {
-                var serviceOrders = (DataTable)dgvOS.DataSource;
+                var serviceOrders = (List<ServiceOrderFiltered>)dgvOS.DataSource;
                 new App.ServiceOrderApp().ExportToSheet(serviceOrders);
             }
         }

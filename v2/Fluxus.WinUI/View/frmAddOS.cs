@@ -13,7 +13,7 @@ namespace Fluxus.WinUI.View
         private string _formFilho;
         private string _agencia;
         private int _id;
-        DataTable DtAtividades = new DataTable();
+        List<Service> DtAtividades = new List<Service>();
         DataTable DtProfissionais = new DataTable();
 
 
@@ -33,10 +33,11 @@ namespace Fluxus.WinUI.View
 
         private void BuscarNomeAtividade()
         {
-            DataRow[] dataRowAtividade = DtAtividades.Select(String.Format("tag = '{0}'", cboAtividade.Text));
-            lblAtividadeNome.Text = dataRowAtividade[0]["description"].ToString();
-            lblAtividadeValor.Text = dataRowAtividade[0]["serviceAmount"].ToString();
-            lblAtividadeDeslocamento.Text = dataRowAtividade[0]["mileageAllowance"].ToString();
+            var service = DtAtividades.Where(item => item.Tag == cboAtividade.Text).First();
+            
+            lblAtividadeNome.Text = service.Description;
+            lblAtividadeValor.Text = service.ServiceAmount;
+            lblAtividadeDeslocamento.Text = service.MileageAllowance;
         }
 
 
@@ -97,13 +98,13 @@ namespace Fluxus.WinUI.View
             //VALIDA O STATUS
             EnumStatus status;
             if (rbtRecebida.Checked)
-                status = EnumStatus.RECEIVED;
+                status = EnumStatus.RECEBIDA;
             else if (rbtPendente.Checked)
-                status = EnumStatus.PENDING;
+                status = EnumStatus.PENDENTE;
             else if (rbtVistoriada.Checked)
-                status = EnumStatus.SURVEYED;
+                status = EnumStatus.VISTORIADA;
             else
-                status = EnumStatus.DONE;
+                status = EnumStatus.CONCLUIDA;
 
 
             //POPULATE OBJECT TO RETURN
@@ -186,11 +187,11 @@ namespace Fluxus.WinUI.View
             txtNomeContato.Text = dado.ContactName;
             txtTelefoneContato.Text = dado.ContactPhone;
             txtCoordenada.Text = dado.Coordinates;
-            if (dado.Status == EnumStatus.RECEIVED)
+            if (dado.Status == EnumStatus.RECEBIDA)
                 rbtRecebida.Checked = true;
-            else if (dado.Status == EnumStatus.PENDING)
+            else if (dado.Status == EnumStatus.PENDENTE)
                 rbtPendente.Checked = true;
-            else if (dado.Status == EnumStatus.SURVEYED)
+            else if (dado.Status == EnumStatus.VISTORIADA)
                 rbtVistoriada.Checked = true;
             else
                 rbtConcluida.Checked = true;

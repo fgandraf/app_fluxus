@@ -1,12 +1,14 @@
 ﻿using System;
 using Excel = Microsoft.Office.Interop.Excel;
 using DataTable = System.Data.DataTable;
+using Fluxus.Domain.Struct;
+using System.Collections.Generic;
 
 namespace Fluxus.Infra.Services
 {
     public class ExcelService
     {
-        public void ExportToExcel(DataTable serviceOrders)
+        public void ExportToExcel(List<ServiceOrderFiltered> serviceOrders)
         {
             var XcelApp = new Excel.Application();
             XcelApp.Application.Workbooks.Add(Type.Missing);
@@ -21,17 +23,17 @@ namespace Fluxus.Infra.Services
             XcelApp.Cells[1, 8] = "Data da Vistoria";
             XcelApp.Cells[1, 9] = "Data da Conclusão";
 
-            for (int i = 0; i < serviceOrders.Rows.Count - 1; i++)
+            for (int i = 0; i < serviceOrders.Count; i++)
             {
-                XcelApp.Cells[i + 2, 1] = serviceOrders.Rows[i]["status"].ToString();
-                XcelApp.Cells[i + 2, 2] = serviceOrders.Rows[i]["professional"].ToString();
-                XcelApp.Cells[i + 2, 3] = Convert.ToDateTime(serviceOrders.Rows[i]["orderDate"]).ToShortDateString();
-                XcelApp.Cells[i + 2, 4] = serviceOrders.Rows[i]["referenceCode"].ToString();
-                XcelApp.Cells[i + 2, 5] = serviceOrders.Rows[i]["service"].ToString();
-                XcelApp.Cells[i + 2, 6] = serviceOrders.Rows[i]["city"].ToString();
-                XcelApp.Cells[i + 2, 7] = serviceOrders.Rows[i]["customerName"].ToString();
-                XcelApp.Cells[i + 2, 8] = Convert.ToDateTime(serviceOrders.Rows[i]["surveyDate"]).ToShortDateString();
-                XcelApp.Cells[i + 2, 9] = Convert.ToDateTime(serviceOrders.Rows[i]["doneDate"]).ToShortDateString();
+                XcelApp.Cells[i + 2, 1] = serviceOrders[i].Status.ToString();
+                XcelApp.Cells[i + 2, 2] = serviceOrders[i].Professional.ToString();
+                XcelApp.Cells[i + 2, 3] = Convert.ToDateTime(serviceOrders[i].OrderDate).ToShortDateString();
+                XcelApp.Cells[i + 2, 4] = serviceOrders[i].ReferenceCode.ToString();
+                XcelApp.Cells[i + 2, 5] = serviceOrders[i].Service.ToString();
+                XcelApp.Cells[i + 2, 6] = serviceOrders[i].City.ToString();
+                XcelApp.Cells[i + 2, 7] = serviceOrders[i].CustomerName.ToString();
+                XcelApp.Cells[i + 2, 8] = Convert.ToDateTime(serviceOrders[i].SurveyDate).ToShortDateString();
+                XcelApp.Cells[i + 2, 9] = Convert.ToDateTime(serviceOrders[i].DoneDate).ToShortDateString();
             }
 
             XcelApp.Columns.AutoFit();

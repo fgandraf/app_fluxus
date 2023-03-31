@@ -57,18 +57,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pctLupa.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
-        CAABFVgAADqXAAAXb9daH5AAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAEeSURBVDhPY/j//z8DNTFVDQM5
-        DG5gUFAQAxJmBbLDgLgFiOuB2AdNHlktmA3zJTYDA4EKPgHxfzT8GMi3wGUwLgM9kQzpB7KdgdgdiOci
-        iWtjMxSbgexAhf+gGs2xaAqAyj0l1sBoqIY+POG1AarGFF0NNhd24VKMpDkCqiaVGAPboYpxBjxQPgaq
-        Jo0YA2FhNB+Pl/dDDdQlxkBGoKKPUA2gpIOe1nKgcquJjRSQAYZIyWMdkJ0BxNlAvAdJvIIUA0GGgmLw
-        CpIBsAS+BihWBxU/R4yX0b1oBtQUC40I5DADGQayBMVQfFkPI59i8SLM0LMwOUoNBFkKMgzkUlDO8aaG
-        gSBD7wExKCkZUMtAb6BhaiBvYxhIrVKb6iU2AMbb5GcI+htqAAAAAElFTkSuQmCC
-</value>
-  </data>
   <metadata name="ttpOS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -105,29 +93,7 @@
   <metadata name="invoiced.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="ttpOS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="btnFiltrar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
-        CAABFVgAADqXAAAXb9daH5AAAAAJcEhZcwAADrwAAA68AZW8ckkAAABsSURBVDhPY/j//z8DpRhsQFFR
-        0X9yMUg/9QzZvn07WS4B6YO7BMQg1SCYASiGkGIQsgEYhhBjELoBWA2BGvQdW2xhMwCnIUAJNvQwwmUA
-        PkMwoh5fgsSbWpG9NGoIJGdTJUyILSIoLktAFgEAADoinQ3qgrUAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="btnLimparFiltro.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
-        CAABFVgAADqXAAAXb9daH5AAAAAJcEhZcwAADrwAAA68AZW8ckkAAAEwSURBVDhPY/j//z8DpZihqKjo
-        P7kYZjl1DNm+fTtZLgHpg7sExCDVIGQDQPrhgUqsQegGoBhCjIuwGYBhCD6DcBmA1RBkg4qLi/9v3br1
-        /9WrV+GBiC1N4UxooLSzYcOG/+/2rv9/vz7l/5fLp3AahNeQ/fv3/386vfH/tUjz/9eiLP4/mVwLNuj9
-        /k3/b+cG/H/UXQzm4zWkqanp//Pnz/+/3rDg//VYG7BhNxIdwfS9qvj/vz++I2wIyEt1dXUghf+fL+iF
-        uAiI75ZGongNr0sqKir+P3jw4P+z2e1g71yPtvp/pygUzP5weBtqisUW4iBXHDx4EO4CkAEfj+8Ba3zQ
-        lAH0lgNhQ2AGgzSDbH67fSWKF+7XJv9/2JKNP0xghoC88nL5VKzR+3LFNLA4AKqMJO1bi7nzAAAAAElF
-        TkSuQmCC
-</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnExportar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS

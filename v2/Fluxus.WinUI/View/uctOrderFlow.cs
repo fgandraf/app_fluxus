@@ -34,7 +34,7 @@ namespace Fluxus.WinUI.View
                 view.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             }
 
-            _dtOSNFaturada = new App.ServiceOrderApp().GetOrdensDoFluxo();
+            _dtOSNFaturada = new App.ServiceOrderApp().GetOrdensDoFluxoEmTabela();
 
             cboProfissional.DataSource = new ProfessionalApp().GetCodeNameid(true);
 
@@ -164,7 +164,7 @@ namespace Fluxus.WinUI.View
                     var result = new App.ServiceOrderApp().Delete(serviceOrder);
                     MessageBox.Show(result, "Ordem de Serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    _dtOSNFaturada = new App.ServiceOrderApp().GetOrdensDoFluxo();
+                    _dtOSNFaturada = new App.ServiceOrderApp().GetOrdensDoFluxoEmTabela();
                     GetOrdersTo(dgv);
                 }
             }
@@ -179,6 +179,25 @@ namespace Fluxus.WinUI.View
 
         private void GetOrdersTo(DataGridView dgv)
         {
+            //var professionalId = cboProfissional.SelectedValue.ToString();
+            //var statusInt = Convert.ToInt32(dgv.Tag.ToString());
+
+            //List<ServiceOrder> dvOS;
+
+
+            //if (cboProfissional.SelectedIndex == 0)
+            //    dvOS = new List<ServiceOrder>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
+            //else
+            //    dvOS = new List<ServiceOrder>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
+
+            //if (dvOS.Count > 0)
+            //    dgv.ContextMenuStrip = menuContext;
+
+            //dgv.DataSource = dvOS;
+
+            //ContarRegistros(dgv);
+
+
             DataView dvOS = new DataView(_dtOSNFaturada);
             var professionalId = cboProfissional.SelectedValue.ToString();
             var status = Convert.ToInt32(dgv.Tag.ToString());
@@ -194,6 +213,7 @@ namespace Fluxus.WinUI.View
             dgv.DataSource = dvOS;
 
             ContarRegistros(dgv);
+
         }
 
         private void ContarRegistros(DataGridView dgv)

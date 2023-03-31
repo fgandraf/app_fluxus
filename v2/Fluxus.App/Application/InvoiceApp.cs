@@ -1,6 +1,8 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
 using Fluxus.Infra.Services;
+using iTextSharp.text;
+using System.Collections.Generic;
 using System.Data;
 
 
@@ -25,7 +27,7 @@ namespace Fluxus.App
             => new InvoiceRepository().GetDescription(id);
 
 
-        public DataTable GetAll()
+        public List<Invoice> GetAll()
             => new InvoiceRepository().GetAll();
 
 

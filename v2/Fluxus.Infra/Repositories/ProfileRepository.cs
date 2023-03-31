@@ -18,12 +18,10 @@ namespace Fluxus.Infra.Repositories
             Request.Put("Profile", json);
         }
 
-
         public Profile GetAll()
         {
             string json = Request.Get("Profile", string.Empty);
-            var profile = JsonConvert.DeserializeObject<Profile>(json);
-            return profile;
+            return JsonConvert.DeserializeObject<Profile>(json);
         }
 
         public Profile GetToPrint()

@@ -1,7 +1,8 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
-
+using iTextSharp.text;
 
 namespace Fluxus.App
 {
@@ -34,7 +35,7 @@ namespace Fluxus.App
             => new BankBranchRepository().Delete(id);
 
 
-        public DataTable GetAll() 
+        public List<BankBranch> GetAll() 
             => new BankBranchRepository().GetAll();
 
 

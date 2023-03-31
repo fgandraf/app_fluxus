@@ -1,6 +1,8 @@
 ﻿using Fluxus.Domain.Entities;
+using iTextSharp.text;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 
@@ -25,10 +27,10 @@ namespace Fluxus.Infra.Repositories
             Request.Delete("Professional/", id.ToString());
         }
 
-        public DataTable GetAll()
+        public List<Professional> GetAll()
         {
             string json = Request.Get("Professional", string.Empty);
-            return JsonConvert.DeserializeObject<DataTable>(json);
+            return JsonConvert.DeserializeObject<List<Professional>>(json);
         }
 
         public DataTable GetUser(string userName)

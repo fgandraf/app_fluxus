@@ -1,7 +1,9 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
+using iTextSharp.text;
+using System.Collections.Generic;
 using System.Data;
-
+using System.Linq;
 
 namespace Fluxus.App
 {
@@ -24,20 +26,14 @@ namespace Fluxus.App
             => new ServiceRepository().Delete(id);
 
 
-        public DataTable GetAll(bool addHeader)
+        public List<Service> GetAll(bool addHeader)
         {
-            DataTable table = new ServiceRepository().GetAll();
-            DataView view = new DataView(table);
-            DataTable atividades = view.ToTable("Selected", false, "id", "tag", "description", "serviceAmount", "mileageAllowance");
+            var services = new ServiceRepository().GetAll();
 
             if (addHeader)
-            {
-                DataRow linha = atividades.NewRow();
-                linha[1] = "--TODAS--";
-                atividades.Rows.InsertAt(linha, 0);
-            }
+                services.Insert(0, new Service { Tag = "--TODAS--"});
 
-            return atividades;
+            return services;
         }
 
         public Service GetBy(int id)
