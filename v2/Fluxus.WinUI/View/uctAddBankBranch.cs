@@ -1,5 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
+using Fluxus.Infra.Services;
 using Fluxus.App;
+using System.Text.RegularExpressions;
 
 namespace Fluxus.WinUI.View
 {
@@ -58,7 +60,7 @@ namespace Fluxus.WinUI.View
         {
             BankBranch branch = PopulateObject();
             var result = new BankBranchApp().InsertOrUpdate(branch, btnAddSave.Text);
-            
+
             MessageBox.Show(result, "Atividades", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
@@ -93,6 +95,24 @@ namespace Fluxus.WinUI.View
                 Email = txtEmail.Text
             };
             return branch;
+        }
+
+        private void txtCEP_Leave(object sender, EventArgs e)
+        {
+            if (txtCEP.Text != "     -")
+            {
+                string cep = Regex.Replace(txtCEP.Text, "[^0-9]", "");
+                var result = new ViaCep().GetViaCep(cep);
+                if (!result.Erro)
+                {
+                    txtEndereco.Text = result.Logradouro;
+                    txtComplemento.Text = result.Complemento;
+                    txtBairro.Text = result.Bairro;
+                    txtCidade.Text = result.Localidade;
+                    cboUF.Text = result.Uf;
+                }
+            }
+
         }
     }
 }

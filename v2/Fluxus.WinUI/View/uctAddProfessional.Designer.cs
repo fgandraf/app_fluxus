@@ -778,8 +778,8 @@
             Controls.Add(pnlMainAddProfissional);
             Controls.Add(pnlLinha2);
             Margin = new Padding(6, 7, 6, 7);
-            Name = "frmAddProfessional";
-            Text = "Adicionar Profissional";
+            Name = "uctAddProfessional";
+            Size = new Size(1993, 1428);
             Load += frmAddProfissional_Load;
             pnlLinha2.ResumeLayout(false);
             pnlMainAddProfissional.ResumeLayout(false);

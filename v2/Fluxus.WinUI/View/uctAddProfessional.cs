@@ -58,7 +58,7 @@ namespace Fluxus.WinUI.View
         {
             Professional professional = PopulateObject();
             var result = new ProfessionalApp().InsertOrUpdate(professional, txtUsrSenha2.Text, btnAddSave.Text);
-            
+
             MessageBox.Show(result, "Profissionais", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
