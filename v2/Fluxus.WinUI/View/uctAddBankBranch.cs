@@ -76,6 +76,23 @@ namespace Fluxus.WinUI.View
         private void OnEnter_MaskedTextBox(object sender, EventArgs e)
             => ((MaskedTextBox)sender).Mask = Util.MaskEnter(sender);
 
+        private void txtCEP_Leave(object sender, EventArgs e)
+        {
+            if (txtCEP.Text != "     -")
+            {
+                string cep = Regex.Replace(txtCEP.Text, "[^0-9]", "");
+                var result = new ViaCep().GetViaCep(cep);
+                if (!result.Erro)
+                {
+                    txtEndereco.Text = result.Logradouro;
+                    txtComplemento.Text = result.Complemento;
+                    txtBairro.Text = result.Bairro;
+                    txtCidade.Text = result.Localidade;
+                    cboUF.Text = result.Uf;
+                }
+            }
+        }
+
         private BankBranch PopulateObject()
         {
             BankBranch branch = new BankBranch
@@ -97,22 +114,6 @@ namespace Fluxus.WinUI.View
             return branch;
         }
 
-        private void txtCEP_Leave(object sender, EventArgs e)
-        {
-            if (txtCEP.Text != "     -")
-            {
-                string cep = Regex.Replace(txtCEP.Text, "[^0-9]", "");
-                var result = new ViaCep().GetViaCep(cep);
-                if (!result.Erro)
-                {
-                    txtEndereco.Text = result.Logradouro;
-                    txtComplemento.Text = result.Complemento;
-                    txtBairro.Text = result.Bairro;
-                    txtCidade.Text = result.Localidade;
-                    cboUF.Text = result.Uf;
-                }
-            }
-
-        }
     }
+
 }

@@ -1,6 +1,8 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.App;
 using System.Drawing.Imaging;
+using Fluxus.Infra.Services;
+using System.Text.RegularExpressions;
 
 namespace Fluxus.WinUI.View
 {
@@ -49,6 +51,22 @@ namespace Fluxus.WinUI.View
                 picLogotipo.ImageLocation = openDialog.FileName;
         }
 
+        private void txtCEP_Leave(object sender, EventArgs e)
+        {
+            if (txtCEP.Text != "     -")
+            {
+                string cep = Regex.Replace(txtCEP.Text, "[^0-9]", "");
+                var result = new ViaCep().GetViaCep(cep);
+                if (!result.Erro)
+                {
+                    txtEndereco.Text = result.Logradouro;
+                    txtComplemento.Text = result.Complemento;
+                    txtBairro.Text = result.Bairro;
+                    txtCidade.Text = result.Localidade;
+                    cboUF.Text = result.Uf;
+                }
+            }
+        }
 
 
         private void OnValidated_MaskedTextBox(object sender, EventArgs e)
@@ -170,5 +188,7 @@ namespace Fluxus.WinUI.View
 
             return profile;
         }
+
+
     }
 }
