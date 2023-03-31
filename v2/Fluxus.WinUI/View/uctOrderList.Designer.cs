@@ -39,7 +39,6 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctOrderList));
             pnlLinha2 = new Panel();
             pctLupa = new PictureBox();
             txtSearch = new TextBox();
@@ -361,11 +360,11 @@
             btnExportar.FlatAppearance.MouseOverBackColor = Color.LightBlue;
             btnExportar.FlatStyle = FlatStyle.Flat;
             btnExportar.ForeColor = Color.Black;
-            btnExportar.Image = (Image)resources.GetObject("btnExportar.Image");
-            btnExportar.Location = new Point(1824, 1206);
+            btnExportar.Image = Properties.Resources.exportIcon;
+            btnExportar.Location = new Point(1834, 1205);
             btnExportar.Margin = new Padding(7, 6, 7, 6);
             btnExportar.Name = "btnExportar";
-            btnExportar.Size = new Size(60, 60);
+            btnExportar.Size = new Size(50, 50);
             btnExportar.TabIndex = 260;
             btnExportar.TextImageRelation = TextImageRelation.ImageBeforeText;
             ttpOS.SetToolTip(btnExportar, "Exportar para o Excel");

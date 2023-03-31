@@ -113,6 +113,16 @@ namespace Fluxus.WinUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap exportIcon {
+            get {
+                object obj = ResourceManager.GetObject("exportIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hidePasswordIcon {
             get {
                 object obj = ResourceManager.GetObject("hidePasswordIcon", resourceCulture);

@@ -24,11 +24,14 @@ namespace Fluxus.WinUI.View
             CleanFilter();
 
             if (Logged.Rt)
-                cboProfissional.SelectedIndex = Convert.ToInt32(Logged.ProfessionalId);
+                cboProfissional.SelectedValue = Logged.ProfessionalTag;
             else
                 cboProfissional.SelectedIndex = 0;
-            cboFaturadas.SelectedIndex = 0;
 
+            if (!Logged.Rl)
+                cboProfissional.Enabled = false;
+
+            cboFaturadas.SelectedIndex = 0;
             RefreshFilter();
 
             _dtOS = new App.ServiceOrderApp().GetOrdensComFiltro(_currentFilter);
@@ -46,27 +49,33 @@ namespace Fluxus.WinUI.View
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            var id = Convert.ToInt32(dgvOS.CurrentRow.Cells[0].Value);
-            var serviceOrder = new App.ServiceOrderApp().GetBy(id);
-            frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, serviceOrder);
-            formNeto.Text = "Alterar";
-            _frmPrincipal.OpenUserControl(formNeto);
+            if (dgvOS.RowCount > 0)
+            {
+                var id = Convert.ToInt32(dgvOS.CurrentRow.Cells[0].Value);
+                var serviceOrder = new App.ServiceOrderApp().GetBy(id);
+                frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, serviceOrder);
+                formNeto.Text = "Alterar";
+                _frmPrincipal.OpenUserControl(formNeto);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var id = Convert.ToInt32(dgvOS.CurrentRow.Cells["id"].Value);
-            var serviceOrder = new App.ServiceOrderApp().GetBy(id);
-
-            var dialog = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (dialog == DialogResult.Yes)
+            if (dgvOS.RowCount > 0)
             {
-                var result = new App.ServiceOrderApp().Delete(serviceOrder);
-                MessageBox.Show(result, "Ordem de Serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var id = Convert.ToInt32(dgvOS.CurrentRow.Cells["id"].Value);
+                var serviceOrder = new App.ServiceOrderApp().GetBy(id);
 
-                _dtOS = new App.ServiceOrderApp().GetOrdensComFiltro(_currentFilter);
-                dgvOS.DataSource = _dtOS;
-                lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
+                var dialog = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dialog == DialogResult.Yes)
+                {
+                    var result = new App.ServiceOrderApp().Delete(serviceOrder);
+                    MessageBox.Show(result, "Ordem de Serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    _dtOS = new App.ServiceOrderApp().GetOrdensComFiltro(_currentFilter);
+                    dgvOS.DataSource = _dtOS;
+                    lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
+                }
             }
         }
 

@@ -69,6 +69,7 @@ namespace Fluxus.WinUI.View
             Logged.ProfessionalId = dataRow[0]["id"].ToString();
             Logged.Rt = Convert.ToBoolean(dataRow[0]["technicianResponsible"]);
             Logged.Rl = Convert.ToBoolean(dataRow[0]["legalResponsible"]);
+            Logged.ProfessionalTag = dataRow[0]["tag"].ToString();
 
 
             lblLoad.Text = "";

@@ -6,6 +6,7 @@ namespace Fluxus.Domain.Entities
     {
         //USER LOGGED
         public static string ProfessionalId = null;
+        public static string ProfessionalTag = null;
         public static bool Rt = false;
         public static bool Rl = false;
         public static bool Usr_ativo = false;

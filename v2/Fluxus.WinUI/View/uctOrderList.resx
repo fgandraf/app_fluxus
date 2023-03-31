@@ -93,30 +93,6 @@
   <metadata name="invoiced.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnExportar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAIGNIUk0AAHolAACAgwAA+f8AAIDoAABS
-        CAABFVgAADqXAAAXb9daH5AAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAPjSURBVDhPjVV7UNRVFD46rkGm
-        gk6NkrLAAkuyruUwIcL4oF0eKzja09ARQYUVYtl1AU2nJhlQfIHoH04zkChkltYwmNZYSI0NaZNLQw+j
-        NMbNDB+IgBSiM1/n3BWa1Wy4M9/cc+695/udx73nR0FOM2nXminoHlgeqXWadYxk3ivi9RrGGUYX4+Tg
-        uaHZYSJtQSIFFlhI6zATsVEck2TxgUpGI8PNwP0IK7RgUt4cNy3RRXojJJLSwgyUpjf4W2P8xbMHjP9r
-        zc8ajZjiNFR/+REqPt2P7cf3sfyhwp7P3kVpw9uI35LRLoT9wyGl5dOwqNKG/xsbPqiAEPYMEk61x0MQ
-        UpCIKTxPWBODKfmsOxMRVpiMyXlzQfNGoezjKjS0NIHiR4Pma7CgfI36jr2urGeIUAz8rbMwKsMIrcOk
-        5PAiC4wbF+PJ/PkYn+0JueKTGrS62+C+flnJghM/NCvCvNrSbkUoXo1bHYUGV5MCJY/HhsO7cPvOAKI3
-        vYqxWVEYl/UsYkuWobrpMM5d/g1/dF1B1RdHUMX6qbaz3oQSMr0SjJpT9WojojAJ/QO38WuHm9dDEMge
-        h/JagG0eyOSDbceqcVRCThgDMj+KhbtylV1+3RaPh0I4MWc2pJJXujtxsbMDA3fvYBaHqFlhQLAzAY9k
-        Pg3ztlX4nsPtvHUTvf19aP29TYV/6UaHInztQMm/hKGcQ1o8GbbazWpTvKVFk6ArSFLXSvIqxL4rjCrU
-        kz+dgW/mDKVba4of9FAO04uB2H2iTm2KAS2NQAAXZDCCqDdfgm1/Cb76xYW2P9thO1DKKMHBr48pG3bG
-        46GQadKnqwLIeKf5qJqz921SudXxNRrDRZu7OR31336O9muXcLXnBsuNSm+5eM67KHItRiyLULmRQRY/
-        dPX1KHki5/Xx3FiEe54eKJbUq6g/2wiaQ6A4QsL21d4hS/XEy3J+Ukv3FmEE5+753flo/PE0TFyIx9g7
-        n5XPwLR1Jb650MredaL7r14lC8Rjr6KEMJm8BkoLx8h0A8JeXwjfVTNByyPVh2RPotAXLYDemYRDp4+j
-        +fx30HMh9Vy0jUcqPTmsu5fDh73lQPtzqrqyL4QR61IwnSHhSt4M61NhWJeK4vq9inDtwa29UpS7w2oO
-        nOMX9tiV4cOG/b0y1RyG1b4kz0+tT+lLrch1WXZYXUk7sl0p5TktAstOa0tyZY5rmsNSS0EOs5FJl3Cj
-        fYvn9xmtjL/v/1Ao54pJf9ZkzqDRDE2G0Qs+tmjye3kmd2xu29LOueUryC+B9ScYs4O5kzMGO/k1XmuS
-        s1yooV+G6ALdG6kUkB5H/wAqP15kX86aTAAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="salvar.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>100, 3</value>
   </metadata>

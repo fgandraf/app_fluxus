@@ -78,9 +78,10 @@ namespace Fluxus.WinUI.View
 
         private void txtCEP_Leave(object sender, EventArgs e)
         {
-            if (txtCEP.Text != "     -")
+            string cep = Regex.Replace(txtCEP.Text, "[^0-9]", "");
+
+            if (!String.IsNullOrEmpty(cep) && cep.Length == 8)
             {
-                string cep = Regex.Replace(txtCEP.Text, "[^0-9]", "");
                 var result = new ViaCep().GetViaCep(cep);
                 if (!result.Erro)
                 {
