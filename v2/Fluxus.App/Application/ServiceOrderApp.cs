@@ -2,7 +2,6 @@
 using Fluxus.Domain.Struct;
 using Fluxus.Infra.Repositories;
 using Fluxus.Infra.Services;
-using iTextSharp.text;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,13 +12,55 @@ namespace Fluxus.App
 {
     public class ServiceOrderApp
     {
+        public string Message { get; private set; }
 
-        public void Insert(ServiceOrder body)
-            => new ServiceOrderRepository().Insert(body);
+        public bool InsertOrUpdate(ServiceOrder serviceOrder, string method)
+        {
+            if (string.IsNullOrEmpty(serviceOrder.ReferenceCode) || serviceOrder.ReferenceCode == "../...")
+            {
+                Message = "Campo Referência é obrigatório";
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(serviceOrder.ServiceId))
+            {
+                Message = "Campo Atividade é obrigatório";
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(serviceOrder.ProfessionalId))
+            {
+                Message = "Campo Profissional é obrigatório";
+                return false;
+            }
 
 
-        public void Update(ServiceOrder body)
-            => new ServiceOrderRepository().Update(body);
+            serviceOrder.ServiceAmount = serviceOrder.ServiceAmount.Replace(',', '.');
+            serviceOrder.MileageAllowance = serviceOrder.MileageAllowance.Replace(',', '.');
+
+            string tag = serviceOrder.Title;
+            char[] dividers = { '.', '/' };
+            string[] elements = serviceOrder.ReferenceCode.Split(dividers, StringSplitOptions.RemoveEmptyEntries);
+            var referenceNumber = Convert.ToInt32(elements[2]);
+            serviceOrder.Title = $"{tag}-{referenceNumber}" + "\n\n" +
+                                 $"{serviceOrder.CustomerName.Replace(" ", " ")}" + "\n" +
+                                 $"- Cidade: {serviceOrder.City}" + "\n" +
+                                 $"- Prazo: {serviceOrder.Deadline.ToShortDateString()}";
+
+            bool result;
+            if (method == "Alterar")
+                result = new ServiceOrderRepository().Update(serviceOrder);
+            else
+                result = new ServiceOrderRepository().Insert(serviceOrder);
+
+            if (result)
+                return true;
+            else
+            {
+                Message = "Não foi possível inserir/alterar a ordem de serviço";
+                return false;
+            }
+        }
 
 
         public void UpdateFaturaCod(int id, int invoiceId)
@@ -30,20 +71,22 @@ namespace Fluxus.App
             => await Task.Run(() => new ServiceOrderRepository().UpdateStatus(id, status));
 
 
-        public string Delete(ServiceOrder order)
+        public bool Delete(int id)
         {
+            var order = new App.ServiceOrderApp().GetBy(id);
             if (order.Invoiced)
-                return "Não é possível excluir uma Ordem de Serviço já faturada!";
+            {
+                Message = "Não é possível excluir uma Ordem de Serviço já faturada!";
+                return false;
+            }
 
-            new ServiceOrderRepository().Delete(order.Id);
-            return "Ordem de Serviço excluída!";
+            new ServiceOrderRepository().Delete(id);
+            return true;
         }
 
-        public List<ServiceOrder> GetOrdensDoFluxo()
+        public List<ServiceOrderFlow> GetOrdensDoFluxo()
             => new ServiceOrderRepository().GetIndexOpen();
 
-        public DataTable GetOrdensDoFluxoEmTabela()
-            => new ServiceOrderRepository().GetIndexOpenEmTabela();
 
         public DataTable GetOrdensConcluidasNaoFaturadas()
             => new ServiceOrderRepository().GetOpenDone();
@@ -59,20 +102,16 @@ namespace Fluxus.App
 
         public DataTable GetProfessionalByInvoiceId(int invoiceId)
             => new ServiceOrderRepository().GetProfessionalByInvoiceId(invoiceId);
-            
 
-        public DataTable GetCidadesDasOrdens(bool addHeader)
+
+        public List<string> GetCitiesFromOrders(bool addHeader)
         {
-            DataTable distinctCidades = new ServiceOrderRepository().GetCitiesFromOrders();
+            var cities = new ServiceOrderRepository().GetCitiesFromOrders();
 
             if (addHeader)
-            {
-                DataRow linha = distinctCidades.NewRow();
-                linha[0] = "--TODAS--";
-                distinctCidades.Rows.InsertAt(linha, 0);
-            }
+                cities.Insert(0, "--TODAS--");
 
-            return distinctCidades;
+            return cities;
         }
 
 

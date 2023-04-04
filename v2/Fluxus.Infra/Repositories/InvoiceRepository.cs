@@ -13,7 +13,7 @@ namespace Fluxus.Infra.Repositories
         public int Insert(Invoice body)
         {
             string json = JsonConvert.SerializeObject(body);
-            return Convert.ToInt32(Request.Post("Invoice", json));
+            return Request.Post("Invoice", json);
         }
 
         public void Update(Invoice body)

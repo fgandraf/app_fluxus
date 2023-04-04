@@ -1,9 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
-using iTextSharp.text;
+using Fluxus.Domain.Struct;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Data;
 
 
 namespace Fluxus.Infra.Repositories
@@ -22,32 +20,30 @@ namespace Fluxus.Infra.Repositories
             Request.Put("Professional", json);
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            Request.Delete("Professional/", id.ToString());
+            return Request.Delete("Professional/", id.ToString());
         }
 
-        public List<Professional> GetAll()
+        public List<ProfessionalIndex> GetIndex()
         {
             string json = Request.Get("Professional", string.Empty);
-            return JsonConvert.DeserializeObject<List<Professional>>(json);
+            return JsonConvert.DeserializeObject<List<ProfessionalIndex>>(json);
         }
 
-        public DataTable GetUser(string userName)
+        public User GetUser(string userName)
         {
             var json = Request.Get("Professional/UserInfo/", userName);
-            var retorno = new DataTable();
             if (json != null)
-            {
-                retorno = JsonConvert.DeserializeObject<DataTable>(json);
-            }
-            return retorno;
+                return JsonConvert.DeserializeObject<User>(json);
+
+            return new User();
         }
 
-        public DataTable GetTagNameid()
+        public List<Professional> GetTagNameid()
         {
             string json = Request.Get("Professional/TagNameId", string.Empty);
-            return JsonConvert.DeserializeObject<DataTable>(json);
+            return JsonConvert.DeserializeObject<List<Professional>>(json);
         }
 
         public Professional GetById(int id)

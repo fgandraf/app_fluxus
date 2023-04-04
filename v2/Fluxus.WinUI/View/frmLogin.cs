@@ -1,10 +1,6 @@
-﻿using System;
-using System.Data;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using Fluxus.App;
+﻿using Fluxus.App;
 using Fluxus.Domain.Entities;
-
+using System.Runtime.InteropServices;
 
 namespace Fluxus.WinUI.View
 {
@@ -12,86 +8,43 @@ namespace Fluxus.WinUI.View
     {
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
+
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
 
 
-        //:EVENTS
-        ///_______Form
+
         public frmLogin()
-        {
-            InitializeComponent();
-        }
+            => InitializeComponent();
 
-        private void frmLogin_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-
-
-
-
-        ///_______Button
         private void btnAppFechar_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
+            => Environment.Exit(0);
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            lblLoad.Text = "Validando usuário";
+            var app = new ProfessionalApp();
+            var user = app.GetUser(txtUsuario.Text, txtSenha.Text);
 
-
-            DataTable dtUsuario = new ProfessionalApp().GetUser(txtUsuario.Text);
-
-            DataRow[] dataRow;
-
-            if (dtUsuario.Rows.Count == 0)
+            if (string.IsNullOrEmpty(user.UserName))
             {
-                MessageBox.Show("Usuário não encontrado", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                lblLoad.Text = "";
+                MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else
             {
-                dataRow = dtUsuario.Select();
-                if (dataRow[0]["userPassword"].ToString() != txtSenha.Text || Convert.ToBoolean(dataRow[0]["userActive"]) == false)
-                {
-                    MessageBox.Show("Senha incorreta ou usuário não está ativo", "Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    lblLoad.Text = "";
-                    return;
-                }
+                Logged.Usr_nome = user.UserName;
+                Logged.ProfessionalId = user.Id;
+                Logged.Rt = user.TechnicianResponsible;
+                Logged.Rl = user.LegalResponsible;
+                Logged.ProfessionalTag = user.Tag;
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            Logged.Usr_nome = dataRow[0]["userName"].ToString();
-            Logged.ProfessionalId = dataRow[0]["id"].ToString();
-            Logged.Rt = Convert.ToBoolean(dataRow[0]["technicianResponsible"]);
-            Logged.Rl = Convert.ToBoolean(dataRow[0]["legalResponsible"]);
-            Logged.ProfessionalTag = dataRow[0]["tag"].ToString();
 
-
-            lblLoad.Text = "";
-            this.Close();
         }
 
-
-
-
-
-        ///_______TextBox
-        private void txtSenha_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                btnEntrar.PerformClick();
-        }
-
-
-
-
-
-        ///_______PictureBox
         private void imgShowPwd_Click(object sender, EventArgs e)
         {
             txtSenha.PasswordChar = '\0';
@@ -104,10 +57,12 @@ namespace Fluxus.WinUI.View
             imgShowPwd.Show();
         }
 
+        private void frmLogin_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
 
-
+        }
     }
-
-
 
 }

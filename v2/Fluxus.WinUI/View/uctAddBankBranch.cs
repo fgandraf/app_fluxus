@@ -58,10 +58,14 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            BankBranch branch = PopulateObject();
-            var result = new BankBranchApp().InsertOrUpdate(branch, btnAddSave.Text);
+            var model = PopulateObject();
+            var app = new BankBranchApp();
+            var success = app.InsertOrUpdate(model, btnAddSave.Text);
 
-            MessageBox.Show(result, "Atividades", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (success)
+                btnCancelar_Click(sender, e);
+            else
+                MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

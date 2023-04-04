@@ -40,10 +40,14 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var service = PopulateObject();
-            var result = new ServiceApp().InsertOrUpdate(service, btnAddSave.Text);
+            var model = PopulateObject();
+            var app = new ServiceApp();
+            var success = app.InsertOrUpdate(model, btnAddSave.Text);
             
-            MessageBox.Show(result, "Atividades", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (success)
+                btnCancelar_Click(sender, e);
+            else
+                MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
 

@@ -43,8 +43,6 @@
             btnAppFechar = new Button();
             label1 = new Label();
             ttpLogin = new ToolTip(components);
-            lblLoad = new Label();
-            prbProgress = new ProgressBar();
             pnlLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgShowPwd).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgSenha).BeginInit();
@@ -134,7 +132,6 @@
             txtSenha.TabIndex = 1;
             txtSenha.Text = "123456";
             ttpLogin.SetToolTip(txtSenha, "Senha");
-            txtSenha.KeyDown += txtSenha_KeyDown;
             // 
             // pnlLinhaUsuario
             // 
@@ -169,7 +166,6 @@
             txtUsuario.TabIndex = 0;
             txtUsuario.Text = "fgandraf";
             ttpLogin.SetToolTip(txtUsuario, "Nome de usuário");
-            txtUsuario.KeyDown += txtSenha_KeyDown;
             // 
             // imgHidePwd
             // 
@@ -217,38 +213,12 @@
             label1.Text = "Fluxus";
             label1.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // lblLoad
-            // 
-            lblLoad.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
-            lblLoad.ForeColor = Color.White;
-            lblLoad.Location = new Point(0, 684);
-            lblLoad.Margin = new Padding(0);
-            lblLoad.Name = "lblLoad";
-            lblLoad.Size = new Size(910, 32);
-            lblLoad.TabIndex = 14;
-            lblLoad.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // prbProgress
-            // 
-            prbProgress.BackColor = Color.DarkSlateBlue;
-            prbProgress.Dock = DockStyle.Bottom;
-            prbProgress.Location = new Point(0, 728);
-            prbProgress.Margin = new Padding(6, 7, 6, 7);
-            prbProgress.Maximum = 9;
-            prbProgress.Name = "prbProgress";
-            prbProgress.Size = new Size(910, 10);
-            prbProgress.Step = 8;
-            prbProgress.TabIndex = 15;
-            prbProgress.Visible = false;
-            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SteelBlue;
             ClientSize = new Size(910, 738);
-            Controls.Add(lblLoad);
-            Controls.Add(prbProgress);
             Controls.Add(label1);
             Controls.Add(btnAppFechar);
             Controls.Add(pnlLogin);
@@ -285,7 +255,5 @@
         private System.Windows.Forms.ToolTip ttpLogin;
         private System.Windows.Forms.PictureBox imgShowPwd;
         private System.Windows.Forms.PictureBox imgHidePwd;
-        private System.Windows.Forms.Label lblLoad;
-        private System.Windows.Forms.ProgressBar prbProgress;
     }
 }

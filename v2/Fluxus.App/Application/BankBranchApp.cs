@@ -1,25 +1,30 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 using Fluxus.Domain.Entities;
+using Fluxus.Domain.Struct;
 using Fluxus.Infra.Repositories;
-using iTextSharp.text;
 
 namespace Fluxus.App
 {
     public class BankBranchApp
     {
+        public string Message { get; private set; }
 
-        public string InsertOrUpdate(BankBranch bankBranch, string method)
+        public bool InsertOrUpdate(BankBranch bankBranch, string method)
         {
             if (bankBranch.BranchNumber == "")
-                return "Campos com * são obrigatório";
-
-            if (method == "Alterar")
-                new BankBranchRepository().Update(bankBranch);
+            {
+                Message = "Campos com * são obrigatório";
+                return false;
+            }
             else
-                new BankBranchRepository().Insert(bankBranch);
-
-            return "Dados cadastrados com sucesso!";
+            {
+                if (method == "Alterar")
+                    new BankBranchRepository().Update(bankBranch);
+                else
+                    new BankBranchRepository().Insert(bankBranch);
+                
+                return true;
+            }
         }
 
 
@@ -31,15 +36,25 @@ namespace Fluxus.App
             => new BankBranchRepository().Update(body);
 
 
-        public void Delete(int id) 
-            => new BankBranchRepository().Delete(id);
+        public bool Delete(int id)
+        {
+            var success = new BankBranchRepository().Delete(id);
+            
+            if (success)
+                return true;
+            else
+            {
+                Message = "Não foi possível excluir a agência";
+                return false;
+            }
+        }
 
 
-        public List<BankBranch> GetAll() 
-            => new BankBranchRepository().GetAll();
+        public List<BankBranchIndex> GetIndex() 
+            => new BankBranchRepository().GetIndex();
 
 
-        public DataTable BuscarAgencia(string agenciaCodigo)
+        public BankBranch BuscarAgencia(string agenciaCodigo)
             => new BankBranchRepository().GetByCode(agenciaCodigo);
 
 

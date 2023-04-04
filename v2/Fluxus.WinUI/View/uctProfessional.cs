@@ -5,7 +5,7 @@ namespace Fluxus.WinUI.View
 {
     public partial class uctProfessional : UserControl
     {
-        frmMain _frmPrincipal;
+        private readonly frmMain _frmPrincipal;
 
         public uctProfessional(frmMain frm1)
         {
@@ -19,7 +19,7 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvProfessionals.DataSource = new ProfessionalApp().GetAll();
+            dgvProfessionals.DataSource = new ProfessionalApp().GetIndex();
 
             if (dgvProfessionals.Rows.Count == 0)
             {
@@ -48,12 +48,17 @@ namespace Fluxus.WinUI.View
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
+            var dialog = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialog == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-                new ProfessionalApp().Delete(id);
-                dgvProfessionals.Rows.RemoveAt(dgvProfessionals.CurrentRow.Index);
+                var id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
+                var app = new ProfessionalApp();
+                var success = app.Delete(id);
+
+                if (success)
+                    dgvProfessionals.DataSource = app.GetIndex();
+                else
+                    MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

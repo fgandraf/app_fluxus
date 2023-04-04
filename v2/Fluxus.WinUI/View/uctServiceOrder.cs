@@ -3,7 +3,7 @@ namespace Fluxus.WinUI.View
 {
     public partial class uctServiceOrder : UserControl
     {
-        frmMain _frmPrincipal;
+        private readonly frmMain _frmPrincipal;
 
         public uctServiceOrder(frmMain frm1)
         {

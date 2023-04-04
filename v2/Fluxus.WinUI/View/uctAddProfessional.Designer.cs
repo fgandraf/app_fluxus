@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctAddProfessional));
             txtCPF = new MaskedTextBox();
             lblDataNascimento = new Label();
             txtTelefone2 = new MaskedTextBox();
@@ -555,11 +554,11 @@
             // 
             imgShowPwd.Anchor = AnchorStyles.Top;
             imgShowPwd.Cursor = Cursors.Hand;
-            imgShowPwd.Image = (Image)resources.GetObject("imgShowPwd.Image");
-            imgShowPwd.Location = new Point(995, 1986);
+            imgShowPwd.Image = Properties.Resources.showPasswordIcon;
+            imgShowPwd.Location = new Point(995, 1988);
             imgShowPwd.Margin = new Padding(6, 7, 6, 7);
             imgShowPwd.Name = "imgShowPwd";
-            imgShowPwd.Size = new Size(32, 37);
+            imgShowPwd.Size = new Size(32, 32);
             imgShowPwd.SizeMode = PictureBoxSizeMode.Zoom;
             imgShowPwd.TabIndex = 234;
             imgShowPwd.TabStop = false;
@@ -570,11 +569,11 @@
             // 
             imgHidePwd.Anchor = AnchorStyles.Top;
             imgHidePwd.Cursor = Cursors.Hand;
-            imgHidePwd.Image = (Image)resources.GetObject("imgHidePwd.Image");
-            imgHidePwd.Location = new Point(995, 1986);
+            imgHidePwd.Image = Properties.Resources.hidePasswordIcon;
+            imgHidePwd.Location = new Point(995, 1988);
             imgHidePwd.Margin = new Padding(6, 7, 6, 7);
             imgHidePwd.Name = "imgHidePwd";
-            imgHidePwd.Size = new Size(32, 37);
+            imgHidePwd.Size = new Size(32, 32);
             imgHidePwd.SizeMode = PictureBoxSizeMode.Zoom;
             imgHidePwd.TabIndex = 235;
             imgHidePwd.TabStop = false;
@@ -769,12 +768,11 @@
             panel1.Size = new Size(1040, 2);
             panel1.TabIndex = 285;
             // 
-            // frmAddProfessional
+            // uctAddProfessional
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1993, 1428);
             Controls.Add(pnlMainAddProfissional);
             Controls.Add(pnlLinha2);
             Margin = new Padding(6, 7, 6, 7);

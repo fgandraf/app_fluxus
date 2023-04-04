@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Text;
 
@@ -24,7 +25,7 @@ namespace Fluxus.Infra.Repositories
                     if (response.IsSuccessStatusCode)
                         return response.Content.ReadAsStringAsync().Result;
                     else
-                        throw new Exception("Request error: " + response.Content.ReadAsStringAsync().Result);
+                        return null;
                 }
             }
             catch (Exception ex)
@@ -44,10 +45,10 @@ namespace Fluxus.Infra.Repositories
                     httpClient.DefaultRequestHeaders.Add("Token", TOKEN);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
                     var response = httpClient.PutAsync(model, content).Result;
-                    
+
                     if (response.IsSuccessStatusCode == false)
                         throw new Exception("Request error: " + response.Content.ReadAsStringAsync().Result);
-                    
+
                     return response.IsSuccessStatusCode;
                 }
             }
@@ -81,7 +82,7 @@ namespace Fluxus.Infra.Repositories
         }
 
 
-        public static bool Post(string model, string json)
+        public static int Post(string model, string json)
         {
             try
             {
@@ -95,7 +96,7 @@ namespace Fluxus.Infra.Repositories
                     if (response.IsSuccessStatusCode == false)
                         throw new Exception("Request error: " + response.Content.ReadAsStringAsync().Result);
 
-                    return true;
+                    return Convert.ToInt32(response.Content.ReadAsStringAsync().Result);
                 }
             }
             catch (Exception ex)

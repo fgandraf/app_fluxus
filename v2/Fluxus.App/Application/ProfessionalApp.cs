@@ -1,6 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
+using Fluxus.Domain.Struct;
 using Fluxus.Infra.Repositories;
-using iTextSharp.text;
 using System.Collections.Generic;
 using System.Data;
 
@@ -8,41 +8,15 @@ namespace Fluxus.App
 {
     public class ProfessionalApp
     {
+        public string Message { get; private set; }
 
-        public void Delete(int id)
-            => new ProfessionalRepository().Delete(id);
-
-
-        public List<Professional> GetAll()
-            => new ProfessionalRepository().GetAll();
-
-
-        public DataTable GetUser(string userName)
-            => new ProfessionalRepository().GetUser(userName);
-
-        public Professional GetBy(int id)
-            => new ProfessionalRepository().GetById(id);
-
-
-        public DataTable GetCodeNameid(bool addHeader)
-        {
-            DataTable dtPro = new ProfessionalRepository().GetTagNameid();
-
-            if (addHeader)
-            {
-                DataRow linha = dtPro.NewRow();
-                linha[2] = "--TODOS--";
-                dtPro.Rows.InsertAt(linha, 0);
-            }
-
-            return dtPro;
-        }
-
-        public string InsertOrUpdate(Professional professional, string passwordConfirmation, string method)
+        public bool InsertOrUpdate(Professional professional, string passwordConfirmation, string method)
         {
             if (professional.Tag == "" || professional.Name == "" || professional.UserName == "")
-                return "Campos com * são obrigatório";
-
+            {
+                Message = "Campos com * são obrigatório";
+                return false;
+            }
 
             bool userIsValid = (
                 professional.UserName != "" &&
@@ -51,38 +25,87 @@ namespace Fluxus.App
                 professional.UserPassword == passwordConfirmation
                 );
             if (!userIsValid)
-                return "Verifique os campos Nome de Usuário e Senha";
+            {
+                Message = "Verifique os campos Nome de Usuário e Senha";
+                return false;
+            }
 
 
             if (method == "&Adicionar")
             {
-                var userExists = new ProfessionalApp().GetUser(professional.UserName);
-                if (userExists.Rows.Count > 0)
-                    return "Nome de usuário já existente";
-
+                var user = new ProfessionalApp().GetUser(professional.UserName, string.Empty);
+                if (!string.IsNullOrEmpty(user.UserName))
+                {
+                    Message = "Nome de usuário já existente";
+                    return false;
+                }
 
                 new ProfessionalRepository().Insert(professional);
-
-                if (Logged.ProfessionalId == professional.Tag)
-                {
-                    Logged.Rt = professional.TechnicianResponsible;
-                    Logged.Rl = professional.LegalResponsible;
-                }
-                return "Dados cadastrados com sucesso!";
             }
             else
             {
                 new ProfessionalRepository().Update(professional);
-
-                if (Logged.ProfessionalId == professional.Tag)
-                {
-                    Logged.Rt = professional.TechnicianResponsible;
-                    Logged.Rl = professional.LegalResponsible;
-                }
-                return "Dados atualizados com sucesso!";
             }
 
+            if (Logged.ProfessionalId == professional.Id)
+            {
+                Logged.Rt = professional.TechnicianResponsible;
+                Logged.Rl = professional.LegalResponsible;
+            }
+            return true;
         }
+
+        public bool Delete(int id)
+        {
+            var success = new ProfessionalRepository().Delete(id);
+
+            if (success)
+                return true;
+            else
+            {
+                Message = "Não foi possível excluir o profissional.";
+                return false;
+            }
+        }
+
+        public List<ProfessionalIndex> GetIndex()
+            => new ProfessionalRepository().GetIndex();
+
+
+        public User GetUser(string userName, string password)
+        {
+            var user = new ProfessionalRepository().GetUser(userName);
+
+            if (string.IsNullOrEmpty(user.UserName))
+            {
+                Message = "Usuário não encontrado";
+                return user;
+            }
+
+            if (user.UserPassword != password || user.UserActive == false)
+            {
+                Message = "Senha incorreta ou usuário não está ativo";
+                return user;
+            }
+
+            return user;
+        }
+
+        public Professional GetBy(int id)
+            => new ProfessionalRepository().GetById(id);
+
+
+        public List<Professional> GetCodeNameid(bool addHeader)
+        {
+            var professional = new ProfessionalRepository().GetTagNameid();
+
+            if (addHeader)
+                professional.Insert(0, new Professional { Tag = "--TODOS--" });
+
+            return professional;
+        }
+
+
 
     }
 }

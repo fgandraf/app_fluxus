@@ -1,29 +1,42 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
-using iTextSharp.text;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 
 namespace Fluxus.App
 {
     public class ServiceApp
     {
-        public string InsertOrUpdate (Service service, string method)
+        public string Message { get; private set; }
+
+        public bool InsertOrUpdate (Service service, string method)
         {
             if (service.Tag == "")
-                return "Campos com * são obrigatório";
+            {
+                Message = "Campos com * são obrigatório";
+                return false;
+            }
 
             if (method == "&Adicionar")
                 new ServiceRepository().Insert(service);
             else
                 new ServiceRepository().Update(service);
 
-            return "Dados cadastrados com sucesso!";
+            return true;
         }
 
-        public void Delete(int id)
-            => new ServiceRepository().Delete(id);
+        public bool Delete(int id)
+        {
+            var success = new ServiceRepository().Delete(id);
+            if (success)
+            {
+                return true;
+            }
+            else
+            {
+                Message = "Ñão foi possível excluir a atividade.";
+                return false;
+            }
+        }
 
 
         public List<Service> GetAll(bool addHeader)

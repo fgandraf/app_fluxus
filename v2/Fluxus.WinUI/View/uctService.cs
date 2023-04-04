@@ -5,7 +5,7 @@ namespace Fluxus.WinUI.View
 {
     public partial class uctService : UserControl
     {
-        frmMain _frmPrincipal;
+        private readonly frmMain _frmPrincipal;
 
         public uctService(frmMain frm1)
         {
@@ -51,9 +51,14 @@ namespace Fluxus.WinUI.View
             var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
-                new ServiceApp().Delete(id);
-                dgvServices.Rows.RemoveAt(dgvServices.CurrentRow.Index);
+                var id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
+                var app = new ServiceApp();
+                var success = app.Delete(id);
+
+                if (success)
+                    dgvServices.DataSource = app.GetAll(false);
+                else
+                    MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

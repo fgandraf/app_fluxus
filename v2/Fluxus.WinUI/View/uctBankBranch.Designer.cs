@@ -42,20 +42,13 @@
             btnDelete = new Button();
             btnUpdate = new Button();
             dgvBankBranches = new DataGridView();
+            ttpAgencias = new ToolTip(components);
             id = new DataGridViewTextBoxColumn();
             numero = new DataGridViewTextBoxColumn();
             nome = new DataGridViewTextBoxColumn();
-            endereco = new DataGridViewTextBoxColumn();
-            complemento = new DataGridViewTextBoxColumn();
-            bairro = new DataGridViewTextBoxColumn();
             cidade = new DataGridViewTextBoxColumn();
-            cep = new DataGridViewTextBoxColumn();
-            uf = new DataGridViewTextBoxColumn();
-            contato = new DataGridViewTextBoxColumn();
             telefone1 = new DataGridViewTextBoxColumn();
-            telefone2 = new DataGridViewTextBoxColumn();
             email = new DataGridViewTextBoxColumn();
-            ttpAgencias = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)dgvBankBranches).BeginInit();
             SuspendLayout();
             // 
@@ -133,7 +126,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dgvBankBranches.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvBankBranches.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBankBranches.Columns.AddRange(new DataGridViewColumn[] { id, numero, nome, endereco, complemento, bairro, cidade, cep, uf, contato, telefone1, telefone2, email });
+            dgvBankBranches.Columns.AddRange(new DataGridViewColumn[] { id, numero, nome, cidade, telefone1, email });
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.White;
             dataGridViewCellStyle7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -202,36 +195,6 @@
             nome.Name = "nome";
             nome.ReadOnly = true;
             // 
-            // endereco
-            // 
-            endereco.DataPropertyName = "address";
-            endereco.HeaderText = "Endereco";
-            endereco.MinimumWidth = 10;
-            endereco.Name = "endereco";
-            endereco.ReadOnly = true;
-            endereco.Visible = false;
-            endereco.Width = 200;
-            // 
-            // complemento
-            // 
-            complemento.DataPropertyName = "complement";
-            complemento.HeaderText = "Complemento";
-            complemento.MinimumWidth = 10;
-            complemento.Name = "complemento";
-            complemento.ReadOnly = true;
-            complemento.Visible = false;
-            complemento.Width = 200;
-            // 
-            // bairro
-            // 
-            bairro.DataPropertyName = "district";
-            bairro.HeaderText = "Bairro";
-            bairro.MinimumWidth = 10;
-            bairro.Name = "bairro";
-            bairro.ReadOnly = true;
-            bairro.Visible = false;
-            bairro.Width = 200;
-            // 
             // cidade
             // 
             cidade.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -244,36 +207,6 @@
             cidade.ReadOnly = true;
             cidade.Width = 143;
             // 
-            // cep
-            // 
-            cep.DataPropertyName = "zip";
-            cep.HeaderText = "CEP";
-            cep.MinimumWidth = 10;
-            cep.Name = "cep";
-            cep.ReadOnly = true;
-            cep.Visible = false;
-            cep.Width = 200;
-            // 
-            // uf
-            // 
-            uf.DataPropertyName = "state";
-            uf.HeaderText = "UF";
-            uf.MinimumWidth = 10;
-            uf.Name = "uf";
-            uf.ReadOnly = true;
-            uf.Visible = false;
-            uf.Width = 200;
-            // 
-            // contato
-            // 
-            contato.DataPropertyName = "contactName";
-            contato.HeaderText = "Contato";
-            contato.MinimumWidth = 10;
-            contato.Name = "contato";
-            contato.ReadOnly = true;
-            contato.Visible = false;
-            contato.Width = 200;
-            // 
             // telefone1
             // 
             telefone1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -285,16 +218,6 @@
             telefone1.Name = "telefone1";
             telefone1.ReadOnly = true;
             telefone1.Width = 160;
-            // 
-            // telefone2
-            // 
-            telefone2.DataPropertyName = "phone2";
-            telefone2.HeaderText = "Telefone2";
-            telefone2.MinimumWidth = 10;
-            telefone2.Name = "telefone2";
-            telefone2.ReadOnly = true;
-            telefone2.Visible = false;
-            telefone2.Width = 200;
             // 
             // email
             // 
@@ -309,19 +232,18 @@
             email.ReadOnly = true;
             email.Width = 124;
             // 
-            // frmBankBranch
+            // uctBankBranch
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(2000, 1400);
             Controls.Add(dgvBankBranches);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnAdd);
             Margin = new Padding(6, 7, 6, 7);
-            Name = "frmBankBranch";
-            Text = "Agências Demandantes";
+            Name = "uctBankBranch";
+            Size = new Size(2000, 1400);
             ((System.ComponentModel.ISupportInitialize)dgvBankBranches).EndInit();
             ResumeLayout(false);
         }
@@ -332,18 +254,11 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.DataGridView dgvBankBranches;
         private System.Windows.Forms.ToolTip ttpAgencias;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endereco;
-        private System.Windows.Forms.DataGridViewTextBoxColumn complemento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bairro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cep;
-        private System.Windows.Forms.DataGridViewTextBoxColumn uf;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contato;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefone1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefone2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn numero;
+        private DataGridViewTextBoxColumn nome;
+        private DataGridViewTextBoxColumn cidade;
+        private DataGridViewTextBoxColumn telefone1;
+        private DataGridViewTextBoxColumn email;
     }
 }

@@ -5,7 +5,7 @@ namespace Fluxus.WinUI.View
 {
     public partial class uctBankBranch : UserControl
     {
-        frmMain _frmPrincipal;
+        private readonly frmMain _frmPrincipal;
 
         public uctBankBranch(frmMain frm1)
         {
@@ -19,7 +19,7 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvBankBranches.DataSource = new BankBranchApp().GetAll();
+            dgvBankBranches.DataSource = new BankBranchApp().GetIndex();
 
             if (dgvBankBranches.Rows.Count == 0)
             {
@@ -48,12 +48,17 @@ namespace Fluxus.WinUI.View
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
+            var dialog = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialog == DialogResult.Yes)
             {
-                int id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
-                new BankBranchApp().Delete(id);
-                dgvBankBranches.Rows.RemoveAt(dgvBankBranches.CurrentRow.Index);
+                var id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
+                var app = new BankBranchApp();
+                var success = app.Delete(id);
+
+                if (success)
+                    dgvBankBranches.DataSource = new BankBranchApp().GetIndex();
+                else
+                    MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

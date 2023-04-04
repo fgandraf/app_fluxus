@@ -20,9 +20,9 @@ namespace Fluxus.Infra.Repositories
             Request.Put("Service", json);
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            Request.Delete("Service/", id.ToString());
+            return Request.Delete("Service/", id.ToString());
         }
 
         public List<Service> GetAll()

@@ -96,11 +96,12 @@ namespace Fluxus.WinUI.View
             }
 
 
-            var result = MessageBox.Show("Deseja excluir a Fatura?" + "\n\n" + dgvFaturas.CurrentRow.Cells[1].Value.ToString(), "Remover O.S.", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (result == DialogResult.Yes)
+            var dialog = MessageBox.Show("Deseja excluir a Fatura?" + "\n\n" + dgvFaturas.CurrentRow.Cells[1].Value.ToString(), "Remover O.S.", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (dialog == DialogResult.Yes)
             {
-                new InvoiceApp().Delete((Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id_fat"].Value)));
-                dgvFaturas.Rows.RemoveAt(dgvFaturas.CurrentRow.Index);
+                var id = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
+                new InvoiceApp().Delete(id);
+                dgvFaturas.DataSource = new InvoiceApp().GetAll();
                 ListarOS();
             }
         }

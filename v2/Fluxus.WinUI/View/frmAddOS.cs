@@ -1,394 +1,111 @@
-﻿using System;
-using System.Windows.Forms;
-using Fluxus.Domain.Entities;
-using System.Data;
+﻿using Fluxus.Domain.Entities;
 using Fluxus.App;
-using System.Text;
 
 namespace Fluxus.WinUI.View
 {
     public partial class frmAddOS : UserControl
     {
-        frmMain _frmPrincipal;
-        private string _formFilho;
+        private readonly frmMain _formMain;
+        private string _formChild;
         private string _agencia;
         private int _id;
-        List<Service> DtAtividades = new List<Service>();
-        DataTable DtProfissionais = new DataTable();
 
-
-        private void OnValidated_MaskedTextBox(object sender, EventArgs e)
-        {
-            MaskedTextBox box = (MaskedTextBox)sender;
-            box.Mask = Util.MaskValidated(sender);
-        }
-
-
-        private void OnEnter_MaskedTextBox(object sender, EventArgs e)
-        {
-            MaskedTextBox box = (MaskedTextBox)sender;
-            box.Mask = Util.MaskEnter(sender);
-        }
-
-
-        private void BuscarNomeAtividade()
-        {
-            var service = DtAtividades.Where(item => item.Tag == cboAtividade.Text).First();
-            
-            lblAtividadeNome.Text = service.Description;
-            lblAtividadeValor.Text = service.ServiceAmount;
-            lblAtividadeDeslocamento.Text = service.MileageAllowance;
-        }
-
-
-        private void BuscarNomeProfissional()
-        {
-            DataRow[] dataRowPro = DtProfissionais.Select(String.Format("id = '{0}'", cboProfissional.SelectedValue.ToString()));
-            lblNomeProfissional.Text = dataRowPro[0]["nameid"].ToString();
-        }
-
-
-        private void BuscarAgencia()
-        {
-            DataTable dtAgencia = new BankBranchApp().BuscarAgencia(txtRef1.Text);
-
-            if (dtAgencia == null)
-            {
-                txtAgenciaNome.Text = "Agência não cadastrado!";
-                txtAgenciaTelefone.Text = "";
-                txtAgenciaEmail.Text = "";
-                btnAddAgencia.Show();
-            }
-            else
-            {
-                txtAgenciaNome.Text = dtAgencia.Rows[0]["name"].ToString();
-                txtAgenciaTelefone.Text = dtAgencia.Rows[0]["phone1"].ToString();
-                txtAgenciaEmail.Text = dtAgencia.Rows[0]["email"].ToString();
-                _agencia = txtRef1.Text;
-                btnAddAgencia.Hide();
-            }
-        }
-
-
-        private void Back()
-        {
-            //this.Close();
-            if (_formFilho == "frmOSLista")
-            {
-                uctServiceOrder formFilho = new uctServiceOrder(_frmPrincipal, 1);
-                _frmPrincipal.OpenUserControl(formFilho);
-            }
-            else
-            {
-                uctServiceOrder formFilho = new uctServiceOrder(_frmPrincipal);
-                _frmPrincipal.OpenUserControl(formFilho);
-            }
-        }
-
-
-        private ServiceOrder PopulateObject()
-        {
-            //CRIA O TÍTULO DA ORDEN DE SERVIÇO
-            int refe = Convert.ToInt32(txtRef2.Text);
-            string titulo = cboAtividade.Text + "-" + cboCidade.Text + "-" + Convert.ToString(refe) + "\n\n" + "● Prazo: " + dtpPrazo.Value.ToString("dd/MM/yyyy") + "\nCliente: " + txtNomeCliente.Text.Replace(" ", " ");
-
-            //CRIA/CONCATENA A REFERENCIA
-            string referencia = string.Format("{0}.{1}.{2}/{3}.{4}.{5}.{6}", txtRef0.Text, txtRef1.Text, txtRef2.Text, txtRef3.Text, txtRef4.Text, txtRef5.Text, txtRef6.Text);
-
-            //VALIDA O STATUS
-            EnumStatus status;
-            if (rbtRecebida.Checked)
-                status = EnumStatus.RECEBIDA;
-            else if (rbtPendente.Checked)
-                status = EnumStatus.PENDENTE;
-            else if (rbtVistoriada.Checked)
-                status = EnumStatus.VISTORIADA;
-            else
-                status = EnumStatus.CONCLUIDA;
-
-
-            //POPULATE OBJECT TO RETURN
-            ServiceOrder dado = new ServiceOrder
-            {
-                Id = _id,
-                Title = titulo,
-                ReferenceCode = referencia,
-                Branch = _agencia,
-                OrderDate = Util.ValidateDate(txtDataOrdem.Text),
-                Deadline = Convert.ToDateTime(dtpPrazo.Value),
-                ProfessionalId = cboProfissional.SelectedValue.ToString(),
-                ServiceId = cboAtividade.SelectedValue.ToString(),
-                ServiceAmount = lblAtividadeValor.Text.Replace(',', '.'),
-                MileageAllowance = lblAtividadeDeslocamento.Text.Replace(',', '.'),
-                Siopi = chkSiopi.Checked,
-                CustomerName = txtNomeCliente.Text,
-                City = cboCidade.Text,
-                ContactName = txtNomeContato.Text,
-                ContactPhone = txtTelefoneContato.Text,
-                Coordinates = txtCoordenada.Text,
-                Status = status,
-                PendingDate = Util.ValidateDate(txtDataPendente.Text),
-                SurveyDate = Util.ValidateDate(txtDataVistoria.Text),
-                DoneDate = Util.ValidateDate(txtDataConcluida.Text),
-                Comments = txtOBS.Text
-            };
-
-            return dado;
-        }
-
-        private void NextControl(object sender, EventArgs e)
-        {
-            TextBox txt = (TextBox)sender;
-            if (txt.Text.Length == txt.MaxLength)
-                SendKeys.Send("{TAB}");
-        }
-
-
-
-        //:EVENTS
-        public frmAddOS(frmMain frm1, string frmfilho)
+        public frmAddOS(frmMain formMain, string frmChild)
         {
             InitializeComponent();
 
-            _frmPrincipal = frm1;
-            _formFilho = frmfilho;
+            _formMain = formMain;
+            _formChild = frmChild;
 
-            DtProfissionais = new ProfessionalApp().GetCodeNameid(false);
-            DtAtividades = new ServiceApp().GetAll(false);
+            cboProfissional.DataSource = new ProfessionalApp().GetCodeNameid(false);
+            cboAtividade.DataSource = new ServiceApp().GetAll(false);
+            cboCidade.DataSource = new App.ServiceOrderApp().GetCitiesFromOrders(false);
 
-            cboProfissional.DataSource = DtProfissionais;
-            cboAtividade.DataSource = DtAtividades;
-            cboCidade.DataSource = new App.ServiceOrderApp().GetCidadesDasOrdens(false);
-            cboCidade.SelectedIndex = -1;
+            if (!Logged.Rl)
+                cboProfissional.Enabled = false;
         }
 
-
-        public frmAddOS(frmMain frm1, string frmfilho, ServiceOrder dado) : this(frm1, frmfilho)
+        public frmAddOS(frmMain formMain, string frmChild, ServiceOrder serviceOrder) : this(formMain, frmChild)
         {
-            //POPULATE
-            _id = dado.Id;
+            this.Tag = "Alterar";
+            btnAddSave.Text = "&Alterar";
+            PopulateFromModel(serviceOrder);
 
-            txtRef0.Text = dado.ReferenceCode.Substring(0, 4);
-            txtRef1.Text = dado.ReferenceCode.Substring(5, 4);
-            txtRef2.Text = dado.ReferenceCode.Substring(10, 9);
-            txtRef3.Text = dado.ReferenceCode.Substring(20, 4);
-            txtRef4.Text = dado.ReferenceCode.Substring(25, 2);
-            txtRef5.Text = dado.ReferenceCode.Substring(28, 2);
-            txtRef6.Text = dado.ReferenceCode.Substring(31, 2);
-
-            _agencia = dado.Branch;
-            txtDataOrdem.Text = dado.OrderDate.ToString();
-            dtpPrazo.Text = dado.Deadline.ToString();
-            cboProfissional.SelectedValue = dado.ProfessionalId;
-            cboAtividade.SelectedValue = dado.ServiceId;
-            chkSiopi.Checked = dado.Siopi;
-            txtNomeCliente.Text = dado.CustomerName;
-            cboCidade.Text = dado.City;
-            txtNomeContato.Text = dado.ContactName;
-            txtTelefoneContato.Text = dado.ContactPhone;
-            txtCoordenada.Text = dado.Coordinates;
-            if (dado.Status == EnumStatus.RECEBIDA)
-                rbtRecebida.Checked = true;
-            else if (dado.Status == EnumStatus.PENDENTE)
-                rbtPendente.Checked = true;
-            else if (dado.Status == EnumStatus.VISTORIADA)
-                rbtVistoriada.Checked = true;
-            else
-                rbtConcluida.Checked = true;
-
-            txtDataPendente.Text = dado.PendingDate.ToString();
-            txtDataVistoria.Text = dado.SurveyDate.ToString();
-            txtDataConcluida.Text = dado.DoneDate.ToString();
-            txtOBS.Text = dado.Comments;
-
-
-            BuscarNomeProfissional();
-            BuscarNomeAtividade();
-            BuscarAgencia();
-
-
-            if (dado.InvoiceId != 0)
-            {
-                lblFaturada.Show();
-                txtCodFatura.Text = "Fatura: " + new InvoiceApp().GetDescription(dado.InvoiceId);
-                txtCodFatura.Show();
-
-
-                //DISABLE CONTROLS
-                foreach (Control c in this.tabPage1.Controls)
-                {
-                    if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker || c is RadioButton || c is ComboBox)
-                        c.Enabled = false;
-                }
-                foreach (Control c in this.pnlStatus.Controls)
-                {
-                    if (c is MaskedTextBox || c is RadioButton)
-                        c.Enabled = false;
-                }
-
-                txtOBS.Enabled = false;
-
-                btnAddSave.Hide();
-                btnCancelar.Size = new System.Drawing.Size(200, 25);
-                btnCancelar.Location = new System.Drawing.Point(696, 13);
-
-            }
+            if (serviceOrder.Invoiced)
+                DisableEdit(serviceOrder.InvoiceId);
         }
-
 
         private void frmAddOS_Load(object sender, EventArgs e)
         {
-            if (this.Text == "Alterar")
+            if (Tag.ToString() != "Alterar")
             {
-                btnAddSave.Text = "&Salvar";
-
-                foreach (Control c in this.pnlReferencia.Controls)
+                cboCidade.SelectedIndex = -1;
+                cboAtividade.SelectedIndex = -1;
+                dtpPrazo.Value = dtpPrazo.Value.AddDays(6);
+                cboProfissional.SelectedValue = Logged.Rt ? Logged.ProfessionalId : -1;
+            }
+            else
+            {
+                foreach (Control c in pnlReferencia.Controls)
                 {
                     if (c is TextBox)
                     {
                         TextBox txt = (TextBox)c;
                         txt.ReadOnly = true;
                         txt.ForeColor = System.Drawing.Color.DarkSlateGray;
-
                     }
                 }
-            }
-            else
-            {
-                cboAtividade.Text = null;
-                cboProfissional.Text = null;
-                txtDataOrdem.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                dtpPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
+
+                GetServiceName(sender, e);
+                GetBankBranch();
             }
 
-
-            if (Logged.Rt)
-            {
-                cboProfissional.SelectedValue = Logged.ProfessionalId;
-                BuscarNomeProfissional();
-
-                if (Logged.Rl == false)
-                    cboProfissional.Enabled = false;
-
-            }
-
-            txtRef0.Focus();
-            txtDataOrdem.SelectAll();
-
+            if (cboProfissional.SelectedIndex != -1)
+                GetProfessionalName(sender, e);
         }
-
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            //CHECK PRIMARY KEY
-            if (txtRef0.Text == "" || txtRef1.Text == "" || txtRef2.Text == "" || txtRef3.Text == "" || txtRef4.Text == "" || txtRef5.Text == "" || txtRef6.Text == "")
-            {
-                MessageBox.Show("Campos com * são obrigatório", "Chave Primária", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+            var model = PopulateObject();
+            var app = new ServiceOrderApp();
+            var success = app.InsertOrUpdate(model, this.Tag.ToString());
 
-            ServiceOrder dado = PopulateObject();
-
-            //INSERT OR UPDATE
-            if (btnAddSave.Text == "&Adicionar")
-                new App.ServiceOrderApp().Insert(dado);
+            if (success)
+                btnCancelar_Click(sender, e);
             else
-                new App.ServiceOrderApp().Update(dado);
-
-            Back();
+                MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
-
-
-        private void btnAddAgencia_Click(object sender, EventArgs e)
-        {
-            var form = new uctAddBankBranch(txtRef1.Text);
-            //form.ShowDialog();
-
-            BuscarAgencia();
-            txtRef2.Focus();
-        }
-
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Back();
+            if (_formChild == "uctOrderList")
+            {
+                uctServiceOrder formFilho = new uctServiceOrder(_formMain, 1);
+                _formMain.OpenUserControl(formFilho);
+            }
+            else
+            {
+                uctServiceOrder formFilho = new uctServiceOrder(_formMain);
+                _formMain.OpenUserControl(formFilho);
+            }
         }
 
+        private void dtpDataOrdem_Validated(object sender, EventArgs e)
+            => dtpPrazo.Value = dtpDataOrdem.Value.AddDays(6);
 
-
-
-
-        ///_______RadioButton
-        private void rbtRecebida_CheckedChanged(object sender, EventArgs e)
+        private void txtRef2_Validated(object sender, EventArgs e)
         {
-            txtDataPendente.Hide();
-            txtDataVistoria.Hide();
-            txtDataConcluida.Hide();
+            string referencia = txtRef2.Text;
+            string zeros = "";
 
+            if (referencia.Length < 9)
+            {
+                for (int i = 0; i < 9 - referencia.Length; i++)
+                    zeros += "0";
+            }
+
+            txtRef2.Text = zeros + referencia;
         }
-
-        private void rbtPendente_CheckedChanged(object sender, EventArgs e)
-        {
-            txtDataPendente.Visible = true;
-            txtDataVistoria.Hide();
-            txtDataConcluida.Hide();
-            txtDataPendente.Focus();
-            txtDataPendente.SelectAll();
-        }
-
-        private void rbtVistoriada_CheckedChanged(object sender, EventArgs e)
-        {
-            txtDataVistoria.Visible = true;
-            txtDataPendente.Hide();
-            txtDataConcluida.Hide();
-            txtDataVistoria.Focus();
-            txtDataVistoria.SelectAll();
-        }
-
-        private void rbtConcluida_CheckedChanged(object sender, EventArgs e)
-        {
-            txtDataConcluida.Visible = true;
-            txtDataVistoria.Visible = true;
-            txtDataPendente.Hide();
-            txtDataConcluida.Focus();
-            txtDataConcluida.SelectAll();
-        }
-
-
-
-
-
-        ///_______ComboBox
-        private void cboProfissional_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            BuscarNomeProfissional();
-        }
-
-        private void cboAtividade_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            BuscarNomeAtividade();
-        }
-
-        private void cboCidade_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsLetter(e.KeyChar))
-                e.KeyChar = Char.ToUpper(e.KeyChar);
-        }
-
-
-
-
-
-
-
-        ///_______MaskedTextBox
-
-
-        private void txtDataOrdem_Validated(object sender, EventArgs e)
-        {
-            dtpPrazo.Text = (DateTime.Parse(txtDataOrdem.Text).AddDays(5)).ToString("dd/MM/yyyy");
-        }
-
 
         private void txtRef1_Validated(object sender, EventArgs e)
         {
@@ -401,42 +118,218 @@ namespace Fluxus.WinUI.View
             else
             {
                 if (txtRef1.Text != _agencia)
-                    BuscarAgencia();
+                    GetBankBranch();
             }
         }
 
-        private void txtRef2_Validated(object sender, EventArgs e)
+        private void btnAddAgencia_Click(object sender, EventArgs e)
         {
-            string referencia = txtRef2.Text;
-            string zeros = "";
+            var form = new uctAddBankBranch(txtRef1.Text);
+            //form.ShowDialog();
 
+            GetBankBranch();
+            txtRef2.Focus();
+        }
 
-            if (referencia.Length < 9)
+        private void PopulateFromModel(ServiceOrder serviceOrder)
+        {
+            _id = serviceOrder.Id;
+            txtRef0.Text = serviceOrder.ReferenceCode.Substring(0, 4);
+            txtRef1.Text = serviceOrder.ReferenceCode.Substring(5, 4);
+            txtRef2.Text = serviceOrder.ReferenceCode.Substring(10, 9);
+            txtRef3.Text = serviceOrder.ReferenceCode.Substring(20, 4);
+            txtRef4.Text = serviceOrder.ReferenceCode.Substring(25, 2);
+            txtRef5.Text = serviceOrder.ReferenceCode.Substring(28, 2);
+            txtRef6.Text = serviceOrder.ReferenceCode.Substring(31, 2);
+            _agencia = serviceOrder.Branch;
+            dtpDataOrdem.Value = serviceOrder.OrderDate;
+            dtpPrazo.Value = serviceOrder.Deadline;
+            cboProfissional.SelectedValue = serviceOrder.ProfessionalId;
+            cboAtividade.Text = serviceOrder.ServiceId;
+            chkSiopi.Checked = serviceOrder.Siopi;
+            txtNomeCliente.Text = serviceOrder.CustomerName;
+            cboCidade.Text = serviceOrder.City;
+            txtNomeContato.Text = serviceOrder.ContactName;
+            txtTelefoneContato.Text = serviceOrder.ContactPhone;
+            txtCoordenada.Text = serviceOrder.Coordinates;
+            if (serviceOrder.Status == EnumStatus.RECEBIDA)
+                rbtRecebida.Checked = true;
+            else if (serviceOrder.Status == EnumStatus.PENDENTE)
+                rbtPendente.Checked = true;
+            else if (serviceOrder.Status == EnumStatus.VISTORIADA)
+                rbtVistoriada.Checked = true;
+            else
+                rbtConcluida.Checked = true;
+            dtpDataPendente.Value = (DateTime)serviceOrder.PendingDate;
+            dtpDataVistoria.Value = (DateTime)serviceOrder.SurveyDate;
+            dtpDataConcluida.Value = (DateTime)serviceOrder.DoneDate;
+            txtOBS.Text = serviceOrder.Comments;
+        }
+
+        private ServiceOrder PopulateObject()
+        {
+            string referenceCode = string.Format("{0}.{1}.{2}/{3}.{4}.{5}.{6}", txtRef0.Text, txtRef1.Text, txtRef2.Text, txtRef3.Text, txtRef4.Text, txtRef5.Text, txtRef6.Text);
+
+            EnumStatus status;
+            if (rbtRecebida.Checked)
+                status = EnumStatus.RECEBIDA;
+            else if (rbtPendente.Checked)
+                status = EnumStatus.PENDENTE;
+            else if (rbtVistoriada.Checked)
+                status = EnumStatus.VISTORIADA;
+            else
+                status = EnumStatus.CONCLUIDA;
+
+            string professionalId = cboProfissional.SelectedValue == null ? String.Empty : cboProfissional.SelectedValue.ToString();
+            string serviceId = cboAtividade.SelectedValue == null ? String.Empty : cboAtividade.SelectedValue.ToString();
+
+            ServiceOrder serviceOrder = new ServiceOrder
             {
-                for (int i = 0; i < 9 - referencia.Length; i++)
-                {
-                    zeros += "0";
-                }
+                Id = _id,
+                ReferenceCode = referenceCode,
+                Title = cboAtividade.Text,
+                Branch = _agencia,
+                OrderDate = dtpDataOrdem.Value,
+                Deadline = dtpPrazo.Value,
+                ProfessionalId = professionalId,
+                ServiceId = serviceId,
+                ServiceAmount = lblAtividadeValor.Text,
+                MileageAllowance = lblAtividadeDeslocamento.Text,
+                Siopi = chkSiopi.Checked,
+                CustomerName = txtNomeCliente.Text,
+                City = cboCidade.Text,
+                ContactName = txtNomeContato.Text,
+                ContactPhone = txtTelefoneContato.Text,
+                Coordinates = txtCoordenada.Text,
+                Status = status,
+                PendingDate = dtpDataPendente.Value,
+                SurveyDate = dtpDataVistoria.Value,
+                DoneDate = dtpDataConcluida.Value,
+                Comments = txtOBS.Text
+            };
+
+            return serviceOrder;
+        }
+
+        private void DisableEdit(int invoiceId)
+        {
+            lblFaturada.Show();
+            txtCodFatura.Text = "Fatura: " + new InvoiceApp().GetDescription(invoiceId);
+            txtCodFatura.Show();
+
+
+            foreach (Control c in this.tabPage1.Controls)
+            {
+                if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker || c is RadioButton || c is ComboBox)
+                    c.Enabled = false;
             }
 
-            txtRef2.Text = zeros + referencia;
+            foreach (Control c in this.pnlStatus.Controls)
+            {
+                if (c is MaskedTextBox || c is RadioButton)
+                    c.Enabled = false;
+            }
 
+            txtOBS.Enabled = false;
+            btnAddSave.Hide();
+            btnCancelar.Size = new System.Drawing.Size(433, 62);
+            btnCancelar.Location = new System.Drawing.Point(1508, 32);
         }
 
-        private void pnlReferencia_Validated(object sender, EventArgs e)
+        private void GetServiceName(object sender, EventArgs e)
         {
-            string referencia = string.Format("{0}.{1}.{2}/{3}.{4}.{5}.{6}", txtRef0.Text, txtRef1.Text, txtRef2.Text, txtRef3.Text, txtRef4.Text, txtRef5.Text, txtRef6.Text);
+            var source = (List<Service>)cboAtividade.DataSource;
+            var service = source.FirstOrDefault(item => item.Tag == cboAtividade.Text);
 
+            lblAtividadeNome.Text = service.Description;
+            lblAtividadeValor.Text = service.ServiceAmount;
+            lblAtividadeDeslocamento.Text = service.MileageAllowance;
         }
 
-        private void txtDataOrdem_Enter(object sender, EventArgs e)
+        private void GetBankBranch()
         {
-            txtDataOrdem.Focus();
-            txtDataOrdem.SelectAll();
+            var branch = new BankBranchApp().BuscarAgencia(txtRef1.Text);
+            if (branch == null)
+            {
+                txtAgenciaNome.Text = "Agência não cadastrado!";
+                txtAgenciaTelefone.Text = "";
+                txtAgenciaEmail.Text = "";
+                btnAddAgencia.Show();
+            }
+            else
+            {
+                txtAgenciaNome.Text = branch.Name;
+                txtAgenciaTelefone.Text = branch.Phone1;
+                txtAgenciaEmail.Text = branch.Email;
+                _agencia = txtRef1.Text;
+                btnAddAgencia.Hide();
+            }
         }
+
+        private void GetProfessionalName(object sender, EventArgs e)
+        {
+            var source = (List<Professional>)cboProfissional.DataSource;
+            var professional = source.FirstOrDefault(item => item.Tag == cboProfissional.Text);
+
+            lblNomeProfissional.Text = professional.Nameid;
+        }
+
+        
+
+        #region "UI Behavior"
+        private void cboCidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsLetter(e.KeyChar))
+                e.KeyChar = Char.ToUpper(e.KeyChar);
+        }
+
+        private void OnValidated_MaskedTextBox(object sender, EventArgs e)
+            => ((MaskedTextBox)sender).Mask = Util.MaskValidated(sender);
+
+        private void OnEnter_MaskedTextBox(object sender, EventArgs e)
+            => ((MaskedTextBox)sender).Mask = Util.MaskEnter(sender);
+
+        private void NextControl(object sender, EventArgs e)
+        {
+            var txt = (TextBox)sender;
+            if (txt.Text.Length == txt.MaxLength)
+                SendKeys.Send("{TAB}");
+        }
+
+        private void rbtRecebida_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDataPendente.Hide();
+            dtpDataVistoria.Hide();
+            dtpDataConcluida.Hide();
+        }
+
+        private void rbtPendente_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDataPendente.Visible = true;
+            dtpDataVistoria.Hide();
+            dtpDataConcluida.Hide();
+            dtpDataPendente.Focus();
+        }
+
+        private void rbtVistoriada_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDataVistoria.Visible = true;
+            dtpDataPendente.Hide();
+            dtpDataConcluida.Hide();
+            dtpDataVistoria.Focus();
+        }
+
+        private void rbtConcluida_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpDataConcluida.Visible = true;
+            dtpDataVistoria.Visible = true;
+            dtpDataPendente.Hide();
+            dtpDataConcluida.Focus();
+        }
+        #endregion
+
+
 
     }
-
-
 
 }

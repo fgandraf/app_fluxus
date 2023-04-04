@@ -9,9 +9,8 @@ namespace Fluxus.WinUI.View
 
         public frmMain()
         {
-            InitializeComponent();
-            frmLogin login = new frmLogin();
-            login.ShowDialog();
+            if (new frmLogin().ShowDialog() == DialogResult.OK)
+                InitializeComponent();
         }
 
         private async void frmPrincipal_Load(object sender, EventArgs e)

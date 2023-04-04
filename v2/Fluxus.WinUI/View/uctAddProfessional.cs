@@ -1,5 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.App;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Fluxus.WinUI.View
 {
@@ -50,16 +51,20 @@ namespace Fluxus.WinUI.View
             else
                 txtCodigo.Focus();
 
-            if (Logged.ProfessionalId == txtCodigo.Text && chkRL.Checked)
+            if (Logged.ProfessionalTag == txtCodigo.Text && chkRL.Checked)
                 chkRL.Enabled = false;
         }
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            Professional professional = PopulateObject();
-            var result = new ProfessionalApp().InsertOrUpdate(professional, txtUsrSenha2.Text, btnAddSave.Text);
+            var model = PopulateObject();
+            var app = new ProfessionalApp();
+            var success = app.InsertOrUpdate(model, txtUsrSenha2.Text, btnAddSave.Text);
 
-            MessageBox.Show(result, "Profissionais", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            if (success)
+                btnCancelar_Click(sender, e);
+            else
+                MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

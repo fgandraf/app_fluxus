@@ -3,26 +3,23 @@ using Fluxus.Domain.Struct;
 using System.Data;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Linq;
 using System.Collections.Generic;
-using System;
-using System.ComponentModel;
 
 namespace Fluxus.Infra.Repositories
 {
     public class ServiceOrderRepository
     {
-        public void Insert(ServiceOrder body)
+        public bool Insert(ServiceOrder body)
         {
             string json = JsonConvert.SerializeObject(body);
             Request.Post("ServiceOrder", json);
+            return true;
         }
 
-        public void Update(ServiceOrder body)
+        public bool Update(ServiceOrder body)
         {
             string json = JsonConvert.SerializeObject(body);
-            Request.Put("ServiceOrder", json);
+            return Request.Put("ServiceOrder", json);
         }
 
         public void UpdateInvoiceId(int id, int invoiceId)
@@ -40,16 +37,10 @@ namespace Fluxus.Infra.Repositories
             Request.Delete("ServiceOrder/", id.ToString());
         }
 
-        public List<ServiceOrder> GetIndexOpen()
+        public List<ServiceOrderFlow> GetIndexOpen()
         {
             string json = Request.Get("ServiceOrder/OrdersFlow", string.Empty);
-            return JsonConvert.DeserializeObject<List<ServiceOrder>>(json);
-        }
-
-        public DataTable GetIndexOpenEmTabela()
-        {
-            string json = Request.Get("ServiceOrder/OrdersFlow", string.Empty);
-            return JsonConvert.DeserializeObject<DataTable>(json);
+            return JsonConvert.DeserializeObject<List<ServiceOrderFlow>>(json);
         }
 
         public DataTable GetOpenDone()
@@ -80,10 +71,17 @@ namespace Fluxus.Infra.Repositories
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public DataTable GetCitiesFromOrders()
+        public List<string> GetCitiesFromOrders()
         {
+            List<string> cities = new List<string>();
+            
             string json = Request.Get("ServiceOrder/OrderedCities", string.Empty);
-            return JsonConvert.DeserializeObject<DataTable>(json);
+            var table = JsonConvert.DeserializeObject<DataTable>(json);
+
+            for (int i = 0; i < table.Rows.Count; i++)
+                cities.Add(table.Rows[i][0].ToString());
+
+            return cities;
         }
 
         public ServiceOrder GetById(int id)

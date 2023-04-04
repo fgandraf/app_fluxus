@@ -1,6 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Data;
 using Fluxus.App;
+using Fluxus.Domain.Struct;
 
 namespace Fluxus.WinUI.View
 {
@@ -9,7 +10,7 @@ namespace Fluxus.WinUI.View
         private frmMain _frmPrincipal;
         private Control _lastEnteredControl;
         private DataGridView _dgvOrigem;
-        private DataTable _dtOSNFaturada;
+        private List<ServiceOrderFlow> _dtOSNFaturada;
 
 
         public uctOrderFlow(frmMain frm1)
@@ -34,7 +35,7 @@ namespace Fluxus.WinUI.View
                 view.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             }
 
-            _dtOSNFaturada = new App.ServiceOrderApp().GetOrdensDoFluxoEmTabela();
+            _dtOSNFaturada = new App.ServiceOrderApp().GetOrdensDoFluxo();
 
             cboProfissional.DataSource = new ProfessionalApp().GetCodeNameid(true);
 
@@ -61,23 +62,24 @@ namespace Fluxus.WinUI.View
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
-            formNeto.Text = "Adicionar";
+            formNeto.Tag = "Adicionar";
             _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnFaturar_Click(object sender, EventArgs e)
         {
-            frmAddFatura formNeto = new frmAddFatura(_frmPrincipal);
+            uctAddInvoice formNeto = new uctAddInvoice(_frmPrincipal);
             _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void DataGridView_DragOver(object sender, DragEventArgs e)
             => e.Effect = DragDropEffects.Move;
 
+
         private void DataGridView_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
             var dataGrid = (DataGridView)sender;
-            dataGrid.Cursor = Cursors.Hand;
+            dataGrid.Cursor = Cursors.NoMoveHoriz;
         }
 
         private void DataGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
@@ -89,16 +91,17 @@ namespace Fluxus.WinUI.View
         private void DataGridView_DragDrop(object sender, DragEventArgs e)
         {
             var dgvDestino = (DataGridView)sender;
-
             int sourcerow = Convert.ToInt32(e.Data.GetData(Type.GetType("System.Int32")));
 
             if (sourcerow >= 0)
             {
-                string status = dgvDestino.Tag.ToString();
+                var status = Convert.ToInt32(dgvDestino.Tag.ToString());
                 int id = Convert.ToInt32(_dgvOrigem.Rows[sourcerow].Cells[0].Value);
 
-                DataRow linha = _dtOSNFaturada.Select("Id = " + id).FirstOrDefault();
-                linha["Status"] = status;
+                var linha = _dtOSNFaturada.Where(item => item.Id == id).FirstOrDefault();
+                _dtOSNFaturada.Remove(linha);
+                linha.Status = status;
+                _dtOSNFaturada.Add(linha);
 
                 GetOrdersTo(_dgvOrigem);
                 GetOrdersTo(dgvDestino);
@@ -108,7 +111,7 @@ namespace Fluxus.WinUI.View
                 else
                     btnFaturar.Enabled = true;
 
-                new App.ServiceOrderApp().UpdateStatus(id, status);
+                new App.ServiceOrderApp().UpdateStatus(id, status.ToString());
             }
 
             ContarRegistros(_dgvOrigem);
@@ -119,6 +122,7 @@ namespace Fluxus.WinUI.View
         {
             if (e.Button == MouseButtons.Left)
             {
+
                 int SourceRow;
                 _dgvOrigem = (DataGridView)sender;
                 SourceRow = _dgvOrigem.HitTest(e.X, e.Y).RowIndex;
@@ -145,7 +149,7 @@ namespace Fluxus.WinUI.View
                 var ordemDeServico = new ServiceOrderApp().GetBy(serviceOrderId);
 
                 frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
-                formNeto.Text = "Alterar";
+                formNeto.Tag = "Alterar";
                 _frmPrincipal.OpenUserControl(formNeto);
             }
         }
@@ -155,17 +159,20 @@ namespace Fluxus.WinUI.View
             var dgv = (DataGridView)_lastEnteredControl;
             if (dgv != null)
             {
-                var id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
-                var serviceOrder = new App.ServiceOrderApp().GetBy(id);
-
                 var dialog = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (dialog == DialogResult.Yes)
                 {
-                    var result = new App.ServiceOrderApp().Delete(serviceOrder);
-                    MessageBox.Show(result, "Ordem de Serviço", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    var id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
+                    var app = new ServiceOrderApp();
+                    var success = app.Delete(id);
 
-                    _dtOSNFaturada = new App.ServiceOrderApp().GetOrdensDoFluxoEmTabela();
-                    GetOrdersTo(dgv);
+                    if (success)
+                    {
+                        _dtOSNFaturada = app.GetOrdensDoFluxo();
+                        GetOrdersTo(dgv);
+                    }
+                    else
+                        MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -179,33 +186,15 @@ namespace Fluxus.WinUI.View
 
         private void GetOrdersTo(DataGridView dgv)
         {
-            //var professionalId = cboProfissional.SelectedValue.ToString();
-            //var statusInt = Convert.ToInt32(dgv.Tag.ToString());
-
-            //List<ServiceOrder> dvOS;
-
-
-            //if (cboProfissional.SelectedIndex == 0)
-            //    dvOS = new List<ServiceOrder>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
-            //else
-            //    dvOS = new List<ServiceOrder>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
-
-            //if (dvOS.Count > 0)
-            //    dgv.ContextMenuStrip = menuContext;
-
-            //dgv.DataSource = dvOS;
-
-            //ContarRegistros(dgv);
-
-
-            DataView dvOS = new DataView(_dtOSNFaturada);
             var professionalId = cboProfissional.SelectedValue.ToString();
-            var status = Convert.ToInt32(dgv.Tag.ToString());
+            var statusInt = Convert.ToInt32(dgv.Tag.ToString());
+
+            List<ServiceOrderFlow> dvOS;
 
             if (cboProfissional.SelectedIndex == 0)
-                dvOS.RowFilter = String.Format("Status = '{0}'", status);
+                dvOS = new List<ServiceOrderFlow>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
             else
-                dvOS.RowFilter = String.Format("Status = '{0}' AND ProfessionalId = '{1}'", status, professionalId);
+                dvOS = new List<ServiceOrderFlow>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
 
             if (dvOS.Count > 0)
                 dgv.ContextMenuStrip = menuContext;
@@ -213,7 +202,6 @@ namespace Fluxus.WinUI.View
             dgv.DataSource = dvOS;
 
             ContarRegistros(dgv);
-
         }
 
         private void ContarRegistros(DataGridView dgv)
@@ -229,7 +217,6 @@ namespace Fluxus.WinUI.View
                 default: break;
             }
         }
-
     }
 
 }

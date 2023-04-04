@@ -8,7 +8,7 @@ namespace Fluxus.WinUI.View
 {
     public partial class uctProfile : UserControl
     {
-        frmMain _frmPrincipal;
+        private readonly frmMain _frmPrincipal;
         private Image _actualLogo;
         private string _method;
 

@@ -1,7 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories;
 using Fluxus.Infra.Services;
-using iTextSharp.text;
 using System.Collections.Generic;
 using System.Data;
 

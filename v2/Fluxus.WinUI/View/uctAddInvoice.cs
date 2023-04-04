@@ -1,36 +1,27 @@
-﻿using System;
-using System.Windows.Forms;
-using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Entities;
 using System.Globalization;
 using Fluxus.App;
-using System.Linq;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmAddFatura : UserControl
+    public partial class uctAddInvoice : UserControl
     {
-
-
-        frmMain _frmPrincipal;
+        private readonly frmMain _frmPrincipal;
         private double _subtotal_os = 0.00;
         private double _subtotal_desloc = 0.00;
 
-
-
-        public frmAddFatura(frmMain frm1)
+        public uctAddInvoice(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
         }
 
-
         private void frmAddFatura_Load(object sender, EventArgs e)
         {
             dgvOS.DataSource = new ServiceOrderApp().GetOrdensConcluidasNaoFaturadas();
-            SomarValores();
+            Calculate();
             txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
-
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
@@ -38,16 +29,14 @@ namespace Fluxus.WinUI.View
                 return;
             else
             {
-                var result = MessageBox.Show("Deseja remover a O.S. da Fatura?" + "\n\n" + dgvOS.CurrentRow.Cells[2].Value.ToString() + "\n" + dgvOS.CurrentRow.Cells[6].Value.ToString(), "Não Faturar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                
-                if (result == DialogResult.Yes)
+                var dialog = MessageBox.Show("Deseja remover a O.S. da Fatura?" + "\n\n" + dgvOS.CurrentRow.Cells[2].Value.ToString() + "\n" + dgvOS.CurrentRow.Cells[6].Value.ToString(), "Não Faturar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dialog == DialogResult.Yes)
                 {
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
-                    SomarValores();
+                    Calculate();
                 }
             }
         }
-
 
         private void btnFaturar_Click(object sender, EventArgs e)
         {
@@ -56,36 +45,25 @@ namespace Fluxus.WinUI.View
 
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
-                int idOS = Convert.ToInt32(row.Cells["id"].Value);
+                int idOS = Convert.ToInt32(row.Cells["Id"].Value);
                 new ServiceOrderApp().UpdateFaturaCod(idOS, invoiceId);
             }
 
-            MessageBox.Show("Ordens faturadas com sucesso!", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Ordens faturadas com sucesso!", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            Back();
+            btnCancelar_Click(sender, e);
         }
-
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Back();
+            uctServiceOrder formFilho = new uctServiceOrder(_frmPrincipal);
+            _frmPrincipal.OpenUserControl(formFilho);
         }
-
 
         private void dtpData_ValueChanged(object sender, EventArgs e)
-        {
-            txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
-        }
+            => txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
 
-
-
-
-
-
-
-
-
-        private void SomarValores()
+        private void Calculate()
         {
             _subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells["valor_atividade"].Value ?? 0));
             _subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells["valor_deslocamento"].Value ?? 0));
@@ -95,10 +73,9 @@ namespace Fluxus.WinUI.View
             txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _subtotal_os + _subtotal_desloc);
         }
 
-
         private Invoice PopulateToObject()
         {
-            Invoice dado = new Invoice
+            Invoice invoice = new Invoice
             {
                 Description = txtDescricao.Text,
                 IssueDate = dtpData.Value,
@@ -106,17 +83,9 @@ namespace Fluxus.WinUI.View
                 SubtotalMileageAllowance = _subtotal_desloc,
                 Total = _subtotal_os + _subtotal_desloc
             };
-            return dado;
+            return invoice;
         }
 
-
-        private void Back()
-        {
-            //this.Close();
-            uctServiceOrder formFilho = new uctServiceOrder(_frmPrincipal);
-            _frmPrincipal.OpenUserControl(formFilho);
-        }
     }
-
 
 }
