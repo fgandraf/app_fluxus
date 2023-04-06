@@ -42,9 +42,8 @@ namespace Fluxus.App
             char[] dividers = { '.', '/' };
             string[] elements = serviceOrder.ReferenceCode.Split(dividers, StringSplitOptions.RemoveEmptyEntries);
             var referenceNumber = Convert.ToInt32(elements[2]);
-            serviceOrder.Title = $"{tag}-{referenceNumber}" + "\n\n" +
+            serviceOrder.Title = $"{tag}-{serviceOrder.City}-{referenceNumber}" + "\n\n" +
                                  $"{serviceOrder.CustomerName.Replace(" ", " ")}" + "\n" +
-                                 $"- Cidade: {serviceOrder.City}" + "\n" +
                                  $"- Prazo: {serviceOrder.Deadline.ToShortDateString()}";
 
             bool result;

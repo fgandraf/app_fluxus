@@ -21,7 +21,7 @@ namespace Fluxus.WinUI.View
             InitializeComponent();
 
             this.Size = new System.Drawing.Size(650, 600);
-            this.Text = "Adicionar";
+            this.Tag = "Adicionar";
 
             txtAgencia.Text = agencia;
         }
@@ -50,7 +50,7 @@ namespace Fluxus.WinUI.View
 
         private void frmAddAgencia_Load(object sender, EventArgs e)
         {
-            if (this.Text == "Adicionar")
+            if (this.Tag.ToString() == "Adicionar")
                 txtAgencia.Focus();
             else
                 txtNome.Focus();

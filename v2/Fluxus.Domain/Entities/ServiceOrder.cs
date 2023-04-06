@@ -19,7 +19,6 @@ namespace Fluxus.Domain.Entities
         public string? ContactPhone { get; set; }
         public string? Coordinates { get; set; }
         public EnumStatus Status { get; set; }
-        public string? Comments { get; set; }
         public bool Invoiced { get; set; }
         public int InvoiceId { get; set; }
         public DateTime OrderDate { get; set; }
@@ -29,6 +28,5 @@ namespace Fluxus.Domain.Entities
         public DateTime? DoneDate { get; set; }
         public bool Siopi { get; set; }
     }
-
 
 }

@@ -54,12 +54,24 @@
             panel11 = new Panel();
             panel6 = new Panel();
             dgvPendentes = new DataGridView();
+            id_pendente = new DataGridViewTextBoxColumn();
+            titulo_pendente = new DataGridViewTextBoxColumn();
+            status_pendente = new DataGridViewTextBoxColumn();
+            profissional_cod_pendente = new DataGridViewTextBoxColumn();
             panel5 = new Panel();
             dgvRecebidas = new DataGridView();
             panel7 = new Panel();
             dgvVistoriadas = new DataGridView();
+            id_vistoriada = new DataGridViewTextBoxColumn();
+            titulo_vistoriada = new DataGridViewTextBoxColumn();
+            status_vistoriada = new DataGridViewTextBoxColumn();
+            profissional_cod_vistoriada = new DataGridViewTextBoxColumn();
             panel8 = new Panel();
             dgvConcluidas = new DataGridView();
+            id_concluida = new DataGridViewTextBoxColumn();
+            titulo_concluida = new DataGridViewTextBoxColumn();
+            status_concluida = new DataGridViewTextBoxColumn();
+            profissional_cod_concluida = new DataGridViewTextBoxColumn();
             panel9 = new Panel();
             btnAdicionar = new Button();
             pnlFaturar = new Panel();
@@ -74,18 +86,6 @@
             titulo_recebida = new DataGridViewTextBoxColumn();
             status_recebida = new DataGridViewTextBoxColumn();
             profissional_cod_recebida = new DataGridViewTextBoxColumn();
-            id_pendente = new DataGridViewTextBoxColumn();
-            titulo_pendente = new DataGridViewTextBoxColumn();
-            status_pendente = new DataGridViewTextBoxColumn();
-            profissional_cod_pendente = new DataGridViewTextBoxColumn();
-            id_vistoriada = new DataGridViewTextBoxColumn();
-            titulo_vistoriada = new DataGridViewTextBoxColumn();
-            status_vistoriada = new DataGridViewTextBoxColumn();
-            profissional_cod_vistoriada = new DataGridViewTextBoxColumn();
-            id_concluida = new DataGridViewTextBoxColumn();
-            titulo_concluida = new DataGridViewTextBoxColumn();
-            status_concluida = new DataGridViewTextBoxColumn();
-            profissional_cod_concluida = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -374,6 +374,46 @@
             dgvPendentes.DragOver += DataGridView_DragOver;
             dgvPendentes.MouseDown += DataGridView_MouseDown;
             // 
+            // id_pendente
+            // 
+            id_pendente.DataPropertyName = "Id";
+            id_pendente.HeaderText = "Id";
+            id_pendente.MinimumWidth = 10;
+            id_pendente.Name = "id_pendente";
+            id_pendente.ReadOnly = true;
+            id_pendente.Visible = false;
+            id_pendente.Width = 200;
+            // 
+            // titulo_pendente
+            // 
+            titulo_pendente.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            titulo_pendente.DataPropertyName = "Title";
+            titulo_pendente.HeaderText = "Título";
+            titulo_pendente.MinimumWidth = 120;
+            titulo_pendente.Name = "titulo_pendente";
+            titulo_pendente.ReadOnly = true;
+            titulo_pendente.Resizable = DataGridViewTriState.False;
+            // 
+            // status_pendente
+            // 
+            status_pendente.DataPropertyName = "Status";
+            status_pendente.HeaderText = "Status";
+            status_pendente.MinimumWidth = 10;
+            status_pendente.Name = "status_pendente";
+            status_pendente.ReadOnly = true;
+            status_pendente.Visible = false;
+            status_pendente.Width = 200;
+            // 
+            // profissional_cod_pendente
+            // 
+            profissional_cod_pendente.DataPropertyName = "ProfessionalId";
+            profissional_cod_pendente.HeaderText = "Profissional_cod";
+            profissional_cod_pendente.MinimumWidth = 10;
+            profissional_cod_pendente.Name = "profissional_cod_pendente";
+            profissional_cod_pendente.ReadOnly = true;
+            profissional_cod_pendente.Visible = false;
+            profissional_cod_pendente.Width = 200;
+            // 
             // panel5
             // 
             panel5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -424,7 +464,7 @@
             dgvRecebidas.RowHeadersWidth = 60;
             dgvRecebidas.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvRecebidas.RowTemplate.DividerHeight = 10;
-            dgvRecebidas.RowTemplate.Height = 50;
+            dgvRecebidas.RowTemplate.Height = 60;
             dgvRecebidas.RowTemplate.ReadOnly = true;
             dgvRecebidas.RowTemplate.Resizable = DataGridViewTriState.True;
             dgvRecebidas.ScrollBars = ScrollBars.Vertical;
@@ -506,6 +546,45 @@
             dgvVistoriadas.DragOver += DataGridView_DragOver;
             dgvVistoriadas.MouseDown += DataGridView_MouseDown;
             // 
+            // id_vistoriada
+            // 
+            id_vistoriada.DataPropertyName = "Id";
+            id_vistoriada.HeaderText = "Id";
+            id_vistoriada.MinimumWidth = 10;
+            id_vistoriada.Name = "id_vistoriada";
+            id_vistoriada.ReadOnly = true;
+            id_vistoriada.Visible = false;
+            id_vistoriada.Width = 200;
+            // 
+            // titulo_vistoriada
+            // 
+            titulo_vistoriada.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            titulo_vistoriada.DataPropertyName = "Title";
+            titulo_vistoriada.HeaderText = "Título";
+            titulo_vistoriada.MinimumWidth = 120;
+            titulo_vistoriada.Name = "titulo_vistoriada";
+            titulo_vistoriada.ReadOnly = true;
+            // 
+            // status_vistoriada
+            // 
+            status_vistoriada.DataPropertyName = "Status";
+            status_vistoriada.HeaderText = "Status";
+            status_vistoriada.MinimumWidth = 10;
+            status_vistoriada.Name = "status_vistoriada";
+            status_vistoriada.ReadOnly = true;
+            status_vistoriada.Visible = false;
+            status_vistoriada.Width = 200;
+            // 
+            // profissional_cod_vistoriada
+            // 
+            profissional_cod_vistoriada.DataPropertyName = "ProfessionalId";
+            profissional_cod_vistoriada.HeaderText = "Profissional_cod";
+            profissional_cod_vistoriada.MinimumWidth = 10;
+            profissional_cod_vistoriada.Name = "profissional_cod_vistoriada";
+            profissional_cod_vistoriada.ReadOnly = true;
+            profissional_cod_vistoriada.Visible = false;
+            profissional_cod_vistoriada.Width = 200;
+            // 
             // panel8
             // 
             panel8.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -571,6 +650,45 @@
             dgvConcluidas.DragDrop += DataGridView_DragDrop;
             dgvConcluidas.DragOver += DataGridView_DragOver;
             dgvConcluidas.MouseDown += DataGridView_MouseDown;
+            // 
+            // id_concluida
+            // 
+            id_concluida.DataPropertyName = "id";
+            id_concluida.HeaderText = "Id";
+            id_concluida.MinimumWidth = 10;
+            id_concluida.Name = "id_concluida";
+            id_concluida.ReadOnly = true;
+            id_concluida.Visible = false;
+            id_concluida.Width = 200;
+            // 
+            // titulo_concluida
+            // 
+            titulo_concluida.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            titulo_concluida.DataPropertyName = "title";
+            titulo_concluida.HeaderText = "Título";
+            titulo_concluida.MinimumWidth = 120;
+            titulo_concluida.Name = "titulo_concluida";
+            titulo_concluida.ReadOnly = true;
+            // 
+            // status_concluida
+            // 
+            status_concluida.DataPropertyName = "status";
+            status_concluida.HeaderText = "Status";
+            status_concluida.MinimumWidth = 10;
+            status_concluida.Name = "status_concluida";
+            status_concluida.ReadOnly = true;
+            status_concluida.Visible = false;
+            status_concluida.Width = 200;
+            // 
+            // profissional_cod_concluida
+            // 
+            profissional_cod_concluida.DataPropertyName = "professionalId";
+            profissional_cod_concluida.HeaderText = "Profissional_cod";
+            profissional_cod_concluida.MinimumWidth = 10;
+            profissional_cod_concluida.Name = "profissional_cod_concluida";
+            profissional_cod_concluida.ReadOnly = true;
+            profissional_cod_concluida.Visible = false;
+            profissional_cod_concluida.Width = 200;
             // 
             // panel9
             // 
@@ -723,7 +841,6 @@
             titulo_recebida.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             titulo_recebida.DataPropertyName = "Title";
             dataGridViewCellStyle4.NullValue = null;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             titulo_recebida.DefaultCellStyle = dataGridViewCellStyle4;
             titulo_recebida.HeaderText = "Title";
             titulo_recebida.MinimumWidth = 120;
@@ -749,123 +866,6 @@
             profissional_cod_recebida.ReadOnly = true;
             profissional_cod_recebida.Visible = false;
             profissional_cod_recebida.Width = 200;
-            // 
-            // id_pendente
-            // 
-            id_pendente.DataPropertyName = "Id";
-            id_pendente.HeaderText = "Id";
-            id_pendente.MinimumWidth = 10;
-            id_pendente.Name = "id_pendente";
-            id_pendente.ReadOnly = true;
-            id_pendente.Visible = false;
-            id_pendente.Width = 200;
-            // 
-            // titulo_pendente
-            // 
-            titulo_pendente.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            titulo_pendente.DataPropertyName = "Title";
-            titulo_pendente.HeaderText = "Título";
-            titulo_pendente.MinimumWidth = 120;
-            titulo_pendente.Name = "titulo_pendente";
-            titulo_pendente.ReadOnly = true;
-            // 
-            // status_pendente
-            // 
-            status_pendente.DataPropertyName = "Status";
-            status_pendente.HeaderText = "Status";
-            status_pendente.MinimumWidth = 10;
-            status_pendente.Name = "status_pendente";
-            status_pendente.ReadOnly = true;
-            status_pendente.Visible = false;
-            status_pendente.Width = 200;
-            // 
-            // profissional_cod_pendente
-            // 
-            profissional_cod_pendente.DataPropertyName = "ProfessionalId";
-            profissional_cod_pendente.HeaderText = "Profissional_cod";
-            profissional_cod_pendente.MinimumWidth = 10;
-            profissional_cod_pendente.Name = "profissional_cod_pendente";
-            profissional_cod_pendente.ReadOnly = true;
-            profissional_cod_pendente.Visible = false;
-            profissional_cod_pendente.Width = 200;
-            // 
-            // id_vistoriada
-            // 
-            id_vistoriada.DataPropertyName = "Id";
-            id_vistoriada.HeaderText = "Id";
-            id_vistoriada.MinimumWidth = 10;
-            id_vistoriada.Name = "id_vistoriada";
-            id_vistoriada.ReadOnly = true;
-            id_vistoriada.Visible = false;
-            id_vistoriada.Width = 200;
-            // 
-            // titulo_vistoriada
-            // 
-            titulo_vistoriada.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            titulo_vistoriada.DataPropertyName = "Title";
-            titulo_vistoriada.HeaderText = "Título";
-            titulo_vistoriada.MinimumWidth = 120;
-            titulo_vistoriada.Name = "titulo_vistoriada";
-            titulo_vistoriada.ReadOnly = true;
-            // 
-            // status_vistoriada
-            // 
-            status_vistoriada.DataPropertyName = "Status";
-            status_vistoriada.HeaderText = "Status";
-            status_vistoriada.MinimumWidth = 10;
-            status_vistoriada.Name = "status_vistoriada";
-            status_vistoriada.ReadOnly = true;
-            status_vistoriada.Visible = false;
-            status_vistoriada.Width = 200;
-            // 
-            // profissional_cod_vistoriada
-            // 
-            profissional_cod_vistoriada.DataPropertyName = "ProfessionalId";
-            profissional_cod_vistoriada.HeaderText = "Profissional_cod";
-            profissional_cod_vistoriada.MinimumWidth = 10;
-            profissional_cod_vistoriada.Name = "profissional_cod_vistoriada";
-            profissional_cod_vistoriada.ReadOnly = true;
-            profissional_cod_vistoriada.Visible = false;
-            profissional_cod_vistoriada.Width = 200;
-            // 
-            // id_concluida
-            // 
-            id_concluida.DataPropertyName = "id";
-            id_concluida.HeaderText = "Id";
-            id_concluida.MinimumWidth = 10;
-            id_concluida.Name = "id_concluida";
-            id_concluida.ReadOnly = true;
-            id_concluida.Visible = false;
-            id_concluida.Width = 200;
-            // 
-            // titulo_concluida
-            // 
-            titulo_concluida.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            titulo_concluida.DataPropertyName = "title";
-            titulo_concluida.HeaderText = "Título";
-            titulo_concluida.MinimumWidth = 120;
-            titulo_concluida.Name = "titulo_concluida";
-            titulo_concluida.ReadOnly = true;
-            // 
-            // status_concluida
-            // 
-            status_concluida.DataPropertyName = "status";
-            status_concluida.HeaderText = "Status";
-            status_concluida.MinimumWidth = 10;
-            status_concluida.Name = "status_concluida";
-            status_concluida.ReadOnly = true;
-            status_concluida.Visible = false;
-            status_concluida.Width = 200;
-            // 
-            // profissional_cod_concluida
-            // 
-            profissional_cod_concluida.DataPropertyName = "professionalId";
-            profissional_cod_concluida.HeaderText = "Profissional_cod";
-            profissional_cod_concluida.MinimumWidth = 10;
-            profissional_cod_concluida.Name = "profissional_cod_concluida";
-            profissional_cod_concluida.ReadOnly = true;
-            profissional_cod_concluida.Visible = false;
-            profissional_cod_concluida.Width = 200;
             // 
             // uctOrderFlow
             // 
@@ -931,14 +931,6 @@
         private System.Windows.Forms.ComboBox cboProfissional;
         private System.Windows.Forms.Label lblProfissional;
         private System.Windows.Forms.DataGridView dgvVistoriadas;
-        private DataGridViewTextBoxColumn id_pendente;
-        private DataGridViewTextBoxColumn titulo_pendente;
-        private DataGridViewTextBoxColumn status_pendente;
-        private DataGridViewTextBoxColumn profissional_cod_pendente;
-        private DataGridViewTextBoxColumn id_recebidas;
-        private DataGridViewTextBoxColumn titulo_recebida;
-        private DataGridViewTextBoxColumn status_recebida;
-        private DataGridViewTextBoxColumn profissional_cod_recebida;
         private DataGridViewTextBoxColumn id_vistoriada;
         private DataGridViewTextBoxColumn titulo_vistoriada;
         private DataGridViewTextBoxColumn status_vistoriada;
@@ -947,5 +939,13 @@
         private DataGridViewTextBoxColumn titulo_concluida;
         private DataGridViewTextBoxColumn status_concluida;
         private DataGridViewTextBoxColumn profissional_cod_concluida;
+        private DataGridViewTextBoxColumn id_pendente;
+        private DataGridViewTextBoxColumn titulo_pendente;
+        private DataGridViewTextBoxColumn status_pendente;
+        private DataGridViewTextBoxColumn profissional_cod_pendente;
+        private DataGridViewTextBoxColumn id_recebidas;
+        private DataGridViewTextBoxColumn titulo_recebida;
+        private DataGridViewTextBoxColumn status_recebida;
+        private DataGridViewTextBoxColumn profissional_cod_recebida;
     }
 }

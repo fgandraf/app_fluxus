@@ -1,6 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Domain.Struct;
 using Fluxus.Infra.Repositories;
+using Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
 using System.Data;
 
@@ -100,7 +101,7 @@ namespace Fluxus.App
             var professional = new ProfessionalRepository().GetTagNameid();
 
             if (addHeader)
-                professional.Insert(0, new Professional { Tag = "--TODOS--" });
+                professional.Insert(0, new Professional { Nameid = "--TODOS--" });
 
             return professional;
         }

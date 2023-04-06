@@ -61,7 +61,7 @@ namespace Fluxus.WinUI.View
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name);
+            uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name);
             formNeto.Tag = "Adicionar";
             _frmPrincipal.OpenUserControl(formNeto);
         }
@@ -148,7 +148,7 @@ namespace Fluxus.WinUI.View
                 int serviceOrderId = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
                 var ordemDeServico = new ServiceOrderApp().GetBy(serviceOrderId);
 
-                frmAddOS formNeto = new frmAddOS(_frmPrincipal, this.Name, ordemDeServico);
+                uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, ordemDeServico);
                 formNeto.Tag = "Alterar";
                 _frmPrincipal.OpenUserControl(formNeto);
             }

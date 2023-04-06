@@ -28,7 +28,7 @@ namespace Fluxus.WinUI.View
 
         private void frmAddAtividade_Load(object sender, EventArgs e)
         {
-            if (this.Text == "Alterar")
+            if (this.Tag.ToString() == "Alterar")
             {
                 btnAddSave.Text = "&Salvar";
                 txtCodigo.Enabled = false;

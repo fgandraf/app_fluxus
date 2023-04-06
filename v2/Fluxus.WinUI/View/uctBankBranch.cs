@@ -31,7 +31,7 @@ namespace Fluxus.WinUI.View
         private void btnAdd_Click(object sender, EventArgs e)
         {
             uctAddBankBranch formNeto = new uctAddBankBranch(_frmPrincipal);
-            formNeto.Text = "Adicionar";
+            formNeto.Tag = "Adicionar";
             _frmPrincipal.OpenUserControl(formNeto);
         }
 
@@ -41,7 +41,7 @@ namespace Fluxus.WinUI.View
             var branch = new BankBranchApp().GetBy(id);
 
             var formNeto = new uctAddBankBranch(_frmPrincipal, branch);
-            formNeto.Text = "Alterar";
+            formNeto.Tag = "Alterar";
 
             _frmPrincipal.OpenUserControl(formNeto);
         }

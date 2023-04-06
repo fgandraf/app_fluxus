@@ -3,14 +3,14 @@ using Fluxus.App;
 
 namespace Fluxus.WinUI.View
 {
-    public partial class frmAddOS : UserControl
+    public partial class uctAddServiceOrder : UserControl
     {
         private readonly frmMain _formMain;
         private string _formChild;
         private string _agencia;
         private int _id;
 
-        public frmAddOS(frmMain formMain, string frmChild)
+        public uctAddServiceOrder(frmMain formMain, string frmChild)
         {
             InitializeComponent();
 
@@ -25,7 +25,7 @@ namespace Fluxus.WinUI.View
                 cboProfissional.Enabled = false;
         }
 
-        public frmAddOS(frmMain formMain, string frmChild, ServiceOrder serviceOrder) : this(formMain, frmChild)
+        public uctAddServiceOrder(frmMain formMain, string frmChild, ServiceOrder serviceOrder) : this(formMain, frmChild)
         {
             this.Tag = "Alterar";
             btnAddSave.Text = "&Alterar";
@@ -111,9 +111,9 @@ namespace Fluxus.WinUI.View
         {
             if (txtRef1.Text == "")
             {
-                txtAgenciaNome.Text = "";
-                txtAgenciaTelefone.Text = "";
-                txtAgenciaEmail.Text = "";
+                txtBranchName.Text = "";
+                txtBranchPhone.Text = "";
+                txtBranchEmail.Text = "";
             }
             else
             {
@@ -144,8 +144,8 @@ namespace Fluxus.WinUI.View
             _agencia = serviceOrder.Branch;
             dtpDataOrdem.Value = serviceOrder.OrderDate;
             dtpPrazo.Value = serviceOrder.Deadline;
-            cboProfissional.SelectedValue = serviceOrder.ProfessionalId;
-            cboAtividade.Text = serviceOrder.ServiceId;
+            cboProfissional.SelectedValue = Convert.ToInt32(serviceOrder.ProfessionalId);
+            cboAtividade.SelectedValue = Convert.ToInt32(serviceOrder.ServiceId);
             chkSiopi.Checked = serviceOrder.Siopi;
             txtNomeCliente.Text = serviceOrder.CustomerName;
             cboCidade.Text = serviceOrder.City;
@@ -163,7 +163,6 @@ namespace Fluxus.WinUI.View
             dtpDataPendente.Value = (DateTime)serviceOrder.PendingDate;
             dtpDataVistoria.Value = (DateTime)serviceOrder.SurveyDate;
             dtpDataConcluida.Value = (DateTime)serviceOrder.DoneDate;
-            txtOBS.Text = serviceOrder.Comments;
         }
 
         private ServiceOrder PopulateObject()
@@ -204,8 +203,7 @@ namespace Fluxus.WinUI.View
                 Status = status,
                 PendingDate = dtpDataPendente.Value,
                 SurveyDate = dtpDataVistoria.Value,
-                DoneDate = dtpDataConcluida.Value,
-                Comments = txtOBS.Text
+                DoneDate = dtpDataConcluida.Value
             };
 
             return serviceOrder;
@@ -218,19 +216,12 @@ namespace Fluxus.WinUI.View
             txtCodFatura.Show();
 
 
-            foreach (Control c in this.tabPage1.Controls)
+            foreach (Control c in pnlMain.Controls)
             {
                 if (c is TextBox || c is MaskedTextBox || c is CheckBox || c is DateTimePicker || c is RadioButton || c is ComboBox)
                     c.Enabled = false;
             }
 
-            foreach (Control c in this.pnlStatus.Controls)
-            {
-                if (c is MaskedTextBox || c is RadioButton)
-                    c.Enabled = false;
-            }
-
-            txtOBS.Enabled = false;
             btnAddSave.Hide();
             btnCancelar.Size = new System.Drawing.Size(433, 62);
             btnCancelar.Location = new System.Drawing.Point(1508, 32);
@@ -251,18 +242,16 @@ namespace Fluxus.WinUI.View
             var branch = new BankBranchApp().BuscarAgencia(txtRef1.Text);
             if (branch == null)
             {
-                txtAgenciaNome.Text = "Agência não cadastrado!";
-                txtAgenciaTelefone.Text = "";
-                txtAgenciaEmail.Text = "";
-                btnAddAgencia.Show();
+                txtBranchName.Text = "Agência não cadastrado!";
+                txtBranchPhone.Text = "";
+                txtBranchEmail.Text = "";
             }
             else
             {
-                txtAgenciaNome.Text = branch.Name;
-                txtAgenciaTelefone.Text = branch.Phone1;
-                txtAgenciaEmail.Text = branch.Email;
+                txtBranchName.Text = branch.Name;
+                txtBranchPhone.Text = branch.Phone1;
+                txtBranchEmail.Text = branch.Email;
                 _agencia = txtRef1.Text;
-                btnAddAgencia.Hide();
             }
         }
 
@@ -274,7 +263,7 @@ namespace Fluxus.WinUI.View
             lblNomeProfissional.Text = professional.Nameid;
         }
 
-        
+
 
         #region "UI Behavior"
         private void cboCidade_KeyPress(object sender, KeyPressEventArgs e)
@@ -289,7 +278,7 @@ namespace Fluxus.WinUI.View
         private void OnEnter_MaskedTextBox(object sender, EventArgs e)
             => ((MaskedTextBox)sender).Mask = Util.MaskEnter(sender);
 
-        private void NextControl(object sender, EventArgs e)
+        private void NextControl(object sender, KeyEventArgs e)
         {
             var txt = (TextBox)sender;
             if (txt.Text.Length == txt.MaxLength)
@@ -327,9 +316,6 @@ namespace Fluxus.WinUI.View
             dtpDataConcluida.Focus();
         }
         #endregion
-
-
-
     }
 
 }
