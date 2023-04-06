@@ -1,6 +1,6 @@
 # Fluxus
 
-Software para gestão de Ordens de Serviços emitidas pela Caixa Econômica Federal às empresas de Engenharia e Arquitetura credenciadas em edital públicos.
+Software para gestão de Ordens de Serviços emitidas pela Caixa Econômica Federal às empresas de Engenharia e Arquitetura credenciadas em edital público.
 
 ---
 
@@ -19,12 +19,13 @@ Software para gestão de Ordens de Serviços emitidas pela Caixa Econômica Fede
 * 1.0.0
 
 - #### Tela de Login:
-  
-  ![1](./assets/loginscreen.png)
+
+  <img src="./assets/loginscreen.png" alt= “Login” width="50%" height="50%">
+
 
 - #### Tela Principal:
   
-  ![2](./assets/mainscreen.png)
+  ![2](./assets/mainscreeen.png)
 
 
 ## Autor
