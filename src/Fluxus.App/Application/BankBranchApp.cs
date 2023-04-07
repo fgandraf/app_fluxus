@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Fluxus.Domain.Entities;
-using Fluxus.Domain.Struct;
 using Fluxus.Infra.Repositories;
 
 namespace Fluxus.App
@@ -50,7 +49,7 @@ namespace Fluxus.App
         }
 
 
-        public List<BankBranchIndex> GetIndex() 
+        public List<dynamic> GetIndex() 
             => new BankBranchRepository().GetIndex();
 
 

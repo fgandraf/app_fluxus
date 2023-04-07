@@ -1,5 +1,4 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Domain.Struct;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -25,19 +24,19 @@ namespace Fluxus.Infra.Repositories
             return Request.Delete("Professional/", id.ToString());
         }
 
-        public List<ProfessionalIndex> GetIndex()
+        public List<dynamic> GetIndex()
         {
             string json = Request.Get("Professional", string.Empty);
-            return JsonConvert.DeserializeObject<List<ProfessionalIndex>>(json);
+            return JsonConvert.DeserializeObject<List<dynamic>>(json);
         }
 
-        public User GetUser(string userName)
+        public dynamic GetUser(string userName)
         {
             var json = Request.Get("Professional/UserInfo/", userName);
             if (json != null)
-                return JsonConvert.DeserializeObject<User>(json);
+                return JsonConvert.DeserializeObject<dynamic>(json);
 
-            return new User();
+            return null;
         }
 
         public List<Professional> GetTagNameid()

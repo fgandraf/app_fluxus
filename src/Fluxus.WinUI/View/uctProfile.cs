@@ -58,7 +58,7 @@ namespace Fluxus.WinUI.View
             if (!String.IsNullOrEmpty(cep) && cep.Length == 8)
             {
                 var result = new ViaCep().GetViaCep(cep);
-                if (!result.Erro)
+                if (result != null || !result.Erro)
                 {
                     txtEndereco.Text = result.Logradouro;
                     txtComplemento.Text = result.Complemento;

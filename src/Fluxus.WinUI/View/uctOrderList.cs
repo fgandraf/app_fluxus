@@ -1,14 +1,13 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Data;
 using Fluxus.App;
-using Fluxus.Domain.Struct;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctOrderList : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private List<ServiceOrderFiltered> _dtOS;
+        private List<dynamic> _dtOS;
         private string _currentFilter;
 
 
@@ -112,7 +111,7 @@ namespace Fluxus.WinUI.View
         {
             if (dgvOS.Rows.Count > 0)
             {
-                var serviceOrders = (List<ServiceOrderFiltered>)dgvOS.DataSource;
+                var serviceOrders = (List<dynamic>)dgvOS.DataSource;
                 new App.ServiceOrderApp().ExportToSheet(serviceOrders);
             }
         }

@@ -1,7 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Data;
 using Fluxus.App;
-using Fluxus.Domain.Struct;
 
 namespace Fluxus.WinUI.View
 {
@@ -10,7 +9,7 @@ namespace Fluxus.WinUI.View
         private frmMain _frmPrincipal;
         private Control _lastEnteredControl;
         private DataGridView _dgvOrigem;
-        private List<ServiceOrderFlow> _dtOSNFaturada;
+        private List<dynamic> _dtOSNFaturada;
 
 
         public uctOrderFlow(frmMain frm1)
@@ -189,12 +188,12 @@ namespace Fluxus.WinUI.View
             var professionalId = cboProfissional.SelectedValue.ToString();
             var statusInt = Convert.ToInt32(dgv.Tag.ToString());
 
-            List<ServiceOrderFlow> dvOS;
+            List<dynamic> dvOS;
 
             if (cboProfissional.SelectedIndex == 0)
-                dvOS = new List<ServiceOrderFlow>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
+                dvOS = new List<dynamic>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
             else
-                dvOS = new List<ServiceOrderFlow>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
+                dvOS = new List<dynamic>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
 
             if (dvOS.Count > 0)
                 dgv.ContextMenuStrip = menuContext;

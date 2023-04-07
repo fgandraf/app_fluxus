@@ -1,5 +1,4 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Domain.Struct;
 using Fluxus.Infra.Repositories;
 using Fluxus.Infra.Services;
 using System;
@@ -83,7 +82,7 @@ namespace Fluxus.App
             return true;
         }
 
-        public List<ServiceOrderFlow> GetOrdensDoFluxo()
+        public List<dynamic> GetOrdensDoFluxo()
             => new ServiceOrderRepository().GetIndexOpen();
 
 
@@ -95,7 +94,7 @@ namespace Fluxus.App
             => new ServiceOrderRepository().GetClosedByInvoiceId(invoiceId);
 
 
-        public List<ServiceOrderFiltered> GetOrdensComFiltro(string filter)
+        public List<dynamic> GetOrdensComFiltro(string filter)
             => new ServiceOrderRepository().GetFiltered(filter);
 
 
@@ -118,7 +117,7 @@ namespace Fluxus.App
             => new ServiceOrderRepository().GetById(id);
 
 
-        public void ExportToSheet(List<ServiceOrderFiltered> serviceOrders)
+        public void ExportToSheet(List<dynamic> serviceOrders)
             => new ExcelService().ExportToExcel(serviceOrders);
 
     }

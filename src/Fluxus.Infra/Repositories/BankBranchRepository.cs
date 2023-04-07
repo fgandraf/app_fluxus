@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Fluxus.Domain.Entities;
 using System.Collections.Generic;
-using Fluxus.Domain.Struct;
 
 namespace Fluxus.Infra.Repositories
 {
@@ -24,10 +23,10 @@ namespace Fluxus.Infra.Repositories
             return Request.Delete("BankBranch/", id.ToString());
         }
 
-        public List<BankBranchIndex> GetIndex()
+        public List<dynamic> GetIndex()
         {
             string json = Request.Get("BankBranch", string.Empty);
-            return JsonConvert.DeserializeObject<List<BankBranchIndex>>(json);
+            return JsonConvert.DeserializeObject<List<dynamic>>(json);
         }
 
         public BankBranch GetByCode(string agencyCode)

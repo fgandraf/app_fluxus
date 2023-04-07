@@ -1,5 +1,4 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Domain.Struct;
 using Fluxus.Infra.Repositories;
 using Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
@@ -69,15 +68,15 @@ namespace Fluxus.App
             }
         }
 
-        public List<ProfessionalIndex> GetIndex()
+        public List<dynamic> GetIndex()
             => new ProfessionalRepository().GetIndex();
 
 
-        public User GetUser(string userName, string password)
+        public dynamic GetUser(string userName, string password)
         {
             var user = new ProfessionalRepository().GetUser(userName);
 
-            if (string.IsNullOrEmpty(user.UserName))
+            if (user == null)
             {
                 Message = "Usuário não encontrado";
                 return user;

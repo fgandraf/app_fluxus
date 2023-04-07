@@ -1,4 +1,6 @@
-﻿namespace Fluxus.WinUI.View
+﻿using Fluxus.Domain.Entities;
+
+namespace Fluxus.WinUI.View
 {
     partial class uctOrderList
     {
@@ -45,17 +47,6 @@
             btnUpdate = new Button();
             btnDelete = new Button();
             dgvOS = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            status = new DataGridViewTextBoxColumn();
-            professional = new DataGridViewTextBoxColumn();
-            orderDate = new DataGridViewTextBoxColumn();
-            referenceCode = new DataGridViewTextBoxColumn();
-            service = new DataGridViewTextBoxColumn();
-            city = new DataGridViewTextBoxColumn();
-            customerName = new DataGridViewTextBoxColumn();
-            surveyDate = new DataGridViewTextBoxColumn();
-            doneDate = new DataGridViewTextBoxColumn();
-            invoiced = new DataGridViewCheckBoxColumn();
             lblTitTotal = new Label();
             lblTotalRegistros = new Label();
             ttpOS = new ToolTip(components);
@@ -73,6 +64,17 @@
             btnAdd = new Button();
             panel4 = new Panel();
             salvar = new SaveFileDialog();
+            id = new DataGridViewTextBoxColumn();
+            status = new DataGridViewTextBoxColumn();
+            professional = new DataGridViewTextBoxColumn();
+            orderDate = new DataGridViewTextBoxColumn();
+            referenceCode = new DataGridViewTextBoxColumn();
+            service = new DataGridViewTextBoxColumn();
+            city = new DataGridViewTextBoxColumn();
+            customerName = new DataGridViewTextBoxColumn();
+            surveyDate = new DataGridViewTextBoxColumn();
+            doneDate = new DataGridViewTextBoxColumn();
+            invoiced = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pctLupa).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvOS).BeginInit();
             SuspendLayout();
@@ -201,132 +203,6 @@
             dgvOS.ShowEditingIcon = false;
             dgvOS.Size = new Size(1843, 929);
             dgvOS.TabIndex = 221;
-            // 
-            // id
-            // 
-            id.DataPropertyName = "Id";
-            id.HeaderText = "Id";
-            id.MinimumWidth = 10;
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Visible = false;
-            id.Width = 200;
-            // 
-            // status
-            // 
-            status.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            status.DataPropertyName = "Status";
-            status.HeaderText = "Status";
-            status.MinimumWidth = 90;
-            status.Name = "status";
-            status.ReadOnly = true;
-            status.Width = 118;
-            // 
-            // professional
-            // 
-            professional.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            professional.DataPropertyName = "Professional";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            professional.DefaultCellStyle = dataGridViewCellStyle2;
-            professional.HeaderText = "Pro.";
-            professional.MinimumWidth = 40;
-            professional.Name = "professional";
-            professional.ReadOnly = true;
-            professional.Width = 97;
-            // 
-            // orderDate
-            // 
-            orderDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            orderDate.DataPropertyName = "OrderDate";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            orderDate.DefaultCellStyle = dataGridViewCellStyle3;
-            orderDate.HeaderText = "Data Ordem";
-            orderDate.MinimumWidth = 80;
-            orderDate.Name = "orderDate";
-            orderDate.ReadOnly = true;
-            orderDate.Width = 179;
-            // 
-            // referenceCode
-            // 
-            referenceCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            referenceCode.DataPropertyName = "ReferenceCode";
-            referenceCode.HeaderText = "Referência";
-            referenceCode.MinimumWidth = 10;
-            referenceCode.Name = "referenceCode";
-            referenceCode.ReadOnly = true;
-            referenceCode.Width = 163;
-            // 
-            // service
-            // 
-            service.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            service.DataPropertyName = "Service";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            service.DefaultCellStyle = dataGridViewCellStyle4;
-            service.HeaderText = "Serviço";
-            service.MinimumWidth = 45;
-            service.Name = "service";
-            service.ReadOnly = true;
-            service.Width = 131;
-            // 
-            // city
-            // 
-            city.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            city.DataPropertyName = "City";
-            city.HeaderText = "Cidade";
-            city.MinimumWidth = 60;
-            city.Name = "city";
-            city.ReadOnly = true;
-            city.Width = 127;
-            // 
-            // customerName
-            // 
-            customerName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            customerName.DataPropertyName = "CustomerName";
-            customerName.HeaderText = "Nome do Cliente";
-            customerName.MinimumWidth = 10;
-            customerName.Name = "customerName";
-            customerName.ReadOnly = true;
-            customerName.Width = 228;
-            // 
-            // surveyDate
-            // 
-            surveyDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            surveyDate.DataPropertyName = "SurveyDate";
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = null;
-            surveyDate.DefaultCellStyle = dataGridViewCellStyle5;
-            surveyDate.HeaderText = "Data da Vistoria";
-            surveyDate.MinimumWidth = 10;
-            surveyDate.Name = "surveyDate";
-            surveyDate.ReadOnly = true;
-            surveyDate.Width = 215;
-            // 
-            // doneDate
-            // 
-            doneDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            doneDate.DataPropertyName = "DoneDate";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            doneDate.DefaultCellStyle = dataGridViewCellStyle6;
-            doneDate.HeaderText = "Dt. Conclusão";
-            doneDate.MinimumWidth = 85;
-            doneDate.Name = "doneDate";
-            doneDate.ReadOnly = true;
-            doneDate.Width = 195;
-            // 
-            // invoiced
-            // 
-            invoiced.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            invoiced.DataPropertyName = "Invoiced";
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            invoiced.DefaultCellStyle = dataGridViewCellStyle7;
-            invoiced.HeaderText = "Faturada";
-            invoiced.MinimumWidth = 60;
-            invoiced.Name = "invoiced";
-            invoiced.ReadOnly = true;
-            invoiced.SortMode = DataGridViewColumnSortMode.Automatic;
-            invoiced.Width = 143;
             // 
             // lblTitTotal
             // 
@@ -545,6 +421,132 @@
             salvar.FileName = "Relatorio de OS.xls";
             salvar.Filter = "Arquivo do Excel *.xls | *.xls";
             salvar.Title = "Exportar para Excel";
+            // 
+            // id
+            // 
+            id.DataPropertyName = "Id";
+            id.HeaderText = "Id";
+            id.MinimumWidth = 10;
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Visible = false;
+            id.Width = 200;
+            // 
+            // status
+            // 
+            status.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            status.DataPropertyName = "Status";
+            status.HeaderText = "Status";
+            status.MinimumWidth = 90;
+            status.Name = "status";
+            status.ReadOnly = true;
+            status.Width = 118;
+            // 
+            // professional
+            // 
+            professional.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            professional.DataPropertyName = "Professional";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            professional.DefaultCellStyle = dataGridViewCellStyle2;
+            professional.HeaderText = "Pro.";
+            professional.MinimumWidth = 40;
+            professional.Name = "professional";
+            professional.ReadOnly = true;
+            professional.Width = 97;
+            // 
+            // orderDate
+            // 
+            orderDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            orderDate.DataPropertyName = "OrderDate";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            orderDate.DefaultCellStyle = dataGridViewCellStyle3;
+            orderDate.HeaderText = "Data Ordem";
+            orderDate.MinimumWidth = 80;
+            orderDate.Name = "orderDate";
+            orderDate.ReadOnly = true;
+            orderDate.Width = 179;
+            // 
+            // referenceCode
+            // 
+            referenceCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            referenceCode.DataPropertyName = "ReferenceCode";
+            referenceCode.HeaderText = "Referência";
+            referenceCode.MinimumWidth = 10;
+            referenceCode.Name = "referenceCode";
+            referenceCode.ReadOnly = true;
+            referenceCode.Width = 163;
+            // 
+            // service
+            // 
+            service.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            service.DataPropertyName = "Service";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            service.DefaultCellStyle = dataGridViewCellStyle4;
+            service.HeaderText = "Serviço";
+            service.MinimumWidth = 45;
+            service.Name = "service";
+            service.ReadOnly = true;
+            service.Width = 131;
+            // 
+            // city
+            // 
+            city.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            city.DataPropertyName = "City";
+            city.HeaderText = "Cidade";
+            city.MinimumWidth = 60;
+            city.Name = "city";
+            city.ReadOnly = true;
+            city.Width = 127;
+            // 
+            // customerName
+            // 
+            customerName.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            customerName.DataPropertyName = "CustomerName";
+            customerName.HeaderText = "Nome do Cliente";
+            customerName.MinimumWidth = 10;
+            customerName.Name = "customerName";
+            customerName.ReadOnly = true;
+            customerName.Width = 228;
+            // 
+            // surveyDate
+            // 
+            surveyDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            surveyDate.DataPropertyName = "SurveyDate";
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.NullValue = null;
+            surveyDate.DefaultCellStyle = dataGridViewCellStyle5;
+            surveyDate.HeaderText = "Data da Vistoria";
+            surveyDate.MinimumWidth = 10;
+            surveyDate.Name = "surveyDate";
+            surveyDate.ReadOnly = true;
+            surveyDate.Width = 215;
+            // 
+            // doneDate
+            // 
+            doneDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            doneDate.DataPropertyName = "DoneDate";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            doneDate.DefaultCellStyle = dataGridViewCellStyle6;
+            doneDate.HeaderText = "Dt. Conclusão";
+            doneDate.MinimumWidth = 85;
+            doneDate.Name = "doneDate";
+            doneDate.ReadOnly = true;
+            doneDate.Width = 195;
+            // 
+            // invoiced
+            // 
+            invoiced.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            invoiced.DataPropertyName = "Invoiced";
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            invoiced.DefaultCellStyle = dataGridViewCellStyle7;
+            invoiced.HeaderText = "Faturada";
+            invoiced.MinimumWidth = 60;
+            invoiced.Name = "invoiced";
+            invoiced.ReadOnly = true;
+            invoiced.SortMode = DataGridViewColumnSortMode.Automatic;
+            invoiced.Width = 143;
             // 
             // uctOrderList
             // 

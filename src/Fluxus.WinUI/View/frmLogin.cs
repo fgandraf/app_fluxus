@@ -26,7 +26,7 @@ namespace Fluxus.WinUI.View
             var app = new ProfessionalApp();
             var user = app.GetUser(txtUsuario.Text, txtSenha.Text);
 
-            if (string.IsNullOrEmpty(user.UserName))
+            if (string.IsNullOrEmpty(user.UserName.ToString()))
             {
                 MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

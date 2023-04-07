@@ -1,16 +1,15 @@
 ﻿using System.Net.Http;
 using System;
 using Newtonsoft.Json;
-using Fluxus.Domain.Struct;
 
 namespace Fluxus.Infra.Services
 {
     public  class ViaCep
     {
-        public Address GetViaCep(string cep)
+        public dynamic GetViaCep(string cep)
         {
             string json = RequestViaCep(cep);
-            return JsonConvert.DeserializeObject<Address>(json);
+            return JsonConvert.DeserializeObject<dynamic>(json);
         }
 
         public static string RequestViaCep(string cep)

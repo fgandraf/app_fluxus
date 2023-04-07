@@ -1,14 +1,13 @@
 ﻿using System;
 using Excel = Microsoft.Office.Interop.Excel;
 using DataTable = System.Data.DataTable;
-using Fluxus.Domain.Struct;
 using System.Collections.Generic;
 
 namespace Fluxus.Infra.Services
 {
     public class ExcelService
     {
-        public void ExportToExcel(List<ServiceOrderFiltered> serviceOrders)
+        public void ExportToExcel(List<dynamic> serviceOrders)
         {
             var XcelApp = new Excel.Application();
             XcelApp.Application.Workbooks.Add(Type.Missing);

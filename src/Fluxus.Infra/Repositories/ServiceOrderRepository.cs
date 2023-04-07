@@ -1,9 +1,9 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Domain.Struct;
 using System.Data;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System;
 
 namespace Fluxus.Infra.Repositories
 {
@@ -37,10 +37,10 @@ namespace Fluxus.Infra.Repositories
             Request.Delete("ServiceOrder/", id.ToString());
         }
 
-        public List<ServiceOrderFlow> GetIndexOpen()
+        public List<dynamic> GetIndexOpen()
         {
             string json = Request.Get("ServiceOrder/OrdersFlow", string.Empty);
-            return JsonConvert.DeserializeObject<List<ServiceOrderFlow>>(json);
+            return JsonConvert.DeserializeObject<List<dynamic>>(json);
         }
 
         public DataTable GetOpenDone()
@@ -55,14 +55,35 @@ namespace Fluxus.Infra.Repositories
             return JsonConvert.DeserializeObject<DataTable>(json);
         }
 
-        public List<ServiceOrderFiltered> GetFiltered(string filter)
+        public List<dynamic> GetFiltered(string filter)
         {
             string json = Request.Get("ServiceOrder/Filtered/", filter);
 
+            List<dynamic> serviceOrder = new List<dynamic>();
             if (json != null)
-                return JsonConvert.DeserializeObject<List<ServiceOrderFiltered>>(json);
+                serviceOrder = JsonConvert.DeserializeObject<List<dynamic>>(json);
 
-            return null;
+            List<dynamic> result = new List<dynamic>();
+            foreach (dynamic item in serviceOrder)
+            {
+                dynamic so = new
+                {
+                    Id = (int)item.Id,
+                    Status = (EnumStatus)item.Status,
+                    Professional = (string)item.Professional,
+                    OrderDate = (DateTime)item.OrderDate,
+                    ReferenceCode = (string)item.ReferenceCode,
+                    Service = (string)item.Service,
+                    City = (string)item.City,
+                    CustomerName = (string)item.CustomerName,
+                    SurveyDate = (DateTime)item.SurveyDate,
+                    DoneDate = (DateTime)item.DoneDate,
+                    Invoiced = (bool)item.Invoiced
+                };
+                result.Add(so);
+            }
+
+            return result;
         }
 
         public DataTable GetProfessionalByInvoiceId(int invoiceId)
