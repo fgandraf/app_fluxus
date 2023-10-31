@@ -140,7 +140,7 @@ namespace Fluxus.WinUI.View
             dtpInicio.Value = profile.ContractStart;
             dtpTermino.Value = profile.ContractEnd;
 
-            if (profile.Logo.ToString() != "")
+            if (profile.Logo != null)
             {
                 using (var stream = new MemoryStream(profile.Logo))
                     _actualLogo = Image.FromStream(stream);
