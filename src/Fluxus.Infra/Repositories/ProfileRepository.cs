@@ -33,7 +33,11 @@ namespace Fluxus.Infra.Repositories
         public byte[] GetLogo()
         {
             string json = Request.Get("Profile/Logo", string.Empty);
-            return JsonConvert.DeserializeObject<byte[]>(json);
+            
+            if (json != null)
+                return JsonConvert.DeserializeObject<byte[]>(json);
+            else
+                return null;
         }
 
         public string GetName()
