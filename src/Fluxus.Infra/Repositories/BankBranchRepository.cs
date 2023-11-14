@@ -1,21 +1,24 @@
 ﻿using Newtonsoft.Json;
 using Fluxus.Domain.Entities;
 using System.Collections.Generic;
+using Fluxus.Domain.Structs;
+using Fluxus.Domain.Interfaces;
 
 namespace Fluxus.Infra.Repositories
 {
-    public class BankBranchRepository
+    public class BankBranchRepository : IBankBranchRepository
     {
-        public void Insert(BankBranch body)
+        public bool Insert(BankBranch body)
         {
             string json = JsonConvert.SerializeObject(body);
-            Request.Post("BankBranch", json);
+            int response = Request.Post("BankBranch", json);
+            return response != -1;
         }
 
-        public void Update(BankBranch body)
+        public bool Update(BankBranch body)
         {
             string json = JsonConvert.SerializeObject(body);
-            Request.Put("BankBranch", json);
+            return Request.Put("BankBranch", json);
         }
 
         public bool Delete(int id)
@@ -23,24 +26,32 @@ namespace Fluxus.Infra.Repositories
             return Request.Delete("BankBranch/", id.ToString());
         }
 
-        public List<dynamic> GetIndex()
+        public List<BankBranchIndex> GetIndex()
         {
             string json = Request.Get("BankBranch", string.Empty);
-            return JsonConvert.DeserializeObject<List<dynamic>>(json);
+            if (!string.IsNullOrEmpty(json))
+                return JsonConvert.DeserializeObject<List<BankBranchIndex>>(json);
+
+            return null;
         }
 
         public BankBranch GetByCode(string agencyCode)
         {
             string json = Request.Get("BankBranch/Contacts/", agencyCode);
-            if (json != null)
+            if (!string.IsNullOrEmpty(json))
                 return JsonConvert.DeserializeObject<BankBranch>(json);
+            
             return null;
         }
 
         public BankBranch GetById(int id)
         {
             string json = Request.Get("BankBranch/", id.ToString());
-            return  JsonConvert.DeserializeObject<BankBranch>(json);
+
+            if (!string.IsNullOrEmpty(json))
+                return  JsonConvert.DeserializeObject<BankBranch>(json);
+
+            return null;
         }
     }
 }

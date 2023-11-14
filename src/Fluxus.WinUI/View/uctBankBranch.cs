@@ -1,16 +1,20 @@
 ﻿using Fluxus.App;
 using Fluxus.Domain.Entities;
+using Fluxus.Domain.Interfaces;
+using Fluxus.Infra.Repositories;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctBankBranch : UserControl
     {
         private readonly frmMain _frmPrincipal;
+        private IBankBranchRepository _bankBranchRepository;
 
         public uctBankBranch(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
+            _bankBranchRepository = new BankBranchRepository();
 
             if (Logged.Rl == false)
             {
@@ -19,7 +23,7 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvBankBranches.DataSource = new BankBranchApp().GetIndex();
+            dgvBankBranches.DataSource = new BankBranchService(_bankBranchRepository).GetIndex();
 
             if (dgvBankBranches.Rows.Count == 0)
             {
@@ -38,7 +42,7 @@ namespace Fluxus.WinUI.View
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
-            var branch = new BankBranchApp().GetBy(id);
+            var branch = new BankBranchService(_bankBranchRepository).GetById(id);
 
             var formNeto = new uctAddBankBranch(_frmPrincipal, branch);
             formNeto.Tag = "Alterar";
@@ -52,11 +56,11 @@ namespace Fluxus.WinUI.View
             if (dialog == DialogResult.Yes)
             {
                 var id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
-                var app = new BankBranchApp();
+                var app = new BankBranchService(_bankBranchRepository);
                 var success = app.Delete(id);
 
                 if (success)
-                    dgvBankBranches.DataSource = new BankBranchApp().GetIndex();
+                    dgvBankBranches.DataSource = new BankBranchService(_bankBranchRepository).GetIndex();
                 else
                     MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

@@ -1,8 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Domain.Structs;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 
 namespace Fluxus.App.Application
@@ -20,7 +18,6 @@ namespace Fluxus.App.Application
         
         public ProfessionalService(IProfessionalRepository repository)
             => _repository = repository;
-
 
 
 
@@ -43,6 +40,7 @@ namespace Fluxus.App.Application
             Message = "Não foi possível incluir o profissional!";
             return false;
         }
+
         private bool Update()
         {
             if (Professional != null && _repository.Update(Professional))
@@ -51,6 +49,7 @@ namespace Fluxus.App.Application
             Message = "Não foi possível alterar o profissional!";
             return false;
         }
+
         private bool IsValid()
         {
             if (string.IsNullOrEmpty(Professional.Tag) || string.IsNullOrEmpty(Professional.Name) || string.IsNullOrEmpty(Professional.UserName))
@@ -78,8 +77,6 @@ namespace Fluxus.App.Application
             return true;
         }
 
-
-
         public bool Delete(int id)
         {
             if (_repository.Delete(id))
@@ -91,36 +88,34 @@ namespace Fluxus.App.Application
             
         public Professional GetById(int id)
         {
-            string json = _repository.GetById(id);
+            var professional = _repository.GetById(id);
+            
+            if (professional != null)
+                return professional;
 
-            if (!string.IsNullOrEmpty(json))
-                 return JsonConvert.DeserializeObject<Professional>(json);
-                 
             Message = "Não foi possível encontrar o profissional!";
             return null;
         }
 
         public List<ProfessionalIndex> GetIndex()
         {
-            string json = _repository.GetIndex();
-            if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<List<ProfessionalIndex>>(json);
+            var professionals = _repository.GetIndex();
 
+            if (professionals != null)
+                return professionals;
+               
             Message = "Não foi possível encontrar profissionais na base de dados!";
             return null;
         }
+
         public List<ProfessionalNameId> GetTagNameid(bool addHeader)
         {
-            string json = _repository.GetTagNameid();
-            List<ProfessionalNameId> professionals;
-
-            if (!string.IsNullOrEmpty(json))
+            var professionals = _repository.GetTagNameid();
+            
+            if (professionals != null)
             {
-                professionals = JsonConvert.DeserializeObject<List<ProfessionalNameId>>(json);
-
                 if (addHeader)
                     professionals.Insert(0, new ProfessionalNameId { NameId = "--TODOS--" });
-
                 return professionals;
             }
 

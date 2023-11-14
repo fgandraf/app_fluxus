@@ -1,6 +1,7 @@
 ﻿
 using Fluxus.Domain.Entities;
 using Fluxus.Domain.Structs;
+using System.Collections.Generic;
 
 namespace Fluxus.Domain.Interfaces
 {
@@ -10,8 +11,8 @@ namespace Fluxus.Domain.Interfaces
         public bool Update(Professional body);
         public bool Delete(int id);
         public UserInfo GetUser(string username);
-        public string GetById(int id);
-        public string GetIndex();
-        public string GetTagNameid();
+        public Professional GetById(int id);
+        public List<ProfessionalIndex> GetIndex();
+        public List<ProfessionalNameId> GetTagNameid();
     }
 }

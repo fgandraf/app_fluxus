@@ -2,6 +2,7 @@
 using Fluxus.Domain.Interfaces;
 using Fluxus.Domain.Structs;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Fluxus.Infra.Repositories
 {
@@ -25,9 +26,13 @@ namespace Fluxus.Infra.Repositories
             return Request.Delete("Professional/", id.ToString());
         }
 
-        public string GetIndex()
+        public List<ProfessionalIndex> GetIndex()
         {
-            return Request.Get("Professional", string.Empty);
+            string json = Request.Get("Professional", string.Empty);
+            if (!string.IsNullOrEmpty(json))
+                return JsonConvert.DeserializeObject<List<ProfessionalIndex>>(json);
+
+            return null;
         }
 
         public UserInfo GetUser(string userName)
@@ -39,15 +44,28 @@ namespace Fluxus.Infra.Repositories
             return new UserInfo();
         }
 
-        public string GetTagNameid()
+        public List<ProfessionalNameId> GetTagNameid()
         {
-            return Request.Get("Professional/TagNameId", string.Empty);
-            
+            string json = Request.Get("Professional/TagNameId", string.Empty);
+            List<ProfessionalNameId> professionals;
+
+            if (!string.IsNullOrEmpty(json))
+            {
+                professionals = JsonConvert.DeserializeObject<List<ProfessionalNameId>>(json);
+                return professionals;
+            }
+
+            return null;
         }
 
-        public string GetById(int id)
+        public Professional GetById(int id)
         {
-            return Request.Get("Professional/", id.ToString());
+            string json = Request.Get("Professional/", id.ToString());
+
+            if (!string.IsNullOrEmpty(json))
+                return JsonConvert.DeserializeObject<Professional>(json);
+
+            return null;
         }
     }
 

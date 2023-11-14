@@ -14,6 +14,7 @@ namespace Fluxus.WinUI.View
         private string _agencia;
         private int _id;
         private IProfessionalRepository _professionalRepository;
+        private IBankBranchRepository _bankBranchRepository;
 
         public uctAddServiceOrder(frmMain formMain, string frmChild)
         {
@@ -22,6 +23,7 @@ namespace Fluxus.WinUI.View
             _formMain = formMain;
             _formChild = frmChild;
             _professionalRepository = new ProfessionalRepository();
+            _bankBranchRepository = new BankBranchRepository();
 
             var professionalService = new ProfessionalService(_professionalRepository);
             var professionals = professionalService.GetTagNameid(false);
@@ -253,7 +255,7 @@ namespace Fluxus.WinUI.View
 
         private void GetBankBranch()
         {
-            var branch = new BankBranchApp().BuscarAgencia(txtRef1.Text);
+            var branch = new BankBranchService(_bankBranchRepository).GetByCode(txtRef1.Text);
             if (branch == null)
             {
                 txtBranchName.Text = "Agência não cadastrado!";
