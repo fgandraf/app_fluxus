@@ -1,4 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
+using Fluxus.Domain.Enums;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Domain.Structs;
 using System.Collections.Generic;
@@ -21,12 +22,12 @@ namespace Fluxus.App.Application
 
 
 
-        public int Execute(string method)
+        public int Execute(EnumMethod method)
         {
             if (Professional == null || !IsValid())
                 return 0;
 
-            if (method == "Alterar")
+            if (method == EnumMethod.Update)
                 return Update();
             else
                 return Insert();

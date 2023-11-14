@@ -4,6 +4,7 @@ using Fluxus.App;
 using System.Text.RegularExpressions;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Infra.Repositories;
+using Fluxus.Domain.Enums;
 
 namespace Fluxus.WinUI.View
 {
@@ -11,6 +12,7 @@ namespace Fluxus.WinUI.View
     {
         private readonly frmMain _frmPrincipal;
         private readonly int _id;
+        private EnumMethod _method;
         private IBankBranchRepository _bankBranchRepository;
 
         public uctAddBankBranch(frmMain frm1)
@@ -18,16 +20,16 @@ namespace Fluxus.WinUI.View
             InitializeComponent();
             _frmPrincipal = frm1;
             _bankBranchRepository = new BankBranchRepository();
+            _method = EnumMethod.Insert;
         }
 
         public uctAddBankBranch(string agencia)
         {
             InitializeComponent();
             _bankBranchRepository = new BankBranchRepository();
+            _method = EnumMethod.Insert;
 
             this.Size = new System.Drawing.Size(650, 600);
-            this.Tag = "Adicionar";
-
             txtAgencia.Text = agencia;
         }
 
@@ -36,6 +38,7 @@ namespace Fluxus.WinUI.View
             InitializeComponent();
             _frmPrincipal = frm1;
             _bankBranchRepository = new BankBranchRepository();
+            _method = EnumMethod.Update;
 
             _id = branch.Id;
             txtAgencia.Text = branch.BranchNumber;
@@ -52,23 +55,26 @@ namespace Fluxus.WinUI.View
             txtEmail.Text = branch.Email;
 
             txtAgencia.Enabled = false;
+
         }
 
         private void frmAddAgencia_Load(object sender, EventArgs e)
         {
-            if (this.Tag.ToString() == "Adicionar")
+            if (_method == EnumMethod.Insert)
+            {
+                btnAddSave.Text = "&Adicionar";
                 txtAgencia.Focus();
+            }
             else
                 txtNome.Focus();
         }
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var method = this.Tag.ToString();
             var service = new BankBranchService(_bankBranchRepository);
             service.BankBranch = PopulateObject();
 
-            var success = service.Execute(method);
+            var success = service.Execute(_method);
 
             if (success > 0)
                 btnCancelar_Click(sender, e);

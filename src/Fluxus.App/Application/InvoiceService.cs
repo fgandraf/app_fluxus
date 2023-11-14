@@ -1,4 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
+using Fluxus.Domain.Enums;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Infra.Services;
 using System.Collections.Generic;
@@ -23,12 +24,12 @@ namespace Fluxus.App
 
 
 
-        public int Execute(string method)
+        public int Execute(EnumMethod method)
         {
             if (Invoice == null || !IsValid())
                 return 0;
 
-            if (method == "Alterar")
+            if (method == EnumMethod.Update)
                 return Update();
             else
                 return Insert();
@@ -88,7 +89,7 @@ namespace Fluxus.App
         {
             new ServiceOrderApp().UpdateFaturaCod(idServiceOrder, 0);
             Invoice = invoice;
-            int response = Execute("Alterar");
+            int response = Execute(EnumMethod.Update);
 
             if (response > 0)
                 return true;

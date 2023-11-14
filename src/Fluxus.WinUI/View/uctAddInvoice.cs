@@ -3,6 +3,7 @@ using System.Globalization;
 using Fluxus.App;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Infra.Repositories;
+using Fluxus.Domain.Enums;
 
 namespace Fluxus.WinUI.View
 {
@@ -46,7 +47,7 @@ namespace Fluxus.WinUI.View
         {
             var service = new InvoiceService(_invoiceRepository);
             service.Invoice = PopulateToObject();
-            int invoiceId = service.Execute("Adicionar");
+            int invoiceId = service.Execute(EnumMethod.Insert);
             
             if (invoiceId == 0)
             {

@@ -13,6 +13,7 @@ namespace Fluxus.WinUI.View
         private string _formChild;
         private string _agencia;
         private int _id;
+        private EnumMethod _method;
         private IProfessionalRepository _professionalRepository;
         private IBankBranchRepository _bankBranchRepository;
         private IInvoiceRepository _invoiceRepository;
@@ -20,6 +21,8 @@ namespace Fluxus.WinUI.View
         public uctAddServiceOrder(frmMain formMain, string frmChild)
         {
             InitializeComponent();
+
+            _method = EnumMethod.Insert;
 
             _formMain = formMain;
             _formChild = frmChild;
@@ -45,7 +48,7 @@ namespace Fluxus.WinUI.View
 
         public uctAddServiceOrder(frmMain formMain, string frmChild, ServiceOrder serviceOrder) : this(formMain, frmChild)
         {
-            this.Tag = "Alterar";
+            _method = EnumMethod.Update;
             btnAddSave.Text = "&Alterar";
             PopulateFromModel(serviceOrder);
 
@@ -55,7 +58,7 @@ namespace Fluxus.WinUI.View
 
         private void frmAddOS_Load(object sender, EventArgs e)
         {
-            if (Tag.ToString() != "Alterar")
+            if (_method == EnumMethod.Insert)
             {
                 cboCidade.SelectedIndex = -1;
                 cboAtividade.SelectedIndex = -1;
@@ -86,7 +89,7 @@ namespace Fluxus.WinUI.View
         {
             var model = PopulateObject();
             var app = new ServiceOrderApp();
-            var success = app.InsertOrUpdate(model, this.Tag.ToString());
+            var success = app.InsertOrUpdate(model, _method);
 
             if (success)
                 btnCancelar_Click(sender, e);

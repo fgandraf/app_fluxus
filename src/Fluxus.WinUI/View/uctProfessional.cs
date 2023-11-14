@@ -45,7 +45,6 @@ namespace Fluxus.WinUI.View
         private void btnAdd_Click(object sender, EventArgs e)
         {
             uctAddProfessional formNeto = new uctAddProfessional(_frmPrincipal);
-            formNeto.Tag = "Adicionar";
             _frmPrincipal.OpenUserControl(formNeto);
         }
 
@@ -62,7 +61,6 @@ namespace Fluxus.WinUI.View
             }
 
             var formNeto = new uctAddProfessional(_frmPrincipal, professional);
-            formNeto.Tag = "Alterar";
 
             _frmPrincipal.OpenUserControl(formNeto);
         }

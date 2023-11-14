@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Fluxus.Domain.Entities;
+using Fluxus.Domain.Enums;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Domain.Structs;
 
@@ -21,12 +22,12 @@ namespace Fluxus.App
 
 
 
-        public int Execute(string method)
+        public int Execute(EnumMethod method)
         {
             if (BankBranch == null || !IsValid())
                 return 0;
 
-            if (method == "Alterar")
+            if (method == EnumMethod.Update)
                 return Update();
             else
                 return Insert();

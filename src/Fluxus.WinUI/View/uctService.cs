@@ -31,7 +31,6 @@ namespace Fluxus.WinUI.View
         private void btnAdd_Click(object sender, EventArgs e)
         {
             uctAddService formNeto = new uctAddService(_frmPrincipal);
-            formNeto.Tag = "Adicionar";
             _frmPrincipal.OpenUserControl(formNeto);
         }
 
@@ -41,7 +40,6 @@ namespace Fluxus.WinUI.View
             var service = new ServiceApp().GetBy(id);
 
             var formNeto = new uctAddService(_frmPrincipal, service);
-            formNeto.Tag = "Alterar";
 
             _frmPrincipal.OpenUserControl(formNeto);
         }

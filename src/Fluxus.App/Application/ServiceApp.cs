@@ -1,4 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
+using Fluxus.Domain.Enums;
 using Fluxus.Infra.Repositories;
 using System.Collections.Generic;
 
@@ -8,7 +9,7 @@ namespace Fluxus.App
     {
         public string Message { get; private set; }
 
-        public bool InsertOrUpdate (Service service, string method)
+        public bool InsertOrUpdate (Service service, EnumMethod method)
         {
             if (service.Tag == "")
             {
@@ -16,7 +17,7 @@ namespace Fluxus.App
                 return false;
             }
 
-            if (method == "&Adicionar")
+            if (method == EnumMethod.Insert)
                 new ServiceRepository().Insert(service);
             else
                 new ServiceRepository().Update(service);

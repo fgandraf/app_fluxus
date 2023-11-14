@@ -1,4 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
+using Fluxus.Domain.Enums;
 using Fluxus.Infra.Repositories;
 using Fluxus.Infra.Services;
 using System;
@@ -13,7 +14,7 @@ namespace Fluxus.App
     {
         public string Message { get; private set; }
 
-        public bool InsertOrUpdate(ServiceOrder serviceOrder, string method)
+        public bool InsertOrUpdate(ServiceOrder serviceOrder, EnumMethod method)
         {
             if (string.IsNullOrEmpty(serviceOrder.ReferenceCode) || serviceOrder.ReferenceCode == "../...")
             {
@@ -46,7 +47,7 @@ namespace Fluxus.App
                                  $"- Prazo: {serviceOrder.Deadline.ToShortDateString()}";
 
             bool result;
-            if (method == "Alterar")
+            if (method == EnumMethod.Update)
                 result = new ServiceOrderRepository().Update(serviceOrder);
             else
                 result = new ServiceOrderRepository().Insert(serviceOrder);

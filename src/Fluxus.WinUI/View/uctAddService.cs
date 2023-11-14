@@ -1,5 +1,6 @@
 ﻿using Fluxus.App;
 using Fluxus.Domain.Entities;
+using Fluxus.Domain.Enums;
 
 namespace Fluxus.WinUI.View
 {
@@ -7,18 +8,21 @@ namespace Fluxus.WinUI.View
     {
         private readonly frmMain _frmPrincipal;
         private readonly int _id;
+        private EnumMethod _method;
 
         public uctAddService(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
+            _method = EnumMethod.Insert;
         }
 
         public uctAddService(frmMain frm1, Service service)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            
+            _method = EnumMethod.Update;
+
             _id = service.Id;
             txtCodigo.Text = service.Tag;
             txtDescricao.Text = service.Description;
@@ -28,7 +32,7 @@ namespace Fluxus.WinUI.View
 
         private void frmAddAtividade_Load(object sender, EventArgs e)
         {
-            if (this.Tag.ToString() == "Alterar")
+            if (_method == EnumMethod.Update)
             {
                 btnAddSave.Text = "&Salvar";
                 txtCodigo.Enabled = false;
@@ -42,7 +46,7 @@ namespace Fluxus.WinUI.View
         {
             var model = PopulateObject();
             var app = new ServiceApp();
-            var success = app.InsertOrUpdate(model, btnAddSave.Text);
+            var success = app.InsertOrUpdate(model, _method);
             
             if (success)
                 btnCancelar_Click(sender, e);

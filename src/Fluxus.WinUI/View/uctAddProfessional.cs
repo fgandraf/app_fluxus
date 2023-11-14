@@ -2,6 +2,7 @@
 using Fluxus.Infra.Repositories;
 using Fluxus.App.Application;
 using Fluxus.Domain.Interfaces;
+using Fluxus.Domain.Enums;
 
 namespace Fluxus.WinUI.View
 {
@@ -10,6 +11,7 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private readonly int _id;
         private readonly string _nameId;
+        private EnumMethod _method;
         private IProfessionalRepository _professionalRepository;
 
         public uctAddProfessional(frmMain frm1)
@@ -17,6 +19,7 @@ namespace Fluxus.WinUI.View
             InitializeComponent();
             _frmPrincipal = frm1;
             _professionalRepository = new ProfessionalRepository();
+            _method = EnumMethod.Insert;
         }
 
         public uctAddProfessional(frmMain frm1, Professional professional)
@@ -24,6 +27,7 @@ namespace Fluxus.WinUI.View
             InitializeComponent();
             _frmPrincipal = frm1;
             _professionalRepository = new ProfessionalRepository();
+            _method = EnumMethod.Update;
 
             _id = professional.Id;
             _nameId = professional.Nameid;
@@ -47,7 +51,7 @@ namespace Fluxus.WinUI.View
 
         private void frmAddProfissional_Load(object sender, EventArgs e)
         {
-            if (this.Tag.ToString() == "Alterar")
+            if (_method == EnumMethod.Update)
             {
                 btnAddSave.Text = "&Salvar";
                 txtCodigo.Enabled = false;
@@ -63,11 +67,10 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var method = this.Tag.ToString();
             var service = new ProfessionalService(_professionalRepository);
             service.Professional = PopulateObject();
 
-            var success = service.Execute(method);
+            var success = service.Execute(_method);
 
             if (success > 0)
                 btnCancelar_Click(sender, e);
