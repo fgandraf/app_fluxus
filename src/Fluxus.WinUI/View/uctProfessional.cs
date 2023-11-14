@@ -8,13 +8,13 @@ namespace Fluxus.WinUI.View
     public partial class uctProfessional : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private IProfessionalRepository _repository;
+        private IProfessionalRepository _professionalRepository;
 
         public uctProfessional(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            _repository = new ProfessionalRepository();
+            _professionalRepository = new ProfessionalRepository();
 
             if (Logged.Rl == false)
             {
@@ -23,7 +23,7 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            var service = new ProfessionalService(_repository);
+            var service = new ProfessionalService(_professionalRepository);
             var profissionais = service.GetIndex();
 
             if (profissionais == null)
@@ -52,7 +52,7 @@ namespace Fluxus.WinUI.View
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-            var service = new ProfessionalService(_repository);
+            var service = new ProfessionalService(_professionalRepository);
             var professional = service.GetById(id);
 
             if (professional == null)
@@ -73,7 +73,7 @@ namespace Fluxus.WinUI.View
             if (dialog == DialogResult.Yes)
             {
                 var id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-                var service = new ProfessionalService(_repository);
+                var service = new ProfessionalService(_professionalRepository);
                 var success = service.Delete(id);                
                 
 

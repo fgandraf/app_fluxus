@@ -10,20 +10,20 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private readonly int _id;
         private readonly string _nameId;
-        private IProfessionalRepository _repository;
+        private IProfessionalRepository _professionalRepository;
 
         public uctAddProfessional(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            _repository = new ProfessionalRepository();
+            _professionalRepository = new ProfessionalRepository();
         }
 
         public uctAddProfessional(frmMain frm1, Professional professional)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            _repository = new ProfessionalRepository();
+            _professionalRepository = new ProfessionalRepository();
 
             _id = professional.Id;
             _nameId = professional.Nameid;
@@ -64,7 +64,7 @@ namespace Fluxus.WinUI.View
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             var method = this.Tag.ToString();
-            var service = new ProfessionalService(_repository);
+            var service = new ProfessionalService(_professionalRepository);
             service.Professional = PopulateObject();
 
             var success = service.Execute(method);

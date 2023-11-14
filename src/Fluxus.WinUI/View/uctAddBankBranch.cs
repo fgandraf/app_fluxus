@@ -11,19 +11,19 @@ namespace Fluxus.WinUI.View
     {
         private readonly frmMain _frmPrincipal;
         private readonly int _id;
-        private IBankBranchRepository _repository;
+        private IBankBranchRepository _bankBranchRepository;
 
         public uctAddBankBranch(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            _repository = new BankBranchRepository();
+            _bankBranchRepository = new BankBranchRepository();
         }
 
         public uctAddBankBranch(string agencia)
         {
             InitializeComponent();
-            _repository = new BankBranchRepository();
+            _bankBranchRepository = new BankBranchRepository();
 
             this.Size = new System.Drawing.Size(650, 600);
             this.Tag = "Adicionar";
@@ -35,7 +35,7 @@ namespace Fluxus.WinUI.View
         {
             InitializeComponent();
             _frmPrincipal = frm1;
-            _repository = new BankBranchRepository();
+            _bankBranchRepository = new BankBranchRepository();
 
             _id = branch.Id;
             txtAgencia.Text = branch.BranchNumber;
@@ -65,7 +65,7 @@ namespace Fluxus.WinUI.View
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             var method = this.Tag.ToString();
-            var service = new BankBranchService(_repository);
+            var service = new BankBranchService(_bankBranchRepository);
             service.BankBranch = PopulateObject();
 
             var success = service.Execute(method);
