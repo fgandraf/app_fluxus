@@ -1,5 +1,9 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.App;
+using Fluxus.App.Application;
+using Fluxus.Infra.Repositories;
+using Fluxus.Domain.Enums;
+using Fluxus.Domain.Interfaces;
 
 namespace Fluxus.WinUI.View
 {
@@ -9,6 +13,7 @@ namespace Fluxus.WinUI.View
         private string _formChild;
         private string _agencia;
         private int _id;
+        private IProfessionalRepository _professionalRepository;
 
         public uctAddServiceOrder(frmMain formMain, string frmChild)
         {
@@ -16,8 +21,17 @@ namespace Fluxus.WinUI.View
 
             _formMain = formMain;
             _formChild = frmChild;
+            _professionalRepository = new ProfessionalRepository();
 
-            cboProfissional.DataSource = new ProfessionalApp().GetCodeNameid(false);
+            var professionalService = new ProfessionalService(_professionalRepository);
+            var professionals = professionalService.GetTagNameid(false);
+            if (professionals == null)
+            {
+                MessageBox.Show(professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            cboProfissional.DataSource = professionals;
+            
             cboAtividade.DataSource = new ServiceApp().GetAll(false);
             cboCidade.DataSource = new App.ServiceOrderApp().GetCitiesFromOrders(false);
 

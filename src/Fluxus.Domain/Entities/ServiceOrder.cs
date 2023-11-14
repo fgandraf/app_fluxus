@@ -1,4 +1,5 @@
 ﻿using System;
+using Fluxus.Domain.Enums;
 
 namespace Fluxus.Domain.Entities
 {

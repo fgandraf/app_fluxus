@@ -1,6 +1,9 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Data;
 using Fluxus.App;
+using Fluxus.Infra.Repositories;
+using Fluxus.App.Application;
+using Fluxus.Domain.Interfaces;
 
 namespace Fluxus.WinUI.View
 {
@@ -9,14 +12,24 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private List<dynamic> _dtOS;
         private string _currentFilter;
+        IProfessionalRepository _professionalRepository;
 
 
         public uctOrderList(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
+            _professionalRepository = new ProfessionalRepository();
 
-            cboProfissional.DataSource = new ProfessionalApp().GetCodeNameid(true);
+            var professionalService = new ProfessionalService(_professionalRepository);
+            var professionals = professionalService.GetTagNameid(true);
+            if (professionals == null)
+            {
+                MessageBox.Show(professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            cboProfissional.DataSource = professionals;
+            
             cboCidade.DataSource = new App.ServiceOrderApp().GetCitiesFromOrders(true);
             cboAtividade.DataSource = new ServiceApp().GetAll(true);
 

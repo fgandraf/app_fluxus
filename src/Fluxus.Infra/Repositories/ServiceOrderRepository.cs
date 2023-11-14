@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System;
+using Fluxus.Domain.Enums;
 
 namespace Fluxus.Infra.Repositories
 {

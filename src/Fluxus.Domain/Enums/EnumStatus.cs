@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace Fluxus.Domain.Entities
+namespace Fluxus.Domain.Enums
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum EnumStatus

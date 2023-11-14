@@ -1,6 +1,9 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Data;
 using Fluxus.App;
+using Fluxus.App.Application;
+using Fluxus.Infra.Repositories;
+using Fluxus.Domain.Interfaces;
 
 namespace Fluxus.WinUI.View
 {
@@ -10,12 +13,14 @@ namespace Fluxus.WinUI.View
         private Control _lastEnteredControl;
         private DataGridView _dgvOrigem;
         private List<dynamic> _dtOSNFaturada;
+        private IProfessionalRepository _professionalRepository;
 
 
         public uctOrderFlow(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
+            _professionalRepository = new ProfessionalRepository();
 
             foreach (Control ctrl in Controls)
             {
@@ -36,7 +41,16 @@ namespace Fluxus.WinUI.View
 
             _dtOSNFaturada = new App.ServiceOrderApp().GetOrdensDoFluxo();
 
-            cboProfissional.DataSource = new ProfessionalApp().GetCodeNameid(true);
+
+            var professionalService = new ProfessionalService(_professionalRepository);
+            var professionals = professionalService.GetTagNameid(true);
+            if (professionals == null)
+            {
+                MessageBox.Show(professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            cboProfissional.DataSource = professionals;
+
 
             if (Logged.Rl)
             {

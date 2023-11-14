@@ -1,6 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.App;
-using System.Diagnostics.Eventing.Reader;
+using Fluxus.Infra.Repositories;
+using Fluxus.App.Application;
+using Fluxus.Domain.Interfaces;
 
 namespace Fluxus.WinUI.View
 {
@@ -8,19 +9,24 @@ namespace Fluxus.WinUI.View
     {
         private readonly frmMain _frmPrincipal;
         private readonly int _id;
+        private readonly string _nameId;
+        private IProfessionalRepository _repository;
 
         public uctAddProfessional(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
+            _repository = new ProfessionalRepository();
         }
 
         public uctAddProfessional(frmMain frm1, Professional professional)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
+            _repository = new ProfessionalRepository();
 
             _id = professional.Id;
+            _nameId = professional.Nameid;
             txtCodigo.Text = professional.Tag;
             txtNome.Text = professional.Name;
             txtCPF.Text = professional.Cpf;
@@ -57,14 +63,16 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var model = PopulateObject();
-            var app = new ProfessionalApp();
-            var success = app.InsertOrUpdate(model, txtUsrSenha2.Text, btnAddSave.Text);
+            var method = this.Tag.ToString();
+            var service = new ProfessionalService(_repository);
+            service.Professional = PopulateObject();
+
+            var success = service.Execute(method);
 
             if (success)
                 btnCancelar_Click(sender, e);
             else
-                MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -93,36 +101,26 @@ namespace Fluxus.WinUI.View
 
         private Professional PopulateObject()
         {
-            string nameId = string.Empty;
-
-            if (txtProfissao.Text != "")
-                nameId = txtProfissao.Text.Substring(0, 3) + ". ";
-            string[] nomeCompleto = txtNome.Text.Split(' ');
-
-            nameId += nomeCompleto[0] + " " + nomeCompleto[nomeCompleto.Length - 1];
-
-
-            Professional profesional = new Professional
-            {
-                Id = _id,
-                Tag = txtCodigo.Text,
-                Nameid = nameId,
-                Name = txtNome.Text,
-                Cpf = txtCPF.Text,
-                Birthday = dtpBirthday.Value,
-                Profession = txtProfissao.Text,
-                PermitNumber = txtCarteira.Text,
-                Association = cboEntidade.Text,
-                Phone1 = txtTelefone1.Text,
-                Phone2 = txtTelefone2.Text,
-                Email = txtEmail.Text,
-                TechnicianResponsible = chkRT.Checked,
-                LegalResponsible = chkRL.Checked,
-                UserActive = chkUsrAtivo.Checked,
-                UserName = txtUsrNome.Text,
-                UserPassword = txtUsrSenha.Text
-            };
-
+            Professional profesional = new Professional(
+                id: _id,
+                tag: txtCodigo.Text,
+                nameid: _nameId,
+                name: txtNome.Text,
+                cpf: txtCPF.Text,
+                birthday: dtpBirthday.Value,
+                profession: txtProfissao.Text,
+                permitNumber: txtCarteira.Text,
+                association: cboEntidade.Text,
+                phone1: txtTelefone1.Text,
+                phone2: txtTelefone2.Text,
+                email: txtEmail.Text,
+                technicianResponsible: chkRT.Checked,
+                legalResponsible: chkRL.Checked,
+                userActive: chkUsrAtivo.Checked,
+                userName: txtUsrNome.Text,
+                userPassword: txtUsrSenha.Text,
+                userPasswordConfirmation: txtUsrSenha2.Text
+            );
             return profesional;
         }
 

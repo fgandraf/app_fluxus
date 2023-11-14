@@ -1,5 +1,6 @@
 ﻿using Fluxus.App;
 using Fluxus.Domain.Entities;
+using Fluxus.Infra.Repositories;
 using System.Runtime.InteropServices;
 
 namespace Fluxus.WinUI.View
@@ -23,25 +24,29 @@ namespace Fluxus.WinUI.View
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var app = new ProfessionalApp();
-            var user = app.GetUser(txtUsuario.Text, txtSenha.Text);
+            var user = new ProfessionalRepository().GetUser(txtUsuario.Text);
 
             if (string.IsNullOrEmpty(user.UserName.ToString()))
             {
-                MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuário não encontrado", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 return;
             }
-            else
-            {
-                Logged.Usr_nome = user.UserName;
-                Logged.ProfessionalId = user.Id;
-                Logged.Rt = user.TechnicianResponsible;
-                Logged.Rl = user.LegalResponsible;
-                Logged.ProfessionalTag = user.Tag;
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+            if (user.UserPassword.ToString() != txtSenha.Text)
+            {
+                MessageBox.Show("Senha incorreta", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+
+            Logged.Usr_nome = user.UserName;
+            Logged.ProfessionalId = user.Id;
+            Logged.Rt = user.TechnicianResponsible;
+            Logged.Rl = user.LegalResponsible;
+            Logged.ProfessionalTag = user.Tag;
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
 
         }
 

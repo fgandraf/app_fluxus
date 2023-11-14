@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Text;
 
@@ -8,7 +7,7 @@ namespace Fluxus.Infra.Repositories
 
     public class Request
     {
-        const string URI = "http://localhost:8080/api/";
+        const string URI = "http://FelipeM1Pro:5001/api/";
         const string TOKEN = "xz8wM6zr2RfF18GBM0B5yrkoo";
 
 

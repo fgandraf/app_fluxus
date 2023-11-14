@@ -1,22 +1,23 @@
 ﻿using Fluxus.Domain.Entities;
+using Fluxus.Domain.Interfaces;
+using Fluxus.Domain.Structs;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-
 
 namespace Fluxus.Infra.Repositories
 {
-    public class ProfessionalRepository
+    public class ProfessionalRepository : IProfessionalRepository
     {
-        public void Insert(Professional body)
+        public bool Insert(Professional body)
         {
             string json = JsonConvert.SerializeObject(body);
-            Request.Post("Professional", json);
+            int response = Request.Post("Professional", json);
+            return response != -1;
         }
 
-        public void Update(Professional body)
+        public bool Update(Professional body)
         {
             string json = JsonConvert.SerializeObject(body);
-            Request.Put("Professional", json);
+            return Request.Put("Professional", json);
         }
 
         public bool Delete(int id)
@@ -24,31 +25,31 @@ namespace Fluxus.Infra.Repositories
             return Request.Delete("Professional/", id.ToString());
         }
 
-        public List<dynamic> GetIndex()
+        public string GetIndex()
         {
-            string json = Request.Get("Professional", string.Empty);
-            return JsonConvert.DeserializeObject<List<dynamic>>(json);
+            return Request.Get("Professional", string.Empty);
         }
 
-        public dynamic GetUser(string userName)
+        public UserInfo GetUser(string userName)
         {
             var json = Request.Get("Professional/UserInfo/", userName);
             if (json != null)
-                return JsonConvert.DeserializeObject<dynamic>(json);
+                return JsonConvert.DeserializeObject<UserInfo>(json);
 
-            return null;
+            return new UserInfo();
         }
 
-        public List<Professional> GetTagNameid()
+        public string GetTagNameid()
         {
-            string json = Request.Get("Professional/TagNameId", string.Empty);
-            return JsonConvert.DeserializeObject<List<Professional>>(json);
+            return Request.Get("Professional/TagNameId", string.Empty);
+            
         }
 
-        public Professional GetById(int id)
+        public string GetById(int id)
         {
-            string json = Request.Get("Professional/", id.ToString());
-            return JsonConvert.DeserializeObject<Professional>(json);
+            return Request.Get("Professional/", id.ToString());
         }
     }
+
+
 }

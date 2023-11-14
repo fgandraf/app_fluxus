@@ -33,11 +33,11 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             linhaRecebidas = new Panel();
             lblTitRecebidas = new Label();
@@ -60,6 +60,10 @@
             profissional_cod_pendente = new DataGridViewTextBoxColumn();
             panel5 = new Panel();
             dgvRecebidas = new DataGridView();
+            id_recebidas = new DataGridViewTextBoxColumn();
+            titulo_recebida = new DataGridViewTextBoxColumn();
+            status_recebida = new DataGridViewTextBoxColumn();
+            profissional_cod_recebida = new DataGridViewTextBoxColumn();
             panel7 = new Panel();
             dgvVistoriadas = new DataGridView();
             id_vistoriada = new DataGridViewTextBoxColumn();
@@ -82,10 +86,6 @@
             menuContext = new ContextMenuStrip(components);
             mnuEditar = new ToolStripMenuItem();
             mnuExcluir = new ToolStripMenuItem();
-            id_recebidas = new DataGridViewTextBoxColumn();
-            titulo_recebida = new DataGridViewTextBoxColumn();
-            status_recebida = new DataGridViewTextBoxColumn();
-            profissional_cod_recebida = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -480,6 +480,47 @@
             dgvRecebidas.DragOver += DataGridView_DragOver;
             dgvRecebidas.MouseDown += DataGridView_MouseDown;
             // 
+            // id_recebidas
+            // 
+            id_recebidas.DataPropertyName = "Id";
+            id_recebidas.HeaderText = "Id";
+            id_recebidas.MinimumWidth = 10;
+            id_recebidas.Name = "id_recebidas";
+            id_recebidas.ReadOnly = true;
+            id_recebidas.Visible = false;
+            id_recebidas.Width = 200;
+            // 
+            // titulo_recebida
+            // 
+            titulo_recebida.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            titulo_recebida.DataPropertyName = "Title";
+            dataGridViewCellStyle4.NullValue = null;
+            titulo_recebida.DefaultCellStyle = dataGridViewCellStyle4;
+            titulo_recebida.HeaderText = "Title";
+            titulo_recebida.MinimumWidth = 120;
+            titulo_recebida.Name = "titulo_recebida";
+            titulo_recebida.ReadOnly = true;
+            // 
+            // status_recebida
+            // 
+            status_recebida.DataPropertyName = "Status";
+            status_recebida.HeaderText = "Status";
+            status_recebida.MinimumWidth = 10;
+            status_recebida.Name = "status_recebida";
+            status_recebida.ReadOnly = true;
+            status_recebida.Visible = false;
+            status_recebida.Width = 200;
+            // 
+            // profissional_cod_recebida
+            // 
+            profissional_cod_recebida.DataPropertyName = "ProfessionalId";
+            profissional_cod_recebida.HeaderText = "ProfessionalId";
+            profissional_cod_recebida.MinimumWidth = 10;
+            profissional_cod_recebida.Name = "profissional_cod_recebida";
+            profissional_cod_recebida.ReadOnly = true;
+            profissional_cod_recebida.Visible = false;
+            profissional_cod_recebida.Width = 200;
+            // 
             // panel7
             // 
             panel7.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -776,7 +817,6 @@
             // 
             // cboProfissional
             // 
-            cboProfissional.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cboProfissional.BackColor = Color.White;
             cboProfissional.DisplayMember = "nameid";
             cboProfissional.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -784,7 +824,7 @@
             cboProfissional.FlatStyle = FlatStyle.System;
             cboProfissional.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             cboProfissional.FormattingEnabled = true;
-            cboProfissional.Location = new Point(1489, 36);
+            cboProfissional.Location = new Point(1489, 0);
             cboProfissional.Margin = new Padding(0);
             cboProfissional.Name = "cboProfissional";
             cboProfissional.Size = new Size(449, 38);
@@ -826,47 +866,6 @@
             mnuExcluir.Text = "Excluir";
             mnuExcluir.Click += mnuExcluir_Click;
             // 
-            // id_recebidas
-            // 
-            id_recebidas.DataPropertyName = "Id";
-            id_recebidas.HeaderText = "Id";
-            id_recebidas.MinimumWidth = 10;
-            id_recebidas.Name = "id_recebidas";
-            id_recebidas.ReadOnly = true;
-            id_recebidas.Visible = false;
-            id_recebidas.Width = 200;
-            // 
-            // titulo_recebida
-            // 
-            titulo_recebida.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            titulo_recebida.DataPropertyName = "Title";
-            dataGridViewCellStyle4.NullValue = null;
-            titulo_recebida.DefaultCellStyle = dataGridViewCellStyle4;
-            titulo_recebida.HeaderText = "Title";
-            titulo_recebida.MinimumWidth = 120;
-            titulo_recebida.Name = "titulo_recebida";
-            titulo_recebida.ReadOnly = true;
-            // 
-            // status_recebida
-            // 
-            status_recebida.DataPropertyName = "Status";
-            status_recebida.HeaderText = "Status";
-            status_recebida.MinimumWidth = 10;
-            status_recebida.Name = "status_recebida";
-            status_recebida.ReadOnly = true;
-            status_recebida.Visible = false;
-            status_recebida.Width = 200;
-            // 
-            // profissional_cod_recebida
-            // 
-            profissional_cod_recebida.DataPropertyName = "ProfessionalId";
-            profissional_cod_recebida.HeaderText = "ProfessionalId";
-            profissional_cod_recebida.MinimumWidth = 10;
-            profissional_cod_recebida.Name = "profissional_cod_recebida";
-            profissional_cod_recebida.ReadOnly = true;
-            profissional_cod_recebida.Visible = false;
-            profissional_cod_recebida.Width = 200;
-            // 
             // uctOrderFlow
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -899,38 +898,38 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Label lblTitRecebidas;
-        private System.Windows.Forms.Label lblTitPendentes;
-        private System.Windows.Forms.Label lblTitConcluidas;
-        private System.Windows.Forms.Label lblTitVistoriadas;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.DataGridView dgvRecebidas;
-        private System.Windows.Forms.DataGridView dgvPendentes;
-        private System.Windows.Forms.DataGridView dgvConcluidas;
-        private System.Windows.Forms.Panel pnlFaturar;
-        private System.Windows.Forms.Button btnFaturar;
-        private System.Windows.Forms.Panel linhaRecebidas;
-        private System.Windows.Forms.Panel linhaPendentes;
-        private System.Windows.Forms.Panel linhaConcluidas;
-        private System.Windows.Forms.Panel linhaVistoriadas;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Panel pnlLinhaFaturar;
-        private System.Windows.Forms.ContextMenuStrip menuContext;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditar;
-        private System.Windows.Forms.ToolStripMenuItem mnuExcluir;
-        private System.Windows.Forms.ComboBox cboProfissional;
-        private System.Windows.Forms.Label lblProfissional;
-        private System.Windows.Forms.DataGridView dgvVistoriadas;
+        private Panel panel1;
+        private Panel panel2;
+        private Panel panel3;
+        private Panel panel4;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel6;
+        private Panel panel5;
+        private Panel panel7;
+        private Panel panel8;
+        private Label lblTitRecebidas;
+        private Label lblTitPendentes;
+        private Label lblTitConcluidas;
+        private Label lblTitVistoriadas;
+        private Panel panel9;
+        private Button btnAdicionar;
+        private DataGridView dgvRecebidas;
+        private DataGridView dgvPendentes;
+        private DataGridView dgvConcluidas;
+        private Panel pnlFaturar;
+        private Button btnFaturar;
+        private Panel linhaRecebidas;
+        private Panel linhaPendentes;
+        private Panel linhaConcluidas;
+        private Panel linhaVistoriadas;
+        private Panel panel11;
+        private Panel pnlLinhaFaturar;
+        private ContextMenuStrip menuContext;
+        private ToolStripMenuItem mnuEditar;
+        private ToolStripMenuItem mnuExcluir;
+        private ComboBox cboProfissional;
+        private Label lblProfissional;
+        private DataGridView dgvVistoriadas;
         private DataGridViewTextBoxColumn id_vistoriada;
         private DataGridViewTextBoxColumn titulo_vistoriada;
         private DataGridViewTextBoxColumn status_vistoriada;

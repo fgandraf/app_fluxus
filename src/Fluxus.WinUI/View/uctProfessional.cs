@@ -1,16 +1,20 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.App;
+using Fluxus.Infra.Repositories;
+using Fluxus.App.Application;
+using Fluxus.Domain.Interfaces;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctProfessional : UserControl
     {
         private readonly frmMain _frmPrincipal;
+        private IProfessionalRepository _repository;
 
         public uctProfessional(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
+            _repository = new ProfessionalRepository();
 
             if (Logged.Rl == false)
             {
@@ -19,7 +23,17 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvProfessionals.DataSource = new ProfessionalApp().GetIndex();
+            var service = new ProfessionalService(_repository);
+            var profissionais = service.GetIndex();
+
+            if (profissionais == null)
+            {
+                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            dgvProfessionals.DataSource = profissionais;
 
             if (dgvProfessionals.Rows.Count == 0)
             {
@@ -38,7 +52,14 @@ namespace Fluxus.WinUI.View
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-            var professional = new ProfessionalApp().GetBy(id);
+            var service = new ProfessionalService(_repository);
+            var professional = service.GetById(id);
+
+            if (professional == null)
+            {
+                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             var formNeto = new uctAddProfessional(_frmPrincipal, professional);
             formNeto.Tag = "Alterar";
@@ -52,13 +73,15 @@ namespace Fluxus.WinUI.View
             if (dialog == DialogResult.Yes)
             {
                 var id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-                var app = new ProfessionalApp();
-                var success = app.Delete(id);
+                var service = new ProfessionalService(_repository);
+                var success = service.Delete(id);                
+                
+
 
                 if (success)
-                    dgvProfessionals.DataSource = app.GetIndex();
+                    dgvProfessionals.DataSource = service.GetIndex();
                 else
-                    MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
