@@ -1,14 +1,12 @@
 ﻿using Fluxus.Domain.Entities;
-using iTextSharp.text;
+using Fluxus.Domain.Interfaces;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Data;
 
 
 namespace Fluxus.Infra.Repositories
 {
-    public class InvoiceRepository
+    public class InvoiceRepository : IInvoiceRepository
     {
         public int Insert(Invoice body)
         {
@@ -16,15 +14,15 @@ namespace Fluxus.Infra.Repositories
             return Request.Post("Invoice", json);
         }
 
-        public void Update(Invoice body)
+        public bool Update(Invoice body)
         {
             string json = JsonConvert.SerializeObject(body);
-            Request.Put("Invoice/Totals", json);
+            return Request.Put("Invoice/Totals", json);
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            Request.Delete("Invoice/", id.ToString());
+            return Request.Delete("Invoice/", id.ToString());
         }
 
         public string GetDescription(int id)
@@ -35,7 +33,10 @@ namespace Fluxus.Infra.Repositories
         public List<Invoice> GetAll()
         {
             string json = Request.Get("Invoice", string.Empty);
-            return JsonConvert.DeserializeObject<List<Invoice>>(json);
+            if (!string.IsNullOrEmpty(json))
+                return JsonConvert.DeserializeObject<List<Invoice>>(json);
+
+            return null;
         }
     }
 }

@@ -69,7 +69,7 @@ namespace Fluxus.WinUI.View
 
             var success = service.Execute(method);
 
-            if (success)
+            if (success > 0)
                 btnCancelar_Click(sender, e);
             else
                 MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

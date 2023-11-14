@@ -2,6 +2,8 @@
 using System.Data;
 using Fluxus.App;
 using System.Globalization;
+using Fluxus.Domain.Interfaces;
+using Fluxus.Infra.Repositories;
 
 namespace Fluxus.WinUI.View
 {
@@ -9,10 +11,12 @@ namespace Fluxus.WinUI.View
     {
         private double _subtotalOs = 0.00;
         private double _subtotalDesloc = 0.00;
+        private IInvoiceRepository _invoiceRepository;
 
         public uctInvoice()
         {
             InitializeComponent();
+            _invoiceRepository = new InvoiceRepository();
 
             if (Logged.Rl)
             {
@@ -20,7 +24,7 @@ namespace Fluxus.WinUI.View
                 btnExcluir.Show();
             }
 
-            dgvFaturas.DataSource = new InvoiceApp().GetAll();
+            dgvFaturas.DataSource = new InvoiceService(_invoiceRepository).GetAll();
         }
 
         private void frmInvoice_Load(object sender, EventArgs e)
@@ -50,7 +54,7 @@ namespace Fluxus.WinUI.View
 
                 DataTable serviceOrders = (DataTable)dgvOS.DataSource;
 
-                new InvoiceApp().PrintPDF(logo, profile, professionals, serviceOrders, path);
+                new InvoiceService(_invoiceRepository).PrintPDF(logo, profile, professionals, serviceOrders, path);
             }
         }
 
@@ -65,7 +69,9 @@ namespace Fluxus.WinUI.View
                 var idServiceOrder = Convert.ToInt32(dgvOS.CurrentRow.Cells["id_os"].Value);
                 Invoice invoice = PopulateObject();
 
-                var result = new InvoiceApp().RemoveOrder(idServiceOrder, invoice);
+                var service = new InvoiceService(_invoiceRepository);
+
+                var result = service.RemoveOrder(idServiceOrder, invoice);
 
                 if (result)
                 {
@@ -83,7 +89,7 @@ namespace Fluxus.WinUI.View
                     _subtotalDesloc = invoice.SubtotalMileageAllowance;
                 }
                 else
-                    MessageBox.Show("Não é possível remover a Ordem de Serviço da fatura", "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(service.Message, "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -100,8 +106,8 @@ namespace Fluxus.WinUI.View
             if (dialog == DialogResult.Yes)
             {
                 var id = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
-                new InvoiceApp().Delete(id);
-                dgvFaturas.DataSource = new InvoiceApp().GetAll();
+                new InvoiceService(_invoiceRepository).Delete(id);
+                dgvFaturas.DataSource = new InvoiceService(_invoiceRepository).GetAll();
                 ListarOS();
             }
         }

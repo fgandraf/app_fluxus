@@ -7,12 +7,18 @@ namespace Fluxus.Domain.Interfaces
 {
     public interface IProfessionalRepository
     {
-        public bool Insert(Professional body);
+        public int Insert(Professional body);
+
         public bool Update(Professional body);
+
         public bool Delete(int id);
-        public UserInfo GetUser(string username);
+
         public Professional GetById(int id);
+
         public List<ProfessionalIndex> GetIndex();
+
+        public UserInfo GetUser(string username);
+        
         public List<ProfessionalNameId> GetTagNameid();
     }
 }

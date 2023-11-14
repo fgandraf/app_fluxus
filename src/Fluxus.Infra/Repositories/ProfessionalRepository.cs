@@ -8,11 +8,10 @@ namespace Fluxus.Infra.Repositories
 {
     public class ProfessionalRepository : IProfessionalRepository
     {
-        public bool Insert(Professional body)
+        public int Insert(Professional body)
         {
             string json = JsonConvert.SerializeObject(body);
-            int response = Request.Post("Professional", json);
-            return response != -1;
+            return Request.Post("Professional", json);
         }
 
         public bool Update(Professional body)
@@ -24,6 +23,16 @@ namespace Fluxus.Infra.Repositories
         public bool Delete(int id)
         {
             return Request.Delete("Professional/", id.ToString());
+        }
+
+        public Professional GetById(int id)
+        {
+            string json = Request.Get("Professional/", id.ToString());
+
+            if (!string.IsNullOrEmpty(json))
+                return JsonConvert.DeserializeObject<Professional>(json);
+
+            return null;
         }
 
         public List<ProfessionalIndex> GetIndex()
@@ -57,17 +66,5 @@ namespace Fluxus.Infra.Repositories
 
             return null;
         }
-
-        public Professional GetById(int id)
-        {
-            string json = Request.Get("Professional/", id.ToString());
-
-            if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<Professional>(json);
-
-            return null;
-        }
     }
-
-
 }

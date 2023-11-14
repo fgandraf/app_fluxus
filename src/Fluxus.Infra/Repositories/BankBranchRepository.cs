@@ -8,11 +8,10 @@ namespace Fluxus.Infra.Repositories
 {
     public class BankBranchRepository : IBankBranchRepository
     {
-        public bool Insert(BankBranch body)
+        public int Insert(BankBranch body)
         {
             string json = JsonConvert.SerializeObject(body);
-            int response = Request.Post("BankBranch", json);
-            return response != -1;
+            return Request.Post("BankBranch", json);
         }
 
         public bool Update(BankBranch body)
@@ -24,6 +23,16 @@ namespace Fluxus.Infra.Repositories
         public bool Delete(int id)
         {
             return Request.Delete("BankBranch/", id.ToString());
+        }
+
+        public BankBranch GetById(int id)
+        {
+            string json = Request.Get("BankBranch/", id.ToString());
+
+            if (!string.IsNullOrEmpty(json))
+                return JsonConvert.DeserializeObject<BankBranch>(json);
+
+            return null;
         }
 
         public List<BankBranchIndex> GetIndex()
@@ -41,16 +50,6 @@ namespace Fluxus.Infra.Repositories
             if (!string.IsNullOrEmpty(json))
                 return JsonConvert.DeserializeObject<BankBranch>(json);
             
-            return null;
-        }
-
-        public BankBranch GetById(int id)
-        {
-            string json = Request.Get("BankBranch/", id.ToString());
-
-            if (!string.IsNullOrEmpty(json))
-                return  JsonConvert.DeserializeObject<BankBranch>(json);
-
             return null;
         }
     }

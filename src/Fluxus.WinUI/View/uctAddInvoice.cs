@@ -1,6 +1,8 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Globalization;
 using Fluxus.App;
+using Fluxus.Domain.Interfaces;
+using Fluxus.Infra.Repositories;
 
 namespace Fluxus.WinUI.View
 {
@@ -9,11 +11,13 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private double _subtotal_os = 0.00;
         private double _subtotal_desloc = 0.00;
+        private IInvoiceRepository _invoiceRepository;
 
         public uctAddInvoice(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
+            _invoiceRepository = new InvoiceRepository();
         }
 
         private void frmAddFatura_Load(object sender, EventArgs e)
@@ -40,8 +44,15 @@ namespace Fluxus.WinUI.View
 
         private void btnFaturar_Click(object sender, EventArgs e)
         {
-            Invoice invoice = PopulateToObject();
-            int invoiceId = new InvoiceApp().Insert(invoice);
+            var service = new InvoiceService(_invoiceRepository);
+            service.Invoice = PopulateToObject();
+            int invoiceId = service.Execute("Adicionar");
+            
+            if (invoiceId == 0)
+            {
+                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
             foreach (DataGridViewRow row in dgvOS.Rows)
             {

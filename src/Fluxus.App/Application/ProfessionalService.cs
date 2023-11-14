@@ -21,10 +21,10 @@ namespace Fluxus.App.Application
 
 
 
-        public bool Execute(string method)
+        public int Execute(string method)
         {
             if (Professional == null || !IsValid())
-                return false;
+                return 0;
 
             if (method == "Alterar")
                 return Update();
@@ -32,22 +32,22 @@ namespace Fluxus.App.Application
                 return Insert();
         }
 
-        private bool Insert()
+        private int Insert()
         {
-            if (Professional != null && _repository.Insert(Professional))
-                return true;
+            if (Professional != null)
+                return _repository.Insert(Professional);
 
             Message = "Não foi possível incluir o profissional!";
-            return false;
+            return 0;
         }
 
-        private bool Update()
+        private int Update()
         {
             if (Professional != null && _repository.Update(Professional))
-                return true;
+                return 1;
 
             Message = "Não foi possível alterar o profissional!";
-            return false;
+            return 0;
         }
 
         private bool IsValid()

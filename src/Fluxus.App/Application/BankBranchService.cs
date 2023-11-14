@@ -21,10 +21,10 @@ namespace Fluxus.App
 
 
 
-        public bool Execute(string method)
+        public int Execute(string method)
         {
             if (BankBranch == null || !IsValid())
-                return false;
+                return 0;
 
             if (method == "Alterar")
                 return Update();
@@ -32,22 +32,22 @@ namespace Fluxus.App
                 return Insert();
         }
 
-        private bool Insert()
+        private int Insert()
         {
-            if (BankBranch != null && _repository.Insert(BankBranch))
-                return true;
+            if (BankBranch != null)
+                return _repository.Insert(BankBranch);
 
             Message = "Não foi possível incluir a agência bancária!";
-            return false;
+            return 0;
         }
 
-        private bool Update()
+        private int Update()
         {
             if (BankBranch != null && _repository.Update(BankBranch))
-                return true;
+                return 1;
 
             Message = "Não foi possível alterar a agência bancária!";
-            return false;
+            return 0;
         }
 
         private bool IsValid()

@@ -15,6 +15,7 @@ namespace Fluxus.WinUI.View
         private int _id;
         private IProfessionalRepository _professionalRepository;
         private IBankBranchRepository _bankBranchRepository;
+        private IInvoiceRepository _invoiceRepository;
 
         public uctAddServiceOrder(frmMain formMain, string frmChild)
         {
@@ -24,6 +25,7 @@ namespace Fluxus.WinUI.View
             _formChild = frmChild;
             _professionalRepository = new ProfessionalRepository();
             _bankBranchRepository = new BankBranchRepository();
+            _invoiceRepository = new InvoiceRepository();
 
             var professionalService = new ProfessionalService(_professionalRepository);
             var professionals = professionalService.GetTagNameid(false);
@@ -228,7 +230,7 @@ namespace Fluxus.WinUI.View
         private void DisableEdit(int invoiceId)
         {
             lblFaturada.Show();
-            txtCodFatura.Text = "Fatura: " + new InvoiceApp().GetDescription(invoiceId);
+            txtCodFatura.Text = "Fatura: " + new InvoiceService(_invoiceRepository).GetDescription(invoiceId);
             txtCodFatura.Show();
 
 
