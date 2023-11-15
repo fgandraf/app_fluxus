@@ -2,7 +2,7 @@
 using Fluxus.Domain.Entities;
 using Fluxus.Domain.Enums;
 using Fluxus.Domain.Interfaces;
-using Fluxus.Domain.Structs;
+using Fluxus.Domain.Records;
 
 namespace Fluxus.App
 {

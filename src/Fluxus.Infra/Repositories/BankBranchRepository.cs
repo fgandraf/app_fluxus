@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Fluxus.Domain.Entities;
 using System.Collections.Generic;
-using Fluxus.Domain.Structs;
+using Fluxus.Domain.Records;
 using Fluxus.Domain.Interfaces;
 
 namespace Fluxus.Infra.Repositories

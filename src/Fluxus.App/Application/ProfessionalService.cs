@@ -1,7 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Domain.Enums;
 using Fluxus.Domain.Interfaces;
-using Fluxus.Domain.Structs;
+using Fluxus.Domain.Records;
 using System.Collections.Generic;
 
 namespace Fluxus.App.Application
@@ -116,7 +116,7 @@ namespace Fluxus.App.Application
             if (professionals != null)
             {
                 if (addHeader)
-                    professionals.Insert(0, new ProfessionalNameId { NameId = "--TODOS--" });
+                    professionals.Insert(0, new ProfessionalNameId { Nameid = "--TODOS--" });
                 return professionals;
             }
 

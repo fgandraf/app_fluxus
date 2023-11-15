@@ -1,6 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Domain.Enums;
 using Fluxus.Domain.Interfaces;
+using Fluxus.Domain.Records;
 using Fluxus.Infra.Services;
 using System.Collections.Generic;
 using System.Data;

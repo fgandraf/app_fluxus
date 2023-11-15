@@ -1,6 +1,6 @@
 ﻿
 using Fluxus.Domain.Entities;
-using Fluxus.Domain.Structs;
+using Fluxus.Domain.Records;
 using System.Collections.Generic;
 
 namespace Fluxus.Domain.Interfaces
