@@ -67,6 +67,7 @@ namespace Fluxus.WinUI.View
             id = new DataGridViewTextBoxColumn();
             status = new DataGridViewTextBoxColumn();
             professional = new DataGridViewTextBoxColumn();
+            ProfessionalId = new DataGridViewTextBoxColumn();
             orderDate = new DataGridViewTextBoxColumn();
             referenceCode = new DataGridViewTextBoxColumn();
             service = new DataGridViewTextBoxColumn();
@@ -75,6 +76,9 @@ namespace Fluxus.WinUI.View
             surveyDate = new DataGridViewTextBoxColumn();
             doneDate = new DataGridViewTextBoxColumn();
             invoiced = new DataGridViewCheckBoxColumn();
+            ServiceAmount = new DataGridViewTextBoxColumn();
+            MileageAllowance = new DataGridViewTextBoxColumn();
+            InvoiceId = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)pctLupa).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvOS).BeginInit();
             SuspendLayout();
@@ -171,7 +175,7 @@ namespace Fluxus.WinUI.View
             dgvOS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvOS.ColumnHeadersHeight = 35;
             dgvOS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvOS.Columns.AddRange(new DataGridViewColumn[] { id, status, professional, orderDate, referenceCode, service, city, customerName, surveyDate, doneDate, invoiced });
+            dgvOS.Columns.AddRange(new DataGridViewColumn[] { id, status, professional, ProfessionalId, orderDate, referenceCode, service, city, customerName, surveyDate, doneDate, invoiced, ServiceAmount, MileageAllowance, InvoiceId });
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = Color.White;
             dataGridViewCellStyle8.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
@@ -454,6 +458,16 @@ namespace Fluxus.WinUI.View
             professional.ReadOnly = true;
             professional.Width = 97;
             // 
+            // ProfessionalId
+            // 
+            ProfessionalId.DataPropertyName = "ProfessionalId";
+            ProfessionalId.HeaderText = "ProfessionalId";
+            ProfessionalId.MinimumWidth = 10;
+            ProfessionalId.Name = "ProfessionalId";
+            ProfessionalId.ReadOnly = true;
+            ProfessionalId.Visible = false;
+            ProfessionalId.Width = 200;
+            // 
             // orderDate
             // 
             orderDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -548,6 +562,36 @@ namespace Fluxus.WinUI.View
             invoiced.SortMode = DataGridViewColumnSortMode.Automatic;
             invoiced.Width = 143;
             // 
+            // ServiceAmount
+            // 
+            ServiceAmount.DataPropertyName = "ServiceAmount";
+            ServiceAmount.HeaderText = "ServiceAmount";
+            ServiceAmount.MinimumWidth = 10;
+            ServiceAmount.Name = "ServiceAmount";
+            ServiceAmount.ReadOnly = true;
+            ServiceAmount.Visible = false;
+            ServiceAmount.Width = 200;
+            // 
+            // MileageAllowance
+            // 
+            MileageAllowance.DataPropertyName = "MileageAllowance";
+            MileageAllowance.HeaderText = "MileageAllowance";
+            MileageAllowance.MinimumWidth = 10;
+            MileageAllowance.Name = "MileageAllowance";
+            MileageAllowance.ReadOnly = true;
+            MileageAllowance.Visible = false;
+            MileageAllowance.Width = 200;
+            // 
+            // InvoiceId
+            // 
+            InvoiceId.DataPropertyName = "InvoiceId";
+            InvoiceId.HeaderText = "InvoiceId";
+            InvoiceId.MinimumWidth = 10;
+            InvoiceId.Name = "InvoiceId";
+            InvoiceId.ReadOnly = true;
+            InvoiceId.Visible = false;
+            InvoiceId.Width = 200;
+            // 
             // uctOrderList
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -584,32 +628,33 @@ namespace Fluxus.WinUI.View
         }
 
         #endregion
-        private System.Windows.Forms.Panel pnlLinha2;
-        private System.Windows.Forms.PictureBox pctLupa;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.DataGridView dgvOS;
-        private System.Windows.Forms.Label lblTitTotal;
-        private System.Windows.Forms.Label lblTotalRegistros;
-        private System.Windows.Forms.ToolTip ttpOS;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboFaturadas;
-        private System.Windows.Forms.ComboBox cboProfissional;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cboAtividade;
-        private System.Windows.Forms.ComboBox cboCidade;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cboStatus;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnExportar;
-        private System.Windows.Forms.SaveFileDialog salvar;
+        private Panel pnlLinha2;
+        private PictureBox pctLupa;
+        private TextBox txtSearch;
+        private Button btnUpdate;
+        private Button btnDelete;
+        private DataGridView dgvOS;
+        private Label lblTitTotal;
+        private Label lblTotalRegistros;
+        private ToolTip ttpOS;
+        private Label label1;
+        private ComboBox cboFaturadas;
+        private ComboBox cboProfissional;
+        private Label label3;
+        private Label label4;
+        private ComboBox cboAtividade;
+        private ComboBox cboCidade;
+        private Label label6;
+        private ComboBox cboStatus;
+        private Label label7;
+        private Button btnAdd;
+        private Panel panel4;
+        private Button btnExportar;
+        private SaveFileDialog salvar;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn status;
         private DataGridViewTextBoxColumn professional;
+        private DataGridViewTextBoxColumn ProfessionalId;
         private DataGridViewTextBoxColumn orderDate;
         private DataGridViewTextBoxColumn referenceCode;
         private DataGridViewTextBoxColumn service;
@@ -618,5 +663,8 @@ namespace Fluxus.WinUI.View
         private DataGridViewTextBoxColumn surveyDate;
         private DataGridViewTextBoxColumn doneDate;
         private DataGridViewCheckBoxColumn invoiced;
+        private DataGridViewTextBoxColumn ServiceAmount;
+        private DataGridViewTextBoxColumn MileageAllowance;
+        private DataGridViewTextBoxColumn InvoiceId;
     }
 }

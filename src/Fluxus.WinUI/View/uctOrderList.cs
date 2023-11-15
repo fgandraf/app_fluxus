@@ -4,13 +4,14 @@ using Fluxus.App;
 using Fluxus.Infra.Repositories;
 using Fluxus.App.Application;
 using Fluxus.Domain.Interfaces;
+using Fluxus.Domain.Records;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctOrderList : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private List<dynamic> _dtOS;
+        private List<ServiceOrderIndex> _dtOS;
         private string _currentFilter;
         private IProfessionalRepository _professionalRepository;
         private IServiceRepository _serviceRepository;
@@ -31,7 +32,7 @@ namespace Fluxus.WinUI.View
                 return;
             }
             cboProfissional.DataSource = professionals;
-            
+
             cboCidade.DataSource = new App.ServiceOrderApp().GetCitiesFromOrders(true);
             cboAtividade.DataSource = new ServiceService(_serviceRepository).GetAll(true);
 

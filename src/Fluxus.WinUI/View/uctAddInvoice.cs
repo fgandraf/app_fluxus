@@ -48,7 +48,7 @@ namespace Fluxus.WinUI.View
             var service = new InvoiceService(_invoiceRepository);
             service.Invoice = PopulateToObject();
             int invoiceId = service.Execute(EnumMethod.Insert);
-            
+
             if (invoiceId == 0)
             {
                 MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);

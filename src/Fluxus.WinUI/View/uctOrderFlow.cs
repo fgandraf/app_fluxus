@@ -4,6 +4,8 @@ using Fluxus.App;
 using Fluxus.App.Application;
 using Fluxus.Infra.Repositories;
 using Fluxus.Domain.Interfaces;
+using Fluxus.Domain.Records;
+using Fluxus.Domain.Enums;
 
 namespace Fluxus.WinUI.View
 {
@@ -12,7 +14,7 @@ namespace Fluxus.WinUI.View
         private frmMain _frmPrincipal;
         private Control _lastEnteredControl;
         private DataGridView _dgvOrigem;
-        private List<dynamic> _dtOSNFaturada;
+        private List<ServiceOrderOpen> _dtOSNFaturada;
         private IProfessionalRepository _professionalRepository;
 
 
@@ -107,7 +109,8 @@ namespace Fluxus.WinUI.View
 
             if (sourcerow >= 0)
             {
-                var status = Convert.ToInt32(dgvDestino.Tag.ToString());
+                var status = (EnumStatus)Convert.ToInt32(dgvDestino.Tag);
+
                 int id = Convert.ToInt32(_dgvOrigem.Rows[sourcerow].Cells[0].Value);
 
                 var linha = _dtOSNFaturada.Where(item => item.Id == id).FirstOrDefault();
@@ -200,12 +203,12 @@ namespace Fluxus.WinUI.View
             var professionalId = cboProfissional.SelectedValue.ToString();
             var statusInt = Convert.ToInt32(dgv.Tag.ToString());
 
-            List<dynamic> dvOS;
+            List<ServiceOrderOpen> dvOS;
 
             if (cboProfissional.SelectedIndex == 0)
-                dvOS = new List<dynamic>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
+                dvOS = new List<ServiceOrderOpen>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
             else
-                dvOS = new List<dynamic>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
+                dvOS = new List<ServiceOrderOpen>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
 
             if (dvOS.Count > 0)
                 dgv.ContextMenuStrip = menuContext;

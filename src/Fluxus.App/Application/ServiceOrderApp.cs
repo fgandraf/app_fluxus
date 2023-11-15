@@ -1,5 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Domain.Enums;
+using Fluxus.Domain.Records;
 using Fluxus.Infra.Repositories;
 using Fluxus.Infra.Services;
 using System;
@@ -13,6 +14,13 @@ namespace Fluxus.App
     public class ServiceOrderApp
     {
         public string Message { get; private set; }
+
+
+
+
+
+
+
 
         public bool InsertOrUpdate(ServiceOrder serviceOrder, EnumMethod method)
         {
@@ -46,13 +54,13 @@ namespace Fluxus.App
                                  $"{serviceOrder.CustomerName.Replace(" ", " ")}" + "\n" +
                                  $"- Prazo: {serviceOrder.Deadline.ToShortDateString()}";
 
-            bool result;
+            int result;
             if (method == EnumMethod.Update)
-                result = new ServiceOrderRepository().Update(serviceOrder);
+                result = new ServiceOrderRepository().Update(serviceOrder) == true ? 1 : 0;
             else
                 result = new ServiceOrderRepository().Insert(serviceOrder);
 
-            if (result)
+            if (result > 0)
                 return true;
             else
             {
@@ -61,14 +69,11 @@ namespace Fluxus.App
             }
         }
 
-
         public void UpdateFaturaCod(int id, int invoiceId)
             => new ServiceOrderRepository().UpdateInvoiceId(id, invoiceId);
 
-
         public async void UpdateStatus(int id, string status)
             => await Task.Run(() => new ServiceOrderRepository().UpdateStatus(id, status));
-
 
         public bool Delete(int id)
         {
@@ -83,26 +88,37 @@ namespace Fluxus.App
             return true;
         }
 
-        public List<dynamic> GetOrdensDoFluxo()
+        public List<ServiceOrderOpen> GetOrdensDoFluxo()
             => new ServiceOrderRepository().GetIndexOpen();
 
-
-        public DataTable GetOrdensConcluidasNaoFaturadas()
+        public List<ServiceOrderIndex> GetOrdensConcluidasNaoFaturadas()
             => new ServiceOrderRepository().GetOpenDone();
 
-
-        public DataTable GetOrdensFaturadasDoCodigo(int invoiceId)
+        public List<ServiceOrderIndex> GetOrdensFaturadasDoCodigo(int invoiceId)
             => new ServiceOrderRepository().GetClosedByInvoiceId(invoiceId);
 
-
-        public List<dynamic> GetOrdensComFiltro(string filter)
+        public List<ServiceOrderIndex> GetOrdensComFiltro(string filter)
             => new ServiceOrderRepository().GetFiltered(filter);
 
-
         public DataTable GetProfessionalByInvoiceId(int invoiceId)
-            => new ServiceOrderRepository().GetProfessionalByInvoiceId(invoiceId);
+        {
+            var professionalsList = new ServiceOrderRepository().GetProfessionalByInvoiceId(invoiceId);
+            DataTable table = new DataTable();
 
+            table.Columns.Add("ProfessionalId", typeof(int));
+            table.Columns.Add("Nameid", typeof(string));
 
+            foreach (var professional in professionalsList)
+            {
+                DataRow row = table.NewRow();
+                row["ProfessionalId"] = professional.ProfessionalId;
+                row["Nameid"] = professional.Nameid;
+                table.Rows.Add(row);
+            }
+
+            return table;
+        }
+            
         public List<string> GetCitiesFromOrders(bool addHeader)
         {
             var cities = new ServiceOrderRepository().GetCitiesFromOrders();
@@ -113,10 +129,8 @@ namespace Fluxus.App
             return cities;
         }
 
-
         public ServiceOrder GetBy(int id)
             => new ServiceOrderRepository().GetById(id);
-
 
         public void ExportToSheet(List<dynamic> serviceOrders)
             => new ExcelService().ExportToExcel(serviceOrders);

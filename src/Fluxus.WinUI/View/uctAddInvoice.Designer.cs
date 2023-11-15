@@ -53,6 +53,9 @@
             lblTotal = new Label();
             lblSubtotal = new Label();
             dgvOS = new DataGridView();
+            btnFaturar = new Button();
+            btnCancelar = new Button();
+            ttpFatura = new ToolTip(components);
             id = new DataGridViewTextBoxColumn();
             data_ordem = new DataGridViewTextBoxColumn();
             referencia = new DataGridViewTextBoxColumn();
@@ -64,9 +67,10 @@
             data_concluída = new DataGridViewTextBoxColumn();
             valor_atividade = new DataGridViewTextBoxColumn();
             valor_deslocamento = new DataGridViewTextBoxColumn();
-            btnFaturar = new Button();
-            btnCancelar = new Button();
-            ttpFatura = new ToolTip(components);
+            ProfessionalId = new DataGridViewTextBoxColumn();
+            InvoiceId = new DataGridViewTextBoxColumn();
+            Status = new DataGridViewTextBoxColumn();
+            Invoiced = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvOS).BeginInit();
             SuspendLayout();
             // 
@@ -258,7 +262,7 @@
             dgvOS.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvOS.ColumnHeadersHeight = 35;
             dgvOS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvOS.Columns.AddRange(new DataGridViewColumn[] { id, data_ordem, referencia, profissional_cod, atividade_cod, cidade, nome_cliente, data_vistoria, data_concluída, valor_atividade, valor_deslocamento });
+            dgvOS.Columns.AddRange(new DataGridViewColumn[] { id, data_ordem, referencia, profissional_cod, atividade_cod, cidade, nome_cliente, data_vistoria, data_concluída, valor_atividade, valor_deslocamento, ProfessionalId, InvoiceId, Status, Invoiced });
             dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = Color.White;
             dataGridViewCellStyle9.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
@@ -291,6 +295,40 @@
             dgvOS.ShowEditingIcon = false;
             dgvOS.Size = new Size(1870, 788);
             dgvOS.TabIndex = 223;
+            // 
+            // btnFaturar
+            // 
+            btnFaturar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnFaturar.BackColor = Color.MediumBlue;
+            btnFaturar.FlatAppearance.BorderColor = Color.MediumBlue;
+            btnFaturar.FlatStyle = FlatStyle.Flat;
+            btnFaturar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFaturar.ForeColor = SystemColors.Control;
+            btnFaturar.Location = new Point(1656, 1277);
+            btnFaturar.Margin = new Padding(6, 7, 6, 7);
+            btnFaturar.Name = "btnFaturar";
+            btnFaturar.Size = new Size(325, 62);
+            btnFaturar.TabIndex = 296;
+            btnFaturar.Text = "&Faturar";
+            btnFaturar.UseVisualStyleBackColor = false;
+            btnFaturar.Click += btnFaturar_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCancelar.BackColor = Color.White;
+            btnCancelar.FlatAppearance.BorderColor = SystemColors.ActiveCaptionText;
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancelar.ForeColor = Color.Black;
+            btnCancelar.Location = new Point(1372, 1277);
+            btnCancelar.Margin = new Padding(6, 7, 6, 7);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(271, 62);
+            btnCancelar.TabIndex = 297;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // id
             // 
@@ -419,41 +457,47 @@
             valor_deslocamento.ReadOnly = true;
             valor_deslocamento.Width = 55;
             // 
-            // btnFaturar
+            // ProfessionalId
             // 
-            btnFaturar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnFaturar.BackColor = Color.MediumBlue;
-            btnFaturar.FlatAppearance.BorderColor = Color.MediumBlue;
-            btnFaturar.FlatStyle = FlatStyle.Flat;
-            btnFaturar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnFaturar.ForeColor = SystemColors.Control;
-            btnFaturar.Location = new Point(1656, 1277);
-            btnFaturar.Margin = new Padding(6, 7, 6, 7);
-            btnFaturar.Name = "btnFaturar";
-            btnFaturar.Size = new Size(325, 62);
-            btnFaturar.TabIndex = 296;
-            btnFaturar.Text = "&Faturar";
-            btnFaturar.UseVisualStyleBackColor = false;
-            btnFaturar.Click += btnFaturar_Click;
+            ProfessionalId.DataPropertyName = "ProfessionalId";
+            ProfessionalId.HeaderText = "ProfessionalId";
+            ProfessionalId.MinimumWidth = 10;
+            ProfessionalId.Name = "ProfessionalId";
+            ProfessionalId.ReadOnly = true;
+            ProfessionalId.Visible = false;
+            ProfessionalId.Width = 200;
             // 
-            // btnCancelar
+            // InvoiceId
             // 
-            btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancelar.BackColor = Color.White;
-            btnCancelar.FlatAppearance.BorderColor = SystemColors.ActiveCaptionText;
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCancelar.ForeColor = Color.Black;
-            btnCancelar.Location = new Point(1372, 1277);
-            btnCancelar.Margin = new Padding(6, 7, 6, 7);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(271, 62);
-            btnCancelar.TabIndex = 297;
-            btnCancelar.Text = "&Cancelar";
-            btnCancelar.UseVisualStyleBackColor = false;
-            btnCancelar.Click += btnCancelar_Click;
+            InvoiceId.DataPropertyName = "InvoiceId";
+            InvoiceId.HeaderText = "InvoiceId";
+            InvoiceId.MinimumWidth = 10;
+            InvoiceId.Name = "InvoiceId";
+            InvoiceId.ReadOnly = true;
+            InvoiceId.Visible = false;
+            InvoiceId.Width = 200;
             // 
-            // frmAddFatura
+            // Status
+            // 
+            Status.DataPropertyName = "Status";
+            Status.HeaderText = "Status";
+            Status.MinimumWidth = 10;
+            Status.Name = "Status";
+            Status.ReadOnly = true;
+            Status.Visible = false;
+            Status.Width = 200;
+            // 
+            // Invoiced
+            // 
+            Invoiced.DataPropertyName = "Invoiced";
+            Invoiced.HeaderText = "Invoiced";
+            Invoiced.MinimumWidth = 10;
+            Invoiced.Name = "Invoiced";
+            Invoiced.ReadOnly = true;
+            Invoiced.Visible = false;
+            Invoiced.Width = 200;
+            // 
+            // uctAddInvoice
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -474,7 +518,7 @@
             Controls.Add(txtDescricao);
             Controls.Add(lblDescricao);
             Margin = new Padding(6, 7, 6, 7);
-            Name = "frmAddFatura";
+            Name = "uctAddInvoice";
             Size = new Size(2000, 1400);
             Load += frmAddFatura_Load;
             ((System.ComponentModel.ISupportInitialize)dgvOS).EndInit();
@@ -483,22 +527,22 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgvOS;
-        private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.Label lblSubtotal;
-        private System.Windows.Forms.Button btnFaturar;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.DateTimePicker dtpData;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.Label lblDescricao;
-        private System.Windows.Forms.Button btnRemover;
-        private System.Windows.Forms.TextBox txtValorTotal;
-        private System.Windows.Forms.TextBox txtValorDeslocamento;
-        private System.Windows.Forms.TextBox txtValorOS;
-        private System.Windows.Forms.Panel pnlLinha2;
-        private System.Windows.Forms.ToolTip ttpFatura;
+        private Panel panel1;
+        private DataGridView dgvOS;
+        private Label lblTotal;
+        private Label lblSubtotal;
+        private Button btnFaturar;
+        private Button btnCancelar;
+        private DateTimePicker dtpData;
+        private Label label6;
+        private TextBox txtDescricao;
+        private Label lblDescricao;
+        private Button btnRemover;
+        private TextBox txtValorTotal;
+        private TextBox txtValorDeslocamento;
+        private TextBox txtValorOS;
+        private Panel pnlLinha2;
+        private ToolTip ttpFatura;
         private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn data_ordem;
         private DataGridViewTextBoxColumn referencia;
@@ -510,5 +554,9 @@
         private DataGridViewTextBoxColumn data_concluída;
         private DataGridViewTextBoxColumn valor_atividade;
         private DataGridViewTextBoxColumn valor_deslocamento;
+        private DataGridViewTextBoxColumn ProfessionalId;
+        private DataGridViewTextBoxColumn InvoiceId;
+        private DataGridViewTextBoxColumn Status;
+        private DataGridViewTextBoxColumn Invoiced;
     }
 }

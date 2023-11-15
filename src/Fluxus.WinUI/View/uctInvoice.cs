@@ -43,6 +43,9 @@ namespace Fluxus.WinUI.View
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
+                int invoiceId = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
+                var professionals = new ServiceOrderApp().GetProfessionalByInvoiceId(invoiceId);
+
                 string path = saveFileDialog.FileName;
 
                 Profile profile = new ProfileService(_profileRepository).GetToPrint();
@@ -51,8 +54,6 @@ namespace Fluxus.WinUI.View
                 using (var stream = new MemoryStream(profile.Logo))
                     logo = System.Drawing.Image.FromStream(stream);
 
-                int invoiceId = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
-                var professionals = new ServiceOrderApp().GetProfessionalByInvoiceId(invoiceId);
 
                 DataTable serviceOrders = (DataTable)dgvOS.DataSource;
 
