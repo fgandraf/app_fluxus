@@ -1,21 +1,21 @@
 ﻿using Fluxus.Domain.Entities;
-using System.Data;
 using Newtonsoft.Json;
+using Fluxus.Domain.Interfaces;
 
 namespace Fluxus.Infra.Repositories
 {
-    public class ProfileRepository
+    public class ProfileRepository : IProfileRepository
     {
-        public void Insert(Profile profile)
+        public int Insert(Profile profile)
         {
             string json = JsonConvert.SerializeObject(profile);
-            Request.Post("Profile", json);
+            return Request.Post("Profile", json);
         }
 
-        public void Update(Profile profile)
+        public bool Update(Profile profile)
         {
             string json = JsonConvert.SerializeObject(profile);
-            Request.Put("Profile", json);
+            return Request.Put("Profile", json);
         }
 
         public Profile GetAll()
@@ -40,7 +40,7 @@ namespace Fluxus.Infra.Repositories
                 return null;
         }
 
-        public string GetName()
+        public string GetTradingName()
         {
             return Request.Get("Profile/TradingName", string.Empty);
         }

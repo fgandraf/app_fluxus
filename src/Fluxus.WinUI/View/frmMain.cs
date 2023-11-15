@@ -1,16 +1,21 @@
 ﻿using Fluxus.App;
 using Fluxus.Domain.Entities;
+using Fluxus.Domain.Interfaces;
+using Fluxus.Infra.Repositories;
 
 namespace Fluxus.WinUI.View
 {
     public partial class frmMain : Form
     {
         private UserControl _userControlActive;
+        IProfileRepository _profileRepository;
 
         public frmMain()
         {
             if (new frmLogin().ShowDialog() == DialogResult.OK)
                 InitializeComponent();
+
+            _profileRepository = new ProfileRepository();
         }
 
         private async void frmPrincipal_Load(object sender, EventArgs e)
@@ -20,14 +25,14 @@ namespace Fluxus.WinUI.View
             btnOS.PerformClick();
 
             string fantasia = null;
-            await Task.Run(() => fantasia = new ProfileApp().GetTradingName());
+            await Task.Run(() => fantasia = new ProfileService(_profileRepository).GetTradingName());
             if (fantasia != null)
                 btnDadosCadastrais.Text = fantasia;
             else
                 btnDadosCadastrais.Text = "Dados Cadastrais";
 
             byte[] logoByte = null;
-            await Task.Run(() => logoByte = new ProfileApp().GetLogo());
+            await Task.Run(() => logoByte = new ProfileService(_profileRepository).GetLogo());
             if (logoByte != null)
             {
                 using (var stream = new MemoryStream(logoByte))

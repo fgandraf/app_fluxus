@@ -12,11 +12,13 @@ namespace Fluxus.WinUI.View
         private double _subtotalOs = 0.00;
         private double _subtotalDesloc = 0.00;
         private IInvoiceRepository _invoiceRepository;
+        private IProfileRepository _profileRepository;
 
         public uctInvoice()
         {
             InitializeComponent();
             _invoiceRepository = new InvoiceRepository();
+            _profileRepository = new ProfileRepository();
 
             if (Logged.Rl)
             {
@@ -43,7 +45,7 @@ namespace Fluxus.WinUI.View
             {
                 string path = saveFileDialog.FileName;
 
-                Profile profile = new ProfileApp().GetToPrint();
+                Profile profile = new ProfileService(_profileRepository).GetToPrint();
 
                 Image logo;
                 using (var stream = new MemoryStream(profile.Logo))

@@ -3,6 +3,9 @@ using Fluxus.App;
 using System.Drawing.Imaging;
 using Fluxus.Infra.Services;
 using System.Text.RegularExpressions;
+using Fluxus.Domain.Interfaces;
+using Fluxus.Infra.Repositories;
+using Fluxus.Domain.Enums;
 
 namespace Fluxus.WinUI.View
 {
@@ -10,20 +13,23 @@ namespace Fluxus.WinUI.View
     {
         private readonly frmMain _frmPrincipal;
         private Image _actualLogo;
-        private string _method;
+        private EnumMethod _method;
+        private IProfileRepository _profileRepository;
 
         public uctProfile(frmMain frm1)
         {
             InitializeComponent();
+            _profileRepository = new ProfileRepository();
+            _method = EnumMethod.Insert;
 
             _frmPrincipal = frm1;
 
-            var profile = new ProfileApp().GetAll();
+            var profile = new ProfileService(_profileRepository).GetAll();
             if (profile != null)
             {
                 PopulateFields(profile);
                 btnAddSave.Text = "&Salvar";
-                _method = "Update";
+                _method = EnumMethod.Update;
             }
 
             if (Logged.Rl)
@@ -32,17 +38,20 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            if (RequiredFieldsIsInvalid())
-                return;
 
-            var profile = PopulateObject();
+            var service = new ProfileService(_profileRepository);
+            service.Profile = PopulateObject();
 
-            new ProfileApp().InsertOrUpdate(_method, profile);
+
+            var success = service.Execute(_method);
+
+            if (success > 0)
+                MessageBox.Show("Dados alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             UpdateTradingNameButton();
             UpdateMainLogo();
-
-            MessageBox.Show("Dados alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnLoadImage_Click(object sender, EventArgs e)
