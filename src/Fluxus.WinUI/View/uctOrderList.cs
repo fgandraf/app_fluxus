@@ -12,7 +12,8 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private List<dynamic> _dtOS;
         private string _currentFilter;
-        IProfessionalRepository _professionalRepository;
+        private IProfessionalRepository _professionalRepository;
+        private IServiceRepository _serviceRepository;
 
 
         public uctOrderList(frmMain frm1)
@@ -20,6 +21,7 @@ namespace Fluxus.WinUI.View
             InitializeComponent();
             _frmPrincipal = frm1;
             _professionalRepository = new ProfessionalRepository();
+            _serviceRepository = new ServiceRepository();
 
             var professionalService = new ProfessionalService(_professionalRepository);
             var professionals = professionalService.GetTagNameid(true);
@@ -31,7 +33,7 @@ namespace Fluxus.WinUI.View
             cboProfissional.DataSource = professionals;
             
             cboCidade.DataSource = new App.ServiceOrderApp().GetCitiesFromOrders(true);
-            cboAtividade.DataSource = new ServiceApp().GetAll(true);
+            cboAtividade.DataSource = new ServiceService(_serviceRepository).GetAll(true);
 
             CleanFilter();
 

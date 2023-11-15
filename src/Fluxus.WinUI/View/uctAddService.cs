@@ -1,6 +1,9 @@
 ﻿using Fluxus.App;
+using Fluxus.App.Application;
 using Fluxus.Domain.Entities;
 using Fluxus.Domain.Enums;
+using Fluxus.Domain.Interfaces;
+using Fluxus.Infra.Repositories;
 
 namespace Fluxus.WinUI.View
 {
@@ -9,12 +12,14 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private readonly int _id;
         private EnumMethod _method;
+        private IServiceRepository _serviceRepository;
 
         public uctAddService(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
             _method = EnumMethod.Insert;
+            _serviceRepository = new ServiceRepository();
         }
 
         public uctAddService(frmMain frm1, Service service)
@@ -44,14 +49,15 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var model = PopulateObject();
-            var app = new ServiceApp();
-            var success = app.InsertOrUpdate(model, _method);
-            
-            if (success)
+            var service = new ServiceService(_serviceRepository);
+            service.Service = PopulateObject();
+
+            var success = service.Execute(_method);
+
+            if (success > 0)
                 btnCancelar_Click(sender, e);
             else
-                MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
 

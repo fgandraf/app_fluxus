@@ -1,16 +1,20 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.App;
+using Fluxus.Domain.Interfaces;
+using Fluxus.Infra.Repositories;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctService : UserControl
     {
         private readonly frmMain _frmPrincipal;
+        private IServiceRepository _serviceRepository;
 
         public uctService(frmMain frm1)
         {
             InitializeComponent();
             _frmPrincipal = frm1;
+            _serviceRepository = new ServiceRepository();
 
             if (Logged.Rl == false)
             {
@@ -19,7 +23,7 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvServices.DataSource = new ServiceApp().GetAll(false);
+            dgvServices.DataSource = new ServiceService(_serviceRepository).GetAll(false);
 
             if (dgvServices.Rows.Count == 0)
             {
@@ -37,7 +41,7 @@ namespace Fluxus.WinUI.View
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
-            var service = new ServiceApp().GetBy(id);
+            var service = new ServiceService(_serviceRepository).GetBy(id);
 
             var formNeto = new uctAddService(_frmPrincipal, service);
 
@@ -50,7 +54,7 @@ namespace Fluxus.WinUI.View
             if (result == DialogResult.Yes)
             {
                 var id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
-                var app = new ServiceApp();
+                var app = new ServiceService(_serviceRepository);
                 var success = app.Delete(id);
 
                 if (success)

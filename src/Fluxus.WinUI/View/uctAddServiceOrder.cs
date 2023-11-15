@@ -17,6 +17,7 @@ namespace Fluxus.WinUI.View
         private IProfessionalRepository _professionalRepository;
         private IBankBranchRepository _bankBranchRepository;
         private IInvoiceRepository _invoiceRepository;
+        private IServiceRepository _serviceRepository;
 
         public uctAddServiceOrder(frmMain formMain, string frmChild)
         {
@@ -29,6 +30,7 @@ namespace Fluxus.WinUI.View
             _professionalRepository = new ProfessionalRepository();
             _bankBranchRepository = new BankBranchRepository();
             _invoiceRepository = new InvoiceRepository();
+            _serviceRepository = new ServiceRepository();
 
             var professionalService = new ProfessionalService(_professionalRepository);
             var professionals = professionalService.GetTagNameid(false);
@@ -39,7 +41,7 @@ namespace Fluxus.WinUI.View
             }
             cboProfissional.DataSource = professionals;
             
-            cboAtividade.DataSource = new ServiceApp().GetAll(false);
+            cboAtividade.DataSource = new ServiceService(_serviceRepository).GetAll(false);
             cboCidade.DataSource = new App.ServiceOrderApp().GetCitiesFromOrders(false);
 
             if (!Logged.Rl)
