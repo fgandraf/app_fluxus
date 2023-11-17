@@ -1079,10 +1079,10 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnAddSave;
-        private System.Windows.Forms.Panel pnlLinha2;
-        private System.Windows.Forms.Panel pnlBotton;
-        private System.Windows.Forms.OpenFileDialog openDialog;
+        private Button btnAddSave;
+        private Panel pnlLinha2;
+        private Panel pnlBotton;
+        private OpenFileDialog openDialog;
         private Panel panel1;
         private Panel panel3;
         private Label lblTituloGeral;

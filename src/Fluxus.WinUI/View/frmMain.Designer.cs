@@ -368,24 +368,24 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlMenu;
-        private System.Windows.Forms.Button btnProfissionais;
-        private System.Windows.Forms.Button btnAtividades;
-        private System.Windows.Forms.Button btnAgencias;
-        private System.Windows.Forms.Button btnOS;
-        private System.Windows.Forms.ToolTip ttpMenu;
-        private System.Windows.Forms.ToolTip ttpSempre;
-        private System.Windows.Forms.Panel pnlCtrlOS;
-        private System.Windows.Forms.Panel pnlCtrlAgencias;
-        private System.Windows.Forms.Panel pnlCtrlAtividades;
-        private System.Windows.Forms.Panel pnlCtrlProfissionais;
-        public System.Windows.Forms.Panel pnlMain;
-        private System.Windows.Forms.Panel pnlCtrlDadosCadastrais;
-        private System.Windows.Forms.Button btnFaturas;
-        private System.Windows.Forms.Panel pnlCtrlFaturas;
-        public System.Windows.Forms.Button btnDadosCadastrais;
-        private System.Windows.Forms.Label lblUsuario;
-        private System.Windows.Forms.Label lblVersao;
+        private Panel pnlMenu;
+        private Button btnProfissionais;
+        private Button btnAtividades;
+        private Button btnAgencias;
+        private Button btnOS;
+        private ToolTip ttpMenu;
+        private ToolTip ttpSempre;
+        private Panel pnlCtrlOS;
+        private Panel pnlCtrlAgencias;
+        private Panel pnlCtrlAtividades;
+        private Panel pnlCtrlProfissionais;
+        public Panel pnlMain;
+        private Panel pnlCtrlDadosCadastrais;
+        private Button btnFaturas;
+        private Panel pnlCtrlFaturas;
+        public Button btnDadosCadastrais;
+        private Label lblUsuario;
+        private Label lblVersao;
         public PictureBox imgLogo;
     }
 }

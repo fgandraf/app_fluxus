@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Fluxus.WinUI.View
 {
     public partial class uctServiceOrder : UserControl
@@ -27,7 +29,10 @@ namespace Fluxus.WinUI.View
             if (tabFluxo.Controls.Count > 0)
                 tabFluxo.Controls.RemoveAt(0);
 
+            //var formFluxo = serviceProvider.GetRequiredService<uctOrderFlow>();
             uctOrderFlow formFluxo = new uctOrderFlow(_frmPrincipal);
+            
+            
             formFluxo.Dock = DockStyle.Fill;
             tabFluxo.Controls.Clear();
             tabFluxo.Controls.Add(formFluxo);

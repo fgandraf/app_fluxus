@@ -3,52 +3,59 @@ using Fluxus.App;
 using System.Drawing.Imaging;
 using Fluxus.Infra.Services;
 using System.Text.RegularExpressions;
-using Fluxus.Domain.Interfaces;
-using Fluxus.Infra.Repositories;
 using Fluxus.Domain.Enums;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctProfile : UserControl
     {
-        private readonly frmMain _frmPrincipal;
+        private readonly IServiceProvider _serviceProvider;
+        private ProfileService _profileService;
+
+        private frmMain _frmPrincipal;
         private Image _actualLogo;
         private EnumMethod _method;
-        private IProfileRepository _profileRepository;
 
-        public uctProfile(frmMain frm1)
+        public uctProfile(IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+            _profileService = serviceProvider.GetService<ProfileService>();
+            
+
             InitializeComponent();
-            _profileRepository = new ProfileRepository();
-            _method = EnumMethod.Insert;
 
-            _frmPrincipal = frm1;
-
-            var profile = new ProfileService(_profileRepository).GetAll();
+            var profile = _profileService.GetAll();
             if (profile != null)
             {
                 PopulateFields(profile);
                 btnAddSave.Text = "&Salvar";
                 _method = EnumMethod.Update;
             }
+            else
+            {
+                _method = EnumMethod.Insert;
+            }
 
             if (Logged.Rl)
                 pnlBotton.Show();
         }
 
+        public void Initialize(frmMain frm)
+            => _frmPrincipal = frm;
+
         private void btnAddSave_Click(object sender, EventArgs e)
         {
 
-            var service = new ProfileService(_profileRepository);
-            service.Profile = PopulateObject();
+            _profileService.Profile = PopulateObject();
 
 
-            var success = service.Execute(_method);
+            var success = _profileService.Execute(_method);
 
             if (success > 0)
                 MessageBox.Show("Dados alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(_profileService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             UpdateTradingNameButton();
             UpdateMainLogo();

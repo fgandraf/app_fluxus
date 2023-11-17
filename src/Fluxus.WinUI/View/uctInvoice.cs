@@ -48,6 +48,7 @@ namespace Fluxus.WinUI.View
 
                 string path = saveFileDialog.FileName;
 
+
                 Profile profile = new ProfileService(_profileRepository).GetToPrint();
 
                 Image logo;

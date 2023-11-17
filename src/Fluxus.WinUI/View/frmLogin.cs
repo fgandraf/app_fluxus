@@ -1,5 +1,6 @@
 ﻿using Fluxus.App;
 using Fluxus.Domain.Entities;
+using Fluxus.Domain.Interfaces;
 using Fluxus.Infra.Repositories;
 using System.Runtime.InteropServices;
 
@@ -13,18 +14,21 @@ namespace Fluxus.WinUI.View
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
+        private IProfessionalRepository _repository;
 
 
-
-        public frmLogin()
-            => InitializeComponent();
+        public frmLogin(IProfessionalRepository repository)
+        {
+            _repository = repository;
+            InitializeComponent();
+        }
 
         private void btnAppFechar_Click(object sender, EventArgs e)
             => Environment.Exit(0);
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var user = new ProfessionalRepository().GetUser(txtUsuario.Text);
+            var user = _repository.GetUser(txtUsuario.Text);
 
             if (string.IsNullOrEmpty(user.UserName.ToString()))
             {
@@ -46,9 +50,8 @@ namespace Fluxus.WinUI.View
             Logged.ProfessionalTag = user.Tag;
 
             this.DialogResult = DialogResult.OK;
-            this.Close();
-
         }
+
 
         private void imgShowPwd_Click(object sender, EventArgs e)
         {

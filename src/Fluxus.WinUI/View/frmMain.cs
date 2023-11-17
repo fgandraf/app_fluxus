@@ -1,38 +1,37 @@
 ﻿using Fluxus.App;
 using Fluxus.Domain.Entities;
-using Fluxus.Domain.Interfaces;
-using Fluxus.Infra.Repositories;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Fluxus.WinUI.View
 {
     public partial class frmMain : Form
     {
+        private readonly IServiceProvider _serviceProvider;
         private UserControl _userControlActive;
-        IProfileRepository _profileRepository;
 
-        public frmMain()
+        public frmMain(IServiceProvider serviceProvider)
         {
-            if (new frmLogin().ShowDialog() == DialogResult.OK)
-                InitializeComponent();
-
-            _profileRepository = new ProfileRepository();
+            _serviceProvider = serviceProvider;
+            InitializeComponent();
         }
 
         private async void frmPrincipal_Load(object sender, EventArgs e)
         {
             lblUsuario.Text = "Usuário: " + Logged.Usr_nome;
-
             btnOS.PerformClick();
-
             string fantasia = null;
-            await Task.Run(() => fantasia = new ProfileService(_profileRepository).GetTradingName());
+
+            var profileService = _serviceProvider.GetService<ProfileService>();
+            await Task.Run(() => fantasia = profileService.GetTradingName());
+
             if (fantasia != null)
                 btnDadosCadastrais.Text = fantasia;
             else
                 btnDadosCadastrais.Text = "Dados Cadastrais";
 
             byte[] logoByte = null;
-            await Task.Run(() => logoByte = new ProfileService(_profileRepository).GetLogo());
+            await Task.Run(() => logoByte = profileService.GetLogo());
             if (logoByte != null)
             {
                 using (var stream = new MemoryStream(logoByte))
@@ -50,7 +49,11 @@ namespace Fluxus.WinUI.View
                 case "btnDadosCadastrais":
                     {
                         pnlCtrlDadosCadastrais.Show();
-                        uct = new uctProfile(this);
+                        
+                        uctProfile uctProfile = _serviceProvider.GetService<uctProfile>();
+                        uctProfile.Initialize(this);
+                        uct = uctProfile;
+
                         break;
                     }
                 case "btnOS":
