@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using Fluxus.Domain.Entities;
-using Fluxus.Domain.Enums;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Domain.Records;
 
-namespace Fluxus.App
+namespace Fluxus.App.Services
 {
     public class BankBranchService
     {
@@ -22,29 +21,18 @@ namespace Fluxus.App
 
 
 
-        public int Execute(EnumMethod method)
+        public int Insert()
         {
-            if (BankBranch == null || !IsValid())
-                return 0;
-
-            if (method == EnumMethod.Update)
-                return Update();
-            else
-                return Insert();
-        }
-
-        private int Insert()
-        {
-            if (BankBranch != null)
+            if (BankBranch != null || IsValid())
                 return _repository.Insert(BankBranch);
 
             Message = "Não foi possível incluir a agência bancária!";
             return 0;
         }
 
-        private int Update()
+        public int Update()
         {
-            if (BankBranch != null && _repository.Update(BankBranch))
+            if (BankBranch != null && IsValid() && _repository.Update(BankBranch))
                 return 1;
 
             Message = "Não foi possível alterar a agência bancária!";

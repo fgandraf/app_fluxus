@@ -1,10 +1,9 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Services;
-using Fluxus.App;
+using Fluxus.App.Services;
 using System.Text.RegularExpressions;
-using Fluxus.Domain.Interfaces;
-using Fluxus.Infra.Repositories;
 using Fluxus.Domain.Enums;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
@@ -13,31 +12,34 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private readonly int _id;
         private EnumMethod _method;
-        private IBankBranchRepository _bankBranchRepository;
+        private IServiceProvider _serviceProvider;
 
-        public uctAddBankBranch(frmMain frm1)
+        public uctAddBankBranch(frmMain frm1, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
             _frmPrincipal = frm1;
-            _bankBranchRepository = new BankBranchRepository();
             _method = EnumMethod.Insert;
         }
 
-        public uctAddBankBranch(string agencia)
+        public uctAddBankBranch(string agencia, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
-            _bankBranchRepository = new BankBranchRepository();
             _method = EnumMethod.Insert;
 
             this.Size = new System.Drawing.Size(650, 600);
             txtAgencia.Text = agencia;
         }
 
-        public uctAddBankBranch(frmMain frm1, BankBranch branch)
+        public uctAddBankBranch(frmMain frm1, BankBranch branch, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
             _frmPrincipal = frm1;
-            _bankBranchRepository = new BankBranchRepository();
             _method = EnumMethod.Update;
 
             _id = branch.Id;
@@ -71,10 +73,10 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var service = new BankBranchService(_bankBranchRepository);
+            var service = _serviceProvider.GetService<BankBranchService>();
             service.BankBranch = PopulateObject();
 
-            var success = service.Execute(_method);
+            var success = _method == EnumMethod.Insert ? service.Insert() : service.Update();
 
             if (success > 0)
                 btnCancelar_Click(sender, e);
@@ -84,7 +86,7 @@ namespace Fluxus.WinUI.View
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            uctBankBranch formFilho = new uctBankBranch(_frmPrincipal);
+            uctBankBranch formFilho = new uctBankBranch(_frmPrincipal, _serviceProvider);
             _frmPrincipal.OpenUserControl(formFilho);
         }
 

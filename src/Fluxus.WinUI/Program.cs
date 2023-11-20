@@ -1,4 +1,4 @@
-using Fluxus.App;
+using Fluxus.App.Services;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Infra.Repositories;
 using Fluxus.WinUI.View;
@@ -20,10 +20,10 @@ namespace Fluxus.WinUI
 
             using (var serviceProvider = service.BuildServiceProvider())
             {
-                var loginForm = serviceProvider.GetRequiredService<frmLogin>();
+                var loginForm = new frmLogin(serviceProvider);
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
-                    var mainForm = serviceProvider.GetRequiredService<frmMain>();
+                    var mainForm = new frmMain(serviceProvider);
                     Application.Run(mainForm);
                 }
                 else
@@ -46,13 +46,13 @@ namespace Fluxus.WinUI
             services.AddSingleton<IServiceOrderRepository, ServiceOrderRepository>();
             services.AddSingleton<IServiceRepository, ServiceRepository>();
 
-
-            services.AddScoped<frmLogin>();
-            services.AddScoped<frmMain>();
-            services.AddScoped<uctProfile>();
+            services.AddScoped<BankBranchService>();
+            services.AddScoped<InvoiceService>();
+            services.AddScoped<ProfessionalService>();
             services.AddScoped<ProfileService>();
-            //TO DO: Add all scoped and inject
-            
+            services.AddScoped<ServiceOrderService>();
+            services.AddScoped<ServiceService>();
+
             return services;
         }
     }

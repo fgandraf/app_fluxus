@@ -1,7 +1,6 @@
-﻿using Fluxus.App;
+﻿using Fluxus.App.Services;
 using Fluxus.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Fluxus.WinUI.View
 {
@@ -49,41 +48,37 @@ namespace Fluxus.WinUI.View
                 case "btnDadosCadastrais":
                     {
                         pnlCtrlDadosCadastrais.Show();
-                        
-                        uctProfile uctProfile = _serviceProvider.GetService<uctProfile>();
-                        uctProfile.Initialize(this);
-                        uct = uctProfile;
-
+                        uct = new uctProfile(this, _serviceProvider);
                         break;
                     }
                 case "btnOS":
                     {
                         pnlCtrlOS.Show();
-                        uct = new uctServiceOrder(this);
+                        uct = new uctServiceOrder(this, _serviceProvider);
                         break;
                     }
                 case "btnFaturas":
                     {
                         pnlCtrlFaturas.Show();
-                        uct = new uctInvoice();
+                        uct = new uctInvoice(_serviceProvider);
                         break;
                     }
                 case "btnAtividades":
                     {
                         pnlCtrlAtividades.Show();
-                        uct = new uctService(this);
+                        uct = new uctService(this, _serviceProvider);
                         break;
                     }
                 case "btnAgencias":
                     {
                         pnlCtrlAgencias.Show();
-                        uct = new uctBankBranch(this);
+                        uct = new uctBankBranch(this, _serviceProvider);
                         break;
                     }
                 case "btnProfissionais":
                     {
                         pnlCtrlProfissionais.Show();
-                        uct = new uctProfessional(this);
+                        uct = new uctProfessional(this, _serviceProvider);
                         break;
                     }
                 default: break;

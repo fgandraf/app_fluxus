@@ -1,10 +1,8 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Data;
-using Fluxus.App;
-using Fluxus.Infra.Repositories;
-using Fluxus.App.Application;
-using Fluxus.Domain.Interfaces;
+using Fluxus.App.Services;
 using Fluxus.Domain.Records;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
@@ -13,18 +11,20 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private List<ServiceOrderIndex> _dtOS;
         private string _currentFilter;
-        private IProfessionalRepository _professionalRepository;
-        private IServiceRepository _serviceRepository;
+        private IServiceProvider _serviceProvider;
+        private ServiceOrderService _serviceOrderService;
 
 
-        public uctOrderList(frmMain frm1)
+        public uctOrderList(frmMain frm1, IServiceProvider serviceProvider)
         {
-            InitializeComponent();
-            _frmPrincipal = frm1;
-            _professionalRepository = new ProfessionalRepository();
-            _serviceRepository = new ServiceRepository();
+            _serviceProvider = serviceProvider;
 
-            var professionalService = new ProfessionalService(_professionalRepository);
+            InitializeComponent();
+            _serviceOrderService = serviceProvider.GetService<ServiceOrderService>();
+
+            _frmPrincipal = frm1;
+
+            var professionalService = _serviceProvider.GetService<ProfessionalService>();
             var professionals = professionalService.GetTagNameid(true);
             if (professionals == null)
             {
@@ -33,8 +33,11 @@ namespace Fluxus.WinUI.View
             }
             cboProfissional.DataSource = professionals;
 
-            cboCidade.DataSource = new App.ServiceOrderApp().GetCitiesFromOrders(true);
-            cboAtividade.DataSource = new ServiceService(_serviceRepository).GetAll(true);
+            
+            cboCidade.DataSource = _serviceOrderService.GetCitiesFromOrders(true);
+
+            var serviceService = _serviceProvider.GetService<ServiceService>();
+            cboAtividade.DataSource = serviceService.GetAll(true);
 
             CleanFilter();
 
@@ -49,15 +52,16 @@ namespace Fluxus.WinUI.View
             cboFaturadas.SelectedIndex = 0;
             RefreshFilter();
 
-            _dtOS = new App.ServiceOrderApp().GetOrdensComFiltro(_currentFilter);
+            _dtOS = _serviceOrderService.GetOrdensComFiltro(_currentFilter);
             dgvOS.DataSource = _dtOS;
 
             lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
+            _serviceProvider = serviceProvider;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name);
+            uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, _serviceProvider);
             _frmPrincipal.OpenUserControl(formNeto);
         }
 
@@ -66,8 +70,8 @@ namespace Fluxus.WinUI.View
             if (dgvOS.RowCount > 0)
             {
                 var id = Convert.ToInt32(dgvOS.CurrentRow.Cells[0].Value);
-                var serviceOrder = new App.ServiceOrderApp().GetBy(id);
-                uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, serviceOrder);
+                var serviceOrder = _serviceOrderService.GetBy(id);
+                uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, serviceOrder, _serviceProvider);
                 _frmPrincipal.OpenUserControl(formNeto);
             }
         }
@@ -80,17 +84,16 @@ namespace Fluxus.WinUI.View
                 if (dialog == DialogResult.Yes)
                 {
                     var id = Convert.ToInt32(dgvOS.CurrentRow.Cells["id"].Value);
-                    var app = new ServiceOrderApp();
-                    var success = app.Delete(id);
+                    var success = _serviceOrderService.Delete(id);
 
                     if (success)
                     {
-                        _dtOS = app.GetOrdensComFiltro(_currentFilter);
+                        _dtOS = _serviceOrderService.GetOrdensComFiltro(_currentFilter);
                         dgvOS.DataSource = _dtOS;
                         lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
                     }
                     else
-                        MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(_serviceOrderService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -116,7 +119,7 @@ namespace Fluxus.WinUI.View
         private void GetFilteredChanges(object sender, EventArgs e)
         {
             RefreshFilter();
-            _dtOS = new App.ServiceOrderApp().GetOrdensComFiltro(_currentFilter);
+            _dtOS = _serviceOrderService.GetOrdensComFiltro(_currentFilter);
             dgvOS.DataSource = _dtOS;
             lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
         }
@@ -126,7 +129,7 @@ namespace Fluxus.WinUI.View
             if (dgvOS.Rows.Count > 0)
             {
                 var serviceOrders = (List<dynamic>)dgvOS.DataSource;
-                new App.ServiceOrderApp().ExportToSheet(serviceOrders);
+                _serviceOrderService.ExportToSheet(serviceOrders);
             }
         }
 

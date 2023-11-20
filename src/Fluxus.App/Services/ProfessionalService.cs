@@ -1,10 +1,9 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Domain.Enums;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Domain.Records;
 using System.Collections.Generic;
 
-namespace Fluxus.App.Application
+namespace Fluxus.App.Services
 {
     public class ProfessionalService
     {
@@ -22,29 +21,18 @@ namespace Fluxus.App.Application
 
 
 
-        public int Execute(EnumMethod method)
+        public int Insert()
         {
-            if (Professional == null || !IsValid())
-                return 0;
-
-            if (method == EnumMethod.Update)
-                return Update();
-            else
-                return Insert();
-        }
-
-        private int Insert()
-        {
-            if (Professional != null)
+            if (Professional != null && IsValid())
                 return _repository.Insert(Professional);
 
             Message = "Não foi possível incluir o profissional!";
             return 0;
         }
 
-        private int Update()
+        public int Update()
         {
-            if (Professional != null && _repository.Update(Professional))
+            if (Professional != null && IsValid() && _repository.Update(Professional))
                 return 1;
 
             Message = "Não foi possível alterar o profissional!";
@@ -122,6 +110,11 @@ namespace Fluxus.App.Application
 
             Message = "Não foi possível encontrar profissionais na base de dados!";
             return null;
+        }
+
+        public UserInfo GetUser(string userName)
+        {
+            return _repository.GetUser(userName);
         }
 
     }

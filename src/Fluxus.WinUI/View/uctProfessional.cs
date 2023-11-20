@@ -1,20 +1,22 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Repositories;
-using Fluxus.App.Application;
-using Fluxus.Domain.Interfaces;
+using Fluxus.App.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctProfessional : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private IProfessionalRepository _professionalRepository;
+        private IServiceProvider _serviceProvider;
+        private ProfessionalService _professionalService;
 
-        public uctProfessional(frmMain frm1)
+        public uctProfessional(frmMain frm1, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
             _frmPrincipal = frm1;
-            _professionalRepository = new ProfessionalRepository();
+            _professionalService = _serviceProvider.GetService<ProfessionalService>();
 
             if (Logged.Rl == false)
             {
@@ -23,12 +25,11 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            var service = new ProfessionalService(_professionalRepository);
-            var profissionais = service.GetIndex();
+            var profissionais = _professionalService.GetIndex();
 
             if (profissionais == null)
             {
-                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(_professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -40,27 +41,27 @@ namespace Fluxus.WinUI.View
                 btnUpdate.Enabled = false;
                 btnDelete.Enabled = false;
             }
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            uctAddProfessional formNeto = new uctAddProfessional(_frmPrincipal);
+            uctAddProfessional formNeto = new uctAddProfessional(_frmPrincipal, _serviceProvider);
             _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-            var service = new ProfessionalService(_professionalRepository);
-            var professional = service.GetById(id);
+            var professional = _professionalService.GetById(id);
 
             if (professional == null)
             {
-                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(_professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var formNeto = new uctAddProfessional(_frmPrincipal, professional);
+            var formNeto = new uctAddProfessional(_frmPrincipal, professional, _serviceProvider);
 
             _frmPrincipal.OpenUserControl(formNeto);
         }
@@ -71,15 +72,14 @@ namespace Fluxus.WinUI.View
             if (dialog == DialogResult.Yes)
             {
                 var id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-                var service = new ProfessionalService(_professionalRepository);
-                var success = service.Delete(id);                
+                var success = _professionalService.Delete(id);                
                 
 
 
                 if (success)
-                    dgvProfessionals.DataSource = service.GetIndex();
+                    dgvProfessionals.DataSource = _professionalService.GetIndex();
                 else
-                    MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(_professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

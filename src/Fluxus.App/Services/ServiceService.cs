@@ -1,9 +1,8 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Domain.Enums;
 using Fluxus.Domain.Interfaces;
 using System.Collections.Generic;
 
-namespace Fluxus.App
+namespace Fluxus.App.Services
 {
     public class ServiceService
     {
@@ -21,30 +20,18 @@ namespace Fluxus.App
 
 
 
-
-        public int Execute(EnumMethod method)
+        public int Insert()
         {
-            if (Service == null || !IsValid())
-                return 0;
-
-            if (method == EnumMethod.Update)
-                return Update();
-            else
-                return Insert();
-        }
-
-        private int Insert()
-        {
-            if (Service != null)
+            if (Service != null && IsValid())
                 return _repository.Insert(Service);
 
             Message = "Não foi possível incluir a atividade!";
             return 0;
         }
 
-        private int Update()
+        public int Update()
         {
-            if (Service != null && _repository.Update(Service))
+            if (Service != null && IsValid() && _repository.Update(Service))
                 return 1;
 
             Message = "Não foi possível alterar a atividade!";

@@ -1,20 +1,22 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.App;
-using Fluxus.Domain.Interfaces;
-using Fluxus.Infra.Repositories;
+using Fluxus.App.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctService : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private IServiceRepository _serviceRepository;
+        private IServiceProvider _serviceProvider;
+        private ServiceService _serviceService;
 
-        public uctService(frmMain frm1)
+        public uctService(frmMain frm1, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
             _frmPrincipal = frm1;
-            _serviceRepository = new ServiceRepository();
+            _serviceService = _serviceProvider.GetService<ServiceService>();
 
             if (Logged.Rl == false)
             {
@@ -23,7 +25,7 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvServices.DataSource = new ServiceService(_serviceRepository).GetAll(false);
+            dgvServices.DataSource = _serviceService.GetAll(false);
 
             if (dgvServices.Rows.Count == 0)
             {
@@ -34,16 +36,16 @@ namespace Fluxus.WinUI.View
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            uctAddService formNeto = new uctAddService(_frmPrincipal);
+            uctAddService formNeto = new uctAddService(_frmPrincipal, _serviceProvider);
             _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
-            var service = new ServiceService(_serviceRepository).GetBy(id);
+            var service = _serviceService.GetBy(id);
 
-            var formNeto = new uctAddService(_frmPrincipal, service);
+            var formNeto = new uctAddService(_frmPrincipal, service, _serviceProvider);
 
             _frmPrincipal.OpenUserControl(formNeto);
         }
@@ -54,13 +56,13 @@ namespace Fluxus.WinUI.View
             if (result == DialogResult.Yes)
             {
                 var id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
-                var app = new ServiceService(_serviceRepository);
-                var success = app.Delete(id);
+
+                var success = _serviceService.Delete(id);
 
                 if (success)
-                    dgvServices.DataSource = app.GetAll(false);
+                    dgvServices.DataSource = _serviceService.GetAll(false);
                 else
-                    MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(_serviceService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

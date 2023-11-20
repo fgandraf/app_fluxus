@@ -1,20 +1,20 @@
-﻿using Fluxus.App;
+﻿using Fluxus.App.Services;
 using Fluxus.Domain.Entities;
-using Fluxus.Domain.Interfaces;
-using Fluxus.Infra.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctBankBranch : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private IBankBranchRepository _bankBranchRepository;
+        private IServiceProvider _serviceProvider;
 
-        public uctBankBranch(frmMain frm1)
+        public uctBankBranch(frmMain frm1, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
             _frmPrincipal = frm1;
-            _bankBranchRepository = new BankBranchRepository();
 
             if (Logged.Rl == false)
             {
@@ -22,28 +22,33 @@ namespace Fluxus.WinUI.View
                 btnUpdate.Enabled = false;
                 btnDelete.Enabled = false;
             }
+            
 
-            dgvBankBranches.DataSource = new BankBranchService(_bankBranchRepository).GetIndex();
+            var bankService = _serviceProvider.GetService<BankBranchService>();
+            dgvBankBranches.DataSource = bankService.GetIndex();
 
             if (dgvBankBranches.Rows.Count == 0)
             {
                 btnUpdate.Enabled = false;
                 btnDelete.Enabled = false;
             }
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            uctAddBankBranch formNeto = new uctAddBankBranch(_frmPrincipal);
+            uctAddBankBranch formNeto = new uctAddBankBranch(_frmPrincipal, _serviceProvider);
             _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
-            var branch = new BankBranchService(_bankBranchRepository).GetById(id);
+            var bankService = _serviceProvider.GetService<BankBranchService>();
+            var branch = bankService.GetById(id);
 
-            var formNeto = new uctAddBankBranch(_frmPrincipal, branch);
+            var formNeto = new uctAddBankBranch(_frmPrincipal, branch, _serviceProvider);
+
 
             _frmPrincipal.OpenUserControl(formNeto);
         }
@@ -54,13 +59,13 @@ namespace Fluxus.WinUI.View
             if (dialog == DialogResult.Yes)
             {
                 var id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
-                var app = new BankBranchService(_bankBranchRepository);
-                var success = app.Delete(id);
+                var bankService = _serviceProvider.GetService<BankBranchService>();
+                var success = bankService.Delete(id);
 
                 if (success)
-                    dgvBankBranches.DataSource = new BankBranchService(_bankBranchRepository).GetIndex();
+                    dgvBankBranches.DataSource = bankService.GetIndex();
                 else
-                    MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(bankService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

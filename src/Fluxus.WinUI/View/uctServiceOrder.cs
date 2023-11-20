@@ -1,20 +1,23 @@
 ﻿
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctServiceOrder : UserControl
     {
         private readonly frmMain _frmPrincipal;
+        private IServiceProvider _serviceProvider;
 
-        public uctServiceOrder(frmMain frm1)
+        public uctServiceOrder(frmMain frm1, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
             InitializeComponent();
             _frmPrincipal = frm1;
         }
 
-        public uctServiceOrder(frmMain frm1, int index)
+        public uctServiceOrder(frmMain frm1, int index, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
             _frmPrincipal = frm1;
             if (index == 1)
@@ -29,9 +32,7 @@ namespace Fluxus.WinUI.View
             if (tabFluxo.Controls.Count > 0)
                 tabFluxo.Controls.RemoveAt(0);
 
-            //var formFluxo = serviceProvider.GetRequiredService<uctOrderFlow>();
-            uctOrderFlow formFluxo = new uctOrderFlow(_frmPrincipal);
-            
+            uctOrderFlow formFluxo = new uctOrderFlow(_frmPrincipal, _serviceProvider);
             
             formFluxo.Dock = DockStyle.Fill;
             tabFluxo.Controls.Clear();
@@ -51,7 +52,7 @@ namespace Fluxus.WinUI.View
             if (tabList.Controls.Count > 0)
                 tabList.Controls.RemoveAt(0);
 
-            uctOrderList formList = new uctOrderList(_frmPrincipal);
+            uctOrderList formList = new uctOrderList(_frmPrincipal, _serviceProvider);
             formList.Dock = DockStyle.Fill;
             tabList.Controls.Clear();
             tabList.Controls.Add(formList);

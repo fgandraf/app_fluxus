@@ -1,8 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Domain.Enums;
 using Fluxus.Domain.Interfaces;
 
-namespace Fluxus.App
+namespace Fluxus.App.Services
 {
     public class ProfileService
     {
@@ -20,29 +19,18 @@ namespace Fluxus.App
 
 
 
-        public int Execute(EnumMethod method)
+        public int Insert()
         {
-            if (Profile == null || !IsValid())
-                return 0;
-
-            if (method == EnumMethod.Update)
-                return Update();
-            else
-                return Insert();
-        }
-
-        private int Insert()
-        {
-            if (Profile != null)
+            if (Profile != null && IsValid())
                 return _repository.Insert(Profile);
 
             Message = "Não foi possível incluir o profissional!";
             return 0;
         }
 
-        private int Update()
+        public int Update()
         {
-            if (Profile != null && _repository.Update(Profile))
+            if (Profile != null && IsValid() && _repository.Update(Profile))
                 return 1;
 
             Message = "Não foi possível alterar o profissional!";

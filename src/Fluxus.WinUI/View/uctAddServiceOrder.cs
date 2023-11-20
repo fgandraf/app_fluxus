@@ -1,9 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.App;
-using Fluxus.App.Application;
-using Fluxus.Infra.Repositories;
+using Fluxus.App.Services;
 using Fluxus.Domain.Enums;
-using Fluxus.Domain.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
@@ -14,25 +12,22 @@ namespace Fluxus.WinUI.View
         private string _agencia;
         private int _id;
         private EnumMethod _method;
-        private IProfessionalRepository _professionalRepository;
-        private IBankBranchRepository _bankBranchRepository;
-        private IInvoiceRepository _invoiceRepository;
-        private IServiceRepository _serviceRepository;
+        private IServiceProvider _serviceProvider;
+        private ServiceOrderService _serviceOrderService;
 
-        public uctAddServiceOrder(frmMain formMain, string frmChild)
+        public uctAddServiceOrder(frmMain formMain, string frmChild, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
+            _serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
             InitializeComponent();
 
             _method = EnumMethod.Insert;
 
             _formMain = formMain;
             _formChild = frmChild;
-            _professionalRepository = new ProfessionalRepository();
-            _bankBranchRepository = new BankBranchRepository();
-            _invoiceRepository = new InvoiceRepository();
-            _serviceRepository = new ServiceRepository();
 
-            var professionalService = new ProfessionalService(_professionalRepository);
+            var professionalService = _serviceProvider.GetService<ProfessionalService>();
             var professionals = professionalService.GetTagNameid(false);
             if (professionals == null)
             {
@@ -41,15 +36,18 @@ namespace Fluxus.WinUI.View
             }
             cboProfissional.DataSource = professionals;
             
-            cboAtividade.DataSource = new ServiceService(_serviceRepository).GetAll(false);
-            cboCidade.DataSource = new App.ServiceOrderApp().GetCitiesFromOrders(false);
+            var serviceService = _serviceProvider.GetService<ServiceService>();
+            cboAtividade.DataSource = serviceService.GetAll(false);
+
+            cboCidade.DataSource = _serviceOrderService.GetCitiesFromOrders(false);
 
             if (!Logged.Rl)
                 cboProfissional.Enabled = false;
         }
 
-        public uctAddServiceOrder(frmMain formMain, string frmChild, ServiceOrder serviceOrder) : this(formMain, frmChild)
+        public uctAddServiceOrder(frmMain formMain, string frmChild, ServiceOrder serviceOrder, IServiceProvider serviceProvider) : this(formMain, frmChild, serviceProvider)
         {
+
             _method = EnumMethod.Update;
             btnAddSave.Text = "&Alterar";
             PopulateFromModel(serviceOrder);
@@ -89,26 +87,27 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var model = PopulateObject();
-            var app = new ServiceOrderApp();
-            var success = app.InsertOrUpdate(model, _method);
+            var service = _serviceProvider.GetService<ServiceOrderService>();
+            service.ServiceOrder = PopulateObject();
 
-            if (success)
+            var success = _method == EnumMethod.Insert ? service.Insert() : service.Update();
+
+            if (success < 0)
                 btnCancelar_Click(sender, e);
             else
-                MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(_serviceOrderService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             if (_formChild == "uctOrderList")
             {
-                uctServiceOrder formFilho = new uctServiceOrder(_formMain, 1);
+                uctServiceOrder formFilho = new uctServiceOrder(_formMain, 1, _serviceProvider);
                 _formMain.OpenUserControl(formFilho);
             }
             else
             {
-                uctServiceOrder formFilho = new uctServiceOrder(_formMain);
+                uctServiceOrder formFilho = new uctServiceOrder(_formMain, _serviceProvider);
                 _formMain.OpenUserControl(formFilho);
             }
         }
@@ -147,7 +146,7 @@ namespace Fluxus.WinUI.View
 
         private void btnAddAgencia_Click(object sender, EventArgs e)
         {
-            var form = new uctAddBankBranch(txtRef1.Text);
+            var form = new uctAddBankBranch(txtRef1.Text, _serviceProvider);
             //form.ShowDialog();
 
             GetBankBranch();
@@ -235,7 +234,8 @@ namespace Fluxus.WinUI.View
         private void DisableEdit(int invoiceId)
         {
             lblFaturada.Show();
-            txtCodFatura.Text = "Fatura: " + new InvoiceService(_invoiceRepository).GetDescription(invoiceId);
+            var invoiceService = _serviceProvider.GetService<InvoiceService>();
+            txtCodFatura.Text = "Fatura: " + invoiceService.GetDescription(invoiceId);
             txtCodFatura.Show();
 
 
@@ -262,7 +262,8 @@ namespace Fluxus.WinUI.View
 
         private void GetBankBranch()
         {
-            var branch = new BankBranchService(_bankBranchRepository).GetByCode(txtRef1.Text);
+            var service = _serviceProvider.GetService<BankBranchService>();
+            var branch = service.GetByCode(txtRef1.Text);
             if (branch == null)
             {
                 txtBranchName.Text = "Agência não cadastrado!";

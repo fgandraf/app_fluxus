@@ -1,9 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Globalization;
-using Fluxus.App;
-using Fluxus.Domain.Interfaces;
-using Fluxus.Infra.Repositories;
-using Fluxus.Domain.Enums;
+using Fluxus.App.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
@@ -12,18 +10,21 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private double _subtotal_os = 0.00;
         private double _subtotal_desloc = 0.00;
-        private IInvoiceRepository _invoiceRepository;
+        private IServiceProvider _serviceProvider;
 
-        public uctAddInvoice(frmMain frm1)
+        public uctAddInvoice(frmMain frm1, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
             _frmPrincipal = frm1;
-            _invoiceRepository = new InvoiceRepository();
         }
 
         private void frmAddFatura_Load(object sender, EventArgs e)
         {
-            dgvOS.DataSource = new ServiceOrderApp().GetOrdensConcluidasNaoFaturadas();
+            var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
+
+            dgvOS.DataSource = serviceOrderService.GetOrdensConcluidasNaoFaturadas();
             Calculate();
             txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
         }
@@ -45,9 +46,10 @@ namespace Fluxus.WinUI.View
 
         private void btnFaturar_Click(object sender, EventArgs e)
         {
-            var service = new InvoiceService(_invoiceRepository);
+            var service = _serviceProvider.GetService<InvoiceService>();
             service.Invoice = PopulateToObject();
-            int invoiceId = service.Execute(EnumMethod.Insert);
+
+            int invoiceId = service.Insert();
 
             if (invoiceId == 0)
             {
@@ -58,7 +60,8 @@ namespace Fluxus.WinUI.View
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
                 int idOS = Convert.ToInt32(row.Cells["Id"].Value);
-                new ServiceOrderApp().UpdateFaturaCod(idOS, invoiceId);
+                var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
+                serviceOrderService.UpdateFaturaCod(idOS, invoiceId);
             }
 
             MessageBox.Show("Ordens faturadas com sucesso!", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -68,7 +71,7 @@ namespace Fluxus.WinUI.View
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            uctServiceOrder formFilho = new uctServiceOrder(_frmPrincipal);
+            uctServiceOrder formFilho = new uctServiceOrder(_frmPrincipal, _serviceProvider);
             _frmPrincipal.OpenUserControl(formFilho);
         }
 

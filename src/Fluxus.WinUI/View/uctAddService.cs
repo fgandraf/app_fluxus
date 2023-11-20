@@ -1,9 +1,7 @@
-﻿using Fluxus.App;
-using Fluxus.App.Application;
+﻿using Fluxus.App.Services;
 using Fluxus.Domain.Entities;
 using Fluxus.Domain.Enums;
-using Fluxus.Domain.Interfaces;
-using Fluxus.Infra.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
@@ -12,18 +10,21 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private readonly int _id;
         private EnumMethod _method;
-        private IServiceRepository _serviceRepository;
+        private IServiceProvider _serviceProvider;
 
-        public uctAddService(frmMain frm1)
+        public uctAddService(frmMain frm1, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
             _frmPrincipal = frm1;
             _method = EnumMethod.Insert;
-            _serviceRepository = new ServiceRepository();
         }
 
-        public uctAddService(frmMain frm1, Service service)
+        public uctAddService(frmMain frm1, Service service, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
             _frmPrincipal = frm1;
             _method = EnumMethod.Update;
@@ -49,10 +50,10 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var service = new ServiceService(_serviceRepository);
+            var service = _serviceProvider.GetService<ServiceService>();
             service.Service = PopulateObject();
 
-            var success = service.Execute(_method);
+            var success = _method == EnumMethod.Insert ? service.Insert() : service.Update();
 
             if (success > 0)
                 btnCancelar_Click(sender, e);
@@ -63,7 +64,7 @@ namespace Fluxus.WinUI.View
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            uctService formFilho = new uctService(_frmPrincipal);
+            uctService formFilho = new uctService(_frmPrincipal, _serviceProvider);
             _frmPrincipal.OpenUserControl(formFilho);
         }
 

@@ -1,8 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Repositories;
-using Fluxus.App.Application;
-using Fluxus.Domain.Interfaces;
+using Fluxus.App.Services;
 using Fluxus.Domain.Enums;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
@@ -12,21 +11,23 @@ namespace Fluxus.WinUI.View
         private readonly int _id;
         private readonly string _nameId;
         private EnumMethod _method;
-        private IProfessionalRepository _professionalRepository;
+        private IServiceProvider _serviceProvider;
 
-        public uctAddProfessional(frmMain frm1)
+        public uctAddProfessional(frmMain frm1, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
             _frmPrincipal = frm1;
-            _professionalRepository = new ProfessionalRepository();
             _method = EnumMethod.Insert;
         }
 
-        public uctAddProfessional(frmMain frm1, Professional professional)
+        public uctAddProfessional(frmMain frm1, Professional professional, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
             _frmPrincipal = frm1;
-            _professionalRepository = new ProfessionalRepository();
             _method = EnumMethod.Update;
 
             _id = professional.Id;
@@ -67,10 +68,10 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var service = new ProfessionalService(_professionalRepository);
+            var service = _serviceProvider.GetService<ProfessionalService>();
             service.Professional = PopulateObject();
 
-            var success = service.Execute(_method);
+            var success = _method == EnumMethod.Insert ? service.Insert() : service.Update();
 
             if (success > 0)
                 btnCancelar_Click(sender, e);
@@ -80,7 +81,7 @@ namespace Fluxus.WinUI.View
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            uctProfessional formFilho = new uctProfessional(_frmPrincipal);
+            uctProfessional formFilho = new uctProfessional(_frmPrincipal,_serviceProvider);
             _frmPrincipal.OpenUserControl(formFilho);
         }
 

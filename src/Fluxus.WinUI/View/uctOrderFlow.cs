@@ -1,11 +1,9 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Data;
-using Fluxus.App;
-using Fluxus.App.Application;
-using Fluxus.Infra.Repositories;
-using Fluxus.Domain.Interfaces;
+using Fluxus.App.Services;
 using Fluxus.Domain.Records;
 using Fluxus.Domain.Enums;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
 {
@@ -15,14 +13,18 @@ namespace Fluxus.WinUI.View
         private Control _lastEnteredControl;
         private DataGridView _dgvOrigem;
         private List<ServiceOrderOpen> _dtOSNFaturada;
-        private IProfessionalRepository _professionalRepository;
+        private IServiceProvider _serviceProvider;
+        private ServiceOrderService _serviceOrderService;
 
 
-        public uctOrderFlow(frmMain frm1)
+        public uctOrderFlow(frmMain frm1, IServiceProvider serviceProvider)
         {
+            _serviceProvider = serviceProvider;
+
             InitializeComponent();
+            _serviceOrderService = serviceProvider.GetService<ServiceOrderService>();
+
             _frmPrincipal = frm1;
-            _professionalRepository = new ProfessionalRepository();
 
             foreach (Control ctrl in Controls)
             {
@@ -41,10 +43,10 @@ namespace Fluxus.WinUI.View
                 view.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             }
 
-            _dtOSNFaturada = new App.ServiceOrderApp().GetOrdensDoFluxo();
+            var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
+            _dtOSNFaturada = serviceOrderService.GetOrdensDoFluxo();
 
-
-            var professionalService = new ProfessionalService(_professionalRepository);
+            var professionalService = _serviceProvider.GetService<ProfessionalService>();
             var professionals = professionalService.GetTagNameid(true);
             if (professionals == null)
             {
@@ -69,6 +71,7 @@ namespace Fluxus.WinUI.View
             cboProfissional.SelectedValue = Convert.ToInt32(Logged.ProfessionalId);
 
             GetAllOrders();
+            _serviceProvider = serviceProvider;
         }
 
         private void cboProfissional_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,13 +79,13 @@ namespace Fluxus.WinUI.View
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name);
+            uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, _serviceProvider);
             _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnFaturar_Click(object sender, EventArgs e)
         {
-            uctAddInvoice formNeto = new uctAddInvoice(_frmPrincipal);
+            uctAddInvoice formNeto = new uctAddInvoice(_frmPrincipal, _serviceProvider);
             _frmPrincipal.OpenUserControl(formNeto);
         }
 
@@ -126,7 +129,7 @@ namespace Fluxus.WinUI.View
                 else
                     btnFaturar.Enabled = true;
 
-                new App.ServiceOrderApp().UpdateStatus(id, status.ToString());
+                _serviceOrderService.UpdateStatus(id, status.ToString());
             }
 
             ContarRegistros(_dgvOrigem);
@@ -161,9 +164,9 @@ namespace Fluxus.WinUI.View
             if (dgv != null)
             {
                 int serviceOrderId = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
-                var ordemDeServico = new ServiceOrderApp().GetBy(serviceOrderId);
+                var ordemDeServico = _serviceOrderService.GetBy(serviceOrderId);
 
-                uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, ordemDeServico);
+                uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, ordemDeServico, _serviceProvider);
                 _frmPrincipal.OpenUserControl(formNeto);
             }
         }
@@ -177,16 +180,15 @@ namespace Fluxus.WinUI.View
                 if (dialog == DialogResult.Yes)
                 {
                     var id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
-                    var app = new ServiceOrderApp();
-                    var success = app.Delete(id);
+                    var success = _serviceOrderService.Delete(id);
 
                     if (success)
                     {
-                        _dtOSNFaturada = app.GetOrdensDoFluxo();
+                        _dtOSNFaturada = _serviceOrderService.GetOrdensDoFluxo();
                         GetOrdersTo(dgv);
                     }
                     else
-                        MessageBox.Show(app.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(_serviceOrderService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

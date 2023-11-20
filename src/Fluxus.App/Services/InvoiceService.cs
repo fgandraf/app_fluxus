@@ -1,18 +1,17 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Domain.Enums;
 using Fluxus.Domain.Interfaces;
-using Fluxus.Domain.Records;
 using Fluxus.Infra.Services;
 using System.Collections.Generic;
 using System.Data;
 
 
-namespace Fluxus.App
+namespace Fluxus.App.Services
 {
     public class InvoiceService
     {
 
         private IInvoiceRepository _repository;
+        private IServiceOrderRepository _serviceOrderRepository;
         public Invoice Invoice { get; set; }
 
 
@@ -20,34 +19,26 @@ namespace Fluxus.App
 
 
 
-        public InvoiceService(IInvoiceRepository repository)
-            => _repository = repository;
-
-
-
-        public int Execute(EnumMethod method)
-        {
-            if (Invoice == null || !IsValid())
-                return 0;
-
-            if (method == EnumMethod.Update)
-                return Update();
-            else
-                return Insert();
+        public InvoiceService(IInvoiceRepository repository, IServiceOrderRepository serviceOrderRepository)
+        { 
+            _repository = repository; 
+            _serviceOrderRepository = serviceOrderRepository;
         }
+
+
 
         public int Insert()
         {
-            if (Invoice != null)
+            if (Invoice != null || IsValid())
                 return _repository.Insert(Invoice);
 
             Message = "Não foi possível incluir a fatura";
             return 0;
         }
 
-        private int Update()
+        public int Update()
         {
-            if (Invoice != null && _repository.Update(Invoice))
+            if (Invoice != null && IsValid() && _repository.Update(Invoice))
                 return 1;
 
             Message = "Não foi possível alterar a fatura!";
@@ -88,9 +79,11 @@ namespace Fluxus.App
 
         public bool RemoveOrder(int idServiceOrder, Invoice invoice)
         {
-            new ServiceOrderApp().UpdateFaturaCod(idServiceOrder, 0);
+            _serviceOrderRepository.UpdateInvoiceId(idServiceOrder, 0);
+            
             Invoice = invoice;
-            int response = Execute(EnumMethod.Update);
+
+            var response = Update();
 
             if (response > 0)
                 return true;

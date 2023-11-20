@@ -1,7 +1,6 @@
-﻿using Fluxus.App;
+﻿using Fluxus.App.Services;
 using Fluxus.Domain.Entities;
-using Fluxus.Domain.Interfaces;
-using Fluxus.Infra.Repositories;
+using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.InteropServices;
 
 namespace Fluxus.WinUI.View
@@ -14,13 +13,17 @@ namespace Fluxus.WinUI.View
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        private IProfessionalRepository _repository;
+        private IServiceProvider _serviceProvider;
+        private ProfessionalService _professionalService;
 
 
-        public frmLogin(IProfessionalRepository repository)
+        public frmLogin(IServiceProvider serviceProvider)
         {
-            _repository = repository;
+            _serviceProvider = serviceProvider;
+
+            _professionalService = _serviceProvider.GetService<ProfessionalService>();
             InitializeComponent();
+            _serviceProvider = serviceProvider;
         }
 
         private void btnAppFechar_Click(object sender, EventArgs e)
@@ -28,7 +31,7 @@ namespace Fluxus.WinUI.View
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var user = _repository.GetUser(txtUsuario.Text);
+            var user = _professionalService.GetUser(txtUsuario.Text);
 
             if (string.IsNullOrEmpty(user.UserName.ToString()))
             {

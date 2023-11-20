@@ -1,5 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.App;
+using Fluxus.App.Services;
 using System.Drawing.Imaging;
 using Fluxus.Infra.Services;
 using System.Text.RegularExpressions;
@@ -12,16 +12,16 @@ namespace Fluxus.WinUI.View
     {
         private readonly IServiceProvider _serviceProvider;
         private ProfileService _profileService;
-
         private frmMain _frmPrincipal;
         private Image _actualLogo;
         private EnumMethod _method;
 
-        public uctProfile(IServiceProvider serviceProvider)
+        public uctProfile(frmMain frm, IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
-            _profileService = serviceProvider.GetService<ProfileService>();
-            
+
+            _profileService = _serviceProvider.GetService<ProfileService>();
+            _frmPrincipal = frm;
 
             InitializeComponent();
 
@@ -41,16 +41,12 @@ namespace Fluxus.WinUI.View
                 pnlBotton.Show();
         }
 
-        public void Initialize(frmMain frm)
-            => _frmPrincipal = frm;
-
         private void btnAddSave_Click(object sender, EventArgs e)
         {
 
             _profileService.Profile = PopulateObject();
 
-
-            var success = _profileService.Execute(_method);
+            var success = _method == EnumMethod.Insert ? _profileService.Insert() : _profileService.Update();
 
             if (success > 0)
                 MessageBox.Show("Dados alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
