@@ -128,7 +128,7 @@ namespace Fluxus.WinUI.View
         {
             if (dgvOS.Rows.Count > 0)
             {
-                var serviceOrders = (List<dynamic>)dgvOS.DataSource;
+                var serviceOrders = (List<ServiceOrderIndex>)dgvOS.DataSource;
                 _serviceOrderService.ExportToSheet(serviceOrders);
             }
         }

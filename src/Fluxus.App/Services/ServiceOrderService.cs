@@ -154,7 +154,7 @@ namespace Fluxus.App.Services
         public ServiceOrder GetBy(int id)
             => _repository.GetById(id);
 
-        public void ExportToSheet(List<dynamic> serviceOrders)
+        public void ExportToSheet(List<ServiceOrderIndex> serviceOrders)
             => new ExcelService().ExportToExcel(serviceOrders);
 
     }
