@@ -8,7 +8,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 
 
-namespace Fluxus.App.Services
+namespace Fluxus.Infra.Services
 {
     public class ReportService
     {

@@ -1,4 +1,5 @@
 ﻿using Fluxus.App.Services;
+using Fluxus.Domain;
 using Fluxus.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,23 +20,26 @@ namespace Fluxus.WinUI.View
         {
             lblUsuario.Text = "Usuário: " + Logged.Usr_nome;
             btnOS.PerformClick();
-            string fantasia = null;
 
             var profileService = _serviceProvider.GetService<ProfileService>();
-            await Task.Run(() => fantasia = profileService.GetTradingName());
 
-            if (fantasia != null)
-                btnDadosCadastrais.Text = fantasia;
+
+            OperationResult fantasia = new OperationResult();
+            await Task.Run(() => fantasia = profileService.GetTradingName());
+            if (fantasia.Success)
+                btnDadosCadastrais.Text = fantasia.Object as string;
             else
                 btnDadosCadastrais.Text = "Dados Cadastrais";
 
-            byte[] logoByte = null;
-            await Task.Run(() => logoByte = profileService.GetLogo());
-            if (logoByte != null)
+
+            OperationResult logo = new OperationResult();
+            await Task.Run(() => logo = profileService.GetLogo());
+            if (logo.Success)
             {
-                using (var stream = new MemoryStream(logoByte))
+                using (var stream = new MemoryStream(logo.Object as byte[]))
                     imgLogo.Image = System.Drawing.Image.FromStream(stream);
             }
+            
         }
 
         private void MenuButtonClick(object sender, EventArgs e)

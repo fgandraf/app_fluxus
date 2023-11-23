@@ -1,12 +1,7 @@
 ﻿using Fluxus.Domain;
 using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
-using Fluxus.Domain.Records;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-
-
-//WIP
 
 namespace Fluxus.App.Services
 {
@@ -14,85 +9,124 @@ namespace Fluxus.App.Services
     {
 
         private IServiceOrderRepository _repository;
-        public ServiceOrder ServiceOrder { get; set; }
-
-
-        public string Message { get; private set; }
-
 
 
         public ServiceOrderService(IServiceOrderRepository repository)
             => _repository = repository;
 
 
-
-        public OperationResult Insert()
+        public OperationResult Insert(ServiceOrder serviceOrder)
         {
-            if (ServiceOrder == null || !ServiceOrder.IsValid)
-                return OperationResult.FailureResult("Não foi possível incluir a ordem de serviço: " + ServiceOrder?.Message);
+            if (serviceOrder == null || !serviceOrder.IsValid)
+                return OperationResult.FailureResult("Não foi possível incluir a ordem de serviço!");
 
-            int id = _repository.Insert(ServiceOrder);
+            serviceOrder.CreateTitle();
+            int id = _repository.Insert(serviceOrder);
             return OperationResult.SuccessResult(id);
         }
 
-        public OperationResult Update()
+        public OperationResult Update(ServiceOrder serviceOrder)
         {
-            if (ServiceOrder == null || !ServiceOrder.IsValid || !_repository.Update(ServiceOrder))
-                return OperationResult.FailureResult("Não foi possível alterar a ordem de serviço!\n" + ServiceOrder?.Message);
+            if (serviceOrder == null || !serviceOrder.IsValid || !_repository.Update(serviceOrder))
+                return OperationResult.FailureResult("Não foi possível alterar a ordem de serviço!");
 
             return OperationResult.SuccessResult();
         }
 
-        public void UpdateFaturaCod(int id, int invoiceId)
-            => _repository.UpdateInvoiceId(id, invoiceId);
-
-        public async Task UpdateStatus(int id, string status)
-            => await Task.Run(() => _repository.UpdateStatus(id, status));
-
-        public bool Delete(int id)
+        public OperationResult Delete(int id)
         {
-            var order = GetBy(id);
+            var order = _repository.GetById(id);
+
             if (order.Invoiced)
-            {
-                Message = "Não é possível excluir uma Ordem de Serviço já faturada!";
-                return false;
-            }
+                return OperationResult.FailureResult("Não é possível excluir uma Ordem de Serviço já faturada!");
 
-            if (_repository.Delete(id))
-                return true;
+            if (!_repository.Delete(id))
+                return OperationResult.FailureResult("Não é possível excluir a Ordem de Serviço!");
 
-
-            Message = "Não é possível excluir a Ordem de Serviço!";
-            return false;
+            return OperationResult.SuccessResult();
         }
 
-        public List<ServiceOrderOpen> GetOrdensDoFluxo()
-            => _repository.GetIndexOpen();
+        public OperationResult GetById(int id)
+        {
+            var serviceOrder = _repository.GetById(id);
 
-        public List<ServiceOrderIndex> GetOrdensConcluidasNaoFaturadas()
-            => _repository.GetOpenDone();
+            if (serviceOrder == null)
+                return OperationResult.FailureResult("Não foi possível encontrar a Ordem de Serviço!");
 
-        public List<ServiceOrderIndex> GetOrdensFaturadasDoCodigo(int invoiceId)
-            => _repository.GetClosedByInvoiceId(invoiceId);
+            return OperationResult.SuccessResult(serviceOrder);
+        }
 
-        public List<ServiceOrderIndex> GetOrdensComFiltro(string filter)
-            => _repository.GetFiltered(filter);
+        public OperationResult GetOrdensDoFluxo()
+        {
+            var orders = _repository.GetIndexOpen();
+            if (orders == null)
+                return OperationResult.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
 
-        public List<ProfessionalNameId> GetProfessionalByInvoiceId(int invoiceId)
-            => _repository.GetProfessionalByInvoiceId(invoiceId);
-            
-        public List<string> GetCitiesFromOrders(bool addHeader)
+            return OperationResult.SuccessResult(orders);
+        }
+
+        public OperationResult GetOpenDone()
+        {
+            var orders = _repository.GetOpenDone();
+            if (orders == null)
+                return OperationResult.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+
+            return OperationResult.SuccessResult(orders);
+        }
+
+        public OperationResult GetOrdensFaturadasDoCodigo(int invoiceId)
+        { 
+            var orders =_repository.GetClosedByInvoiceId(invoiceId);
+            if (orders == null)
+                return OperationResult.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+
+            return OperationResult.SuccessResult(orders);
+        }
+
+        public OperationResult GetOrdensComFiltro(string filter)
+        { 
+            var orders = _repository.GetFiltered(filter);
+            if (orders == null)
+                return OperationResult.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+
+            return OperationResult.SuccessResult(orders);
+        }
+
+        public OperationResult GetProfessionalByInvoiceId(int invoiceId)
+        { 
+            var professionals = _repository.GetProfessionalByInvoiceId(invoiceId);
+            if (professionals == null)
+                return OperationResult.FailureResult("Não foi possível encontrar nenhuma profissional na base dados!");
+
+            return OperationResult.SuccessResult(professionals);
+        }
+
+        public OperationResult GetCitiesFromOrders(bool addHeader)
         {
             var cities = _repository.GetCitiesFromOrders();
+            
+            if (cities == null)
+                return OperationResult.FailureResult("Não foi possível encontrar nenhuma cidade na base dados!");
 
             if (addHeader)
                 cities.Insert(0, "--TODAS--");
 
-            return cities;
+            return OperationResult.SuccessResult(cities);
         }
 
-        public ServiceOrder GetBy(int id)
-            => _repository.GetById(id);
+        public OperationResult UpdateFaturaCod(int id, int invoiceId)
+        {
+            var updated = _repository.UpdateInvoiceId(id, invoiceId);
+            if (!updated)
+                return OperationResult.FailureResult("Não foi possível atualizar as Ordens de Serviço!");
+
+            return OperationResult.SuccessResult();
+        }
+
+        public async Task UpdateStatus(int id, string status)
+        { 
+            await Task.Run(() => _repository.UpdateStatus(id, status)); 
+        }
 
     }
 

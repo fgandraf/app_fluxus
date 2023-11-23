@@ -1,10 +1,10 @@
 ﻿using Fluxus.Domain.Entities;
+using Fluxus.Domain.Records;
+using Fluxus.Domain.Interfaces;
 using System.Data;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using Fluxus.Domain.Records;
-using Fluxus.Domain.Interfaces;
 
 namespace Fluxus.Infra.Repositories
 {

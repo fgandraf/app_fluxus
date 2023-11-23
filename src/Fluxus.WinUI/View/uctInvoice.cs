@@ -3,6 +3,8 @@ using System.Data;
 using Fluxus.App.Services;
 using System.Globalization;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.Infra.Services;
+using Fluxus.Domain.Records;
 
 namespace Fluxus.WinUI.View
 {
@@ -28,8 +30,10 @@ namespace Fluxus.WinUI.View
             }
 
             var invoiceService = _serviceProvider.GetService<InvoiceService>();
-            var invoice = invoiceService.GetAll();
-            dgvFaturas.DataSource = invoiceService.GetAll();
+            var invoices = invoiceService.GetAll();
+
+            if (invoices.Success)
+                dgvFaturas.DataSource = invoices.Object as List<Invoice>;
         }
 
         private void frmInvoice_Load(object sender, EventArgs e)
@@ -49,29 +53,47 @@ namespace Fluxus.WinUI.View
                 int invoiceId = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
 
                 var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
+
+
                 var professionals = serviceOrderService.GetProfessionalByInvoiceId(invoiceId);
-
-
                 DataTable professionalsTable = new DataTable();
 
-                professionalsTable.Columns.Add("ProfessionalId", typeof(int));
-                professionalsTable.Columns.Add("Nameid", typeof(string));
-
-                foreach (var professional in professionals)
+                if (professionals.Success)
                 {
-                    DataRow row = professionalsTable.NewRow();
-                    row["ProfessionalId"] = professional.ProfessionalId;
-                    row["Nameid"] = professional.Nameid;
-                    professionalsTable.Rows.Add(row);
+                    
+                    professionalsTable.Columns.Add("ProfessionalId", typeof(int));
+                    professionalsTable.Columns.Add("Nameid", typeof(string));
+
+                    foreach (var professional in professionals.Object as List<ProfessionalNameId>)
+                    {
+                        DataRow row = professionalsTable.NewRow();
+                        row["ProfessionalId"] = professional.ProfessionalId;
+                        row["Nameid"] = professional.Nameid;
+                        professionalsTable.Rows.Add(row);
+                    }
+
                 }
+                
+
+                
+
+                
 
 
                 string path = saveFileDialog.FileName;
 
 
                 var profileService = _serviceProvider.GetService<ProfileService>();
-                Profile profile = profileService.GetToPrint();
+                var result = profileService.GetToPrint();
 
+                if (!result.Success)
+                {
+                    MessageBox.Show(result.Message, "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                
+                var profile = result.Object as Profile;
                 Image logo;
                 using (var stream = new MemoryStream(profile.Logo))
                     logo = System.Drawing.Image.FromStream(stream);
@@ -79,8 +101,7 @@ namespace Fluxus.WinUI.View
 
                 DataTable serviceOrders = (DataTable)dgvOS.DataSource;
 
-                var invoiceService = _serviceProvider.GetService<InvoiceService>();
-                invoiceService.PrintPDF(logo, profile, professionalsTable, serviceOrders, path);
+                new ReportService().PrintPDF(logo, profile, professionalsTable, serviceOrders, path);
             }
         }
 
@@ -97,7 +118,7 @@ namespace Fluxus.WinUI.View
 
                 var result = _invoiceService.RemoveOrder(idServiceOrder, invoice);
 
-                if (result)
+                if (result.Success)
                 {
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
 
@@ -113,7 +134,7 @@ namespace Fluxus.WinUI.View
                     _subtotalDesloc = invoice.SubtotalMileageAllowance;
                 }
                 else
-                    MessageBox.Show(_invoiceService.Message, "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(result.Message, "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -131,7 +152,16 @@ namespace Fluxus.WinUI.View
             {
                 var id = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
                 _invoiceService.Delete(id);
-                dgvFaturas.DataSource = _invoiceService.GetAll();
+
+                var invoices = _invoiceService.GetAll();
+
+                if (!invoices.Success)
+                {
+                    MessageBox.Show(invoices.Message, "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                dgvFaturas.DataSource = invoices.Object as List<Invoice>;
                 ListarOS();
             }
         }
@@ -146,12 +176,22 @@ namespace Fluxus.WinUI.View
             if (dgvFaturas.Rows.Count > 0)
             {
                 var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
-                dgvOS.DataSource = serviceOrderService.GetOrdensFaturadasDoCodigo(Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value));
 
-                txtData.Text = Convert.ToDateTime(dgvFaturas.CurrentRow.Cells[2].Value).ToShortDateString();
-                txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);
-                txtValorDeslocamento.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells["subtotalMileageAllowance"].Value);
-                txtValorTotal.Text = String.Format(new CultureInfo("pt-BR"), "{0:c}", dgvFaturas.CurrentRow.Cells["total"].Value);
+                int selectedInvoiceId = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
+                var date = Convert.ToDateTime(dgvFaturas.CurrentRow.Cells["data"].Value);
+                var closedByInvoiceId = serviceOrderService.GetOrdensFaturadasDoCodigo(selectedInvoiceId);
+                
+                if (closedByInvoiceId.Success)
+                {
+                    dgvOS.DataSource = closedByInvoiceId.Object as List<ServiceOrderIndex>;
+
+                    txtData.Text = date.ToShortDateString();
+                    txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);
+                    txtValorDeslocamento.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells["subtotalMileageAllowance"].Value);
+                    txtValorTotal.Text = String.Format(new CultureInfo("pt-BR"), "{0:c}", dgvFaturas.CurrentRow.Cells["total"].Value);
+
+                }
+
             }
         }
 
@@ -166,7 +206,7 @@ namespace Fluxus.WinUI.View
             (
                 id: Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value),
                 description: null,
-                issueDate: null,
+                issueDate: DateTime.Now,
                 subtotalService: totalServiceAmount,
                 subtotalMileageAllowance: totalMileageAllowance,
                 total: totalServiceAmount + totalMileageAllowance

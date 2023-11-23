@@ -3,39 +3,31 @@ using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Domain.Records;
 
-//WIP
-
 namespace Fluxus.App.Services
 {
     public class ServiceService
     {
 
         private IServiceRepository _repository;
-        public Service Service { get; set; }
-
-
-        public string Message { get; private set; }
-
 
 
         public ServiceService(IServiceRepository repository)
             => _repository = repository;
 
 
-        public OperationResult Insert()
+        public OperationResult Insert(Service service)
         {
-            if (Service == null || !Service.IsValid)
-                return OperationResult.FailureResult("Não foi possível incluir a atividade!\n" + Service?.Message);
+            if (service == null || !service.IsValid)
+                return OperationResult.FailureResult("Não foi possível incluir a atividade!");
 
-
-            int id = _repository.Insert(Service);
+            int id = _repository.Insert(service);
             return OperationResult.SuccessResult(id);
         }
 
-        public OperationResult Update()
+        public OperationResult Update(Service service)
         {
-            if (Service == null || !Service.IsValid || !_repository.Update(Service))
-                return OperationResult.FailureResult("Não foi possível alterar a atividade!\n" + Service?.Message);
+            if (service == null || !service.IsValid || !_repository.Update(service))
+                return OperationResult.FailureResult("Não foi possível alterar a atividade!");
 
             return OperationResult.SuccessResult();
         }

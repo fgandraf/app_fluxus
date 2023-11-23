@@ -45,7 +45,14 @@ namespace Fluxus.WinUI.View
             }
 
             var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
-            _dtOSNFaturada = serviceOrderService.GetOrdensDoFluxo();
+            
+            var orders = serviceOrderService.GetOrdensDoFluxo();
+            if (orders.Success)
+            {
+                _dtOSNFaturada = orders.Object as List<ServiceOrderOpen>;
+            }
+
+            
 
             var professionalService = _serviceProvider.GetService<ProfessionalService>();
             var professionals = professionalService.GetTagNameid(true);
@@ -165,10 +172,14 @@ namespace Fluxus.WinUI.View
             if (dgv != null)
             {
                 int serviceOrderId = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
-                var ordemDeServico = _serviceOrderService.GetBy(serviceOrderId);
+                var ordemDeServico = _serviceOrderService.GetById(serviceOrderId);
 
-                uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, ordemDeServico, _serviceProvider);
-                _frmPrincipal.OpenUserControl(formNeto);
+                if (ordemDeServico.Success)
+                {
+                    uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, ordemDeServico.Object as ServiceOrder, _serviceProvider);
+                    _frmPrincipal.OpenUserControl(formNeto);
+                }
+
             }
         }
 
@@ -181,15 +192,16 @@ namespace Fluxus.WinUI.View
                 if (dialog == DialogResult.Yes)
                 {
                     var id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
-                    var success = _serviceOrderService.Delete(id);
+                    var deleted = _serviceOrderService.Delete(id);
+                    var serviceOrders = _serviceOrderService.GetOrdensDoFluxo();
 
-                    if (success)
+                    if (deleted.Success && serviceOrders.Success)
                     {
-                        _dtOSNFaturada = _serviceOrderService.GetOrdensDoFluxo();
+                        _dtOSNFaturada = serviceOrders.Object as List<ServiceOrderOpen>;
                         GetOrdersTo(dgv);
                     }
                     else
-                        MessageBox.Show(_serviceOrderService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(deleted.Message + "\n" + serviceOrders.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

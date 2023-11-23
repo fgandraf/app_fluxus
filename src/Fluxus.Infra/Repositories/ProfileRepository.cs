@@ -18,7 +18,7 @@ namespace Fluxus.Infra.Repositories
             return Request.Put("Profile", json);
         }
 
-        public Profile GetAll()
+        public Profile GetById(int id)
         {
             string json = Request.Get("Profile", string.Empty);
             return JsonConvert.DeserializeObject<Profile>(json);

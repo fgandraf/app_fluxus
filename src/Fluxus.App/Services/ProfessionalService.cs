@@ -21,8 +21,7 @@ namespace Fluxus.App.Services
             if (professional == null || !professional.IsValid)
                 return OperationResult.FailureResult("Não foi possível incluir o profissional!");
 
-            var usernamelInRepo = _repository.GetUser(professional.UserName);
-            if (usernamelInRepo != null)
+            if (_repository.GetUser(professional.UserName) != null)
                 return OperationResult.FailureResult("Nome de usuário já cadastrado!");
 
             int id = _repository.Insert(professional);

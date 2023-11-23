@@ -2,55 +2,73 @@
 using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
 
-//WIP
-
 namespace Fluxus.App.Services
 {
     public class ProfileService
     {
 
         private IProfileRepository _repository;
-        public Profile Profile { get; set; }
-
-
-        public string Message { get; private set; }
-
 
 
         public ProfileService(IProfileRepository repository)
             => _repository = repository;
 
 
-        public OperationResult Insert()
+        public OperationResult Insert(Profile profile)
         {
-            if (Profile == null || !Profile.IsValid)
-                return OperationResult.FailureResult("Não foi possível incluir o profissional!\n" + Profile?.Message);
+            if (profile == null || !profile.IsValid)
+                return OperationResult.FailureResult("Não foi possível incluir o profissional!");
 
 
-            int id = _repository.Insert(Profile);
+            int id = _repository.Insert(profile);
             return OperationResult.SuccessResult(id);
         }
 
-        public OperationResult Update()
+        public OperationResult Update(Profile profile)
         {
-            if (Profile == null || !Profile.IsValid || _repository.Update(Profile))
-                return OperationResult.FailureResult("Não foi possível alterar o profissional!\n" + Profile?.Message);
+            if (profile == null || !profile.IsValid || _repository.Update(profile))
+                return OperationResult.FailureResult("Não foi possível alterar o profissional!");
 
             return OperationResult.SuccessResult();
         }
 
+        public OperationResult GetById(int id)
+        {
+            var profile = _repository.GetById(id);
 
-        public Profile GetAll()
-            => _repository.GetAll();
+            if (profile == null)
+                return OperationResult.FailureResult("Não foi possível encontrar o perfil na base dados!");
 
-        public Profile GetToPrint()
-            => _repository.GetToPrint();
+            return OperationResult.SuccessResult(profile);
+        }
 
-        public byte[] GetLogo()
-            => _repository.GetLogo();
+        public OperationResult GetToPrint()
+        { 
+            var profile = _repository.GetToPrint();
 
-        public string GetTradingName()
-            => _repository.GetTradingName();
+            if (profile == null)
+                return OperationResult.FailureResult("Não foi possível encontrar o perfil na base dados!");
+
+            return OperationResult.SuccessResult(profile);
+        }
+
+        public OperationResult GetLogo()
+        {
+            var logo = _repository.GetLogo();
+            if (logo == null)
+                return OperationResult.FailureResult("Não foi possível encontrar o logo na base dados!");
+
+            return OperationResult.SuccessResult(logo);
+        }
+
+        public OperationResult GetTradingName()
+        {
+            var tradingName = _repository.GetTradingName();
+            if (string.IsNullOrEmpty(tradingName))
+                return OperationResult.FailureResult("Não foi possível encontrar o o nome fantasia na base dados!");
+
+            return OperationResult.SuccessResult(tradingName);
+        }
 
     }
 }

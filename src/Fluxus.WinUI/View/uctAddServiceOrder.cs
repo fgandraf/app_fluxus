@@ -41,7 +41,9 @@ namespace Fluxus.WinUI.View
             var serviceService = _serviceProvider.GetService<ServiceService>();
             cboAtividade.DataSource = serviceService.GetAll(false).Object as List<ServiceIndex>;
 
-            cboCidade.DataSource = _serviceOrderService.GetCitiesFromOrders(false);
+            var cities = _serviceOrderService.GetCitiesFromOrders(false);
+            if (cities.Success)
+                cboCidade.DataSource = cities.Object as List<string>;
 
             if (!Logged.Rl)
                 cboProfissional.Enabled = false;
@@ -90,14 +92,14 @@ namespace Fluxus.WinUI.View
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             var service = _serviceProvider.GetService<ServiceOrderService>();
-            service.ServiceOrder = PopulateObject();
+            var serviceOrder = PopulateObject();
 
-            var result = _method == EnumMethod.Insert ? service.Insert() : service.Update();
+            var result = _method == EnumMethod.Insert ? service.Insert(serviceOrder) : service.Update(serviceOrder);
 
             if (result.Success)
                 btnCancelar_Click(sender, e);
             else
-                MessageBox.Show(_serviceOrderService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -184,9 +186,12 @@ namespace Fluxus.WinUI.View
                 rbtVistoriada.Checked = true;
             else
                 rbtConcluida.Checked = true;
-            dtpDataPendente.Value = (DateTime)serviceOrder.PendingDate;
-            dtpDataVistoria.Value = (DateTime)serviceOrder.SurveyDate;
-            dtpDataConcluida.Value = (DateTime)serviceOrder.DoneDate;
+            if (serviceOrder.PendingDate != null)
+                dtpDataPendente.Value = (DateTime)serviceOrder.PendingDate;
+            if (serviceOrder.SurveyDate != null)
+                dtpDataVistoria.Value = (DateTime)serviceOrder.SurveyDate;
+            if (serviceOrder.DoneDate != null)
+                dtpDataConcluida.Value = (DateTime)serviceOrder.DoneDate;
         }
 
         private ServiceOrder PopulateObject()
@@ -222,13 +227,15 @@ namespace Fluxus.WinUI.View
                 contactPhone: txtTelefoneContato.Text,
                 coordinates: txtCoordenada.Text,
                 status: status,
+                invoiced: false,
+                invoiceId: 0,
                 orderDate: dtpDataOrdem.Value,
                 deadline: dtpPrazo.Value,
                 pendingDate: dtpDataPendente.Value,
                 surveyDate: dtpDataVistoria.Value,
                 doneDate: dtpDataConcluida.Value,
                 siopi: chkSiopi.Checked
-            ); ;
+            );
 
             return serviceOrder;
         }
@@ -237,7 +244,7 @@ namespace Fluxus.WinUI.View
         {
             lblFaturada.Show();
             var invoiceService = _serviceProvider.GetService<InvoiceService>();
-            txtCodFatura.Text = "Fatura: " + invoiceService.GetDescription(invoiceId);
+            txtCodFatura.Text = "Fatura: " + invoiceService.GetDescription(invoiceId).Object as String;
             txtCodFatura.Show();
 
 
@@ -267,31 +274,25 @@ namespace Fluxus.WinUI.View
             var service = _serviceProvider.GetService<BankBranchService>();
             var result = service.GetByCode(txtRef1.Text);
 
-            if (result.Success)
+            if (!result.Success)
             {
-                var branch = result.Object as BankBranch;
-
-                if (branch == null)
-                {
-                    txtBranchName.Text = "Agência não cadastrado!";
-                    txtBranchPhone.Text = "";
-                    txtBranchEmail.Text = "";
-                }
-                else
-                {
-                    txtBranchName.Text = branch.Name;
-                    txtBranchPhone.Text = branch.Phone1;
-                    txtBranchEmail.Text = branch.Email;
-                    _agencia = txtRef1.Text;
-                }
+                txtBranchName.Text = "Agência não cadastrado!";
+                txtBranchPhone.Text = "";
+                txtBranchEmail.Text = "";
+                return;
             }
 
-            
+            var branch = result.Object as BankBranch;
+            txtBranchName.Text = branch.Name;
+            txtBranchPhone.Text = branch.Phone1;
+            txtBranchEmail.Text = branch.Email;
+            _agencia = txtRef1.Text;
+
         }
 
         private void GetProfessionalName(object sender, EventArgs e)
         {
-            var source = (List<Professional>)cboProfissional.DataSource;
+            var source = (List<ProfessionalNameId>)cboProfissional.DataSource;
             var professional = source.FirstOrDefault(item => item.Tag == cboProfissional.Text);
 
             lblNomeProfissional.Text = professional.Nameid;

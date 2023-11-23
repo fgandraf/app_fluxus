@@ -25,10 +25,10 @@ namespace Fluxus.WinUI.View
 
             InitializeComponent();
 
-            var profile = _profileService.GetAll();
-            if (profile != null)
+            var profile = _profileService.GetById(1);
+            if (profile.Success)
             {
-                PopulateFields(profile);
+                PopulateFields(profile.Object as Profile);
                 btnAddSave.Text = "&Salvar";
                 _method = EnumMethod.Update;
             }
@@ -43,15 +43,14 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
+            var profile = PopulateObject();
 
-            _profileService.Profile = PopulateObject();
-
-            var result = _method == EnumMethod.Insert ? _profileService.Insert() : _profileService.Update();
+            var result = _method == EnumMethod.Insert ? _profileService.Insert(profile) : _profileService.Update(profile);
 
             if (result.Success)
                 MessageBox.Show("Dados alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show(_profileService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             UpdateTradingNameButton();
             UpdateMainLogo();

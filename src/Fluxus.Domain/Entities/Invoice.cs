@@ -5,7 +5,7 @@ namespace Fluxus.Domain.Entities
 
     public class Invoice
     {
-        public Invoice(int id, string? description, DateTime? issueDate, double subtotalService, double subtotalMileageAllowance, double total)
+        public Invoice(int id, string? description, DateTime issueDate, double subtotalService, double subtotalMileageAllowance, double total)
         {
             Id = id;
             Description = description;
@@ -22,7 +22,7 @@ namespace Fluxus.Domain.Entities
 
         public int Id { get; private set; }
         public string? Description { get; private set; }
-        public DateTime? IssueDate { get; private set; }
+        public DateTime IssueDate { get; private set; }
         public double SubtotalService { get; private set; }
         public double SubtotalMileageAllowance { get; private set; }
         public double Total { get; private set; }

@@ -19,8 +19,8 @@ namespace Fluxus.App.Services
             if (bankBranch == null || bankBranch.BranchNumber == null)
                 return OperationResult.FailureResult("Não foi possível incluir a agência bancária!");
 
-            var branchInRepo = _repository.GetByCode(bankBranch.BranchNumber);
-            if (branchInRepo != null)
+            
+            if (_repository.GetByCode(bankBranch.BranchNumber) != null)
                 return OperationResult.FailureResult("Agência já cadastrada!");
            
             int id = _repository.Insert(bankBranch);
@@ -32,8 +32,7 @@ namespace Fluxus.App.Services
             if (bankBranch == null || bankBranch.BranchNumber == null)
                 return OperationResult.FailureResult("Não foi possível alterar a agência bancária!");
 
-            var branchInRepo = _repository.GetByCode(bankBranch.BranchNumber);
-            if (branchInRepo == null)
+            if (_repository.GetByCode(bankBranch.BranchNumber) == null)
                 return OperationResult.FailureResult("Agência não encontrada!");
 
             if (!_repository.Update(bankBranch))
@@ -41,7 +40,7 @@ namespace Fluxus.App.Services
 
             return OperationResult.SuccessResult();
         }
-
+        
         public OperationResult Delete(int id)
         {
             if (!_repository.Delete(id))

@@ -33,41 +33,21 @@
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctInvoice));
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctInvoice));
             tblFaturas = new TableLayoutPanel();
             panel1 = new Panel();
             pnlFaturaMain = new Panel();
             btnExcluir = new Button();
             btnRemoverOs = new Button();
             dgvOS = new DataGridView();
-            pnlLinha2 = new Panel();
-            txtValorDeslocamento = new TextBox();
-            txtValorOS = new TextBox();
-            txtValorTotal = new TextBox();
-            lblSubtotal = new Label();
-            lblTotal = new Label();
-            dgvFaturas = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            descricao = new DataGridViewTextBoxColumn();
-            data = new DataGridViewTextBoxColumn();
-            subtotalService = new DataGridViewTextBoxColumn();
-            subtotalMileageAllowance = new DataGridViewTextBoxColumn();
-            total = new DataGridViewTextBoxColumn();
-            panel2 = new Panel();
-            btnImprimir = new Button();
-            lbData = new Label();
-            txtData = new TextBox();
-            lblNenhuma = new Label();
-            saveFileDialog = new SaveFileDialog();
-            ttpFatura = new ToolTip(components);
             id_os = new DataGridViewTextBoxColumn();
             data_ordem = new DataGridViewTextBoxColumn();
             referenceCode = new DataGridViewTextBoxColumn();
@@ -83,6 +63,28 @@
             invoiceId = new DataGridViewTextBoxColumn();
             status = new DataGridViewTextBoxColumn();
             Invoiced = new DataGridViewTextBoxColumn();
+            pnlLinha2 = new Panel();
+            txtValorDeslocamento = new TextBox();
+            txtValorOS = new TextBox();
+            txtValorTotal = new TextBox();
+            lblSubtotal = new Label();
+            lblTotal = new Label();
+            dgvFaturas = new DataGridView();
+            panel2 = new Panel();
+            btnImprimir = new Button();
+            lbData = new Label();
+            txtData = new TextBox();
+            lblNenhuma = new Label();
+            saveFileDialog = new SaveFileDialog();
+            ttpFatura = new ToolTip(components);
+            id = new DataGridViewTextBoxColumn();
+            descricao = new DataGridViewTextBoxColumn();
+            data = new DataGridViewTextBoxColumn();
+            subtotalService = new DataGridViewTextBoxColumn();
+            subtotalMileageAllowance = new DataGridViewTextBoxColumn();
+            total = new DataGridViewTextBoxColumn();
+            isvvalid = new DataGridViewTextBoxColumn();
+            message = new DataGridViewTextBoxColumn();
             tblFaturas.SuspendLayout();
             pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvOS).BeginInit();
@@ -232,288 +234,6 @@
             dgvOS.ShowEditingIcon = false;
             dgvOS.Size = new Size(1436, 1004);
             dgvOS.TabIndex = 224;
-            // 
-            // pnlLinha2
-            // 
-            pnlLinha2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            pnlLinha2.BackColor = SystemColors.ControlDark;
-            pnlLinha2.Location = new Point(1069, 1118);
-            pnlLinha2.Margin = new Padding(7, 6, 7, 6);
-            pnlLinha2.Name = "pnlLinha2";
-            pnlLinha2.Size = new Size(412, 2);
-            pnlLinha2.TabIndex = 430;
-            // 
-            // txtValorDeslocamento
-            // 
-            txtValorDeslocamento.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            txtValorDeslocamento.BackColor = Color.White;
-            txtValorDeslocamento.BorderStyle = BorderStyle.None;
-            txtValorDeslocamento.CharacterCasing = CharacterCasing.Upper;
-            txtValorDeslocamento.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtValorDeslocamento.ForeColor = Color.Black;
-            txtValorDeslocamento.Location = new Point(1360, 1067);
-            txtValorDeslocamento.Margin = new Padding(7, 6, 7, 6);
-            txtValorDeslocamento.MaxLength = 100;
-            txtValorDeslocamento.Name = "txtValorDeslocamento";
-            txtValorDeslocamento.ReadOnly = true;
-            txtValorDeslocamento.Size = new Size(119, 30);
-            txtValorDeslocamento.TabIndex = 429;
-            txtValorDeslocamento.Text = "00.000,00";
-            txtValorDeslocamento.TextAlign = HorizontalAlignment.Right;
-            // 
-            // txtValorOS
-            // 
-            txtValorOS.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            txtValorOS.BackColor = Color.White;
-            txtValorOS.BorderStyle = BorderStyle.None;
-            txtValorOS.CharacterCasing = CharacterCasing.Upper;
-            txtValorOS.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtValorOS.ForeColor = Color.Black;
-            txtValorOS.Location = new Point(1228, 1067);
-            txtValorOS.Margin = new Padding(7, 6, 7, 6);
-            txtValorOS.MaxLength = 100;
-            txtValorOS.Name = "txtValorOS";
-            txtValorOS.ReadOnly = true;
-            txtValorOS.Size = new Size(119, 30);
-            txtValorOS.TabIndex = 428;
-            txtValorOS.Text = "00.000,00";
-            txtValorOS.TextAlign = HorizontalAlignment.Right;
-            // 
-            // txtValorTotal
-            // 
-            txtValorTotal.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            txtValorTotal.BackColor = Color.White;
-            txtValorTotal.BorderStyle = BorderStyle.None;
-            txtValorTotal.CharacterCasing = CharacterCasing.Upper;
-            txtValorTotal.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            txtValorTotal.ForeColor = Color.Black;
-            txtValorTotal.Location = new Point(1228, 1129);
-            txtValorTotal.Margin = new Padding(7, 6, 7, 6);
-            txtValorTotal.MaxLength = 100;
-            txtValorTotal.Name = "txtValorTotal";
-            txtValorTotal.ReadOnly = true;
-            txtValorTotal.Size = new Size(251, 40);
-            txtValorTotal.TabIndex = 427;
-            txtValorTotal.Text = "R$00.000,00";
-            txtValorTotal.TextAlign = HorizontalAlignment.Center;
-            // 
-            // lblSubtotal
-            // 
-            lblSubtotal.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            lblSubtotal.AutoSize = true;
-            lblSubtotal.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSubtotal.ForeColor = SystemColors.MenuText;
-            lblSubtotal.Location = new Point(1098, 1067);
-            lblSubtotal.Margin = new Padding(7, 0, 7, 0);
-            lblSubtotal.Name = "lblSubtotal";
-            lblSubtotal.Size = new Size(98, 30);
-            lblSubtotal.TabIndex = 425;
-            lblSubtotal.Text = "Subtotal:";
-            lblSubtotal.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // lblTotal
-            // 
-            lblTotal.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            lblTotal.AutoSize = true;
-            lblTotal.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTotal.ForeColor = Color.Black;
-            lblTotal.Location = new Point(1091, 1129);
-            lblTotal.Margin = new Padding(7, 0, 7, 0);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(117, 41);
-            lblTotal.TabIndex = 426;
-            lblTotal.Text = "TOTAL:";
-            lblTotal.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // dgvFaturas
-            // 
-            dgvFaturas.AllowUserToAddRows = false;
-            dgvFaturas.AllowUserToDeleteRows = false;
-            dgvFaturas.AllowUserToResizeColumns = false;
-            dgvFaturas.AllowUserToResizeRows = false;
-            dgvFaturas.BackgroundColor = Color.White;
-            dgvFaturas.BorderStyle = BorderStyle.None;
-            dgvFaturas.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dgvFaturas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvFaturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            dgvFaturas.ColumnHeadersHeight = 35;
-            dgvFaturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvFaturas.ColumnHeadersVisible = false;
-            dgvFaturas.Columns.AddRange(new DataGridViewColumn[] { id, descricao, data, subtotalService, subtotalMileageAllowance, total });
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle11.BackColor = Color.White;
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = Color.Black;
-            dataGridViewCellStyle11.Padding = new Padding(5);
-            dataGridViewCellStyle11.SelectionBackColor = Color.LightBlue;
-            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
-            dgvFaturas.DefaultCellStyle = dataGridViewCellStyle11;
-            dgvFaturas.Dock = DockStyle.Fill;
-            dgvFaturas.EnableHeadersVisualStyles = false;
-            dgvFaturas.GridColor = Color.White;
-            dgvFaturas.Location = new Point(7, 49);
-            dgvFaturas.Margin = new Padding(7, 49, 20, 49);
-            dgvFaturas.MultiSelect = false;
-            dgvFaturas.Name = "dgvFaturas";
-            dgvFaturas.ReadOnly = true;
-            dgvFaturas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dgvFaturas.RowHeadersVisible = false;
-            dgvFaturas.RowHeadersWidth = 82;
-            dgvFaturas.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle12.SelectionBackColor = Color.LightBlue;
-            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
-            dgvFaturas.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            tblFaturas.SetRowSpan(dgvFaturas, 3);
-            dgvFaturas.RowTemplate.Height = 60;
-            dgvFaturas.RowTemplate.ReadOnly = true;
-            dgvFaturas.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgvFaturas.ScrollBars = ScrollBars.Vertical;
-            dgvFaturas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvFaturas.ShowEditingIcon = false;
-            dgvFaturas.Size = new Size(363, 1228);
-            dgvFaturas.TabIndex = 223;
-            dgvFaturas.MouseClick += dgvFaturas_MouseClick;
-            // 
-            // id
-            // 
-            id.DataPropertyName = "id";
-            id.HeaderText = "id";
-            id.MinimumWidth = 10;
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Visible = false;
-            id.Width = 200;
-            // 
-            // descricao
-            // 
-            descricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            descricao.DataPropertyName = "description";
-            descricao.HeaderText = "descricao";
-            descricao.MinimumWidth = 10;
-            descricao.Name = "descricao";
-            descricao.ReadOnly = true;
-            // 
-            // data
-            // 
-            data.DataPropertyName = "issueDate";
-            data.HeaderText = "data";
-            data.MinimumWidth = 10;
-            data.Name = "data";
-            data.ReadOnly = true;
-            data.Visible = false;
-            data.Width = 200;
-            // 
-            // subtotalService
-            // 
-            subtotalService.DataPropertyName = "subtotalService";
-            subtotalService.HeaderText = "Subtotal Os";
-            subtotalService.MinimumWidth = 10;
-            subtotalService.Name = "subtotalService";
-            subtotalService.ReadOnly = true;
-            subtotalService.Visible = false;
-            subtotalService.Width = 200;
-            // 
-            // subtotalMileageAllowance
-            // 
-            subtotalMileageAllowance.DataPropertyName = "subtotalMileageAllowance";
-            subtotalMileageAllowance.HeaderText = "subtotaldesloca";
-            subtotalMileageAllowance.MinimumWidth = 10;
-            subtotalMileageAllowance.Name = "subtotalMileageAllowance";
-            subtotalMileageAllowance.ReadOnly = true;
-            subtotalMileageAllowance.Visible = false;
-            subtotalMileageAllowance.Width = 200;
-            // 
-            // total
-            // 
-            total.DataPropertyName = "total";
-            total.HeaderText = "totalsas";
-            total.MinimumWidth = 10;
-            total.Name = "total";
-            total.ReadOnly = true;
-            total.Visible = false;
-            total.Width = 200;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(btnImprimir);
-            panel2.Controls.Add(lbData);
-            panel2.Controls.Add(txtData);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(417, 49);
-            panel2.Margin = new Padding(7, 49, 7, 6);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1508, 79);
-            panel2.TabIndex = 434;
-            // 
-            // btnImprimir
-            // 
-            btnImprimir.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnImprimir.BackColor = Color.White;
-            btnImprimir.Cursor = Cursors.Hand;
-            btnImprimir.FlatAppearance.BorderSize = 0;
-            btnImprimir.FlatAppearance.MouseOverBackColor = Color.LightBlue;
-            btnImprimir.FlatStyle = FlatStyle.Flat;
-            btnImprimir.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            btnImprimir.ForeColor = Color.Black;
-            btnImprimir.Image = (Image)resources.GetObject("btnImprimir.Image");
-            btnImprimir.Location = new Point(1404, 2);
-            btnImprimir.Margin = new Padding(0);
-            btnImprimir.Name = "btnImprimir";
-            btnImprimir.Size = new Size(65, 75);
-            btnImprimir.TabIndex = 431;
-            ttpFatura.SetToolTip(btnImprimir, "Imprimir relatório");
-            btnImprimir.UseVisualStyleBackColor = false;
-            btnImprimir.Click += btnImprimir_Click;
-            // 
-            // lbData
-            // 
-            lbData.AutoSize = true;
-            lbData.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            lbData.ForeColor = Color.Black;
-            lbData.Location = new Point(17, 17);
-            lbData.Margin = new Padding(7, 0, 7, 0);
-            lbData.Name = "lbData";
-            lbData.Size = new Size(92, 41);
-            lbData.TabIndex = 420;
-            lbData.Text = "Data:";
-            lbData.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // txtData
-            // 
-            txtData.BackColor = Color.White;
-            txtData.BorderStyle = BorderStyle.None;
-            txtData.CharacterCasing = CharacterCasing.Upper;
-            txtData.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            txtData.ForeColor = Color.Black;
-            txtData.Location = new Point(111, 17);
-            txtData.Margin = new Padding(7, 6, 7, 6);
-            txtData.MaxLength = 100;
-            txtData.Name = "txtData";
-            txtData.ReadOnly = true;
-            txtData.Size = new Size(195, 40);
-            txtData.TabIndex = 421;
-            txtData.Text = "00/00/0000";
-            txtData.TextAlign = HorizontalAlignment.Right;
-            // 
-            // lblNenhuma
-            // 
-            lblNenhuma.Dock = DockStyle.Fill;
-            lblNenhuma.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            lblNenhuma.ForeColor = SystemColors.ControlDark;
-            lblNenhuma.Location = new Point(0, 0);
-            lblNenhuma.Margin = new Padding(0);
-            lblNenhuma.Name = "lblNenhuma";
-            lblNenhuma.Size = new Size(2000, 1400);
-            lblNenhuma.TabIndex = 432;
-            lblNenhuma.Text = "Nenhuma fatura gerada!";
-            lblNenhuma.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // saveFileDialog
-            // 
-            saveFileDialog.FileName = "Relacao_OS.pdf";
-            saveFileDialog.Filter = "Arquivos PDF|*.pdf";
             // 
             // id_os
             // 
@@ -679,6 +399,308 @@
             Invoiced.Visible = false;
             Invoiced.Width = 200;
             // 
+            // pnlLinha2
+            // 
+            pnlLinha2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            pnlLinha2.BackColor = SystemColors.ControlDark;
+            pnlLinha2.Location = new Point(1069, 1118);
+            pnlLinha2.Margin = new Padding(7, 6, 7, 6);
+            pnlLinha2.Name = "pnlLinha2";
+            pnlLinha2.Size = new Size(412, 2);
+            pnlLinha2.TabIndex = 430;
+            // 
+            // txtValorDeslocamento
+            // 
+            txtValorDeslocamento.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtValorDeslocamento.BackColor = Color.White;
+            txtValorDeslocamento.BorderStyle = BorderStyle.None;
+            txtValorDeslocamento.CharacterCasing = CharacterCasing.Upper;
+            txtValorDeslocamento.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtValorDeslocamento.ForeColor = Color.Black;
+            txtValorDeslocamento.Location = new Point(1360, 1067);
+            txtValorDeslocamento.Margin = new Padding(7, 6, 7, 6);
+            txtValorDeslocamento.MaxLength = 100;
+            txtValorDeslocamento.Name = "txtValorDeslocamento";
+            txtValorDeslocamento.ReadOnly = true;
+            txtValorDeslocamento.Size = new Size(119, 30);
+            txtValorDeslocamento.TabIndex = 429;
+            txtValorDeslocamento.Text = "00.000,00";
+            txtValorDeslocamento.TextAlign = HorizontalAlignment.Right;
+            // 
+            // txtValorOS
+            // 
+            txtValorOS.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtValorOS.BackColor = Color.White;
+            txtValorOS.BorderStyle = BorderStyle.None;
+            txtValorOS.CharacterCasing = CharacterCasing.Upper;
+            txtValorOS.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtValorOS.ForeColor = Color.Black;
+            txtValorOS.Location = new Point(1228, 1067);
+            txtValorOS.Margin = new Padding(7, 6, 7, 6);
+            txtValorOS.MaxLength = 100;
+            txtValorOS.Name = "txtValorOS";
+            txtValorOS.ReadOnly = true;
+            txtValorOS.Size = new Size(119, 30);
+            txtValorOS.TabIndex = 428;
+            txtValorOS.Text = "00.000,00";
+            txtValorOS.TextAlign = HorizontalAlignment.Right;
+            // 
+            // txtValorTotal
+            // 
+            txtValorTotal.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtValorTotal.BackColor = Color.White;
+            txtValorTotal.BorderStyle = BorderStyle.None;
+            txtValorTotal.CharacterCasing = CharacterCasing.Upper;
+            txtValorTotal.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            txtValorTotal.ForeColor = Color.Black;
+            txtValorTotal.Location = new Point(1228, 1129);
+            txtValorTotal.Margin = new Padding(7, 6, 7, 6);
+            txtValorTotal.MaxLength = 100;
+            txtValorTotal.Name = "txtValorTotal";
+            txtValorTotal.ReadOnly = true;
+            txtValorTotal.Size = new Size(251, 40);
+            txtValorTotal.TabIndex = 427;
+            txtValorTotal.Text = "R$00.000,00";
+            txtValorTotal.TextAlign = HorizontalAlignment.Center;
+            // 
+            // lblSubtotal
+            // 
+            lblSubtotal.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblSubtotal.AutoSize = true;
+            lblSubtotal.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSubtotal.ForeColor = SystemColors.MenuText;
+            lblSubtotal.Location = new Point(1098, 1067);
+            lblSubtotal.Margin = new Padding(7, 0, 7, 0);
+            lblSubtotal.Name = "lblSubtotal";
+            lblSubtotal.Size = new Size(98, 30);
+            lblSubtotal.TabIndex = 425;
+            lblSubtotal.Text = "Subtotal:";
+            lblSubtotal.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // lblTotal
+            // 
+            lblTotal.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTotal.ForeColor = Color.Black;
+            lblTotal.Location = new Point(1091, 1129);
+            lblTotal.Margin = new Padding(7, 0, 7, 0);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(117, 41);
+            lblTotal.TabIndex = 426;
+            lblTotal.Text = "TOTAL:";
+            lblTotal.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // dgvFaturas
+            // 
+            dgvFaturas.AllowUserToAddRows = false;
+            dgvFaturas.AllowUserToDeleteRows = false;
+            dgvFaturas.AllowUserToResizeColumns = false;
+            dgvFaturas.AllowUserToResizeRows = false;
+            dgvFaturas.BackgroundColor = Color.White;
+            dgvFaturas.BorderStyle = BorderStyle.None;
+            dgvFaturas.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dgvFaturas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dgvFaturas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dgvFaturas.ColumnHeadersHeight = 35;
+            dgvFaturas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dgvFaturas.ColumnHeadersVisible = false;
+            dgvFaturas.Columns.AddRange(new DataGridViewColumn[] { id, descricao, data, subtotalService, subtotalMileageAllowance, total, isvvalid, message });
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle11.BackColor = Color.White;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = Color.Black;
+            dataGridViewCellStyle11.Padding = new Padding(5);
+            dataGridViewCellStyle11.SelectionBackColor = Color.LightBlue;
+            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dgvFaturas.DefaultCellStyle = dataGridViewCellStyle11;
+            dgvFaturas.Dock = DockStyle.Fill;
+            dgvFaturas.EnableHeadersVisualStyles = false;
+            dgvFaturas.GridColor = Color.White;
+            dgvFaturas.Location = new Point(7, 49);
+            dgvFaturas.Margin = new Padding(7, 49, 20, 49);
+            dgvFaturas.MultiSelect = false;
+            dgvFaturas.Name = "dgvFaturas";
+            dgvFaturas.ReadOnly = true;
+            dgvFaturas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvFaturas.RowHeadersVisible = false;
+            dgvFaturas.RowHeadersWidth = 82;
+            dgvFaturas.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.SelectionBackColor = Color.LightBlue;
+            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
+            dgvFaturas.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            tblFaturas.SetRowSpan(dgvFaturas, 3);
+            dgvFaturas.RowTemplate.Height = 60;
+            dgvFaturas.RowTemplate.ReadOnly = true;
+            dgvFaturas.RowTemplate.Resizable = DataGridViewTriState.False;
+            dgvFaturas.ScrollBars = ScrollBars.Vertical;
+            dgvFaturas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvFaturas.ShowEditingIcon = false;
+            dgvFaturas.Size = new Size(363, 1228);
+            dgvFaturas.TabIndex = 223;
+            dgvFaturas.MouseClick += dgvFaturas_MouseClick;
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(btnImprimir);
+            panel2.Controls.Add(lbData);
+            panel2.Controls.Add(txtData);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(417, 49);
+            panel2.Margin = new Padding(7, 49, 7, 6);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1508, 79);
+            panel2.TabIndex = 434;
+            // 
+            // btnImprimir
+            // 
+            btnImprimir.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnImprimir.BackColor = Color.White;
+            btnImprimir.Cursor = Cursors.Hand;
+            btnImprimir.FlatAppearance.BorderSize = 0;
+            btnImprimir.FlatAppearance.MouseOverBackColor = Color.LightBlue;
+            btnImprimir.FlatStyle = FlatStyle.Flat;
+            btnImprimir.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            btnImprimir.ForeColor = Color.Black;
+            btnImprimir.Image = (Image)resources.GetObject("btnImprimir.Image");
+            btnImprimir.Location = new Point(1404, 2);
+            btnImprimir.Margin = new Padding(0);
+            btnImprimir.Name = "btnImprimir";
+            btnImprimir.Size = new Size(65, 75);
+            btnImprimir.TabIndex = 431;
+            ttpFatura.SetToolTip(btnImprimir, "Imprimir relatório");
+            btnImprimir.UseVisualStyleBackColor = false;
+            btnImprimir.Click += btnImprimir_Click;
+            // 
+            // lbData
+            // 
+            lbData.AutoSize = true;
+            lbData.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            lbData.ForeColor = Color.Black;
+            lbData.Location = new Point(17, 17);
+            lbData.Margin = new Padding(7, 0, 7, 0);
+            lbData.Name = "lbData";
+            lbData.Size = new Size(92, 41);
+            lbData.TabIndex = 420;
+            lbData.Text = "Data:";
+            lbData.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // txtData
+            // 
+            txtData.BackColor = Color.White;
+            txtData.BorderStyle = BorderStyle.None;
+            txtData.CharacterCasing = CharacterCasing.Upper;
+            txtData.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            txtData.ForeColor = Color.Black;
+            txtData.Location = new Point(111, 17);
+            txtData.Margin = new Padding(7, 6, 7, 6);
+            txtData.MaxLength = 100;
+            txtData.Name = "txtData";
+            txtData.ReadOnly = true;
+            txtData.Size = new Size(195, 40);
+            txtData.TabIndex = 421;
+            txtData.Text = "00/00/0000";
+            txtData.TextAlign = HorizontalAlignment.Right;
+            // 
+            // lblNenhuma
+            // 
+            lblNenhuma.Dock = DockStyle.Fill;
+            lblNenhuma.Font = new Font("Segoe UI", 14F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            lblNenhuma.ForeColor = SystemColors.ControlDark;
+            lblNenhuma.Location = new Point(0, 0);
+            lblNenhuma.Margin = new Padding(0);
+            lblNenhuma.Name = "lblNenhuma";
+            lblNenhuma.Size = new Size(2000, 1400);
+            lblNenhuma.TabIndex = 432;
+            lblNenhuma.Text = "Nenhuma fatura gerada!";
+            lblNenhuma.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // saveFileDialog
+            // 
+            saveFileDialog.FileName = "Relacao_OS.pdf";
+            saveFileDialog.Filter = "Arquivos PDF|*.pdf";
+            // 
+            // id
+            // 
+            id.DataPropertyName = "id";
+            id.HeaderText = "id";
+            id.MinimumWidth = 10;
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Visible = false;
+            id.Width = 200;
+            // 
+            // descricao
+            // 
+            descricao.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            descricao.DataPropertyName = "description";
+            descricao.HeaderText = "descricao";
+            descricao.MinimumWidth = 10;
+            descricao.Name = "descricao";
+            descricao.ReadOnly = true;
+            // 
+            // data
+            // 
+            data.DataPropertyName = "issueDate";
+            data.HeaderText = "data";
+            data.MinimumWidth = 10;
+            data.Name = "data";
+            data.ReadOnly = true;
+            data.Visible = false;
+            data.Width = 200;
+            // 
+            // subtotalService
+            // 
+            subtotalService.DataPropertyName = "subtotalService";
+            subtotalService.HeaderText = "Subtotal Os";
+            subtotalService.MinimumWidth = 10;
+            subtotalService.Name = "subtotalService";
+            subtotalService.ReadOnly = true;
+            subtotalService.Visible = false;
+            subtotalService.Width = 200;
+            // 
+            // subtotalMileageAllowance
+            // 
+            subtotalMileageAllowance.DataPropertyName = "subtotalMileageAllowance";
+            subtotalMileageAllowance.HeaderText = "subtotaldesloca";
+            subtotalMileageAllowance.MinimumWidth = 10;
+            subtotalMileageAllowance.Name = "subtotalMileageAllowance";
+            subtotalMileageAllowance.ReadOnly = true;
+            subtotalMileageAllowance.Visible = false;
+            subtotalMileageAllowance.Width = 200;
+            // 
+            // total
+            // 
+            total.DataPropertyName = "total";
+            total.HeaderText = "totalsas";
+            total.MinimumWidth = 10;
+            total.Name = "total";
+            total.ReadOnly = true;
+            total.Visible = false;
+            total.Width = 200;
+            // 
+            // isvvalid
+            // 
+            isvvalid.DataPropertyName = "isvalid";
+            isvvalid.HeaderText = "isvalid";
+            isvvalid.MinimumWidth = 10;
+            isvvalid.Name = "isvvalid";
+            isvvalid.ReadOnly = true;
+            isvvalid.Visible = false;
+            isvvalid.Width = 200;
+            // 
+            // message
+            // 
+            message.DataPropertyName = "message";
+            message.HeaderText = "message";
+            message.MinimumWidth = 10;
+            message.Name = "message";
+            message.ReadOnly = true;
+            message.Visible = false;
+            message.Width = 200;
+            // 
             // uctInvoice
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -720,12 +742,6 @@
         private ToolTip ttpFatura;
         private Button btnExcluir;
         private DataGridView dgvFaturas;
-        private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn descricao;
-        private DataGridViewTextBoxColumn data;
-        private DataGridViewTextBoxColumn subtotalService;
-        private DataGridViewTextBoxColumn subtotalMileageAllowance;
-        private DataGridViewTextBoxColumn total;
         private Panel panel2;
         private DataGridViewTextBoxColumn id_os;
         private DataGridViewTextBoxColumn data_ordem;
@@ -742,5 +758,13 @@
         private DataGridViewTextBoxColumn invoiceId;
         private DataGridViewTextBoxColumn status;
         private DataGridViewTextBoxColumn Invoiced;
+        private DataGridViewTextBoxColumn id;
+        private DataGridViewTextBoxColumn descricao;
+        private DataGridViewTextBoxColumn data;
+        private DataGridViewTextBoxColumn subtotalService;
+        private DataGridViewTextBoxColumn subtotalMileageAllowance;
+        private DataGridViewTextBoxColumn total;
+        private DataGridViewTextBoxColumn isvvalid;
+        private DataGridViewTextBoxColumn message;
     }
 }

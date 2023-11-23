@@ -34,8 +34,10 @@ namespace Fluxus.WinUI.View
             }
             cboProfissional.DataSource = professionals.Object as List<ProfessionalNameId>;
 
-
-            cboCidade.DataSource = _serviceOrderService.GetCitiesFromOrders(true);
+            var cities = _serviceOrderService.GetCitiesFromOrders(true);
+            if (cities.Success)
+                cboCidade.DataSource = cities.Object as List<string>;
+            
 
             var serviceService = _serviceProvider.GetService<ServiceService>();
             cboAtividade.DataSource = serviceService.GetAll(true).Object as List<ServiceIndex>;
@@ -53,11 +55,16 @@ namespace Fluxus.WinUI.View
             cboFaturadas.SelectedIndex = 0;
             RefreshFilter();
 
-            _dtOS = _serviceOrderService.GetOrdensComFiltro(_currentFilter);
-            dgvOS.DataSource = _dtOS;
+            var orders = _serviceOrderService.GetOrdensComFiltro(_currentFilter);
+            if (orders.Success)
+            {
+                _dtOS = orders.Object as List<ServiceOrderIndex>;
+                dgvOS.DataSource = _dtOS;
 
-            lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
-            _serviceProvider = serviceProvider;
+                lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
+                _serviceProvider = serviceProvider;
+            }
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -71,9 +78,14 @@ namespace Fluxus.WinUI.View
             if (dgvOS.RowCount > 0)
             {
                 var id = Convert.ToInt32(dgvOS.CurrentRow.Cells[0].Value);
-                var serviceOrder = _serviceOrderService.GetBy(id);
-                uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, serviceOrder, _serviceProvider);
-                _frmPrincipal.OpenUserControl(formNeto);
+                var serviceOrder = _serviceOrderService.GetById(id);
+
+                if (serviceOrder.Success)
+                {
+                    uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, serviceOrder.Object as ServiceOrder, _serviceProvider);
+                    _frmPrincipal.OpenUserControl(formNeto);
+                }
+                
             }
         }
 
@@ -85,16 +97,17 @@ namespace Fluxus.WinUI.View
                 if (dialog == DialogResult.Yes)
                 {
                     var id = Convert.ToInt32(dgvOS.CurrentRow.Cells["id"].Value);
-                    var success = _serviceOrderService.Delete(id);
+                    var result = _serviceOrderService.Delete(id);
+                    var orders = _serviceOrderService.GetOrdensComFiltro(_currentFilter);
 
-                    if (success)
+                    if (result.Success && orders.Success)
                     {
-                        _dtOS = _serviceOrderService.GetOrdensComFiltro(_currentFilter);
+                        _dtOS = orders.Object as List<ServiceOrderIndex>;
                         dgvOS.DataSource = _dtOS;
                         lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
                     }
                     else
-                        MessageBox.Show(_serviceOrderService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(result.Message + "\n" + orders.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -120,9 +133,15 @@ namespace Fluxus.WinUI.View
         private void GetFilteredChanges(object sender, EventArgs e)
         {
             RefreshFilter();
-            _dtOS = _serviceOrderService.GetOrdensComFiltro(_currentFilter);
-            dgvOS.DataSource = _dtOS;
-            lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
+
+
+            var orders = _serviceOrderService.GetOrdensComFiltro(_currentFilter);
+            if (orders.Success)
+            {
+                _dtOS = orders.Object as List<ServiceOrderIndex>;
+                dgvOS.DataSource = _dtOS;
+                lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
+            }
         }
 
         private void btnExportar_Click(object sender, EventArgs e)

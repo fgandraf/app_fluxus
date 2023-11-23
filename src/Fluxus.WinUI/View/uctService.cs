@@ -68,7 +68,7 @@ namespace Fluxus.WinUI.View
                 if (response.Success)
                     dgvServices.DataSource = _serviceService.GetAll(false).Object as List<ServiceIndex>;
                 else
-                    MessageBox.Show(_serviceService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(response.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

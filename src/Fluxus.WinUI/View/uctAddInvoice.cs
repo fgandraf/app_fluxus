@@ -2,6 +2,7 @@
 using System.Globalization;
 using Fluxus.App.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.Domain.Records;
 
 namespace Fluxus.WinUI.View
 {
@@ -24,9 +25,13 @@ namespace Fluxus.WinUI.View
         {
             var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
 
-            dgvOS.DataSource = serviceOrderService.GetOrdensConcluidasNaoFaturadas();
-            Calculate();
-            txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
+            var orders = serviceOrderService.GetOpenDone();
+            if (orders.Success)
+            {
+                dgvOS.DataSource = orders.Object as List<ServiceOrderIndex>;
+                Calculate();
+                txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
+            }
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
@@ -47,14 +52,14 @@ namespace Fluxus.WinUI.View
         private void btnFaturar_Click(object sender, EventArgs e)
         {
             var service = _serviceProvider.GetService<InvoiceService>();
-            service.Invoice = PopulateToObject();
+            var invoice = PopulateToObject();
 
-            var result = service.Insert();
-            int invoiceId = result.Id;
+            var result = service.Insert(invoice);
+            int invoiceId = (int)result.Object;
 
             if (invoiceId == 0)
             {
-                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 

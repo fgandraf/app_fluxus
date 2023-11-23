@@ -9,7 +9,7 @@ namespace Fluxus.Domain.Interfaces
 
         public bool Update(Profile profile);
 
-        public Profile GetAll();
+        public Profile GetById(int id);
 
         public Profile GetToPrint();
 

@@ -1,96 +1,85 @@
 ﻿using Fluxus.Domain;
 using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
-using System.Collections.Generic;
-using System.Data;
-
-//WIP
 
 namespace Fluxus.App.Services
 {
     public class InvoiceService
     {
 
-        private IInvoiceRepository _repository;
+        private IInvoiceRepository _invoiceRepository;
         private IServiceOrderRepository _serviceOrderRepository;
-        public Invoice Invoice { get; set; }
 
 
-        public string Message { get; private set; }
-
-
-
-        public InvoiceService(IInvoiceRepository repository, IServiceOrderRepository serviceOrderRepository)
+        public InvoiceService(IInvoiceRepository invoiceRepository, IServiceOrderRepository serviceOrderRepository)
         { 
-            _repository = repository; 
+            _invoiceRepository = invoiceRepository; 
             _serviceOrderRepository = serviceOrderRepository;
         }
 
 
-        public OperationResult Insert()
+        public OperationResult Insert(Invoice invoice)
         {
-            if (Invoice == null || !IsValid())
-                return OperationResult.FailureResult("Não foi possível incluir a fatura\n" + Invoice?.Message);
+            if (invoice == null)
+                return OperationResult.FailureResult("Não foi possível incluir a fatura!");
 
+            if (GetDescription(invoice.Id).Success)
+                return OperationResult.FailureResult("Fatura já cadastrada!");
 
-            int id = _repository.Insert(Invoice);
+            int id = _invoiceRepository.Insert(invoice);
             return OperationResult.SuccessResult(id);
         }
 
-        public OperationResult Update()
+        public OperationResult Update(Invoice invoice)
         {
-            if (Invoice == null || !IsValid() || _repository.Update(Invoice))
-                return OperationResult.FailureResult("Não foi possível alterar a fatura!\n" + Invoice?.Message);
+            if (invoice == null)
+                return OperationResult.FailureResult("Não foi possível alterar a fatura!");
+
+            if (!GetDescription(invoice.Id).Success)
+                return OperationResult.FailureResult("Fatura não encontrada!");
+
+            if (!_invoiceRepository.Update(invoice))
+                return OperationResult.FailureResult("Não foi possível alterar a fatura!");
 
             return OperationResult.SuccessResult();
         }
 
-        private bool IsValid()
+        public OperationResult Delete(int id)
         {
-            int id = (int)(Invoice.Id != null ? Invoice.Id : 0);
-            var invoiceDescription = _repository.GetDescription(id);
-            var invoiceExists = !string.IsNullOrWhiteSpace(invoiceDescription);
+            if (!_invoiceRepository.Delete(id))
+                return OperationResult.FailureResult("Não foi possível excluir a fatura!");
 
-            if (Invoice.Id == 0 && invoiceExists)
-            {
-                Message = "Fatura já cadastrada.";
-                return false;
-            }
-
-            return true;
+            return OperationResult.SuccessResult();
         }
 
-        public bool Delete(int id)
+        public OperationResult GetDescription(int id)
         {
-            if (_repository.Delete(id))
-                return true;
+            var description = _invoiceRepository.GetDescription(id);
+            if (string.IsNullOrEmpty(description))
+                return OperationResult.FailureResult("Não foi possível excluir a fatura!");
 
-            Message = "Não foi possível excluir a fatura!";
-            return false;
+            return OperationResult.SuccessResult(description);
         }
 
-        public string GetDescription(int id)
-            => _repository.GetDescription(id);
+        public OperationResult GetAll()
+        { 
+            var result = _invoiceRepository.GetAll(); 
 
-        public List<Invoice> GetAll()
-            => _repository.GetAll();
+            if (result == null)
+                return OperationResult.FailureResult("Não foi possível encontrar faturas na base dados!");
 
-        public void PrintPDF(System.Drawing.Image logo, Profile profile, DataTable professionals, DataTable serviceOrders, string path)
-            => new ReportService().PrintPDF(logo, profile, professionals, serviceOrders, path);
+            return OperationResult.SuccessResult(result);
+        }
 
-        public bool RemoveOrder(int idServiceOrder, Invoice invoice)
+        public OperationResult RemoveOrder(int idServiceOrder, Invoice invoice)
         {
-            _serviceOrderRepository.UpdateInvoiceId(idServiceOrder, 0);
-            
-            Invoice = invoice;
+            var serviceOrderUpdated = _serviceOrderRepository.UpdateInvoiceId(idServiceOrder, 0);
+            var invoiceUpdated = Update(invoice);
 
-            var response = Update();
+            if (!invoiceUpdated.Success && !serviceOrderUpdated)
+                return OperationResult.FailureResult("Não foi possível remover a Ordem de Serviço");
 
-            if (response.Success)
-                return true;
-            
-            Message = "Não foi possível remover a Ordem de Serviço";
-            return false;
+            return OperationResult.SuccessResult();
         }
     }
 }
