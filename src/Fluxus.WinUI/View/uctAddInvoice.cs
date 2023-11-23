@@ -49,7 +49,8 @@ namespace Fluxus.WinUI.View
             var service = _serviceProvider.GetService<InvoiceService>();
             service.Invoice = PopulateToObject();
 
-            int invoiceId = service.Insert();
+            var result = service.Insert();
+            int invoiceId = result.Id;
 
             if (invoiceId == 0)
             {
@@ -91,13 +92,14 @@ namespace Fluxus.WinUI.View
         private Invoice PopulateToObject()
         {
             Invoice invoice = new Invoice
-            {
-                Description = txtDescricao.Text,
-                IssueDate = dtpData.Value,
-                SubtotalService = _subtotal_os,
-                SubtotalMileageAllowance = _subtotal_desloc,
-                Total = _subtotal_os + _subtotal_desloc
-            };
+            (
+                id: 0,
+                description: txtDescricao.Text,
+                issueDate: dtpData.Value,
+                subtotalService: _subtotal_os,
+                subtotalMileageAllowance: _subtotal_desloc,
+                total: _subtotal_os + _subtotal_desloc
+            ) ;
             return invoice;
         }
 

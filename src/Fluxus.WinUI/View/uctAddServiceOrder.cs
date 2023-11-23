@@ -2,6 +2,7 @@
 using Fluxus.App.Services;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.Domain.Records;
 
 namespace Fluxus.WinUI.View
 {
@@ -31,13 +32,14 @@ namespace Fluxus.WinUI.View
             var professionals = professionalService.GetTagNameid(false);
             if (professionals == null)
             {
-                MessageBox.Show(professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(professionals.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            cboProfissional.DataSource = professionals;
-            
+            cboProfissional.DataSource = professionals.Object as List<ProfessionalNameId>;
+
+
             var serviceService = _serviceProvider.GetService<ServiceService>();
-            cboAtividade.DataSource = serviceService.GetAll(false);
+            cboAtividade.DataSource = serviceService.GetAll(false).Object as List<ServiceIndex>;
 
             cboCidade.DataSource = _serviceOrderService.GetCitiesFromOrders(false);
 
@@ -90,9 +92,9 @@ namespace Fluxus.WinUI.View
             var service = _serviceProvider.GetService<ServiceOrderService>();
             service.ServiceOrder = PopulateObject();
 
-            var success = _method == EnumMethod.Insert ? service.Insert() : service.Update();
+            var result = _method == EnumMethod.Insert ? service.Insert() : service.Update();
 
-            if (success < 0)
+            if (result.Success)
                 btnCancelar_Click(sender, e);
             else
                 MessageBox.Show(_serviceOrderService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -205,28 +207,28 @@ namespace Fluxus.WinUI.View
             string serviceId = cboAtividade.SelectedValue == null ? String.Empty : cboAtividade.SelectedValue.ToString();
 
             ServiceOrder serviceOrder = new ServiceOrder
-            {
-                Id = _id,
-                ReferenceCode = referenceCode,
-                Title = cboAtividade.Text,
-                Branch = _agencia,
-                OrderDate = dtpDataOrdem.Value,
-                Deadline = dtpPrazo.Value,
-                ProfessionalId = professionalId,
-                ServiceId = serviceId,
-                ServiceAmount = lblAtividadeValor.Text,
-                MileageAllowance = lblAtividadeDeslocamento.Text,
-                Siopi = chkSiopi.Checked,
-                CustomerName = txtNomeCliente.Text,
-                City = cboCidade.Text,
-                ContactName = txtNomeContato.Text,
-                ContactPhone = txtTelefoneContato.Text,
-                Coordinates = txtCoordenada.Text,
-                Status = status,
-                PendingDate = dtpDataPendente.Value,
-                SurveyDate = dtpDataVistoria.Value,
-                DoneDate = dtpDataConcluida.Value
-            };
+            (
+                id: _id,
+                title: cboAtividade.Text,
+                referenceCode: referenceCode,
+                branch: _agencia,
+                professionalId: professionalId,
+                serviceId: serviceId,
+                serviceAmount: lblAtividadeValor.Text,
+                mileageAllowance: lblAtividadeDeslocamento.Text,
+                customerName: txtNomeCliente.Text,
+                city: cboCidade.Text,
+                contactName: txtNomeContato.Text,
+                contactPhone: txtTelefoneContato.Text,
+                coordinates: txtCoordenada.Text,
+                status: status,
+                orderDate: dtpDataOrdem.Value,
+                deadline: dtpPrazo.Value,
+                pendingDate: dtpDataPendente.Value,
+                surveyDate: dtpDataVistoria.Value,
+                doneDate: dtpDataConcluida.Value,
+                siopi: chkSiopi.Checked
+            ); ;
 
             return serviceOrder;
         }
@@ -252,7 +254,7 @@ namespace Fluxus.WinUI.View
 
         private void GetServiceName(object sender, EventArgs e)
         {
-            var source = (List<Service>)cboAtividade.DataSource;
+            var source = (List<ServiceIndex>)cboAtividade.DataSource;
             var service = source.FirstOrDefault(item => item.Tag == cboAtividade.Text);
 
             lblAtividadeNome.Text = service.Description;
@@ -263,20 +265,28 @@ namespace Fluxus.WinUI.View
         private void GetBankBranch()
         {
             var service = _serviceProvider.GetService<BankBranchService>();
-            var branch = service.GetByCode(txtRef1.Text);
-            if (branch == null)
+            var result = service.GetByCode(txtRef1.Text);
+
+            if (result.Success)
             {
-                txtBranchName.Text = "Agência não cadastrado!";
-                txtBranchPhone.Text = "";
-                txtBranchEmail.Text = "";
+                var branch = result.Object as BankBranch;
+
+                if (branch == null)
+                {
+                    txtBranchName.Text = "Agência não cadastrado!";
+                    txtBranchPhone.Text = "";
+                    txtBranchEmail.Text = "";
+                }
+                else
+                {
+                    txtBranchName.Text = branch.Name;
+                    txtBranchPhone.Text = branch.Phone1;
+                    txtBranchEmail.Text = branch.Email;
+                    _agencia = txtRef1.Text;
+                }
             }
-            else
-            {
-                txtBranchName.Text = branch.Name;
-                txtBranchPhone.Text = branch.Phone1;
-                txtBranchEmail.Text = branch.Email;
-                _agencia = txtRef1.Text;
-            }
+
+            
         }
 
         private void GetProfessionalName(object sender, EventArgs e)

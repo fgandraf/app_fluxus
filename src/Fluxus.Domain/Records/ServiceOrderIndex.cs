@@ -9,7 +9,7 @@ namespace Fluxus.Domain.Records
         public DateTime OrderDate { get; set; }
         public string? ReferenceCode { get; set; }
         public string? Professional { get; set; }
-        public int ProfessionalId { get; set; } //aqui
+        public int ProfessionalId { get; set; }
         public string? Service { get; set; }
         public string? City { get; set; }
         public string? CustomerName { get; set; }
@@ -18,7 +18,7 @@ namespace Fluxus.Domain.Records
         public double ServiceAmount { get; set; }
         public double MileageAllowance { get; set; }
         public bool Invoiced { get; set; }
-        public int InvoiceId { get; set; } //aqui
-        public EnumStatus Status { get; set; } //aqui
+        public int InvoiceId { get; set; }
+        public EnumStatus Status { get; set; }
     }
 }

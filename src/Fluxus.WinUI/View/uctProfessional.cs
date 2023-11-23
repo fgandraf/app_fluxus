@@ -1,6 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.App.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.Domain.Records;
 
 namespace Fluxus.WinUI.View
 {
@@ -29,12 +30,12 @@ namespace Fluxus.WinUI.View
 
             if (profissionais == null)
             {
-                MessageBox.Show(_professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(profissionais.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
 
-            dgvProfessionals.DataSource = profissionais;
+            dgvProfessionals.DataSource = profissionais.Object as List<ProfessionalIndex>;
 
             if (dgvProfessionals.Rows.Count == 0)
             {
@@ -53,17 +54,15 @@ namespace Fluxus.WinUI.View
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-            var professional = _professionalService.GetById(id);
+            var result = _professionalService.GetById(id);
 
-            if (professional == null)
+            if (result.Success)
             {
-                MessageBox.Show(_professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                var formNeto = new uctAddProfessional(_frmPrincipal, result.Object as Professional, _serviceProvider);
+                _frmPrincipal.OpenUserControl(formNeto);
             }
 
-            var formNeto = new uctAddProfessional(_frmPrincipal, professional, _serviceProvider);
-
-            _frmPrincipal.OpenUserControl(formNeto);
+            MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -72,14 +71,14 @@ namespace Fluxus.WinUI.View
             if (dialog == DialogResult.Yes)
             {
                 var id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-                var success = _professionalService.Delete(id);                
+                var result = _professionalService.Delete(id);                
                 
 
 
-                if (success)
+                if (result.Success)
                     dgvProfessionals.DataSource = _professionalService.GetIndex();
                 else
-                    MessageBox.Show(_professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

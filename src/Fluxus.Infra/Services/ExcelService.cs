@@ -3,7 +3,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
 using Fluxus.Domain.Records;
 
-namespace Fluxus.App.Services
+namespace Fluxus.Infra.Services
 {
     public class ExcelService
     {
@@ -11,7 +11,7 @@ namespace Fluxus.App.Services
         {
             var XcelApp = new Excel.Application();
             XcelApp.Application.Workbooks.Add(Type.Missing);
-            
+
             XcelApp.Cells[1, 1] = "Status";
             XcelApp.Cells[1, 2] = "Profissional";
             XcelApp.Cells[1, 3] = "Data da Ordem";

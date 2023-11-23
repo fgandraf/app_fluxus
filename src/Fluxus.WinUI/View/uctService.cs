@@ -1,6 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.App.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.Domain.Records;
 
 namespace Fluxus.WinUI.View
 {
@@ -25,7 +26,7 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvServices.DataSource = _serviceService.GetAll(false);
+            dgvServices.DataSource = _serviceService.GetAll(false).Object as List<ServiceIndex>;
 
             if (dgvServices.Rows.Count == 0)
             {
@@ -43,11 +44,16 @@ namespace Fluxus.WinUI.View
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
-            var service = _serviceService.GetBy(id);
+            var result = _serviceService.GetById(id);
 
-            var formNeto = new uctAddService(_frmPrincipal, service, _serviceProvider);
+            if (result.Success)
+            {
+                var formNeto = new uctAddService(_frmPrincipal, result.Object as Service, _serviceProvider);
+                _frmPrincipal.OpenUserControl(formNeto);
+            }
 
-            _frmPrincipal.OpenUserControl(formNeto);
+
+            MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -57,10 +63,10 @@ namespace Fluxus.WinUI.View
             {
                 var id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
 
-                var success = _serviceService.Delete(id);
+                var response = _serviceService.Delete(id);
 
-                if (success)
-                    dgvServices.DataSource = _serviceService.GetAll(false);
+                if (response.Success)
+                    dgvServices.DataSource = _serviceService.GetAll(false).Object as List<ServiceIndex>;
                 else
                     MessageBox.Show(_serviceService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

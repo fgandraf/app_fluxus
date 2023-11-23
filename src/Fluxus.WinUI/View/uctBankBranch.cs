@@ -1,5 +1,6 @@
 ﻿using Fluxus.App.Services;
 using Fluxus.Domain.Entities;
+using Fluxus.Domain.Records;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
@@ -25,13 +26,22 @@ namespace Fluxus.WinUI.View
             
 
             var bankService = _serviceProvider.GetService<BankBranchService>();
-            dgvBankBranches.DataSource = bankService.GetIndex();
 
-            if (dgvBankBranches.Rows.Count == 0)
+            var result = bankService.GetIndex();
+            if (result.Success)
             {
-                btnUpdate.Enabled = false;
-                btnDelete.Enabled = false;
+                dgvBankBranches.DataSource = result.Object as List<BankBranchIndex>;
+
+                if (dgvBankBranches.Rows.Count == 0)
+                {
+                    btnUpdate.Enabled = false;
+                    btnDelete.Enabled = false;
+                }
             }
+
+            
+
+            
             
         }
 
@@ -45,12 +55,15 @@ namespace Fluxus.WinUI.View
         {
             int id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
             var bankService = _serviceProvider.GetService<BankBranchService>();
-            var branch = bankService.GetById(id);
+            var result = bankService.GetById(id);
 
-            var formNeto = new uctAddBankBranch(_frmPrincipal, branch, _serviceProvider);
-
-
-            _frmPrincipal.OpenUserControl(formNeto);
+            BankBranch branch;
+            if (result.Success)
+            {
+                branch = result.Object as BankBranch;
+                var formNeto = new uctAddBankBranch(_frmPrincipal, branch, _serviceProvider);
+                _frmPrincipal.OpenUserControl(formNeto);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -60,12 +73,12 @@ namespace Fluxus.WinUI.View
             {
                 var id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
                 var bankService = _serviceProvider.GetService<BankBranchService>();
-                var success = bankService.Delete(id);
+                var result = bankService.Delete(id);
 
-                if (success)
-                    dgvBankBranches.DataSource = bankService.GetIndex();
+                if (result.Success)
+                    dgvBankBranches.DataSource = bankService.GetIndex().Object as List<BankBranchIndex>;
                 else
-                    MessageBox.Show(bankService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

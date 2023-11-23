@@ -81,7 +81,7 @@ namespace Fluxus.Infra.Repositories
         }
 
 
-        public static int Post(string model, string json)
+        public static int  Post(string model, string json)
         {
             try
             {
@@ -93,7 +93,8 @@ namespace Fluxus.Infra.Repositories
                     var response = httpClient.PostAsync(model, content).Result;
 
                     if (response.IsSuccessStatusCode == false)
-                        throw new Exception("Request error: " + response.Content.ReadAsStringAsync().Result);
+                        //throw new Exception("Request error: " + response.Content.ReadAsStringAsync().Result);
+                        return 0;
 
                     return Convert.ToInt32(response.Content.ReadAsStringAsync().Result);
                 }

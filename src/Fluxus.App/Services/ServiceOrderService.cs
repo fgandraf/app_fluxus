@@ -1,13 +1,12 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain;
+using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Domain.Records;
-using Fluxus.Infra.Repositories;
-using Fluxus.Infra.Services;
-using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Threading.Tasks;
 
+
+//WIP
 
 namespace Fluxus.App.Services
 {
@@ -27,74 +26,27 @@ namespace Fluxus.App.Services
 
 
 
-        public int Insert()
+        public OperationResult Insert()
         {
-            if (ServiceOrder != null && IsValid())
-            {
-                FormatThis();
-                return new ServiceOrderRepository().Insert(ServiceOrder);
-            }
+            if (ServiceOrder == null || !ServiceOrder.IsValid)
+                return OperationResult.FailureResult("Não foi possível incluir a ordem de serviço: " + ServiceOrder?.Message);
 
-            Message = "Não foi possível incluir a ordem de serviço";
-            return 0;
+            int id = _repository.Insert(ServiceOrder);
+            return OperationResult.SuccessResult(id);
         }
 
-        public int Update()
+        public OperationResult Update()
         {
-            if (ServiceOrder != null && IsValid() && _repository.Update(ServiceOrder))
-            {
-                FormatThis();
-                return 1;
-            }
+            if (ServiceOrder == null || !ServiceOrder.IsValid || !_repository.Update(ServiceOrder))
+                return OperationResult.FailureResult("Não foi possível alterar a ordem de serviço!\n" + ServiceOrder?.Message);
 
-            Message = "Não foi possível alterar a ordem de serviço!";
-            return 0;
+            return OperationResult.SuccessResult();
         }
-
-        private bool IsValid()
-        {
-            if (string.IsNullOrEmpty(ServiceOrder.ReferenceCode) || ServiceOrder.ReferenceCode == "../...")
-            {
-                Message = "Campo Referência é obrigatório";
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(ServiceOrder.ServiceId))
-            {
-                Message = "Campo Atividade é obrigatório";
-                return false;
-            }
-
-            if (string.IsNullOrEmpty(ServiceOrder.ProfessionalId))
-            {
-                Message = "Campo Profissional é obrigatório";
-                return false;
-            }
-
-            return true;
-        }
-
-        private void FormatThis()
-        {
-            ServiceOrder.ServiceAmount = ServiceOrder.ServiceAmount.Replace(',', '.');
-            ServiceOrder.MileageAllowance = ServiceOrder.MileageAllowance.Replace(',', '.');
-
-            string tag = ServiceOrder.Title;
-            char[] dividers = { '.', '/' };
-            string[] elements = ServiceOrder.ReferenceCode.Split(dividers, StringSplitOptions.RemoveEmptyEntries);
-            var referenceNumber = Convert.ToInt32(elements[2]);
-            ServiceOrder.Title = $"{tag}-{ServiceOrder.City}-{referenceNumber}" + "\n\n" +
-                                 $"{ServiceOrder.CustomerName.Replace(" ", " ")}" + "\n" +
-                                 $"- Prazo: {ServiceOrder.Deadline.ToShortDateString()}";
-        }
-
-
-
 
         public void UpdateFaturaCod(int id, int invoiceId)
             => _repository.UpdateInvoiceId(id, invoiceId);
 
-        public async void UpdateStatus(int id, string status)
+        public async Task UpdateStatus(int id, string status)
             => await Task.Run(() => _repository.UpdateStatus(id, status));
 
         public bool Delete(int id)
@@ -106,8 +58,12 @@ namespace Fluxus.App.Services
                 return false;
             }
 
-            _repository.Delete(id);
-            return true;
+            if (_repository.Delete(id))
+                return true;
+
+
+            Message = "Não é possível excluir a Ordem de Serviço!";
+            return false;
         }
 
         public List<ServiceOrderOpen> GetOrdensDoFluxo()
@@ -122,24 +78,8 @@ namespace Fluxus.App.Services
         public List<ServiceOrderIndex> GetOrdensComFiltro(string filter)
             => _repository.GetFiltered(filter);
 
-        public DataTable GetProfessionalByInvoiceId(int invoiceId)
-        {
-            var professionalsList = _repository.GetProfessionalByInvoiceId(invoiceId);
-            DataTable table = new DataTable();
-
-            table.Columns.Add("ProfessionalId", typeof(int));
-            table.Columns.Add("Nameid", typeof(string));
-
-            foreach (var professional in professionalsList)
-            {
-                DataRow row = table.NewRow();
-                row["ProfessionalId"] = professional.ProfessionalId;
-                row["Nameid"] = professional.Nameid;
-                table.Rows.Add(row);
-            }
-
-            return table;
-        }
+        public List<ProfessionalNameId> GetProfessionalByInvoiceId(int invoiceId)
+            => _repository.GetProfessionalByInvoiceId(invoiceId);
             
         public List<string> GetCitiesFromOrders(bool addHeader)
         {
@@ -153,9 +93,6 @@ namespace Fluxus.App.Services
 
         public ServiceOrder GetBy(int id)
             => _repository.GetById(id);
-
-        public void ExportToSheet(List<ServiceOrderIndex> serviceOrders)
-            => new ExcelService().ExportToExcel(serviceOrders);
 
     }
 

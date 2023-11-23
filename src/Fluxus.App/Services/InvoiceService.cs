@@ -1,9 +1,10 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain;
+using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
-using Fluxus.Infra.Services;
 using System.Collections.Generic;
 using System.Data;
 
+//WIP
 
 namespace Fluxus.App.Services
 {
@@ -26,28 +27,28 @@ namespace Fluxus.App.Services
         }
 
 
-
-        public int Insert()
+        public OperationResult Insert()
         {
-            if (Invoice != null || IsValid())
-                return _repository.Insert(Invoice);
+            if (Invoice == null || !IsValid())
+                return OperationResult.FailureResult("Não foi possível incluir a fatura\n" + Invoice?.Message);
 
-            Message = "Não foi possível incluir a fatura";
-            return 0;
+
+            int id = _repository.Insert(Invoice);
+            return OperationResult.SuccessResult(id);
         }
 
-        public int Update()
+        public OperationResult Update()
         {
-            if (Invoice != null && IsValid() && _repository.Update(Invoice))
-                return 1;
+            if (Invoice == null || !IsValid() || _repository.Update(Invoice))
+                return OperationResult.FailureResult("Não foi possível alterar a fatura!\n" + Invoice?.Message);
 
-            Message = "Não foi possível alterar a fatura!";
-            return 0;
+            return OperationResult.SuccessResult();
         }
 
         private bool IsValid()
         {
-            var invoiceDescription = _repository.GetDescription(Invoice.Id);
+            int id = (int)(Invoice.Id != null ? Invoice.Id : 0);
+            var invoiceDescription = _repository.GetDescription(id);
             var invoiceExists = !string.IsNullOrWhiteSpace(invoiceDescription);
 
             if (Invoice.Id == 0 && invoiceExists)
@@ -85,7 +86,7 @@ namespace Fluxus.App.Services
 
             var response = Update();
 
-            if (response > 0)
+            if (response.Success)
                 return true;
             
             Message = "Não foi possível remover a Ordem de Serviço";

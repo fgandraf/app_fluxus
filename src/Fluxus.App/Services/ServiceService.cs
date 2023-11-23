@@ -1,6 +1,9 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain;
+using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
-using System.Collections.Generic;
+using Fluxus.Domain.Records;
+
+//WIP
 
 namespace Fluxus.App.Services
 {
@@ -19,69 +22,54 @@ namespace Fluxus.App.Services
             => _repository = repository;
 
 
-
-        public int Insert()
+        public OperationResult Insert()
         {
-            if (Service != null && IsValid())
-                return _repository.Insert(Service);
+            if (Service == null || !Service.IsValid)
+                return OperationResult.FailureResult("Não foi possível incluir a atividade!\n" + Service?.Message);
 
-            Message = "Não foi possível incluir a atividade!";
-            return 0;
+
+            int id = _repository.Insert(Service);
+            return OperationResult.SuccessResult(id);
         }
 
-        public int Update()
+        public OperationResult Update()
         {
-            if (Service != null && IsValid() && _repository.Update(Service))
-                return 1;
+            if (Service == null || !Service.IsValid || !_repository.Update(Service))
+                return OperationResult.FailureResult("Não foi possível alterar a atividade!\n" + Service?.Message);
 
-            Message = "Não foi possível alterar a atividade!";
-            return 0;
+            return OperationResult.SuccessResult();
         }
 
-        private bool IsValid()
+        public OperationResult Delete(int id)
         {
-            if (string.IsNullOrEmpty(Service.Tag))
-            {
-                Message = "Campos com * são obrigatório";
-                return false;
-            }
+            if (!_repository.Delete(id))
+                return OperationResult.FailureResult("Não foi possível excluir a atividade!");
 
-            return true;
+            return OperationResult.SuccessResult();
         }
 
-        public bool Delete(int id)
-        {
-            if (_repository.Delete(id))
-                return true;
-
-            Message = "Não foi possível excluir a atividade!";
-            return false;
-        }
-
-        public Service GetBy(int id)
+        public OperationResult GetById(int id)
         {
             var service = _repository.GetById(id);
 
-            if (service != null)
-                return service;
+            if (service == null)
+                return OperationResult.FailureResult("Não foi possível encontrar a atividade!");
 
-            Message = "Não foi possível encontrar a atividade!";
-            return null;
+            return OperationResult.SuccessResult(service);
         }
 
-        public List<Service> GetAll(bool addHeader)
+        public OperationResult GetAll(bool addHeader)
         {
             var services = _repository.GetAll();
 
-            if (services != null)
-            {
-                if (addHeader)
-                    services.Insert(0, new Service { Tag = "--TODAS--" });
-                return services;
-            }
+            if (services == null)
+                return OperationResult.FailureResult("Não foi possível encontrar atividades na base de dados!");
 
-            Message = "Não foi possível encontrar atividades na base de dados!";
-            return null;
+            if (addHeader)
+                services.Insert(0, new ServiceIndex { Tag = "--TODAS--" });
+            
+            return OperationResult.SuccessResult(services);
+
         }
 
     }

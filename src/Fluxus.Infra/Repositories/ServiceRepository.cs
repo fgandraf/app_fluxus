@@ -1,5 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
+using Fluxus.Domain.Records;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -30,10 +31,10 @@ namespace Fluxus.Infra.Repositories
             return JsonConvert.DeserializeObject<Service>(json);
         }
 
-        public List<Service> GetAll()
+        public List<ServiceIndex> GetAll()
         {
             string json = Request.Get("Service", string.Empty);
-            return JsonConvert.DeserializeObject<List<Service>>(json);
+            return JsonConvert.DeserializeObject<List<ServiceIndex>>(json);
         }
 
     }

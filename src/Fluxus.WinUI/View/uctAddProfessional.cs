@@ -69,14 +69,14 @@ namespace Fluxus.WinUI.View
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             var service = _serviceProvider.GetService<ProfessionalService>();
-            service.Professional = PopulateObject();
+            var professional = PopulateObject();
 
-            var success = _method == EnumMethod.Insert ? service.Insert() : service.Update();
+            var result = _method == EnumMethod.Insert ? service.Insert(professional) : service.Update(professional);
 
-            if (success > 0)
+            if (result.Success)
                 btnCancelar_Click(sender, e);
             else
-                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

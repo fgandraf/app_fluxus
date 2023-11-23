@@ -28,6 +28,7 @@ namespace Fluxus.WinUI.View
             }
 
             var invoiceService = _serviceProvider.GetService<InvoiceService>();
+            var invoice = invoiceService.GetAll();
             dgvFaturas.DataSource = invoiceService.GetAll();
         }
 
@@ -50,6 +51,21 @@ namespace Fluxus.WinUI.View
                 var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
                 var professionals = serviceOrderService.GetProfessionalByInvoiceId(invoiceId);
 
+
+                DataTable professionalsTable = new DataTable();
+
+                professionalsTable.Columns.Add("ProfessionalId", typeof(int));
+                professionalsTable.Columns.Add("Nameid", typeof(string));
+
+                foreach (var professional in professionals)
+                {
+                    DataRow row = professionalsTable.NewRow();
+                    row["ProfessionalId"] = professional.ProfessionalId;
+                    row["Nameid"] = professional.Nameid;
+                    professionalsTable.Rows.Add(row);
+                }
+
+
                 string path = saveFileDialog.FileName;
 
 
@@ -64,7 +80,7 @@ namespace Fluxus.WinUI.View
                 DataTable serviceOrders = (DataTable)dgvOS.DataSource;
 
                 var invoiceService = _serviceProvider.GetService<InvoiceService>();
-                invoiceService.PrintPDF(logo, profile, professionals, serviceOrders, path);
+                invoiceService.PrintPDF(logo, profile, professionalsTable, serviceOrders, path);
             }
         }
 
@@ -147,12 +163,14 @@ namespace Fluxus.WinUI.View
             totalMileageAllowance -= Convert.ToDouble(dgvOS.CurrentRow.Cells["MileageAllowance"].Value);
 
             var invoice = new Invoice
-            {
-                Id = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value),
-                SubtotalService = totalServiceAmount,
-                SubtotalMileageAllowance = totalMileageAllowance,
-                Total = totalServiceAmount + totalMileageAllowance
-            };
+            (
+                id: Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value),
+                description: null,
+                issueDate: null,
+                subtotalService: totalServiceAmount,
+                subtotalMileageAllowance: totalMileageAllowance,
+                total: totalServiceAmount + totalMileageAllowance
+            );
 
             return invoice;
         }

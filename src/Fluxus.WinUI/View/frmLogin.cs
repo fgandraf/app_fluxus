@@ -1,5 +1,6 @@
 ﻿using Fluxus.App.Services;
 using Fluxus.Domain.Entities;
+using Fluxus.Domain.Records;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.InteropServices;
 
@@ -31,20 +32,24 @@ namespace Fluxus.WinUI.View
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var user = _professionalService.GetUser(txtUsuario.Text);
-
-            if (string.IsNullOrEmpty(user.UserName.ToString()))
+            var result = _professionalService.GetUserInfo(txtUsuario.Text);
+            UserInfo user = new UserInfo();
+            
+            if (result != null)
             {
-                MessageBox.Show("Usuário não encontrado", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error); 
-                return;
-            }
+                user = result.Object as UserInfo;
+                if (string.IsNullOrEmpty(user.UserName.ToString()))
+                {
+                    MessageBox.Show("Usuário não encontrado", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            if (user.UserPassword.ToString() != txtSenha.Text)
-            {
-                MessageBox.Show("Senha incorreta", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (user.UserPassword.ToString() != txtSenha.Text)
+                {
+                    MessageBox.Show("Senha incorreta", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
-
 
             Logged.Usr_nome = user.UserName;
             Logged.ProfessionalId = user.Id;

@@ -46,9 +46,9 @@ namespace Fluxus.WinUI.View
 
             _profileService.Profile = PopulateObject();
 
-            var success = _method == EnumMethod.Insert ? _profileService.Insert() : _profileService.Update();
+            var result = _method == EnumMethod.Insert ? _profileService.Insert() : _profileService.Update();
 
-            if (success > 0)
+            if (result.Success)
                 MessageBox.Show("Dados alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 MessageBox.Show(_profileService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -163,35 +163,35 @@ namespace Fluxus.WinUI.View
         private Profile PopulateObject()
         {
             var profile = new Profile
-            {
-                Id = 1,
-                Cnpj = txtCNPJ.Text,
-                TradingName = txtNomeFantasia.Text,
-                CompanyName = txtRazaoSocial.Text,
-                StateId = txtInscricaoEstadual.Text,
-                CityId = txtInscricaoMunicipal.Text,
-                Address = txtEndereco.Text,
-                Complement = txtComplemento.Text,
-                District = txtBairro.Text,
-                City = txtCidade.Text,
-                Zip = txtCEP.Text,
-                State = cboUF.Text,
-                EstablishmentDate = dtpConstituicao.Value,
-                Phone1 = txtTelefone.Text,
-                Phone2 = txtTelefone2.Text,
-                Email = txtEmail.Text,
-                BankAccountName = txtBanco.Text,
-                BankAccountType = cboTipoDeConta.Text,
-                BankAccountBranch = txtAgencia.Text,
-                BankAccountDigit = txtOperador.Text,
-                BankAccountNumber = txtConta.Text,
-                ContractorName = cboTomador.Text,
-                ContractNotice = txtEdital.Text,
-                ContractNumber = txtContrato.Text,
-                ContractEstablished = dtpCelebrado.Value,
-                ContractStart = dtpInicio.Value,
-                ContractEnd = dtpTermino.Value,
-            };
+            (
+                id : 1,
+                cnpj : txtCNPJ.Text,
+                tradingName : txtNomeFantasia.Text,
+                companyName : txtRazaoSocial.Text,
+                stateId : txtInscricaoEstadual.Text,
+                cityId : txtInscricaoMunicipal.Text,
+                address : txtEndereco.Text,
+                complement : txtComplemento.Text,
+                district : txtBairro.Text,
+                city : txtCidade.Text,
+                zip : txtCEP.Text,
+                state : cboUF.Text,
+                establishmentDate : dtpConstituicao.Value,
+                phone1 : txtTelefone.Text,
+                phone2 : txtTelefone2.Text,
+                email : txtEmail.Text,
+                bankAccountName : txtBanco.Text,
+                bankAccountType : cboTipoDeConta.Text,
+                bankAccountBranch : txtAgencia.Text,
+                bankAccountDigit : txtOperador.Text,
+                bankAccountNumber : txtConta.Text,
+                contractorName : cboTomador.Text,
+                contractNotice : txtEdital.Text,
+                contractNumber : txtContrato.Text,
+                contractEstablished : dtpCelebrado.Value,
+                contractStart : dtpInicio.Value,
+                contractEnd : dtpTermino.Value
+            );
 
             using (var stream = new MemoryStream())
             {

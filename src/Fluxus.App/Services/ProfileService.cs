@@ -1,5 +1,8 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain;
+using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
+
+//WIP
 
 namespace Fluxus.App.Services
 {
@@ -18,35 +21,24 @@ namespace Fluxus.App.Services
             => _repository = repository;
 
 
-
-        public int Insert()
+        public OperationResult Insert()
         {
-            if (Profile != null && IsValid())
-                return _repository.Insert(Profile);
+            if (Profile == null || !Profile.IsValid)
+                return OperationResult.FailureResult("Não foi possível incluir o profissional!\n" + Profile?.Message);
 
-            Message = "Não foi possível incluir o profissional!";
-            return 0;
+
+            int id = _repository.Insert(Profile);
+            return OperationResult.SuccessResult(id);
         }
 
-        public int Update()
+        public OperationResult Update()
         {
-            if (Profile != null && IsValid() && _repository.Update(Profile))
-                return 1;
+            if (Profile == null || !Profile.IsValid || _repository.Update(Profile))
+                return OperationResult.FailureResult("Não foi possível alterar o profissional!\n" + Profile?.Message);
 
-            Message = "Não foi possível alterar o profissional!";
-            return 0;
+            return OperationResult.SuccessResult();
         }
 
-        private bool IsValid()
-        {
-            if (string.IsNullOrEmpty(Profile.Cnpj) || string.IsNullOrEmpty(Profile.TradingName) || string.IsNullOrEmpty(Profile.CompanyName))
-            {
-                Message = "Campos com * são obrigatório";
-                return false;
-            }
-
-            return true;
-        }
 
         public Profile GetAll()
             => _repository.GetAll();

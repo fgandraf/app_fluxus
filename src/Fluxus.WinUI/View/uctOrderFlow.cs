@@ -4,6 +4,7 @@ using Fluxus.App.Services;
 using Fluxus.Domain.Records;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 
 namespace Fluxus.WinUI.View
 {
@@ -50,10 +51,10 @@ namespace Fluxus.WinUI.View
             var professionals = professionalService.GetTagNameid(true);
             if (professionals == null)
             {
-                MessageBox.Show(professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(professionals.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            cboProfissional.DataSource = professionals;
+            cboProfissional.DataSource = professionals.Object as List<ProfessionalNameId>;
 
 
             if (Logged.Rl)

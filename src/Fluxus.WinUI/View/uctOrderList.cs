@@ -3,6 +3,7 @@ using System.Data;
 using Fluxus.App.Services;
 using Fluxus.Domain.Records;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.Infra.Services;
 
 namespace Fluxus.WinUI.View
 {
@@ -28,16 +29,16 @@ namespace Fluxus.WinUI.View
             var professionals = professionalService.GetTagNameid(true);
             if (professionals == null)
             {
-                MessageBox.Show(professionalService.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(professionals.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            cboProfissional.DataSource = professionals;
+            cboProfissional.DataSource = professionals.Object as List<ProfessionalNameId>;
 
-            
+
             cboCidade.DataSource = _serviceOrderService.GetCitiesFromOrders(true);
 
             var serviceService = _serviceProvider.GetService<ServiceService>();
-            cboAtividade.DataSource = serviceService.GetAll(true);
+            cboAtividade.DataSource = serviceService.GetAll(true).Object as List<ServiceIndex>;
 
             CleanFilter();
 
@@ -129,7 +130,7 @@ namespace Fluxus.WinUI.View
             if (dgvOS.Rows.Count > 0)
             {
                 var serviceOrders = (List<ServiceOrderIndex>)dgvOS.DataSource;
-                _serviceOrderService.ExportToSheet(serviceOrders);
+                new ExcelService().ExportToExcel(serviceOrders);
             }
         }
 

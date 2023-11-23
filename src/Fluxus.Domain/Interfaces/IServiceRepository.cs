@@ -1,5 +1,6 @@
 ﻿
 using Fluxus.Domain.Entities;
+using Fluxus.Domain.Records;
 using System.Collections.Generic;
 
 namespace Fluxus.Domain.Interfaces
@@ -14,6 +15,6 @@ namespace Fluxus.Domain.Interfaces
 
         public Service GetById(int id);
 
-        public List<Service> GetAll();
+        public List<ServiceIndex> GetAll();
     }
 }

@@ -74,14 +74,14 @@ namespace Fluxus.WinUI.View
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             var service = _serviceProvider.GetService<BankBranchService>();
-            service.BankBranch = PopulateObject();
+            var bankBranch = PopulateObject();
 
-            var success = _method == EnumMethod.Insert ? service.Insert() : service.Update();
+            var result = _method == EnumMethod.Insert ? service.Insert(bankBranch) : service.Update(bankBranch);
 
-            if (success > 0)
+            if (result.Success)
                 btnCancelar_Click(sender, e);
             else
-                MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -117,21 +117,21 @@ namespace Fluxus.WinUI.View
         private BankBranch PopulateObject()
         {
             BankBranch branch = new BankBranch
-            {
-                Id = _id,
-                BranchNumber = txtAgencia.Text,
-                Name = txtNome.Text,
-                Address = txtEndereco.Text,
-                Complement = txtComplemento.Text,
-                District = txtBairro.Text,
-                City = txtCidade.Text,
-                Zip = txtCEP.Text,
-                State = cboUF.Text,
-                ContactName = txtContato.Text,
-                Phone1 = txtTelefone1.Text,
-                Phone2 = txtTelefone2.Text,
-                Email = txtEmail.Text
-            };
+            (
+                id : _id,
+                branchNumber : txtAgencia.Text,
+                name : txtNome.Text,
+                address: txtEndereco.Text,
+                complement : txtComplemento.Text,
+                district : txtBairro.Text,
+                city: txtCidade.Text,
+                zip: txtCEP.Text,
+                state : cboUF.Text,
+                contactName: txtContato.Text,
+                phone1: txtTelefone1.Text,
+                phone2: txtTelefone2.Text,
+                email: txtEmail.Text
+            );
             return branch;
         }
 

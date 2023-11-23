@@ -1,7 +1,7 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain;
+using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Domain.Records;
-using System.Collections.Generic;
 
 namespace Fluxus.App.Services
 {
@@ -10,111 +10,89 @@ namespace Fluxus.App.Services
 
         private IProfessionalRepository _repository;
         public Professional Professional { get; set; }
-        
-
-        public string Message { get; private set; }
-
-
+      
         
         public ProfessionalService(IProfessionalRepository repository)
             => _repository = repository;
 
 
-
-        public int Insert()
+        public OperationResult Insert(Professional professional)
         {
-            if (Professional != null && IsValid())
-                return _repository.Insert(Professional);
+            if (professional == null || !professional.IsValid)
+                return OperationResult.FailureResult("Não foi possível incluir o profissional!");
 
-            Message = "Não foi possível incluir o profissional!";
-            return 0;
+            var usernamelInRepo = _repository.GetUser(professional.UserName);
+            if (usernamelInRepo != null)
+                return OperationResult.FailureResult("Nome de usuário já cadastrado!");
+
+            int id = _repository.Insert(professional);
+            return OperationResult.SuccessResult(id);
         }
 
-        public int Update()
+        public OperationResult Update(Professional professional)
         {
-            if (Professional != null && IsValid() && _repository.Update(Professional))
-                return 1;
+            if (professional == null || !professional.IsValid || professional.UserName == null)
+                return OperationResult.FailureResult("Não foi possível alterar o profissional!");
 
-            Message = "Não foi possível alterar o profissional!";
-            return 0;
-        }
+            var usernamelInRepo = _repository.GetUser(professional.UserName);
+            if (usernamelInRepo != null && usernamelInRepo.Id != professional.Id)
+                return OperationResult.FailureResult("Nome de usuário já cadastrado!");
 
-        private bool IsValid()
-        {
-            if (string.IsNullOrEmpty(Professional.Tag) || string.IsNullOrEmpty(Professional.Name) || string.IsNullOrEmpty(Professional.UserName))
-            {
-                Message = "Campos com * são obrigatório";
-                return false;
-            }
-
-
-            if (!Professional.PasswordMatch())
-            {
-                Message = "Senhas não conferem!";
-                return false;
-            }
-
-
-            var user = _repository.GetUser(Professional.UserName);
-            var usernameExists = !string.IsNullOrWhiteSpace(user.UserName);
-            if (Professional.Id == 0 && usernameExists)
-            {
-                Message = "Nome de usuário já existe.";
-                return false;
-            }
-
-            return true;
-        }
-
-        public bool Delete(int id)
-        {
-            if (_repository.Delete(id))
-                return true;
-
-            Message = "Não foi possível excluir o profissional!";
-            return false;
-        }
+            if (!_repository.Update(professional))
+                return OperationResult.FailureResult("Não foi possível alterar o profissional!");
             
-        public Professional GetById(int id)
+            return OperationResult.SuccessResult();
+        }
+
+        public OperationResult Delete(int id)
+        {
+            if (!_repository.Delete(id))
+                return OperationResult.FailureResult("Não foi possível excluir o profissional!");
+
+            return OperationResult.SuccessResult();
+        }
+
+        public OperationResult GetById(int id)
         {
             var professional = _repository.GetById(id);
-            
-            if (professional != null)
-                return professional;
 
-            Message = "Não foi possível encontrar o profissional!";
-            return null;
+            if (professional == null)
+                return OperationResult.FailureResult("Não foi possível encontrar o profissional!");
+
+            return OperationResult.SuccessResult(professional);
         }
 
-        public List<ProfessionalIndex> GetIndex()
+        public OperationResult GetIndex()
         {
             var professionals = _repository.GetIndex();
 
-            if (professionals != null)
-                return professionals;
-               
-            Message = "Não foi possível encontrar profissionais na base de dados!";
-            return null;
+            if (professionals == null)
+                return OperationResult.FailureResult("Não foi possível encontrar profissionais na base dados!");
+
+            return OperationResult.SuccessResult(professionals);
         }
 
-        public List<ProfessionalNameId> GetTagNameid(bool addHeader)
+        public OperationResult GetTagNameid(bool addHeader)
         {
             var professionals = _repository.GetTagNameid();
             
-            if (professionals != null)
-            {
-                if (addHeader)
-                    professionals.Insert(0, new ProfessionalNameId { Nameid = "--TODOS--" });
-                return professionals;
-            }
+            if (professionals == null)
+                return OperationResult.FailureResult("Não foi possível encontrar profissionais na base de dados!");
 
-            Message = "Não foi possível encontrar profissionais na base de dados!";
-            return null;
+            if (addHeader)
+                professionals.Insert(0, new ProfessionalNameId { Nameid = "--TODOS--" });
+
+            return OperationResult.SuccessResult(professionals);
         }
 
-        public UserInfo GetUser(string userName)
+        public OperationResult GetUserInfo(string userName)
         {
-            return _repository.GetUser(userName);
+            var userInfo = _repository.GetUser(userName);
+
+            if (userInfo == null)
+                return OperationResult.FailureResult("Dados do usuário não encontrados");
+
+            return OperationResult.SuccessResult(userInfo);
         }
 
     }

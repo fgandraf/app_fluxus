@@ -53,9 +53,9 @@ namespace Fluxus.WinUI.View
             var service = _serviceProvider.GetService<ServiceService>();
             service.Service = PopulateObject();
 
-            var success = _method == EnumMethod.Insert ? service.Insert() : service.Update();
+            var result = _method == EnumMethod.Insert ? service.Insert() : service.Update();
 
-            if (success > 0)
+            if (result.Success)
                 btnCancelar_Click(sender, e);
             else
                 MessageBox.Show(service.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -71,13 +71,13 @@ namespace Fluxus.WinUI.View
         private Service PopulateObject()
         {
             Service service = new Service
-            {
-                Id = _id,
-                Tag = txtCodigo.Text,
-                Description = txtDescricao.Text,
-                ServiceAmount = txtValor.Text.Replace(',', '.'),
-                MileageAllowance = txtDeslocamento.Text.Replace(',', '.')
-            };
+            (
+                id : _id,
+                tag : txtCodigo.Text,
+                description : txtDescricao.Text,
+                serviceAmount : txtValor.Text.Replace(',', '.'),
+                mileageAllowance : txtDeslocamento.Text.Replace(',', '.')
+            );
             return service;
         }
 
