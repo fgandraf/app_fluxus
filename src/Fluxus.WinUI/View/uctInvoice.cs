@@ -99,9 +99,35 @@ namespace Fluxus.WinUI.View
                     logo = System.Drawing.Image.FromStream(stream);
 
 
-                DataTable serviceOrders = (DataTable)dgvOS.DataSource;
+                var serviceOrders = (List<ServiceOrderIndex>)dgvOS.DataSource;
+                var serviceTable = new DataTable();
+                
+                foreach (var serviceOrder in serviceOrders)
+                {
+                    DataRow row = serviceTable.NewRow();
 
-                new ReportService().PrintPDF(logo, profile, professionalsTable, serviceOrders, path);
+                    row["Id"] = serviceOrder.Id;
+                    row["OrderDate"] = serviceOrder.OrderDate;
+                    row["ReferenceCode"] = serviceOrder.ReferenceCode;
+                    row["Professional"] = serviceOrder.Professional;
+                    row["ProfessionalId"] = serviceOrder.ProfessionalId;
+                    row["Service"] = serviceOrder.Service;
+                    row["City"] = serviceOrder.City;
+                    row["CustomerName"] = serviceOrder.CustomerName;
+                    row["SurveyDate"] = serviceOrder.SurveyDate;
+                    row["DoneDate"] = serviceOrder.DoneDate;
+                    row["ServiceAmount"] = serviceOrder.ServiceAmount;
+                    row["MileageAllowance"] = serviceOrder.MileageAllowance;
+                    row["Invoiced"] = serviceOrder.Invoiced;
+                    row["InvoiceId"] = serviceOrder.InvoiceId;
+                    row["Status"] = serviceOrder.Status;
+                    serviceTable.Rows.Add(row);
+                }
+
+
+
+
+                new ReportService().PrintPDF(logo, profile, professionalsTable, serviceTable, path);
             }
         }
 

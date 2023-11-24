@@ -20,7 +20,6 @@ namespace Fluxus.App.Services
             if (serviceOrder == null || !serviceOrder.IsValid)
                 return OperationResult.FailureResult("Não foi possível incluir a ordem de serviço!");
 
-            serviceOrder.CreateTitle();
             int id = _repository.Insert(serviceOrder);
             return OperationResult.SuccessResult(id);
         }

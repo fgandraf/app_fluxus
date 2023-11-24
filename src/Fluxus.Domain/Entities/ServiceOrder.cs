@@ -24,7 +24,6 @@ namespace Fluxus.Domain.Entities
         }
 
 
-
         private string _mileageAllowance;
         public string MileageAllowance
         {
@@ -50,14 +49,11 @@ namespace Fluxus.Domain.Entities
         public bool IsValid { get; private set; }
         public string Message { get; private set; }
 
-        public ServiceOrder(int id, string referenceCode, string branch, string title, string professionalId, string serviceId, string serviceAmount, string mileageAllowance, string customerName, string city, string contactName, string contactPhone, string coordinates, EnumStatus status, bool invoiced, int invoiceId, DateTime orderDate, DateTime deadline, DateTime? pendingDate, DateTime? surveyDate, DateTime? doneDate, bool siopi)
+        public ServiceOrder(int id, string referenceCode, string branch, string professionalId, string serviceId, string serviceAmount, string mileageAllowance, string customerName, string city, string contactName, string contactPhone, string coordinates, EnumStatus status, bool invoiced, int invoiceId, DateTime orderDate, DateTime deadline, DateTime? pendingDate, DateTime? surveyDate, DateTime? doneDate, bool siopi)
         {
             Id = id;
             ReferenceCode = referenceCode;
             Branch = branch;
-            Title = title;
-
-
             ProfessionalId = professionalId;
             ServiceId = serviceId;
             ServiceAmount = serviceAmount;
@@ -104,21 +100,6 @@ namespace Fluxus.Domain.Entities
             IsValid = true;
         }
 
-
-        public void CreateTitle()
-        {
-            if (Title == null && ReferenceCode != null && CustomerName != null && ServiceId != null)
-            {
-                string tag = ServiceId;
-                char[] dividers = { '.', '/' };
-                string[] elements = ReferenceCode.Split(dividers, StringSplitOptions.RemoveEmptyEntries);
-                var referenceNumber = Convert.ToInt32(elements[2]);
-                Title = $"{tag}-{City}-{referenceNumber}" + "\n\n" +
-                                                 $"{CustomerName.Replace(" ", " ")}" + "\n" +
-                                                 $"- Prazo: {Deadline.ToShortDateString()}";
-            }
-
-        }
     }
 
 }

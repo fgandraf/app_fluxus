@@ -17,7 +17,7 @@ namespace Fluxus.App.Services
         public OperationResult Insert(Profile profile)
         {
             if (profile == null || !profile.IsValid)
-                return OperationResult.FailureResult("Não foi possível incluir o profissional!");
+                return OperationResult.FailureResult("Não foi possível incluir o perfil!");
 
 
             int id = _repository.Insert(profile);
@@ -26,8 +26,8 @@ namespace Fluxus.App.Services
 
         public OperationResult Update(Profile profile)
         {
-            if (profile == null || !profile.IsValid || _repository.Update(profile))
-                return OperationResult.FailureResult("Não foi possível alterar o profissional!");
+            if (profile == null || !profile.IsValid || !_repository.Update(profile))
+                return OperationResult.FailureResult("Não foi possível alterar o perfil!");
 
             return OperationResult.SuccessResult();
         }

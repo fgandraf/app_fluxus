@@ -214,7 +214,6 @@ namespace Fluxus.WinUI.View
             ServiceOrder serviceOrder = new ServiceOrder
             (
                 id: _id,
-                title: cboAtividade.Text,
                 referenceCode: referenceCode,
                 branch: _agencia,
                 professionalId: professionalId,
