@@ -14,14 +14,14 @@ namespace Fluxus.App.Services
             => _repository = repository;
 
 
-        public OperationResult Insert(Profile profile)
+        public OperationResult<int> Insert(Profile profile)
         {
             if (profile == null || !profile.IsValid)
-                return OperationResult.FailureResult("Não foi possível incluir o perfil!");
+                return OperationResult<int>.FailureResult("Não foi possível incluir o perfil!");
 
 
             int id = _repository.Insert(profile);
-            return OperationResult.SuccessResult(id);
+            return OperationResult<int>.SuccessResult(id);
         }
 
         public OperationResult Update(Profile profile)
@@ -32,42 +32,42 @@ namespace Fluxus.App.Services
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult GetById(int id)
+        public OperationResult<Profile> GetById(int id)
         {
             var profile = _repository.GetById(id);
 
             if (profile == null)
-                return OperationResult.FailureResult("Não foi possível encontrar o perfil na base dados!");
+                return OperationResult<Profile>.FailureResult("Não foi possível encontrar o perfil na base dados!");
 
-            return OperationResult.SuccessResult(profile);
+            return OperationResult<Profile>.SuccessResult(profile);
         }
 
-        public OperationResult GetToPrint()
+        public OperationResult<Profile> GetToPrint()
         { 
             var profile = _repository.GetToPrint();
 
             if (profile == null)
-                return OperationResult.FailureResult("Não foi possível encontrar o perfil na base dados!");
+                return OperationResult<Profile>.FailureResult("Não foi possível encontrar o perfil na base dados!");
 
-            return OperationResult.SuccessResult(profile);
+            return OperationResult<Profile>.SuccessResult(profile);
         }
 
-        public OperationResult GetLogo()
+        public OperationResult<byte[]> GetLogo()
         {
             var logo = _repository.GetLogo();
             if (logo == null)
-                return OperationResult.FailureResult("Não foi possível encontrar o logo na base dados!");
+                return OperationResult<byte[]>.FailureResult("Não foi possível encontrar o logo na base dados!");
 
-            return OperationResult.SuccessResult(logo);
+            return OperationResult<byte[]>.SuccessResult(logo);
         }
 
-        public OperationResult GetTradingName()
+        public OperationResult<string> GetTradingName()
         {
             var tradingName = _repository.GetTradingName();
             if (string.IsNullOrEmpty(tradingName))
-                return OperationResult.FailureResult("Não foi possível encontrar o o nome fantasia na base dados!");
+                return OperationResult<string>.FailureResult("Não foi possível encontrar o o nome fantasia na base dados!");
 
-            return OperationResult.SuccessResult(tradingName);
+            return OperationResult<string>.SuccessResult(tradingName);
         }
 
     }

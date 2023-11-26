@@ -26,7 +26,7 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            dgvServices.DataSource = _serviceService.GetAll(false).Object as List<ServiceIndex>;
+            dgvServices.DataSource = _serviceService.GetAll(false).Value;
 
             if (dgvServices.Rows.Count == 0)
             {
@@ -46,14 +46,14 @@ namespace Fluxus.WinUI.View
             int id = Convert.ToInt32(dgvServices.CurrentRow.Cells["id"].Value);
             var result = _serviceService.GetById(id);
 
-            if (result.Success)
+            if (!result.Success)
             {
-                var formNeto = new uctAddService(_frmPrincipal, result.Object as Service, _serviceProvider);
-                _frmPrincipal.OpenUserControl(formNeto);
+                MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
 
-
-            MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var formNeto = new uctAddService(_frmPrincipal, result.Value, _serviceProvider);
+            _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace Fluxus.WinUI.View
                 var response = _serviceService.Delete(id);
 
                 if (response.Success)
-                    dgvServices.DataSource = _serviceService.GetAll(false).Object as List<ServiceIndex>;
+                    dgvServices.DataSource = _serviceService.GetAll(false).Value;
                 else
                     MessageBox.Show(response.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

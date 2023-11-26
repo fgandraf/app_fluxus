@@ -35,15 +35,15 @@ namespace Fluxus.WinUI.View
                 MessageBox.Show(professionals.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            cboProfissional.DataSource = professionals.Object as List<ProfessionalNameId>;
+            cboProfissional.DataSource = professionals.Value;
 
 
             var serviceService = _serviceProvider.GetService<ServiceService>();
-            cboAtividade.DataSource = serviceService.GetAll(false).Object as List<ServiceIndex>;
+            cboAtividade.DataSource = serviceService.GetAll(false).Value;
 
             var cities = _serviceOrderService.GetCitiesFromOrders(false);
             if (cities.Success)
-                cboCidade.DataSource = cities.Object as List<string>;
+                cboCidade.DataSource = cities.Value;
 
             if (!Logged.Rl)
                 cboProfissional.Enabled = false;
@@ -243,7 +243,7 @@ namespace Fluxus.WinUI.View
         {
             lblFaturada.Show();
             var invoiceService = _serviceProvider.GetService<InvoiceService>();
-            txtCodFatura.Text = "Fatura: " + invoiceService.GetDescription(invoiceId).Object as String;
+            txtCodFatura.Text = "Fatura: " + invoiceService.GetDescription(invoiceId).Value;
             txtCodFatura.Show();
 
 
@@ -281,7 +281,7 @@ namespace Fluxus.WinUI.View
                 return;
             }
 
-            var branch = result.Object as BankBranch;
+            var branch = result.Value;
             txtBranchName.Text = branch.Name;
             txtBranchPhone.Text = branch.Phone1;
             txtBranchEmail.Text = branch.Email;

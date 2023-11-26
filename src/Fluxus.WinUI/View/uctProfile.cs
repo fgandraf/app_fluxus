@@ -28,7 +28,7 @@ namespace Fluxus.WinUI.View
             var profile = _profileService.GetById(1);
             if (profile.Success)
             {
-                PopulateFields(profile.Object as Profile);
+                PopulateFields(profile.Value);
                 btnAddSave.Text = "&Salvar";
                 _method = EnumMethod.Update;
             }
@@ -45,7 +45,7 @@ namespace Fluxus.WinUI.View
         {
             var profile = PopulateObject();
 
-            var result = _method == EnumMethod.Insert ? _profileService.Insert(profile) : _profileService.Update(profile);
+            dynamic result = _method == EnumMethod.Insert ? _profileService.Insert(profile) : _profileService.Update(profile);
 
             if (result.Success)
                 MessageBox.Show("Dados alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);

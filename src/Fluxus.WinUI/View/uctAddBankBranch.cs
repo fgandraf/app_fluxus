@@ -76,7 +76,7 @@ namespace Fluxus.WinUI.View
             var service = _serviceProvider.GetService<BankBranchService>();
             var bankBranch = PopulateObject();
 
-            var result = _method == EnumMethod.Insert ? service.Insert(bankBranch) : service.Update(bankBranch);
+            dynamic result = _method == EnumMethod.Insert ? service.Insert(bankBranch) : service.Update(bankBranch);
 
             if (result.Success)
                 btnCancelar_Click(sender, e);

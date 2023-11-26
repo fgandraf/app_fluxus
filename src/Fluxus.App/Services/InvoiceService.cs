@@ -1,6 +1,7 @@
 ﻿using Fluxus.Domain;
 using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
+using System.Collections.Generic;
 
 namespace Fluxus.App.Services
 {
@@ -18,16 +19,16 @@ namespace Fluxus.App.Services
         }
 
 
-        public OperationResult Insert(Invoice invoice)
+        public OperationResult<int> Insert(Invoice invoice)
         {
             if (invoice == null)
-                return OperationResult.FailureResult("Não foi possível incluir a fatura!");
+                return OperationResult<int>.FailureResult("Não foi possível incluir a fatura!");
 
             if (GetDescription(invoice.Id).Success)
-                return OperationResult.FailureResult("Fatura já cadastrada!");
+                return OperationResult<int>.FailureResult("Fatura já cadastrada!");
 
             int id = _invoiceRepository.Insert(invoice);
-            return OperationResult.SuccessResult(id);
+            return OperationResult<int>.SuccessResult(id);
         }
 
         public OperationResult Update(Invoice invoice)
@@ -52,23 +53,23 @@ namespace Fluxus.App.Services
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult GetDescription(int id)
+        public OperationResult<string> GetDescription(int id)
         {
             var description = _invoiceRepository.GetDescription(id);
             if (string.IsNullOrEmpty(description))
-                return OperationResult.FailureResult("Não foi possível excluir a fatura!");
+                return OperationResult<string>.FailureResult("Não foi possível excluir a fatura!");
 
-            return OperationResult.SuccessResult(description);
+            return OperationResult<string>.SuccessResult(description);
         }
 
-        public OperationResult GetAll()
+        public OperationResult<List<Invoice>> GetAll()
         { 
             var result = _invoiceRepository.GetAll(); 
 
             if (result == null)
-                return OperationResult.FailureResult("Não foi possível encontrar faturas na base dados!");
+                return OperationResult<List<Invoice>>.FailureResult("Não foi possível encontrar faturas na base dados!");
 
-            return OperationResult.SuccessResult(result);
+            return OperationResult<List<Invoice>>.SuccessResult(result);
         }
 
         public OperationResult RemoveOrder(int idServiceOrder, Invoice invoice)

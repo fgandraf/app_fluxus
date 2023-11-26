@@ -1,6 +1,8 @@
 ﻿using Fluxus.Domain;
 using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
+using Fluxus.Domain.Records;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Fluxus.App.Services
@@ -15,13 +17,13 @@ namespace Fluxus.App.Services
             => _repository = repository;
 
 
-        public OperationResult Insert(ServiceOrder serviceOrder)
+        public OperationResult<int> Insert(ServiceOrder serviceOrder)
         {
             if (serviceOrder == null || !serviceOrder.IsValid)
-                return OperationResult.FailureResult("Não foi possível incluir a ordem de serviço!");
+                return OperationResult<int>.FailureResult("Não foi possível incluir a ordem de serviço!");
 
             int id = _repository.Insert(serviceOrder);
-            return OperationResult.SuccessResult(id);
+            return OperationResult<int>.SuccessResult(id);
         }
 
         public OperationResult Update(ServiceOrder serviceOrder)
@@ -45,72 +47,72 @@ namespace Fluxus.App.Services
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult GetById(int id)
+        public OperationResult<ServiceOrder> GetById(int id)
         {
             var serviceOrder = _repository.GetById(id);
 
             if (serviceOrder == null)
-                return OperationResult.FailureResult("Não foi possível encontrar a Ordem de Serviço!");
+                return OperationResult<ServiceOrder>.FailureResult("Não foi possível encontrar a Ordem de Serviço!");
 
-            return OperationResult.SuccessResult(serviceOrder);
+            return OperationResult<ServiceOrder>.SuccessResult(serviceOrder);
         }
 
-        public OperationResult GetOrdensDoFluxo()
+        public OperationResult<List<ServiceOrderOpen>> GetOrdensDoFluxo()
         {
             var orders = _repository.GetIndexOpen();
             if (orders == null)
-                return OperationResult.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+                return OperationResult<List<ServiceOrderOpen>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
 
-            return OperationResult.SuccessResult(orders);
+            return OperationResult<List<ServiceOrderOpen>>.SuccessResult(orders);
         }
 
-        public OperationResult GetOpenDone()
+        public OperationResult<List<ServiceOrderIndex>> GetOpenDone()
         {
             var orders = _repository.GetOpenDone();
             if (orders == null)
-                return OperationResult.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+                return OperationResult<List<ServiceOrderIndex>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
 
-            return OperationResult.SuccessResult(orders);
+            return OperationResult<List<ServiceOrderIndex>>.SuccessResult(orders);
         }
 
-        public OperationResult GetOrdensFaturadasDoCodigo(int invoiceId)
+        public OperationResult<List<ServiceOrderIndex>> GetOrdensFaturadasDoCodigo(int invoiceId)
         { 
             var orders =_repository.GetClosedByInvoiceId(invoiceId);
             if (orders == null)
-                return OperationResult.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+                return OperationResult<List<ServiceOrderIndex>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
 
-            return OperationResult.SuccessResult(orders);
+            return OperationResult<List<ServiceOrderIndex>>.SuccessResult(orders);
         }
 
-        public OperationResult GetOrdensComFiltro(string filter)
+        public OperationResult<List<ServiceOrderIndex>> GetOrdensComFiltro(string filter)
         { 
             var orders = _repository.GetFiltered(filter);
             if (orders == null)
-                return OperationResult.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+                return OperationResult<List<ServiceOrderIndex>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
 
-            return OperationResult.SuccessResult(orders);
+            return OperationResult<List<ServiceOrderIndex>>.SuccessResult(orders);
         }
 
-        public OperationResult GetProfessionalByInvoiceId(int invoiceId)
+        public OperationResult<List<ProfessionalNameId>> GetProfessionalByInvoiceId(int invoiceId)
         { 
             var professionals = _repository.GetProfessionalByInvoiceId(invoiceId);
             if (professionals == null)
-                return OperationResult.FailureResult("Não foi possível encontrar nenhuma profissional na base dados!");
+                return OperationResult<List<ProfessionalNameId>>.FailureResult("Não foi possível encontrar nenhuma profissional na base dados!");
 
-            return OperationResult.SuccessResult(professionals);
+            return OperationResult<List<ProfessionalNameId>>.SuccessResult(professionals);
         }
 
-        public OperationResult GetCitiesFromOrders(bool addHeader)
+        public OperationResult<List<string>> GetCitiesFromOrders(bool addHeader)
         {
             var cities = _repository.GetCitiesFromOrders();
             
             if (cities == null)
-                return OperationResult.FailureResult("Não foi possível encontrar nenhuma cidade na base dados!");
+                return OperationResult<List<string>>.FailureResult("Não foi possível encontrar nenhuma cidade na base dados!");
 
             if (addHeader)
                 cities.Insert(0, "--TODAS--");
 
-            return OperationResult.SuccessResult(cities);
+            return OperationResult<List<string>>.SuccessResult(cities);
         }
 
         public OperationResult UpdateFaturaCod(int id, int invoiceId)

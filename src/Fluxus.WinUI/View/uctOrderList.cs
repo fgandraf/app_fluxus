@@ -32,15 +32,15 @@ namespace Fluxus.WinUI.View
                 MessageBox.Show(professionals.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            cboProfissional.DataSource = professionals.Object as List<ProfessionalNameId>;
+            cboProfissional.DataSource = professionals.Value;
 
             var cities = _serviceOrderService.GetCitiesFromOrders(true);
             if (cities.Success)
-                cboCidade.DataSource = cities.Object as List<string>;
+                cboCidade.DataSource = cities.Value;
             
 
             var serviceService = _serviceProvider.GetService<ServiceService>();
-            cboAtividade.DataSource = serviceService.GetAll(true).Object as List<ServiceIndex>;
+            cboAtividade.DataSource = serviceService.GetAll(true).Value;
 
             CleanFilter();
 
@@ -58,7 +58,7 @@ namespace Fluxus.WinUI.View
             var orders = _serviceOrderService.GetOrdensComFiltro(_currentFilter);
             if (orders.Success)
             {
-                _dtOS = orders.Object as List<ServiceOrderIndex>;
+                _dtOS = orders.Value;
                 dgvOS.DataSource = _dtOS;
 
                 lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
@@ -82,7 +82,7 @@ namespace Fluxus.WinUI.View
 
                 if (serviceOrder.Success)
                 {
-                    uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, serviceOrder.Object as ServiceOrder, _serviceProvider);
+                    uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, serviceOrder.Value, _serviceProvider);
                     _frmPrincipal.OpenUserControl(formNeto);
                 }
                 
@@ -102,7 +102,7 @@ namespace Fluxus.WinUI.View
 
                     if (result.Success && orders.Success)
                     {
-                        _dtOS = orders.Object as List<ServiceOrderIndex>;
+                        _dtOS = orders.Value;
                         dgvOS.DataSource = _dtOS;
                         lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
                     }
@@ -138,7 +138,7 @@ namespace Fluxus.WinUI.View
             var orders = _serviceOrderService.GetOrdensComFiltro(_currentFilter);
             if (orders.Success)
             {
-                _dtOS = orders.Object as List<ServiceOrderIndex>;
+                _dtOS = orders.Value;
                 dgvOS.DataSource = _dtOS;
                 lblTotalRegistros.Text = dgvOS.Rows.Count.ToString();
             }

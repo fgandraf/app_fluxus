@@ -3,6 +3,8 @@ using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Domain.Records;
 
+using System.Collections.Generic;
+
 namespace Fluxus.App.Services
 {
     public class ServiceService
@@ -15,13 +17,13 @@ namespace Fluxus.App.Services
             => _repository = repository;
 
 
-        public OperationResult Insert(Service service)
+        public OperationResult<int> Insert(Service service)
         {
             if (service == null || !service.IsValid)
-                return OperationResult.FailureResult("Não foi possível incluir a atividade!");
+                return OperationResult<int>.FailureResult("Não foi possível incluir a atividade!");
 
             int id = _repository.Insert(service);
-            return OperationResult.SuccessResult(id);
+            return OperationResult<int>.SuccessResult(id);
         }
 
         public OperationResult Update(Service service)
@@ -40,27 +42,27 @@ namespace Fluxus.App.Services
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult GetById(int id)
+        public OperationResult<Service> GetById(int id)
         {
             var service = _repository.GetById(id);
 
             if (service == null)
-                return OperationResult.FailureResult("Não foi possível encontrar a atividade!");
+                return OperationResult<Service>.FailureResult("Não foi possível encontrar a atividade!");
 
-            return OperationResult.SuccessResult(service);
+            return OperationResult<Service>.SuccessResult(service);
         }
 
-        public OperationResult GetAll(bool addHeader)
+        public OperationResult<List<ServiceIndex>> GetAll(bool addHeader)
         {
             var services = _repository.GetAll();
 
             if (services == null)
-                return OperationResult.FailureResult("Não foi possível encontrar atividades na base de dados!");
+                return OperationResult<List<ServiceIndex>>.FailureResult("Não foi possível encontrar atividades na base de dados!");
 
             if (addHeader)
                 services.Insert(0, new ServiceIndex { Tag = "--TODAS--" });
             
-            return OperationResult.SuccessResult(services);
+            return OperationResult<List<ServiceIndex>>.SuccessResult(services);
 
         }
 

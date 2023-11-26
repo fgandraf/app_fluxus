@@ -33,7 +33,7 @@ namespace Fluxus.WinUI.View
             var invoices = invoiceService.GetAll();
 
             if (invoices.Success)
-                dgvFaturas.DataSource = invoices.Object as List<Invoice>;
+                dgvFaturas.DataSource = invoices.Value;
         }
 
         private void frmInvoice_Load(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace Fluxus.WinUI.View
                     professionalsTable.Columns.Add("ProfessionalId", typeof(int));
                     professionalsTable.Columns.Add("Nameid", typeof(string));
 
-                    foreach (var professional in professionals.Object as List<ProfessionalNameId>)
+                    foreach (var professional in professionals.Value)
                     {
                         DataRow row = professionalsTable.NewRow();
                         row["ProfessionalId"] = professional.ProfessionalId;
@@ -93,7 +93,7 @@ namespace Fluxus.WinUI.View
                 }
 
                 
-                var profile = result.Object as Profile;
+                var profile = result.Value;
                 Image logo;
                 using (var stream = new MemoryStream(profile.Logo))
                     logo = System.Drawing.Image.FromStream(stream);
@@ -187,7 +187,7 @@ namespace Fluxus.WinUI.View
                     return;
                 }
 
-                dgvFaturas.DataSource = invoices.Object as List<Invoice>;
+                dgvFaturas.DataSource = invoices.Value;
                 ListarOS();
             }
         }
@@ -209,7 +209,7 @@ namespace Fluxus.WinUI.View
                 
                 if (closedByInvoiceId.Success)
                 {
-                    dgvOS.DataSource = closedByInvoiceId.Object as List<ServiceOrderIndex>;
+                    dgvOS.DataSource = closedByInvoiceId.Value;
 
                     txtData.Text = date.ToShortDateString();
                     txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);

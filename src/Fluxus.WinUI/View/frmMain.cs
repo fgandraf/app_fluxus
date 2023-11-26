@@ -1,5 +1,5 @@
 ﻿using Fluxus.App.Services;
-using Fluxus.Domain;
+using Fluxus.App;
 using Fluxus.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,19 +24,19 @@ namespace Fluxus.WinUI.View
             var profileService = _serviceProvider.GetService<ProfileService>();
 
 
-            OperationResult fantasia = new OperationResult();
+            OperationResult<string> fantasia = null;
             await Task.Run(() => fantasia = profileService.GetTradingName());
             if (fantasia.Success)
-                btnDadosCadastrais.Text = fantasia.Object as string;
+                btnDadosCadastrais.Text = fantasia.Value;
             else
                 btnDadosCadastrais.Text = "Dados Cadastrais";
 
 
-            OperationResult logo = new OperationResult();
+            OperationResult<byte[]> logo = null;
             await Task.Run(() => logo = profileService.GetLogo());
             if (logo.Success)
             {
-                using (var stream = new MemoryStream(logo.Object as byte[]))
+                using (var stream = new MemoryStream(logo.Value))
                     imgLogo.Image = System.Drawing.Image.FromStream(stream);
             }
             

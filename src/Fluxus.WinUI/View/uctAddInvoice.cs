@@ -28,7 +28,7 @@ namespace Fluxus.WinUI.View
             var orders = serviceOrderService.GetOpenDone();
             if (orders.Success)
             {
-                dgvOS.DataSource = orders.Object as List<ServiceOrderIndex>;
+                dgvOS.DataSource = orders.Value;
                 Calculate();
                 txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
             }
@@ -55,7 +55,7 @@ namespace Fluxus.WinUI.View
             var invoice = PopulateToObject();
 
             var result = service.Insert(invoice);
-            int invoiceId = (int)result.Object;
+            int invoiceId = result.Value;
 
             if (invoiceId == 0)
             {

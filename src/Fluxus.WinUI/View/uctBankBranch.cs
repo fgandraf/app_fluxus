@@ -30,7 +30,7 @@ namespace Fluxus.WinUI.View
             var result = bankService.GetIndex();
             if (result.Success)
             {
-                dgvBankBranches.DataSource = result.Object as List<BankBranchIndex>;
+                dgvBankBranches.DataSource = result.Value;
 
                 if (dgvBankBranches.Rows.Count == 0)
                 {
@@ -60,7 +60,7 @@ namespace Fluxus.WinUI.View
             BankBranch branch;
             if (result.Success)
             {
-                branch = result.Object as BankBranch;
+                branch = result.Value;
                 var formNeto = new uctAddBankBranch(_frmPrincipal, branch, _serviceProvider);
                 _frmPrincipal.OpenUserControl(formNeto);
             }
@@ -76,7 +76,7 @@ namespace Fluxus.WinUI.View
                 var result = bankService.Delete(id);
 
                 if (result.Success)
-                    dgvBankBranches.DataSource = bankService.GetIndex().Object as List<BankBranchIndex>;
+                    dgvBankBranches.DataSource = bankService.GetIndex().Value;
                 else
                     MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

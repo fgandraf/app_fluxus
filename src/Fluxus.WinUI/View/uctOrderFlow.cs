@@ -49,7 +49,7 @@ namespace Fluxus.WinUI.View
             var orders = serviceOrderService.GetOrdensDoFluxo();
             if (orders.Success)
             {
-                _dtOSNFaturada = orders.Object as List<ServiceOrderOpen>;
+                _dtOSNFaturada = orders.Value;
             }
 
             
@@ -61,7 +61,7 @@ namespace Fluxus.WinUI.View
                 MessageBox.Show(professionals.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            cboProfissional.DataSource = professionals.Object as List<ProfessionalNameId>;
+            cboProfissional.DataSource = professionals.Value;
 
 
             if (Logged.Rl)
@@ -176,7 +176,7 @@ namespace Fluxus.WinUI.View
 
                 if (ordemDeServico.Success)
                 {
-                    uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, ordemDeServico.Object as ServiceOrder, _serviceProvider);
+                    uctAddServiceOrder formNeto = new uctAddServiceOrder(_frmPrincipal, this.Name, ordemDeServico.Value, _serviceProvider);
                     _frmPrincipal.OpenUserControl(formNeto);
                 }
 
@@ -197,7 +197,7 @@ namespace Fluxus.WinUI.View
 
                     if (deleted.Success && serviceOrders.Success)
                     {
-                        _dtOSNFaturada = serviceOrders.Object as List<ServiceOrderOpen>;
+                        _dtOSNFaturada = serviceOrders.Value;
                         GetOrdersTo(dgv);
                     }
                     else

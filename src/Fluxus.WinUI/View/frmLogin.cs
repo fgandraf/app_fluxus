@@ -37,7 +37,7 @@ namespace Fluxus.WinUI.View
             
             if (result != null)
             {
-                user = result.Object as UserInfo;
+                user = result.Value;
                 if (string.IsNullOrEmpty(user.UserName.ToString()))
                 {
                     MessageBox.Show("Usuário não encontrado", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);

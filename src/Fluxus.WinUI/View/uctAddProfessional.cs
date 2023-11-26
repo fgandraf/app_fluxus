@@ -71,7 +71,7 @@ namespace Fluxus.WinUI.View
             var service = _serviceProvider.GetService<ProfessionalService>();
             var professional = PopulateObject();
 
-            var result = _method == EnumMethod.Insert ? service.Insert(professional) : service.Update(professional);
+            dynamic result = _method == EnumMethod.Insert ? service.Insert(professional) : service.Update(professional);
 
             if (result.Success)
                 btnCancelar_Click(sender, e);

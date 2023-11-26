@@ -35,7 +35,7 @@ namespace Fluxus.WinUI.View
             }
 
 
-            dgvProfessionals.DataSource = profissionais.Object as List<ProfessionalIndex>;
+            dgvProfessionals.DataSource = profissionais.Value;
 
             if (dgvProfessionals.Rows.Count == 0)
             {
@@ -58,7 +58,7 @@ namespace Fluxus.WinUI.View
 
             if (result.Success)
             {
-                var formNeto = new uctAddProfessional(_frmPrincipal, result.Object as Professional, _serviceProvider);
+                var formNeto = new uctAddProfessional(_frmPrincipal, result.Value, _serviceProvider);
                 _frmPrincipal.OpenUserControl(formNeto);
             }
 

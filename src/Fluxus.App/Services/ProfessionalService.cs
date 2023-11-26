@@ -2,6 +2,8 @@
 using Fluxus.Domain.Entities;
 using Fluxus.Domain.Interfaces;
 using Fluxus.Domain.Records;
+using iTextSharp.text;
+using System.Collections.Generic;
 
 namespace Fluxus.App.Services
 {
@@ -16,16 +18,16 @@ namespace Fluxus.App.Services
             => _repository = repository;
 
 
-        public OperationResult Insert(Professional professional)
+        public OperationResult<int> Insert(Professional professional)
         {
             if (professional == null || !professional.IsValid)
-                return OperationResult.FailureResult("Não foi possível incluir o profissional!");
+                return OperationResult<int>.FailureResult("Não foi possível incluir o profissional!");
 
             if (_repository.GetUser(professional.UserName) != null)
-                return OperationResult.FailureResult("Nome de usuário já cadastrado!");
+                return OperationResult<int>.FailureResult("Nome de usuário já cadastrado!");
 
             int id = _repository.Insert(professional);
-            return OperationResult.SuccessResult(id);
+            return OperationResult<int>.SuccessResult(id);
         }
 
         public OperationResult Update(Professional professional)
@@ -51,47 +53,47 @@ namespace Fluxus.App.Services
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult GetById(int id)
+        public OperationResult<Professional> GetById(int id)
         {
             var professional = _repository.GetById(id);
 
             if (professional == null)
-                return OperationResult.FailureResult("Não foi possível encontrar o profissional!");
+                return OperationResult<Professional>.FailureResult("Não foi possível encontrar o profissional!");
 
-            return OperationResult.SuccessResult(professional);
+            return OperationResult<Professional>.SuccessResult(professional);
         }
 
-        public OperationResult GetIndex()
+        public OperationResult<List<ProfessionalIndex>> GetIndex()
         {
             var professionals = _repository.GetIndex();
 
             if (professionals == null)
-                return OperationResult.FailureResult("Não foi possível encontrar profissionais na base dados!");
+                return OperationResult<List<ProfessionalIndex>>.FailureResult("Não foi possível encontrar profissionais na base dados!");
 
-            return OperationResult.SuccessResult(professionals);
+            return OperationResult<List<ProfessionalIndex>>.SuccessResult(professionals);
         }
 
-        public OperationResult GetTagNameid(bool addHeader)
+        public OperationResult<List<ProfessionalNameId>> GetTagNameid(bool addHeader)
         {
             var professionals = _repository.GetTagNameid();
             
             if (professionals == null)
-                return OperationResult.FailureResult("Não foi possível encontrar profissionais na base de dados!");
+                return OperationResult<List<ProfessionalNameId>>.FailureResult("Não foi possível encontrar profissionais na base de dados!");
 
             if (addHeader)
                 professionals.Insert(0, new ProfessionalNameId { Nameid = "--TODOS--" });
 
-            return OperationResult.SuccessResult(professionals);
+            return OperationResult<List<ProfessionalNameId>>.SuccessResult(professionals);
         }
 
-        public OperationResult GetUserInfo(string userName)
+        public OperationResult<UserInfo> GetUserInfo(string userName)
         {
             var userInfo = _repository.GetUser(userName);
 
             if (userInfo == null)
-                return OperationResult.FailureResult("Dados do usuário não encontrados");
+                return OperationResult<UserInfo>.FailureResult("Dados do usuário não encontrados");
 
-            return OperationResult.SuccessResult(userInfo);
+            return OperationResult<UserInfo>.SuccessResult(userInfo);
         }
 
     }
