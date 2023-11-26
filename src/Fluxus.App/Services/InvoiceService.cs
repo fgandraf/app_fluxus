@@ -27,6 +27,9 @@ namespace Fluxus.App.Services
                 return OperationResult<int>.FailureResult("Fatura já cadastrada!");
 
             int id = _invoiceRepository.Insert(invoice);
+            if (id == 0)
+                return OperationResult<int>.FailureResult("Não foi possível inserir a fatura na base de dados!");
+
             return OperationResult<int>.SuccessResult(id);
         }
 

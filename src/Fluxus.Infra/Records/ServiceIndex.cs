@@ -7,8 +7,8 @@ namespace Fluxus.Infra.Records
         public int Id { get; set; }
         public string? Tag { get; set; }
         public string? Description { get; set; }
-        public string? ServiceAmount { get; set; }
-        public string? MileageAllowance { get; set; }
+        public decimal ServiceAmount { get; set; }
+        public decimal MileageAllowance { get; set; }
         
     }
 

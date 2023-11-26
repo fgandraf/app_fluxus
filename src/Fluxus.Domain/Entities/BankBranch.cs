@@ -4,10 +4,6 @@ namespace Fluxus.Domain.Entities
 
     public class BankBranch
     {
-        public bool IsValid { get; private set; }
-        public string? Message { get; private set; }
-
-
 
         public int Id { get; private set; }
         public string BranchNumber { get; private set; }
@@ -40,19 +36,6 @@ namespace Fluxus.Domain.Entities
             Phone1 = phone1;
             Phone2 = phone2;
             Email = email;
-
-            Validate();
-        }
-
-        private void Validate()
-        {
-            if (string.IsNullOrEmpty(BranchNumber))
-            {
-                Message = "Campos com * são obrigatório";
-                IsValid = false;
-            }
-            IsValid = true;
-
         }
 
         

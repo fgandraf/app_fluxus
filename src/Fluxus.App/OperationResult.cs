@@ -5,9 +5,9 @@
     public class OperationResult
     {
         public bool Success { get; protected set; }
-        public string? Message { get; protected set; }
+        public string Message { get; protected set; }
 
-        public OperationResult(bool success = false, string? message = null)
+        public OperationResult(bool success = false, string message = null)
         {
             Success = success;
             Message = message;
@@ -20,9 +20,9 @@
 
     public class OperationResult<T> : OperationResult
     {
-        public T? Value { get; private set; }
+        public T Value { get; private set; }
 
-        protected OperationResult(bool success, T? value = default, string? message = null) : base(success, message)
+        protected OperationResult(bool success, T value = default, string message = null) : base(success, message)
             => Value = value;
 
         public static OperationResult<T> SuccessResult(T model) => new OperationResult<T>(true, model);

@@ -9,8 +9,8 @@ namespace Fluxus.WinUI.View
 {
     public partial class uctInvoice : UserControl
     {
-        private double _subtotalOs = 0.00;
-        private double _subtotalDesloc = 0.00;
+        private decimal _subtotalOs = 0.00m;
+        private decimal _subtotalDesloc = 0.00m;
         private IServiceProvider _serviceProvider;
 
         private InvoiceService _invoiceService;
@@ -147,9 +147,9 @@ namespace Fluxus.WinUI.View
                 {
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
 
-                    txtValorOS.Text = string.Format("{0:0,0.00}", invoice.SubtotalService);
-                    txtValorDeslocamento.Text = string.Format("{0:0,0.00}", invoice.SubtotalMileageAllowance);
-                    txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", invoice.Total);
+                    txtValorOS.Text = invoice.SubtotalService.ToString("C", new CultureInfo("pt-br"));
+                    txtValorDeslocamento.Text = invoice.SubtotalMileageAllowance.ToString("C", new CultureInfo("pt-br"));
+                    txtValorTotal.Text = invoice.Total.ToString("C", new CultureInfo("pt-br"));
 
                     dgvFaturas.CurrentRow.Cells["subtotalService"].Value = invoice.SubtotalService;
                     dgvFaturas.CurrentRow.Cells["subtotalMileageAllowance"].Value = invoice.SubtotalMileageAllowance;
@@ -211,8 +211,8 @@ namespace Fluxus.WinUI.View
                     dgvOS.DataSource = closedByInvoiceId.Value;
 
                     txtData.Text = date.ToShortDateString();
-                    txtValorOS.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);
-                    txtValorDeslocamento.Text = string.Format("{0:0,0.00}", dgvFaturas.CurrentRow.Cells["subtotalMileageAllowance"].Value);
+                    txtValorOS.Text = String.Format(new CultureInfo("pt-BR"), "{0:c}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);
+                    txtValorDeslocamento.Text = String.Format(new CultureInfo("pt-BR"), "{0:c}", dgvFaturas.CurrentRow.Cells["subtotalMileageAllowance"].Value);
                     txtValorTotal.Text = String.Format(new CultureInfo("pt-BR"), "{0:c}", dgvFaturas.CurrentRow.Cells["total"].Value);
 
                 }
@@ -222,10 +222,10 @@ namespace Fluxus.WinUI.View
 
         private Invoice PopulateObject()
         {
-            var totalServiceAmount = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[this.serviceAmount.Name].Value ?? 0));
-            var totalMileageAllowance = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[this.mileageAllowance.Name].Value ?? 0));
-            totalServiceAmount -= Convert.ToDouble(dgvOS.CurrentRow.Cells["serviceAmount"].Value);
-            totalMileageAllowance -= Convert.ToDouble(dgvOS.CurrentRow.Cells["MileageAllowance"].Value);
+            var totalServiceAmount = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[this.serviceAmount.Name].Value ?? 0));
+            var totalMileageAllowance = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[this.mileageAllowance.Name].Value ?? 0));
+            totalServiceAmount -= Convert.ToDecimal(dgvOS.CurrentRow.Cells["serviceAmount"].Value);
+            totalMileageAllowance -= Convert.ToDecimal(dgvOS.CurrentRow.Cells["MileageAllowance"].Value);
 
             var invoice = new Invoice
             (

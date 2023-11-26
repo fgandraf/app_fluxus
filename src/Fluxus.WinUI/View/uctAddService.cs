@@ -32,8 +32,8 @@ namespace Fluxus.WinUI.View
             _id = service.Id;
             txtCodigo.Text = service.Tag;
             txtDescricao.Text = service.Description;
-            txtValor.Text = service.ServiceAmount;
-            txtDeslocamento.Text = service.MileageAllowance;
+            txtValor.Text = service.ServiceAmount.ToString();
+            txtDeslocamento.Text = service.MileageAllowance.ToString();
         }
 
         private void frmAddAtividade_Load(object sender, EventArgs e)
@@ -76,8 +76,8 @@ namespace Fluxus.WinUI.View
                 id : _id,
                 tag : txtCodigo.Text,
                 description : txtDescricao.Text,
-                serviceAmount : txtValor.Text.Replace(',', '.'),
-                mileageAllowance : txtDeslocamento.Text.Replace(',', '.')
+                serviceAmount : Convert.ToDecimal(txtValor.Text),
+                mileageAllowance : Convert.ToDecimal(txtDeslocamento.Text)
             );
             return service;
         }

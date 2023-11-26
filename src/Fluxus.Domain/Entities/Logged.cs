@@ -1,5 +1,4 @@
-﻿//using
-
+﻿
 namespace Fluxus.Domain.Entities
 {
     public class Logged

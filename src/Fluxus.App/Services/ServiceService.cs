@@ -17,17 +17,29 @@ namespace Fluxus.App.Services
 
         public OperationResult<int> Insert(Service service)
         {
-            if (service == null || !service.IsValid)
+            if (service == null)
                 return OperationResult<int>.FailureResult("Não foi possível incluir a atividade!");
 
+            if (string.IsNullOrEmpty(service.Tag))
+                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+
             int id = _repository.Insert(service);
+            if (id == 0)
+                return OperationResult<int>.FailureResult("Não foi possível inserir a atividade na base de dados!");
+
             return OperationResult<int>.SuccessResult(id);
         }
 
         public OperationResult Update(Service service)
         {
-            if (service == null || !service.IsValid || !_repository.Update(service))
+            if (service == null)
                 return OperationResult.FailureResult("Não foi possível alterar a atividade!");
+
+            if (string.IsNullOrEmpty(service.Tag))
+                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+
+            if(!_repository.Update(service))
+                return OperationResult.FailureResult("Não foi possível alterar a atividade na base de dados!");
 
             return OperationResult.SuccessResult();
         }

@@ -3,6 +3,7 @@ using Fluxus.App.Services;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using Fluxus.Infra.Records;
+using System.Globalization;
 
 namespace Fluxus.WinUI.View
 {
@@ -218,8 +219,8 @@ namespace Fluxus.WinUI.View
                 branch: _agencia,
                 professionalId: professionalId,
                 serviceId: serviceId,
-                serviceAmount: lblAtividadeValor.Text,
-                mileageAllowance: lblAtividadeDeslocamento.Text,
+                serviceAmount: decimal.Parse(lblAtividadeValor.Text, NumberStyles.Currency, new CultureInfo("pt-br")),
+                mileageAllowance: decimal.Parse(lblAtividadeDeslocamento.Text, NumberStyles.Currency, new CultureInfo("pt-br")),
                 customerName: txtNomeCliente.Text,
                 city: cboCidade.Text,
                 contactName: txtNomeContato.Text,
@@ -264,8 +265,8 @@ namespace Fluxus.WinUI.View
             var service = source.FirstOrDefault(item => item.Tag == cboAtividade.Text);
 
             lblAtividadeNome.Text = service.Description;
-            lblAtividadeValor.Text = service.ServiceAmount;
-            lblAtividadeDeslocamento.Text = service.MileageAllowance;
+            lblAtividadeValor.Text = service.ServiceAmount.ToString("C", new CultureInfo("pt-br"));
+            lblAtividadeDeslocamento.Text = service.MileageAllowance.ToString("C", new CultureInfo("pt-br"));
         }
 
         private void GetBankBranch()

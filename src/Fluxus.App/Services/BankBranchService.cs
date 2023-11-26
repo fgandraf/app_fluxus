@@ -17,14 +17,19 @@ namespace Fluxus.App.Services
 
         public OperationResult<int> Insert(BankBranch bankBranch)
         {
-            if (bankBranch == null || bankBranch.BranchNumber == null)
+            if (bankBranch == null)
                 return OperationResult<int>.FailureResult("Não foi possível incluir a agência bancária!");
 
-            
+            if (bankBranch.BranchNumber == null)
+                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+
             if (_repository.GetByCode(bankBranch.BranchNumber) != null)
                 return OperationResult<int>.FailureResult("Agência já cadastrada!");
            
             int id = _repository.Insert(bankBranch);
+            if (id == 0)
+                return OperationResult<int>.FailureResult("Não foi possível inserir a agência bancária na base de dados!");
+
             return OperationResult<int>.SuccessResult(id);
         }
 

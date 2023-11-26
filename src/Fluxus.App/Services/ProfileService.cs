@@ -15,18 +15,29 @@ namespace Fluxus.App.Services
 
         public OperationResult<int> Insert(Profile profile)
         {
-            if (profile == null || !profile.IsValid)
+            if (profile == null)
                 return OperationResult<int>.FailureResult("Não foi possível incluir o perfil!");
 
+            if (string.IsNullOrEmpty(profile.Cnpj) || string.IsNullOrEmpty(profile.TradingName) || string.IsNullOrEmpty(profile.CompanyName))
+                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
 
             int id = _repository.Insert(profile);
+            if (id == 0)
+                return OperationResult<int>.FailureResult("Não foi possível inserir o perfil na base de dados!");
+
             return OperationResult<int>.SuccessResult(id);
         }
 
         public OperationResult Update(Profile profile)
         {
-            if (profile == null || !profile.IsValid || !_repository.Update(profile))
+            if (profile == null)
                 return OperationResult.FailureResult("Não foi possível alterar o perfil!");
+
+            if (string.IsNullOrEmpty(profile.Cnpj) || string.IsNullOrEmpty(profile.TradingName) || string.IsNullOrEmpty(profile.CompanyName))
+                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+
+            if (!_repository.Update(profile))
+                return OperationResult.FailureResult("Não foi possível alterar o perfil na base dados!");
 
             return OperationResult.SuccessResult();
         }

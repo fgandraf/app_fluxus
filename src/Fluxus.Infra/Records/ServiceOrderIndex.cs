@@ -15,8 +15,8 @@ namespace Fluxus.Infra.Records
         public string? CustomerName { get; set; }
         public DateTime SurveyDate { get; set; }
         public DateTime DoneDate { get; set; }
-        public double ServiceAmount { get; set; }
-        public double MileageAllowance { get; set; }
+        public decimal ServiceAmount { get; set; }
+        public decimal MileageAllowance { get; set; }
         public bool Invoiced { get; set; }
         public int InvoiceId { get; set; }
         public EnumStatus Status { get; set; }

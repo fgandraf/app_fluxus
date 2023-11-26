@@ -18,16 +18,34 @@ namespace Fluxus.App.Services
 
         public OperationResult<int> Insert(ServiceOrder serviceOrder)
         {
-            if (serviceOrder == null || !serviceOrder.IsValid)
+            if (serviceOrder == null)
                 return OperationResult<int>.FailureResult("Não foi possível incluir a ordem de serviço!");
 
+            if (string.IsNullOrEmpty(serviceOrder.ReferenceCode) || 
+                serviceOrder.ReferenceCode == "../..." ||
+                string.IsNullOrEmpty(serviceOrder.ServiceId) ||
+                string.IsNullOrEmpty(serviceOrder.ProfessionalId))
+                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+
             int id = _repository.Insert(serviceOrder);
+            if (id == 0)
+                return OperationResult<int>.FailureResult("Não foi possível inserir a ordem de serviço na base de dados!");
+            
             return OperationResult<int>.SuccessResult(id);
         }
 
         public OperationResult Update(ServiceOrder serviceOrder)
         {
-            if (serviceOrder == null || !serviceOrder.IsValid || !_repository.Update(serviceOrder))
+            if (serviceOrder == null)
+                return OperationResult<int>.FailureResult("Não foi possível incluir a ordem de serviço!");
+
+            if (string.IsNullOrEmpty(serviceOrder.ReferenceCode) ||
+                serviceOrder.ReferenceCode == "../..." ||
+                string.IsNullOrEmpty(serviceOrder.ServiceId) ||
+                string.IsNullOrEmpty(serviceOrder.ProfessionalId))
+                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+
+            if (!_repository.Update(serviceOrder))
                 return OperationResult.FailureResult("Não foi possível alterar a ordem de serviço!");
 
             return OperationResult.SuccessResult();

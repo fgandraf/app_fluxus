@@ -18,20 +18,35 @@ namespace Fluxus.App.Services
 
         public OperationResult<int> Insert(Professional professional)
         {
-            if (professional == null || !professional.IsValid)
-                return OperationResult<int>.FailureResult("Não foi possível incluir o profissional!");
+            if (professional == null)
+                return OperationResult<int>.FailureResult("Não foi possível inserir o profissional!");
+
+            if (string.IsNullOrEmpty(professional.Tag) || string.IsNullOrEmpty(professional.Name) || string.IsNullOrEmpty(professional.UserName))
+                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+
+            if (professional.UserName != professional.UserPasswordConfirmation)
+                return OperationResult<int>.FailureResult("Senhas não conferem");
 
             if (_repository.GetUser(professional.UserName) != null)
                 return OperationResult<int>.FailureResult("Nome de usuário já cadastrado!");
 
             int id = _repository.Insert(professional);
+            if (id == 0)
+                return OperationResult<int>.FailureResult("Não foi possível inserir o profissional na base de dados!");
+
             return OperationResult<int>.SuccessResult(id);
         }
 
         public OperationResult Update(Professional professional)
         {
-            if (professional == null || !professional.IsValid || professional.UserName == null)
+            if (professional == null)
                 return OperationResult.FailureResult("Não foi possível alterar o profissional!");
+
+            if (string.IsNullOrEmpty(professional.Tag) || string.IsNullOrEmpty(professional.Name) || string.IsNullOrEmpty(professional.UserName))
+                return OperationResult.FailureResult("Campos com * são obrigatório");
+
+            if (professional.UserName != professional.UserPasswordConfirmation)
+                return OperationResult.FailureResult("Senhas não conferem");
 
             var usernamelInRepo = _repository.GetUser(professional.UserName);
             if (usernamelInRepo != null && usernamelInRepo.Id != professional.Id)

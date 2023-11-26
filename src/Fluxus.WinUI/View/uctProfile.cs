@@ -161,6 +161,14 @@ namespace Fluxus.WinUI.View
 
         private Profile PopulateObject()
         {
+            byte[] logo;
+            using (var stream = new MemoryStream())
+            {
+                picLogotipo.Image.Save(stream, ImageFormat.Png);
+                logo = stream.ToArray();
+            }
+
+
             var profile = new Profile
             (
                 id : 1,
@@ -189,14 +197,11 @@ namespace Fluxus.WinUI.View
                 contractNumber : txtContrato.Text,
                 contractEstablished : dtpCelebrado.Value,
                 contractStart : dtpInicio.Value,
-                contractEnd : dtpTermino.Value
+                contractEnd : dtpTermino.Value,
+                logo: logo
             );
 
-            using (var stream = new MemoryStream())
-            {
-                picLogotipo.Image.Save(stream, ImageFormat.Png);
-                profile.Logo = stream.ToArray();
-            }
+            
 
             return profile;
         }

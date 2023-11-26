@@ -2,15 +2,14 @@
 using System.Globalization;
 using Fluxus.App.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Infra.Records;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctAddInvoice : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private double _subtotal_os = 0.00;
-        private double _subtotal_desloc = 0.00;
+        private decimal _subtotal_os = 0.00m;
+        private decimal _subtotal_desloc = 0.00m;
         private IServiceProvider _serviceProvider;
 
         public uctAddInvoice(frmMain frm1, IServiceProvider serviceProvider)
@@ -86,12 +85,15 @@ namespace Fluxus.WinUI.View
 
         private void Calculate()
         {
-            _subtotal_os = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells["valor_atividade"].Value ?? 0));
-            _subtotal_desloc = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells["valor_deslocamento"].Value ?? 0));
+            foreach (DataGridViewRow row in dgvOS.Rows)
+                _subtotal_os += Convert.ToDecimal(row.Cells["valor_atividade"].Value);
 
-            txtValorOS.Text = string.Format("{0:0,0.00}", _subtotal_os);
-            txtValorDeslocamento.Text = string.Format("{0:0,0.00}", _subtotal_desloc);
-            txtValorTotal.Text = "R$ " + string.Format("{0:0,0.00}", _subtotal_os + _subtotal_desloc);
+            foreach (DataGridViewRow row in dgvOS.Rows)
+                _subtotal_desloc += Convert.ToDecimal(row.Cells["valor_deslocamento"].Value);
+
+            txtValorOS.Text = _subtotal_os.ToString("C", new CultureInfo("pt-br"));
+            txtValorDeslocamento.Text = _subtotal_desloc.ToString("C", new CultureInfo("pt-br"));
+            txtValorTotal.Text = (_subtotal_os+_subtotal_desloc).ToString("C", new CultureInfo("pt-br"));
         }
 
         private Invoice PopulateToObject()
