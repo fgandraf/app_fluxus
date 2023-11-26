@@ -4,6 +4,7 @@ using Fluxus.App.Services;
 using System.Globalization;
 using Microsoft.Extensions.DependencyInjection;
 using Fluxus.Infra.Records;
+using System.ComponentModel;
 
 namespace Fluxus.WinUI.View
 {
@@ -32,7 +33,7 @@ namespace Fluxus.WinUI.View
             var invoices = invoiceService.GetAll();
 
             if (invoices.Success)
-                dgvFaturas.DataSource = invoices.Value;
+             dgvFaturas.DataSource = invoices.Value;
         }
 
         private void frmInvoice_Load(object sender, EventArgs e)
@@ -145,6 +146,7 @@ namespace Fluxus.WinUI.View
 
                 if (result.Success)
                 {
+
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
 
                     txtValorOS.Text = invoice.SubtotalService.ToString("C", new CultureInfo("pt-br"));
@@ -208,7 +210,7 @@ namespace Fluxus.WinUI.View
                 
                 if (closedByInvoiceId.Success)
                 {
-                    dgvOS.DataSource = closedByInvoiceId.Value;
+                    dgvOS.DataSource = new BindingList<ServiceOrderIndex>(closedByInvoiceId.Value);
 
                     txtData.Text = date.ToShortDateString();
                     txtValorOS.Text = String.Format(new CultureInfo("pt-BR"), "{0:c}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);

@@ -2,6 +2,7 @@
 using Fluxus.Domain.Entities;
 using Fluxus.Infra.Records;
 using Microsoft.Extensions.DependencyInjection;
+using System.ComponentModel;
 
 namespace Fluxus.WinUI.View
 {
@@ -30,7 +31,7 @@ namespace Fluxus.WinUI.View
             var result = bankService.GetIndex();
             if (result.Success)
             {
-                dgvBankBranches.DataSource = result.Value;
+                dgvBankBranches.DataSource = new BindingList<BankBranchIndex>(result.Value);
 
                 if (dgvBankBranches.Rows.Count == 0)
                 {

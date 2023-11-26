@@ -4,6 +4,7 @@ using Fluxus.App.Services;
 using Fluxus.Infra.Records;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
+using System.ComponentModel;
 
 namespace Fluxus.WinUI.View
 {
@@ -220,9 +221,9 @@ namespace Fluxus.WinUI.View
             List<ServiceOrderOpen> dvOS;
 
             if (cboProfissional.SelectedIndex == 0)
-                dvOS = new List<ServiceOrderOpen>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
+            dvOS = new BindingList<ServiceOrderOpen>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
             else
-                dvOS = new List<ServiceOrderOpen>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
+                dvOS = new BindingList<ServiceOrderOpen>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
 
             if (dvOS.Count > 0)
                 dgv.ContextMenuStrip = menuContext;

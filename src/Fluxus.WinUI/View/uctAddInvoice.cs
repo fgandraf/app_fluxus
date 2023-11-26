@@ -2,6 +2,8 @@
 using System.Globalization;
 using Fluxus.App.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.Infra.Records;
+using System.ComponentModel;
 
 namespace Fluxus.WinUI.View
 {
@@ -27,7 +29,7 @@ namespace Fluxus.WinUI.View
             var orders = serviceOrderService.GetOpenDone();
             if (orders.Success)
             {
-                dgvOS.DataSource = orders.Value;
+                dgvOS.DataSource = new BindingList<ServiceOrderIndex>(orders.Value);
                 Calculate();
                 txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
             }
@@ -85,6 +87,9 @@ namespace Fluxus.WinUI.View
 
         private void Calculate()
         {
+            _subtotal_os = 0.0m;
+            _subtotal_desloc = 0.0m;
+
             foreach (DataGridViewRow row in dgvOS.Rows)
                 _subtotal_os += Convert.ToDecimal(row.Cells["valor_atividade"].Value);
 
