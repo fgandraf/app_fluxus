@@ -1,9 +1,9 @@
 ﻿using System;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
-using Fluxus.Domain.Records;
+using Fluxus.Infra.Records;
 
-namespace Fluxus.Infra.Services
+namespace Fluxus.App.Services
 {
     public class ExcelService
     {

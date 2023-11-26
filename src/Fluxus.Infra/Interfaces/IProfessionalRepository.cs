@@ -1,9 +1,9 @@
 ﻿
 using Fluxus.Domain.Entities;
-using Fluxus.Domain.Records;
+using Fluxus.Infra.Records;
 using System.Collections.Generic;
 
-namespace Fluxus.Domain.Interfaces
+namespace Fluxus.Infra.Interfaces
 {
     public interface IProfessionalRepository
     {

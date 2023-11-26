@@ -1,5 +1,5 @@
 using Fluxus.App.Services;
-using Fluxus.Domain.Interfaces;
+using Fluxus.Infra.Interfaces;
 using Fluxus.Infra.Repositories;
 using Fluxus.WinUI.View;
 using Microsoft.Extensions.DependencyInjection;

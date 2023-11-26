@@ -1,6 +1,5 @@
-﻿using Fluxus.Domain;
-using Fluxus.Domain.Entities;
-using Fluxus.Domain.Interfaces;
+﻿using Fluxus.Domain.Entities;
+using Fluxus.Infra.Interfaces;
 
 namespace Fluxus.App.Services
 {

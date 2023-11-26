@@ -1,5 +1,5 @@
 ﻿
-namespace Fluxus.Domain.Records
+namespace Fluxus.Infra.Records
 {
     public record ProfessionalIndex
     {

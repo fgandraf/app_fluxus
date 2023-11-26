@@ -1,6 +1,6 @@
-﻿
-namespace Fluxus.App
+﻿namespace Fluxus.App
 {
+
 
     public class OperationResult
     {
@@ -28,5 +28,6 @@ namespace Fluxus.App
         public static OperationResult<T> SuccessResult(T model) => new OperationResult<T>(true, model);
         public static new OperationResult<T> FailureResult(string message) => new OperationResult<T>(false, default, message);
     }
+
 
 }

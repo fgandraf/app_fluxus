@@ -2,7 +2,7 @@
 using System.Globalization;
 using Fluxus.App.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Domain.Records;
+using Fluxus.Infra.Records;
 
 namespace Fluxus.WinUI.View
 {

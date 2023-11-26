@@ -1,6 +1,6 @@
 ﻿using Fluxus.App.Services;
 using Fluxus.Domain.Entities;
-using Fluxus.Domain.Records;
+using Fluxus.Infra.Records;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.InteropServices;
 

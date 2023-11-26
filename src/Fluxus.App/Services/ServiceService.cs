@@ -1,8 +1,6 @@
-﻿using Fluxus.Domain;
-using Fluxus.Domain.Entities;
-using Fluxus.Domain.Interfaces;
-using Fluxus.Domain.Records;
-
+﻿using Fluxus.Domain.Entities;
+using Fluxus.Infra.Interfaces;
+using Fluxus.Infra.Records;
 using System.Collections.Generic;
 
 namespace Fluxus.App.Services

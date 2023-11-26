@@ -1,9 +1,8 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Data;
 using Fluxus.App.Services;
-using Fluxus.Domain.Records;
+using Fluxus.Infra.Records;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Infra.Services;
 
 namespace Fluxus.WinUI.View
 {

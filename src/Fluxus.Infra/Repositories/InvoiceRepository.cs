@@ -1,5 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Domain.Interfaces;
+using Fluxus.Infra.Interfaces;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 

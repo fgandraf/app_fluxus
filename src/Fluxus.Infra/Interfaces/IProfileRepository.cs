@@ -1,7 +1,7 @@
 ﻿
 using Fluxus.Domain.Entities;
 
-namespace Fluxus.Domain.Interfaces
+namespace Fluxus.Infra.Interfaces
 {
     public interface IProfileRepository
     {

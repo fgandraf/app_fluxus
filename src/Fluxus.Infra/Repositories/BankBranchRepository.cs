@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Fluxus.Domain.Entities;
 using System.Collections.Generic;
-using Fluxus.Domain.Records;
-using Fluxus.Domain.Interfaces;
+using Fluxus.Infra.Interfaces;
+using Fluxus.Infra.Records;
 
 namespace Fluxus.Infra.Repositories
 {
@@ -52,5 +52,6 @@ namespace Fluxus.Infra.Repositories
             
             return null;
         }
+
     }
 }

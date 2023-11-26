@@ -1,7 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.App.Services;
 using System.Drawing.Imaging;
-using Fluxus.Infra.Services;
+using Fluxus.Infra.ExternalServices;
 using System.Text.RegularExpressions;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;

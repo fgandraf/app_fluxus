@@ -1,9 +1,9 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Services;
 using Fluxus.App.Services;
 using System.Text.RegularExpressions;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.Infra.ExternalServices;
 
 namespace Fluxus.WinUI.View
 {

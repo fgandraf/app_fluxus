@@ -2,7 +2,7 @@
 using System;
 using Newtonsoft.Json;
 
-namespace Fluxus.Infra.Services
+namespace Fluxus.Infra.ExternalServices
 {
     public  class ViaCep
     {

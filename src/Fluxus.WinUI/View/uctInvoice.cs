@@ -3,8 +3,7 @@ using System.Data;
 using Fluxus.App.Services;
 using System.Globalization;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Infra.Services;
-using Fluxus.Domain.Records;
+using Fluxus.Infra.Records;
 
 namespace Fluxus.WinUI.View
 {
