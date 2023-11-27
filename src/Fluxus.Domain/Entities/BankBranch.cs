@@ -5,8 +5,7 @@ namespace Fluxus.Domain.Entities
     public class BankBranch
     {
 
-        public int Id { get; private set; }
-        public string BranchNumber { get; private set; }
+        public string Id { get; private set; }
         public string Name { get; private set; }
         public string Address { get; private set; }
         public string Complement { get; private set; }
@@ -21,10 +20,9 @@ namespace Fluxus.Domain.Entities
 
 
 
-        public BankBranch(int id, string branchNumber, string name, string address, string complement, string district, string city, string zip, string state, string contactName, string phone1, string phone2, string email)
+        public BankBranch(string id, string name, string address, string complement, string district, string city, string zip, string state, string contactName, string phone1, string phone2, string email)
         {
             Id = id;
-            BranchNumber = branchNumber;
             Name = name;
             Address = address;
             Complement = complement;

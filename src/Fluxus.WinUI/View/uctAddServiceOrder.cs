@@ -272,7 +272,7 @@ namespace Fluxus.WinUI.View
         private void GetBankBranch()
         {
             var service = _serviceProvider.GetService<BankBranchService>();
-            var result = service.GetByCode(txtRef1.Text);
+            var result = service.GetById(txtRef1.Text);
 
             if (!result.Success)
             {

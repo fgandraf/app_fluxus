@@ -54,7 +54,7 @@ namespace Fluxus.WinUI.View
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
+            string id = dgvBankBranches.CurrentRow.Cells["id"].Value.ToString();
             var bankService = _serviceProvider.GetService<BankBranchService>();
             var result = bankService.GetById(id);
 
@@ -72,7 +72,7 @@ namespace Fluxus.WinUI.View
             var dialog = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (dialog == DialogResult.Yes)
             {
-                var id = Convert.ToInt32(dgvBankBranches.CurrentRow.Cells["id"].Value);
+                var id = dgvBankBranches.CurrentRow.Cells["id"].Value.ToString();
                 var bankService = _serviceProvider.GetService<BankBranchService>();
                 var result = bankService.Delete(id);
 

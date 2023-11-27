@@ -20,10 +20,10 @@ namespace Fluxus.App.Services
             if (bankBranch == null)
                 return OperationResult<int>.FailureResult("Não foi possível incluir a agência bancária!");
 
-            if (bankBranch.BranchNumber == null)
+            if (bankBranch.Id == null)
                 return OperationResult<int>.FailureResult("Campos com * são obrigatório");
 
-            if (_repository.GetByCode(bankBranch.BranchNumber) != null)
+            if (_repository.GetContacts(bankBranch.Id) != null)
                 return OperationResult<int>.FailureResult("Agência já cadastrada!");
            
             int id = _repository.Insert(bankBranch);
@@ -35,10 +35,10 @@ namespace Fluxus.App.Services
 
         public OperationResult Update(BankBranch bankBranch)
         {
-            if (bankBranch == null || bankBranch.BranchNumber == null)
+            if (bankBranch == null || bankBranch.Id == null)
                 return OperationResult.FailureResult("Não foi possível alterar a agência bancária!");
 
-            if (_repository.GetByCode(bankBranch.BranchNumber) == null)
+            if (_repository.GetContacts(bankBranch.Id) == null)
                 return OperationResult.FailureResult("Agência não encontrada!");
 
             if (!_repository.Update(bankBranch))
@@ -47,7 +47,7 @@ namespace Fluxus.App.Services
             return OperationResult.SuccessResult();
         }
         
-        public OperationResult Delete(int id)
+        public OperationResult Delete(string id)
         {
             if (!_repository.Delete(id))
                 return OperationResult.FailureResult("Não foi possível excluir a agência bancária!");
@@ -55,7 +55,7 @@ namespace Fluxus.App.Services
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult<BankBranch> GetById(int id)
+        public OperationResult<BankBranch> GetById(string id)
         {
             var branch = _repository.GetById(id);
 
@@ -75,15 +75,7 @@ namespace Fluxus.App.Services
             return OperationResult<List<BankBranchIndex>>.SuccessResult(branches);
         }
 
-        public OperationResult<BankBranch> GetByCode(string branchCode)
-        {
-            var branch = _repository.GetByCode(branchCode);
 
-            if (branch == null)
-                return OperationResult<BankBranch>.FailureResult("Não foi possível encontrar agências bancárias na base de dados!");
-
-            return OperationResult<BankBranch>.SuccessResult(branch);
-        }
     }
 
 }

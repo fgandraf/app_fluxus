@@ -11,12 +11,12 @@ namespace Fluxus.Infra.Interfaces
 
         public bool Update(BankBranch body);
 
-        public bool Delete(int id);
+        public bool Delete(string id);
 
-        public BankBranch GetById(int id);
+        public BankBranch GetById(string id);
 
         public List<BankBranchIndex> GetIndex();
 
-        public BankBranch GetByCode(string agencyCode);
+        public BankBranch GetContacts(string agencyCode);
     }
 }

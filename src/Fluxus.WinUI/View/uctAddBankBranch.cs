@@ -10,7 +10,6 @@ namespace Fluxus.WinUI.View
     public partial class uctAddBankBranch : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private readonly int _id;
         private EnumMethod _method;
         private IServiceProvider _serviceProvider;
 
@@ -42,8 +41,7 @@ namespace Fluxus.WinUI.View
             _frmPrincipal = frm1;
             _method = EnumMethod.Update;
 
-            _id = branch.Id;
-            txtAgencia.Text = branch.BranchNumber;
+            txtAgencia.Text = branch.Id;
             txtNome.Text = branch.Name;
             txtEndereco.Text = branch.Address;
             txtComplemento.Text = branch.Complement;
@@ -118,8 +116,7 @@ namespace Fluxus.WinUI.View
         {
             BankBranch branch = new BankBranch
             (
-                id : _id,
-                branchNumber : txtAgencia.Text,
+                id : txtAgencia.Text,
                 name : txtNome.Text,
                 address: txtEndereco.Text,
                 complement : txtComplemento.Text,

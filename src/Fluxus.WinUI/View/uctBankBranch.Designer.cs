@@ -44,7 +44,6 @@
             dgvBankBranches = new DataGridView();
             ttpAgencias = new ToolTip(components);
             id = new DataGridViewTextBoxColumn();
-            numero = new DataGridViewTextBoxColumn();
             nome = new DataGridViewTextBoxColumn();
             cidade = new DataGridViewTextBoxColumn();
             telefone1 = new DataGridViewTextBoxColumn();
@@ -126,7 +125,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dgvBankBranches.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvBankBranches.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvBankBranches.Columns.AddRange(new DataGridViewColumn[] { id, numero, nome, cidade, telefone1, email });
+            dgvBankBranches.Columns.AddRange(new DataGridViewColumn[] { id, nome, cidade, telefone1, email });
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.White;
             dataGridViewCellStyle7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -162,26 +161,16 @@
             // 
             // id
             // 
+            id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             id.DataPropertyName = "id";
-            id.HeaderText = "Id";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Padding = new Padding(5, 0, 0, 0);
+            id.DefaultCellStyle = dataGridViewCellStyle2;
+            id.HeaderText = "Número";
             id.MinimumWidth = 10;
             id.Name = "id";
             id.ReadOnly = true;
-            id.Visible = false;
-            id.Width = 200;
-            // 
-            // numero
-            // 
-            numero.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            numero.DataPropertyName = "branchNumber";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Padding = new Padding(5, 0, 0, 0);
-            numero.DefaultCellStyle = dataGridViewCellStyle2;
-            numero.HeaderText = "Número";
-            numero.MinimumWidth = 10;
-            numero.Name = "numero";
-            numero.ReadOnly = true;
-            numero.Width = 158;
+            id.Width = 158;
             // 
             // nome
             // 
@@ -255,7 +244,6 @@
         private System.Windows.Forms.DataGridView dgvBankBranches;
         private System.Windows.Forms.ToolTip ttpAgencias;
         private DataGridViewTextBoxColumn id;
-        private DataGridViewTextBoxColumn numero;
         private DataGridViewTextBoxColumn nome;
         private DataGridViewTextBoxColumn cidade;
         private DataGridViewTextBoxColumn telefone1;

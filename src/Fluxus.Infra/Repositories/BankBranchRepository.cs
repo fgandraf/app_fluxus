@@ -20,12 +20,12 @@ namespace Fluxus.Infra.Repositories
             return Request.Put("BankBranch", json);
         }
 
-        public bool Delete(int id)
+        public bool Delete(string id)
         {
             return Request.Delete("BankBranch/", id.ToString());
         }
 
-        public BankBranch GetById(int id)
+        public BankBranch GetById(string id)
         {
             string json = Request.Get("BankBranch/", id.ToString());
 
@@ -44,7 +44,7 @@ namespace Fluxus.Infra.Repositories
             return null;
         }
 
-        public BankBranch GetByCode(string agencyCode)
+        public BankBranch GetContacts(string agencyCode)
         {
             string json = Request.Get("BankBranch/Contacts/", agencyCode);
             if (!string.IsNullOrEmpty(json))
