@@ -1,12 +1,12 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Interfaces;
+using Fluxus.Infra.Repositories.Contracts;
 
 namespace Fluxus.App.Services
 {
     public class ProfileService
     {
 
-        private IProfileRepository _repository;
+        private readonly IProfileRepository _repository;
 
 
         public ProfileService(IProfileRepository repository)

@@ -1,6 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Interfaces;
 using Fluxus.Infra.Records;
+using Fluxus.Infra.Repositories.Contracts;
 using System.Collections.Generic;
 
 namespace Fluxus.App.Services
@@ -8,12 +8,11 @@ namespace Fluxus.App.Services
     public class BankBranchService
     {
 
-        private IBankBranchRepository _repository;
+        private readonly IBankBranchRepository _repository;
 
 
         public BankBranchService(IBankBranchRepository repository)
             => _repository = repository;
-
 
         public OperationResult<int> Insert(BankBranch bankBranch)
         {

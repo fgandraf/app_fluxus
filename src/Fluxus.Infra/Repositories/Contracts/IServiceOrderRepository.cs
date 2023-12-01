@@ -3,7 +3,7 @@ using Fluxus.Infra.Records;
 using System.Collections.Generic;
 
 
-namespace Fluxus.Infra.Interfaces
+namespace Fluxus.Infra.Repositories.Contracts
 {
     public interface IServiceOrderRepository
     {

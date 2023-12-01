@@ -1,5 +1,5 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Interfaces;
+using Fluxus.Infra.Repositories.Contracts;
 using System.Collections.Generic;
 
 namespace Fluxus.App.Services
@@ -7,8 +7,8 @@ namespace Fluxus.App.Services
     public class InvoiceService
     {
 
-        private IInvoiceRepository _invoiceRepository;
-        private IServiceOrderRepository _serviceOrderRepository;
+        private readonly IInvoiceRepository _invoiceRepository;
+        private readonly IServiceOrderRepository _serviceOrderRepository;
 
 
         public InvoiceService(IInvoiceRepository invoiceRepository, IServiceOrderRepository serviceOrderRepository)

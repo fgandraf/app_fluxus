@@ -57,13 +57,14 @@ namespace Fluxus.WinUI.View
             int id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
             var result = _professionalService.GetById(id);
 
-            if (result.Success)
+            if (!result.Success)
             {
-                var formNeto = new uctAddProfessional(_frmPrincipal, result.Value, _serviceProvider);
-                _frmPrincipal.OpenUserControl(formNeto);
+                MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            var formNeto = new uctAddProfessional(_frmPrincipal, result.Value, _serviceProvider);
+            _frmPrincipal.OpenUserControl(formNeto);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

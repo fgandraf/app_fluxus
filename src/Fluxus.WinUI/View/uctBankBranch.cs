@@ -24,9 +24,9 @@ namespace Fluxus.WinUI.View
                 btnUpdate.Enabled = false;
                 btnDelete.Enabled = false;
             }
-            
 
             var bankService = _serviceProvider.GetService<BankBranchService>();
+
 
             var result = bankService.GetIndex();
             if (result.Success)
@@ -39,11 +39,6 @@ namespace Fluxus.WinUI.View
                     btnDelete.Enabled = false;
                 }
             }
-
-            
-
-            
-            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

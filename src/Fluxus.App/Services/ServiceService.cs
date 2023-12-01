@@ -1,6 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Interfaces;
 using Fluxus.Infra.Records;
+using Fluxus.Infra.Repositories.Contracts;
 using System.Collections.Generic;
 
 namespace Fluxus.App.Services
@@ -8,7 +8,7 @@ namespace Fluxus.App.Services
     public class ServiceService
     {
 
-        private IServiceRepository _repository;
+        private readonly IServiceRepository _repository;
 
 
         public ServiceService(IServiceRepository repository)

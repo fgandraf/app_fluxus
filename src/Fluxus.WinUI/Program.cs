@@ -1,6 +1,6 @@
 using Fluxus.App.Services;
-using Fluxus.Infra.Interfaces;
 using Fluxus.Infra.Repositories;
+using Fluxus.Infra.Repositories.Contracts;
 using Fluxus.WinUI.View;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,17 +8,14 @@ namespace Fluxus.WinUI
 {
     public static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            
-            var service = Services();
+            var services = CreateServiceCollection();
 
-            using (var serviceProvider = service.BuildServiceProvider())
+
+            using (var serviceProvider = services.BuildServiceProvider())
             {
                 var loginForm = new frmLogin(serviceProvider);
                 if (loginForm.ShowDialog() == DialogResult.OK)
@@ -35,16 +32,17 @@ namespace Fluxus.WinUI
         }
 
 
-        private static ServiceCollection Services()
+        private static ServiceCollection CreateServiceCollection()
         {
             var services = new ServiceCollection();
 
-            services.AddSingleton<IBankBranchRepository, BankBranchRepository>();
-            services.AddSingleton<IInvoiceRepository, InvoiceRepository>();
-            services.AddSingleton<IProfessionalRepository, ProfessionalRepository>();
-            services.AddSingleton<IProfileRepository, ProfileRepository>();
-            services.AddSingleton<IServiceOrderRepository, ServiceOrderRepository>();
-            services.AddSingleton<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IBankBranchRepository, BankBranchRepository>();
+            services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+            services.AddScoped<IProfessionalRepository, ProfessionalRepository>();
+            services.AddScoped<IProfileRepository, ProfileRepository>();
+            services.AddScoped<IServiceOrderRepository, ServiceOrderRepository>();
+            services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IConnection, RestConnection>();
 
             services.AddScoped<BankBranchService>();
             services.AddScoped<InvoiceService>();

@@ -1,6 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Interfaces;
 using Fluxus.Infra.Records;
+using Fluxus.Infra.Repositories.Contracts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,7 +9,7 @@ namespace Fluxus.App.Services
     public class ServiceOrderService
     {
 
-        private IServiceOrderRepository _repository;
+        private readonly IServiceOrderRepository _repository;
 
 
         public ServiceOrderService(IServiceOrderRepository repository)

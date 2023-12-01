@@ -1,7 +1,6 @@
-﻿
-using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Entities;
 
-namespace Fluxus.Infra.Interfaces
+namespace Fluxus.Infra.Repositories.Contracts
 {
     public interface IProfileRepository
     {

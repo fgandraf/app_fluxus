@@ -1,7 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using System.Collections.Generic;
 
-namespace Fluxus.Infra.Interfaces
+namespace Fluxus.Infra.Repositories.Contracts
 {
     public interface IInvoiceRepository
     {

@@ -1,9 +1,8 @@
-﻿
-using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Records;
 using System.Collections.Generic;
 
-namespace Fluxus.Infra.Interfaces
+namespace Fluxus.Infra.Repositories.Contracts
 {
     public interface IProfessionalRepository
     {
@@ -18,7 +17,7 @@ namespace Fluxus.Infra.Interfaces
         public List<ProfessionalIndex> GetIndex();
 
         public UserInfo GetUser(string username);
-        
+
         public List<ProfessionalNameId> GetTagNameid();
     }
 }

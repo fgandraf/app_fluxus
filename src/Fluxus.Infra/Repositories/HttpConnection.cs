@@ -1,17 +1,18 @@
-﻿using System;
+﻿using Fluxus.Infra.Repositories.Contracts;
+using System;
 using System.Net.Http;
 using System.Text;
 
 namespace Fluxus.Infra.Repositories
 {
 
-    public class Request
+    public class HttpConnection : IConnection
     {
-        const string URI = "http://FelipeM1Pro:5001/api/";
+        const string URI = "http://FelipeM1Pro:5001/";
         const string TOKEN = "xz8wM6zr2RfF18GBM0B5yrkoo";
 
 
-        public static string Get(string model, string param)
+        public string Get(string model, string param)
         {
             try
             {
@@ -34,7 +35,7 @@ namespace Fluxus.Infra.Repositories
         }
 
 
-        public static bool Put(string model, string json)
+        public bool Put(string model, string json)
         {
             try
             {
@@ -58,7 +59,7 @@ namespace Fluxus.Infra.Repositories
         }
 
 
-        public static bool Delete(string model, string parametro)
+        public bool Delete(string model, string param)
         {
             try
             {
@@ -66,7 +67,7 @@ namespace Fluxus.Infra.Repositories
                 {
                     httpClient.BaseAddress = new Uri(URI);
                     httpClient.DefaultRequestHeaders.Add("Token", TOKEN);
-                    var response = httpClient.DeleteAsync(model + parametro).Result;
+                    var response = httpClient.DeleteAsync(model + param).Result;
 
                     if (response.IsSuccessStatusCode == false)
                         throw new Exception("Request error: " + response.Content.ReadAsStringAsync().Result);
@@ -81,7 +82,7 @@ namespace Fluxus.Infra.Repositories
         }
 
 
-        public static int  Post(string model, string json)
+        public int Post(string model, string json)
         {
             try
             {
@@ -93,7 +94,6 @@ namespace Fluxus.Infra.Repositories
                     var response = httpClient.PostAsync(model, content).Result;
 
                     if (response.IsSuccessStatusCode == false)
-                        //throw new Exception("Request error: " + response.Content.ReadAsStringAsync().Result);
                         return 0;
 
                     return Convert.ToInt32(response.Content.ReadAsStringAsync().Result);
