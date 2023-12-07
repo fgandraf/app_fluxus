@@ -4,6 +4,7 @@ using Fluxus.App.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Fluxus.Infra.Records;
 using System.ComponentModel;
+using System.Collections;
 
 namespace Fluxus.WinUI.View
 {
@@ -66,11 +67,12 @@ namespace Fluxus.WinUI.View
             }
 
             var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
+
+            var orders = new List<int>();
             foreach (DataGridViewRow row in dgvOS.Rows)
-            {
-                int idOS = Convert.ToInt32(row.Cells["id"].Value);
-                serviceOrderService.UpdateFaturaCod(idOS, invoiceId);
-            }
+                orders.Add(Convert.ToInt32(row.Cells["id"].Value));
+            
+            serviceOrderService.UpdateInvoiceId(invoiceId, orders);
 
             MessageBox.Show("Ordens faturadas com sucesso!", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

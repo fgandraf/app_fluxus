@@ -132,9 +132,9 @@ namespace Fluxus.App.Services
             return OperationResult<List<string>>.SuccessResult(cities);
         }
 
-        public OperationResult UpdateFaturaCod(int id, int invoiceId)
+        public OperationResult UpdateInvoiceId(int invoiceId, List<int> orders)
         {
-            var updated = _repository.UpdateInvoiceId(id, invoiceId);
+            var updated = _repository.UpdateInvoiceId(invoiceId, orders);
             if (!updated)
                 return OperationResult.FailureResult("Não foi possível atualizar as Ordens de Serviço!");
 

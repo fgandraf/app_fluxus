@@ -11,7 +11,7 @@ namespace Fluxus.Infra.Repositories.Contracts
 
         public bool Update(ServiceOrder body);
 
-        public bool UpdateInvoiceId(int id, int invoiceId);
+        bool UpdateInvoiceId(int invoiceId, List<int> orders);
 
         public void UpdateStatus(int id, string status);
 

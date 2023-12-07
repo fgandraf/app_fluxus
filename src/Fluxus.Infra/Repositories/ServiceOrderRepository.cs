@@ -27,9 +27,10 @@ namespace Fluxus.Infra.Repositories
             return _connection.Put("v1/service-orders", json);
         }
 
-        public bool UpdateInvoiceId(int id, int invoiceId)
+        public bool UpdateInvoiceId(int invoiceId, List<int> orders)
         {
-            return _connection.Put("v1/service-orders/update-invoice/" + id + "," + invoiceId, string.Empty);
+            string json = JsonConvert.SerializeObject(orders);
+            return _connection.Put("v1/service-orders/update-invoice/" + invoiceId, json);
         }
 
         public async void UpdateStatus(int id, string status)

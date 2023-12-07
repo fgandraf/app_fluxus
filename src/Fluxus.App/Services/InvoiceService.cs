@@ -76,7 +76,10 @@ namespace Fluxus.App.Services
 
         public OperationResult RemoveOrder(int idServiceOrder, Invoice invoice)
         {
-            var serviceOrderUpdated = _serviceOrderRepository.UpdateInvoiceId(idServiceOrder, 0);
+            var serviceOrder = new List<int>();
+            serviceOrder.Add(idServiceOrder);
+
+            var serviceOrderUpdated = _serviceOrderRepository.UpdateInvoiceId(0, serviceOrder);
             var invoiceUpdated = Update(invoice);
 
             if (!invoiceUpdated.Success && !serviceOrderUpdated)
