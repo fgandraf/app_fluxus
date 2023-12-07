@@ -78,7 +78,7 @@ namespace Fluxus.WinUI.View
 
 
                 if (result.Success)
-                    dgvProfessionals.DataSource = _professionalService.GetIndex();
+                    dgvProfessionals.DataSource = _professionalService.GetIndex().Value;
                 else
                     MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

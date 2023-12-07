@@ -174,7 +174,7 @@ namespace Fluxus.WinUI.View
             }
 
 
-            var dialog = MessageBox.Show("Deseja excluir a Fatura?" + "\n\n" + dgvFaturas.CurrentRow.Cells[1].Value.ToString(), "Remover O.S.", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            var dialog = MessageBox.Show("Deseja excluir a Fatura?" + "\n\n" + dgvFaturas.CurrentRow.Cells["descricao"].Value.ToString(), "Remover O.S.", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (dialog == DialogResult.Yes)
             {
                 var id = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);

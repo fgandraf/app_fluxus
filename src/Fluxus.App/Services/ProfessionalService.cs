@@ -24,10 +24,11 @@ namespace Fluxus.App.Services
             if (string.IsNullOrEmpty(professional.Tag) || string.IsNullOrEmpty(professional.Name) || string.IsNullOrEmpty(professional.UserName))
                 return OperationResult<int>.FailureResult("Campos com * são obrigatório");
 
-            if (professional.UserName != professional.UserPasswordConfirmation)
+            if (professional.UserPassword != professional.UserPasswordConfirmation)
                 return OperationResult<int>.FailureResult("Senhas não conferem");
 
-            if (_repository.GetUser(professional.UserName) != null)
+            var user = _repository.GetUser(professional.UserName);
+            if (user.Id != 0)
                 return OperationResult<int>.FailureResult("Nome de usuário já cadastrado!");
 
             int id = _repository.Insert(professional);
@@ -45,7 +46,7 @@ namespace Fluxus.App.Services
             if (string.IsNullOrEmpty(professional.Tag) || string.IsNullOrEmpty(professional.Name) || string.IsNullOrEmpty(professional.UserName))
                 return OperationResult.FailureResult("Campos com * são obrigatório");
 
-            if (professional.UserName != professional.UserPasswordConfirmation)
+            if (professional.UserPassword != professional.UserPasswordConfirmation)
                 return OperationResult.FailureResult("Senhas não conferem");
 
             var usernamelInRepo = _repository.GetUser(professional.UserName);

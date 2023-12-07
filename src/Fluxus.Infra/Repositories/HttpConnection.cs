@@ -2,6 +2,7 @@
 using System;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Fluxus.Infra.Repositories
 {
@@ -96,7 +97,12 @@ namespace Fluxus.Infra.Repositories
                     if (response.IsSuccessStatusCode == false)
                         return 0;
 
-                    return Convert.ToInt32(response.Content.ReadAsStringAsync().Result);
+                    //using it while post method can return int or string result
+                    //refactor it when type is the same for all results
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    string digitsOnly = Regex.Replace(result, "[^0-9]", "");
+                    return Convert.ToInt32(digitsOnly);
+                    //----------------------------------------------------------------
                 }
             }
             catch (Exception ex)

@@ -1,6 +1,7 @@
 ﻿using Fluxus.Infra.Repositories.Contracts;
 using RestSharp;
 using System;
+using System.Text.RegularExpressions;
 
 namespace Fluxus.Infra.Repositories
 {
@@ -67,7 +68,12 @@ namespace Fluxus.Infra.Repositories
                 if (!response.IsSuccessful)
                     return 0;
 
-                return Convert.ToInt32(response.Content);
+                //using it while post method can return int or string result
+                //refactor it when type is the same for all results
+                var result = response.Content;
+                string digitsOnly = Regex.Replace(result, "[^0-9]", "");
+                return Convert.ToInt32(digitsOnly);
+                //----------------------------------------------------------------
             }
             catch (Exception ex)
             {
