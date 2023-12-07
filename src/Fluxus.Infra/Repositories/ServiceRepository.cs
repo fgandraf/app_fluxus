@@ -16,23 +16,23 @@ namespace Fluxus.Infra.Repositories
         public int Insert(Service body)
         {
             string json = JsonConvert.SerializeObject(body);
-            return _connection.Post("v1/service", json);
+            return _connection.Post("v1/services", json);
         }
 
         public bool Update(Service body)
         {
             string json = JsonConvert.SerializeObject(body);
-            return _connection.Put("v1/service", json);
+            return _connection.Put("v1/services", json);
         }
 
         public bool Delete(int id)
         {
-            return _connection.Delete("v1/service/", id.ToString());
+            return _connection.Delete("v1/services/", id.ToString());
         }
 
         public Service GetById(int id)
         {
-            string json = _connection.Get("v1/service/", id.ToString());
+            string json = _connection.Get("v1/services/", id.ToString());
             return JsonConvert.DeserializeObject<Service>(json);
         }
 

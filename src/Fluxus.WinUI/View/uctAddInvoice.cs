@@ -58,16 +58,17 @@ namespace Fluxus.WinUI.View
             var result = service.Insert(invoice);
             int invoiceId = result.Value;
 
+
             if (invoiceId == 0)
             {
                 MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
+            var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
             foreach (DataGridViewRow row in dgvOS.Rows)
             {
-                int idOS = Convert.ToInt32(row.Cells["Id"].Value);
-                var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
+                int idOS = Convert.ToInt32(row.Cells["id"].Value);
                 serviceOrderService.UpdateFaturaCod(idOS, invoiceId);
             }
 

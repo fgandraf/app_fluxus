@@ -18,33 +18,33 @@ namespace Fluxus.Infra.Repositories
         public int Insert(ServiceOrder body)
         {
             string json = JsonConvert.SerializeObject(body);
-            return _connection.Post("v1/service-order", json);
+            return _connection.Post("v1/service-orders", json);
         }
 
         public bool Update(ServiceOrder body)
         {
             string json = JsonConvert.SerializeObject(body);
-            return _connection.Put("v1/service-order", json);
+            return _connection.Put("v1/service-orders", json);
         }
 
         public bool UpdateInvoiceId(int id, int invoiceId)
         {
-            return _connection.Put("v1/service-order/update-invoice/" + id + "," + invoiceId, string.Empty);
+            return _connection.Put("v1/service-orders/update-invoice/" + id + "," + invoiceId, string.Empty);
         }
 
         public async void UpdateStatus(int id, string status)
         {
-            await Task.Run(() => _connection.Put("v1/service-order/update-status/" + id + "," + status, string.Empty));
+            await Task.Run(() => _connection.Put("v1/service-orders/update-status/" + id + "," + status, string.Empty));
         }
 
         public bool Delete(long id)
         {
-            return _connection.Delete("v1/service-order/", id.ToString());
+            return _connection.Delete("v1/service-orders/", id.ToString());
         }
 
         public List<ServiceOrderOpen> GetIndexOpen()
         {
-            string json = _connection.Get("v1/services-orders/flow", string.Empty);
+            string json = _connection.Get("v1/service-orders/flow", string.Empty);
             return JsonConvert.DeserializeObject<List<ServiceOrderOpen>>(json);
         }
 
@@ -52,7 +52,7 @@ namespace Fluxus.Infra.Repositories
         {
             List<string> cities = new List<string>();
 
-            string json = _connection.Get("v1/services-orders/cities", string.Empty);
+            string json = _connection.Get("v1/service-orders/cities", string.Empty);
             var table = JsonConvert.DeserializeObject<DataTable>(json);
 
             for (int i = 0; i < table.Rows.Count; i++)
@@ -63,19 +63,19 @@ namespace Fluxus.Infra.Repositories
 
         public ServiceOrder GetById(int id)
         {
-            string json = _connection.Get("v1/service-order/", id.ToString());
+            string json = _connection.Get("v1/service-orders/", id.ToString());
             return JsonConvert.DeserializeObject<ServiceOrder>(json);
         }
 
         public List<ServiceOrderIndex> GetOpenDone()
         {
-            string json = _connection.Get("v1/services-orders/done-to-invoice", string.Empty);
+            string json = _connection.Get("v1/service-orders/done-to-invoice", string.Empty);
             return JsonConvert.DeserializeObject<List<ServiceOrderIndex>>(json);
         }
 
         public List<ServiceOrderIndex> GetFiltered(string filter)
         {
-            string json = _connection.Get("v1/services-orders/filtered/", filter);
+            string json = _connection.Get("v1/service-orders/filtered/", filter);
 
             if (json != null)
                 return JsonConvert.DeserializeObject<List<ServiceOrderIndex>>(json);
@@ -85,13 +85,13 @@ namespace Fluxus.Infra.Repositories
 
         public List<ServiceOrderIndex> GetClosedByInvoiceId(int invoiceId)
         {
-            string json = _connection.Get("v1/services-orders/invoiced/", invoiceId.ToString());
+            string json = _connection.Get("v1/service-orders/invoiced/", invoiceId.ToString());
             return JsonConvert.DeserializeObject<List<ServiceOrderIndex>>(json);
         }
 
         public List<ProfessionalNameId> GetProfessionalByInvoiceId(int invoiceId)
         {
-            string json = _connection.Get("v1/services-orders/professionals/", invoiceId.ToString());
+            string json = _connection.Get("v1/service-orders/professionals/", invoiceId.ToString());
             return JsonConvert.DeserializeObject<List<ProfessionalNameId>>(json);
         }
     }

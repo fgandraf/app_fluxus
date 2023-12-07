@@ -17,23 +17,23 @@ namespace Fluxus.Infra.Repositories
         public int Insert(BankBranch body)
         {
             string json = JsonConvert.SerializeObject(body);
-            return _connection.Post("v1/bank-branch", json);
+            return _connection.Post("v1/bank-branches", json);
         }
 
         public bool Update(BankBranch body)
         {
             string json = JsonConvert.SerializeObject(body);
-            return _connection.Put("v1/bank-branch", json);
+            return _connection.Put("v1/bank-branches", json);
         }
 
         public bool Delete(string id)
         {
-            return _connection.Delete("v1/bank-branch/", id.ToString());
+            return _connection.Delete("v1/bank-branches/", id.ToString());
         }
 
         public BankBranch GetById(string id)
         {
-            string json = _connection.Get("v1/bank-branch/", id.ToString());
+            string json = _connection.Get("v1/bank-branches/", id.ToString());
 
             if (!string.IsNullOrEmpty(json))
                 return JsonConvert.DeserializeObject<BankBranch>(json);
@@ -52,7 +52,7 @@ namespace Fluxus.Infra.Repositories
 
         public BankBranch GetContacts(string agencyCode)
         {
-            string json = _connection.Get("v1/bank-branch/contacts/", agencyCode);
+            string json = _connection.Get("v1/bank-branches/contacts/", agencyCode);
             if (!string.IsNullOrEmpty(json))
                 return JsonConvert.DeserializeObject<BankBranch>(json);
             

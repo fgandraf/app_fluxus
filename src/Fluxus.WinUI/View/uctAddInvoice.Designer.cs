@@ -337,7 +337,6 @@
             id.MinimumWidth = 10;
             id.Name = "id";
             id.ReadOnly = true;
-            id.Visible = false;
             id.Width = 200;
             // 
             // data_ordem

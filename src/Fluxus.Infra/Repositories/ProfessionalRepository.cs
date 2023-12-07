@@ -16,23 +16,23 @@ namespace Fluxus.Infra.Repositories
         public int Insert(Professional body)
         {
             string json = JsonConvert.SerializeObject(body);
-            return _connection.Post("v1/professional", json);
+            return _connection.Post("v1/professionals", json);
         }
 
         public bool Update(Professional body)
         {
             string json = JsonConvert.SerializeObject(body);
-            return _connection.Put("v1/professional", json);
+            return _connection.Put("v1/professionals", json);
         }
 
         public bool Delete(int id)
         {
-            return _connection.Delete("v1/professional/", id.ToString());
+            return _connection.Delete("v1/professionals/", id.ToString());
         }
 
         public Professional GetById(int id)
         {
-            string json = _connection.Get("v1/professional/", id.ToString());
+            string json = _connection.Get("v1/professionals/", id.ToString());
 
             if (!string.IsNullOrEmpty(json))
                 return JsonConvert.DeserializeObject<Professional>(json);
@@ -51,7 +51,7 @@ namespace Fluxus.Infra.Repositories
 
         public UserInfo GetUser(string userName)
         {
-            var json = _connection.Get("v1/professional/user-info/", userName);
+            var json = _connection.Get("v1/professionals/user-info/", userName);
             if (json != null)
                 return JsonConvert.DeserializeObject<UserInfo>(json);
 

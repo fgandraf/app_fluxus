@@ -9,7 +9,6 @@ namespace Fluxus.WinUI.View
     {
         private readonly frmMain _frmPrincipal;
         private readonly int _id;
-        private readonly string _nameId;
         private EnumMethod _method;
         private IServiceProvider _serviceProvider;
 
@@ -31,7 +30,6 @@ namespace Fluxus.WinUI.View
             _method = EnumMethod.Update;
 
             _id = professional.Id;
-            _nameId = professional.Nameid;
             txtCodigo.Text = professional.Tag;
             txtNome.Text = professional.Name;
             txtCPF.Text = professional.Cpf;
@@ -108,7 +106,6 @@ namespace Fluxus.WinUI.View
             Professional profesional = new Professional(
                 id: _id,
                 tag: txtCodigo.Text,
-                nameid: _nameId,
                 name: txtNome.Text,
                 cpf: txtCPF.Text,
                 birthday: dtpBirthday.Value,

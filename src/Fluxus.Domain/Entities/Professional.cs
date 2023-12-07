@@ -11,7 +11,6 @@ namespace Fluxus.Domain.Entities
         public int Id { get; private set; }
         public string Tag { get; private set; }
         public string Name { get; private set; }
-        public string Nameid { get; private set; }
         public string Cpf { get; private set; }
         public DateTime Birthday { get; private set; }
         public string Profession { get; private set; }
@@ -27,12 +26,11 @@ namespace Fluxus.Domain.Entities
         public string UserPassword { get; private set; }
 
 
-        public Professional(int id, string tag, string name, string nameid, string cpf, DateTime birthday, string profession, string permitNumber, string association, string phone1, string phone2, string email, bool technicianResponsible, bool legalResponsible, bool userActive, string userName, string userPassword, string ?userPasswordConfirmation)
+        public Professional(int id, string tag, string name, string cpf, DateTime birthday, string profession, string permitNumber, string association, string phone1, string phone2, string email, bool technicianResponsible, bool legalResponsible, bool userActive, string userName, string userPassword, string ?userPasswordConfirmation)
         {
             Id = id;
             Tag = tag;
             Name = name;
-            Nameid = nameid;
             Cpf = cpf;
             Birthday = birthday;
             Profession = profession;
