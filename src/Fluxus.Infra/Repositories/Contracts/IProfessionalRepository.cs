@@ -16,8 +16,6 @@ namespace Fluxus.Infra.Repositories.Contracts
 
         public List<ProfessionalIndex> GetIndex();
 
-        public UserInfo GetUser(string username);
-
         public List<ProfessionalNameId> GetTagNameid();
     }
 }

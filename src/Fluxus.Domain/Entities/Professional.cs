@@ -5,8 +5,6 @@ namespace Fluxus.Domain.Entities
 
     public class Professional
     {
-        public string? UserPasswordConfirmation { get; private set; }
-
 
         public int Id { get; private set; }
         public string Tag { get; private set; }
@@ -19,14 +17,9 @@ namespace Fluxus.Domain.Entities
         public string Phone1 { get; private set; }
         public string Phone2 { get; private set; }
         public string Email { get; private set; }
-        public bool TechnicianResponsible { get; private set; }
-        public bool LegalResponsible { get; private set; }
-        public bool UserActive { get; private set; }
-        public string UserName { get; private set; }
-        public string UserPassword { get; private set; }
 
 
-        public Professional(int id, string tag, string name, string cpf, DateTime birthday, string profession, string permitNumber, string association, string phone1, string phone2, string email, bool technicianResponsible, bool legalResponsible, bool userActive, string userName, string userPassword, string ?userPasswordConfirmation)
+        public Professional(int id, string tag, string name, string cpf, DateTime birthday, string profession, string permitNumber, string association, string phone1, string phone2, string email)
         {
             Id = id;
             Tag = tag;
@@ -39,12 +32,6 @@ namespace Fluxus.Domain.Entities
             Phone1 = phone1;
             Phone2 = phone2;
             Email = email;
-            TechnicianResponsible = technicianResponsible;
-            LegalResponsible = legalResponsible;
-            UserActive = userActive;
-            UserName = userName;
-            UserPassword = userPassword;
-            UserPasswordConfirmation = userPasswordConfirmation;
         }
     }
 }

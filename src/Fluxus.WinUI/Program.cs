@@ -42,6 +42,7 @@ namespace Fluxus.WinUI
             services.AddScoped<IProfileRepository, ProfileRepository>();
             services.AddScoped<IServiceOrderRepository, ServiceOrderRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IConnection, RestConnection>();
 
             services.AddScoped<BankBranchService>();
@@ -50,6 +51,7 @@ namespace Fluxus.WinUI
             services.AddScoped<ProfileService>();
             services.AddScoped<ServiceOrderService>();
             services.AddScoped<ServiceService>();
+            services.AddScoped<UserService>();
 
             return services;
         }

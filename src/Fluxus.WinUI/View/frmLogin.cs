@@ -15,14 +15,13 @@ namespace Fluxus.WinUI.View
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
         private IServiceProvider _serviceProvider;
-        private ProfessionalService _professionalService;
-
+        private UserService _userService;
 
         public frmLogin(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
 
-            _professionalService = _serviceProvider.GetService<ProfessionalService>();
+            _userService = _serviceProvider.GetService<UserService>();
             InitializeComponent();
             _serviceProvider = serviceProvider;
         }
@@ -30,36 +29,36 @@ namespace Fluxus.WinUI.View
         private void btnAppFechar_Click(object sender, EventArgs e)
             => Environment.Exit(0);
 
+
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var result = _professionalService.GetUserInfo(txtUsuario.Text);
-            UserInfo user = new UserInfo();
-            
+            var result = _userService.GetByUsername(txtUsuario.Text);
+
             if (result != null)
             {
-                user = result.Value;
-                if (string.IsNullOrEmpty(user.UserName.ToString()))
+                if (string.IsNullOrEmpty(((User)result.Value).UserName.ToString()))
                 {
                     MessageBox.Show("Usuário não encontrado", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (user.UserPassword.ToString() != txtSenha.Text)
+                if (((User)result.Value).UserPassword.ToString() != txtSenha.Text)
                 {
                     MessageBox.Show("Senha incorreta", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
 
+            User user = result.Value;
+
             Logged.Usr_nome = user.UserName;
             Logged.ProfessionalId = user.Id;
             Logged.Rt = user.TechnicianResponsible;
             Logged.Rl = user.LegalResponsible;
-            Logged.ProfessionalTag = user.Tag;
+            Logged.ProfessionalTag = "A01"; //TO DO: REFATORAR
 
             this.DialogResult = DialogResult.OK;
         }
-
 
         private void imgShowPwd_Click(object sender, EventArgs e)
         {

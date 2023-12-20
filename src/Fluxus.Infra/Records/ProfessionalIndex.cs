@@ -8,7 +8,6 @@ namespace Fluxus.Infra.Records
         public string? Name { get; set; }
         public string? Profession { get; set; }
         public string? Phone1 { get; set; }
-        public bool UserActive { get; set; }
 
     }
 }

@@ -69,7 +69,7 @@ namespace Fluxus.WinUI.View
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var dialog = MessageBox.Show("Deseja realmente excluir?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            var dialog = MessageBox.Show("Deseja realmente excluir?\n\n O usuário associado ao profissional também será removido.", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (dialog == DialogResult.Yes)
             {
                 var id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);

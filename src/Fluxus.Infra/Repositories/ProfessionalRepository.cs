@@ -49,15 +49,6 @@ namespace Fluxus.Infra.Repositories
             return null;
         }
 
-        public UserInfo GetUser(string userName)
-        {
-            var json = _connection.Get("v1/professionals/user-info/", userName);
-            if (json != null)
-                return JsonConvert.DeserializeObject<UserInfo>(json);
-
-            return new UserInfo();
-        }
-
         public List<ProfessionalNameId> GetTagNameid()
         {
             string json = _connection.Get("v1/professionals/tag-name-id", string.Empty);

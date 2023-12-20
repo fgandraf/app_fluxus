@@ -8,60 +8,71 @@ namespace Fluxus.App.Services
     public class ProfessionalService
     {
 
-        private readonly IProfessionalRepository _repository;
+        private readonly IProfessionalRepository _professionalRepository;
+        private readonly IUserRepository _userRepository;
         public Professional Professional { get; set; }
-      
-        
-        public ProfessionalService(IProfessionalRepository repository)
-            => _repository = repository;
 
 
-        public OperationResult<int> Insert(Professional professional)
-        {
-            if (professional == null)
-                return OperationResult<int>.FailureResult("Não foi possível inserir o profissional!");
-
-            if (string.IsNullOrEmpty(professional.Tag) || string.IsNullOrEmpty(professional.Name) || string.IsNullOrEmpty(professional.UserName))
-                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
-
-            if (professional.UserPassword != professional.UserPasswordConfirmation)
-                return OperationResult<int>.FailureResult("Senhas não conferem");
-
-            var user = _repository.GetUser(professional.UserName);
-            if (user.Id != 0)
-                return OperationResult<int>.FailureResult("Nome de usuário já cadastrado!");
-
-            int id = _repository.Insert(professional);
-            if (id == 0)
-                return OperationResult<int>.FailureResult("Não foi possível inserir o profissional na base de dados!");
-
-            return OperationResult<int>.SuccessResult(id);
+        public ProfessionalService(IProfessionalRepository professionalRepository, IUserRepository userRepository)
+        { 
+            _professionalRepository = professionalRepository; 
+            _userRepository = userRepository;
         }
 
-        public OperationResult Update(Professional professional)
+        public OperationResult<int> Insert(Professional professional, User user)
         {
-            if (professional == null)
-                return OperationResult.FailureResult("Não foi possível alterar o profissional!");
+            var result = Validate(true, professional, user);
+            if (!result.Success)
+                return OperationResult<int>.FailureResult(result.Message);
 
-            if (string.IsNullOrEmpty(professional.Tag) || string.IsNullOrEmpty(professional.Name) || string.IsNullOrEmpty(professional.UserName))
-                return OperationResult.FailureResult("Campos com * são obrigatório");
+            int professionalId = _professionalRepository.Insert(professional);
+            user.ProfessionalId = professionalId;
+            int userId = _userRepository.Insert(user);
 
-            if (professional.UserPassword != professional.UserPasswordConfirmation)
-                return OperationResult.FailureResult("Senhas não conferem");
+            if (professionalId == 0 || userId == 0)
+                return OperationResult<int>.FailureResult("EXC5 - Não foi possível inserir o profissional na base de dados!");
 
-            var usernamelInRepo = _repository.GetUser(professional.UserName);
-            if (usernamelInRepo != null && usernamelInRepo.Id != professional.Id)
-                return OperationResult.FailureResult("Nome de usuário já cadastrado!");
+            return OperationResult<int>.SuccessResult(professionalId);
+        }
 
-            if (!_repository.Update(professional))
-                return OperationResult.FailureResult("Não foi possível alterar o profissional!");
+        public OperationResult Update(Professional professional, User user)
+        {
+            var result = Validate(false, professional, user);
+            if (!result.Success)
+                return OperationResult.FailureResult(result.Message);
             
+            if (!_professionalRepository.Update(professional) || !_userRepository.Update(user))
+                return OperationResult.FailureResult("Não foi possível alterar o profissional!");
+
+            return OperationResult.SuccessResult();
+        }
+
+        private OperationResult Validate(bool newProfessional, Professional professional, User user)
+        {
+            if (professional == null || user == null)
+                return OperationResult.FailureResult("NL0X - Não foi possível inserir ou alterar o profissional!");
+
+            if (string.IsNullOrEmpty(professional.Tag) || string.IsNullOrEmpty(professional.Name) || string.IsNullOrEmpty(user.UserName))
+                return OperationResult.FailureResult("RQ1 - Campos com * são obrigatório");
+
+            if (user.UserPassword != user.UserPasswordConfirmation)
+                return OperationResult.FailureResult("PNM3 - Senhas não conferem");
+
+            var usernamelInRepo = _userRepository.GetByUserName(user.UserName);
+            if ((newProfessional && usernamelInRepo != null && usernamelInRepo.Id > 0) || (!newProfessional && usernamelInRepo != null && usernamelInRepo.Id != user.Id))
+                return OperationResult.FailureResult("USR4 - Nome de usuário já cadastrado!");
+
             return OperationResult.SuccessResult();
         }
 
         public OperationResult Delete(int id)
         {
-            if (!_repository.Delete(id))
+            var user = _userRepository.GetByProfessionalId(id);
+
+            var userDeleted = _userRepository.Delete(user.Id);
+            var professionalDeleted = _professionalRepository.Delete(id);
+
+            if (!userDeleted && !professionalDeleted)
                 return OperationResult.FailureResult("Não foi possível excluir o profissional!");
 
             return OperationResult.SuccessResult();
@@ -69,7 +80,7 @@ namespace Fluxus.App.Services
 
         public OperationResult<Professional> GetById(int id)
         {
-            var professional = _repository.GetById(id);
+            var professional = _professionalRepository.GetById(id);
 
             if (professional == null)
                 return OperationResult<Professional>.FailureResult("Não foi possível encontrar o profissional!");
@@ -79,7 +90,7 @@ namespace Fluxus.App.Services
 
         public OperationResult<List<ProfessionalIndex>> GetIndex()
         {
-            var professionals = _repository.GetIndex();
+            var professionals = _professionalRepository.GetIndex();
 
             if (professionals == null)
                 return OperationResult<List<ProfessionalIndex>>.FailureResult("Não foi possível encontrar profissionais na base dados!");
@@ -89,7 +100,7 @@ namespace Fluxus.App.Services
 
         public OperationResult<List<ProfessionalNameId>> GetTagNameid(bool addHeader)
         {
-            var professionals = _repository.GetTagNameid();
+            var professionals = _professionalRepository.GetTagNameid();
             
             if (professionals == null)
                 return OperationResult<List<ProfessionalNameId>>.FailureResult("Não foi possível encontrar profissionais na base de dados!");
@@ -99,16 +110,5 @@ namespace Fluxus.App.Services
 
             return OperationResult<List<ProfessionalNameId>>.SuccessResult(professionals);
         }
-
-        public OperationResult<UserInfo> GetUserInfo(string userName)
-        {
-            var userInfo = _repository.GetUser(userName);
-
-            if (userInfo == null)
-                return OperationResult<UserInfo>.FailureResult("Dados do usuário não encontrados");
-
-            return OperationResult<UserInfo>.SuccessResult(userInfo);
-        }
-
     }
 }

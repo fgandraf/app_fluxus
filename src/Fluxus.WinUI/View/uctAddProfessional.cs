@@ -8,13 +8,18 @@ namespace Fluxus.WinUI.View
     public partial class uctAddProfessional : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private readonly int _id;
+        private readonly int _professionalId;
+        private readonly int _userId;
         private EnumMethod _method;
         private IServiceProvider _serviceProvider;
+        private UserService _userService;
+        private ProfessionalService _professionalService;
 
         public uctAddProfessional(frmMain frm1, IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
+            _userService = _serviceProvider.GetService<UserService>();
+            _professionalService = _serviceProvider.GetService<ProfessionalService>();
 
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -24,12 +29,14 @@ namespace Fluxus.WinUI.View
         public uctAddProfessional(frmMain frm1, Professional professional, IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
+            _userService = _serviceProvider.GetService<UserService>();
+            _professionalService = _serviceProvider.GetService<ProfessionalService>();
 
             InitializeComponent();
             _frmPrincipal = frm1;
             _method = EnumMethod.Update;
 
-            _id = professional.Id;
+            _professionalId = professional.Id;
             txtCodigo.Text = professional.Tag;
             txtNome.Text = professional.Name;
             txtCPF.Text = professional.Cpf;
@@ -40,12 +47,19 @@ namespace Fluxus.WinUI.View
             txtTelefone1.Text = professional.Phone1;
             txtTelefone2.Text = professional.Phone2;
             txtEmail.Text = professional.Email;
-            chkRT.Checked = professional.TechnicianResponsible;
-            chkRL.Checked = professional.LegalResponsible;
-            chkUsrAtivo.Checked = professional.UserActive;
-            txtUsrNome.Text = professional.UserName;
-            txtUsrSenha.Text = professional.UserPassword;
-            txtUsrSenha2.Text = professional.UserPassword;
+
+            var result = _userService.GetByProfessionalId(professional.Id);
+            if (result.Success)
+            {
+                User user = result.Value;
+                _userId = user.Id;
+                chkRT.Checked = user.TechnicianResponsible;
+                chkRL.Checked = user.LegalResponsible;
+                chkUsrAtivo.Checked = user.UserActive;
+                txtUsrNome.Text = user.UserName;
+                txtUsrSenha.Text = user.UserPassword;
+                txtUsrSenha2.Text = user.UserPassword;
+            }
         }
 
         private void frmAddProfissional_Load(object sender, EventArgs e)
@@ -66,10 +80,10 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var service = _serviceProvider.GetService<ProfessionalService>();
-            var professional = PopulateObject();
+            var professional = PopulateProfessional();
+            var user = PopulateUser();
 
-            dynamic result = _method == EnumMethod.Insert ? service.Insert(professional) : service.Update(professional);
+            dynamic result = _method == EnumMethod.Insert ? _professionalService.Insert(professional, user) : _professionalService.Update(professional, user);
 
             if (result.Success)
                 btnCancelar_Click(sender, e);
@@ -101,10 +115,10 @@ namespace Fluxus.WinUI.View
         private void OnEnter_MaskedTextBox(object sender, EventArgs e)
             => ((MaskedTextBox)sender).Mask = Util.MaskEnter(sender);
 
-        private Professional PopulateObject()
+        private Professional PopulateProfessional()
         {
-            Professional profesional = new Professional(
-                id: _id,
+            var profesional = new Professional(
+                id: _professionalId,
                 tag: txtCodigo.Text,
                 name: txtNome.Text,
                 cpf: txtCPF.Text,
@@ -114,15 +128,24 @@ namespace Fluxus.WinUI.View
                 association: cboEntidade.Text,
                 phone1: txtTelefone1.Text,
                 phone2: txtTelefone2.Text,
-                email: txtEmail.Text,
+                email: txtEmail.Text
+            );
+            return profesional;
+        }
+
+        private User PopulateUser()
+        {
+            var user = new User(
+                id: _userId,
+                professionalId: _professionalId,
                 technicianResponsible: chkRT.Checked,
                 legalResponsible: chkRL.Checked,
                 userActive: chkUsrAtivo.Checked,
                 userName: txtUsrNome.Text,
                 userPassword: txtUsrSenha.Text,
                 userPasswordConfirmation: txtUsrSenha2.Text
-            );
-            return profesional;
+            ) ;
+            return user;
         }
 
     }

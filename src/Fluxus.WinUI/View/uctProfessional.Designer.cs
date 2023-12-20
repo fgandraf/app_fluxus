@@ -47,7 +47,6 @@
             nome = new DataGridViewTextBoxColumn();
             profissao = new DataGridViewTextBoxColumn();
             telefone1 = new DataGridViewTextBoxColumn();
-            usr_ativo = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProfessionals).BeginInit();
             SuspendLayout();
             // 
@@ -126,7 +125,7 @@
             dgvProfessionals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvProfessionals.ColumnHeadersHeight = 35;
             dgvProfessionals.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgvProfessionals.Columns.AddRange(new DataGridViewColumn[] { id, codigo, nome, profissao, telefone1, usr_ativo });
+            dgvProfessionals.Columns.AddRange(new DataGridViewColumn[] { id, codigo, nome, profissao, telefone1 });
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.White;
             dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -219,15 +218,6 @@
             telefone1.ReadOnly = true;
             telefone1.Width = 160;
             // 
-            // usr_ativo
-            // 
-            usr_ativo.DataPropertyName = "userActive";
-            usr_ativo.HeaderText = "Usuário Ativo";
-            usr_ativo.MinimumWidth = 10;
-            usr_ativo.Name = "usr_ativo";
-            usr_ativo.ReadOnly = true;
-            usr_ativo.Width = 200;
-            // 
             // uctProfessional
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -256,6 +246,5 @@
         private DataGridViewTextBoxColumn nome;
         private DataGridViewTextBoxColumn profissao;
         private DataGridViewTextBoxColumn telefone1;
-        private DataGridViewCheckBoxColumn usr_ativo;
     }
 }
