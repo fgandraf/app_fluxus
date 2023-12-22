@@ -4,6 +4,7 @@ namespace Fluxus.Infra.Repositories.Contracts;
 
 public interface IUserRepository
 {
+    public (bool,string) Login(User user);
     public int Insert(User model);
     public bool Update(User model);
     public bool Delete(int id);

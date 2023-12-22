@@ -1,7 +1,7 @@
 ﻿
 namespace Fluxus.Domain.Entities
 {
-    public class Logged
+    public static class Logged
     {
         //USER LOGGED
         public static int ProfessionalId;

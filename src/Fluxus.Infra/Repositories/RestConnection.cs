@@ -8,7 +8,31 @@ namespace Fluxus.Infra.Repositories
     public class RestConnection : IConnection
     {
         const string URI = "http://FelipeM1Pro:5001/";
-        const string TOKEN = "xz8wM6zr2RfF18GBM0B5yrkoo";
+        private string TOKEN = String.Empty;
+
+
+        public (bool, string) Login(string model, string json)
+        {
+            try
+            {
+                var client = new RestClient(URI);
+                var request = new RestRequest(model, Method.Post);
+                request.AddHeader("Content-Type", "application/json");
+                request.AddParameter("application/json", json, ParameterType.RequestBody);
+
+                var response = client.Execute(request);
+
+                if (!response.IsSuccessful)
+                    return (false, response.Content.Trim('\"'));
+
+                TOKEN = "Bearer " + response.Content.Trim('\"');
+                return (true, string.Empty);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Connection error: " + ex.Message, ex);
+            }
+        }
 
 
         public bool Delete(string model, string param)
@@ -17,7 +41,7 @@ namespace Fluxus.Infra.Repositories
             {
                 var client = new RestClient(URI);
                 var request = new RestRequest(model + param, Method.Delete);
-                request.AddHeader("Token", TOKEN);
+                request.AddHeader("Authorization", TOKEN);
 
                 var response = client.Execute(request);
 
@@ -38,7 +62,7 @@ namespace Fluxus.Infra.Repositories
             {
                 var client = new RestClient(URI);
                 var request = new RestRequest(model + param, Method.Get);
-                request.AddHeader("Token", TOKEN);
+                request.AddHeader("Authorization", TOKEN);
 
                 var response = client.Execute(request);
 
@@ -59,7 +83,7 @@ namespace Fluxus.Infra.Repositories
             {
                 var client = new RestClient(URI);
                 var request = new RestRequest(model, Method.Post);
-                request.AddHeader("Token", TOKEN);
+                request.AddHeader("Authorization", TOKEN);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddParameter("application/json", json, ParameterType.RequestBody);
 
@@ -87,7 +111,7 @@ namespace Fluxus.Infra.Repositories
             {
                 var client = new RestClient(URI);
                 var request = new RestRequest(model, Method.Put);
-                request.AddHeader("Token", TOKEN);
+                request.AddHeader("Authorization", TOKEN);
                 request.AddHeader("Content-Type", "application/json");
                 request.AddParameter("application/json", json, ParameterType.RequestBody);
 

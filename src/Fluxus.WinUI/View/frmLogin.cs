@@ -32,24 +32,16 @@ namespace Fluxus.WinUI.View
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var result = _userService.GetByUsername(txtUsuario.Text);
+            var userIn = new User(0, 0, false, false, false, txtUsuario.Text, txtSenha.Text, null);
+            var isAuthorized = _userService.Login(userIn);
 
-            if (result != null)
+            if (!isAuthorized.Item1)
             {
-                if (string.IsNullOrEmpty(((User)result.Value).UserName.ToString()))
-                {
-                    MessageBox.Show("Usuário não encontrado", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (((User)result.Value).UserPassword.ToString() != txtSenha.Text)
-                {
-                    MessageBox.Show("Senha incorreta", "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                MessageBox.Show(isAuthorized.Item2, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            User user = result.Value;
+            var user = _userService.GetByUsername(txtUsuario.Text).Value;
 
             Logged.Usr_nome = user.UserName;
             Logged.ProfessionalId = user.Id;

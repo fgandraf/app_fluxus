@@ -8,5 +8,6 @@ namespace Fluxus.Infra.Repositories.Contracts
         bool Put(string model, string json);
         bool Delete(string model, string param);
         int Post(string model, string json);
+        (bool, string) Login(string model, string json);
     }
 }

@@ -43,7 +43,7 @@ namespace Fluxus.WinUI
             services.AddScoped<IServiceOrderRepository, ServiceOrderRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IConnection, RestConnection>();
+            services.AddSingleton<IConnection, RestConnection>();
 
             services.AddScoped<BankBranchService>();
             services.AddScoped<InvoiceService>();

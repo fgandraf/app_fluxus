@@ -10,6 +10,10 @@ namespace Fluxus.App.Services
         public UserService(IUserRepository userRepository)
             => _repository = userRepository;
 
+        public (bool, string) Login(User user)
+            => _repository.Login(user);
+        
+
         public OperationResult<int> Insert(User user)
         {
             if (user == null)
@@ -22,6 +26,8 @@ namespace Fluxus.App.Services
 
             return OperationResult<int>.SuccessResult(id);
         }
+
+        
 
         public OperationResult Update(User user)
         {

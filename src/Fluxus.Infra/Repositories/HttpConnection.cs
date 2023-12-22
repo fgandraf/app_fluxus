@@ -10,8 +10,30 @@ namespace Fluxus.Infra.Repositories
     public class HttpConnection : IConnection
     {
         const string URI = "http://FelipeM1Pro:5001/";
-        const string TOKEN = "xz8wM6zr2RfF18GBM0B5yrkoo";
+        private string TOKEN = string.Empty;
 
+        public (bool, string) Login(string model, string json)
+        {
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    httpClient.BaseAddress = new Uri(URI);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var response = httpClient.PostAsync(model, content).Result;
+
+                    if (response.IsSuccessStatusCode == false)
+                        return (false, response.Content.ReadAsStringAsync().Result);
+
+                    TOKEN = "Bearer " + response.Content.ReadAsStringAsync().Result;
+                    return (true, string.Empty);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Connection error: " + ex);
+            }
+        }
 
         public string Get(string model, string param)
         {
@@ -20,7 +42,7 @@ namespace Fluxus.Infra.Repositories
                 using (var httpClient = new HttpClient())
                 {
                     httpClient.BaseAddress = new Uri(URI);
-                    httpClient.DefaultRequestHeaders.Add("Token", TOKEN);
+                    httpClient.DefaultRequestHeaders.Add("Authorization", TOKEN);
                     var response = httpClient.GetAsync(model + param).Result;
 
                     if (response.IsSuccessStatusCode)
@@ -43,7 +65,7 @@ namespace Fluxus.Infra.Repositories
                 using (var httpClient = new HttpClient())
                 {
                     httpClient.BaseAddress = new Uri(URI);
-                    httpClient.DefaultRequestHeaders.Add("Token", TOKEN);
+                    httpClient.DefaultRequestHeaders.Add("Authorization", TOKEN);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
                     var response = httpClient.PutAsync(model, content).Result;
 
@@ -67,7 +89,7 @@ namespace Fluxus.Infra.Repositories
                 using (var httpClient = new HttpClient())
                 {
                     httpClient.BaseAddress = new Uri(URI);
-                    httpClient.DefaultRequestHeaders.Add("Token", TOKEN);
+                    httpClient.DefaultRequestHeaders.Add("Authorization", TOKEN);
                     var response = httpClient.DeleteAsync(model + param).Result;
 
                     if (response.IsSuccessStatusCode == false)
@@ -90,7 +112,7 @@ namespace Fluxus.Infra.Repositories
                 using (var httpClient = new HttpClient())
                 {
                     httpClient.BaseAddress = new Uri(URI);
-                    httpClient.DefaultRequestHeaders.Add("Token", TOKEN);
+                    httpClient.DefaultRequestHeaders.Add("Authorization", TOKEN);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
                     var response = httpClient.PostAsync(model, content).Result;
 
@@ -111,6 +133,7 @@ namespace Fluxus.Infra.Repositories
             }
         }
 
+        
     }
 
 }

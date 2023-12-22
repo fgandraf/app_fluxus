@@ -11,6 +11,13 @@ namespace Fluxus.Infra.Repositories
         public UserRepository(IConnection connection)
             => _connection = connection;
 
+
+        public (bool, string) Login(User model)
+        {
+            string json = JsonConvert.SerializeObject(model);
+            return _connection.Login("v1/users/login", json);
+        }
+
         public int Insert(User model)
         {
             string json = JsonConvert.SerializeObject(model);
