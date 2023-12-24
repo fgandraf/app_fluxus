@@ -71,12 +71,10 @@ namespace Fluxus.WinUI.View
                 pnlFaturar.Show();
 
                 if (Logged.Rt)
-                    cboProfissional.SelectedValue = Convert.ToInt32(Logged.ProfessionalId);
+                    cboProfissional.SelectedValue = Logged.ProfessionalId;
                 else
                     cboProfissional.SelectedIndex = 0;
             }
-
-            cboProfissional.SelectedValue = Convert.ToInt32(Logged.ProfessionalId);
 
             GetAllOrders();
             _serviceProvider = serviceProvider;

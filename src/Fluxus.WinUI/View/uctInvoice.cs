@@ -5,6 +5,8 @@ using System.Globalization;
 using Microsoft.Extensions.DependencyInjection;
 using Fluxus.Infra.Records;
 using System.ComponentModel;
+using System.Windows.Forms;
+using Fluxus.Domain.Enums;
 
 namespace Fluxus.WinUI.View
 {
@@ -73,12 +75,6 @@ namespace Fluxus.WinUI.View
                     }
 
                 }
-                
-
-                
-
-                
-
 
                 string path = saveFileDialog.FileName;
 
@@ -98,10 +94,26 @@ namespace Fluxus.WinUI.View
                 using (var stream = new MemoryStream(profile.Logo))
                     logo = System.Drawing.Image.FromStream(stream);
 
-
+               
                 var serviceOrders = (List<ServiceOrderIndex>)dgvOS.DataSource;
-                var serviceTable = new DataTable();
                 
+                var serviceTable = new DataTable();
+                serviceTable.Columns.Add("Id", typeof(int));
+                serviceTable.Columns.Add("OrderDate", typeof(DateTime));
+                serviceTable.Columns.Add("ReferenceCode", typeof(string));
+                serviceTable.Columns.Add("Service", typeof(string));
+                serviceTable.Columns.Add("Professional", typeof(string));
+                serviceTable.Columns.Add("ProfessionalId", typeof(int));
+                serviceTable.Columns.Add("City", typeof(string));
+                serviceTable.Columns.Add("CustomerName", typeof(string));
+                serviceTable.Columns.Add("SurveyDate", typeof(DateTime));
+                serviceTable.Columns.Add("DoneDate", typeof(DateTime));
+                serviceTable.Columns.Add("ServiceAmount", typeof(decimal));
+                serviceTable.Columns.Add("MileageAllowance", typeof(decimal));
+                serviceTable.Columns.Add("Invoiced", typeof(bool));
+                serviceTable.Columns.Add("InvoiceId", typeof(int));
+                serviceTable.Columns.Add("Status", typeof(EnumStatus));
+
                 foreach (var serviceOrder in serviceOrders)
                 {
                     DataRow row = serviceTable.NewRow();
@@ -210,7 +222,7 @@ namespace Fluxus.WinUI.View
                 
                 if (closedByInvoiceId.Success)
                 {
-                    dgvOS.DataSource = new BindingList<ServiceOrderIndex>(closedByInvoiceId.Value);
+                    dgvOS.DataSource = (List<ServiceOrderIndex>)closedByInvoiceId.Value;
 
                     txtData.Text = date.ToShortDateString();
                     txtValorOS.Text = String.Format(new CultureInfo("pt-BR"), "{0:c}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);

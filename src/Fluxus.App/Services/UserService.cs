@@ -1,5 +1,6 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories.Contracts;
+using System;
 
 namespace Fluxus.App.Services
 {
@@ -10,8 +11,8 @@ namespace Fluxus.App.Services
         public UserService(IUserRepository userRepository)
             => _repository = userRepository;
 
-        public (bool, string) Login(User user)
-            => _repository.Login(user);
+        public (bool, string) Login(Object login)
+            => _repository.Login(login);
         
 
         public OperationResult<int> Insert(User user)

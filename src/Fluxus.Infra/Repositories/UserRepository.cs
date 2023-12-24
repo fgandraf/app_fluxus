@@ -1,6 +1,7 @@
 ﻿using Fluxus.Domain.Entities;
 using Fluxus.Infra.Repositories.Contracts;
 using Newtonsoft.Json;
+using System;
 
 namespace Fluxus.Infra.Repositories
 {
@@ -12,7 +13,7 @@ namespace Fluxus.Infra.Repositories
             => _connection = connection;
 
 
-        public (bool, string) Login(User model)
+        public (bool, string) Login(Object model)
         {
             string json = JsonConvert.SerializeObject(model);
             return _connection.Login("v1/users/login", json);

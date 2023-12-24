@@ -48,18 +48,14 @@ namespace Fluxus.WinUI.View
             txtTelefone2.Text = professional.Phone2;
             txtEmail.Text = professional.Email;
 
-            var result = _userService.GetByProfessionalId(professional.Id);
-            if (result.Success)
-            {
-                User user = result.Value;
-                _userId = user.Id;
-                chkRT.Checked = user.TechnicianResponsible;
-                chkRL.Checked = user.LegalResponsible;
-                chkUsrAtivo.Checked = user.UserActive;
-                txtUsrNome.Text = user.UserName;
-                txtUsrSenha.Text = user.UserPassword;
-                txtUsrSenha2.Text = user.UserPassword;
-            }
+            _userId = Logged.Id;
+            chkRT.Checked = Logged.Rt;
+            chkRL.Checked = Logged.Rl;
+            chkUsrAtivo.Checked = Logged.Usr_ativo;
+            txtUsrNome.Text = Logged.Usr_nome;
+            txtUsrSenha.Text = Logged.UsrPassword;
+            txtUsrSenha2.Text = Logged.UsrPassword;
+            
         }
 
         private void frmAddProfissional_Load(object sender, EventArgs e)
