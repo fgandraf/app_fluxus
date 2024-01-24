@@ -1,16 +1,16 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Models;
 using Fluxus.App.Services;
 using System.Text.RegularExpressions;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Infra.ExternalServices;
+using Fluxus.Infra.Services;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctAddBankBranch : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private EnumMethod _method;
+        private EMethod _method;
         private IServiceProvider _serviceProvider;
 
         public uctAddBankBranch(frmMain frm1, IServiceProvider serviceProvider)
@@ -19,7 +19,7 @@ namespace Fluxus.WinUI.View
 
             InitializeComponent();
             _frmPrincipal = frm1;
-            _method = EnumMethod.Insert;
+            _method = EMethod.Insert;
         }
 
         public uctAddBankBranch(string agencia, IServiceProvider serviceProvider)
@@ -27,19 +27,19 @@ namespace Fluxus.WinUI.View
             _serviceProvider = serviceProvider;
 
             InitializeComponent();
-            _method = EnumMethod.Insert;
+            _method = EMethod.Insert;
 
             this.Size = new System.Drawing.Size(650, 600);
             txtAgencia.Text = agencia;
         }
 
-        public uctAddBankBranch(frmMain frm1, BankBranch branch, IServiceProvider serviceProvider)
+        public uctAddBankBranch(frmMain frm1, Branch branch, IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
 
             InitializeComponent();
             _frmPrincipal = frm1;
-            _method = EnumMethod.Update;
+            _method = EMethod.Update;
 
             txtAgencia.Text = branch.Id;
             txtNome.Text = branch.Name;
@@ -60,7 +60,7 @@ namespace Fluxus.WinUI.View
 
         private void frmAddAgencia_Load(object sender, EventArgs e)
         {
-            if (_method == EnumMethod.Insert)
+            if (_method == EMethod.Insert)
             {
                 btnAddSave.Text = "&Adicionar";
                 txtAgencia.Focus();
@@ -74,7 +74,7 @@ namespace Fluxus.WinUI.View
             var service = _serviceProvider.GetService<BankBranchService>();
             var bankBranch = PopulateObject();
 
-            dynamic result = _method == EnumMethod.Insert ? service.Insert(bankBranch) : service.Update(bankBranch);
+            dynamic result = _method == EMethod.Insert ? service.Insert(bankBranch) : service.Update(bankBranch);
 
             if (result.Success)
                 btnCancelar_Click(sender, e);
@@ -100,7 +100,7 @@ namespace Fluxus.WinUI.View
 
             if (!String.IsNullOrEmpty(cep) && cep.Length == 8)
             {
-                var result = new ViaCep().GetViaCep(cep);
+                var result = new ViaCep().GetCep(cep);
                 if (result != null || !result.Erro)
                 {
                     txtEndereco.Text = result.Logradouro;
@@ -112,9 +112,9 @@ namespace Fluxus.WinUI.View
             }
         }
 
-        private BankBranch PopulateObject()
+        private Branch PopulateObject()
         {
-            BankBranch branch = new BankBranch
+            Branch branch = new Branch
             (
                 id : txtAgencia.Text,
                 name : txtNome.Text,

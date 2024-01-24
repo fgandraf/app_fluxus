@@ -1,5 +1,5 @@
-﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Repositories.Contracts;
+﻿using Fluxus.Domain.Models;
+using Fluxus.Domain.Contracts.Databases;
 using System.Collections.Generic;
 
 namespace Fluxus.App.Services

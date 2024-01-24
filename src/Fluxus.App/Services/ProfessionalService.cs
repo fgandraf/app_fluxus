@@ -1,6 +1,6 @@
-﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Records;
-using Fluxus.Infra.Repositories.Contracts;
+﻿using Fluxus.Domain.Models;
+using Fluxus.Domain.ViewModels;
+using Fluxus.Domain.Contracts.Databases;
 using System.Collections.Generic;
 
 namespace Fluxus.App.Services
@@ -88,14 +88,14 @@ namespace Fluxus.App.Services
             return OperationResult<Professional>.SuccessResult(professional);
         }
 
-        public OperationResult<List<ProfessionalIndex>> GetIndex()
+        public OperationResult<List<ProfessionalsIndexViewModel>> GetIndex()
         {
             var professionals = _professionalRepository.GetIndex();
 
             if (professionals == null)
-                return OperationResult<List<ProfessionalIndex>>.FailureResult("Não foi possível encontrar profissionais na base dados!");
+                return OperationResult<List<ProfessionalsIndexViewModel>>.FailureResult("Não foi possível encontrar profissionais na base dados!");
 
-            return OperationResult<List<ProfessionalIndex>>.SuccessResult(professionals);
+            return OperationResult<List<ProfessionalsIndexViewModel>>.SuccessResult(professionals);
         }
 
         public OperationResult<List<ProfessionalNameId>> GetTagNameid(bool addHeader)

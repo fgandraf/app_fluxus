@@ -1,13 +1,13 @@
 ﻿using System;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
-using Fluxus.Infra.Records;
+using Fluxus.Domain.ViewModels;
 
 namespace Fluxus.App.Services
 {
     public class ExcelService
     {
-        public void ExportToExcel(List<ServiceOrderIndex> serviceOrders)
+        public void ExportToExcel(List<OrdersIndexViewModel> serviceOrders)
         {
             var XcelApp = new Excel.Application();
             XcelApp.Application.Workbooks.Add(Type.Missing);

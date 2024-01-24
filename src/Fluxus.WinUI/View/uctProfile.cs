@@ -1,7 +1,7 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Models;
 using Fluxus.App.Services;
 using System.Drawing.Imaging;
-using Fluxus.Infra.ExternalServices;
+using Fluxus.Infra.Services;
 using System.Text.RegularExpressions;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +14,7 @@ namespace Fluxus.WinUI.View
         private ProfileService _profileService;
         private frmMain _frmPrincipal;
         private Image _actualLogo;
-        private EnumMethod _method;
+        private EMethod _method;
 
         public uctProfile(frmMain frm, IServiceProvider serviceProvider)
         {
@@ -30,11 +30,11 @@ namespace Fluxus.WinUI.View
             {
                 PopulateFields(profile.Value);
                 btnAddSave.Text = "&Salvar";
-                _method = EnumMethod.Update;
+                _method = EMethod.Update;
             }
             else
             {
-                _method = EnumMethod.Insert;
+                _method = EMethod.Insert;
             }
 
             if (Logged.Rl)
@@ -44,13 +44,15 @@ namespace Fluxus.WinUI.View
         private void btnAddSave_Click(object sender, EventArgs e)
         {
             var profile = PopulateObject();
+            var logo = PopulateLogo();
 
-            dynamic result = _method == EnumMethod.Insert ? _profileService.Insert(profile) : _profileService.Update(profile);
+            dynamic resultProfile = _method == EMethod.Insert ? _profileService.Insert(profile) : _profileService.Update(profile);
+            var resulLogo = _profileService.UpdateLogo(logo);
 
-            if (result.Success)
+            if (resultProfile.Success && resulLogo.Success)
                 MessageBox.Show("Dados alterados com sucesso!", "Dados Cadastrais", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-                MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(resultProfile.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             UpdateTradingNameButton();
             UpdateMainLogo();
@@ -68,7 +70,7 @@ namespace Fluxus.WinUI.View
 
             if (!String.IsNullOrEmpty(cep) && cep.Length == 8)
             {
-                var result = new ViaCep().GetViaCep(cep);
+                var result = new ViaCep().GetCep(cep);
                 if (result != null || !result.Erro)
                 {
                     txtEndereco.Text = result.Logradouro;
@@ -151,9 +153,12 @@ namespace Fluxus.WinUI.View
             dtpInicio.Value = profile.ContractStart;
             dtpTermino.Value = profile.ContractEnd;
 
-            if (profile.Logo != null)
+
+
+            var logo = _profileService.GetLogo();
+            if (logo.Value != null)
             {
-                using (var stream = new MemoryStream(profile.Logo))
+                using (var stream = new MemoryStream(logo.Value))
                     _actualLogo = Image.FromStream(stream);
             }
             picLogotipo.Image = _actualLogo;
@@ -161,14 +166,6 @@ namespace Fluxus.WinUI.View
 
         private Profile PopulateObject()
         {
-            byte[] logo;
-            using (var stream = new MemoryStream())
-            {
-                picLogotipo.Image.Save(stream, ImageFormat.Png);
-                logo = stream.ToArray();
-            }
-
-
             var profile = new Profile
             (
                 id : 1,
@@ -197,13 +194,25 @@ namespace Fluxus.WinUI.View
                 contractNumber : txtContrato.Text,
                 contractEstablished : dtpCelebrado.Value,
                 contractStart : dtpInicio.Value,
-                contractEnd : dtpTermino.Value,
-                logo: logo
+                contractEnd : dtpTermino.Value
             );
 
-            
-
             return profile;
+        }
+
+        private Object PopulateLogo()
+        {
+            byte[] logo;
+            using (var stream = new MemoryStream())
+            {
+                picLogotipo.Image.Save(stream, ImageFormat.Png);
+                logo = stream.ToArray();
+            }
+
+            return new
+            {
+                Base64Image = Convert.ToBase64String(logo)
+            };
         }
 
 

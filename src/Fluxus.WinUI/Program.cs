@@ -1,8 +1,8 @@
 using Fluxus.App.Services;
-using Fluxus.Infra.Repositories;
-using Fluxus.Infra.Repositories.Contracts;
+using Fluxus.Domain.Contracts.Databases;
 using Fluxus.WinUI.View;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.Infra.Databases.Api;
 
 namespace Fluxus.WinUI
 {

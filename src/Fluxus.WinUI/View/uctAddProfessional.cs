@@ -1,4 +1,4 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Models;
 using Fluxus.App.Services;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +10,7 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private readonly int _professionalId;
         private readonly int _userId;
-        private EnumMethod _method;
+        private EMethod _method;
         private IServiceProvider _serviceProvider;
         private UserService _userService;
         private ProfessionalService _professionalService;
@@ -23,7 +23,7 @@ namespace Fluxus.WinUI.View
 
             InitializeComponent();
             _frmPrincipal = frm1;
-            _method = EnumMethod.Insert;
+            _method = EMethod.Insert;
         }
 
         public uctAddProfessional(frmMain frm1, Professional professional, IServiceProvider serviceProvider)
@@ -34,7 +34,7 @@ namespace Fluxus.WinUI.View
 
             InitializeComponent();
             _frmPrincipal = frm1;
-            _method = EnumMethod.Update;
+            _method = EMethod.Update;
 
             _professionalId = professional.Id;
             txtCodigo.Text = professional.Tag;
@@ -60,7 +60,7 @@ namespace Fluxus.WinUI.View
 
         private void frmAddProfissional_Load(object sender, EventArgs e)
         {
-            if (_method == EnumMethod.Update)
+            if (_method == EMethod.Update)
             {
                 btnAddSave.Text = "&Salvar";
                 txtCodigo.Enabled = false;
@@ -79,7 +79,7 @@ namespace Fluxus.WinUI.View
             var professional = PopulateProfessional();
             var user = PopulateUser();
 
-            dynamic result = _method == EnumMethod.Insert ? _professionalService.Insert(professional, user) : _professionalService.Update(professional, user);
+            dynamic result = _method == EMethod.Insert ? _professionalService.Insert(professional, user) : _professionalService.Update(professional, user);
 
             if (result.Success)
                 btnCancelar_Click(sender, e);

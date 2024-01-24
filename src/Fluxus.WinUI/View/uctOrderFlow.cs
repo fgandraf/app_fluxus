@@ -1,7 +1,7 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Models;
 using System.Data;
 using Fluxus.App.Services;
-using Fluxus.Infra.Records;
+using Fluxus.Domain.ViewModels;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
@@ -13,7 +13,7 @@ namespace Fluxus.WinUI.View
         private frmMain _frmPrincipal;
         private Control _lastEnteredControl;
         private DataGridView _dgvOrigem;
-        private List<ServiceOrderOpen> _dtOSNFaturada;
+        private List<OrdersOpenViewModel> _dtOSNFaturada;
         private IServiceProvider _serviceProvider;
         private ServiceOrderService _serviceOrderService;
 
@@ -118,7 +118,7 @@ namespace Fluxus.WinUI.View
 
             if (sourcerow >= 0)
             {
-                var status = (EnumStatus)Convert.ToInt32(dgvDestino.Tag);
+                var status = (EStatus)Convert.ToInt32(dgvDestino.Tag);
 
                 int id = Convert.ToInt32(_dgvOrigem.Rows[sourcerow].Cells[0].Value);
 
@@ -216,12 +216,12 @@ namespace Fluxus.WinUI.View
             var professionalId = cboProfissional.SelectedValue.ToString();
             var statusInt = Convert.ToInt32(dgv.Tag.ToString());
 
-            List<ServiceOrderOpen> dvOS;
+            List<OrdersOpenViewModel> dvOS;
 
             if (cboProfissional.SelectedIndex == 0)
-            dvOS = new BindingList<ServiceOrderOpen>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
+            dvOS = new BindingList<OrdersOpenViewModel>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
             else
-                dvOS = new BindingList<ServiceOrderOpen>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
+                dvOS = new BindingList<OrdersOpenViewModel>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
 
             if (dvOS.Count > 0)
                 dgv.ContextMenuStrip = menuContext;

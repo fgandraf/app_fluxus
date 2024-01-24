@@ -1,7 +1,7 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Models;
 using Fluxus.App.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Infra.Records;
+using Fluxus.Domain.ViewModels;
 using System.ComponentModel;
 
 namespace Fluxus.WinUI.View
@@ -18,7 +18,7 @@ namespace Fluxus.WinUI.View
 
             InitializeComponent();
             _frmPrincipal = frm1;
-            _serviceService = _serviceProvider.GetService<ServiceService>();
+            _serviceService = serviceProvider.GetService<ServiceService>();
 
             if (Logged.Rl == false)
             {
@@ -28,7 +28,7 @@ namespace Fluxus.WinUI.View
             }
 
             var services = _serviceService.GetAll(false).Value;
-            dgvServices.DataSource = new BindingList<ServiceIndex>(services);
+            dgvServices.DataSource = new BindingList<ServicesIndexViewModel>(services);
 
             if (dgvServices.Rows.Count == 0)
             {

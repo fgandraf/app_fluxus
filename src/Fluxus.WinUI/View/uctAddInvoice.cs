@@ -1,8 +1,8 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Models;
 using System.Globalization;
 using Fluxus.App.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Infra.Records;
+using Fluxus.Domain.ViewModels;
 using System.ComponentModel;
 using System.Collections;
 
@@ -30,7 +30,7 @@ namespace Fluxus.WinUI.View
             var orders = serviceOrderService.GetOpenDone();
             if (orders.Success)
             {
-                dgvOS.DataSource = new BindingList<ServiceOrderIndex>(orders.Value);
+                dgvOS.DataSource = new BindingList<OrdersIndexViewModel>(orders.Value);
                 Calculate();
                 txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
             }

@@ -1,5 +1,6 @@
-﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Repositories.Contracts;
+﻿using Fluxus.Domain.Models;
+using Fluxus.Domain.Contracts.Databases;
+using System;
 
 namespace Fluxus.App.Services
 {
@@ -38,6 +39,17 @@ namespace Fluxus.App.Services
 
             if (!_repository.Update(profile))
                 return OperationResult.FailureResult("Não foi possível alterar o perfil na base dados!");
+
+            return OperationResult.SuccessResult();
+        }
+
+        public OperationResult UpdateLogo(Object model)
+        {
+            if (model == null)
+                return OperationResult.FailureResult("Não foi possível alterar o logo!");
+
+            if (!_repository.UpdateLogo(model))
+                return OperationResult.FailureResult("Não foi possível alterar o logo na base dados!");
 
             return OperationResult.SuccessResult();
         }

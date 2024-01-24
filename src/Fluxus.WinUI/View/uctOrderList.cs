@@ -1,7 +1,7 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Models;
 using System.Data;
 using Fluxus.App.Services;
-using Fluxus.Infra.Records;
+using Fluxus.Domain.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
@@ -9,7 +9,7 @@ namespace Fluxus.WinUI.View
     public partial class uctOrderList : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private List<ServiceOrderIndex> _dtOS;
+        private List<OrdersIndexViewModel> _dtOS;
         private string _currentFilter;
         private IServiceProvider _serviceProvider;
         private ServiceOrderService _serviceOrderService;
@@ -147,7 +147,7 @@ namespace Fluxus.WinUI.View
         {
             if (dgvOS.Rows.Count > 0)
             {
-                var serviceOrders = (List<ServiceOrderIndex>)dgvOS.DataSource;
+                var serviceOrders = (List<OrdersIndexViewModel>)dgvOS.DataSource;
                 new ExcelService().ExportToExcel(serviceOrders);
             }
         }

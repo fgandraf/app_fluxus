@@ -1,6 +1,6 @@
-﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Records;
-using Fluxus.Infra.Repositories.Contracts;
+﻿using Fluxus.Domain.Models;
+using Fluxus.Domain.ViewModels;
+using Fluxus.Domain.Contracts.Databases;
 using System.Collections.Generic;
 
 namespace Fluxus.App.Services
@@ -14,7 +14,7 @@ namespace Fluxus.App.Services
         public BankBranchService(IBankBranchRepository repository)
             => _repository = repository;
 
-        public OperationResult<int> Insert(BankBranch bankBranch)
+        public OperationResult<int> Insert(Branch bankBranch)
         {
             if (bankBranch == null)
                 return OperationResult<int>.FailureResult("Não foi possível incluir a agência bancária!");
@@ -32,7 +32,7 @@ namespace Fluxus.App.Services
             return OperationResult<int>.SuccessResult(id);
         }
 
-        public OperationResult Update(BankBranch bankBranch)
+        public OperationResult Update(Branch bankBranch)
         {
             if (bankBranch == null || bankBranch.Id == null)
                 return OperationResult.FailureResult("Não foi possível alterar a agência bancária!");
@@ -54,24 +54,24 @@ namespace Fluxus.App.Services
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult<BankBranch> GetById(string id)
+        public OperationResult<Branch> GetById(string id)
         {
             var branch = _repository.GetById(id);
 
             if (branch == null)
-                return OperationResult<BankBranch>.FailureResult("Não foi possível encontrar a agência bancária!");
+                return OperationResult<Branch>.FailureResult("Não foi possível encontrar a agência bancária!");
 
-            return OperationResult<BankBranch>.SuccessResult(branch);
+            return OperationResult<Branch>.SuccessResult(branch);
         }
             
-        public OperationResult<List<BankBranchIndex>> GetIndex()
+        public OperationResult<List<BranchesIndexViewModel>> GetIndex()
         {
             var branches = _repository.GetIndex();
 
             if (branches == null)
-                return OperationResult<List<BankBranchIndex>>.FailureResult("Não foi possível encontrar agências bancárias na base de dados!");
+                return OperationResult<List<BranchesIndexViewModel>>.FailureResult("Não foi possível encontrar agências bancárias na base de dados!");
 
-            return OperationResult<List<BankBranchIndex>>.SuccessResult(branches);
+            return OperationResult<List<BranchesIndexViewModel>>.SuccessResult(branches);
         }
 
 

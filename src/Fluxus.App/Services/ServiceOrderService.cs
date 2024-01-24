@@ -1,6 +1,6 @@
-﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Records;
-using Fluxus.Infra.Repositories.Contracts;
+﻿using Fluxus.Domain.Models;
+using Fluxus.Domain.ViewModels;
+using Fluxus.Domain.Contracts.Databases;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -16,7 +16,7 @@ namespace Fluxus.App.Services
             => _repository = repository;
 
 
-        public OperationResult<int> Insert(ServiceOrder serviceOrder)
+        public OperationResult<int> Insert(Order serviceOrder)
         {
             if (serviceOrder == null)
                 return OperationResult<int>.FailureResult("Não foi possível incluir a ordem de serviço!");
@@ -34,7 +34,7 @@ namespace Fluxus.App.Services
             return OperationResult<int>.SuccessResult(id);
         }
 
-        public OperationResult Update(ServiceOrder serviceOrder)
+        public OperationResult Update(Order serviceOrder)
         {
             if (serviceOrder == null)
                 return OperationResult<int>.FailureResult("Não foi possível incluir a ordem de serviço!");
@@ -64,50 +64,50 @@ namespace Fluxus.App.Services
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult<ServiceOrder> GetById(int id)
+        public OperationResult<Order> GetById(int id)
         {
             var serviceOrder = _repository.GetById(id);
 
             if (serviceOrder == null)
-                return OperationResult<ServiceOrder>.FailureResult("Não foi possível encontrar a Ordem de Serviço!");
+                return OperationResult<Order>.FailureResult("Não foi possível encontrar a Ordem de Serviço!");
 
-            return OperationResult<ServiceOrder>.SuccessResult(serviceOrder);
+            return OperationResult<Order>.SuccessResult(serviceOrder);
         }
 
-        public OperationResult<List<ServiceOrderOpen>> GetOrdensDoFluxo()
+        public OperationResult<List<OrdersOpenViewModel>> GetOrdensDoFluxo()
         {
             var orders = _repository.GetIndexOpen();
             if (orders == null)
-                return OperationResult<List<ServiceOrderOpen>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+                return OperationResult<List<OrdersOpenViewModel>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
 
-            return OperationResult<List<ServiceOrderOpen>>.SuccessResult(orders);
+            return OperationResult<List<OrdersOpenViewModel>>.SuccessResult(orders);
         }
 
-        public OperationResult<List<ServiceOrderIndex>> GetOpenDone()
+        public OperationResult<List<OrdersIndexViewModel>> GetOpenDone()
         {
             var orders = _repository.GetOpenDone();
             if (orders == null)
-                return OperationResult<List<ServiceOrderIndex>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+                return OperationResult<List<OrdersIndexViewModel>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
 
-            return OperationResult<List<ServiceOrderIndex>>.SuccessResult(orders);
+            return OperationResult<List<OrdersIndexViewModel>>.SuccessResult(orders);
         }
 
-        public OperationResult<List<ServiceOrderIndex>> GetOrdensFaturadasDoCodigo(int invoiceId)
+        public OperationResult<List<OrdersIndexViewModel>> GetOrdensFaturadasDoCodigo(int invoiceId)
         { 
             var orders =_repository.GetClosedByInvoiceId(invoiceId);
             if (orders == null)
-                return OperationResult<List<ServiceOrderIndex>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+                return OperationResult<List<OrdersIndexViewModel>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
 
-            return OperationResult<List<ServiceOrderIndex>>.SuccessResult(orders);
+            return OperationResult<List<OrdersIndexViewModel>>.SuccessResult(orders);
         }
 
-        public OperationResult<List<ServiceOrderIndex>> GetOrdensComFiltro(string filter)
+        public OperationResult<List<OrdersIndexViewModel>> GetOrdensComFiltro(string filter)
         { 
             var orders = _repository.GetFiltered(filter);
             if (orders == null)
-                return OperationResult<List<ServiceOrderIndex>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+                return OperationResult<List<OrdersIndexViewModel>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
 
-            return OperationResult<List<ServiceOrderIndex>>.SuccessResult(orders);
+            return OperationResult<List<OrdersIndexViewModel>>.SuccessResult(orders);
         }
 
         public OperationResult<List<ProfessionalNameId>> GetProfessionalByInvoiceId(int invoiceId)

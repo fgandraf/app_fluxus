@@ -1,5 +1,5 @@
 ﻿using Fluxus.App.Services;
-using Fluxus.Domain.Entities;
+using Fluxus.Domain.Models;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.InteropServices;
 

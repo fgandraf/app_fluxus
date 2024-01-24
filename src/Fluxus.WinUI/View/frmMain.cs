@@ -1,6 +1,6 @@
 ﻿using Fluxus.App.Services;
 using Fluxus.App;
-using Fluxus.Domain.Entities;
+using Fluxus.Domain.Models;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
@@ -27,7 +27,7 @@ namespace Fluxus.WinUI.View
             OperationResult<string> fantasia = null;
             await Task.Run(() => fantasia = profileService.GetTradingName());
             if (fantasia.Success)
-                btnDadosCadastrais.Text = fantasia.Value;
+                btnDadosCadastrais.Text = fantasia.Value.Trim('\"');
             else
                 btnDadosCadastrais.Text = "Dados Cadastrais";
 

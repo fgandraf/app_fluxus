@@ -1,6 +1,6 @@
-﻿using Fluxus.Domain.Entities;
-using Fluxus.Infra.Records;
-using Fluxus.Infra.Repositories.Contracts;
+﻿using Fluxus.Domain.Models;
+using Fluxus.Domain.ViewModels;
+using Fluxus.Domain.Contracts.Databases;
 using System.Collections.Generic;
 
 namespace Fluxus.App.Services
@@ -62,17 +62,17 @@ namespace Fluxus.App.Services
             return OperationResult<Service>.SuccessResult(service);
         }
 
-        public OperationResult<List<ServiceIndex>> GetAll(bool addHeader)
+        public OperationResult<List<ServicesIndexViewModel>> GetAll(bool addHeader)
         {
             var services = _repository.GetAll();
 
             if (services == null)
-                return OperationResult<List<ServiceIndex>>.FailureResult("Não foi possível encontrar atividades na base de dados!");
+                return OperationResult<List<ServicesIndexViewModel>>.FailureResult("Não foi possível encontrar atividades na base de dados!");
 
             if (addHeader)
-                services.Insert(0, new ServiceIndex { Tag = "--TODAS--" });
+                services.Insert(0, new ServicesIndexViewModel { Tag = "--TODAS--" });
             
-            return OperationResult<List<ServiceIndex>>.SuccessResult(services);
+            return OperationResult<List<ServicesIndexViewModel>>.SuccessResult(services);
 
         }
 

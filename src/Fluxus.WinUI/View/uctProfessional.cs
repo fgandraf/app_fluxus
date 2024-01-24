@@ -1,7 +1,7 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Models;
 using Fluxus.App.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Infra.Records;
+using Fluxus.Domain.ViewModels;
 using System.ComponentModel;
 
 namespace Fluxus.WinUI.View
@@ -36,7 +36,7 @@ namespace Fluxus.WinUI.View
             }
 
 
-            dgvProfessionals.DataSource = new BindingList<ProfessionalIndex>(profissionais.Value);
+            dgvProfessionals.DataSource = new BindingList<ProfessionalsIndexViewModel>(profissionais.Value);
 
             if (dgvProfessionals.Rows.Count == 0)
             {

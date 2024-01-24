@@ -1,8 +1,8 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Models;
 using Fluxus.App.Services;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Infra.Records;
+using Fluxus.Domain.ViewModels;
 using System.Globalization;
 
 namespace Fluxus.WinUI.View
@@ -13,7 +13,7 @@ namespace Fluxus.WinUI.View
         private string _formChild;
         private string _agencia;
         private int _id;
-        private EnumMethod _method;
+        private EMethod _method;
         private IServiceProvider _serviceProvider;
         private ServiceOrderService _serviceOrderService;
 
@@ -24,7 +24,7 @@ namespace Fluxus.WinUI.View
             _serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
             InitializeComponent();
 
-            _method = EnumMethod.Insert;
+            _method = EMethod.Insert;
 
             _formMain = formMain;
             _formChild = frmChild;
@@ -50,10 +50,10 @@ namespace Fluxus.WinUI.View
                 cboProfissional.Enabled = false;
         }
 
-        public uctAddServiceOrder(frmMain formMain, string frmChild, ServiceOrder serviceOrder, IServiceProvider serviceProvider) : this(formMain, frmChild, serviceProvider)
+        public uctAddServiceOrder(frmMain formMain, string frmChild, Order serviceOrder, IServiceProvider serviceProvider) : this(formMain, frmChild, serviceProvider)
         {
 
-            _method = EnumMethod.Update;
+            _method = EMethod.Update;
             btnAddSave.Text = "&Alterar";
             PopulateFromModel(serviceOrder);
 
@@ -63,7 +63,7 @@ namespace Fluxus.WinUI.View
 
         private void frmAddOS_Load(object sender, EventArgs e)
         {
-            if (_method == EnumMethod.Insert)
+            if (_method == EMethod.Insert)
             {
                 cboCidade.SelectedIndex = -1;
                 cboAtividade.SelectedIndex = -1;
@@ -95,7 +95,7 @@ namespace Fluxus.WinUI.View
             var service = _serviceProvider.GetService<ServiceOrderService>();
             var serviceOrder = PopulateObject();
 
-            var result = _method == EnumMethod.Insert ? service.Insert(serviceOrder) : service.Update(serviceOrder);
+            var result = _method == EMethod.Insert ? service.Insert(serviceOrder) : service.Update(serviceOrder);
 
             if (result.Success)
                 btnCancelar_Click(sender, e);
@@ -158,7 +158,7 @@ namespace Fluxus.WinUI.View
             txtRef2.Focus();
         }
 
-        private void PopulateFromModel(ServiceOrder serviceOrder)
+        private void PopulateFromModel(Order serviceOrder)
         {
             _id = serviceOrder.Id;
             txtRef0.Text = serviceOrder.ReferenceCode.Substring(0, 4);
@@ -179,11 +179,11 @@ namespace Fluxus.WinUI.View
             txtNomeContato.Text = serviceOrder.ContactName;
             txtTelefoneContato.Text = serviceOrder.ContactPhone;
             txtCoordenada.Text = serviceOrder.Coordinates;
-            if (serviceOrder.Status == EnumStatus.RECEBIDA)
+            if (serviceOrder.Status == EStatus.RECEBIDA)
                 rbtRecebida.Checked = true;
-            else if (serviceOrder.Status == EnumStatus.PENDENTE)
+            else if (serviceOrder.Status == EStatus.PENDENTE)
                 rbtPendente.Checked = true;
-            else if (serviceOrder.Status == EnumStatus.VISTORIADA)
+            else if (serviceOrder.Status == EStatus.VISTORIADA)
                 rbtVistoriada.Checked = true;
             else
                 rbtConcluida.Checked = true;
@@ -195,24 +195,24 @@ namespace Fluxus.WinUI.View
                 dtpDataConcluida.Value = (DateTime)serviceOrder.DoneDate;
         }
 
-        private ServiceOrder PopulateObject()
+        private Order PopulateObject()
         {
             string referenceCode = string.Format("{0}.{1}.{2}/{3}.{4}.{5}.{6}", txtRef0.Text, txtRef1.Text, txtRef2.Text, txtRef3.Text, txtRef4.Text, txtRef5.Text, txtRef6.Text);
 
-            EnumStatus status;
+            EStatus status;
             if (rbtRecebida.Checked)
-                status = EnumStatus.RECEBIDA;
+                status = EStatus.RECEBIDA;
             else if (rbtPendente.Checked)
-                status = EnumStatus.PENDENTE;
+                status = EStatus.PENDENTE;
             else if (rbtVistoriada.Checked)
-                status = EnumStatus.VISTORIADA;
+                status = EStatus.VISTORIADA;
             else
-                status = EnumStatus.CONCLUIDA;
+                status = EStatus.CONCLUIDA;
 
             string professionalId = cboProfissional.SelectedValue == null ? String.Empty : cboProfissional.SelectedValue.ToString();
             string serviceId = cboAtividade.SelectedValue == null ? String.Empty : cboAtividade.SelectedValue.ToString();
 
-            ServiceOrder serviceOrder = new ServiceOrder
+            Order serviceOrder = new Order
             (
                 id: _id,
                 referenceCode: referenceCode,
@@ -261,7 +261,7 @@ namespace Fluxus.WinUI.View
 
         private void GetServiceName(object sender, EventArgs e)
         {
-            var source = (List<ServiceIndex>)cboAtividade.DataSource;
+            var source = (List<ServicesIndexViewModel>)cboAtividade.DataSource;
             var service = source.FirstOrDefault(item => item.Tag == cboAtividade.Text);
 
             lblAtividadeNome.Text = service.Description;

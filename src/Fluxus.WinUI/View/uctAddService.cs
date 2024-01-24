@@ -1,5 +1,5 @@
 ﻿using Fluxus.App.Services;
-using Fluxus.Domain.Entities;
+using Fluxus.Domain.Models;
 using Fluxus.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,7 +9,7 @@ namespace Fluxus.WinUI.View
     {
         private readonly frmMain _frmPrincipal;
         private readonly int _id;
-        private EnumMethod _method;
+        private EMethod _method;
         private IServiceProvider _serviceProvider;
 
         public uctAddService(frmMain frm1, IServiceProvider serviceProvider)
@@ -18,7 +18,7 @@ namespace Fluxus.WinUI.View
 
             InitializeComponent();
             _frmPrincipal = frm1;
-            _method = EnumMethod.Insert;
+            _method = EMethod.Insert;
         }
 
         public uctAddService(frmMain frm1, Service service, IServiceProvider serviceProvider)
@@ -27,7 +27,7 @@ namespace Fluxus.WinUI.View
 
             InitializeComponent();
             _frmPrincipal = frm1;
-            _method = EnumMethod.Update;
+            _method = EMethod.Update;
 
             _id = service.Id;
             txtCodigo.Text = service.Tag;
@@ -38,7 +38,7 @@ namespace Fluxus.WinUI.View
 
         private void frmAddAtividade_Load(object sender, EventArgs e)
         {
-            if (_method == EnumMethod.Update)
+            if (_method == EMethod.Update)
             {
                 btnAddSave.Text = "&Salvar";
                 txtCodigo.Enabled = false;
@@ -54,7 +54,7 @@ namespace Fluxus.WinUI.View
             
             var service = PopulateObject();
 
-            dynamic result = _method == EnumMethod.Insert ? serviceService.Insert(service) : serviceService.Update(service);
+            dynamic result = _method == EMethod.Insert ? serviceService.Insert(service) : serviceService.Update(service);
 
             if (result.Success)
                 btnCancelar_Click(sender, e);

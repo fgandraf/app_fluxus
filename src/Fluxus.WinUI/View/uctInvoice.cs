@@ -1,12 +1,11 @@
-﻿using Fluxus.Domain.Entities;
+﻿using Fluxus.Domain.Models;
 using System.Data;
 using Fluxus.App.Services;
+using Fluxus.Infra.Services;
 using System.Globalization;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Infra.Records;
-using System.ComponentModel;
-using System.Windows.Forms;
-using Fluxus.Domain.Enums;
+using Fluxus.Domain.ViewModels;
+using System.Diagnostics;
 
 namespace Fluxus.WinUI.View
 {
@@ -14,32 +13,33 @@ namespace Fluxus.WinUI.View
     {
         private decimal _subtotalOs = 0.00m;
         private decimal _subtotalDesloc = 0.00m;
-        private IServiceProvider _serviceProvider;
 
-        private InvoiceService _invoiceService;
+        private readonly InvoiceService _invoiceService;
+        private readonly ProfileService _profileService;
+        private readonly ServiceOrderService _orderService;
 
         public uctInvoice(IServiceProvider serviceProvider)
         {
-            _serviceProvider = serviceProvider;
+            _profileService = serviceProvider.GetService<ProfileService>();
+            _orderService = serviceProvider.GetService<ServiceOrderService>();
+            _invoiceService = serviceProvider.GetService<InvoiceService>();
 
             InitializeComponent();
-            _invoiceService = _serviceProvider.GetService<InvoiceService>();
+        }
 
+        private void frmInvoice_Load(object sender, EventArgs e)
+        {
             if (Logged.Rl)
             {
                 btnRemoverOs.Show();
                 btnExcluir.Show();
             }
 
-            var invoiceService = _serviceProvider.GetService<InvoiceService>();
-            var invoices = invoiceService.GetAll();
+            var invoices = _invoiceService.GetAll();
 
             if (invoices.Success)
-             dgvFaturas.DataSource = invoices.Value;
-        }
+                dgvFaturas.DataSource = invoices.Value;
 
-        private void frmInvoice_Load(object sender, EventArgs e)
-        {
             if (dgvFaturas.Rows.Count > 0)
             {
                 tblFaturas.Show();
@@ -52,94 +52,36 @@ namespace Fluxus.WinUI.View
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                int invoiceId = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
+                var invoiceId = (int)dgvFaturas.CurrentRow.Cells["id"].Value;
+                var professionals = _orderService.GetProfessionalByInvoiceId(invoiceId);
+                var profile = _profileService.GetToPrint();
 
-                var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
-
-
-                var professionals = serviceOrderService.GetProfessionalByInvoiceId(invoiceId);
-                DataTable professionalsTable = new DataTable();
-
-                if (professionals.Success)
+                if (!profile.Success)
                 {
-                    
-                    professionalsTable.Columns.Add("ProfessionalId", typeof(int));
-                    professionalsTable.Columns.Add("Nameid", typeof(string));
-
-                    foreach (var professional in professionals.Value)
-                    {
-                        DataRow row = professionalsTable.NewRow();
-                        row["ProfessionalId"] = professional.ProfessionalId;
-                        row["Nameid"] = professional.Nameid;
-                        professionalsTable.Rows.Add(row);
-                    }
-
-                }
-
-                string path = saveFileDialog.FileName;
-
-
-                var profileService = _serviceProvider.GetService<ProfileService>();
-                var result = profileService.GetToPrint();
-
-                if (!result.Success)
-                {
-                    MessageBox.Show(result.Message, "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(profile.Message, "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
                 
-                var profile = result.Value;
-                Image logo;
-                using (var stream = new MemoryStream(profile.Logo))
-                    logo = System.Drawing.Image.FromStream(stream);
-
-               
-                var serviceOrders = (List<ServiceOrderIndex>)dgvOS.DataSource;
-                
-                var serviceTable = new DataTable();
-                serviceTable.Columns.Add("Id", typeof(int));
-                serviceTable.Columns.Add("OrderDate", typeof(DateTime));
-                serviceTable.Columns.Add("ReferenceCode", typeof(string));
-                serviceTable.Columns.Add("Service", typeof(string));
-                serviceTable.Columns.Add("Professional", typeof(string));
-                serviceTable.Columns.Add("ProfessionalId", typeof(int));
-                serviceTable.Columns.Add("City", typeof(string));
-                serviceTable.Columns.Add("CustomerName", typeof(string));
-                serviceTable.Columns.Add("SurveyDate", typeof(DateTime));
-                serviceTable.Columns.Add("DoneDate", typeof(DateTime));
-                serviceTable.Columns.Add("ServiceAmount", typeof(decimal));
-                serviceTable.Columns.Add("MileageAllowance", typeof(decimal));
-                serviceTable.Columns.Add("Invoiced", typeof(bool));
-                serviceTable.Columns.Add("InvoiceId", typeof(int));
-                serviceTable.Columns.Add("Status", typeof(EnumStatus));
-
-                foreach (var serviceOrder in serviceOrders)
+                if (!professionals.Success)
                 {
-                    DataRow row = serviceTable.NewRow();
+                    MessageBox.Show(professionals.Message, "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
 
-                    row["Id"] = serviceOrder.Id;
-                    row["OrderDate"] = serviceOrder.OrderDate;
-                    row["ReferenceCode"] = serviceOrder.ReferenceCode;
-                    row["Professional"] = serviceOrder.Professional;
-                    row["ProfessionalId"] = serviceOrder.ProfessionalId;
-                    row["Service"] = serviceOrder.Service;
-                    row["City"] = serviceOrder.City;
-                    row["CustomerName"] = serviceOrder.CustomerName;
-                    row["SurveyDate"] = serviceOrder.SurveyDate;
-                    row["DoneDate"] = serviceOrder.DoneDate;
-                    row["ServiceAmount"] = serviceOrder.ServiceAmount;
-                    row["MileageAllowance"] = serviceOrder.MileageAllowance;
-                    row["Invoiced"] = serviceOrder.Invoiced;
-                    row["InvoiceId"] = serviceOrder.InvoiceId;
-                    row["Status"] = serviceOrder.Status;
-                    serviceTable.Rows.Add(row);
                 }
 
+                var report = new PdfReportViewModel
+                {
+                    Logo = _profileService.GetLogo().Value,
+                    CompanyName = profile.Value.CompanyName,
+                    Cnpj = profile.Value.Cnpj,
+                    ContractNotice = profile.Value.ContractNotice,
+                    ContractNumber = profile.Value.ContractNumber,
+                    Orders = (List<OrdersIndexViewModel>)dgvOS.DataSource,
+                    Professionals = professionals.Value,
+                    Path = saveFileDialog.FileName
+                };
 
-
-
-                new ReportService().PrintPDF(logo, profile, professionalsTable, serviceTable, path);
+                new TextSharpPdf().PrintPdf(report);
             }
         }
 
@@ -214,15 +156,13 @@ namespace Fluxus.WinUI.View
         {
             if (dgvFaturas.Rows.Count > 0)
             {
-                var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
-
                 int selectedInvoiceId = Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value);
                 var date = Convert.ToDateTime(dgvFaturas.CurrentRow.Cells["data"].Value);
-                var closedByInvoiceId = serviceOrderService.GetOrdensFaturadasDoCodigo(selectedInvoiceId);
+                var closedByInvoiceId = _orderService.GetOrdensFaturadasDoCodigo(selectedInvoiceId);
                 
                 if (closedByInvoiceId.Success)
                 {
-                    dgvOS.DataSource = (List<ServiceOrderIndex>)closedByInvoiceId.Value;
+                    dgvOS.DataSource = closedByInvoiceId.Value;
 
                     txtData.Text = date.ToShortDateString();
                     txtValorOS.Text = String.Format(new CultureInfo("pt-BR"), "{0:c}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);
