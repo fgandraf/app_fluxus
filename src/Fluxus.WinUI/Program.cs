@@ -1,8 +1,8 @@
-using Fluxus.App.Services;
-using Fluxus.Domain.Contracts.Databases;
+using Fluxus.Core.Contracts.Databases;
 using Fluxus.WinUI.View;
 using Microsoft.Extensions.DependencyInjection;
 using Fluxus.Infra.Databases.Api;
+using Fluxus.UseCases;
 
 namespace Fluxus.WinUI
 {
@@ -36,22 +36,22 @@ namespace Fluxus.WinUI
         {
             var services = new ServiceCollection();
 
-            services.AddScoped<IBankBranchRepository, BankBranchRepository>();
+            services.AddScoped<IBranchRepository, BranchRepository>();
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
             services.AddScoped<IProfessionalRepository, ProfessionalRepository>();
             services.AddScoped<IProfileRepository, ProfileRepository>();
-            services.AddScoped<IServiceOrderRepository, ServiceOrderRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddSingleton<IConnection, RestConnection>();
+            services.AddSingleton<IConnection, HttpConnection>();
 
-            services.AddScoped<BankBranchService>();
-            services.AddScoped<InvoiceService>();
-            services.AddScoped<ProfessionalService>();
-            services.AddScoped<ProfileService>();
-            services.AddScoped<ServiceOrderService>();
-            services.AddScoped<ServiceService>();
-            services.AddScoped<UserService>();
+            services.AddScoped<BranchUseCases>();
+            services.AddScoped<InvoiceUseCases>();
+            services.AddScoped<ProfessionalUseCases>();
+            services.AddScoped<ProfileUseCases>();
+            services.AddScoped<OrderUseCases>();
+            services.AddScoped<ServiceUseCases>();
+            services.AddScoped<UserUseCases>();
 
             return services;
         }

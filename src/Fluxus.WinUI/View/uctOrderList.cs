@@ -1,8 +1,9 @@
-﻿using Fluxus.Domain.Models;
+﻿using Fluxus.Core.Models;
 using System.Data;
-using Fluxus.App.Services;
-using Fluxus.Domain.ViewModels;
+using Fluxus.Core.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.Infra.Services;
+using Fluxus.UseCases;
 
 namespace Fluxus.WinUI.View
 {
@@ -12,7 +13,7 @@ namespace Fluxus.WinUI.View
         private List<OrdersIndexViewModel> _dtOS;
         private string _currentFilter;
         private IServiceProvider _serviceProvider;
-        private ServiceOrderService _serviceOrderService;
+        private OrderUseCases _serviceOrderService;
 
 
         public uctOrderList(frmMain frm1, IServiceProvider serviceProvider)
@@ -20,11 +21,11 @@ namespace Fluxus.WinUI.View
             _serviceProvider = serviceProvider;
 
             InitializeComponent();
-            _serviceOrderService = serviceProvider.GetService<ServiceOrderService>();
+            _serviceOrderService = serviceProvider.GetService<OrderUseCases>();
 
             _frmPrincipal = frm1;
 
-            var professionalService = _serviceProvider.GetService<ProfessionalService>();
+            var professionalService = _serviceProvider.GetService<ProfessionalUseCases>();
             var professionals = professionalService.GetTagNameid(true);
             if (professionals == null)
             {
@@ -38,7 +39,7 @@ namespace Fluxus.WinUI.View
                 cboCidade.DataSource = cities.Value;
             
 
-            var serviceService = _serviceProvider.GetService<ServiceService>();
+            var serviceService = _serviceProvider.GetService<ServiceUseCases>();
             cboAtividade.DataSource = serviceService.GetAll(true).Value;
 
             CleanFilter();
@@ -148,7 +149,7 @@ namespace Fluxus.WinUI.View
             if (dgvOS.Rows.Count > 0)
             {
                 var serviceOrders = (List<OrdersIndexViewModel>)dgvOS.DataSource;
-                new ExcelService().ExportToExcel(serviceOrders);
+                new ExcelInterop().ExportToExcel(serviceOrders);
             }
         }
 

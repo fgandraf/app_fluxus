@@ -1,5 +1,5 @@
-﻿using Fluxus.App.Services;
-using Fluxus.Domain.Models;
+﻿using Fluxus.UseCases;
+using Fluxus.Core.Models;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.InteropServices;
 
@@ -14,13 +14,13 @@ namespace Fluxus.WinUI.View
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
         private IServiceProvider _serviceProvider;
-        private UserService _userService;
+        private UserUseCases _userService;
 
         public frmLogin(IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
 
-            _userService = _serviceProvider.GetService<UserService>();
+            _userService = _serviceProvider.GetService<UserUseCases>();
             InitializeComponent();
             _serviceProvider = serviceProvider;
         }

@@ -1,9 +1,10 @@
-﻿using Fluxus.Domain.Models;
-using Fluxus.App.Services;
+﻿using Fluxus.Core.Models;
 using System.Text.RegularExpressions;
-using Fluxus.Domain.Enums;
+using Fluxus.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using Fluxus.Infra.Services;
+using Fluxus.Core.ViewModels;
+using Fluxus.UseCases;
 
 namespace Fluxus.WinUI.View
 {
@@ -71,7 +72,7 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var service = _serviceProvider.GetService<BankBranchService>();
+            var service = _serviceProvider.GetService<BranchUseCases>();
             var bankBranch = PopulateObject();
 
             dynamic result = _method == EMethod.Insert ? service.Insert(bankBranch) : service.Update(bankBranch);
@@ -101,12 +102,12 @@ namespace Fluxus.WinUI.View
             if (!String.IsNullOrEmpty(cep) && cep.Length == 8)
             {
                 var result = new ViaCep().GetCep(cep);
-                if (result != null || !result.Erro)
+                if (!result.Equals(new AddressViewModel()))
                 {
                     txtEndereco.Text = result.Logradouro;
                     txtComplemento.Text = result.Complemento;
                     txtBairro.Text = result.Bairro;
-                    txtCidade.Text = result.Localidade;
+                    txtCidade.Text = result.Cidade;
                     cboUF.Text = result.Uf;
                 }
             }

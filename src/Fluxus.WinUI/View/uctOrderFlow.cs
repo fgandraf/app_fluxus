@@ -1,10 +1,10 @@
-﻿using Fluxus.Domain.Models;
+﻿using Fluxus.Core.Models;
 using System.Data;
-using Fluxus.App.Services;
-using Fluxus.Domain.ViewModels;
-using Fluxus.Domain.Enums;
+using Fluxus.Core.ViewModels;
+using Fluxus.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
+using Fluxus.UseCases;
 
 namespace Fluxus.WinUI.View
 {
@@ -15,7 +15,7 @@ namespace Fluxus.WinUI.View
         private DataGridView _dgvOrigem;
         private List<OrdersOpenViewModel> _dtOSNFaturada;
         private IServiceProvider _serviceProvider;
-        private ServiceOrderService _serviceOrderService;
+        private OrderUseCases _serviceOrderService;
 
 
         public uctOrderFlow(frmMain frm1, IServiceProvider serviceProvider)
@@ -23,7 +23,7 @@ namespace Fluxus.WinUI.View
             _serviceProvider = serviceProvider;
 
             InitializeComponent();
-            _serviceOrderService = serviceProvider.GetService<ServiceOrderService>();
+            _serviceOrderService = serviceProvider.GetService<OrderUseCases>();
 
             _frmPrincipal = frm1;
 
@@ -44,7 +44,7 @@ namespace Fluxus.WinUI.View
                 view.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             }
 
-            var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
+            var serviceOrderService = _serviceProvider.GetService<OrderUseCases>();
             
             var orders = serviceOrderService.GetOrdensDoFluxo();
             if (orders.Success)
@@ -54,7 +54,7 @@ namespace Fluxus.WinUI.View
 
             
 
-            var professionalService = _serviceProvider.GetService<ProfessionalService>();
+            var professionalService = _serviceProvider.GetService<ProfessionalUseCases>();
             var professionals = professionalService.GetTagNameid(true);
             if (professionals == null)
             {

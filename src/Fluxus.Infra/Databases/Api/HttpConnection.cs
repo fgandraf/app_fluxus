@@ -1,4 +1,4 @@
-﻿using Fluxus.Domain.Contracts.Databases;
+﻿using Fluxus.Core.Contracts.Databases;
 using System;
 using System.Net.Http;
 using System.Text;
@@ -45,10 +45,10 @@ namespace Fluxus.Infra.Databases.Api
                     httpClient.DefaultRequestHeaders.Add("Authorization", TOKEN);
                     var response = httpClient.GetAsync(model + param).Result;
 
-                    if (response.IsSuccessStatusCode)
-                        return response.Content.ReadAsStringAsync().Result;
-                    else
+                    if (!response.IsSuccessStatusCode)
                         return null;
+
+                    return response.Content.ReadAsStringAsync().Result;      
                 }
             }
             catch (Exception ex)

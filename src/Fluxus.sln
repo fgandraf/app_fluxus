@@ -5,11 +5,11 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxus.WinUI", "Fluxus.WinUI\Fluxus.WinUI.csproj", "{97A71086-01C5-4A0E-98EC-D920D7F3A033}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxus.Domain", "Fluxus.Domain\Fluxus.Domain.csproj", "{486CB56F-E7A5-4DE8-8356-0E99B196C27B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxus.Core", "Fluxus.Core\Fluxus.Core.csproj", "{486CB56F-E7A5-4DE8-8356-0E99B196C27B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxus.Infra", "Fluxus.Infra\Fluxus.Infra.csproj", "{10DC4ED1-3EB0-44A2-86B0-AEF54578BC1E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxus.App", "Fluxus.App\Fluxus.App.csproj", "{A358A7F3-E244-4C1C-B228-D0421EBA7F28}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fluxus.UseCases", "Fluxus.UseCases\Fluxus.UseCases.csproj", "{A358A7F3-E244-4C1C-B228-D0421EBA7F28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

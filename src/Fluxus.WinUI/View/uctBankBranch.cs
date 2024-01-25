@@ -1,6 +1,6 @@
-﻿using Fluxus.App.Services;
-using Fluxus.Domain.Models;
-using Fluxus.Domain.ViewModels;
+﻿using Fluxus.UseCases;
+using Fluxus.Core.Models;
+using Fluxus.Core.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
 
@@ -25,7 +25,7 @@ namespace Fluxus.WinUI.View
                 btnDelete.Enabled = false;
             }
 
-            var bankService = _serviceProvider.GetService<BankBranchService>();
+            var bankService = _serviceProvider.GetService<BranchUseCases>();
 
 
             var result = bankService.GetIndex();
@@ -50,7 +50,7 @@ namespace Fluxus.WinUI.View
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             string id = dgvBankBranches.CurrentRow.Cells["id"].Value.ToString();
-            var bankService = _serviceProvider.GetService<BankBranchService>();
+            var bankService = _serviceProvider.GetService<BranchUseCases>();
             var result = bankService.GetById(id);
 
             Branch branch;
@@ -68,7 +68,7 @@ namespace Fluxus.WinUI.View
             if (dialog == DialogResult.Yes)
             {
                 var id = dgvBankBranches.CurrentRow.Cells["id"].Value.ToString();
-                var bankService = _serviceProvider.GetService<BankBranchService>();
+                var bankService = _serviceProvider.GetService<BranchUseCases>();
                 var result = bankService.Delete(id);
 
                 if (result.Success)

@@ -1,7 +1,7 @@
-﻿using Fluxus.App.Services;
-using Fluxus.Domain.Models;
-using Fluxus.Domain.Enums;
+﻿using Fluxus.Core.Models;
+using Fluxus.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.UseCases;
 
 namespace Fluxus.WinUI.View
 {
@@ -50,7 +50,7 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var serviceService = _serviceProvider.GetService<ServiceService>();
+            var serviceService = _serviceProvider.GetService<ServiceUseCases>();
             
             var service = PopulateObject();
 

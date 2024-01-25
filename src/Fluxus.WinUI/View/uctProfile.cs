@@ -1,17 +1,19 @@
-﻿using Fluxus.Domain.Models;
-using Fluxus.App.Services;
+﻿using Fluxus.Core.Models;
 using System.Drawing.Imaging;
 using Fluxus.Infra.Services;
 using System.Text.RegularExpressions;
-using Fluxus.Domain.Enums;
+using Fluxus.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
+using Org.BouncyCastle.Utilities.Collections;
+using Fluxus.Core.ViewModels;
+using Fluxus.UseCases;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctProfile : UserControl
     {
         private readonly IServiceProvider _serviceProvider;
-        private ProfileService _profileService;
+        private ProfileUseCases _profileService;
         private frmMain _frmPrincipal;
         private Image _actualLogo;
         private EMethod _method;
@@ -20,7 +22,7 @@ namespace Fluxus.WinUI.View
         {
             _serviceProvider = serviceProvider;
 
-            _profileService = _serviceProvider.GetService<ProfileService>();
+            _profileService = _serviceProvider.GetService<ProfileUseCases>();
             _frmPrincipal = frm;
 
             InitializeComponent();
@@ -71,12 +73,12 @@ namespace Fluxus.WinUI.View
             if (!String.IsNullOrEmpty(cep) && cep.Length == 8)
             {
                 var result = new ViaCep().GetCep(cep);
-                if (result != null || !result.Erro)
+                if (!result.Equals(new AddressViewModel()))
                 {
                     txtEndereco.Text = result.Logradouro;
                     txtComplemento.Text = result.Complemento;
                     txtBairro.Text = result.Bairro;
-                    txtCidade.Text = result.Localidade;
+                    txtCidade.Text = result.Cidade;
                     cboUF.Text = result.Uf;
                 }
             }

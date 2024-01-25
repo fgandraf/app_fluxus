@@ -30,8 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fluxus.App\Fluxus.App.csproj" />
-    <ProjectReference Include="..\Fluxus.Domain\Fluxus.Domain.csproj" />
+    <ProjectReference Include="..\Fluxus.UseCases\Fluxus.UseCases.csproj" />
+    <ProjectReference Include="..\Fluxus.Core\Fluxus.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,5 @@
-﻿using Fluxus.Domain.Models;
-using Fluxus.Domain.Contracts.Databases;
+﻿using Fluxus.Core.Models;
+using Fluxus.Core.Contracts.Databases;
 using Newtonsoft.Json;
 using System;
 

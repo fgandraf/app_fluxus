@@ -1,7 +1,7 @@
-﻿using Fluxus.Domain.Models;
-using Fluxus.App.Services;
-using Fluxus.Domain.Enums;
+﻿using Fluxus.Core.Models;
+using Fluxus.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
+using Fluxus.UseCases;
 
 namespace Fluxus.WinUI.View
 {
@@ -12,14 +12,14 @@ namespace Fluxus.WinUI.View
         private readonly int _userId;
         private EMethod _method;
         private IServiceProvider _serviceProvider;
-        private UserService _userService;
-        private ProfessionalService _professionalService;
+        private UserUseCases _userService;
+        private ProfessionalUseCases _professionalService;
 
         public uctAddProfessional(frmMain frm1, IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
-            _userService = _serviceProvider.GetService<UserService>();
-            _professionalService = _serviceProvider.GetService<ProfessionalService>();
+            _userService = _serviceProvider.GetService<UserUseCases>();
+            _professionalService = _serviceProvider.GetService<ProfessionalUseCases>();
 
             InitializeComponent();
             _frmPrincipal = frm1;
@@ -29,8 +29,8 @@ namespace Fluxus.WinUI.View
         public uctAddProfessional(frmMain frm1, Professional professional, IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
-            _userService = _serviceProvider.GetService<UserService>();
-            _professionalService = _serviceProvider.GetService<ProfessionalService>();
+            _userService = _serviceProvider.GetService<UserUseCases>();
+            _professionalService = _serviceProvider.GetService<ProfessionalUseCases>();
 
             InitializeComponent();
             _frmPrincipal = frm1;

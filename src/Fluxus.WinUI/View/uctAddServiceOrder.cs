@@ -1,9 +1,9 @@
-﻿using Fluxus.Domain.Models;
-using Fluxus.App.Services;
-using Fluxus.Domain.Enums;
+﻿using Fluxus.Core.Models;
+using Fluxus.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Domain.ViewModels;
+using Fluxus.Core.ViewModels;
 using System.Globalization;
+using Fluxus.UseCases;
 
 namespace Fluxus.WinUI.View
 {
@@ -15,13 +15,13 @@ namespace Fluxus.WinUI.View
         private int _id;
         private EMethod _method;
         private IServiceProvider _serviceProvider;
-        private ServiceOrderService _serviceOrderService;
+        private OrderUseCases _serviceOrderService;
 
         public uctAddServiceOrder(frmMain formMain, string frmChild, IServiceProvider serviceProvider)
         {
             _serviceProvider = serviceProvider;
 
-            _serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
+            _serviceOrderService = _serviceProvider.GetService<OrderUseCases>();
             InitializeComponent();
 
             _method = EMethod.Insert;
@@ -29,7 +29,7 @@ namespace Fluxus.WinUI.View
             _formMain = formMain;
             _formChild = frmChild;
 
-            var professionalService = _serviceProvider.GetService<ProfessionalService>();
+            var professionalService = _serviceProvider.GetService<ProfessionalUseCases>();
             var professionals = professionalService.GetTagNameid(false);
             if (professionals == null)
             {
@@ -39,7 +39,7 @@ namespace Fluxus.WinUI.View
             cboProfissional.DataSource = professionals.Value;
 
 
-            var serviceService = _serviceProvider.GetService<ServiceService>();
+            var serviceService = _serviceProvider.GetService<ServiceUseCases>();
             cboAtividade.DataSource = serviceService.GetAll(false).Value;
 
             var cities = _serviceOrderService.GetCitiesFromOrders(false);
@@ -92,7 +92,7 @@ namespace Fluxus.WinUI.View
 
         private void btnAddSave_Click(object sender, EventArgs e)
         {
-            var service = _serviceProvider.GetService<ServiceOrderService>();
+            var service = _serviceProvider.GetService<OrderUseCases>();
             var serviceOrder = PopulateObject();
 
             var result = _method == EMethod.Insert ? service.Insert(serviceOrder) : service.Update(serviceOrder);
@@ -243,7 +243,7 @@ namespace Fluxus.WinUI.View
         private void DisableEdit(int invoiceId)
         {
             lblFaturada.Show();
-            var invoiceService = _serviceProvider.GetService<InvoiceService>();
+            var invoiceService = _serviceProvider.GetService<InvoiceUseCases>();
             txtCodFatura.Text = "Fatura: " + invoiceService.GetDescription(invoiceId).Value;
             txtCodFatura.Show();
 
@@ -271,7 +271,7 @@ namespace Fluxus.WinUI.View
 
         private void GetBankBranch()
         {
-            var service = _serviceProvider.GetService<BankBranchService>();
+            var service = _serviceProvider.GetService<BranchUseCases>();
             var result = service.GetById(txtRef1.Text);
 
             if (!result.Success)

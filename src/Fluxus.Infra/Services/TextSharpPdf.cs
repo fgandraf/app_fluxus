@@ -1,5 +1,5 @@
-﻿using Fluxus.Domain.Contracts.Services;
-using Fluxus.Domain.ViewModels;
+﻿using Fluxus.Core.Contracts.Services;
+using Fluxus.Core.ViewModels;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.Data;

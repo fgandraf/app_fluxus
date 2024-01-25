@@ -1,6 +1,6 @@
-﻿using Fluxus.App.Services;
-using Fluxus.App;
-using Fluxus.Domain.Models;
+﻿using Fluxus.UseCases;
+using Fluxus.Core.Models;
+using Fluxus.Core;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Fluxus.WinUI.View
@@ -21,7 +21,7 @@ namespace Fluxus.WinUI.View
             lblUsuario.Text = "Usuário: " + Logged.Usr_nome;
             btnOS.PerformClick();
 
-            var profileService = _serviceProvider.GetService<ProfileService>();
+            var profileService = _serviceProvider.GetService<ProfileUseCases>();
 
 
             OperationResult<string> fantasia = null;

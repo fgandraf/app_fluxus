@@ -1,11 +1,11 @@
-﻿using Fluxus.Domain.Models;
+﻿using Fluxus.Core.Models;
 using System.Data;
-using Fluxus.App.Services;
 using Fluxus.Infra.Services;
 using System.Globalization;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Domain.ViewModels;
+using Fluxus.Core.ViewModels;
 using System.Diagnostics;
+using Fluxus.UseCases;
 
 namespace Fluxus.WinUI.View
 {
@@ -14,15 +14,15 @@ namespace Fluxus.WinUI.View
         private decimal _subtotalOs = 0.00m;
         private decimal _subtotalDesloc = 0.00m;
 
-        private readonly InvoiceService _invoiceService;
-        private readonly ProfileService _profileService;
-        private readonly ServiceOrderService _orderService;
+        private readonly InvoiceUseCases _invoiceService;
+        private readonly ProfileUseCases _profileService;
+        private readonly OrderUseCases _orderService;
 
         public uctInvoice(IServiceProvider serviceProvider)
         {
-            _profileService = serviceProvider.GetService<ProfileService>();
-            _orderService = serviceProvider.GetService<ServiceOrderService>();
-            _invoiceService = serviceProvider.GetService<InvoiceService>();
+            _profileService = serviceProvider.GetService<ProfileUseCases>();
+            _orderService = serviceProvider.GetService<OrderUseCases>();
+            _invoiceService = serviceProvider.GetService<InvoiceUseCases>();
 
             InitializeComponent();
         }

@@ -1,13 +1,14 @@
 ﻿using System.Net.Http;
 using System;
 using Newtonsoft.Json;
-using Fluxus.Domain.Contracts.Services;
+using Fluxus.Core.Contracts.Services;
+using Fluxus.Core.ViewModels;
 
 namespace Fluxus.Infra.Services
 {
     public  class ViaCep : ICep
     {
-        public dynamic GetCep(string cep)
+        public AddressViewModel GetCep(string cep)
         {
             string json;
 
@@ -26,10 +27,24 @@ namespace Fluxus.Infra.Services
             }
             catch
             {
-                return String.Empty;
+                return new AddressViewModel();
             }
 
-            return JsonConvert.DeserializeObject<dynamic>(json);
+            var result =  JsonConvert.DeserializeObject<dynamic>(json);
+
+            return new AddressViewModel()
+            {
+                Logradouro = result.logradouro,
+                Complemento = result.complemento,
+                Bairro = result.bairro,
+                Cidade = result.localidade,
+                Uf = result.uf
+            };
+
+
+
+
+
         }
 
 

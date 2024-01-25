@@ -1,4 +1,4 @@
-﻿using Fluxus.Domain.Models;
+﻿using Fluxus.Core.Models;
 
 namespace Fluxus.WinUI.View
 {

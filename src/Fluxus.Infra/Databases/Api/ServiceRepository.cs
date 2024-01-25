@@ -1,8 +1,8 @@
-﻿using Fluxus.Domain.Models;
+﻿using Fluxus.Core.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using Fluxus.Domain.ViewModels;
-using Fluxus.Domain.Contracts.Databases;
+using Fluxus.Core.ViewModels;
+using Fluxus.Core.Contracts.Databases;
 
 namespace Fluxus.Infra.Databases.Api
 {

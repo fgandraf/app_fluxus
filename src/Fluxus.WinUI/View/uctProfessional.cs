@@ -1,8 +1,8 @@
-﻿using Fluxus.Domain.Models;
-using Fluxus.App.Services;
+﻿using Fluxus.Core.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Domain.ViewModels;
+using Fluxus.Core.ViewModels;
 using System.ComponentModel;
+using Fluxus.UseCases;
 
 namespace Fluxus.WinUI.View
 {
@@ -10,7 +10,7 @@ namespace Fluxus.WinUI.View
     {
         private readonly frmMain _frmPrincipal;
         private IServiceProvider _serviceProvider;
-        private ProfessionalService _professionalService;
+        private ProfessionalUseCases _professionalService;
 
         public uctProfessional(frmMain frm1, IServiceProvider serviceProvider)
         {
@@ -18,7 +18,7 @@ namespace Fluxus.WinUI.View
 
             InitializeComponent();
             _frmPrincipal = frm1;
-            _professionalService = _serviceProvider.GetService<ProfessionalService>();
+            _professionalService = _serviceProvider.GetService<ProfessionalUseCases>();
 
             if (Logged.Rl == false)
             {

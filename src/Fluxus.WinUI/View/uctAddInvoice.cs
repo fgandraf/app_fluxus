@@ -1,10 +1,10 @@
-﻿using Fluxus.Domain.Models;
+﻿using Fluxus.Core.Models;
 using System.Globalization;
-using Fluxus.App.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Domain.ViewModels;
+using Fluxus.Core.ViewModels;
 using System.ComponentModel;
 using System.Collections;
+using Fluxus.UseCases;
 
 namespace Fluxus.WinUI.View
 {
@@ -25,7 +25,7 @@ namespace Fluxus.WinUI.View
 
         private void frmAddFatura_Load(object sender, EventArgs e)
         {
-            var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
+            var serviceOrderService = _serviceProvider.GetService<OrderUseCases>();
 
             var orders = serviceOrderService.GetOpenDone();
             if (orders.Success)
@@ -53,7 +53,7 @@ namespace Fluxus.WinUI.View
 
         private void btnFaturar_Click(object sender, EventArgs e)
         {
-            var service = _serviceProvider.GetService<InvoiceService>();
+            var service = _serviceProvider.GetService<InvoiceUseCases>();
             var invoice = PopulateToObject();
 
             var result = service.Insert(invoice);
@@ -66,7 +66,7 @@ namespace Fluxus.WinUI.View
                 return;
             }
 
-            var serviceOrderService = _serviceProvider.GetService<ServiceOrderService>();
+            var serviceOrderService = _serviceProvider.GetService<OrderUseCases>();
 
             var orders = new List<int>();
             foreach (DataGridViewRow row in dgvOS.Rows)

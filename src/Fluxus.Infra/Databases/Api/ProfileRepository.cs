@@ -1,6 +1,6 @@
-﻿using Fluxus.Domain.Models;
+﻿using Fluxus.Core.Models;
 using Newtonsoft.Json;
-using Fluxus.Domain.Contracts.Databases;
+using Fluxus.Core.Contracts.Databases;
 using System;
 
 namespace Fluxus.Infra.Databases.Api
@@ -39,6 +39,9 @@ namespace Fluxus.Infra.Databases.Api
         public byte[] GetLogo()
         {
             string json = _connection.Get("v1/profile/logo", string.Empty);
+
+            if (!json.StartsWith('"'))
+                json = "\"" + json + "\"";
 
             if (json != null)
                 return JsonConvert.DeserializeObject<byte[]>(json);
