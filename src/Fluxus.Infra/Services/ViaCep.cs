@@ -2,7 +2,7 @@
 using System;
 using Newtonsoft.Json;
 using Fluxus.Core.Contracts.Services;
-using Fluxus.Core.ViewModels;
+using Fluxus.Core.Dtos;
 
 namespace Fluxus.Infra.Services
 {

@@ -1,7 +1,8 @@
 ﻿using Fluxus.Core.Models;
 using Fluxus.Core.Contracts.Databases;
 using Newtonsoft.Json;
-using System;
+using Fluxus.Core.Dtos.Users;
+using Newtonsoft.Json.Serialization;
 
 namespace Fluxus.Infra.Databases.Api
 {
@@ -13,52 +14,81 @@ namespace Fluxus.Infra.Databases.Api
             => _connection = connection;
 
 
-        public (bool, string) Login(object model)
+        public (bool, string) Login(UserLoginRequest model)
         {
-            string json = JsonConvert.SerializeObject(model);
-            return _connection.Login("v1/accounts/login", json);
+            string json = JsonConvert.SerializeObject(model, Json.Settings);
+            return _connection.Login("v2/users/login", json);
         }
 
-        public int Insert(User model)
+        public long Register(User model)
         {
-            string json = JsonConvert.SerializeObject(model);
-            return _connection.Post("v1/accounts", json);
+            string json = JsonConvert.SerializeObject(model, Json.Settings);
+            return _connection.Post("v2/users/register", json);
         }
 
-        public bool Update(User model)
+        public bool UpdateInfo(User model)
         {
-            string json = JsonConvert.SerializeObject(model);
-            return _connection.Put("v1/accounts", json);
+            string json = JsonConvert.SerializeObject(model, Json.Settings);
+            return _connection.Put("v2/users/update-info", json);
+        }
+
+        public bool UpdateConfig(User model)
+        {
+            string json = JsonConvert.SerializeObject(model, Json.Settings);
+            return _connection.Put("v2/users/update-config", json);
         }
 
 
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
-            return _connection.Delete("v1/accounts/", id.ToString());
+            return _connection.Delete("v2/users/", id.ToString());
         }
 
-        public User GetById(int id)
+        public User GetById(long id)
         {
-            string json = _connection.Get("v1/accounts/", id.ToString());
+            string json = _connection.Get("v2/users/", id.ToString());
             return JsonConvert.DeserializeObject<User>(json);
         }
 
-        public User GetByUserName(string userName)
+        public UserResponse GetByUserName(string userName)
         {
-            var json = _connection.Get("v1/accounts/username/", userName);
+            var serializerSettings = new JsonSerializerSettings();
+            serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            var json = _connection.Get("v2/users/username/", userName);
+            if (json != null)
+                return JsonConvert.DeserializeObject<UserResponse>(json, serializerSettings);
+
+            return null;
+        }
+
+        public User GetByProfessionalId(long profesionalId)
+        {
+            var json = _connection.Get("v2/users/professional/", profesionalId.ToString());
             if (json != null)
                 return JsonConvert.DeserializeObject<User>(json);
 
             return null;
         }
 
-        public User GetByProfessionalId(int profesionalId)
+        public UserResponse Activate(long id)
         {
-            var json = _connection.Get("v1/accounts/professional/", profesionalId.ToString());
-            if (json != null)
-                return JsonConvert.DeserializeObject<User>(json);
+            throw new System.NotImplementedException();
+        }
 
-            return null;
+        public UserResponse Deactivate(long id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public UserResponse UpgradePermission(long id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public UserResponse DowngradePermission(long id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

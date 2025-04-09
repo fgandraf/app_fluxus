@@ -1,10 +1,10 @@
 ﻿using Fluxus.Core.Models;
 using System.Data;
-using Fluxus.Core.ViewModels;
 using Fluxus.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
-using System.ComponentModel;
 using Fluxus.UseCases;
+using Fluxus.Core.Dtos.Orders;
+using System.ComponentModel;
 
 namespace Fluxus.WinUI.View
 {
@@ -13,7 +13,7 @@ namespace Fluxus.WinUI.View
         private frmMain _frmPrincipal;
         private Control _lastEnteredControl;
         private DataGridView _dgvOrigem;
-        private List<OrdersOpenViewModel> _dtOSNFaturada;
+        private List<OrderFlowResponse> _dtOSNFaturada;
         private IServiceProvider _serviceProvider;
         private OrderUseCases _serviceOrderService;
 
@@ -45,14 +45,14 @@ namespace Fluxus.WinUI.View
             }
 
             var serviceOrderService = _serviceProvider.GetService<OrderUseCases>();
-            
+
             var orders = serviceOrderService.GetOrdensDoFluxo();
             if (orders.Success)
             {
                 _dtOSNFaturada = orders.Value;
             }
 
-            
+
 
             var professionalService = _serviceProvider.GetService<ProfessionalUseCases>();
             var professionals = professionalService.GetTagNameid(true);
@@ -63,7 +63,11 @@ namespace Fluxus.WinUI.View
             }
             cboProfissional.DataSource = professionals.Value;
 
+            _serviceProvider = serviceProvider;
+        }
 
+        private void uctOrderFlow_Load(object sender, EventArgs e)
+        {
             if (Logged.Rl)
             {
                 cboProfissional.Enabled = true;
@@ -77,11 +81,13 @@ namespace Fluxus.WinUI.View
             }
 
             GetAllOrders();
-            _serviceProvider = serviceProvider;
         }
 
+
         private void cboProfissional_SelectedIndexChanged(object sender, EventArgs e)
-            => GetAllOrders();
+        {
+            GetAllOrders();
+        }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
@@ -124,7 +130,7 @@ namespace Fluxus.WinUI.View
 
                 var linha = _dtOSNFaturada.Where(item => item.Id == id).FirstOrDefault();
                 _dtOSNFaturada.Remove(linha);
-                linha.Status = status;
+                linha.Status = (int)status;
                 _dtOSNFaturada.Add(linha);
 
                 GetOrdersTo(_dgvOrigem);
@@ -135,7 +141,7 @@ namespace Fluxus.WinUI.View
                 else
                     btnFaturar.Enabled = true;
 
-                _serviceOrderService.UpdateStatus(id, status.ToString());
+                _serviceOrderService.UpdateStatus(id, (int)status);
             }
 
             ContarRegistros(_dgvOrigem);
@@ -213,15 +219,15 @@ namespace Fluxus.WinUI.View
 
         private void GetOrdersTo(DataGridView dgv)
         {
-            var professionalId = cboProfissional.SelectedValue.ToString();
+            var professionalId = Convert.ToInt64(cboProfissional.SelectedValue);
             var statusInt = Convert.ToInt32(dgv.Tag.ToString());
 
-            List<OrdersOpenViewModel> dvOS;
+            List<OrderFlowResponse> dvOS;
 
             if (cboProfissional.SelectedIndex == 0)
-            dvOS = new BindingList<OrdersOpenViewModel>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
+                dvOS = new BindingList<OrderFlowResponse>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt).ToList();
             else
-                dvOS = new BindingList<OrdersOpenViewModel>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
+                dvOS = new BindingList<OrderFlowResponse>(_dtOSNFaturada).Where(item => (int)item.Status == statusInt && item.ProfessionalId == professionalId).ToList();
 
             if (dvOS.Count > 0)
                 dgv.ContextMenuStrip = menuContext;
@@ -244,6 +250,8 @@ namespace Fluxus.WinUI.View
                 default: break;
             }
         }
+
+
     }
 
 }

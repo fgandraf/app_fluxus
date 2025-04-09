@@ -1,17 +1,17 @@
 ﻿using Fluxus.Core.Models;
 using System.Data;
-using Fluxus.Core.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Fluxus.Infra.Services;
 using Fluxus.UseCases;
+using Fluxus.Core.Dtos.Orders;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctOrderList : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private List<OrdersIndexViewModel> _dtOS;
-        private string _currentFilter;
+        private List<OrderFilteredResponse> _dtOS;
+        private OrderFilterRequest _currentFilter;
         private IServiceProvider _serviceProvider;
         private OrderUseCases _serviceOrderService;
 
@@ -121,9 +121,9 @@ namespace Fluxus.WinUI.View
                 var a = txtSearch.Text.ToUpper();
                 var dtFiltrada = _dtOS.Where(item => item.CustomerName.Contains(a) ||
                                                      item.ReferenceCode.Contains(a) ||
-                                                     item.Service.Contains(a) ||
-                                                     item.City.Contains(a) ||
-                                                     item.Professional.Contains(a)
+                                                     //item.ServiceId.Contains(a) ||
+                                                     item.City.Contains(a) //||
+                                                     //item.ProfessionalId.Contains(a)
                                                      ).ToList();
                 dgvOS.DataSource = dtFiltrada;
             }
@@ -148,7 +148,7 @@ namespace Fluxus.WinUI.View
         {
             if (dgvOS.Rows.Count > 0)
             {
-                var serviceOrders = (List<OrdersIndexViewModel>)dgvOS.DataSource;
+                var serviceOrders = (List<OrderFilteredResponse>)dgvOS.DataSource;
                 new ExcelInterop().ExportToExcel(serviceOrders);
             }
         }
@@ -159,22 +159,51 @@ namespace Fluxus.WinUI.View
 
         private void RefreshFilter()
         {
-            string professional = cboProfissional.SelectedIndex == 0 ? "%" : $"{cboProfissional.SelectedValue.ToString()}";
-            string status = cboStatus.SelectedIndex == 0 ? "%" : $"{cboStatus.SelectedIndex}";
-            string city = cboCidade.SelectedIndex == 0 ? "%" : $"{cboCidade.Text}";
-            string service = cboAtividade.SelectedIndex == 0 ? "%" : $"{cboAtividade.Text}";
-            string invoiced = cboFaturadas.SelectedIndex.ToString();
+            _currentFilter = new OrderFilterRequest();
 
-            _currentFilter = $"{professional},{service},{city},{status},{invoiced}";
+
+            string professional = null;
+            if (cboProfissional.Items.Count > 1)
+                professional = cboProfissional.SelectedIndex == 0 ? null : cboProfissional.SelectedValue.ToString();
+            _currentFilter.professionalTag = professional;
+
+            int? status = null;
+            if (cboStatus.Items.Count > 0)
+                status = cboStatus.SelectedIndex == 0 ? null : cboStatus.SelectedIndex;
+            _currentFilter.status = status;
+
+            string city = null;
+            if (cboCidade.Items.Count > 0)
+                city = cboCidade.SelectedIndex == 0 ? null : $"{cboCidade.Text}";
+            _currentFilter.city = city;
+
+            string service = null;
+            if (cboAtividade.Items.Count > 0)
+                service = cboAtividade.SelectedIndex == 0 ? null : $"{cboAtividade.Text}";
+            _currentFilter.serviceTag = service;
+
+            int? invoiced = null;
+            if (cboFaturadas.Items.Count > 0)
+                invoiced = cboFaturadas.SelectedIndex == 0 ? null : cboFaturadas.SelectedIndex;
+            _currentFilter.invoiced = Convert.ToBoolean(invoiced);
         }
 
         private void CleanFilter()
         {
-            cboProfissional.SelectedIndex = 0;
-            cboCidade.SelectedIndex = 0;
-            cboAtividade.SelectedIndex = 0;
-            cboFaturadas.SelectedIndex = 0;
-            cboStatus.SelectedIndex = 0;
+            if (cboProfissional.Items.Count > 0)
+                cboProfissional.SelectedIndex = 0;
+
+            if (cboCidade.Items.Count > 0)
+                cboCidade.SelectedIndex = 0;
+
+            if (cboAtividade.Items.Count > 0)
+                cboAtividade.SelectedIndex = 0;
+
+            if (cboFaturadas.Items.Count > 0)
+                cboFaturadas.SelectedIndex = 0;
+
+            if (cboStatus.Items.Count > 0)
+                cboStatus.SelectedIndex = 0;
             txtSearch.Text = null;
         }
 

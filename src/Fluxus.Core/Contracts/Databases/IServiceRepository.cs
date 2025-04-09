@@ -1,18 +1,18 @@
-﻿using Fluxus.Core.Models;
-using Fluxus.Core.ViewModels;
+﻿using Fluxus.Core.Dtos.Services;
+using Fluxus.Core.Models;
 using System.Collections.Generic;
 
 namespace Fluxus.Core.Contracts.Databases;
 
 public interface IServiceRepository
 {
-    public int Insert(Service body);
+    public long Insert(Service body);
 
     public bool Update(Service body);
 
-    public bool Delete(int id);
+    public bool Delete(long id);
 
-    public Service GetById(int id);
+    public Service GetById(long id);
 
-    public List<ServicesIndexViewModel> GetAll();
+    public List<ServiceResponse> GetAll();
 }

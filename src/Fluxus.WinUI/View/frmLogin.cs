@@ -2,6 +2,7 @@
 using Fluxus.Core.Models;
 using Microsoft.Extensions.DependencyInjection;
 using System.Runtime.InteropServices;
+using Fluxus.Core.Dtos.Users;
 
 namespace Fluxus.WinUI.View
 {
@@ -31,27 +32,22 @@ namespace Fluxus.WinUI.View
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            var login = new 
-            {
-                UserName = txtUsuario.Text,
-                Password = txtSenha.Text
-            };
-
+            var login = new UserLoginRequest(txtUsuario.Text, txtSenha.Text);
+            
             var isAuthorized = _userService.Login(login);
 
             if (!isAuthorized.Item1)
             {
-                MessageBox.Show(isAuthorized.Item2, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("MENSAGEM" + isAuthorized.Item2, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             var user = _userService.GetByUsername(txtUsuario.Text).Value;
 
-            Logged.Id = user.Id;
+            Logged.Id = user.ProfessionalId ?? 0;
             Logged.ProfessionalId = user.ProfessionalId;
-            Logged.Usr_ativo = user.UserActive;
-            Logged.Usr_nome = user.UserName;
-            Logged.ProfessionalId = user.Id;
+            Logged.Usr_ativo = user.Active;
+            Logged.Usr_nome = user.Email;
             Logged.Rt = user.TechnicianResponsible;
             Logged.Rl = user.LegalResponsible;
             Logged.ProfessionalTag = "A01"; //TO DO: REFATORAR

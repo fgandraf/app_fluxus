@@ -1,8 +1,8 @@
 ﻿using Fluxus.Core.Models;
 using Fluxus.Core;
-using Fluxus.Core.ViewModels;
 using Fluxus.Core.Contracts.Databases;
 using System.Collections.Generic;
+using Fluxus.Core.Dtos.Professionals;
 
 namespace Fluxus.UseCases
 {
@@ -20,20 +20,20 @@ namespace Fluxus.UseCases
             _userRepository = userRepository;
         }
 
-        public OperationResult<int> Insert(Professional professional, User user)
+        public OperationResult<long> Insert(Professional professional, User user)
         {
             var result = Validate(true, professional, user);
             if (!result.Success)
-                return OperationResult<int>.FailureResult(result.Message);
+                return OperationResult<long>.FailureResult(result.Message);
 
-            int professionalId = _professionalRepository.Insert(professional);
+            var professionalId = _professionalRepository.Insert(professional);
             user.ProfessionalId = professionalId;
-            int userId = _userRepository.Insert(user);
+            var userId = _userRepository.Register(user);
 
             if (professionalId == 0 || userId == 0)
-                return OperationResult<int>.FailureResult("EXC5 - Não foi possível inserir o profissional na base de dados!");
+                return OperationResult<long>.FailureResult("EXC5 - Não foi possível inserir o profissional na base de dados!");
 
-            return OperationResult<int>.SuccessResult(professionalId);
+            return OperationResult<long>.SuccessResult(professionalId);
         }
 
         public OperationResult Update(Professional professional, User user)
@@ -42,7 +42,7 @@ namespace Fluxus.UseCases
             if (!result.Success)
                 return OperationResult.FailureResult(result.Message);
 
-            if (!_professionalRepository.Update(professional) || !_userRepository.Update(user))
+            if (!_professionalRepository.Update(professional) || !_userRepository.UpdateInfo(user))
                 return OperationResult.FailureResult("Não foi possível alterar o profissional!");
 
             return OperationResult.SuccessResult();
@@ -66,7 +66,7 @@ namespace Fluxus.UseCases
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult Delete(int id)
+        public OperationResult Delete(long id)
         {
             var user = _userRepository.GetByProfessionalId(id);
 
@@ -79,7 +79,7 @@ namespace Fluxus.UseCases
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult<Professional> GetById(int id)
+        public OperationResult<Professional> GetById(long id)
         {
             var professional = _professionalRepository.GetById(id);
 
@@ -89,27 +89,27 @@ namespace Fluxus.UseCases
             return OperationResult<Professional>.SuccessResult(professional);
         }
 
-        public OperationResult<List<ProfessionalsIndexViewModel>> GetIndex()
+        public OperationResult<List<ProfessionalIndexResponse>> GetIndex()
         {
             var professionals = _professionalRepository.GetIndex();
 
             if (professionals == null)
-                return OperationResult<List<ProfessionalsIndexViewModel>>.FailureResult("Não foi possível encontrar profissionais na base dados!");
+                return OperationResult<List<ProfessionalIndexResponse>>.FailureResult("Não foi possível encontrar profissionais na base dados!");
 
-            return OperationResult<List<ProfessionalsIndexViewModel>>.SuccessResult(professionals);
+            return OperationResult<List<ProfessionalIndexResponse>>.SuccessResult(professionals);
         }
 
-        public OperationResult<List<ProfessionalNameId>> GetTagNameid(bool addHeader)
+        public OperationResult<List<ProfessionalTagNameIdResponse>> GetTagNameid(bool addHeader)
         {
             var professionals = _professionalRepository.GetTagNameid();
 
             if (professionals == null)
-                return OperationResult<List<ProfessionalNameId>>.FailureResult("Não foi possível encontrar profissionais na base de dados!");
+                return OperationResult<List<ProfessionalTagNameIdResponse>>.FailureResult("Não foi possível encontrar profissionais na base de dados!");
 
             if (addHeader)
-                professionals.Insert(0, new ProfessionalNameId { Nameid = "--TODOS--" });
+                professionals.Insert(0, new ProfessionalTagNameIdResponse { NameId = "--TODOS--" });
 
-            return OperationResult<List<ProfessionalNameId>>.SuccessResult(professionals);
+            return OperationResult<List<ProfessionalTagNameIdResponse>>.SuccessResult(professionals);
         }
     }
 }

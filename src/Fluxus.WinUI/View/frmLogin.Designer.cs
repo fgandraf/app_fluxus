@@ -55,7 +55,7 @@
             btnEntrar.BackColor = Color.DarkSlateBlue;
             btnEntrar.FlatAppearance.BorderSize = 0;
             btnEntrar.FlatStyle = FlatStyle.Flat;
-            btnEntrar.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEntrar.Font = new Font("Segoe UI", 8F);
             btnEntrar.ForeColor = Color.White;
             btnEntrar.Location = new Point(65, 367);
             btnEntrar.Margin = new Padding(6, 7, 6, 7);
@@ -121,7 +121,7 @@
             // txtSenha
             // 
             txtSenha.BorderStyle = BorderStyle.None;
-            txtSenha.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSenha.Font = new Font("Segoe UI", 11F);
             txtSenha.ForeColor = Color.SteelBlue;
             txtSenha.Location = new Point(141, 232);
             txtSenha.Margin = new Padding(0);
@@ -130,7 +130,7 @@
             txtSenha.PlaceholderText = "Senha";
             txtSenha.Size = new Size(488, 40);
             txtSenha.TabIndex = 1;
-            txtSenha.Text = "123456";
+            txtSenha.Text = "1234abcd";
             ttpLogin.SetToolTip(txtSenha, "Senha");
             // 
             // pnlLinhaUsuario
@@ -156,7 +156,7 @@
             // txtUsuario
             // 
             txtUsuario.BorderStyle = BorderStyle.None;
-            txtUsuario.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsuario.Font = new Font("Segoe UI", 11F);
             txtUsuario.ForeColor = Color.SteelBlue;
             txtUsuario.Location = new Point(141, 94);
             txtUsuario.Margin = new Padding(0);
@@ -164,7 +164,7 @@
             txtUsuario.PlaceholderText = "Usuário";
             txtUsuario.Size = new Size(520, 40);
             txtUsuario.TabIndex = 0;
-            txtUsuario.Text = "fgandraf";
+            txtUsuario.Text = "admin@admin.com";
             ttpLogin.SetToolTip(txtUsuario, "Nome de usuário");
             // 
             // imgHidePwd
@@ -189,7 +189,7 @@
             btnAppFechar.FlatAppearance.MouseDownBackColor = Color.DarkRed;
             btnAppFechar.FlatAppearance.MouseOverBackColor = Color.Red;
             btnAppFechar.FlatStyle = FlatStyle.Flat;
-            btnAppFechar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAppFechar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnAppFechar.ForeColor = Color.Black;
             btnAppFechar.Image = (Image)resources.GetObject("btnAppFechar.Image");
             btnAppFechar.Location = new Point(823, -2);
@@ -203,7 +203,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe Print", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe Print", 12F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
             label1.Location = new Point(76, 34);
             label1.Margin = new Padding(0);

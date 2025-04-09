@@ -8,7 +8,7 @@ namespace Fluxus.WinUI.View
     public partial class uctAddService : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private readonly int _id;
+        private readonly long _id;
         private EMethod _method;
         private IServiceProvider _serviceProvider;
 

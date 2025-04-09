@@ -1,8 +1,8 @@
 ﻿using Fluxus.Core.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using Fluxus.Core.ViewModels;
 using Fluxus.Core.Contracts.Databases;
+using Fluxus.Core.Dtos.Services;
 
 namespace Fluxus.Infra.Databases.Api
 {
@@ -13,33 +13,33 @@ namespace Fluxus.Infra.Databases.Api
         public ServiceRepository(IConnection connection)
             => _connection = connection;
 
-        public int Insert(Service body)
+        public long Insert(Service body)
         {
-            string json = JsonConvert.SerializeObject(body);
-            return _connection.Post("v1/services", json);
+            string json = JsonConvert.SerializeObject(body, Json.Settings);
+            return _connection.Post("v2/services", json);
         }
 
         public bool Update(Service body)
         {
-            string json = JsonConvert.SerializeObject(body);
-            return _connection.Put("v1/services", json);
+            string json = JsonConvert.SerializeObject(body, Json.Settings);
+            return _connection.Put("v2/services", json);
         }
 
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
-            return _connection.Delete("v1/services/", id.ToString());
+            return _connection.Delete("v2/services/", id.ToString());
         }
 
-        public Service GetById(int id)
+        public Service GetById(long id)
         {
-            string json = _connection.Get("v1/services/", id.ToString());
+            string json = _connection.Get("v2/services/", id.ToString());
             return JsonConvert.DeserializeObject<Service>(json);
         }
 
-        public List<ServicesIndexViewModel> GetAll()
+        public List<ServiceResponse> GetAll()
         {
-            string json = _connection.Get("v1/services", string.Empty);
-            return JsonConvert.DeserializeObject<List<ServicesIndexViewModel>>(json);
+            string json = _connection.Get("v2/services", string.Empty);
+            return json == null ? [] : JsonConvert.DeserializeObject<List<ServiceResponse>>(json);
         }
 
     }

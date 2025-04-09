@@ -3,9 +3,10 @@ using System.Data;
 using Fluxus.Infra.Services;
 using System.Globalization;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Core.ViewModels;
-using System.Diagnostics;
 using Fluxus.UseCases;
+using System.ComponentModel;
+using Fluxus.Core.Dtos.Orders;
+using Fluxus.Core.Dtos;
 
 namespace Fluxus.WinUI.View
 {
@@ -38,7 +39,10 @@ namespace Fluxus.WinUI.View
             var invoices = _invoiceService.GetAll();
 
             if (invoices.Success)
-                dgvFaturas.DataSource = invoices.Value;
+            {
+                var bindingList = new BindingList<Invoice>(invoices.Value);
+                dgvFaturas.DataSource = bindingList;
+            }
 
             if (dgvFaturas.Rows.Count > 0)
             {
@@ -52,7 +56,7 @@ namespace Fluxus.WinUI.View
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                var invoiceId = (int)dgvFaturas.CurrentRow.Cells["id"].Value;
+                var invoiceId = (long)dgvFaturas.CurrentRow.Cells["id"].Value;
                 var professionals = _orderService.GetProfessionalByInvoiceId(invoiceId);
                 var profile = _profileService.GetToPrint();
 
@@ -76,7 +80,7 @@ namespace Fluxus.WinUI.View
                     Cnpj = profile.Value.Cnpj,
                     ContractNotice = profile.Value.ContractNotice,
                     ContractNumber = profile.Value.ContractNumber,
-                    Orders = (List<OrdersIndexViewModel>)dgvOS.DataSource,
+                    Orders = ((BindingList<OrderInvoicedResponse>)dgvOS.DataSource).ToList(),
                     Professionals = professionals.Value,
                     Path = saveFileDialog.FileName
                 };
@@ -162,7 +166,8 @@ namespace Fluxus.WinUI.View
                 
                 if (closedByInvoiceId.Success)
                 {
-                    dgvOS.DataSource = closedByInvoiceId.Value;
+                    var bindingList = new BindingList<OrderInvoicedResponse>(closedByInvoiceId.Value);
+                    dgvOS.DataSource = bindingList;
 
                     txtData.Text = date.ToShortDateString();
                     txtValorOS.Text = String.Format(new CultureInfo("pt-BR"), "{0:c}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);

@@ -1,9 +1,10 @@
 ﻿using Fluxus.Core.Models;
 using Fluxus.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Core.ViewModels;
 using System.Globalization;
 using Fluxus.UseCases;
+using Fluxus.Core.Dtos.Services;
+using Fluxus.Core.Dtos.Professionals;
 
 namespace Fluxus.WinUI.View
 {
@@ -12,7 +13,7 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _formMain;
         private string _formChild;
         private string _agencia;
-        private int _id;
+        private long _id;
         private EMethod _method;
         private IServiceProvider _serviceProvider;
         private OrderUseCases _serviceOrderService;
@@ -240,7 +241,7 @@ namespace Fluxus.WinUI.View
             return serviceOrder;
         }
 
-        private void DisableEdit(int invoiceId)
+        private void DisableEdit(long invoiceId)
         {
             lblFaturada.Show();
             var invoiceService = _serviceProvider.GetService<InvoiceUseCases>();
@@ -261,7 +262,7 @@ namespace Fluxus.WinUI.View
 
         private void GetServiceName(object sender, EventArgs e)
         {
-            var source = (List<ServicesIndexViewModel>)cboAtividade.DataSource;
+            var source = (List<ServiceResponse>)cboAtividade.DataSource;
             var service = source.FirstOrDefault(item => item.Tag == cboAtividade.Text);
 
             lblAtividadeNome.Text = service.Description;
@@ -292,10 +293,10 @@ namespace Fluxus.WinUI.View
 
         private void GetProfessionalName(object sender, EventArgs e)
         {
-            var source = (List<ProfessionalNameId>)cboProfissional.DataSource;
+            var source = (List<ProfessionalTagNameIdResponse>)cboProfissional.DataSource;
             var professional = source.FirstOrDefault(item => item.Tag == cboProfissional.Text);
 
-            lblNomeProfissional.Text = professional.Nameid;
+            lblNomeProfissional.Text = professional.NameId;
         }
 
 

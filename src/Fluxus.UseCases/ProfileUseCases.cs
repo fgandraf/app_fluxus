@@ -1,6 +1,8 @@
 ﻿using Fluxus.Core.Models;
 using Fluxus.Core;
 using Fluxus.Core.Contracts.Databases;
+using Microsoft.VisualBasic;
+using System;
 
 namespace Fluxus.UseCases
 {
@@ -14,19 +16,19 @@ namespace Fluxus.UseCases
             => _repository = repository;
 
 
-        public OperationResult<int> Insert(Profile profile)
+        public OperationResult<long> Insert(Profile profile)
         {
             if (profile == null)
-                return OperationResult<int>.FailureResult("Não foi possível incluir o perfil!");
+                return OperationResult<long>.FailureResult("Não foi possível incluir o perfil!");
 
             if (string.IsNullOrEmpty(profile.Cnpj) || string.IsNullOrEmpty(profile.TradingName) || string.IsNullOrEmpty(profile.CompanyName))
-                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+                return OperationResult<long>.FailureResult("Campos com * são obrigatório");
 
-            int id = _repository.Insert(profile);
+            var id = _repository.Insert(profile);
             if (id == 0)
-                return OperationResult<int>.FailureResult("Não foi possível inserir o perfil na base de dados!");
+                return OperationResult<long>.FailureResult("Não foi possível inserir o perfil na base de dados!");
 
-            return OperationResult<int>.SuccessResult(id);
+            return OperationResult<long>.SuccessResult(id);
         }
 
         public OperationResult Update(Profile profile)
@@ -35,7 +37,7 @@ namespace Fluxus.UseCases
                 return OperationResult.FailureResult("Não foi possível alterar o perfil!");
 
             if (string.IsNullOrEmpty(profile.Cnpj) || string.IsNullOrEmpty(profile.TradingName) || string.IsNullOrEmpty(profile.CompanyName))
-                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+                return OperationResult<long>.FailureResult("Campos com * são obrigatório");
 
             if (!_repository.Update(profile))
                 return OperationResult.FailureResult("Não foi possível alterar o perfil na base dados!");
@@ -54,7 +56,7 @@ namespace Fluxus.UseCases
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult<Profile> GetById(int id)
+        public OperationResult<Profile> GetById(long id)
         {
             var profile = _repository.GetById(id);
 
@@ -80,16 +82,16 @@ namespace Fluxus.UseCases
             if (logo == null)
                 return OperationResult<byte[]>.FailureResult("Não foi possível encontrar o logo na base dados!");
 
-            return OperationResult<byte[]>.SuccessResult(logo);
+            return OperationResult<byte[]>.SuccessResult(Convert.FromBase64String(logo.Base64Image));
         }
 
         public OperationResult<string> GetTradingName()
         {
             var tradingName = _repository.GetTradingName();
-            if (string.IsNullOrEmpty(tradingName))
+            if (string.IsNullOrEmpty(tradingName.TradingName))
                 return OperationResult<string>.FailureResult("Não foi possível encontrar o o nome fantasia na base dados!");
 
-            return OperationResult<string>.SuccessResult(tradingName);
+            return OperationResult<string>.SuccessResult(tradingName.TradingName);
         }
 
     }

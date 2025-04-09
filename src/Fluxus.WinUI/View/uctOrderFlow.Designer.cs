@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             linhaRecebidas = new Panel();
             lblTitRecebidas = new Label();
@@ -60,10 +60,6 @@
             profissional_cod_pendente = new DataGridViewTextBoxColumn();
             panel5 = new Panel();
             dgvRecebidas = new DataGridView();
-            id_recebidas = new DataGridViewTextBoxColumn();
-            titulo_recebida = new DataGridViewTextBoxColumn();
-            status_recebida = new DataGridViewTextBoxColumn();
-            profissional_cod_recebida = new DataGridViewTextBoxColumn();
             panel7 = new Panel();
             dgvVistoriadas = new DataGridView();
             id_vistoriada = new DataGridViewTextBoxColumn();
@@ -81,11 +77,15 @@
             pnlFaturar = new Panel();
             btnFaturar = new Button();
             pnlLinhaFaturar = new Panel();
-            lblProfissional = new Label();
             cboProfissional = new ComboBox();
+            lblProfissional = new Label();
             menuContext = new ContextMenuStrip(components);
             mnuEditar = new ToolStripMenuItem();
             mnuExcluir = new ToolStripMenuItem();
+            id_recebidas = new DataGridViewTextBoxColumn();
+            titulo_recebida = new DataGridViewTextBoxColumn();
+            status_recebida = new DataGridViewTextBoxColumn();
+            profissional_cod_recebida = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -131,7 +131,7 @@
             // 
             lblTitRecebidas.BackColor = Color.LightSteelBlue;
             lblTitRecebidas.Dock = DockStyle.Fill;
-            lblTitRecebidas.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitRecebidas.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             lblTitRecebidas.ForeColor = Color.Black;
             lblTitRecebidas.Location = new Point(0, 0);
             lblTitRecebidas.Margin = new Padding(7, 0, 7, 0);
@@ -169,7 +169,7 @@
             // 
             lblTitPendentes.BackColor = Color.LightSteelBlue;
             lblTitPendentes.Dock = DockStyle.Fill;
-            lblTitPendentes.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitPendentes.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             lblTitPendentes.ForeColor = Color.Black;
             lblTitPendentes.Location = new Point(0, 0);
             lblTitPendentes.Margin = new Padding(7, 0, 7, 0);
@@ -207,7 +207,7 @@
             // 
             lblTitConcluidas.BackColor = Color.LightSteelBlue;
             lblTitConcluidas.Dock = DockStyle.Fill;
-            lblTitConcluidas.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitConcluidas.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             lblTitConcluidas.ForeColor = Color.Black;
             lblTitConcluidas.Location = new Point(0, 0);
             lblTitConcluidas.Margin = new Padding(7, 0, 7, 0);
@@ -245,7 +245,7 @@
             // 
             lblTitVistoriadas.BackColor = Color.LightSteelBlue;
             lblTitVistoriadas.Dock = DockStyle.Fill;
-            lblTitVistoriadas.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitVistoriadas.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold);
             lblTitVistoriadas.ForeColor = Color.Black;
             lblTitVistoriadas.Location = new Point(0, 0);
             lblTitVistoriadas.Margin = new Padding(7, 0, 7, 0);
@@ -331,20 +331,20 @@
             dgvPendentes.BackgroundColor = Color.LightSteelBlue;
             dgvPendentes.BorderStyle = BorderStyle.None;
             dgvPendentes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvPendentes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dgvPendentes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvPendentes.ColumnHeadersHeight = 35;
             dgvPendentes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvPendentes.ColumnHeadersVisible = false;
             dgvPendentes.Columns.AddRange(new DataGridViewColumn[] { id_pendente, titulo_pendente, status_pendente, profissional_cod_pendente });
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = Color.White;
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 7.5F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = Color.Black;
-            dataGridViewCellStyle11.Padding = new Padding(10);
-            dataGridViewCellStyle11.SelectionBackColor = Color.White;
-            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
-            dgvPendentes.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.Padding = new Padding(10);
+            dataGridViewCellStyle2.SelectionBackColor = Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvPendentes.DefaultCellStyle = dataGridViewCellStyle2;
             dgvPendentes.Dock = DockStyle.Fill;
             dgvPendentes.EnableHeadersVisualStyles = false;
             dgvPendentes.GridColor = Color.LightSteelBlue;
@@ -437,20 +437,20 @@
             dgvRecebidas.BackgroundColor = Color.LightSteelBlue;
             dgvRecebidas.BorderStyle = BorderStyle.None;
             dgvRecebidas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvRecebidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dgvRecebidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvRecebidas.ColumnHeadersHeight = 35;
             dgvRecebidas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvRecebidas.ColumnHeadersVisible = false;
             dgvRecebidas.Columns.AddRange(new DataGridViewColumn[] { id_recebidas, titulo_recebida, status_recebida, profissional_cod_recebida });
-            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = Color.White;
-            dataGridViewCellStyle14.Font = new Font("Segoe UI", 7.5F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle14.ForeColor = Color.Black;
-            dataGridViewCellStyle14.Padding = new Padding(10);
-            dataGridViewCellStyle14.SelectionBackColor = Color.White;
-            dataGridViewCellStyle14.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.True;
-            dgvRecebidas.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.Padding = new Padding(10);
+            dataGridViewCellStyle5.SelectionBackColor = Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvRecebidas.DefaultCellStyle = dataGridViewCellStyle5;
             dgvRecebidas.Dock = DockStyle.Fill;
             dgvRecebidas.EnableHeadersVisualStyles = false;
             dgvRecebidas.GridColor = Color.LightSteelBlue;
@@ -480,47 +480,6 @@
             dgvRecebidas.DragOver += DataGridView_DragOver;
             dgvRecebidas.MouseDown += DataGridView_MouseDown;
             // 
-            // id_recebidas
-            // 
-            id_recebidas.DataPropertyName = "Id";
-            id_recebidas.HeaderText = "Id";
-            id_recebidas.MinimumWidth = 10;
-            id_recebidas.Name = "id_recebidas";
-            id_recebidas.ReadOnly = true;
-            id_recebidas.Visible = false;
-            id_recebidas.Width = 200;
-            // 
-            // titulo_recebida
-            // 
-            titulo_recebida.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            titulo_recebida.DataPropertyName = "Title";
-            dataGridViewCellStyle13.NullValue = null;
-            titulo_recebida.DefaultCellStyle = dataGridViewCellStyle13;
-            titulo_recebida.HeaderText = "Title";
-            titulo_recebida.MinimumWidth = 120;
-            titulo_recebida.Name = "titulo_recebida";
-            titulo_recebida.ReadOnly = true;
-            // 
-            // status_recebida
-            // 
-            status_recebida.DataPropertyName = "Status";
-            status_recebida.HeaderText = "Status";
-            status_recebida.MinimumWidth = 10;
-            status_recebida.Name = "status_recebida";
-            status_recebida.ReadOnly = true;
-            status_recebida.Visible = false;
-            status_recebida.Width = 200;
-            // 
-            // profissional_cod_recebida
-            // 
-            profissional_cod_recebida.DataPropertyName = "ProfessionalId";
-            profissional_cod_recebida.HeaderText = "ProfessionalId";
-            profissional_cod_recebida.MinimumWidth = 10;
-            profissional_cod_recebida.Name = "profissional_cod_recebida";
-            profissional_cod_recebida.ReadOnly = true;
-            profissional_cod_recebida.Visible = false;
-            profissional_cod_recebida.Width = 200;
-            // 
             // panel7
             // 
             panel7.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -544,20 +503,20 @@
             dgvVistoriadas.BackgroundColor = Color.LightSteelBlue;
             dgvVistoriadas.BorderStyle = BorderStyle.None;
             dgvVistoriadas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvVistoriadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dgvVistoriadas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvVistoriadas.ColumnHeadersHeight = 35;
             dgvVistoriadas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvVistoriadas.ColumnHeadersVisible = false;
             dgvVistoriadas.Columns.AddRange(new DataGridViewColumn[] { id_vistoriada, titulo_vistoriada, status_vistoriada, profissional_cod_vistoriada });
-            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = Color.White;
-            dataGridViewCellStyle16.Font = new Font("Segoe UI", 7.5F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle16.ForeColor = Color.Black;
-            dataGridViewCellStyle16.Padding = new Padding(10);
-            dataGridViewCellStyle16.SelectionBackColor = Color.White;
-            dataGridViewCellStyle16.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.True;
-            dgvVistoriadas.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.Padding = new Padding(10);
+            dataGridViewCellStyle7.SelectionBackColor = Color.White;
+            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvVistoriadas.DefaultCellStyle = dataGridViewCellStyle7;
             dgvVistoriadas.Dock = DockStyle.Fill;
             dgvVistoriadas.EnableHeadersVisualStyles = false;
             dgvVistoriadas.GridColor = Color.LightSteelBlue;
@@ -649,20 +608,20 @@
             dgvConcluidas.BackgroundColor = Color.LightSteelBlue;
             dgvConcluidas.BorderStyle = BorderStyle.None;
             dgvConcluidas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dgvConcluidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dgvConcluidas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvConcluidas.ColumnHeadersHeight = 35;
             dgvConcluidas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvConcluidas.ColumnHeadersVisible = false;
             dgvConcluidas.Columns.AddRange(new DataGridViewColumn[] { id_concluida, titulo_concluida, status_concluida, profissional_cod_concluida });
-            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = Color.White;
-            dataGridViewCellStyle18.Font = new Font("Segoe UI", 7.5F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle18.ForeColor = Color.Black;
-            dataGridViewCellStyle18.Padding = new Padding(10);
-            dataGridViewCellStyle18.SelectionBackColor = Color.White;
-            dataGridViewCellStyle18.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.True;
-            dgvConcluidas.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 7.5F);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.Padding = new Padding(10);
+            dataGridViewCellStyle9.SelectionBackColor = Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvConcluidas.DefaultCellStyle = dataGridViewCellStyle9;
             dgvConcluidas.Dock = DockStyle.Fill;
             dgvConcluidas.EnableHeadersVisualStyles = false;
             dgvConcluidas.GridColor = Color.LightSteelBlue;
@@ -752,7 +711,7 @@
             btnAdicionar.FlatAppearance.BorderSize = 0;
             btnAdicionar.FlatAppearance.MouseDownBackColor = Color.LightBlue;
             btnAdicionar.FlatStyle = FlatStyle.Flat;
-            btnAdicionar.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnAdicionar.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
             btnAdicionar.ForeColor = Color.Black;
             btnAdicionar.Image = Properties.Resources.addIcon;
             btnAdicionar.ImageAlign = ContentAlignment.MiddleLeft;
@@ -789,7 +748,7 @@
             btnFaturar.FlatAppearance.BorderSize = 0;
             btnFaturar.FlatAppearance.MouseDownBackColor = Color.LightBlue;
             btnFaturar.FlatStyle = FlatStyle.Flat;
-            btnFaturar.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnFaturar.Font = new Font("Segoe UI Semibold", 8.25F, FontStyle.Bold);
             btnFaturar.ForeColor = Color.Black;
             btnFaturar.Image = Properties.Resources.doneIcon;
             btnFaturar.ImageAlign = ContentAlignment.MiddleRight;
@@ -815,19 +774,6 @@
             pnlLinhaFaturar.TabIndex = 1;
             pnlLinhaFaturar.Visible = false;
             // 
-            // lblProfissional
-            // 
-            lblProfissional.Anchor = AnchorStyles.Right;
-            lblProfissional.AutoSize = true;
-            tableLayoutPanel1.SetColumnSpan(lblProfissional, 2);
-            lblProfissional.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblProfissional.Location = new Point(1326, 39);
-            lblProfissional.Margin = new Padding(7, 0, 7, 0);
-            lblProfissional.Name = "lblProfissional";
-            lblProfissional.Size = new Size(156, 32);
-            lblProfissional.TabIndex = 17;
-            lblProfissional.Text = "Profissional:";
-            // 
             // cboProfissional
             // 
             cboProfissional.BackColor = Color.White;
@@ -835,7 +781,7 @@
             cboProfissional.DropDownStyle = ComboBoxStyle.DropDownList;
             cboProfissional.Enabled = false;
             cboProfissional.FlatStyle = FlatStyle.System;
-            cboProfissional.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            cboProfissional.Font = new Font("Segoe UI", 8F);
             cboProfissional.FormattingEnabled = true;
             cboProfissional.Location = new Point(1489, 40);
             cboProfissional.Margin = new Padding(0, 40, 0, 0);
@@ -844,6 +790,19 @@
             cboProfissional.TabIndex = 16;
             cboProfissional.ValueMember = "id";
             cboProfissional.SelectedIndexChanged += cboProfissional_SelectedIndexChanged;
+            // 
+            // lblProfissional
+            // 
+            lblProfissional.Anchor = AnchorStyles.Right;
+            lblProfissional.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(lblProfissional, 2);
+            lblProfissional.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            lblProfissional.Location = new Point(1326, 39);
+            lblProfissional.Margin = new Padding(7, 0, 7, 0);
+            lblProfissional.Name = "lblProfissional";
+            lblProfissional.Size = new Size(156, 32);
+            lblProfissional.TabIndex = 17;
+            lblProfissional.Text = "Profissional:";
             // 
             // menuContext
             // 
@@ -866,6 +825,47 @@
             mnuExcluir.Text = "Excluir";
             mnuExcluir.Click += mnuExcluir_Click;
             // 
+            // id_recebidas
+            // 
+            id_recebidas.DataPropertyName = "Id";
+            id_recebidas.HeaderText = "Id";
+            id_recebidas.MinimumWidth = 10;
+            id_recebidas.Name = "id_recebidas";
+            id_recebidas.ReadOnly = true;
+            id_recebidas.Visible = false;
+            id_recebidas.Width = 200;
+            // 
+            // titulo_recebida
+            // 
+            titulo_recebida.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            titulo_recebida.DataPropertyName = "Title";
+            dataGridViewCellStyle4.NullValue = null;
+            titulo_recebida.DefaultCellStyle = dataGridViewCellStyle4;
+            titulo_recebida.HeaderText = "Title";
+            titulo_recebida.MinimumWidth = 120;
+            titulo_recebida.Name = "titulo_recebida";
+            titulo_recebida.ReadOnly = true;
+            // 
+            // status_recebida
+            // 
+            status_recebida.DataPropertyName = "Status";
+            status_recebida.HeaderText = "Status";
+            status_recebida.MinimumWidth = 10;
+            status_recebida.Name = "status_recebida";
+            status_recebida.ReadOnly = true;
+            status_recebida.Visible = false;
+            status_recebida.Width = 200;
+            // 
+            // profissional_cod_recebida
+            // 
+            profissional_cod_recebida.DataPropertyName = "ProfessionalId";
+            profissional_cod_recebida.HeaderText = "ProfessionalId";
+            profissional_cod_recebida.MinimumWidth = 10;
+            profissional_cod_recebida.Name = "profissional_cod_recebida";
+            profissional_cod_recebida.ReadOnly = true;
+            profissional_cod_recebida.Visible = false;
+            profissional_cod_recebida.Width = 200;
+            // 
             // uctOrderFlow
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -875,6 +875,7 @@
             Margin = new Padding(7, 6, 7, 6);
             Name = "uctOrderFlow";
             Size = new Size(2000, 1400);
+            Load += uctOrderFlow_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);

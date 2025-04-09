@@ -8,8 +8,8 @@ namespace Fluxus.WinUI.View
     public partial class uctAddProfessional : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private readonly int _professionalId;
-        private readonly int _userId;
+        private readonly long _professionalId;
+        private readonly long _userId;
         private EMethod _method;
         private IServiceProvider _serviceProvider;
         private UserUseCases _userService;

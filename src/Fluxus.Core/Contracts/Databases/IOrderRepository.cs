@@ -1,5 +1,6 @@
-﻿using Fluxus.Core.Models;
-using Fluxus.Core.ViewModels;
+﻿using Fluxus.Core.Dtos.Orders;
+using Fluxus.Core.Dtos.Professionals;
+using Fluxus.Core.Models;
 using System.Collections.Generic;
 
 
@@ -7,27 +8,27 @@ namespace Fluxus.Core.Contracts.Databases;
 
 public interface IOrderRepository
 {
-    public int Insert(Order body);
+    public long Insert(Order body);
 
     public bool Update(Order body);
 
-    bool UpdateInvoiceId(int invoiceId, List<int> orders);
+    bool UpdateInvoiceId(long invoiceId, List<long> orders);
 
-    public void UpdateStatus(int id, string status);
+    public void UpdateStatus(long id, int status);
 
     public bool Delete(long id);
 
-    public List<OrdersOpenViewModel> GetIndexOpen();
+    public List<OrderFlowResponse> GetIndexOpen();
 
     public List<string> GetCitiesFromOrders();
 
-    public Order GetById(int id);
+    public Order GetById(long id);
 
-    public List<OrdersIndexViewModel> GetOpenDone();
+    public List<OrderDoneToInvoiceResponse> GetOpenDone();
 
-    public List<OrdersIndexViewModel> GetFiltered(string filter);
+    public List<OrderFilteredResponse> GetFiltered(OrderFilterRequest filter);
 
-    public List<OrdersIndexViewModel> GetClosedByInvoiceId(int invoiceId);
+    public List<OrderInvoicedResponse> GetClosedByInvoiceId(long invoiceId);
 
-    public List<ProfessionalNameId> GetProfessionalByInvoiceId(int invoiceId);
+    public List<ProfessionalTagNameIdResponse> GetProfessionalByInvoiceId(long invoiceId);
 }

@@ -1,20 +1,20 @@
-﻿using Fluxus.Core.Models;
-using Fluxus.Core.ViewModels;
+﻿using Fluxus.Core.Dtos.Professionals;
+using Fluxus.Core.Models;
 using System.Collections.Generic;
 
 namespace Fluxus.Core.Contracts.Databases;
 
 public interface IProfessionalRepository
 {
-    public int Insert(Professional body);
+    public long Insert(Professional body);
 
     public bool Update(Professional body);
 
-    public bool Delete(int id);
+    public bool Delete(long id);
 
-    public Professional GetById(int id);
+    public Professional GetById(long id);
 
-    public List<ProfessionalsIndexViewModel> GetIndex();
+    public List<ProfessionalIndexResponse> GetIndex();
 
-    public List<ProfessionalNameId> GetTagNameid();
+    public List<ProfessionalTagNameIdResponse> GetTagNameid();
 }

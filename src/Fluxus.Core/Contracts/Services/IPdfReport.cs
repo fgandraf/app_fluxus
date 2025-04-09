@@ -1,4 +1,4 @@
-﻿using Fluxus.Core.ViewModels;
+﻿using Fluxus.Core.Dtos;
 
 namespace Fluxus.Core.Contracts.Services;
 

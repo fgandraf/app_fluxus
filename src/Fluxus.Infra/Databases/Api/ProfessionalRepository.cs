@@ -1,8 +1,8 @@
 ﻿using Fluxus.Core.Models;
 using Newtonsoft.Json;
 using System.Collections.Generic;
-using Fluxus.Core.ViewModels;
 using Fluxus.Core.Contracts.Databases;
+using Fluxus.Core.Dtos.Professionals;
 
 namespace Fluxus.Infra.Databases.Api
 {
@@ -13,26 +13,26 @@ namespace Fluxus.Infra.Databases.Api
         public ProfessionalRepository(IConnection connection)
             => _connection = connection;
 
-        public int Insert(Professional body)
+        public long Insert(Professional body)
         {
-            string json = JsonConvert.SerializeObject(body);
-            return _connection.Post("v1/professionals", json);
+            string json = JsonConvert.SerializeObject(body, Json.Settings);
+            return _connection.Post("v2/professionals", json);
         }
 
         public bool Update(Professional body)
         {
-            string json = JsonConvert.SerializeObject(body);
-            return _connection.Put("v1/professionals", json);
+            string json = JsonConvert.SerializeObject(body, Json.Settings);
+            return _connection.Put("v2/professionals", json);
         }
 
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
-            return _connection.Delete("v1/professionals/", id.ToString());
+            return _connection.Delete("v2/professionals/", id.ToString());
         }
 
-        public Professional GetById(int id)
+        public Professional GetById(long id)
         {
-            string json = _connection.Get("v1/professionals/", id.ToString());
+            string json = _connection.Get("v2/professionals/", id.ToString());
 
             if (!string.IsNullOrEmpty(json))
                 return JsonConvert.DeserializeObject<Professional>(json);
@@ -40,27 +40,16 @@ namespace Fluxus.Infra.Databases.Api
             return null;
         }
 
-        public List<ProfessionalsIndexViewModel> GetIndex()
+        public List<ProfessionalIndexResponse> GetIndex()
         {
-            string json = _connection.Get("v1/professionals", string.Empty);
-            if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<List<ProfessionalsIndexViewModel>>(json);
-
-            return null;
+            string json = _connection.Get("v2/professionals", string.Empty);
+            return json == null ? [] : JsonConvert.DeserializeObject<List<ProfessionalIndexResponse>>(json);
         }
 
-        public List<ProfessionalNameId> GetTagNameid()
+        public List<ProfessionalTagNameIdResponse> GetTagNameid()
         {
-            string json = _connection.Get("v1/professionals/tag-name-id", string.Empty);
-            List<ProfessionalNameId> professionals;
-
-            if (!string.IsNullOrEmpty(json))
-            {
-                professionals = JsonConvert.DeserializeObject<List<ProfessionalNameId>>(json);
-                return professionals;
-            }
-
-            return null;
+            string json = _connection.Get("v2/professionals/tag-name-id", string.Empty);
+            return json == null ? [] : JsonConvert.DeserializeObject<List<ProfessionalTagNameIdResponse>>(json);
         }
     }
 }
