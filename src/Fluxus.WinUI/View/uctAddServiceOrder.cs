@@ -5,6 +5,7 @@ using System.Globalization;
 using Fluxus.UseCases;
 using Fluxus.Core.Dtos.Services;
 using Fluxus.Core.Dtos.Professionals;
+using Fluxus.Core.Dtos.Orders;
 
 namespace Fluxus.WinUI.View
 {
@@ -51,7 +52,7 @@ namespace Fluxus.WinUI.View
                 cboProfissional.Enabled = false;
         }
 
-        public uctAddServiceOrder(frmMain formMain, string frmChild, Order serviceOrder, IServiceProvider serviceProvider) : this(formMain, frmChild, serviceProvider)
+        public uctAddServiceOrder(frmMain formMain, string frmChild, OrderResponse serviceOrder, IServiceProvider serviceProvider) : this(formMain, frmChild, serviceProvider)
         {
 
             _method = EMethod.Update;
@@ -59,7 +60,7 @@ namespace Fluxus.WinUI.View
             PopulateFromModel(serviceOrder);
 
             if (serviceOrder.Invoiced)
-                DisableEdit(serviceOrder.InvoiceId);
+                DisableEdit(serviceOrder.InvoiceId ?? 0);
         }
 
         private void frmAddOS_Load(object sender, EventArgs e)
@@ -159,21 +160,22 @@ namespace Fluxus.WinUI.View
             txtRef2.Focus();
         }
 
-        private void PopulateFromModel(Order serviceOrder)
+        private void PopulateFromModel(OrderResponse serviceOrder)
         {
+
             _id = serviceOrder.Id;
             txtRef0.Text = serviceOrder.ReferenceCode.Substring(0, 4);
-            txtRef1.Text = serviceOrder.ReferenceCode.Substring(5, 4);
-            txtRef2.Text = serviceOrder.ReferenceCode.Substring(10, 9);
-            txtRef3.Text = serviceOrder.ReferenceCode.Substring(20, 4);
-            txtRef4.Text = serviceOrder.ReferenceCode.Substring(25, 2);
-            txtRef5.Text = serviceOrder.ReferenceCode.Substring(28, 2);
-            txtRef6.Text = serviceOrder.ReferenceCode.Substring(31, 2);
-            _agencia = serviceOrder.Branch;
+            txtRef1.Text = serviceOrder.ReferenceCode.Substring(4, 4);
+            txtRef2.Text = serviceOrder.ReferenceCode.Substring(8, 9);
+            txtRef3.Text = serviceOrder.ReferenceCode.Substring(17, 4);
+            txtRef4.Text = serviceOrder.ReferenceCode.Substring(21, 2);
+            txtRef5.Text = serviceOrder.ReferenceCode.Substring(23, 2);
+            txtRef6.Text = serviceOrder.ReferenceCode.Substring(25, 2);
+            _agencia = serviceOrder.BranchId;
             dtpDataOrdem.Value = serviceOrder.OrderDate;
             dtpPrazo.Value = serviceOrder.Deadline;
-            cboProfissional.SelectedValue = Convert.ToInt32(serviceOrder.ProfessionalId);
-            cboAtividade.SelectedValue = Convert.ToInt32(serviceOrder.ServiceId);
+            cboProfissional.SelectedValue = serviceOrder.ProfessionalId;
+            cboAtividade.SelectedValue = serviceOrder.ServiceId;
             chkSiopi.Checked = serviceOrder.Siopi;
             txtNomeCliente.Text = serviceOrder.CustomerName;
             cboCidade.Text = serviceOrder.City;
@@ -263,7 +265,7 @@ namespace Fluxus.WinUI.View
         private void GetServiceName(object sender, EventArgs e)
         {
             var source = (List<ServiceResponse>)cboAtividade.DataSource;
-            var service = source.FirstOrDefault(item => item.Tag == cboAtividade.Text);
+            var service = source.FirstOrDefault(x => x.Tag == cboAtividade.Text);
 
             lblAtividadeNome.Text = service.Description;
             lblAtividadeValor.Text = service.ServiceAmount.ToString("C", new CultureInfo("pt-br"));

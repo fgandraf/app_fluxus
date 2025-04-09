@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Fluxus.Core.Dtos.Orders;
 using Fluxus.Core.Dtos.Professionals;
+using System.Text;
 
 namespace Fluxus.UseCases
 {
@@ -66,14 +67,14 @@ namespace Fluxus.UseCases
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult<Order> GetById(long id)
+        public OperationResult<OrderResponse> GetById(long id)
         {
             var serviceOrder = _repository.GetById(id);
 
             if (serviceOrder == null)
-                return OperationResult<Order>.FailureResult("Não foi possível encontrar a Ordem de Serviço!");
+                return OperationResult<OrderResponse>.FailureResult("Não foi possível encontrar a Ordem de Serviço!");
 
-            return OperationResult<Order>.SuccessResult(serviceOrder);
+            return OperationResult<OrderResponse>.SuccessResult(serviceOrder);
         }
 
         public OperationResult<List<OrderFlowResponse>> GetOrdensDoFluxo()
@@ -109,6 +110,22 @@ namespace Fluxus.UseCases
             var orders = _repository.GetFiltered(filter);
             if (orders == null)
                 return OperationResult<List<OrderFilteredResponse>>.FailureResult("Não foi possível encontrar as Ordens de Serviço na base dados!");
+
+            foreach (var order in orders)
+            {
+                var sb = new StringBuilder();
+                sb.Append(order.ReferenceCode, 0, 4).Append('.')
+                  .Append(order.ReferenceCode, 4, 4).Append('.')
+                  .Append(order.ReferenceCode, 8, 9).Append('/')
+                  .Append(order.ReferenceCode, 17, 4).Append('.')
+                  .Append(order.ReferenceCode, 21, 2).Append('.')
+                  .Append(order.ReferenceCode, 23, 2).Append('.')
+                  .Append(order.ReferenceCode, 25, 1);
+
+                order.ReferenceCode = sb.ToString();
+            }
+
+
 
             return OperationResult<List<OrderFilteredResponse>>.SuccessResult(orders);
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fluxus.Core.Enums;
+using System;
 
 namespace Fluxus.Core.Dtos.Orders;
 
@@ -19,9 +20,11 @@ public record OrderResponse
     string ContactName,
     string ContactPhone,
     string Coordinates,
-    int Status,
-    DateTime PendingDate,
-    DateTime SurveyDate,
-    DateTime DoneDate,
-    string Comments
+    EStatus Status,
+    DateTime? PendingDate,
+    DateTime? SurveyDate,
+    DateTime? DoneDate,
+    string Comments,
+    long? InvoiceId,
+    bool Invoiced
 );

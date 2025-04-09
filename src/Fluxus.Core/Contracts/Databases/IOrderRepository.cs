@@ -22,7 +22,7 @@ public interface IOrderRepository
 
     public List<string> GetCitiesFromOrders();
 
-    public Order GetById(long id);
+    public OrderResponse GetById(long id);
 
     public List<OrderDoneToInvoiceResponse> GetOpenDone();
 

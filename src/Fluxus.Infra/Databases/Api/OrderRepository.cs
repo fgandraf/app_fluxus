@@ -55,10 +55,10 @@ namespace Fluxus.Infra.Databases.Api
             return json == null ? [] : JsonConvert.DeserializeObject<List<string>>(json);
         }
 
-        public Order GetById(long id)
+        public OrderResponse GetById(long id)
         {
             string json = _connection.Get("v2/orders/", id.ToString());
-            return JsonConvert.DeserializeObject<Order>(json);
+            return JsonConvert.DeserializeObject<OrderResponse>(json);
         }
 
         public List<OrderDoneToInvoiceResponse> GetOpenDone()

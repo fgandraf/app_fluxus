@@ -77,7 +77,7 @@ namespace Fluxus.WinUI.View
         {
             if (dgvOS.RowCount > 0)
             {
-                var id = Convert.ToInt32(dgvOS.CurrentRow.Cells[0].Value);
+                var id = Convert.ToInt64(dgvOS.CurrentRow.Cells["Id"].Value);
                 var serviceOrder = _serviceOrderService.GetById(id);
 
                 if (serviceOrder.Success)

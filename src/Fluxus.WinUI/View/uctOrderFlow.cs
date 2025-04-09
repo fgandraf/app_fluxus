@@ -175,7 +175,7 @@ namespace Fluxus.WinUI.View
             var dgv = (DataGridView)_lastEnteredControl;
             if (dgv != null)
             {
-                int serviceOrderId = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
+                var serviceOrderId = Convert.ToInt64(dgv.CurrentRow.Cells[0].Value);
                 var ordemDeServico = _serviceOrderService.GetById(serviceOrderId);
 
                 if (ordemDeServico.Success)
