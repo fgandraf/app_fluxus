@@ -19,15 +19,17 @@ namespace Fluxus.UseCases
             => _repository = repository;
 
 
-        public OperationResult<long> Insert(Order serviceOrder)
+        public OperationResult<long> Insert(Order order)
         {
-            if (serviceOrder == null)
+            if (order == null)
                 return OperationResult<long>.FailureResult("Não foi possível incluir a ordem de serviço!");
+
+            var serviceOrder = new OrderCreateRequest(order);
 
             if (string.IsNullOrEmpty(serviceOrder.ReferenceCode) ||
                 serviceOrder.ReferenceCode == "../..." ||
-                string.IsNullOrEmpty(serviceOrder.ServiceId) ||
-                string.IsNullOrEmpty(serviceOrder.ProfessionalId))
+                serviceOrder.ServiceId == 0 ||
+                serviceOrder.ProfessionalId == 0)
                 return OperationResult<long>.FailureResult("Campos com * são obrigatório");
 
             var id = _repository.Insert(serviceOrder);
@@ -37,15 +39,17 @@ namespace Fluxus.UseCases
             return OperationResult<long>.SuccessResult(id);
         }
 
-        public OperationResult Update(Order serviceOrder)
+        public OperationResult Update(Order order)
         {
-            if (serviceOrder == null)
+            if (order == null)
                 return OperationResult<int>.FailureResult("Não foi possível incluir a ordem de serviço!");
+
+            var serviceOrder = new OrderUpdateRequest(order);
 
             if (string.IsNullOrEmpty(serviceOrder.ReferenceCode) ||
                 serviceOrder.ReferenceCode == "../..." ||
-                string.IsNullOrEmpty(serviceOrder.ServiceId) ||
-                string.IsNullOrEmpty(serviceOrder.ProfessionalId))
+                serviceOrder.ServiceId == 0 ||
+                serviceOrder.ProfessionalId == 0)
                 return OperationResult<int>.FailureResult("Campos com * são obrigatório");
 
             if (!_repository.Update(serviceOrder))

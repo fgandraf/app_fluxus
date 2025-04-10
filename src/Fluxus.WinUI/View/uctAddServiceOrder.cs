@@ -6,6 +6,7 @@ using Fluxus.UseCases;
 using Fluxus.Core.Dtos.Services;
 using Fluxus.Core.Dtos.Professionals;
 using Fluxus.Core.Dtos.Orders;
+using System.Text.RegularExpressions;
 
 namespace Fluxus.WinUI.View
 {
@@ -180,7 +181,23 @@ namespace Fluxus.WinUI.View
             txtNomeCliente.Text = serviceOrder.CustomerName;
             cboCidade.Text = serviceOrder.City;
             txtNomeContato.Text = serviceOrder.ContactName;
-            txtTelefoneContato.Text = serviceOrder.ContactPhone;
+
+            if (serviceOrder.ContactPhone.Length == 11)
+            {
+                txtTelefoneContato.Text = string.Format("({0}) {1}-{2}",
+                serviceOrder.ContactPhone.Substring(0, 2),
+                serviceOrder.ContactPhone.Substring(2, 5),
+                serviceOrder.ContactPhone.Substring(7, 4));
+            }
+            
+            if (serviceOrder.ContactPhone.Length == 10)
+            {
+                txtTelefoneContato.Text = string.Format("({0}) {1}-{2}",
+                serviceOrder.ContactPhone.Substring(0, 2),
+                serviceOrder.ContactPhone.Substring(2, 4),
+                serviceOrder.ContactPhone.Substring(6, 4));
+            }
+
             txtCoordenada.Text = serviceOrder.Coordinates;
             if (serviceOrder.Status == EStatus.RECEBIDA)
                 rbtRecebida.Checked = true;
@@ -200,7 +217,7 @@ namespace Fluxus.WinUI.View
 
         private Order PopulateObject()
         {
-            string referenceCode = string.Format("{0}.{1}.{2}/{3}.{4}.{5}.{6}", txtRef0.Text, txtRef1.Text, txtRef2.Text, txtRef3.Text, txtRef4.Text, txtRef5.Text, txtRef6.Text);
+            string referenceCode = string.Format("{0}{1}{2}{3}{4}{5}{6}", txtRef0.Text, txtRef1.Text, txtRef2.Text, txtRef3.Text, txtRef4.Text, txtRef5.Text, txtRef6.Text);
 
             EStatus status;
             if (rbtRecebida.Checked)
@@ -212,8 +229,8 @@ namespace Fluxus.WinUI.View
             else
                 status = EStatus.CONCLUIDA;
 
-            string professionalId = cboProfissional.SelectedValue == null ? String.Empty : cboProfissional.SelectedValue.ToString();
-            string serviceId = cboAtividade.SelectedValue == null ? String.Empty : cboAtividade.SelectedValue.ToString();
+            var professionalId = (long)cboProfissional.SelectedValue;
+            var serviceId = (long)cboAtividade.SelectedValue;
 
             Order serviceOrder = new Order
             (
@@ -222,12 +239,12 @@ namespace Fluxus.WinUI.View
                 branch: _agencia,
                 professionalId: professionalId,
                 serviceId: serviceId,
-                serviceAmount: decimal.Parse(lblAtividadeValor.Text, NumberStyles.Currency, new CultureInfo("pt-br")),
-                mileageAllowance: decimal.Parse(lblAtividadeDeslocamento.Text, NumberStyles.Currency, new CultureInfo("pt-br")),
+                serviceAmount: double.Parse(lblAtividadeValor.Text, NumberStyles.Currency, new CultureInfo("pt-br")),
+                mileageAllowance: double.Parse(lblAtividadeDeslocamento.Text, NumberStyles.Currency, new CultureInfo("pt-br")),
                 customerName: txtNomeCliente.Text,
                 city: cboCidade.Text,
                 contactName: txtNomeContato.Text,
-                contactPhone: txtTelefoneContato.Text,
+                contactPhone: Regex.Replace(txtTelefoneContato.Text, @"[^\d]", ""),
                 coordinates: txtCoordenada.Text,
                 status: status,
                 invoiced: false,

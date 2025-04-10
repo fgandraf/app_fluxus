@@ -106,7 +106,7 @@
             btnCancelar.BackColor = Color.White;
             btnCancelar.FlatAppearance.BorderColor = SystemColors.ActiveCaptionText;
             btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancelar.Font = new Font("Segoe UI", 8.25F);
             btnCancelar.ForeColor = Color.Black;
             btnCancelar.Location = new Point(1231, 32);
             btnCancelar.Margin = new Padding(7, 6, 7, 6);
@@ -124,7 +124,7 @@
             btnAddSave.BackColor = Color.MediumBlue;
             btnAddSave.FlatAppearance.BorderColor = Color.MediumBlue;
             btnAddSave.FlatStyle = FlatStyle.Flat;
-            btnAddSave.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddSave.Font = new Font("Segoe UI", 8.25F);
             btnAddSave.ForeColor = SystemColors.Control;
             btnAddSave.Location = new Point(1515, 32);
             btnAddSave.Margin = new Padding(7, 6, 7, 6);
@@ -142,7 +142,7 @@
             rbtRecebida.AutoSize = true;
             rbtRecebida.Checked = true;
             rbtRecebida.FlatStyle = FlatStyle.Flat;
-            rbtRecebida.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            rbtRecebida.Font = new Font("Segoe UI", 8.25F);
             rbtRecebida.ForeColor = SystemColors.ControlDarkDark;
             rbtRecebida.Location = new Point(494, 1513);
             rbtRecebida.Margin = new Padding(7, 6, 7, 6);
@@ -159,7 +159,7 @@
             rbtPendente.Anchor = AnchorStyles.Top;
             rbtPendente.AutoSize = true;
             rbtPendente.FlatStyle = FlatStyle.Flat;
-            rbtPendente.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            rbtPendente.Font = new Font("Segoe UI", 8.25F);
             rbtPendente.ForeColor = SystemColors.ControlDarkDark;
             rbtPendente.Location = new Point(731, 1513);
             rbtPendente.Margin = new Padding(7, 6, 7, 6);
@@ -175,7 +175,7 @@
             rbtConcluida.Anchor = AnchorStyles.Top;
             rbtConcluida.AutoSize = true;
             rbtConcluida.FlatStyle = FlatStyle.Flat;
-            rbtConcluida.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            rbtConcluida.Font = new Font("Segoe UI", 8.25F);
             rbtConcluida.ForeColor = SystemColors.ControlDarkDark;
             rbtConcluida.Location = new Point(1339, 1513);
             rbtConcluida.Margin = new Padding(7, 6, 7, 6);
@@ -191,7 +191,7 @@
             rbtVistoriada.Anchor = AnchorStyles.Top;
             rbtVistoriada.AutoSize = true;
             rbtVistoriada.FlatStyle = FlatStyle.Flat;
-            rbtVistoriada.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            rbtVistoriada.Font = new Font("Segoe UI", 8.25F);
             rbtVistoriada.ForeColor = SystemColors.ControlDarkDark;
             rbtVistoriada.Location = new Point(1035, 1513);
             rbtVistoriada.Margin = new Padding(7, 6, 7, 6);
@@ -207,7 +207,7 @@
             txtCodFatura.Anchor = AnchorStyles.Top;
             txtCodFatura.BackColor = Color.LightBlue;
             txtCodFatura.BorderStyle = BorderStyle.None;
-            txtCodFatura.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCodFatura.Font = new Font("Segoe UI", 9F);
             txtCodFatura.ForeColor = Color.Black;
             txtCodFatura.Location = new Point(39, 64);
             txtCodFatura.Margin = new Padding(7, 6, 7, 6);
@@ -222,7 +222,7 @@
             // lblFaturada
             // 
             lblFaturada.Anchor = AnchorStyles.Top;
-            lblFaturada.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblFaturada.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblFaturada.ForeColor = Color.Red;
             lblFaturada.Location = new Point(30, 17);
             lblFaturada.Margin = new Padding(7, 0, 7, 0);
@@ -301,7 +301,7 @@
             groupBox2.Controls.Add(txtBranchName);
             groupBox2.Controls.Add(txtBranchPhone);
             groupBox2.Controls.Add(txtBranchEmail);
-            groupBox2.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox2.Font = new Font("Segoe UI", 8.25F);
             groupBox2.ForeColor = SystemColors.ControlDarkDark;
             groupBox2.Location = new Point(498, 301);
             groupBox2.Name = "groupBox2";
@@ -316,7 +316,7 @@
             txtBranchName.BackColor = Color.LightGray;
             txtBranchName.BorderStyle = BorderStyle.None;
             txtBranchName.CharacterCasing = CharacterCasing.Upper;
-            txtBranchName.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtBranchName.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             txtBranchName.ForeColor = SystemColors.ControlDarkDark;
             txtBranchName.Location = new Point(280, 40);
             txtBranchName.Margin = new Padding(7, 6, 7, 6);
@@ -334,7 +334,7 @@
             txtBranchPhone.BackColor = Color.LightGray;
             txtBranchPhone.BorderStyle = BorderStyle.None;
             txtBranchPhone.CharacterCasing = CharacterCasing.Upper;
-            txtBranchPhone.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBranchPhone.Font = new Font("Segoe UI", 8F);
             txtBranchPhone.ForeColor = SystemColors.ControlDarkDark;
             txtBranchPhone.Location = new Point(280, 69);
             txtBranchPhone.Margin = new Padding(7, 6, 7, 6);
@@ -352,7 +352,7 @@
             txtBranchEmail.BackColor = Color.LightGray;
             txtBranchEmail.BorderStyle = BorderStyle.None;
             txtBranchEmail.CharacterCasing = CharacterCasing.Lower;
-            txtBranchEmail.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBranchEmail.Font = new Font("Segoe UI", 8F);
             txtBranchEmail.ForeColor = SystemColors.ControlDarkDark;
             txtBranchEmail.Location = new Point(550, 69);
             txtBranchEmail.Margin = new Padding(7, 6, 7, 6);
@@ -371,7 +371,7 @@
             grpAtividade.Controls.Add(lblAtividadeNome);
             grpAtividade.Controls.Add(lblAtividadeValor);
             grpAtividade.Controls.Add(lblAtividadeDeslocamento);
-            grpAtividade.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            grpAtividade.Font = new Font("Segoe UI", 8.25F);
             grpAtividade.ForeColor = SystemColors.ControlDarkDark;
             grpAtividade.Location = new Point(498, 607);
             grpAtividade.Name = "grpAtividade";
@@ -386,7 +386,7 @@
             cboAtividade.BackColor = Color.White;
             cboAtividade.DisplayMember = "Tag";
             cboAtividade.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboAtividade.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cboAtividade.Font = new Font("Segoe UI", 9F);
             cboAtividade.ForeColor = Color.Black;
             cboAtividade.FormattingEnabled = true;
             cboAtividade.Location = new Point(276, 30);
@@ -403,7 +403,7 @@
             lblAtividadeNome.Anchor = AnchorStyles.Top;
             lblAtividadeNome.BackColor = Color.LightGray;
             lblAtividadeNome.Enabled = false;
-            lblAtividadeNome.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAtividadeNome.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             lblAtividadeNome.ForeColor = SystemColors.ControlDarkDark;
             lblAtividadeNome.Location = new Point(276, 70);
             lblAtividadeNome.Margin = new Padding(7, 0, 7, 0);
@@ -417,7 +417,7 @@
             lblAtividadeValor.Anchor = AnchorStyles.Top;
             lblAtividadeValor.BackColor = Color.LightGray;
             lblAtividadeValor.Enabled = false;
-            lblAtividadeValor.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblAtividadeValor.Font = new Font("Segoe UI", 8F);
             lblAtividadeValor.ForeColor = SystemColors.ControlDarkDark;
             lblAtividadeValor.Location = new Point(426, 30);
             lblAtividadeValor.Margin = new Padding(7, 0, 7, 0);
@@ -431,7 +431,7 @@
             lblAtividadeDeslocamento.Anchor = AnchorStyles.Top;
             lblAtividadeDeslocamento.BackColor = Color.LightGray;
             lblAtividadeDeslocamento.Enabled = false;
-            lblAtividadeDeslocamento.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblAtividadeDeslocamento.Font = new Font("Segoe UI", 8F);
             lblAtividadeDeslocamento.ForeColor = SystemColors.ControlDarkDark;
             lblAtividadeDeslocamento.Location = new Point(694, 30);
             lblAtividadeDeslocamento.Margin = new Padding(7, 0, 7, 0);
@@ -451,7 +451,7 @@
             // 
             dtpDataConcluida.Anchor = AnchorStyles.Top;
             dtpDataConcluida.CustomFormat = "";
-            dtpDataConcluida.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDataConcluida.Font = new Font("Segoe UI", 9F);
             dtpDataConcluida.Format = DateTimePickerFormat.Short;
             dtpDataConcluida.Location = new Point(1371, 1569);
             dtpDataConcluida.Margin = new Padding(7, 6, 7, 6);
@@ -474,7 +474,7 @@
             // 
             dtpDataVistoria.Anchor = AnchorStyles.Top;
             dtpDataVistoria.CustomFormat = "";
-            dtpDataVistoria.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDataVistoria.Font = new Font("Segoe UI", 9F);
             dtpDataVistoria.Format = DateTimePickerFormat.Short;
             dtpDataVistoria.Location = new Point(1067, 1569);
             dtpDataVistoria.Margin = new Padding(7, 6, 7, 6);
@@ -487,7 +487,7 @@
             // 
             label9.Anchor = AnchorStyles.Top;
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             label9.ForeColor = Color.DimGray;
             label9.Location = new Point(414, 1420);
             label9.Margin = new Padding(6, 0, 6, 0);
@@ -500,7 +500,7 @@
             // 
             dtpDataPendente.Anchor = AnchorStyles.Top;
             dtpDataPendente.CustomFormat = "";
-            dtpDataPendente.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDataPendente.Font = new Font("Segoe UI", 9F);
             dtpDataPendente.Format = DateTimePickerFormat.Short;
             dtpDataPendente.Location = new Point(761, 1569);
             dtpDataPendente.Margin = new Padding(7, 6, 7, 6);
@@ -539,7 +539,7 @@
             txtCoordenada.Anchor = AnchorStyles.Top;
             txtCoordenada.BackColor = Color.White;
             txtCoordenada.CharacterCasing = CharacterCasing.Upper;
-            txtCoordenada.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCoordenada.Font = new Font("Segoe UI", 9F);
             txtCoordenada.ForeColor = Color.Black;
             txtCoordenada.Location = new Point(774, 1283);
             txtCoordenada.Margin = new Padding(7, 6, 7, 6);
@@ -552,7 +552,7 @@
             // 
             label7.Anchor = AnchorStyles.Top;
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             label7.ForeColor = Color.DimGray;
             label7.Location = new Point(414, 870);
             label7.Margin = new Padding(6, 0, 6, 0);
@@ -565,7 +565,7 @@
             // 
             lblCoordenada.Anchor = AnchorStyles.Top;
             lblCoordenada.AutoSize = true;
-            lblCoordenada.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCoordenada.Font = new Font("Segoe UI", 8.25F);
             lblCoordenada.ForeColor = SystemColors.ControlDarkDark;
             lblCoordenada.Location = new Point(494, 1288);
             lblCoordenada.Margin = new Padding(0);
@@ -580,7 +580,7 @@
             cboProfissional.BackColor = Color.White;
             cboProfissional.DisplayMember = "Tag";
             cboProfissional.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboProfissional.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cboProfissional.Font = new Font("Segoe UI", 9F);
             cboProfissional.ForeColor = Color.Black;
             cboProfissional.FormattingEnabled = true;
             cboProfissional.Location = new Point(774, 762);
@@ -597,7 +597,7 @@
             txtNomeCliente.Anchor = AnchorStyles.Top;
             txtNomeCliente.BackColor = Color.White;
             txtNomeCliente.CharacterCasing = CharacterCasing.Upper;
-            txtNomeCliente.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNomeCliente.Font = new Font("Segoe UI", 9F);
             txtNomeCliente.ForeColor = Color.Black;
             txtNomeCliente.Location = new Point(774, 1023);
             txtNomeCliente.Margin = new Padding(7, 6, 7, 6);
@@ -610,7 +610,7 @@
             // 
             lblCliente.Anchor = AnchorStyles.Top;
             lblCliente.AutoSize = true;
-            lblCliente.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCliente.Font = new Font("Segoe UI", 8.25F);
             lblCliente.ForeColor = SystemColors.ControlDarkDark;
             lblCliente.Location = new Point(494, 1028);
             lblCliente.Margin = new Padding(7, 0, 7, 0);
@@ -624,7 +624,7 @@
             lblNomeProfissional.Anchor = AnchorStyles.Top;
             lblNomeProfissional.BackColor = Color.LightGray;
             lblNomeProfissional.Enabled = false;
-            lblNomeProfissional.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNomeProfissional.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             lblNomeProfissional.ForeColor = SystemColors.ControlDarkDark;
             lblNomeProfissional.Location = new Point(957, 763);
             lblNomeProfissional.Margin = new Padding(7, 0, 7, 0);
@@ -637,7 +637,7 @@
             // 
             lblCidade.Anchor = AnchorStyles.Top;
             lblCidade.AutoSize = true;
-            lblCidade.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCidade.Font = new Font("Segoe UI", 8.25F);
             lblCidade.ForeColor = SystemColors.ControlDarkDark;
             lblCidade.Location = new Point(494, 1113);
             lblCidade.Margin = new Padding(7, 0, 7, 0);
@@ -650,7 +650,7 @@
             // 
             lblProfissional.Anchor = AnchorStyles.Top;
             lblProfissional.AutoSize = true;
-            lblProfissional.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblProfissional.Font = new Font("Segoe UI", 8.25F);
             lblProfissional.ForeColor = SystemColors.ControlDarkDark;
             lblProfissional.Location = new Point(498, 772);
             lblProfissional.Margin = new Padding(7, 0, 7, 0);
@@ -664,7 +664,7 @@
             txtNomeContato.Anchor = AnchorStyles.Top;
             txtNomeContato.BackColor = Color.White;
             txtNomeContato.CharacterCasing = CharacterCasing.Upper;
-            txtNomeContato.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNomeContato.Font = new Font("Segoe UI", 9F);
             txtNomeContato.ForeColor = Color.Black;
             txtNomeContato.Location = new Point(774, 1196);
             txtNomeContato.Margin = new Padding(7, 6, 7, 6);
@@ -677,7 +677,7 @@
             // 
             txtTelefoneContato.Anchor = AnchorStyles.Top;
             txtTelefoneContato.BackColor = Color.White;
-            txtTelefoneContato.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTelefoneContato.Font = new Font("Segoe UI", 9F);
             txtTelefoneContato.ForeColor = Color.Black;
             txtTelefoneContato.Location = new Point(1238, 1196);
             txtTelefoneContato.Margin = new Padding(7, 6, 7, 6);
@@ -692,7 +692,7 @@
             // 
             lblNomeContato.Anchor = AnchorStyles.Top;
             lblNomeContato.AutoSize = true;
-            lblNomeContato.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNomeContato.Font = new Font("Segoe UI", 8.25F);
             lblNomeContato.ForeColor = SystemColors.ControlDarkDark;
             lblNomeContato.Location = new Point(494, 1198);
             lblNomeContato.Margin = new Padding(7, 0, 7, 0);
@@ -705,7 +705,7 @@
             // 
             lblTelefoneContato.Anchor = AnchorStyles.Top;
             lblTelefoneContato.AutoSize = true;
-            lblTelefoneContato.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTelefoneContato.Font = new Font("Segoe UI", 8.25F);
             lblTelefoneContato.ForeColor = SystemColors.ControlDarkDark;
             lblTelefoneContato.Location = new Point(1108, 1198);
             lblTelefoneContato.Margin = new Padding(7, 0, 7, 0);
@@ -718,7 +718,7 @@
             // 
             dtpDataOrdem.Anchor = AnchorStyles.Top;
             dtpDataOrdem.CustomFormat = "";
-            dtpDataOrdem.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDataOrdem.Font = new Font("Segoe UI", 9F);
             dtpDataOrdem.Format = DateTimePickerFormat.Short;
             dtpDataOrdem.Location = new Point(774, 453);
             dtpDataOrdem.Margin = new Padding(7, 6, 7, 6);
@@ -731,7 +731,7 @@
             // 
             dtpPrazo.Anchor = AnchorStyles.Top;
             dtpPrazo.CustomFormat = "";
-            dtpPrazo.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpPrazo.Font = new Font("Segoe UI", 9F);
             dtpPrazo.Location = new Point(774, 530);
             dtpPrazo.Margin = new Padding(7, 6, 7, 6);
             dtpPrazo.Name = "dtpPrazo";
@@ -742,7 +742,7 @@
             // 
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 8.25F);
             label1.ForeColor = SystemColors.ControlDarkDark;
             label1.Location = new Point(494, 462);
             label1.Margin = new Padding(7, 0, 7, 0);
@@ -755,7 +755,7 @@
             // 
             lblDataExecucao.Anchor = AnchorStyles.Top;
             lblDataExecucao.AutoSize = true;
-            lblDataExecucao.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDataExecucao.Font = new Font("Segoe UI", 8.25F);
             lblDataExecucao.ForeColor = SystemColors.ControlDarkDark;
             lblDataExecucao.Location = new Point(494, 541);
             lblDataExecucao.Margin = new Padding(7, 0, 7, 0);
@@ -768,7 +768,7 @@
             // 
             label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Segoe UI", 8.25F);
             label5.ForeColor = SystemColors.ControlDarkDark;
             label5.Location = new Point(1384, 106);
             label5.Margin = new Padding(6, 0, 6, 0);
@@ -784,7 +784,7 @@
             chkSiopi.CheckAlign = ContentAlignment.BottomCenter;
             chkSiopi.Checked = true;
             chkSiopi.CheckState = CheckState.Checked;
-            chkSiopi.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            chkSiopi.Font = new Font("Segoe UI", 8.25F);
             chkSiopi.ForeColor = SystemColors.ControlDarkDark;
             chkSiopi.Location = new Point(1479, 109);
             chkSiopi.Margin = new Padding(7, 6, 7, 6);
@@ -799,7 +799,7 @@
             // 
             label4.Anchor = AnchorStyles.Top;
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Segoe UI", 8.25F);
             label4.ForeColor = SystemColors.ControlDarkDark;
             label4.Location = new Point(512, 101);
             label4.Margin = new Padding(6, 0, 6, 0);
@@ -838,7 +838,7 @@
             txtRef0.BackColor = Color.White;
             txtRef0.BorderStyle = BorderStyle.None;
             txtRef0.CharacterCasing = CharacterCasing.Upper;
-            txtRef0.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRef0.Font = new Font("Segoe UI", 9F);
             txtRef0.ForeColor = Color.Black;
             txtRef0.Location = new Point(7, 4);
             txtRef0.Margin = new Padding(7, 6, 7, 6);
@@ -851,7 +851,7 @@
             // 
             // lblPonto5Ref
             // 
-            lblPonto5Ref.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPonto5Ref.Font = new Font("Segoe UI", 8.25F);
             lblPonto5Ref.ForeColor = Color.Black;
             lblPonto5Ref.Location = new Point(461, 6);
             lblPonto5Ref.Margin = new Padding(0);
@@ -865,7 +865,7 @@
             txtRef1.BackColor = Color.White;
             txtRef1.BorderStyle = BorderStyle.None;
             txtRef1.CharacterCasing = CharacterCasing.Upper;
-            txtRef1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRef1.Font = new Font("Segoe UI", 9F);
             txtRef1.ForeColor = Color.Black;
             txtRef1.Location = new Point(78, 4);
             txtRef1.Margin = new Padding(7, 6, 7, 6);
@@ -882,7 +882,7 @@
             txtRef6.BackColor = Color.White;
             txtRef6.BorderStyle = BorderStyle.None;
             txtRef6.CharacterCasing = CharacterCasing.Upper;
-            txtRef6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRef6.Font = new Font("Segoe UI", 9F);
             txtRef6.ForeColor = Color.Black;
             txtRef6.Location = new Point(474, 4);
             txtRef6.Margin = new Padding(7, 6, 7, 6);
@@ -895,7 +895,7 @@
             // 
             // lblPonto1Ref
             // 
-            lblPonto1Ref.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPonto1Ref.Font = new Font("Segoe UI", 8.25F);
             lblPonto1Ref.ForeColor = Color.Black;
             lblPonto1Ref.Location = new Point(65, 11);
             lblPonto1Ref.Margin = new Padding(0);
@@ -906,7 +906,7 @@
             // 
             // lblPonto4Ref
             // 
-            lblPonto4Ref.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPonto4Ref.Font = new Font("Segoe UI", 8.25F);
             lblPonto4Ref.ForeColor = Color.Black;
             lblPonto4Ref.Location = new Point(414, 6);
             lblPonto4Ref.Margin = new Padding(0);
@@ -920,7 +920,7 @@
             txtRef2.BackColor = Color.White;
             txtRef2.BorderStyle = BorderStyle.None;
             txtRef2.CharacterCasing = CharacterCasing.Upper;
-            txtRef2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRef2.Font = new Font("Segoe UI", 9F);
             txtRef2.ForeColor = Color.Black;
             txtRef2.Location = new Point(149, 4);
             txtRef2.Margin = new Padding(0);
@@ -937,7 +937,7 @@
             txtRef5.BackColor = Color.White;
             txtRef5.BorderStyle = BorderStyle.None;
             txtRef5.CharacterCasing = CharacterCasing.Upper;
-            txtRef5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRef5.Font = new Font("Segoe UI", 9F);
             txtRef5.ForeColor = Color.Black;
             txtRef5.Location = new Point(427, 4);
             txtRef5.Margin = new Padding(7, 6, 7, 6);
@@ -950,7 +950,7 @@
             // 
             // lblPonto2Ref
             // 
-            lblPonto2Ref.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPonto2Ref.Font = new Font("Segoe UI", 8.25F);
             lblPonto2Ref.ForeColor = Color.Black;
             lblPonto2Ref.Location = new Point(137, 6);
             lblPonto2Ref.Margin = new Padding(0);
@@ -961,7 +961,7 @@
             // 
             // lblPonto3Ref
             // 
-            lblPonto3Ref.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPonto3Ref.Font = new Font("Segoe UI", 8.25F);
             lblPonto3Ref.ForeColor = Color.Black;
             lblPonto3Ref.Location = new Point(366, 6);
             lblPonto3Ref.Margin = new Padding(0);
@@ -972,7 +972,7 @@
             // 
             // lblBarraRef
             // 
-            lblBarraRef.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblBarraRef.Font = new Font("Segoe UI", 8.25F);
             lblBarraRef.ForeColor = Color.Black;
             lblBarraRef.Location = new Point(284, 6);
             lblBarraRef.Margin = new Padding(0);
@@ -986,7 +986,7 @@
             txtRef4.BackColor = Color.White;
             txtRef4.BorderStyle = BorderStyle.None;
             txtRef4.CharacterCasing = CharacterCasing.Upper;
-            txtRef4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRef4.Font = new Font("Segoe UI", 9F);
             txtRef4.ForeColor = Color.Black;
             txtRef4.Location = new Point(379, 4);
             txtRef4.Margin = new Padding(7, 6, 7, 6);
@@ -1002,7 +1002,7 @@
             txtRef3.BackColor = Color.White;
             txtRef3.BorderStyle = BorderStyle.None;
             txtRef3.CharacterCasing = CharacterCasing.Upper;
-            txtRef3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRef3.Font = new Font("Segoe UI", 9F);
             txtRef3.ForeColor = Color.Black;
             txtRef3.Location = new Point(301, 4);
             txtRef3.Margin = new Padding(7, 6, 7, 6);
@@ -1027,7 +1027,7 @@
             // 
             label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
             label2.ForeColor = Color.DimGray;
             label2.Location = new Point(410, 214);
             label2.Margin = new Padding(6, 0, 6, 0);

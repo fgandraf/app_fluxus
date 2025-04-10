@@ -8,9 +8,9 @@ namespace Fluxus.Core.Contracts.Databases;
 
 public interface IOrderRepository
 {
-    public long Insert(Order body);
+    public long Insert(OrderCreateRequest body);
 
-    public bool Update(Order body);
+    public bool Update(OrderUpdateRequest body);
 
     bool UpdateInvoiceId(long invoiceId, List<long> orders);
 

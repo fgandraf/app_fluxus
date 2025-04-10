@@ -1,4 +1,5 @@
 ﻿using Fluxus.Core.Contracts.Databases;
+using Fluxus.Core.Dtos.Orders;
 using Fluxus.Core.Dtos.Users;
 using Newtonsoft.Json;
 using System;
@@ -142,7 +143,7 @@ namespace Fluxus.Infra.Databases.Api
         }
 
 
-        public int Post(string model, string json)
+        public long Post(string model, string json)
         {
             try
             {
@@ -157,12 +158,10 @@ namespace Fluxus.Infra.Databases.Api
                     if (response.IsSuccessStatusCode == false)
                         return 0;
 
-                    //using it while post method can return int or string result
-                    //refactor it when type is the same for all results
                     var result = response.Content.ReadAsStringAsync().Result;
-                    string digitsOnly = Regex.Replace(result, "[^0-9]", "");
-                    return Convert.ToInt32(digitsOnly);
-                    //----------------------------------------------------------------
+                    var objResult = JsonConvert.DeserializeObject<dynamic>(result);
+                    
+                    return Convert.ToInt64(objResult.id);
                 }
             }
             catch (Exception ex)

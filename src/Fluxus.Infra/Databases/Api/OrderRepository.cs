@@ -15,13 +15,13 @@ namespace Fluxus.Infra.Databases.Api
         public OrderRepository(IConnection connection)
             => _connection = connection;
 
-        public long Insert(Order body)
+        public long Insert(OrderCreateRequest body)
         {
             string json = JsonConvert.SerializeObject(body, Json.Settings);
             return _connection.Post("v2/orders", json);
         }
 
-        public bool Update(Order body)
+        public bool Update(OrderUpdateRequest body)
         {
             string json = JsonConvert.SerializeObject(body, Json.Settings);
             return _connection.Put("v2/orders", json);

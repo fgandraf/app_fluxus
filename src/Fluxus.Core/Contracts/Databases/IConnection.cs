@@ -8,7 +8,7 @@ public interface IConnection
     public string GetWithBody(string model, string json);
     bool Put(string model, string json);
     bool Delete(string model, string param);
-    int Post(string model, string json);
+    long Post(string model, string json);
     public string PostWithResponse(string model, string json);
     (bool, string) Login(string model, string json);
 }
