@@ -22,7 +22,7 @@ namespace Fluxus.Infra.Databases.Api
             return response == string.Empty ? null : JsonConvert.DeserializeObject<InvoiceResponse>(response);
         }
 
-        public bool Update(Invoice body)
+        public bool Update(InvoiceUpdateRequest body)
         {
             string json = JsonConvert.SerializeObject(body, Json.Settings);
             return _connection.Put("v2/invoices/totals", json);

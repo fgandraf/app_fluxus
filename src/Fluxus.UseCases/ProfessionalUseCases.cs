@@ -3,6 +3,7 @@ using Fluxus.Core;
 using Fluxus.Core.Contracts.Databases;
 using System.Collections.Generic;
 using Fluxus.Core.Dtos.Professionals;
+using Fluxus.Core.Dtos.Users;
 
 namespace Fluxus.UseCases
 {
@@ -26,9 +27,15 @@ namespace Fluxus.UseCases
             if (!result.Success)
                 return OperationResult<long>.FailureResult(result.Message);
 
-            var professionalId = _professionalRepository.Insert(professional);
+            var professionalRequest = new ProfessionalCreateRequest(professional);
+
+            var professionalId = _professionalRepository.Insert(professionalRequest);
             user.ProfessionalId = professionalId;
-            var userId = _userRepository.Register(user);
+
+
+            var userRequest = new UserCreateRequest(user);
+
+            var userId = _userRepository.Register(userRequest);
 
             if (professionalId == 0 || userId == 0)
                 return OperationResult<long>.FailureResult("EXC5 - Não foi possível inserir o profissional na base de dados!");
@@ -36,45 +43,45 @@ namespace Fluxus.UseCases
             return OperationResult<long>.SuccessResult(professionalId);
         }
 
-        public OperationResult Update(Professional professional, User user)
+        public OperationResult Update(Professional professional, User user, bool emailUpdated)
         {
-            var result = Validate(false, professional, user);
+            var result = Validate(false, professional, user, emailUpdated);
             if (!result.Success)
                 return OperationResult.FailureResult(result.Message);
 
-            if (!_professionalRepository.Update(professional) || !_userRepository.UpdateInfo(user))
+            var professionalRequest = new ProfessionalUpdateRequest(professional);
+            var userRequest = new UserUpdateInfoRequest(user);
+            if (userRequest.Password == "0000000000")
+                userRequest.Password = null;
+
+            if (!_professionalRepository.Update(professionalRequest) || !_userRepository.UpdateInfo(userRequest))
                 return OperationResult.FailureResult("Não foi possível alterar o profissional!");
 
             return OperationResult.SuccessResult();
         }
 
-        private OperationResult Validate(bool newProfessional, Professional professional, User user)
+        private OperationResult Validate(bool newProfessional, Professional professional, dynamic user, bool emailUpdated = true)
         {
             if (professional == null || user == null)
                 return OperationResult.FailureResult("NL0X - Não foi possível inserir ou alterar o profissional!");
 
-            if (string.IsNullOrEmpty(professional.Tag) || string.IsNullOrEmpty(professional.Name) || string.IsNullOrEmpty(user.UserName))
+            if (string.IsNullOrEmpty(professional.Tag) || string.IsNullOrEmpty(professional.Name) || string.IsNullOrEmpty(user.Email))
                 return OperationResult.FailureResult("RQ1 - Campos com * são obrigatório");
 
-            if (user.UserPassword != user.UserPasswordConfirmation)
+            if (user.Password != user.PasswordConfirmation)
                 return OperationResult.FailureResult("PNM3 - Senhas não conferem");
 
-            var usernamelInRepo = _userRepository.GetByUserName(user.UserName);
-            if (newProfessional && usernamelInRepo != null && usernamelInRepo.Id > 0 || !newProfessional && usernamelInRepo != null && usernamelInRepo.Id != user.Id)
-                return OperationResult.FailureResult("USR4 - Nome de usuário já cadastrado!");
+            if (user.Password.Length < 6 || user.Password.Length > 20)
+                return OperationResult.FailureResult("PMIX2 - Senha precisa ter entre 6 e 20 caractéres");
 
-            return OperationResult.SuccessResult();
-        }
 
-        public OperationResult Delete(long id)
-        {
-            var user = _userRepository.GetByProfessionalId(id);
-
-            var userDeleted = _userRepository.Delete(user.Id);
-            var professionalDeleted = _professionalRepository.Delete(id);
-
-            if (!userDeleted && !professionalDeleted)
-                return OperationResult.FailureResult("Não foi possível excluir o profissional!");
+            if (emailUpdated)
+            {
+                var usernamelInRepo = _userRepository.GetByUserName(user.Email);
+                if (newProfessional && usernamelInRepo != null && usernamelInRepo.Id > 0 || !newProfessional && usernamelInRepo != null && usernamelInRepo.Id != user.Id)
+                    return OperationResult.FailureResult("USR4 - Nome de usuário já cadastrado!");
+            }
+            
 
             return OperationResult.SuccessResult();
         }

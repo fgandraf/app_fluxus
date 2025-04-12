@@ -42,7 +42,7 @@ namespace Fluxus.WinUI.View
                 return;
             else
             {
-                var dialog = MessageBox.Show("Deseja remover a O.S. da Fatura?" + "\n\n" + dgvOS.CurrentRow.Cells[2].Value.ToString() + "\n" + dgvOS.CurrentRow.Cells[6].Value.ToString(), "Não Faturar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                var dialog = MessageBox.Show("Deseja remover a O.S. da Fatura?" + "\n\n" + dgvOS.CurrentRow.Cells["referencia"].Value.ToString() + "\n" + dgvOS.CurrentRow.Cells["nome_cliente"].Value.ToString(), "Não Faturar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (dialog == DialogResult.Yes)
                 {
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);

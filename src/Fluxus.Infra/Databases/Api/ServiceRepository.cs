@@ -13,13 +13,13 @@ namespace Fluxus.Infra.Databases.Api
         public ServiceRepository(IConnection connection)
             => _connection = connection;
 
-        public long Insert(Service body)
+        public long Insert(ServiceCreateRequest body)
         {
             string json = JsonConvert.SerializeObject(body, Json.Settings);
             return _connection.Post("v2/services", json);
         }
 
-        public bool Update(Service body)
+        public bool Update(ServiceUpdateRequest body)
         {
             string json = JsonConvert.SerializeObject(body, Json.Settings);
             return _connection.Put("v2/services", json);

@@ -1,12 +1,10 @@
 ﻿using Fluxus.Core.Contracts.Databases;
-using Fluxus.Core.Dtos.Orders;
 using Fluxus.Core.Dtos.Users;
 using Newtonsoft.Json;
 using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Fluxus.Infra.Databases.Api
 {

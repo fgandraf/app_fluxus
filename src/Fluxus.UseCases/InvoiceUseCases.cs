@@ -35,7 +35,7 @@ namespace Fluxus.UseCases
             return OperationResult<long>.SuccessResult(response.Id);
         }
 
-        public OperationResult Update(Invoice invoice)
+        public OperationResult Update(InvoiceUpdateRequest invoice)
         {
             if (invoice == null)
                 return OperationResult.FailureResult("Não foi possível alterar a fatura!");
@@ -76,7 +76,7 @@ namespace Fluxus.UseCases
             return OperationResult<List<Invoice>>.SuccessResult(result);
         }
 
-        public OperationResult RemoveOrder(long idServiceOrder, Invoice invoice)
+        public OperationResult RemoveOrder(long idServiceOrder, InvoiceUpdateRequest invoice)
         {
             var serviceOrder = new List<long>();
             serviceOrder.Add(idServiceOrder);

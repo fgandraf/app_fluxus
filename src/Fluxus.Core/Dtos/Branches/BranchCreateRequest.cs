@@ -1,16 +1,37 @@
-﻿namespace Fluxus.Core.Dtos.Branches;
+﻿using Fluxus.Core.Models;
+
+namespace Fluxus.Core.Dtos.Branches;
 
 public record BranchCreateRequest
-(
-    string Name,
-    string Address,
-    string Complement,
-    string District,
-    string City,
-    string Zip,
-    string State,
-    string ContactName,
-    string Phone1,
-    string Phone2,
-    string Email
-);
+{
+    public string Id { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public string Address { get; set; } = string.Empty;
+    public string Complement { get; set; } = string.Empty;
+    public string District { get; set; } = string.Empty;
+    public string City { get; set; } = string.Empty;
+    public string Zip { get; set; } = string.Empty;
+    public string State { get; set; } = string.Empty;
+    public string ContactName { get; set; } = string.Empty;
+    public string Phone1 { get; set; } = string.Empty;
+    public string Phone2 { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+
+    public BranchCreateRequest(Branch branch)
+    {
+        Id = branch.Id;
+        Name = branch.Name;
+        Address = branch.Address;
+        Complement = branch.Complement;
+        District = branch.District;
+        City = branch.City;
+        Zip = branch.Zip;
+        State = branch.State;
+        ContactName = branch.ContactName;
+        Phone1 = branch.Phone1;
+        Phone2 = branch.Phone2;
+        Email = branch.Email;
+    }
+
+    public BranchCreateRequest() {}
+}

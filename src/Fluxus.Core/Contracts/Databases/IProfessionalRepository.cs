@@ -6,9 +6,9 @@ namespace Fluxus.Core.Contracts.Databases;
 
 public interface IProfessionalRepository
 {
-    public long Insert(Professional body);
+    public long Insert(ProfessionalCreateRequest body);
 
-    public bool Update(Professional body);
+    public bool Update(ProfessionalUpdateRequest body);
 
     public bool Delete(long id);
 

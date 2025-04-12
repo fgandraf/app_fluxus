@@ -8,7 +8,7 @@ public interface IInvoiceRepository
 {
     public InvoiceResponse Insert(InvoiceCreateRequest body);
 
-    public bool Update(Invoice body);
+    public bool Update(InvoiceUpdateRequest body);
 
     public bool Delete(long id);
 

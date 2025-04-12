@@ -71,13 +71,13 @@ namespace Fluxus.WinUI.View
 
         private Service PopulateObject()
         {
-            Service service = new Service
+            var service = new Service
             (
                 id : _id,
                 tag : txtCodigo.Text,
                 description : txtDescricao.Text,
-                serviceAmount : Convert.ToDecimal(txtValor.Text),
-                mileageAllowance : Convert.ToDecimal(txtDeslocamento.Text)
+                serviceAmount : Convert.ToDouble(txtValor.Text),
+                mileageAllowance : Convert.ToDouble(txtDeslocamento.Text)
             );
             return service;
         }

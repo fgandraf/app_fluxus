@@ -24,7 +24,9 @@ namespace Fluxus.UseCases
             if (string.IsNullOrEmpty(service.Tag))
                 return OperationResult<long>.FailureResult("Campos com * são obrigatório");
 
-            var id = _repository.Insert(service);
+            var serviceRequest = new ServiceCreateRequest(service);
+
+            var id = _repository.Insert(serviceRequest);
             if (id == 0)
                 return OperationResult<long>.FailureResult("Não foi possível inserir a atividade na base de dados!");
 
@@ -39,7 +41,9 @@ namespace Fluxus.UseCases
             if (string.IsNullOrEmpty(service.Tag))
                 return OperationResult<long>.FailureResult("Campos com * são obrigatório");
 
-            if (!_repository.Update(service))
+            var serviceRequest = new ServiceUpdateRequest(service);
+
+            if (!_repository.Update(serviceRequest))
                 return OperationResult.FailureResult("Não foi possível alterar a atividade na base de dados!");
 
             return OperationResult.SuccessResult();

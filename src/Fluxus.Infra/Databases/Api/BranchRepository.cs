@@ -14,13 +14,13 @@ namespace Fluxus.Infra.Databases.Api
         public BranchRepository(IConnection connection)
             => _connection = connection;
 
-        public long Insert(Branch body)
+        public long Insert(BranchCreateRequest body)
         {
             string json = JsonConvert.SerializeObject(body, Json.Settings);
             return _connection.Post("v2/branches", json);
         }
 
-        public bool Update(Branch body)
+        public bool Update(BranchUpdateRequest body)
         {
             string json = JsonConvert.SerializeObject(body, Json.Settings);
             return _connection.Put("v2/branches", json);
@@ -47,11 +47,11 @@ namespace Fluxus.Infra.Databases.Api
             return json == null ? [] : JsonConvert.DeserializeObject<List<BranchIndexResponse>>(json);
         }
 
-        public Branch GetContacts(string agencyCode)
+        public BranchIndexResponse GetContacts(string agencyCode)
         {
             string json = _connection.Get("v2/branches/contacts/", agencyCode);
             if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<Branch>(json);
+                return JsonConvert.DeserializeObject<BranchIndexResponse>(json);
 
             return null;
         }

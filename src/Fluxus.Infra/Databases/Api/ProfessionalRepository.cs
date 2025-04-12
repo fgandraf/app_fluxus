@@ -13,13 +13,13 @@ namespace Fluxus.Infra.Databases.Api
         public ProfessionalRepository(IConnection connection)
             => _connection = connection;
 
-        public long Insert(Professional body)
+        public long Insert(ProfessionalCreateRequest body)
         {
             string json = JsonConvert.SerializeObject(body, Json.Settings);
             return _connection.Post("v2/professionals", json);
         }
 
-        public bool Update(Professional body)
+        public bool Update(ProfessionalUpdateRequest body)
         {
             string json = JsonConvert.SerializeObject(body, Json.Settings);
             return _connection.Put("v2/professionals", json);

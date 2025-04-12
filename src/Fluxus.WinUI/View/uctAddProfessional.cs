@@ -2,6 +2,7 @@
 using Fluxus.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using Fluxus.UseCases;
+using System.Text.RegularExpressions;
 
 namespace Fluxus.WinUI.View
 {
@@ -10,6 +11,7 @@ namespace Fluxus.WinUI.View
         private readonly frmMain _frmPrincipal;
         private readonly long _professionalId;
         private readonly long _userId;
+        private readonly string _email;
         private EMethod _method;
         private IServiceProvider _serviceProvider;
         private UserUseCases _userService;
@@ -44,18 +46,56 @@ namespace Fluxus.WinUI.View
             txtProfissao.Text = professional.Profession;
             txtCarteira.Text = professional.PermitNumber;
             cboEntidade.Text = professional.Association;
-            txtTelefone1.Text = professional.Phone1;
-            txtTelefone2.Text = professional.Phone2;
-            txtEmail.Text = professional.Email;
 
-            _userId = Logged.Id;
-            chkRT.Checked = Logged.Rt;
-            chkRL.Checked = Logged.Rl;
-            chkUsrAtivo.Checked = Logged.Usr_ativo;
-            txtUsrNome.Text = Logged.Usr_nome;
-            txtUsrSenha.Text = Logged.UsrPassword;
-            txtUsrSenha2.Text = Logged.UsrPassword;
-            
+            if (professional.Phone1.Length == 11)
+            {
+                txtTelefone1.Text = string.Format("({0}) {1}-{2}",
+                professional.Phone1.Substring(0, 2),
+                professional.Phone1.Substring(2, 5),
+                professional.Phone1.Substring(7, 4));
+            }
+            if (professional.Phone1.Length == 10)
+            {
+                txtTelefone1.Text = string.Format("({0}) {1}-{2}",
+                professional.Phone1.Substring(0, 2),
+                professional.Phone1.Substring(2, 4),
+                professional.Phone1.Substring(6, 4));
+            }
+
+            if (professional.Phone2.Length == 11)
+            {
+                txtTelefone2.Text = string.Format("({0}) {1}-{2}",
+                professional.Phone2.Substring(0, 2),
+                professional.Phone2.Substring(2, 5),
+                professional.Phone2.Substring(7, 4));
+            }
+            if (professional.Phone2.Length == 10)
+            {
+                txtTelefone2.Text = string.Format("({0}) {1}-{2}",
+                professional.Phone2.Substring(0, 2),
+                professional.Phone2.Substring(2, 4),
+                professional.Phone2.Substring(6, 4));
+            }
+
+
+            var user = _userService.GetByProfessionalId(professional.Id);
+
+            _email = user.Value.Email;
+            _userId = user.Value.Id;
+            txtEmail.Text = user.Value.Email;
+            chkRL.Checked = user.Value.LegalResponsible;
+            chkRT.Checked = user.Value.TechnicianResponsible;
+            chkUsrAtivo.Checked = user.Value.Active;
+            txtUsrSenha.Text = "0000000000";
+            txtUsrSenha2.Text = "0000000000";
+
+            txtEmail.Enabled = Logged.Rl;
+            chkRT.Enabled = Logged.Rl;
+            chkRL.Enabled = Logged.Rl;
+            chkUsrAtivo.Enabled = Logged.Rl;
+            txtUsrSenha.Enabled = Logged.Rl;
+            txtUsrSenha2.Enabled = Logged.Rl;
+
         }
 
         private void frmAddProfissional_Load(object sender, EventArgs e)
@@ -64,7 +104,6 @@ namespace Fluxus.WinUI.View
             {
                 btnAddSave.Text = "&Salvar";
                 txtCodigo.Enabled = false;
-                txtUsrNome.Enabled = false;
                 txtNome.Focus();
             }
             else
@@ -79,7 +118,8 @@ namespace Fluxus.WinUI.View
             var professional = PopulateProfessional();
             var user = PopulateUser();
 
-            dynamic result = _method == EMethod.Insert ? _professionalService.Insert(professional, user) : _professionalService.Update(professional, user);
+            var emailUpdated = txtEmail.Text != _email;
+            dynamic result = _method == EMethod.Insert ? _professionalService.Insert(professional, user) : _professionalService.Update(professional, user, emailUpdated);
 
             if (result.Success)
                 btnCancelar_Click(sender, e);
@@ -117,13 +157,13 @@ namespace Fluxus.WinUI.View
                 id: _professionalId,
                 tag: txtCodigo.Text,
                 name: txtNome.Text,
-                cpf: txtCPF.Text,
+                cpf: Regex.Replace(txtCPF.Text, @"[^\d]", ""),
                 birthday: dtpBirthday.Value,
                 profession: txtProfissao.Text,
                 permitNumber: txtCarteira.Text,
                 association: cboEntidade.Text,
-                phone1: txtTelefone1.Text,
-                phone2: txtTelefone2.Text,
+                phone1: Regex.Replace(txtTelefone1.Text, @"[^\d]", ""),
+                phone2: Regex.Replace(txtTelefone2.Text, @"[^\d]", ""),
                 email: txtEmail.Text
             );
             return profesional;
@@ -136,10 +176,10 @@ namespace Fluxus.WinUI.View
                 professionalId: _professionalId,
                 technicianResponsible: chkRT.Checked,
                 legalResponsible: chkRL.Checked,
-                userActive: chkUsrAtivo.Checked,
-                userName: txtUsrNome.Text,
-                userPassword: txtUsrSenha.Text,
-                userPasswordConfirmation: txtUsrSenha2.Text
+                active: chkUsrAtivo.Checked,
+                email: txtEmail.Text,
+                password: txtUsrSenha.Text,
+                passwordConfirmation: txtUsrSenha2.Text
             ) ;
             return user;
         }

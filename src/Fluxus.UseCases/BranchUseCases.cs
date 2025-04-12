@@ -26,7 +26,9 @@ namespace Fluxus.UseCases
             if (_repository.GetContacts(bankBranch.Id) != null)
                 return OperationResult<long>.FailureResult("Agência já cadastrada!");
 
-            var id = _repository.Insert(bankBranch);
+            var branchRequest = new BranchCreateRequest(bankBranch);
+
+            var id = _repository.Insert(branchRequest);
             if (id == 0)
                 return OperationResult<long>.FailureResult("Não foi possível inserir a agência bancária na base de dados!");
 
@@ -41,7 +43,10 @@ namespace Fluxus.UseCases
             if (_repository.GetContacts(bankBranch.Id) == null)
                 return OperationResult.FailureResult("Agência não encontrada!");
 
-            if (!_repository.Update(bankBranch))
+
+            var branchRequest = new BranchUpdateRequest(bankBranch);
+
+            if (!_repository.Update(branchRequest))
                 return OperationResult.FailureResult("Não foi possível alterar a agência bancária!");
 
             return OperationResult.SuccessResult();

@@ -6,9 +6,9 @@ namespace Fluxus.Core.Contracts.Databases;
 
 public interface IServiceRepository
 {
-    public long Insert(Service body);
+    public long Insert(ServiceCreateRequest body);
 
-    public bool Update(Service body);
+    public bool Update(ServiceUpdateRequest body);
 
     public bool Delete(long id);
 

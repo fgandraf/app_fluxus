@@ -6,9 +6,9 @@ namespace Fluxus.Core.Contracts.Databases;
 
 public interface IBranchRepository
 {
-    public long Insert(Branch body);
+    public long Insert(BranchCreateRequest body);
 
-    public bool Update(Branch body);
+    public bool Update(BranchUpdateRequest body);
 
     public bool Delete(string id);
 
@@ -16,5 +16,5 @@ public interface IBranchRepository
 
     public List<BranchIndexResponse> GetIndex();
 
-    public Branch GetContacts(string agencyCode);
+    public BranchIndexResponse GetContacts(string agencyCode);
 }

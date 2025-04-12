@@ -20,13 +20,13 @@ namespace Fluxus.Infra.Databases.Api
             return _connection.Login("v2/users/login", json);
         }
 
-        public long Register(User model)
+        public long Register(UserCreateRequest model)
         {
             string json = JsonConvert.SerializeObject(model, Json.Settings);
             return _connection.Post("v2/users/register", json);
         }
 
-        public bool UpdateInfo(User model)
+        public bool UpdateInfo(UserUpdateInfoRequest model)
         {
             string json = JsonConvert.SerializeObject(model, Json.Settings);
             return _connection.Put("v2/users/update-info", json);
@@ -36,12 +36,6 @@ namespace Fluxus.Infra.Databases.Api
         {
             string json = JsonConvert.SerializeObject(model, Json.Settings);
             return _connection.Put("v2/users/update-config", json);
-        }
-
-
-        public bool Delete(long id)
-        {
-            return _connection.Delete("v2/users/", id.ToString());
         }
 
         public User GetById(long id)

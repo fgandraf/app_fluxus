@@ -38,7 +38,6 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             btnUpdate = new Button();
-            btnDelete = new Button();
             btnAdd = new Button();
             dgvProfessionals = new DataGridView();
             ttpProfissionais = new ToolTip(components);
@@ -70,26 +69,6 @@
             btnUpdate.UseVisualStyleBackColor = false;
             btnUpdate.Click += btnUpdate_Click;
             // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.White;
-            btnDelete.Cursor = Cursors.Hand;
-            btnDelete.FlatAppearance.BorderColor = Color.White;
-            btnDelete.FlatAppearance.BorderSize = 0;
-            btnDelete.FlatAppearance.MouseDownBackColor = Color.LightBlue;
-            btnDelete.FlatStyle = FlatStyle.Flat;
-            btnDelete.ForeColor = Color.Black;
-            btnDelete.Image = Properties.Resources.deleteIcon;
-            btnDelete.Location = new Point(235, 75);
-            btnDelete.Margin = new Padding(6, 7, 6, 7);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(76, 86);
-            btnDelete.TabIndex = 213;
-            btnDelete.TextImageRelation = TextImageRelation.ImageBeforeText;
-            ttpProfissionais.SetToolTip(btnDelete, "Excluir Profissional");
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
             // btnAdd
             // 
             btnAdd.BackColor = Color.White;
@@ -120,7 +99,7 @@
             dgvProfessionals.BorderStyle = BorderStyle.Fixed3D;
             dgvProfessionals.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvProfessionals.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dgvProfessionals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvProfessionals.ColumnHeadersHeight = 35;
@@ -128,7 +107,7 @@
             dgvProfessionals.Columns.AddRange(new DataGridViewColumn[] { id, codigo, nome, profissao, telefone1 });
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 10F);
             dataGridViewCellStyle6.ForeColor = Color.Black;
             dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
@@ -216,6 +195,7 @@
             telefone1.MinimumWidth = 10;
             telefone1.Name = "telefone1";
             telefone1.ReadOnly = true;
+            telefone1.Visible = false;
             telefone1.Width = 160;
             // 
             // uctProfessional
@@ -225,7 +205,6 @@
             AutoScroll = true;
             BackColor = Color.White;
             Controls.Add(btnUpdate);
-            Controls.Add(btnDelete);
             Controls.Add(btnAdd);
             Controls.Add(dgvProfessionals);
             Margin = new Padding(6, 7, 6, 7);
@@ -237,7 +216,6 @@
 
         #endregion
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dgvProfessionals;
         private System.Windows.Forms.ToolTip ttpProfissionais;
