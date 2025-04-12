@@ -1,8 +1,8 @@
 ﻿using Fluxus.UseCases;
 using Fluxus.Core.Models;
-using Fluxus.Core.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System.ComponentModel;
+using Fluxus.Core.Dtos.Branches;
 
 namespace Fluxus.WinUI.View
 {
@@ -31,7 +31,7 @@ namespace Fluxus.WinUI.View
             var result = bankService.GetIndex();
             if (result.Success)
             {
-                dgvBankBranches.DataSource = new BindingList<BranchesIndexViewModel>(result.Value);
+                dgvBankBranches.DataSource = new BindingList<BranchIndexResponse>(result.Value);
 
                 if (dgvBankBranches.Rows.Count == 0)
                 {

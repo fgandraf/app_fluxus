@@ -2,6 +2,7 @@
 using Fluxus.Core;
 using Fluxus.Core.Contracts.Databases;
 using System.Collections.Generic;
+using Fluxus.Core.Dtos.Invoices;
 
 namespace Fluxus.UseCases
 {
@@ -19,22 +20,22 @@ namespace Fluxus.UseCases
         }
 
 
-        public OperationResult<int> Insert(Invoice invoice)
+        public OperationResult<long> Insert(InvoiceCreateRequest invoice)
         {
             if (invoice == null)
-                return OperationResult<int>.FailureResult("Não foi possível incluir a fatura!");
+                return OperationResult<long>.FailureResult("Não foi possível incluir a fatura!");
 
-            if (GetDescription(invoice.Id).Success)
-                return OperationResult<int>.FailureResult("Fatura já cadastrada!");
+            //if (GetDescription(invoice.Id).Success)
+                //return OperationResult<long>.FailureResult("Fatura já cadastrada!");
 
-            int id = _invoiceRepository.Insert(invoice);
-            if (id == 0)
-                return OperationResult<int>.FailureResult("Não foi possível inserir a fatura na base de dados!");
+            var response = _invoiceRepository.Insert(invoice);
+            if (response == null || response.Id == 0)
+                return OperationResult<long>.FailureResult("Não foi possível inserir a fatura na base de dados!");
 
-            return OperationResult<int>.SuccessResult(id);
+            return OperationResult<long>.SuccessResult(response.Id);
         }
 
-        public OperationResult Update(Invoice invoice)
+        public OperationResult Update(InvoiceUpdateRequest invoice)
         {
             if (invoice == null)
                 return OperationResult.FailureResult("Não foi possível alterar a fatura!");
@@ -48,7 +49,7 @@ namespace Fluxus.UseCases
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult Delete(int id)
+        public OperationResult Delete(long id)
         {
             if (!_invoiceRepository.Delete(id))
                 return OperationResult.FailureResult("Não foi possível excluir a fatura!");
@@ -56,7 +57,7 @@ namespace Fluxus.UseCases
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult<string> GetDescription(int id)
+        public OperationResult<string> GetDescription(long id)
         {
             var description = _invoiceRepository.GetDescription(id);
             if (string.IsNullOrEmpty(description))
@@ -75,9 +76,9 @@ namespace Fluxus.UseCases
             return OperationResult<List<Invoice>>.SuccessResult(result);
         }
 
-        public OperationResult RemoveOrder(int idServiceOrder, Invoice invoice)
+        public OperationResult RemoveOrder(long idServiceOrder, InvoiceUpdateRequest invoice)
         {
-            var serviceOrder = new List<int>();
+            var serviceOrder = new List<long>();
             serviceOrder.Add(idServiceOrder);
 
             var serviceOrderUpdated = _serviceOrderRepository.UpdateInvoiceId(0, serviceOrder);

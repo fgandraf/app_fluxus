@@ -1,45 +1,66 @@
 ﻿using System;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
-using Fluxus.Core.ViewModels;
 using Fluxus.Core.Contracts.Services;
+using Fluxus.Core.Dtos.Orders;
 
 namespace Fluxus.Infra.Services
 {
     public class ExcelInterop : IExcelReport
     {
-        public void ExportToExcel(List<OrdersIndexViewModel> serviceOrders)
+        public void ExportToExcel(List<OrderFilteredResponse> serviceOrders)
         {
             var XcelApp = new Excel.Application();
-            XcelApp.Application.Workbooks.Add(Type.Missing);
+            var workbook = XcelApp.Workbooks.Add(Type.Missing);
+            var worksheet = (Excel.Worksheet)workbook.Worksheets[1];
 
-            XcelApp.Cells[1, 1] = "Status";
-            XcelApp.Cells[1, 2] = "Profissional";
-            XcelApp.Cells[1, 3] = "Data da Ordem";
-            XcelApp.Cells[1, 4] = "Referência";
-            XcelApp.Cells[1, 5] = "Atividade";
-            XcelApp.Cells[1, 6] = "Cidade";
-            XcelApp.Cells[1, 7] = "Nome do Cliente";
-            XcelApp.Cells[1, 8] = "Data da Vistoria";
-            XcelApp.Cells[1, 9] = "Data da Conclusão";
+            worksheet.Cells[2, 2] = "Status";
+            worksheet.Cells[2, 3] = "Profissional";
+            worksheet.Cells[2, 4] = "Data da Ordem";
+            worksheet.Cells[2, 5] = "Referência";
+            worksheet.Cells[2, 6] = "Atividade";
+            worksheet.Cells[2, 7] = "Cidade";
+            worksheet.Cells[2, 8] = "Nome do Cliente";
+            worksheet.Cells[2, 9] = "Data da Vistoria";
+            worksheet.Cells[2, 10] = "Data da Conclusão";
 
-            for (int i = 0; i < serviceOrders.Count; i++)
+            var headerRange = worksheet.get_Range("B2", "J2");
+            headerRange.Font.Bold = true;
+
+            for (int i = 1; i < serviceOrders.Count; i++)
             {
-                XcelApp.Cells[i + 2, 1] = serviceOrders[i].Status.ToString();
-                XcelApp.Cells[i + 2, 2] = serviceOrders[i].Professional.ToString();
-                XcelApp.Cells[i + 2, 3] = Convert.ToDateTime(serviceOrders[i].OrderDate).ToShortDateString();
-                XcelApp.Cells[i + 2, 4] = serviceOrders[i].ReferenceCode.ToString();
-                XcelApp.Cells[i + 2, 5] = serviceOrders[i].Service.ToString();
-                XcelApp.Cells[i + 2, 6] = serviceOrders[i].City.ToString();
-                XcelApp.Cells[i + 2, 7] = serviceOrders[i].CustomerName.ToString();
-                XcelApp.Cells[i + 2, 8] = Convert.ToDateTime(serviceOrders[i].SurveyDate).ToShortDateString();
-                XcelApp.Cells[i + 2, 9] = Convert.ToDateTime(serviceOrders[i].DoneDate).ToShortDateString();
+                worksheet.Cells[i + 2, 2] = serviceOrders[i].Status.ToString();
+                worksheet.Cells[i + 2, 3] = serviceOrders[i].Professional.ToString();
+                worksheet.Cells[i + 2, 4] = Convert.ToDateTime(serviceOrders[i].OrderDate).ToShortDateString();
+                worksheet.Cells[i + 2, 5] = serviceOrders[i].ReferenceCode.ToString();
+                worksheet.Cells[i + 2, 6] = serviceOrders[i].Service.ToString();
+                worksheet.Cells[i + 2, 7] = serviceOrders[i].City.ToString();
+                worksheet.Cells[i + 2, 8] = serviceOrders[i].CustomerName.ToString();
+                worksheet.Cells[i + 2, 9] = Convert.ToDateTime(serviceOrders[i].SurveyDate).ToShortDateString();
+                worksheet.Cells[i + 2, 10] = Convert.ToDateTime(serviceOrders[i].DoneDate).ToShortDateString();
             }
 
-            XcelApp.Columns.AutoFit();
-            XcelApp.Rows.RowHeight = 15;
+            ((Excel.Range)worksheet.Columns[2]).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            ((Excel.Range)worksheet.Columns[3]).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            ((Excel.Range)worksheet.Columns[4]).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            ((Excel.Range)worksheet.Columns[5]).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            ((Excel.Range)worksheet.Columns[6]).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            ((Excel.Range)worksheet.Columns[7]).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            ((Excel.Range)worksheet.Columns[8]).HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+            ((Excel.Range)worksheet.Columns[9]).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+            ((Excel.Range)worksheet.Columns[10]).HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+
+            worksheet.Columns.AutoFit();
+            for (int colIndex = 1; colIndex <= 9; colIndex++)
+            {
+                Excel.Range column = (Excel.Range)worksheet.Columns[colIndex];
+                double columnWidth = (double)(column.ColumnWidth);
+                column.ColumnWidth = columnWidth * 1.2;
+            }
+
+
+            worksheet.Rows.RowHeight = 17;
             XcelApp.Visible = true;
         }
-
     }
 }

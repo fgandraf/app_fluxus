@@ -1,8 +1,8 @@
 ﻿using Fluxus.Core.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Core.ViewModels;
 using System.ComponentModel;
 using Fluxus.UseCases;
+using Fluxus.Core.Dtos.Services;
 
 namespace Fluxus.WinUI.View
 {
@@ -28,7 +28,7 @@ namespace Fluxus.WinUI.View
             }
 
             var services = _serviceService.GetAll(false).Value;
-            dgvServices.DataSource = new BindingList<ServicesIndexViewModel>(services);
+            dgvServices.DataSource = new BindingList<ServiceResponse>(services);
 
             if (dgvServices.Rows.Count == 0)
             {

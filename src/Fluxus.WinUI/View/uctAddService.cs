@@ -8,7 +8,7 @@ namespace Fluxus.WinUI.View
     public partial class uctAddService : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private readonly int _id;
+        private readonly long _id;
         private EMethod _method;
         private IServiceProvider _serviceProvider;
 
@@ -71,13 +71,13 @@ namespace Fluxus.WinUI.View
 
         private Service PopulateObject()
         {
-            Service service = new Service
+            var service = new Service
             (
                 id : _id,
                 tag : txtCodigo.Text,
                 description : txtDescricao.Text,
-                serviceAmount : Convert.ToDecimal(txtValor.Text),
-                mileageAllowance : Convert.ToDecimal(txtDeslocamento.Text)
+                serviceAmount : Convert.ToDouble(txtValor.Text),
+                mileageAllowance : Convert.ToDouble(txtDeslocamento.Text)
             );
             return service;
         }

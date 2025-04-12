@@ -69,9 +69,7 @@
             chkUsrAtivo = new CheckBox();
             panel3 = new Panel();
             label6 = new Label();
-            txtUsrNome = new TextBox();
             label7 = new Label();
-            label8 = new Label();
             label9 = new Label();
             label5 = new Label();
             panel2 = new Panel();
@@ -89,7 +87,7 @@
             // 
             txtCPF.Anchor = AnchorStyles.Top;
             txtCPF.BackColor = Color.White;
-            txtCPF.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCPF.Font = new Font("Segoe UI", 9F);
             txtCPF.ForeColor = Color.Black;
             txtCPF.Location = new Point(780, 640);
             txtCPF.Margin = new Padding(6, 7, 6, 7);
@@ -104,7 +102,7 @@
             // 
             lblDataNascimento.Anchor = AnchorStyles.Top;
             lblDataNascimento.AutoSize = true;
-            lblDataNascimento.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblDataNascimento.Font = new Font("Segoe UI", 8.25F);
             lblDataNascimento.ForeColor = SystemColors.ControlDarkDark;
             lblDataNascimento.Location = new Point(1064, 650);
             lblDataNascimento.Margin = new Padding(6, 0, 6, 0);
@@ -117,7 +115,7 @@
             // 
             txtTelefone2.Anchor = AnchorStyles.Top;
             txtTelefone2.BackColor = Color.White;
-            txtTelefone2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTelefone2.Font = new Font("Segoe UI", 9F);
             txtTelefone2.ForeColor = Color.Black;
             txtTelefone2.Location = new Point(1237, 1413);
             txtTelefone2.Margin = new Padding(6, 7, 6, 7);
@@ -132,7 +130,7 @@
             // 
             txtTelefone1.Anchor = AnchorStyles.Top;
             txtTelefone1.BackColor = Color.White;
-            txtTelefone1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTelefone1.Font = new Font("Segoe UI", 9F);
             txtTelefone1.ForeColor = Color.Black;
             txtTelefone1.Location = new Point(780, 1413);
             txtTelefone1.Margin = new Padding(6, 7, 6, 7);
@@ -147,7 +145,7 @@
             // 
             lblTelefone2.Anchor = AnchorStyles.Top;
             lblTelefone2.AutoSize = true;
-            lblTelefone2.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTelefone2.Font = new Font("Segoe UI", 8.25F);
             lblTelefone2.ForeColor = SystemColors.ControlDarkDark;
             lblTelefone2.Location = new Point(1094, 1423);
             lblTelefone2.Margin = new Padding(6, 0, 6, 0);
@@ -160,20 +158,20 @@
             // 
             lblEmail.Anchor = AnchorStyles.Top;
             lblEmail.AutoSize = true;
-            lblEmail.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblEmail.Font = new Font("Segoe UI", 8.25F);
             lblEmail.ForeColor = SystemColors.ControlDarkDark;
             lblEmail.Location = new Point(524, 1531);
             lblEmail.Margin = new Padding(6, 0, 6, 0);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(64, 30);
+            lblEmail.Size = new Size(79, 30);
             lblEmail.TabIndex = 282;
-            lblEmail.Text = "Email";
+            lblEmail.Text = "* Email";
             // 
             // lblTelefone1
             // 
             lblTelefone1.Anchor = AnchorStyles.Top;
             lblTelefone1.AutoSize = true;
-            lblTelefone1.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTelefone1.Font = new Font("Segoe UI", 8.25F);
             lblTelefone1.ForeColor = SystemColors.ControlDarkDark;
             lblTelefone1.Location = new Point(524, 1423);
             lblTelefone1.Margin = new Padding(6, 0, 6, 0);
@@ -187,7 +185,7 @@
             txtEmail.Anchor = AnchorStyles.Top;
             txtEmail.BackColor = Color.White;
             txtEmail.CharacterCasing = CharacterCasing.Lower;
-            txtEmail.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEmail.Font = new Font("Segoe UI", 9F);
             txtEmail.ForeColor = Color.Black;
             txtEmail.Location = new Point(780, 1521);
             txtEmail.Margin = new Padding(6, 7, 6, 7);
@@ -200,7 +198,7 @@
             // 
             lblCPF.Anchor = AnchorStyles.Top;
             lblCPF.AutoSize = true;
-            lblCPF.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCPF.Font = new Font("Segoe UI", 8.25F);
             lblCPF.ForeColor = SystemColors.ControlDarkDark;
             lblCPF.Location = new Point(524, 650);
             lblCPF.Margin = new Padding(6, 0, 6, 0);
@@ -214,7 +212,7 @@
             txtNome.Anchor = AnchorStyles.Top;
             txtNome.BackColor = Color.White;
             txtNome.CharacterCasing = CharacterCasing.Upper;
-            txtNome.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNome.Font = new Font("Segoe UI", 9F);
             txtNome.ForeColor = Color.Black;
             txtNome.Location = new Point(780, 544);
             txtNome.Margin = new Padding(6, 7, 6, 7);
@@ -227,7 +225,7 @@
             // 
             lblNome.Anchor = AnchorStyles.Top;
             lblNome.AutoSize = true;
-            lblNome.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblNome.Font = new Font("Segoe UI", 8.25F);
             lblNome.ForeColor = SystemColors.ControlDarkDark;
             lblNome.Location = new Point(524, 554);
             lblNome.Margin = new Padding(6, 0, 6, 0);
@@ -240,7 +238,7 @@
             // 
             lblCarteiraProfissional.Anchor = AnchorStyles.Top;
             lblCarteiraProfissional.AutoSize = true;
-            lblCarteiraProfissional.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCarteiraProfissional.Font = new Font("Segoe UI", 8.25F);
             lblCarteiraProfissional.ForeColor = SystemColors.ControlDarkDark;
             lblCarteiraProfissional.Location = new Point(524, 1046);
             lblCarteiraProfissional.Margin = new Padding(6, 0, 6, 0);
@@ -254,7 +252,7 @@
             txtCarteira.Anchor = AnchorStyles.Top;
             txtCarteira.BackColor = Color.White;
             txtCarteira.CharacterCasing = CharacterCasing.Upper;
-            txtCarteira.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCarteira.Font = new Font("Segoe UI", 9F);
             txtCarteira.ForeColor = Color.Black;
             txtCarteira.Location = new Point(780, 1036);
             txtCarteira.Margin = new Padding(6, 7, 6, 7);
@@ -267,7 +265,7 @@
             // 
             lblEntidadedeClasse.Anchor = AnchorStyles.Top;
             lblEntidadedeClasse.AutoSize = true;
-            lblEntidadedeClasse.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblEntidadedeClasse.Font = new Font("Segoe UI", 8.25F);
             lblEntidadedeClasse.ForeColor = SystemColors.ControlDarkDark;
             lblEntidadedeClasse.Location = new Point(524, 1142);
             lblEntidadedeClasse.Margin = new Padding(6, 0, 6, 0);
@@ -281,7 +279,7 @@
             txtCodigo.Anchor = AnchorStyles.Top;
             txtCodigo.BackColor = Color.White;
             txtCodigo.CharacterCasing = CharacterCasing.Upper;
-            txtCodigo.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCodigo.Font = new Font("Segoe UI", 9F);
             txtCodigo.ForeColor = Color.Black;
             txtCodigo.Location = new Point(780, 185);
             txtCodigo.Margin = new Padding(6, 7, 6, 7);
@@ -294,7 +292,7 @@
             // 
             lblCodigo.Anchor = AnchorStyles.Top;
             lblCodigo.AutoSize = true;
-            lblCodigo.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblCodigo.Font = new Font("Segoe UI", 8.25F);
             lblCodigo.ForeColor = SystemColors.ControlDarkDark;
             lblCodigo.Location = new Point(524, 194);
             lblCodigo.Margin = new Padding(6, 0, 6, 0);
@@ -308,7 +306,7 @@
             txtProfissao.Anchor = AnchorStyles.Top;
             txtProfissao.BackColor = Color.White;
             txtProfissao.CharacterCasing = CharacterCasing.Upper;
-            txtProfissao.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtProfissao.Font = new Font("Segoe UI", 9F);
             txtProfissao.ForeColor = Color.Black;
             txtProfissao.Location = new Point(780, 940);
             txtProfissao.Margin = new Padding(6, 7, 6, 7);
@@ -321,7 +319,7 @@
             // 
             lblProfissao.Anchor = AnchorStyles.Top;
             lblProfissao.AutoSize = true;
-            lblProfissao.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lblProfissao.Font = new Font("Segoe UI", 8.25F);
             lblProfissao.ForeColor = SystemColors.ControlDarkDark;
             lblProfissao.Location = new Point(524, 950);
             lblProfissao.Margin = new Padding(6, 0, 6, 0);
@@ -348,7 +346,7 @@
             btnAddSave.BackColor = Color.MediumBlue;
             btnAddSave.FlatAppearance.BorderColor = SystemColors.MenuHighlight;
             btnAddSave.FlatStyle = FlatStyle.Flat;
-            btnAddSave.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddSave.Font = new Font("Segoe UI", 8.25F);
             btnAddSave.ForeColor = SystemColors.Control;
             btnAddSave.Location = new Point(1488, 32);
             btnAddSave.Margin = new Padding(6, 7, 6, 7);
@@ -365,7 +363,7 @@
             btnCancelar.BackColor = Color.White;
             btnCancelar.FlatAppearance.BorderColor = Color.Black;
             btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCancelar.Font = new Font("Segoe UI", 8.25F);
             btnCancelar.ForeColor = Color.Black;
             btnCancelar.Location = new Point(1205, 32);
             btnCancelar.Margin = new Padding(6, 7, 6, 7);
@@ -390,7 +388,7 @@
             // 
             label2.Anchor = AnchorStyles.Top;
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label2.ForeColor = Color.DimGray;
             label2.Location = new Point(453, 832);
             label2.Margin = new Padding(6, 0, 6, 0);
@@ -413,7 +411,7 @@
             // 
             lblTitContato.Anchor = AnchorStyles.Top;
             lblTitContato.AutoSize = true;
-            lblTitContato.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitContato.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             lblTitContato.ForeColor = Color.DimGray;
             lblTitContato.Location = new Point(453, 1305);
             lblTitContato.Margin = new Padding(6, 0, 6, 0);
@@ -436,7 +434,7 @@
             // 
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label1.ForeColor = Color.DimGray;
             label1.Location = new Point(453, 436);
             label1.Margin = new Padding(6, 0, 6, 0);
@@ -460,7 +458,7 @@
             // 
             label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Segoe UI", 8.25F);
             label3.ForeColor = SystemColors.ControlDarkDark;
             label3.Location = new Point(524, 293);
             label3.Margin = new Padding(6, 0, 6, 0);
@@ -484,9 +482,7 @@
             pnlMainAddProfissional.Controls.Add(chkUsrAtivo);
             pnlMainAddProfissional.Controls.Add(panel3);
             pnlMainAddProfissional.Controls.Add(label6);
-            pnlMainAddProfissional.Controls.Add(txtUsrNome);
             pnlMainAddProfissional.Controls.Add(label7);
-            pnlMainAddProfissional.Controls.Add(label8);
             pnlMainAddProfissional.Controls.Add(label9);
             pnlMainAddProfissional.Controls.Add(label5);
             pnlMainAddProfissional.Controls.Add(panel2);
@@ -539,7 +535,7 @@
             cboEntidade.Anchor = AnchorStyles.Top;
             cboEntidade.BackColor = Color.White;
             cboEntidade.DropDownStyle = ComboBoxStyle.DropDownList;
-            cboEntidade.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cboEntidade.Font = new Font("Segoe UI", 9F);
             cboEntidade.ForeColor = Color.Black;
             cboEntidade.FormattingEnabled = true;
             cboEntidade.Items.AddRange(new object[] { "C.A.U. - CONSELHO DE ARQUITETURA E URBANISMO", "C.R.E.A. - CONSELHO DE ENGENHARIA E AGRONOMIA", "OUTRO" });
@@ -555,7 +551,7 @@
             imgShowPwd.Anchor = AnchorStyles.Top;
             imgShowPwd.Cursor = Cursors.Hand;
             imgShowPwd.Image = Properties.Resources.showPasswordIcon;
-            imgShowPwd.Location = new Point(995, 1988);
+            imgShowPwd.Location = new Point(985, 1867);
             imgShowPwd.Margin = new Padding(6, 7, 6, 7);
             imgShowPwd.Name = "imgShowPwd";
             imgShowPwd.Size = new Size(32, 32);
@@ -570,7 +566,7 @@
             imgHidePwd.Anchor = AnchorStyles.Top;
             imgHidePwd.Cursor = Cursors.Hand;
             imgHidePwd.Image = Properties.Resources.hidePasswordIcon;
-            imgHidePwd.Location = new Point(995, 1988);
+            imgHidePwd.Location = new Point(985, 1867);
             imgHidePwd.Margin = new Padding(6, 7, 6, 7);
             imgHidePwd.Name = "imgHidePwd";
             imgHidePwd.Size = new Size(32, 32);
@@ -585,9 +581,9 @@
             txtUsrSenha2.Anchor = AnchorStyles.Top;
             txtUsrSenha2.BackColor = Color.White;
             txtUsrSenha2.CharacterCasing = CharacterCasing.Lower;
-            txtUsrSenha2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsrSenha2.Font = new Font("Segoe UI", 9F);
             txtUsrSenha2.ForeColor = Color.Black;
-            txtUsrSenha2.Location = new Point(1231, 1986);
+            txtUsrSenha2.Location = new Point(1221, 1865);
             txtUsrSenha2.Margin = new Padding(6, 7, 6, 7);
             txtUsrSenha2.MaxLength = 15;
             txtUsrSenha2.Name = "txtUsrSenha2";
@@ -600,9 +596,9 @@
             txtUsrSenha.Anchor = AnchorStyles.Top;
             txtUsrSenha.BackColor = Color.White;
             txtUsrSenha.CharacterCasing = CharacterCasing.Lower;
-            txtUsrSenha.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsrSenha.Font = new Font("Segoe UI", 9F);
             txtUsrSenha.ForeColor = Color.Black;
-            txtUsrSenha.Location = new Point(774, 1986);
+            txtUsrSenha.Location = new Point(764, 1865);
             txtUsrSenha.Margin = new Padding(6, 7, 6, 7);
             txtUsrSenha.MaxLength = 15;
             txtUsrSenha.Name = "txtUsrSenha";
@@ -614,9 +610,9 @@
             // 
             label10.Anchor = AnchorStyles.Top;
             label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Font = new Font("Segoe UI", 8.25F);
             label10.ForeColor = SystemColors.ControlDarkDark;
-            label10.Location = new Point(518, 1792);
+            label10.Location = new Point(524, 1792);
             label10.Margin = new Padding(6, 0, 6, 0);
             label10.Name = "label10";
             label10.Size = new Size(142, 30);
@@ -648,7 +644,7 @@
             // 
             label6.Anchor = AnchorStyles.Top;
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label6.ForeColor = Color.DimGray;
             label6.Location = new Point(446, 1674);
             label6.Margin = new Padding(6, 0, 6, 0);
@@ -657,53 +653,26 @@
             label6.TabIndex = 293;
             label6.Text = "Usuário do sistema";
             // 
-            // txtUsrNome
-            // 
-            txtUsrNome.Anchor = AnchorStyles.Top;
-            txtUsrNome.BackColor = Color.White;
-            txtUsrNome.CharacterCasing = CharacterCasing.Lower;
-            txtUsrNome.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txtUsrNome.ForeColor = Color.Black;
-            txtUsrNome.Location = new Point(774, 1878);
-            txtUsrNome.Margin = new Padding(6, 7, 6, 7);
-            txtUsrNome.MaxLength = 40;
-            txtUsrNome.Name = "txtUsrNome";
-            txtUsrNome.Size = new Size(712, 39);
-            txtUsrNome.TabIndex = 13;
-            // 
             // label7
             // 
             label7.Anchor = AnchorStyles.Top;
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Font = new Font("Segoe UI", 8.25F);
             label7.ForeColor = SystemColors.ControlDarkDark;
-            label7.Location = new Point(518, 1996);
+            label7.Location = new Point(524, 1875);
             label7.Margin = new Padding(6, 0, 6, 0);
             label7.Name = "label7";
             label7.Size = new Size(72, 30);
             label7.TabIndex = 295;
             label7.Text = "Senha";
             // 
-            // label8
-            // 
-            label8.Anchor = AnchorStyles.Top;
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.ForeColor = SystemColors.ControlDarkDark;
-            label8.Location = new Point(518, 1888);
-            label8.Margin = new Padding(6, 0, 6, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(195, 30);
-            label8.TabIndex = 296;
-            label8.Text = "* Nome de usuário";
-            // 
             // label9
             // 
             label9.Anchor = AnchorStyles.Top;
             label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Font = new Font("Segoe UI", 8.25F);
             label9.ForeColor = SystemColors.ControlDarkDark;
-            label9.Location = new Point(1062, 1996);
+            label9.Location = new Point(1052, 1875);
             label9.Margin = new Padding(6, 0, 6, 0);
             label9.Name = "label9";
             label9.Size = new Size(136, 30);
@@ -714,7 +683,7 @@
             // 
             label5.Anchor = AnchorStyles.Top;
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             label5.ForeColor = Color.DimGray;
             label5.Location = new Point(446, 64);
             label5.Margin = new Padding(6, 0, 6, 0);
@@ -737,7 +706,7 @@
             // 
             label4.Anchor = AnchorStyles.Top;
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Segoe UI", 8.25F);
             label4.ForeColor = SystemColors.ControlDarkDark;
             label4.Location = new Point(921, 293);
             label4.Margin = new Padding(6, 0, 6, 0);
@@ -762,7 +731,7 @@
             panel1.Anchor = AnchorStyles.Top;
             panel1.BackColor = Color.White;
             panel1.ForeColor = Color.White;
-            panel1.Location = new Point(520, 2171);
+            panel1.Location = new Point(520, 2009);
             panel1.Margin = new Padding(6, 7, 6, 7);
             panel1.Name = "panel1";
             panel1.Size = new Size(1040, 2);
@@ -830,9 +799,7 @@
         private System.Windows.Forms.CheckBox chkUsrAtivo;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtUsrNome;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox imgShowPwd;
         private System.Windows.Forms.PictureBox imgHidePwd;

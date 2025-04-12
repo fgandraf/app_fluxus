@@ -1,5 +1,4 @@
-﻿
-namespace Fluxus.Core.ViewModels
+﻿namespace Fluxus.Core.Dtos
 {
     public record AddressViewModel
     {

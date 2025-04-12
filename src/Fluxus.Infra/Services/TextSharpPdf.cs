@@ -1,5 +1,4 @@
 ﻿using Fluxus.Core.Contracts.Services;
-using Fluxus.Core.ViewModels;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.Data;
@@ -9,6 +8,7 @@ using System.Linq;
 using Font = iTextSharp.text.Font;
 using Document = iTextSharp.text.Document;
 using System.Diagnostics;
+using Fluxus.Core.Dtos;
 
 
 namespace Fluxus.Infra.Services;
@@ -50,17 +50,13 @@ public class TextSharpPdf : IPdfReport
 
     private PdfPTable DrawHeader(PdfReportViewModel model)
     {
-        System.Drawing.Image logo;
 
-        using var stream = new MemoryStream(model.Logo);
-        logo = System.Drawing.Image.FromStream(stream);
 
         Font _title = FontFactory.GetFont("Calibre", 22, Font.BOLD + Font.ITALIC, BaseColor.BLACK);
         Font _subtitle = FontFactory.GetFont("Calibre", 9, Font.BOLD, BaseColor.BLACK);
         Font _regular = FontFactory.GetFont("Calibre", 8, Font.NORMAL, BaseColor.DARK_GRAY);
 
-        Image imagem = iTextSharp.text.Image.GetInstance(logo, BaseColor.WHITE);
-        imagem.ScaleAbsolute(50, 50);
+        
 
 
         PdfPTable tabhead = new PdfPTable(3);
@@ -68,15 +64,27 @@ public class TextSharpPdf : IPdfReport
         var widths = new float[] { 30f, 40f, 30f };
         tabhead.SetWidths(widths);
 
-        var hLogotipo = new PdfPCell
+
+        
+
+        if (model.Logo != null)
         {
-            Border = 2,
-            BorderColor = BaseColor.LIGHT_GRAY,
-            BorderWidth = 1f,
-            Rowspan = 2,
-        };
-        hLogotipo.AddElement(imagem);
-        tabhead.AddCell(hLogotipo);
+            System.Drawing.Image logo;
+            using var stream = new MemoryStream(model.Logo);
+            logo = System.Drawing.Image.FromStream(stream);
+            Image imagem = iTextSharp.text.Image.GetInstance(logo, BaseColor.WHITE);
+            imagem.ScaleAbsolute(50, 50);
+
+            var hLogotipo = new PdfPCell
+            {
+                Border = 2,
+                BorderColor = BaseColor.LIGHT_GRAY,
+                BorderWidth = 1f,
+                Rowspan = 2,
+            };
+            hLogotipo.AddElement(imagem);
+            tabhead.AddCell(hLogotipo);
+        }
 
         var hTitulo = new PdfPCell()
         {
@@ -160,7 +168,7 @@ public class TextSharpPdf : IPdfReport
                 Colspan = 7,
                 VerticalAlignment = Element.ALIGN_MIDDLE,
                 FixedHeight = 20,
-                Phrase = new Phrase(new Chunk("Profissional: " + professional.Nameid, _subtitle))
+                Phrase = new Phrase(new Chunk("Profissional: " + professional.NameId, _subtitle))
             };
 
             tabmain.AddCell(cellProfessionalHeader);

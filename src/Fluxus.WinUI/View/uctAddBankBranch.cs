@@ -3,8 +3,8 @@ using System.Text.RegularExpressions;
 using Fluxus.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
 using Fluxus.Infra.Services;
-using Fluxus.Core.ViewModels;
 using Fluxus.UseCases;
+using Fluxus.Core.Dtos;
 
 namespace Fluxus.WinUI.View
 {
@@ -48,11 +48,43 @@ namespace Fluxus.WinUI.View
             txtComplemento.Text = branch.Complement;
             txtBairro.Text = branch.District;
             txtCidade.Text = branch.City;
-            txtCEP.Text = branch.Zip;
+
+            if (!string.IsNullOrEmpty(branch.Zip))
+                txtCEP.Text = string.Format("{0}-{1}", branch.Zip.Substring(0, 5), branch.Zip.Substring(5, 3));
+            
+
             cboUF.Text = branch.State;
             txtContato.Text = branch.ContactName;
-            txtTelefone1.Text = branch.Phone1;
-            txtTelefone2.Text = branch.Phone2;
+
+            if (branch.Phone1.Length == 11)
+            {
+                txtTelefone1.Text = string.Format("({0}) {1}-{2}",
+                branch.Phone1.Substring(0, 2),
+                branch.Phone1.Substring(2, 5),
+                branch.Phone1.Substring(7, 4));
+            }
+            if (branch.Phone1.Length == 10)
+            {
+                txtTelefone1.Text = string.Format("({0}) {1}-{2}",
+                branch.Phone1.Substring(0, 2),
+                branch.Phone1.Substring(2, 4),
+                branch.Phone1.Substring(6, 4));
+            }
+
+            if (branch.Phone2.Length == 11)
+            {
+                txtTelefone2.Text = string.Format("({0}) {1}-{2}",
+                branch.Phone2.Substring(0, 2),
+                branch.Phone2.Substring(2, 5),
+                branch.Phone2.Substring(7, 4));
+            }
+            if (branch.Phone2.Length == 10)
+            {
+                txtTelefone2.Text = string.Format("({0}) {1}-{2}",
+                branch.Phone2.Substring(0, 2),
+                branch.Phone2.Substring(2, 4),
+                branch.Phone2.Substring(6, 4));
+            }
             txtEmail.Text = branch.Email;
 
             txtAgencia.Enabled = false;
@@ -123,11 +155,11 @@ namespace Fluxus.WinUI.View
                 complement : txtComplemento.Text,
                 district : txtBairro.Text,
                 city: txtCidade.Text,
-                zip: txtCEP.Text,
+                zip: Regex.Replace(txtCEP.Text, @"[^\d]", ""),
                 state : cboUF.Text,
                 contactName: txtContato.Text,
-                phone1: txtTelefone1.Text,
-                phone2: txtTelefone2.Text,
+                phone1: Regex.Replace(txtTelefone1.Text, @"[^\d]", ""),
+                phone2: Regex.Replace(txtTelefone2.Text, @"[^\d]", ""),
                 email: txtEmail.Text
             );
             return branch;

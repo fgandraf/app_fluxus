@@ -30,9 +30,9 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
@@ -40,6 +40,7 @@
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             panel1 = new Panel();
             pnlLinha2 = new Panel();
             txtValorDeslocamento = new TextBox();
@@ -263,14 +264,14 @@
             dgvOS.ColumnHeadersHeight = 35;
             dgvOS.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvOS.Columns.AddRange(new DataGridViewColumn[] { id, data_ordem, referencia, profissional_cod, atividade_cod, cidade, nome_cliente, data_vistoria, data_concluída, valor_atividade, valor_deslocamento, ProfessionalId, InvoiceId, Status, Invoiced });
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = Color.White;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dgvOS.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = Color.White;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+            dgvOS.DefaultCellStyle = dataGridViewCellStyle10;
             dgvOS.GridColor = SystemColors.InactiveCaption;
             dgvOS.Location = new Point(67, 266);
             dgvOS.Margin = new Padding(6, 7, 6, 7);
@@ -278,15 +279,15 @@
             dgvOS.Name = "dgvOS";
             dgvOS.ReadOnly = true;
             dgvOS.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
-            dgvOS.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dgvOS.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dgvOS.RowHeadersVisible = false;
             dgvOS.RowHeadersWidth = 82;
             dgvOS.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle11.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle11.SelectionBackColor = Color.LightBlue;
-            dataGridViewCellStyle11.SelectionForeColor = Color.Black;
-            dgvOS.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.SelectionBackColor = Color.LightBlue;
+            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
+            dgvOS.RowsDefaultCellStyle = dataGridViewCellStyle12;
             dgvOS.RowTemplate.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
             dgvOS.RowTemplate.Height = 60;
             dgvOS.RowTemplate.ReadOnly = true;
@@ -333,67 +334,71 @@
             // id
             // 
             id.DataPropertyName = "Id";
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            id.DefaultCellStyle = dataGridViewCellStyle2;
             id.HeaderText = "Id";
             id.MinimumWidth = 10;
             id.Name = "id";
             id.ReadOnly = true;
+            id.Visible = false;
             id.Width = 200;
             // 
             // data_ordem
             // 
-            data_ordem.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            data_ordem.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             data_ordem.DataPropertyName = "OrderDate";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            data_ordem.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            data_ordem.DefaultCellStyle = dataGridViewCellStyle3;
             data_ordem.HeaderText = "Data da Ordem";
-            data_ordem.MinimumWidth = 75;
+            data_ordem.MinimumWidth = 50;
             data_ordem.Name = "data_ordem";
             data_ordem.ReadOnly = true;
-            data_ordem.Width = 75;
+            data_ordem.Width = 218;
             // 
             // referencia
             // 
-            referencia.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            referencia.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             referencia.DataPropertyName = "ReferenceCode";
             referencia.HeaderText = "Referência";
-            referencia.MinimumWidth = 130;
+            referencia.MinimumWidth = 2;
             referencia.Name = "referencia";
             referencia.ReadOnly = true;
-            referencia.Width = 130;
+            referencia.Width = 167;
             // 
             // profissional_cod
             // 
-            profissional_cod.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            profissional_cod.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             profissional_cod.DataPropertyName = "Professional";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            profissional_cod.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            profissional_cod.DefaultCellStyle = dataGridViewCellStyle4;
             profissional_cod.HeaderText = "Pro.";
-            profissional_cod.MinimumWidth = 45;
+            profissional_cod.MinimumWidth = 2;
             profissional_cod.Name = "profissional_cod";
             profissional_cod.ReadOnly = true;
-            profissional_cod.Width = 45;
+            profissional_cod.Width = 101;
             // 
             // atividade_cod
             // 
-            atividade_cod.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            atividade_cod.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             atividade_cod.DataPropertyName = "Service";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            atividade_cod.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            atividade_cod.DefaultCellStyle = dataGridViewCellStyle5;
             atividade_cod.HeaderText = "Tipo";
-            atividade_cod.MinimumWidth = 45;
+            atividade_cod.MinimumWidth = 2;
             atividade_cod.Name = "atividade_cod";
             atividade_cod.ReadOnly = true;
-            atividade_cod.Width = 45;
+            atividade_cod.Width = 106;
             // 
             // cidade
             // 
-            cidade.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            cidade.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             cidade.DataPropertyName = "City";
             cidade.HeaderText = "Cidade";
-            cidade.MinimumWidth = 60;
+            cidade.MinimumWidth = 2;
             cidade.Name = "cidade";
             cidade.ReadOnly = true;
-            cidade.Width = 60;
+            cidade.Width = 131;
             // 
             // nome_cliente
             // 
@@ -406,55 +411,55 @@
             // 
             // data_vistoria
             // 
-            data_vistoria.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            data_vistoria.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             data_vistoria.DataPropertyName = "SurveyDate";
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            data_vistoria.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            data_vistoria.DefaultCellStyle = dataGridViewCellStyle6;
             data_vistoria.HeaderText = "Data da Vistoria";
-            data_vistoria.MinimumWidth = 75;
+            data_vistoria.MinimumWidth = 2;
             data_vistoria.Name = "data_vistoria";
             data_vistoria.ReadOnly = true;
-            data_vistoria.Width = 75;
+            data_vistoria.Width = 226;
             // 
             // data_concluída
             // 
-            data_concluída.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            data_concluída.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             data_concluída.DataPropertyName = "DoneDate";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            data_concluída.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            data_concluída.DefaultCellStyle = dataGridViewCellStyle7;
             data_concluída.HeaderText = "Data da Conclusão";
-            data_concluída.MinimumWidth = 75;
+            data_concluída.MinimumWidth = 2;
             data_concluída.Name = "data_concluída";
             data_concluída.ReadOnly = true;
-            data_concluída.Width = 75;
+            data_concluída.Width = 253;
             // 
             // valor_atividade
             // 
-            valor_atividade.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            valor_atividade.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             valor_atividade.DataPropertyName = "ServiceAmount";
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.Padding = new Padding(0, 0, 5, 0);
-            valor_atividade.DefaultCellStyle = dataGridViewCellStyle7;
-            valor_atividade.HeaderText = "Valor OS";
-            valor_atividade.MinimumWidth = 55;
-            valor_atividade.Name = "valor_atividade";
-            valor_atividade.ReadOnly = true;
-            valor_atividade.Width = 55;
-            // 
-            // valor_deslocamento
-            // 
-            valor_deslocamento.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            valor_deslocamento.DataPropertyName = "MileageAllowance";
             dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle8.Format = "N2";
             dataGridViewCellStyle8.Padding = new Padding(0, 0, 5, 0);
-            valor_deslocamento.DefaultCellStyle = dataGridViewCellStyle8;
+            valor_atividade.DefaultCellStyle = dataGridViewCellStyle8;
+            valor_atividade.HeaderText = "Valor OS";
+            valor_atividade.MinimumWidth = 2;
+            valor_atividade.Name = "valor_atividade";
+            valor_atividade.ReadOnly = true;
+            valor_atividade.Width = 149;
+            // 
+            // valor_deslocamento
+            // 
+            valor_deslocamento.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            valor_deslocamento.DataPropertyName = "MileageAllowance";
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.Padding = new Padding(0, 0, 5, 0);
+            valor_deslocamento.DefaultCellStyle = dataGridViewCellStyle9;
             valor_deslocamento.HeaderText = "Desloca.";
-            valor_deslocamento.MinimumWidth = 55;
+            valor_deslocamento.MinimumWidth = 2;
             valor_deslocamento.Name = "valor_deslocamento";
             valor_deslocamento.ReadOnly = true;
-            valor_deslocamento.Width = 55;
+            valor_deslocamento.Width = 147;
             // 
             // ProfessionalId
             // 

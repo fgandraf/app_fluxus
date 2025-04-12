@@ -4,8 +4,8 @@ namespace Fluxus.Core.Models;
 public static class Logged
 {
     //USER LOGGED
-    public static int Id;
-    public static int ProfessionalId;
+    public static long Id;
+    public static long? ProfessionalId;
     public static string ProfessionalTag = string.Empty;
     public static bool Rt;
     public static bool Rl;

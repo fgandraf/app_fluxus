@@ -121,14 +121,14 @@
             dgvBankBranches.BorderStyle = BorderStyle.Fixed3D;
             dgvBankBranches.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dgvBankBranches.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dgvBankBranches.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvBankBranches.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvBankBranches.Columns.AddRange(new DataGridViewColumn[] { id, nome, cidade, telefone1, email });
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.White;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 10F);
             dataGridViewCellStyle7.ForeColor = Color.Black;
             dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
@@ -162,7 +162,7 @@
             // id
             // 
             id.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            id.DataPropertyName = "id";
+            id.DataPropertyName = "Id";
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.Padding = new Padding(5, 0, 0, 0);
             id.DefaultCellStyle = dataGridViewCellStyle2;
@@ -175,7 +175,7 @@
             // nome
             // 
             nome.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nome.DataPropertyName = "name";
+            nome.DataPropertyName = "Name";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.Padding = new Padding(5, 0, 0, 0);
             nome.DefaultCellStyle = dataGridViewCellStyle3;
@@ -187,7 +187,7 @@
             // cidade
             // 
             cidade.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            cidade.DataPropertyName = "city";
+            cidade.DataPropertyName = "City";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             cidade.DefaultCellStyle = dataGridViewCellStyle4;
             cidade.HeaderText = "Cidade";
@@ -199,7 +199,7 @@
             // telefone1
             // 
             telefone1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            telefone1.DataPropertyName = "phone1";
+            telefone1.DataPropertyName = "Phone1";
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             telefone1.DefaultCellStyle = dataGridViewCellStyle5;
             telefone1.HeaderText = "Telefone";
@@ -211,7 +211,7 @@
             // email
             // 
             email.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            email.DataPropertyName = "email";
+            email.DataPropertyName = "Email";
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.Padding = new Padding(5, 0, 0, 0);
             email.DefaultCellStyle = dataGridViewCellStyle6;

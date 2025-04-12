@@ -1,8 +1,8 @@
 ﻿using Fluxus.Core.Models;
 using Fluxus.Core;
-using Fluxus.Core.ViewModels;
 using Fluxus.Core.Contracts.Databases;
 using System.Collections.Generic;
+using Fluxus.Core.Dtos.Services;
 
 namespace Fluxus.UseCases
 {
@@ -16,19 +16,21 @@ namespace Fluxus.UseCases
             => _repository = repository;
 
 
-        public OperationResult<int> Insert(Service service)
+        public OperationResult<long> Insert(Service service)
         {
             if (service == null)
-                return OperationResult<int>.FailureResult("Não foi possível incluir a atividade!");
+                return OperationResult<long>.FailureResult("Não foi possível incluir a atividade!");
 
             if (string.IsNullOrEmpty(service.Tag))
-                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+                return OperationResult<long>.FailureResult("Campos com * são obrigatório");
 
-            int id = _repository.Insert(service);
+            var serviceRequest = new ServiceCreateRequest(service);
+
+            var id = _repository.Insert(serviceRequest);
             if (id == 0)
-                return OperationResult<int>.FailureResult("Não foi possível inserir a atividade na base de dados!");
+                return OperationResult<long>.FailureResult("Não foi possível inserir a atividade na base de dados!");
 
-            return OperationResult<int>.SuccessResult(id);
+            return OperationResult<long>.SuccessResult(id);
         }
 
         public OperationResult Update(Service service)
@@ -37,15 +39,17 @@ namespace Fluxus.UseCases
                 return OperationResult.FailureResult("Não foi possível alterar a atividade!");
 
             if (string.IsNullOrEmpty(service.Tag))
-                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+                return OperationResult<long>.FailureResult("Campos com * são obrigatório");
 
-            if (!_repository.Update(service))
+            var serviceRequest = new ServiceUpdateRequest(service);
+
+            if (!_repository.Update(serviceRequest))
                 return OperationResult.FailureResult("Não foi possível alterar a atividade na base de dados!");
 
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult Delete(int id)
+        public OperationResult Delete(long id)
         {
             if (!_repository.Delete(id))
                 return OperationResult.FailureResult("Não foi possível excluir a atividade!");
@@ -53,7 +57,7 @@ namespace Fluxus.UseCases
             return OperationResult.SuccessResult();
         }
 
-        public OperationResult<Service> GetById(int id)
+        public OperationResult<Service> GetById(long id)
         {
             var service = _repository.GetById(id);
 
@@ -63,17 +67,17 @@ namespace Fluxus.UseCases
             return OperationResult<Service>.SuccessResult(service);
         }
 
-        public OperationResult<List<ServicesIndexViewModel>> GetAll(bool addHeader)
+        public OperationResult<List<ServiceResponse>> GetAll(bool addHeader)
         {
             var services = _repository.GetAll();
 
             if (services == null)
-                return OperationResult<List<ServicesIndexViewModel>>.FailureResult("Não foi possível encontrar atividades na base de dados!");
+                return OperationResult<List<ServiceResponse>>.FailureResult("Não foi possível encontrar atividades na base de dados!");
 
             if (addHeader)
-                services.Insert(0, new ServicesIndexViewModel { Tag = "--TODAS--" });
+                services.Insert(0, new ServiceResponse { Tag = "--TODAS--" });
 
-            return OperationResult<List<ServicesIndexViewModel>>.SuccessResult(services);
+            return OperationResult<List<ServiceResponse>>.SuccessResult(services);
 
         }
 

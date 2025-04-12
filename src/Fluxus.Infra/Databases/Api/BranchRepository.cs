@@ -2,7 +2,7 @@
 using Fluxus.Core.Models;
 using System.Collections.Generic;
 using Fluxus.Core.Contracts.Databases;
-using Fluxus.Core.ViewModels;
+using Fluxus.Core.Dtos.Branches;
 
 namespace Fluxus.Infra.Databases.Api
 {
@@ -14,26 +14,26 @@ namespace Fluxus.Infra.Databases.Api
         public BranchRepository(IConnection connection)
             => _connection = connection;
 
-        public int Insert(Branch body)
+        public long Insert(BranchCreateRequest body)
         {
-            string json = JsonConvert.SerializeObject(body);
-            return _connection.Post("v1/bank-branches", json);
+            string json = JsonConvert.SerializeObject(body, Json.Settings);
+            return _connection.Post("v2/branches", json);
         }
 
-        public bool Update(Branch body)
+        public bool Update(BranchUpdateRequest body)
         {
-            string json = JsonConvert.SerializeObject(body);
-            return _connection.Put("v1/bank-branches", json);
+            string json = JsonConvert.SerializeObject(body, Json.Settings);
+            return _connection.Put("v2/branches", json);
         }
 
         public bool Delete(string id)
         {
-            return _connection.Delete("v1/bank-branches/", id.ToString());
+            return _connection.Delete("v2/branches/", id.ToString());
         }
 
         public Branch GetById(string id)
         {
-            string json = _connection.Get("v1/bank-branches/", id.ToString());
+            string json = _connection.Get("v2/branches/", id.ToString());
 
             if (!string.IsNullOrEmpty(json))
                 return JsonConvert.DeserializeObject<Branch>(json);
@@ -41,20 +41,17 @@ namespace Fluxus.Infra.Databases.Api
             return null;
         }
 
-        public List<BranchesIndexViewModel> GetIndex()
+        public List<BranchIndexResponse> GetIndex()
         {
-            string json = _connection.Get("v1/bank-branches", string.Empty);
-            if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<List<BranchesIndexViewModel>>(json);
-
-            return null;
+            string json = _connection.Get("v2/branches", string.Empty);
+            return json == null ? [] : JsonConvert.DeserializeObject<List<BranchIndexResponse>>(json);
         }
 
-        public Branch GetContacts(string agencyCode)
+        public BranchIndexResponse GetContacts(string agencyCode)
         {
-            string json = _connection.Get("v1/bank-branches/contacts/", agencyCode);
+            string json = _connection.Get("v2/branches/contacts/", agencyCode);
             if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<Branch>(json);
+                return JsonConvert.DeserializeObject<BranchIndexResponse>(json);
 
             return null;
         }

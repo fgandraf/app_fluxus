@@ -1,20 +1,20 @@
-﻿using Fluxus.Core.Models;
-using Fluxus.Core.ViewModels;
+﻿using Fluxus.Core.Dtos.Branches;
+using Fluxus.Core.Models;
 using System.Collections.Generic;
 
 namespace Fluxus.Core.Contracts.Databases;
 
 public interface IBranchRepository
 {
-    public int Insert(Branch body);
+    public long Insert(BranchCreateRequest body);
 
-    public bool Update(Branch body);
+    public bool Update(BranchUpdateRequest body);
 
     public bool Delete(string id);
 
     public Branch GetById(string id);
 
-    public List<BranchesIndexViewModel> GetIndex();
+    public List<BranchIndexResponse> GetIndex();
 
-    public Branch GetContacts(string agencyCode);
+    public BranchIndexResponse GetContacts(string agencyCode);
 }

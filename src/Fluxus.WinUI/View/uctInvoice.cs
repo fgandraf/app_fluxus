@@ -3,16 +3,18 @@ using System.Data;
 using Fluxus.Infra.Services;
 using System.Globalization;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Core.ViewModels;
-using System.Diagnostics;
 using Fluxus.UseCases;
+using System.ComponentModel;
+using Fluxus.Core.Dtos.Orders;
+using Fluxus.Core.Dtos;
+using Fluxus.Core.Dtos.Invoices;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctInvoice : UserControl
     {
-        private decimal _subtotalOs = 0.00m;
-        private decimal _subtotalDesloc = 0.00m;
+        private double _subtotalOs = 0.00;
+        private double _subtotalDesloc = 0.00;
 
         private readonly InvoiceUseCases _invoiceService;
         private readonly ProfileUseCases _profileService;
@@ -38,7 +40,10 @@ namespace Fluxus.WinUI.View
             var invoices = _invoiceService.GetAll();
 
             if (invoices.Success)
-                dgvFaturas.DataSource = invoices.Value;
+            {
+                var bindingList = new BindingList<Invoice>(invoices.Value);
+                dgvFaturas.DataSource = bindingList;
+            }
 
             if (dgvFaturas.Rows.Count > 0)
             {
@@ -52,7 +57,7 @@ namespace Fluxus.WinUI.View
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                var invoiceId = (int)dgvFaturas.CurrentRow.Cells["id"].Value;
+                var invoiceId = (long)dgvFaturas.CurrentRow.Cells["id"].Value;
                 var professionals = _orderService.GetProfessionalByInvoiceId(invoiceId);
                 var profile = _profileService.GetToPrint();
 
@@ -76,7 +81,7 @@ namespace Fluxus.WinUI.View
                     Cnpj = profile.Value.Cnpj,
                     ContractNotice = profile.Value.ContractNotice,
                     ContractNumber = profile.Value.ContractNumber,
-                    Orders = (List<OrdersIndexViewModel>)dgvOS.DataSource,
+                    Orders = ((BindingList<OrderInvoicedResponse>)dgvOS.DataSource).ToList(),
                     Professionals = professionals.Value,
                     Path = saveFileDialog.FileName
                 };
@@ -94,7 +99,7 @@ namespace Fluxus.WinUI.View
             if (dialog == DialogResult.Yes)
             {
                 var idServiceOrder = Convert.ToInt32(dgvOS.CurrentRow.Cells["id_os"].Value);
-                Invoice invoice = PopulateObject();
+                var invoice = PopulateObject();
 
                 var result = _invoiceService.RemoveOrder(idServiceOrder, invoice);
 
@@ -104,15 +109,15 @@ namespace Fluxus.WinUI.View
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
 
                     txtValorOS.Text = invoice.SubtotalService.ToString("C", new CultureInfo("pt-br"));
-                    txtValorDeslocamento.Text = invoice.SubtotalMileageAllowance.ToString("C", new CultureInfo("pt-br"));
+                    txtValorDeslocamento.Text = invoice.SubtotalMileage.ToString("C", new CultureInfo("pt-br"));
                     txtValorTotal.Text = invoice.Total.ToString("C", new CultureInfo("pt-br"));
 
                     dgvFaturas.CurrentRow.Cells["subtotalService"].Value = invoice.SubtotalService;
-                    dgvFaturas.CurrentRow.Cells["subtotalMileageAllowance"].Value = invoice.SubtotalMileageAllowance;
+                    dgvFaturas.CurrentRow.Cells["subtotalMileageAllowance"].Value = invoice.SubtotalMileage;
                     dgvFaturas.CurrentRow.Cells["total"].Value = invoice.Total;
 
                     _subtotalOs = invoice.SubtotalService;
-                    _subtotalDesloc = invoice.SubtotalMileageAllowance;
+                    _subtotalDesloc = invoice.SubtotalMileage;
                 }
                 else
                     MessageBox.Show(result.Message, "Fatura", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -162,7 +167,8 @@ namespace Fluxus.WinUI.View
                 
                 if (closedByInvoiceId.Success)
                 {
-                    dgvOS.DataSource = closedByInvoiceId.Value;
+                    var bindingList = new BindingList<OrderInvoicedResponse>(closedByInvoiceId.Value);
+                    dgvOS.DataSource = bindingList;
 
                     txtData.Text = date.ToShortDateString();
                     txtValorOS.Text = String.Format(new CultureInfo("pt-BR"), "{0:c}", dgvFaturas.CurrentRow.Cells["subtotalService"].Value);
@@ -174,21 +180,19 @@ namespace Fluxus.WinUI.View
             }
         }
 
-        private Invoice PopulateObject()
+        private InvoiceUpdateRequest PopulateObject()
         {
-            var totalServiceAmount = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[this.serviceAmount.Name].Value ?? 0));
-            var totalMileageAllowance = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[this.mileageAllowance.Name].Value ?? 0));
-            totalServiceAmount -= Convert.ToDecimal(dgvOS.CurrentRow.Cells["serviceAmount"].Value);
-            totalMileageAllowance -= Convert.ToDecimal(dgvOS.CurrentRow.Cells["MileageAllowance"].Value);
+            var totalServiceAmount = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[this.serviceAmount.Name].Value ?? 0));
+            var totalMileageAllowance = dgvOS.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDouble(i.Cells[this.mileageAllowance.Name].Value ?? 0));
+            totalServiceAmount -= Convert.ToDouble(dgvOS.CurrentRow.Cells["serviceAmount"].Value);
+            totalMileageAllowance -= Convert.ToDouble(dgvOS.CurrentRow.Cells["MileageAllowance"].Value);
 
-            var invoice = new Invoice
+            var invoice = new InvoiceUpdateRequest
             (
-                id: Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value),
-                description: null,
-                issueDate: DateTime.Now,
-                subtotalService: totalServiceAmount,
-                subtotalMileageAllowance: totalMileageAllowance,
-                total: totalServiceAmount + totalMileageAllowance
+                Id: Convert.ToInt32(dgvFaturas.CurrentRow.Cells["id"].Value),
+                SubtotalService: totalServiceAmount,
+                SubtotalMileage: totalMileageAllowance,
+                Total: totalServiceAmount + totalMileageAllowance
             );
 
             return invoice;

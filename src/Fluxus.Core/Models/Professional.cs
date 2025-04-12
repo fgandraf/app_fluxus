@@ -6,7 +6,7 @@ namespace Fluxus.Core.Models;
 public class Professional
 {
 
-    public int Id { get; private set; }
+    public long Id { get; private set; }
     public string Tag { get; private set; }
     public string Name { get; private set; }
     public string Cpf { get; private set; }
@@ -19,7 +19,7 @@ public class Professional
     public string Email { get; private set; }
 
 
-    public Professional(int id, string tag, string name, string cpf, DateTime birthday, string profession, string permitNumber, string association, string phone1, string phone2, string email)
+    public Professional(long id, string tag, string name, string cpf, DateTime birthday, string profession, string permitNumber, string association, string phone1, string phone2, string email)
     {
         Id = id;
         Tag = tag;

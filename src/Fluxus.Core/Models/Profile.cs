@@ -5,7 +5,7 @@ namespace Fluxus.Core.Models;
 
 public class Profile
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
     public string Cnpj { get; set; }
     public string TradingName { get; set; }
     public string CompanyName { get; set; }
@@ -35,7 +35,7 @@ public class Profile
 
 
 
-    public Profile(int id, string cnpj, string tradingName, string companyName, string stateId, string cityId, string address, string complement, string district, string city, string zip, string state, string phone1, string phone2, string email, string bankAccountName, string bankAccountType, string bankAccountBranch, string bankAccountDigit, string bankAccountNumber, DateTime establishmentDate, string contractorName, string contractNotice, string contractNumber, DateTime contractEstablished, DateTime contractStart, DateTime contractEnd)
+    public Profile(long id, string cnpj, string tradingName, string companyName, string stateId, string cityId, string address, string complement, string district, string city, string zip, string state, string phone1, string phone2, string email, string bankAccountName, string bankAccountType, string bankAccountBranch, string bankAccountDigit, string bankAccountNumber, DateTime establishmentDate, string contractorName, string contractNotice, string contractNumber, DateTime contractEstablished, DateTime contractStart, DateTime contractEnd)
     {
         Id = id;
         Cnpj = cnpj;

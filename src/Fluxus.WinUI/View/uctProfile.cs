@@ -4,9 +4,8 @@ using Fluxus.Infra.Services;
 using System.Text.RegularExpressions;
 using Fluxus.Core.Enums;
 using Microsoft.Extensions.DependencyInjection;
-using Org.BouncyCastle.Utilities.Collections;
-using Fluxus.Core.ViewModels;
 using Fluxus.UseCases;
+using Fluxus.Core.Dtos;
 
 namespace Fluxus.WinUI.View
 {

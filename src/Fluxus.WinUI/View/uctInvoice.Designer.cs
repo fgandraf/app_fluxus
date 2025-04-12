@@ -33,21 +33,36 @@
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctInvoice));
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uctInvoice));
             tblFaturas = new TableLayoutPanel();
             panel1 = new Panel();
             pnlFaturaMain = new Panel();
             btnExcluir = new Button();
             btnRemoverOs = new Button();
             dgvOS = new DataGridView();
+            id_os = new DataGridViewTextBoxColumn();
+            data_ordem = new DataGridViewTextBoxColumn();
+            referenceCode = new DataGridViewTextBoxColumn();
+            service = new DataGridViewTextBoxColumn();
+            professionalTag = new DataGridViewTextBoxColumn();
+            professionalId = new DataGridViewTextBoxColumn();
+            cidade = new DataGridViewTextBoxColumn();
+            customerName = new DataGridViewTextBoxColumn();
+            data_vistoria = new DataGridViewTextBoxColumn();
+            data_concluida = new DataGridViewTextBoxColumn();
+            serviceAmount = new DataGridViewTextBoxColumn();
+            mileageAllowance = new DataGridViewTextBoxColumn();
+            invoiceId = new DataGridViewTextBoxColumn();
+            status = new DataGridViewTextBoxColumn();
+            Invoiced = new DataGridViewTextBoxColumn();
             pnlLinha2 = new Panel();
             txtValorDeslocamento = new TextBox();
             txtValorOS = new TextBox();
@@ -70,21 +85,6 @@
             lblNenhuma = new Label();
             saveFileDialog = new SaveFileDialog();
             ttpFatura = new ToolTip(components);
-            id_os = new DataGridViewTextBoxColumn();
-            data_ordem = new DataGridViewTextBoxColumn();
-            referenceCode = new DataGridViewTextBoxColumn();
-            service = new DataGridViewTextBoxColumn();
-            professionalTag = new DataGridViewTextBoxColumn();
-            professionalId = new DataGridViewTextBoxColumn();
-            cidade = new DataGridViewTextBoxColumn();
-            customerName = new DataGridViewTextBoxColumn();
-            data_vistoria = new DataGridViewTextBoxColumn();
-            data_concluida = new DataGridViewTextBoxColumn();
-            serviceAmount = new DataGridViewTextBoxColumn();
-            mileageAllowance = new DataGridViewTextBoxColumn();
-            invoiceId = new DataGridViewTextBoxColumn();
-            status = new DataGridViewTextBoxColumn();
-            Invoiced = new DataGridViewTextBoxColumn();
             tblFaturas.SuspendLayout();
             pnlFaturaMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvOS).BeginInit();
@@ -214,7 +214,6 @@
             dgvOS.Margin = new Padding(7, 6, 7, 6);
             dgvOS.MultiSelect = false;
             dgvOS.Name = "dgvOS";
-            dgvOS.ReadOnly = true;
             dgvOS.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
             dgvOS.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
@@ -229,11 +228,160 @@
             dgvOS.RowTemplate.Height = 60;
             dgvOS.RowTemplate.ReadOnly = true;
             dgvOS.RowTemplate.Resizable = DataGridViewTriState.False;
-            dgvOS.ScrollBars = ScrollBars.Vertical;
             dgvOS.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvOS.ShowEditingIcon = false;
             dgvOS.Size = new Size(1436, 1004);
             dgvOS.TabIndex = 224;
+            // 
+            // id_os
+            // 
+            id_os.DataPropertyName = "id";
+            id_os.HeaderText = "id_os";
+            id_os.MinimumWidth = 10;
+            id_os.Name = "id_os";
+            id_os.Visible = false;
+            id_os.Width = 200;
+            // 
+            // data_ordem
+            // 
+            data_ordem.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            data_ordem.DataPropertyName = "orderDate";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            data_ordem.DefaultCellStyle = dataGridViewCellStyle2;
+            data_ordem.HeaderText = "Data da Ordem";
+            data_ordem.MinimumWidth = 75;
+            data_ordem.Name = "data_ordem";
+            data_ordem.Width = 218;
+            // 
+            // referenceCode
+            // 
+            referenceCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            referenceCode.DataPropertyName = "referenceCode";
+            referenceCode.HeaderText = "Referência";
+            referenceCode.MinimumWidth = 70;
+            referenceCode.Name = "referenceCode";
+            referenceCode.Width = 167;
+            // 
+            // service
+            // 
+            service.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            service.DataPropertyName = "service";
+            service.HeaderText = "Tipo";
+            service.MinimumWidth = 45;
+            service.Name = "service";
+            service.Width = 106;
+            // 
+            // professionalTag
+            // 
+            professionalTag.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            professionalTag.DataPropertyName = "professional";
+            professionalTag.HeaderText = "Pro.";
+            professionalTag.MinimumWidth = 45;
+            professionalTag.Name = "professionalTag";
+            professionalTag.Width = 101;
+            // 
+            // professionalId
+            // 
+            professionalId.DataPropertyName = "professionalId";
+            professionalId.HeaderText = "professionalId";
+            professionalId.MinimumWidth = 10;
+            professionalId.Name = "professionalId";
+            professionalId.Visible = false;
+            professionalId.Width = 200;
+            // 
+            // cidade
+            // 
+            cidade.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            cidade.DataPropertyName = "city";
+            cidade.HeaderText = "Cidade";
+            cidade.MinimumWidth = 60;
+            cidade.Name = "cidade";
+            cidade.Width = 131;
+            // 
+            // customerName
+            // 
+            customerName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            customerName.DataPropertyName = "customerName";
+            customerName.HeaderText = "Nome do Cliente";
+            customerName.MinimumWidth = 300;
+            customerName.Name = "customerName";
+            // 
+            // data_vistoria
+            // 
+            data_vistoria.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            data_vistoria.DataPropertyName = "surveyDate";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            data_vistoria.DefaultCellStyle = dataGridViewCellStyle3;
+            data_vistoria.HeaderText = "Data da Vistoria";
+            data_vistoria.MinimumWidth = 75;
+            data_vistoria.Name = "data_vistoria";
+            data_vistoria.Width = 226;
+            // 
+            // data_concluida
+            // 
+            data_concluida.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            data_concluida.DataPropertyName = "doneDate";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            data_concluida.DefaultCellStyle = dataGridViewCellStyle4;
+            data_concluida.HeaderText = "Data da Conclusão";
+            data_concluida.MinimumWidth = 75;
+            data_concluida.Name = "data_concluida";
+            data_concluida.Width = 253;
+            // 
+            // serviceAmount
+            // 
+            serviceAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            serviceAmount.DataPropertyName = "serviceAmount";
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewCellStyle5.Padding = new Padding(0, 0, 5, 0);
+            serviceAmount.DefaultCellStyle = dataGridViewCellStyle5;
+            serviceAmount.HeaderText = "Valor OS";
+            serviceAmount.MinimumWidth = 55;
+            serviceAmount.Name = "serviceAmount";
+            serviceAmount.Width = 149;
+            // 
+            // mileageAllowance
+            // 
+            mileageAllowance.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            mileageAllowance.DataPropertyName = "mileageAllowance";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            dataGridViewCellStyle6.Padding = new Padding(0, 0, 5, 0);
+            mileageAllowance.DefaultCellStyle = dataGridViewCellStyle6;
+            mileageAllowance.HeaderText = "Desloca.";
+            mileageAllowance.MinimumWidth = 55;
+            mileageAllowance.Name = "mileageAllowance";
+            mileageAllowance.Width = 147;
+            // 
+            // invoiceId
+            // 
+            invoiceId.DataPropertyName = "invoiceId";
+            invoiceId.HeaderText = "invoiceId";
+            invoiceId.MinimumWidth = 10;
+            invoiceId.Name = "invoiceId";
+            invoiceId.Visible = false;
+            invoiceId.Width = 200;
+            // 
+            // status
+            // 
+            status.DataPropertyName = "status";
+            status.HeaderText = "status";
+            status.MinimumWidth = 10;
+            status.Name = "status";
+            status.Visible = false;
+            status.Width = 200;
+            // 
+            // Invoiced
+            // 
+            Invoiced.DataPropertyName = "invoiced";
+            Invoiced.HeaderText = "Invoiced";
+            Invoiced.MinimumWidth = 10;
+            Invoiced.Name = "Invoiced";
+            Invoiced.Visible = false;
+            Invoiced.Width = 200;
             // 
             // pnlLinha2
             // 
@@ -536,170 +684,6 @@
             // 
             saveFileDialog.FileName = "Relacao_OS.pdf";
             saveFileDialog.Filter = "Arquivos PDF|*.pdf";
-            // 
-            // id_os
-            // 
-            id_os.DataPropertyName = "id";
-            id_os.HeaderText = "id_os";
-            id_os.MinimumWidth = 10;
-            id_os.Name = "id_os";
-            id_os.ReadOnly = true;
-            id_os.Visible = false;
-            id_os.Width = 200;
-            // 
-            // data_ordem
-            // 
-            data_ordem.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            data_ordem.DataPropertyName = "orderDate";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            data_ordem.DefaultCellStyle = dataGridViewCellStyle2;
-            data_ordem.HeaderText = "Data da Ordem";
-            data_ordem.MinimumWidth = 75;
-            data_ordem.Name = "data_ordem";
-            data_ordem.ReadOnly = true;
-            data_ordem.Width = 75;
-            // 
-            // referenceCode
-            // 
-            referenceCode.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            referenceCode.DataPropertyName = "referenceCode";
-            referenceCode.HeaderText = "Referência";
-            referenceCode.MinimumWidth = 70;
-            referenceCode.Name = "referenceCode";
-            referenceCode.ReadOnly = true;
-            // 
-            // service
-            // 
-            service.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            service.DataPropertyName = "service";
-            service.HeaderText = "Tipo";
-            service.MinimumWidth = 45;
-            service.Name = "service";
-            service.ReadOnly = true;
-            service.Width = 45;
-            // 
-            // professionalTag
-            // 
-            professionalTag.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            professionalTag.DataPropertyName = "professional";
-            professionalTag.HeaderText = "Pro.";
-            professionalTag.MinimumWidth = 45;
-            professionalTag.Name = "professionalTag";
-            professionalTag.ReadOnly = true;
-            professionalTag.Width = 45;
-            // 
-            // professionalId
-            // 
-            professionalId.DataPropertyName = "professionalId";
-            professionalId.HeaderText = "professionalId";
-            professionalId.MinimumWidth = 10;
-            professionalId.Name = "professionalId";
-            professionalId.ReadOnly = true;
-            professionalId.Visible = false;
-            professionalId.Width = 200;
-            // 
-            // cidade
-            // 
-            cidade.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            cidade.DataPropertyName = "city";
-            cidade.HeaderText = "Cidade";
-            cidade.MinimumWidth = 60;
-            cidade.Name = "cidade";
-            cidade.ReadOnly = true;
-            cidade.Width = 60;
-            // 
-            // customerName
-            // 
-            customerName.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            customerName.DataPropertyName = "customerName";
-            customerName.HeaderText = "Nome do Cliente";
-            customerName.MinimumWidth = 100;
-            customerName.Name = "customerName";
-            customerName.ReadOnly = true;
-            // 
-            // data_vistoria
-            // 
-            data_vistoria.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            data_vistoria.DataPropertyName = "surveyDate";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            data_vistoria.DefaultCellStyle = dataGridViewCellStyle3;
-            data_vistoria.HeaderText = "Data da Vistoria";
-            data_vistoria.MinimumWidth = 75;
-            data_vistoria.Name = "data_vistoria";
-            data_vistoria.ReadOnly = true;
-            data_vistoria.Width = 75;
-            // 
-            // data_concluida
-            // 
-            data_concluida.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            data_concluida.DataPropertyName = "doneDate";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            data_concluida.DefaultCellStyle = dataGridViewCellStyle4;
-            data_concluida.HeaderText = "Data da Conclusão";
-            data_concluida.MinimumWidth = 75;
-            data_concluida.Name = "data_concluida";
-            data_concluida.ReadOnly = true;
-            data_concluida.Width = 75;
-            // 
-            // serviceAmount
-            // 
-            serviceAmount.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            serviceAmount.DataPropertyName = "serviceAmount";
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            dataGridViewCellStyle5.Padding = new Padding(0, 0, 5, 0);
-            serviceAmount.DefaultCellStyle = dataGridViewCellStyle5;
-            serviceAmount.HeaderText = "Valor OS";
-            serviceAmount.MinimumWidth = 55;
-            serviceAmount.Name = "serviceAmount";
-            serviceAmount.ReadOnly = true;
-            serviceAmount.Width = 55;
-            // 
-            // mileageAllowance
-            // 
-            mileageAllowance.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            mileageAllowance.DataPropertyName = "mileageAllowance";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            dataGridViewCellStyle6.Padding = new Padding(0, 0, 5, 0);
-            mileageAllowance.DefaultCellStyle = dataGridViewCellStyle6;
-            mileageAllowance.HeaderText = "Desloca.";
-            mileageAllowance.MinimumWidth = 55;
-            mileageAllowance.Name = "mileageAllowance";
-            mileageAllowance.ReadOnly = true;
-            mileageAllowance.Width = 55;
-            // 
-            // invoiceId
-            // 
-            invoiceId.DataPropertyName = "invoiceId";
-            invoiceId.HeaderText = "invoiceId";
-            invoiceId.MinimumWidth = 10;
-            invoiceId.Name = "invoiceId";
-            invoiceId.ReadOnly = true;
-            invoiceId.Visible = false;
-            invoiceId.Width = 200;
-            // 
-            // status
-            // 
-            status.DataPropertyName = "status";
-            status.HeaderText = "status";
-            status.MinimumWidth = 10;
-            status.Name = "status";
-            status.ReadOnly = true;
-            status.Visible = false;
-            status.Width = 200;
-            // 
-            // Invoiced
-            // 
-            Invoiced.DataPropertyName = "invoiced";
-            Invoiced.HeaderText = "Invoiced";
-            Invoiced.MinimumWidth = 10;
-            Invoiced.Name = "Invoiced";
-            Invoiced.ReadOnly = true;
-            Invoiced.Visible = false;
-            Invoiced.Width = 200;
             // 
             // uctInvoice
             // 

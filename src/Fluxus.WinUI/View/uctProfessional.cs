@@ -1,8 +1,8 @@
 ﻿using Fluxus.Core.Models;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Core.ViewModels;
 using System.ComponentModel;
 using Fluxus.UseCases;
+using Fluxus.Core.Dtos.Professionals;
 
 namespace Fluxus.WinUI.View
 {
@@ -24,7 +24,6 @@ namespace Fluxus.WinUI.View
             {
                 btnAdd.Enabled = false;
                 btnUpdate.Enabled = false;
-                btnDelete.Enabled = false;
             }
 
             var profissionais = _professionalService.GetIndex();
@@ -36,12 +35,11 @@ namespace Fluxus.WinUI.View
             }
 
 
-            dgvProfessionals.DataSource = new BindingList<ProfessionalsIndexViewModel>(profissionais.Value);
+            dgvProfessionals.DataSource = new BindingList<ProfessionalIndexResponse>(profissionais.Value);
 
             if (dgvProfessionals.Rows.Count == 0)
             {
                 btnUpdate.Enabled = false;
-                btnDelete.Enabled = false;
             }
             
         }
@@ -65,23 +63,6 @@ namespace Fluxus.WinUI.View
 
             var formNeto = new uctAddProfessional(_frmPrincipal, result.Value, _serviceProvider);
             _frmPrincipal.OpenUserControl(formNeto);
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            var dialog = MessageBox.Show("Deseja realmente excluir?\n\n O usuário associado ao profissional também será removido.", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (dialog == DialogResult.Yes)
-            {
-                var id = Convert.ToInt32(dgvProfessionals.CurrentRow.Cells["id"].Value);
-                var result = _professionalService.Delete(id);                
-                
-
-
-                if (result.Success)
-                    dgvProfessionals.DataSource = _professionalService.GetIndex().Value;
-                else
-                    MessageBox.Show(result.Message, "Fluxus", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
     }

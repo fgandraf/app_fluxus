@@ -1,18 +1,18 @@
 ﻿using Fluxus.Core.Models;
 using System.Globalization;
 using Microsoft.Extensions.DependencyInjection;
-using Fluxus.Core.ViewModels;
 using System.ComponentModel;
-using System.Collections;
 using Fluxus.UseCases;
+using Fluxus.Core.Dtos.Orders;
+using Fluxus.Core.Dtos.Invoices;
 
 namespace Fluxus.WinUI.View
 {
     public partial class uctAddInvoice : UserControl
     {
         private readonly frmMain _frmPrincipal;
-        private decimal _subtotal_os = 0.00m;
-        private decimal _subtotal_desloc = 0.00m;
+        private double _subtotal_os = 0.00;
+        private double _subtotal_desloc = 0.00;
         private IServiceProvider _serviceProvider;
 
         public uctAddInvoice(frmMain frm1, IServiceProvider serviceProvider)
@@ -30,7 +30,7 @@ namespace Fluxus.WinUI.View
             var orders = serviceOrderService.GetOpenDone();
             if (orders.Success)
             {
-                dgvOS.DataSource = new BindingList<OrdersIndexViewModel>(orders.Value);
+                dgvOS.DataSource = new BindingList<OrderDoneToInvoiceResponse>(orders.Value);
                 Calculate();
                 txtDescricao.Text = dtpData.Value.ToString("MMMM", CultureInfo.CreateSpecificCulture("pt-br")) + "-" + dtpData.Value.Year.ToString();
             }
@@ -42,7 +42,7 @@ namespace Fluxus.WinUI.View
                 return;
             else
             {
-                var dialog = MessageBox.Show("Deseja remover a O.S. da Fatura?" + "\n\n" + dgvOS.CurrentRow.Cells[2].Value.ToString() + "\n" + dgvOS.CurrentRow.Cells[6].Value.ToString(), "Não Faturar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                var dialog = MessageBox.Show("Deseja remover a O.S. da Fatura?" + "\n\n" + dgvOS.CurrentRow.Cells["referencia"].Value.ToString() + "\n" + dgvOS.CurrentRow.Cells["nome_cliente"].Value.ToString(), "Não Faturar", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (dialog == DialogResult.Yes)
                 {
                     dgvOS.Rows.RemoveAt(dgvOS.CurrentRow.Index);
@@ -57,7 +57,7 @@ namespace Fluxus.WinUI.View
             var invoice = PopulateToObject();
 
             var result = service.Insert(invoice);
-            int invoiceId = result.Value;
+            var invoiceId = result.Value;
 
 
             if (invoiceId == 0)
@@ -68,7 +68,7 @@ namespace Fluxus.WinUI.View
 
             var serviceOrderService = _serviceProvider.GetService<OrderUseCases>();
 
-            var orders = new List<int>();
+            var orders = new List<long>();
             foreach (DataGridViewRow row in dgvOS.Rows)
                 orders.Add(Convert.ToInt32(row.Cells["id"].Value));
             
@@ -90,31 +90,30 @@ namespace Fluxus.WinUI.View
 
         private void Calculate()
         {
-            _subtotal_os = 0.0m;
-            _subtotal_desloc = 0.0m;
+            _subtotal_os = 0.0;
+            _subtotal_desloc = 0.0;
 
             foreach (DataGridViewRow row in dgvOS.Rows)
-                _subtotal_os += Convert.ToDecimal(row.Cells["valor_atividade"].Value);
+                _subtotal_os += Convert.ToDouble(row.Cells["valor_atividade"].Value);
 
             foreach (DataGridViewRow row in dgvOS.Rows)
-                _subtotal_desloc += Convert.ToDecimal(row.Cells["valor_deslocamento"].Value);
+                _subtotal_desloc += Convert.ToDouble(row.Cells["valor_deslocamento"].Value);
 
             txtValorOS.Text = _subtotal_os.ToString("C", new CultureInfo("pt-br"));
             txtValorDeslocamento.Text = _subtotal_desloc.ToString("C", new CultureInfo("pt-br"));
             txtValorTotal.Text = (_subtotal_os+_subtotal_desloc).ToString("C", new CultureInfo("pt-br"));
         }
 
-        private Invoice PopulateToObject()
+        private InvoiceCreateRequest PopulateToObject()
         {
-            Invoice invoice = new Invoice
-            (
-                id: 0,
-                description: txtDescricao.Text,
-                issueDate: dtpData.Value,
-                subtotalService: _subtotal_os,
-                subtotalMileageAllowance: _subtotal_desloc,
-                total: _subtotal_os + _subtotal_desloc
-            ) ;
+            InvoiceCreateRequest invoice = new InvoiceCreateRequest
+            {
+                Description = txtDescricao.Text,
+                IssueDate = dtpData.Value,
+                SubtotalService = _subtotal_os,
+                SubtotalMileage = _subtotal_desloc,
+                Total = _subtotal_os + _subtotal_desloc
+            };
             return invoice;
         }
 

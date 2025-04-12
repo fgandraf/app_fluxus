@@ -1,8 +1,8 @@
 ﻿using Fluxus.Core.Models;
 using Fluxus.Core;
-using Fluxus.Core.ViewModels;
 using Fluxus.Core.Contracts.Databases;
 using System.Collections.Generic;
+using Fluxus.Core.Dtos.Branches;
 
 namespace Fluxus.UseCases
 {
@@ -15,22 +15,24 @@ namespace Fluxus.UseCases
         public BranchUseCases(IBranchRepository repository)
             => _repository = repository;
 
-        public OperationResult<int> Insert(Branch bankBranch)
+        public OperationResult<long> Insert(Branch bankBranch)
         {
             if (bankBranch == null)
-                return OperationResult<int>.FailureResult("Não foi possível incluir a agência bancária!");
+                return OperationResult<long>.FailureResult("Não foi possível incluir a agência bancária!");
 
             if (bankBranch.Id == null)
-                return OperationResult<int>.FailureResult("Campos com * são obrigatório");
+                return OperationResult<long>.FailureResult("Campos com * são obrigatório");
 
             if (_repository.GetContacts(bankBranch.Id) != null)
-                return OperationResult<int>.FailureResult("Agência já cadastrada!");
+                return OperationResult<long>.FailureResult("Agência já cadastrada!");
 
-            int id = _repository.Insert(bankBranch);
+            var branchRequest = new BranchCreateRequest(bankBranch);
+
+            var id = _repository.Insert(branchRequest);
             if (id == 0)
-                return OperationResult<int>.FailureResult("Não foi possível inserir a agência bancária na base de dados!");
+                return OperationResult<long>.FailureResult("Não foi possível inserir a agência bancária na base de dados!");
 
-            return OperationResult<int>.SuccessResult(id);
+            return OperationResult<long>.SuccessResult(id);
         }
 
         public OperationResult Update(Branch bankBranch)
@@ -41,7 +43,10 @@ namespace Fluxus.UseCases
             if (_repository.GetContacts(bankBranch.Id) == null)
                 return OperationResult.FailureResult("Agência não encontrada!");
 
-            if (!_repository.Update(bankBranch))
+
+            var branchRequest = new BranchUpdateRequest(bankBranch);
+
+            if (!_repository.Update(branchRequest))
                 return OperationResult.FailureResult("Não foi possível alterar a agência bancária!");
 
             return OperationResult.SuccessResult();
@@ -65,14 +70,14 @@ namespace Fluxus.UseCases
             return OperationResult<Branch>.SuccessResult(branch);
         }
 
-        public OperationResult<List<BranchesIndexViewModel>> GetIndex()
+        public OperationResult<List<BranchIndexResponse>> GetIndex()
         {
             var branches = _repository.GetIndex();
 
             if (branches == null)
-                return OperationResult<List<BranchesIndexViewModel>>.FailureResult("Não foi possível encontrar agências bancárias na base de dados!");
+                return OperationResult<List<BranchIndexResponse>>.FailureResult("Não foi possível encontrar agências bancárias na base de dados!");
 
-            return OperationResult<List<BranchesIndexViewModel>>.SuccessResult(branches);
+            return OperationResult<List<BranchIndexResponse>>.SuccessResult(branches);
         }
 
 
